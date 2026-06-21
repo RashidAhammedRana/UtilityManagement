@@ -143,12 +143,20 @@ public class AccountController: Controller
         return data;
     }
 
-    [HttpGet]
+    //[HttpGet]
+    //public async Task<IActionResult> Logout()
+    //{
+    //    await HttpContext.SignOutAsync(
+    //        IdentityConstants.ApplicationScheme);
+
+    //    return RedirectToAction("Login", "Account");
+    //}
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
-        await HttpContext.SignOutAsync(
-            IdentityConstants.ApplicationScheme);
-
-        return RedirectToAction("Login", "Account");
+        await _signInManager.SignOutAsync();
+        return RedirectToAction("login", "Account");
     }
 }

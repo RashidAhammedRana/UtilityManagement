@@ -1,0 +1,187 @@
+﻿@{
+    ViewData["Title"] = User.IsInRole("Admin") ? "Admin Dashboard"
+                    : User.IsInRole("User") ? "User Dashboard"
+                    : "Home Page";
+
+    var userName = User.Identity?.Name ?? "Guest";
+
+    var hour = DateTime.Now.Hour;
+    var greeting = hour < 12 ? "Good Morning"
+                   : hour < 18 ? "Good Afternoon"
+                   : "Good Evening";
+}
+
+<style>
+    body {
+        background: #f2f4f8;
+    }
+
+    .hero {
+        margin-top: 70px;
+        background: linear-gradient(135deg,#6f42c1,#0dcaf0);
+        color: white;
+        padding: 55px 20px;
+        border-radius: 0 0 30px 30px;
+        box-shadow: 0 6px 20px rgba(0,0,0,0.1);
+    }
+
+    /* CARD STYLE */
+    .dash-card {
+        border: none;
+        border-radius: 18px;
+        padding: 22px;
+        color: white;
+        transition: 0.3s ease;
+        height: 100%;
+    }
+
+        .dash-card:hover {
+            transform: translateY(-7px);
+            box-shadow: 0 15px 25px rgba(0,0,0,0.15);
+        }
+
+    .title {
+        font-weight: 600;
+    }
+
+    /* Different attractive gradients */
+    .c1 {
+        background: linear-gradient(135deg,#4facfe,#00f2fe);
+    }
+
+    .c2 {
+        background: linear-gradient(135deg,#667eea,#764ba2);
+    }
+
+    .c3 {
+        background: linear-gradient(135deg,#f093fb,#f5576c);
+    }
+
+    .c4 {
+        background: linear-gradient(135deg,#ff9a9e,#fad0c4);
+        color: #333;
+    }
+
+    .c5 {
+        background: linear-gradient(135deg,#f6d365,#fda085);
+        color: #333;
+    }
+
+    .c6 {
+        background: linear-gradient(135deg,#43e97b,#38f9d7);
+        color: #333;
+    }
+
+    .section-title {
+        font-weight: 600;
+        margin-bottom: 18px;
+        color: #495057;
+    }
+</style>
+
+<!-- HERO -->
+<div class="hero text-center" >
+
+    <h3 class="fw-light">@greeting</h3>
+
+    <h1 class="fw-bold">Mr. @userName</h1>
+
+    <p class="mt-2">
+        @if (User.IsInRole("Admin") || User.IsInRole("User"))
+        {
+            <text>Welcome to <strong>Utility Management System</strong></text>
+        }
+        else if (User.IsInRole("SpecialAccess"))
+        {
+            <text>Welcome to <strong>Carton Sticker Solution</strong></text>
+        }
+        else
+        {
+            <text>Welcome Guest</text>
+        }
+    </p>
+
+</div>
+
+<!-- DASHBOARD -->
+<div class="container py-5">
+
+    <h4 class="section-title">Quick Access</h4>
+
+    <div class="row g-4">
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index", "Home")" class="text-decoration-none">
+                <div class="dash-card c1">
+                    <h5 class="title">Dashboard</h5>
+                    <p>System overview</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index", "Home")" class="text-decoration-none">
+                <div class="dash-card c2">
+                    <h5 class="title">Machine Cost</h5>
+                    <p>Manage cost data</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index", "Home")" class="text-decoration-none">
+                <div class="dash-card c3">
+                    <h5 class="title">Employees</h5>
+                    <p>Employee management</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="@Url.Action("Index", "Home")" class="text-decoration-none">
+                <div class="dash-card c4">
+                    <h5 class="title">Cost Type</h5>
+                    <p>Category setup</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dash-card c5">
+                    <h5 class="title">Reports</h5>
+                    <p>Analytics view</p>
+                </div>
+            </a>
+        </div>
+
+        <div class="col-md-4">
+            <a href="#" class="text-decoration-none">
+                <div class="dash-card c6">
+                    <h5 class="title">Settings</h5>
+                    <p>System configuration</p>
+                </div>
+            </a>
+        </div>
+
+    </div>
+
+    <!-- INFO BOX -->
+    <div class="mt-5 p-4 bg-white shadow-sm rounded-4 text-center">
+
+        <h5 class="mb-2 text-secondary">Login Info</h5>
+
+        @if (User.Identity?.Name != null)
+        {
+            <p class="mb-0">
+                Logged in as <strong>Mr. @userName</strong>
+            </p>
+        }
+        else
+        {
+            <p class="text-danger mb-0">Please login to continue</p>
+        }
+
+    </div>
+
+</div>

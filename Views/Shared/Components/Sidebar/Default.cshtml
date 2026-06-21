@@ -1,0 +1,78 @@
+﻿@model List<UtilityManagement.ViewModels.SidebarViewModel>
+
+<style>
+    .sidebar {
+        width: 250px;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: #212529;
+        overflow-y: auto;
+        padding-top: 10px;
+    }
+
+    .brand {
+        text-align: center;
+        padding: 15px;
+        color: white;
+        border-bottom: 1px solid #444;
+    }
+
+    .module-title {
+        color: #bbb;
+        font-size: 13px;
+        padding: 10px 15px 5px;
+        text-transform: uppercase;
+    }
+
+    .menu-link {
+        display: block;
+        color: #ddd;
+        padding: 10px 20px;
+        text-decoration: none;
+        transition: 0.3s;
+        font-size: 14px;
+    }
+
+        .menu-link:hover {
+            background: #343a40;
+            color: #fff;
+        }
+
+    .menu-icon {
+        margin-right: 6px;
+    }
+</style>
+
+<div class="sidebar">
+
+    <!-- BRAND -->
+    <div class="brand">
+
+        <img src="@Url.Content("~/images/cotton_logo.png")"
+             style="width: 160px; height: 40px; object-fit: fill;" />
+
+        <div style="margin-top:6px; font-weight:600; font-size:15px;">
+            Utility Management
+        </div>
+
+    </div>
+
+    <!-- MENU -->
+    @foreach (var module in Model.GroupBy(x => x.ModuleName))
+    {
+        <div class="module-title">
+            @module.Key
+        </div>
+
+        @foreach (var menu in module)
+        {
+            <a class="menu-link" href="@Url.Content(menu.Url)">
+                <i class="bi bi-circle menu-icon"></i>
+                @menu.MenuName
+            </a>
+        }
+    }
+
+</div>

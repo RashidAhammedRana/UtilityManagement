@@ -23,6 +23,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblMenu> TblMenu { get; set; }
 
         public virtual DbSet<TblPermissionAction> TblPermissionAction { get; set; }
+        public virtual DbSet<TblEquipmentDetails> TblEquipmentDetails { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -118,6 +119,34 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.ActionName)
                     .HasMaxLength(50)
                     .IsRequired();
+            });
+
+            // TblEquipmentDetails
+            modelBuilder.Entity<TblEquipmentDetails>(entity =>
+            {
+                entity.HasKey(e => e.Eqid);
+
+                entity.ToTable("TBL_EQUIPMENT_DETAILS");
+
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.Brand)
+                    .HasMaxLength(50)
+                    .HasColumnName("BRAND");
+                entity.Property(e => e.Capacity)
+                    .HasMaxLength(50)
+                    .HasColumnName("CAPACITY");
+                entity.Property(e => e.CurrentLocation)
+                    .HasMaxLength(50)
+                    .HasColumnName("CURRENT_LOCATION");
+                entity.Property(e => e.EquipmentName)
+                    .HasMaxLength(50)
+                    .HasColumnName("EQUIPMENT_NAME");
+                entity.Property(e => e.Model)
+                    .HasMaxLength(50)
+                    .HasColumnName("MODEL");
+                entity.Property(e => e.Slno)
+                    .HasMaxLength(50)
+                    .HasColumnName("SLNO");
             });
 
 

@@ -1,0 +1,137 @@
+﻿@model UtilityManagement.Models.TblEquipmentDetails
+
+@{
+    ViewData["Title"] = "Create Equipment Details";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Equipment</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Equipment Name -->
+                            <div class="col-md-6">
+                                <label asp-for="EquipmentName" class="form-label">
+                                    Equipment Name <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="EquipmentName" class="form-control" />
+                                <span asp-validation-for="EquipmentName" class="text-danger"></span>
+                            </div>
+
+                            <!-- Capacity -->
+                            <div class="col-md-6">
+                                <label asp-for="Capacity" class="form-label">
+                                    Capacity <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Capacity" class="form-control" />
+                                <span asp-validation-for="Capacity" class="text-danger"></span>
+                            </div>
+
+                            <!-- Brand -->
+                            <div class="col-md-6">
+                                <label asp-for="Brand" class="form-label">
+                                    Brand <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Brand" class="form-control" />
+                                <span asp-validation-for="Brand" class="text-danger"></span>
+                            </div>
+
+                            <!-- Model -->
+                            <div class="col-md-6">
+                                <label asp-for="Model" class="form-label">
+                                    Model <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Model" class="form-control" />
+                                <span asp-validation-for="Model" class="text-danger"></span>
+                            </div>
+
+                            <!-- SL No -->
+                            <div class="col-md-6">
+                                <label asp-for="Slno" class="form-label">
+                                    SL No <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Slno" class="form-control" />
+                                <span asp-validation-for="Slno" class="text-danger"></span>
+                            </div>
+
+                            <!-- Current Location -->
+                            <div class="col-md-6">
+                                <label asp-for="CurrentLocation" class="form-label">
+                                    Current Location <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CurrentLocation" class="form-control" />
+                                <span asp-validation-for="CurrentLocation" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="EquipmentDetailsList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Save Equipment
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const inputs = document.querySelectorAll("input");
+
+        inputs.forEach(input => {
+
+            input.addEventListener("input", function () {
+
+                let validationSpan =
+                    document.querySelector(
+                        `[data-valmsg-for="${this.name}"]`
+                    );
+
+                if (validationSpan && this.value.trim() !== "") {
+                    validationSpan.textContent = "";
+                }
+
+            });
+
+        });
+
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

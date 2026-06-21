@@ -162,7 +162,12 @@
                                     <th>Module</th>
                                     <th>Menu</th>
                                     <th>Action</th>
-                                    <th class="text-center">Allow</th>
+                                    <th>
+                                        <div class="d-flex justify-content-center align-items-center gap-2">
+                                            <input type="checkbox" id="selectAll" />
+                                            <span>Allow</span>
+                                        </div>
+                                    </th>
                                 </tr>
                             </thead>
 
@@ -189,8 +194,8 @@
                                         </td>
 
                                         <td class="text-center">
-                                            <div class="form-check form-switch d-flex justify-content-center">
-                                                <input class="form-check-input"
+                                            <div class="d-flex justify-content-center align-items-center gap-2">
+                                                <input class="form-check-input action-checkbox"
                                                        type="checkbox"
                                                        name="model[@i].IsAllowed"
                                                        value="true"
@@ -226,3 +231,23 @@
     }
 
 </div>
+
+<script>
+    const selectAll = document.getElementById("selectAll");
+    const checkboxes = document.querySelectorAll(".action-checkbox");
+
+    // 1. Select All -> All check/uncheck
+    selectAll.addEventListener("change", function () {
+        checkboxes.forEach(cb => {
+            cb.checked = this.checked;
+        });
+    });
+
+    // 2. Individual -> update Select All state
+    checkboxes.forEach(cb => {
+        cb.addEventListener("change", function () {
+            let allChecked = Array.from(checkboxes).every(x => x.checked);
+            selectAll.checked = allChecked;
+        });
+    });
+</script>

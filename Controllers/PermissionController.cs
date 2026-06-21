@@ -68,29 +68,48 @@ namespace UtilityManagement.Controllers
             if (string.IsNullOrEmpty(userId))
                 return RedirectToAction("Index");
 
-            var old = _context.TblUserPermission
-                .Where(x => x.UserId == userId);
+            foreach (var item in model)
+            {
+                var existing = await _context.TblUserPermission
+                    .FirstOrDefaultAsync(x =>
+                        x.UserId == userId &&
+                        x.ModuleId == item.ModuleId &&
+                        x.MenuId == item.MenuId &&
+                        x.ActionId == item.ActionId);
 
-            _context.TblUserPermission.RemoveRange(old);
-
-            var permissions = model
-                .Where(x => x.IsAllowed)
-                .Select(x => new TblUserPermission
+                if (item.IsAllowed)
                 {
-                    UserId = userId,
-                    ModuleId = x.ModuleId,
-                    MenuId = x.MenuId,
-                    ActionId = x.ActionId,
-                    IsAllowed = true
-                })
-                .ToList();
+                    if (existing != null)
+                    {
+                        existing.IsAllowed = true;
+                    }
+                    else
+                    {
+                        _context.TblUserPermission.Add(new TblUserPermission
+                        {
+                            UserId = userId,
+                            ModuleId = item.ModuleId,
+                            MenuId = item.MenuId,
+                            ActionId = item.ActionId,
+                            IsAllowed = true
+                        });
+                    }
+                }
+                else
+                {
+                    // যদি unchecked হয় → remove only that row
+                    if (existing != null)
+                    {
+                        _context.TblUserPermission.Remove(existing);
+                    }
+                }
+            }
 
-            await _context.TblUserPermission.AddRangeAsync(permissions);
             await _context.SaveChangesAsync();
 
             TempData["msg"] = "Permissions Saved";
 
-            return RedirectToAction("Details", new { userId });
+            return RedirectToAction("Index", new { userId });
         }
 
         [HttpGet]

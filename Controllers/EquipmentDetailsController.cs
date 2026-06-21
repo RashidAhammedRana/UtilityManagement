@@ -21,12 +21,37 @@ public class EquipmentDetailsController : Controller
     [HttpGet]
     public async Task<IActionResult> EquipmentDetailsList(int page = 1, int pageSize = 15)
     {
+        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        var menuId = await _context.TblMenu
+            .Where(x => x.MenuName == "Equipment Information")
+            .Select(x => x.MenuId)
+            .FirstOrDefaultAsync();
+
+        var userPermissions = await (
+            from up in _context.TblUserPermission
+            join pa in _context.TblPermissionAction
+                on up.ActionId equals pa.ActionId
+            where up.UserId == userId
+                  && up.MenuId == menuId
+                  && up.IsAllowed
+            select pa.ActionName
+        ).ToListAsync();
+
+        ViewBag.CanView = userPermissions.Contains("View");
+        ViewBag.CanCreate = userPermissions.Contains("Create");
+        ViewBag.CanEdit = userPermissions.Contains("Edit");
+        ViewBag.CanDelete = userPermissions.Contains("Delete");
+
+        // 📄 Pagination data
         var equipmentsDetails = await _context.TblEquipmentDetails
             .OrderBy(r => r.EquipmentName)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
+
         var totalRecords = await _context.TblEquipmentDetails.CountAsync();
+
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
         ViewBag.TotalEquipmentDetails = totalRecords;
@@ -42,15 +67,29 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblEquipmentDetails equipmentDetails)
+    public async Task<IActionResult> Create(TblEquipmentDetails model)
     {
-        if (ModelState.IsValid)
+        try
         {
-            _context.Add(equipmentDetails);
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Please fill all required fields.";
+                return View(model);
+            }
+
+            _context.TblEquipmentDetails.Add(model);
             await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Equipment created successfully.";
+
             return RedirectToAction(nameof(EquipmentDetailsList));
         }
-        return View(equipmentDetails);
+        catch (Exception ex)
+        {
+            TempData["ErrorMessage"] = "Failed to create equipment.";
+
+            return View(model);
+        }
     }
 
     [HttpGet]
@@ -71,35 +110,32 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(int id, TblEquipmentDetails equipments)
+    public async Task<IActionResult> Edit(TblEquipmentDetails model)
     {
-        if (id != equipments.Eqid)
-        {
-            return NotFound();
-        }
+        if (!ModelState.IsValid)
+            return View(model);
 
-        if (ModelState.IsValid)
+        var data = await _context.TblEquipmentDetails
+            .FirstOrDefaultAsync(x => x.Eqid == model.Eqid);
+
+        if (data == null)
         {
-            try
-            {
-                _context.Entry(equipments).State = EntityState.Modified;
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!_context.TblEquipmentDetails.Any(e => e.Eqid == equipments.Eqid))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
+            TempData["ErrorMessage"] = "Equipment not found.";
             return RedirectToAction(nameof(EquipmentDetailsList));
         }
 
-        return View(equipments);
+        data.EquipmentName = model.EquipmentName;
+        data.Capacity = model.Capacity;
+        data.Brand = model.Brand;
+        data.Model = model.Model;
+        data.Slno = model.Slno;
+        data.CurrentLocation = model.CurrentLocation;
+
+        await _context.SaveChangesAsync();
+
+        TempData["SuccessMessage"] = "Equipment updated successfully.";
+
+        return RedirectToAction(nameof(EquipmentDetailsList));
     }
 
     [HttpGet]
@@ -115,17 +151,23 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost, ActionName("Delete")]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> DeleteConfirmed(int id)
+    public async Task<IActionResult> DeleteConfirmed(int eqid)
     {
-        var data = await _context.TblEquipmentDetails.FindAsync(id);
+        var data = await _context.TblEquipmentDetails
+            .FirstOrDefaultAsync(x => x.Eqid == eqid);
 
-        if (data != null)
+        if (data == null)
         {
-            _context.TblEquipmentDetails.Remove(data);
-            await _context.SaveChangesAsync();
+            TempData["ErrorMessage"] = "Equipment not found.";
+            return RedirectToAction(nameof(EquipmentDetailsList));
         }
 
-        return RedirectToAction("EquipmentDetailsList");
+        _context.TblEquipmentDetails.Remove(data);
+        await _context.SaveChangesAsync();
+
+        TempData["SuccessMessage"] = "Equipment deleted successfully.";
+
+        return RedirectToAction(nameof(EquipmentDetailsList));
     }
 }
 

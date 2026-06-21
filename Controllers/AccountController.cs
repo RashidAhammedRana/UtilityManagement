@@ -92,32 +92,30 @@ public class AccountController: Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
+        TempData["SuccessMessage"] = null;
+        TempData["ErrorMessage"] = null;
+
         if (ModelState.IsValid)
         {
             var result = await _signInManager.PasswordSignInAsync(
-                model.Email, model.Password, model.RememberMe, lockoutOnFailure: false);
+                model.Email, model.Password, model.RememberMe, false);
 
             if (result.Succeeded)
             {
-                TempData["SuccessMessage"] = $"Login Successfully, {model.Email}!";
+                TempData["SuccessMessage"] = "Login successful";
                 return RedirectToAction("Index", "Home");
             }
-            else if (result.IsLockedOut)
-            {
-                TempData["ErrorMessage"] = "Your account is locked out.";
-                return RedirectToAction("Login");
-            }
-            else
-            {
-                TempData["ErrorMessage"] = "Invalid login attempt.";
-                return RedirectToAction("Login");
-            }
+
+            TempData["ErrorMessage"] = "Invalid email or password";
+        }
+        else
+        {
+            TempData["ErrorMessage"] = "Please fill all fields";
         }
 
-        // If ModelState is invalid
-        TempData["ErrorMessage"] = "Please provide valid login credentials.";
         return RedirectToAction("Login");
     }
+
     [HttpGet]
     public async Task<List<SidebarViewModel>> GetUserSidebar(string userId)
     {

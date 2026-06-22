@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
+using System.Globalization;
 
 public class RebReadingInfoController : Controller
 {
@@ -51,15 +52,104 @@ public class RebReadingInfoController : Controller
             .AsQueryable();
 
         // =========================
-        // SEARCH FILTER
-        // =========================
-        if (!string.IsNullOrEmpty(searchString))
+        // SEARCH LOGIC
+        if (!string.IsNullOrWhiteSpace(searchString))
         {
-            query = query.Where(x =>
-                x.Eq.EquipmentName.Contains(searchString) ||
-                x.Eq.CurrentLocation.Contains(searchString) ||
-                x.Trdate.ToString().Contains(searchString)
-            );
+            searchString = searchString.Trim();
+
+            var parts = searchString.Split('-', StringSplitOptions.RemoveEmptyEntries);
+
+            int number;
+            bool isNumber = int.TryParse(searchString, out number);
+
+            // =========================
+            // CASE 1: FULL DATE (22-06-2026 OR 2026-06-22 OR 22/06/2026)
+            // =========================
+            bool isFullDate =
+                DateTime.TryParseExact(
+                    searchString,
+                    new[] {
+                "dd-MM-yyyy", "d-M-yyyy",
+                "dd/MM/yyyy", "d/M/yyyy",
+                "yyyy-MM-dd", "yyyy/MM/dd"
+                    },
+                    System.Globalization.CultureInfo.InvariantCulture,
+                    System.Globalization.DateTimeStyles.None,
+                    out DateTime parsedDate
+                );
+
+            if (isFullDate)
+            {
+                var start = parsedDate.Date;
+                var end = start.AddDays(1);
+
+                query = query.Where(x =>
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value >= start &&
+                    x.Trdate.Value < end
+                );
+            }
+
+            // =========================
+            // CASE 2: YEAR-MONTH (2026-06 / 2026/06)
+            // =========================
+            else if (parts.Length == 2 && parts[0].Length == 4)
+            {
+                if (int.TryParse(parts[0], out int year) &&
+                    int.TryParse(parts[1], out int month))
+                {
+                    query = query.Where(x =>
+                        x.Trdate.HasValue &&
+                        x.Trdate.Value.Year == year &&
+                        x.Trdate.Value.Month == month
+                    );
+                }
+            }
+
+            // =========================
+            // CASE 3: MONTH-DAY (06-22 / 22-06)
+            // =========================
+            else if (parts.Length == 2)
+            {
+                if (int.TryParse(parts[0], out int a) &&
+                    int.TryParse(parts[1], out int b))
+                {
+                    // assume MM-DD or DD-MM both supported
+                    query = query.Where(x =>
+                        x.Trdate.HasValue &&
+                        (
+                            (x.Trdate.Value.Month == a && x.Trdate.Value.Day == b) ||
+                            (x.Trdate.Value.Month == b && x.Trdate.Value.Day == a)
+                        )
+                    );
+                }
+            }
+
+            // =========================
+            // CASE 4: SINGLE NUMBER (day/month/year)
+            // =========================
+            else if (isNumber)
+            {
+                query = query.Where(x =>
+                    x.Trdate.HasValue &&
+                    (
+                        x.Trdate.Value.Day == number ||
+                        x.Trdate.Value.Month == number ||
+                        x.Trdate.Value.Year == number
+                    )
+                );
+            }
+
+            // =========================
+            // CASE 5: TEXT SEARCH
+            // =========================
+            else
+            {
+                query = query.Where(x =>
+                    x.Eq.EquipmentName.Contains(searchString) ||
+                    x.Eq.CurrentLocation.Contains(searchString)
+                );
+            }
         }
 
         // =========================
@@ -68,7 +158,7 @@ public class RebReadingInfoController : Controller
         var totalRecords = await query.CountAsync();
 
         var rebReadings = await query
-            .OrderBy(r => r.Trid)
+            .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
@@ -83,7 +173,6 @@ public class RebReadingInfoController : Controller
 
         return View(rebReadings);
     }
-
     [HttpGet]
     public IActionResult Create()
     {

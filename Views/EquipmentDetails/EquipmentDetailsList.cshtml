@@ -8,6 +8,7 @@
 
     int pageSize = 15;
     int sl = (currentPage - 1) * pageSize;
+
     int startPage = Math.Max(1, currentPage - 2);
     int endPage = Math.Min(totalPages, currentPage + 2);
 
@@ -19,148 +20,132 @@
 <h2 class="text-center">Equipment Details List</h2>
 
 <p class="text-muted text-center">
-    Total Equipments: <strong>@ViewBag.TotalEquipmentDetails</strong>
+    Total Equipments: <strong>@ViewBag.totalEquipments</strong>
 </p>
 
-<!-- ACTION BUTTONS -->
-<div class="d-flex justify-content-end mb-3 gap-2">
+<!-- ================= HEADER ================= -->
+<div class="d-flex justify-content-between align-items-center mb-3">
 
-    @if (canCreate)
-    {
-        <a asp-action="Create"
-           class="btn btn-primary">
-            + Create
-        </a>
-    }
+    <!-- SEARCH -->
+    <form method="get"
+          asp-action="EquipmentDetailsList"
+          class="d-flex gap-2 align-items-center flex-grow-1">
 
-    <button type="button"
-            class="btn btn-secondary"
-            onclick="window.history.back();">
-        Back
-    </button>
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="Search Equipment / Brand / Model / Location"
+               style="max-width: 350px;" />
+
+    </form>
+
+    <!-- ACTION BUTTONS -->
+    <div class="d-flex gap-2">
+
+        @if (canCreate)
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                + Create
+            </a>
+        }
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+            Back
+        </button>
+
+    </div>
+
 </div>
 
-<!-- TABLE -->
+<!-- ================= TABLE ================= -->
 <div class="table-responsive">
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover align-middle">
 
-    <thead class="table-dark">
-        <tr>
-            <th style="width: 5%;">SL</th>
-            <th style="width: 20%;">Equipment Name</th>
-            <th style="width: 10%;">Capacity</th>
-            <th style="width: 15%;">Brand</th>
-            <th style="width: 10%;">Model</th>
-            <th style="width: 10%;">Serial No</th>
-            <th style="width: 20%;">Current Location</th>
-            <th style="width: 10%;" class="text-center">Actions</th>
-        </tr>
-    </thead>
-
-    <tbody>
-        @foreach (var item in Model)
-        {
-            sl++;
-
+        <thead class="table-dark text-center">
             <tr>
-                <td>@sl</td>
-                <td>@item.EquipmentName</td>
-                <td>@item.Capacity</td>
-                <td>@item.Brand</td>
-                <td>@item.Model</td>
-                <td>@item.Slno</td>
-                <td>@item.CurrentLocation</td>
-
-                <td class="text-center">
-
-                    <div class="d-flex justify-content-center gap-2">
-
-                        @if (canEdit)
-                        {
-                            <a asp-action="Edit"
-                               asp-route-id="@item.Eqid"
-                               class="btn btn-warning btn-sm">
-                                Edit
-                            </a>
-                        }
-
-                        @if (canDelete)
-                        {
-                            <a asp-action="Delete"
-                               asp-route-id="@item.Eqid"
-                               class="btn btn-danger btn-sm">
-                                Delete
-                            </a>
-                        }
-
-                    </div>
-
-                </td>
+                <th>SL</th>
+                <th>Equipment</th>
+                <th>Capacity</th>
+                <th>Brand</th>
+                <th>Model</th>
+                <th>Serial No</th>
+                <th>Location</th>
+                <th>Actions</th>
             </tr>
-        }
-    </tbody>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl++;
+
+                <tr class="text-center">
+                    <td>@sl</td>
+                    <td>@item.EquipmentName</td>
+                    <td>@item.Capacity</td>
+                    <td>@item.Brand</td>
+                    <td>@item.Model</td>
+                    <td>@item.Slno</td>
+                    <td>@item.CurrentLocation</td>
+
+                    <!-- ACTIONS -->
+                    <td>
+                        <div class="btn-group btn-group-sm gap-2">
+
+                            @if (canEdit)
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Eqid"
+                                   class="btn btn-warning">
+                                    Edit
+                                </a>
+                            }
+
+                            @if (canDelete)
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Eqid"
+                                   class="btn btn-danger">
+                                    Delete
+                                </a>
+                            }
+
+                        </div>
+                    </td>
+
+                </tr>
+            }
+        </tbody>
 
     </table>
 </div>
 
-<!-- PAGINATION -->
-<nav aria-label="Pagination">
+<!-- ================= PAGINATION ================= -->
+<nav>
     <ul class="pagination justify-content-center flex-wrap">
 
-        <!-- Previous -->
+        <!-- Prev -->
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("EquipmentDetailsList",new { page = currentPage - 1, searchString = ViewBag.SearchString })">
+               href="@Url.Action("EquipmentDetailsList", new { page = currentPage - 1, searchString = ViewBag.SearchString })">
                 Previous
             </a>
         </li>
 
-        <!-- First Page -->
-        @if (startPage > 1)
-        {
-            <li class="page-item">
-                <a class="page-link"
-                   href="@Url.Action("EquipmentDetailsList",new { page = 1, searchString = ViewBag.SearchString })">
-                1
-            </a>
-        </li>
-
-        @if (startPage > 2)
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>
-            }
-        }
-
-        <!-- Current Range -->
+        <!-- Pages -->
         @for (int i = startPage; i <= endPage; i++)
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
                 <a class="page-link"
                    href="@Url.Action("EquipmentDetailsList", new { page = i, searchString = ViewBag.SearchString })">
-                @i
-            </a>
-        </li>
-                }
-
-        <!-- Last Page -->
-        @if (endPage < totalPages)
-        {
-            @if (endPage < totalPages - 1)
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>
-            }
-
-            <li class="page-item">
-                <a class="page-link"
-                   href="@Url.Action("EquipmentDetailsList",new { page = totalPages, searchString = ViewBag.SearchString })">
-                @totalPages
-            </a>
-        </li>
-                }
+                    @i
+                </a>
+            </li>
+        }
 
         <!-- Next -->
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
@@ -172,3 +157,41 @@
 
     </ul>
 </nav>
+
+<!-- ================= AUTO SEARCH ================= -->
+<script>
+    let timer;
+
+    const searchBox = document.getElementById("searchBox");
+
+    searchBox.addEventListener("input", function () {
+
+        clearTimeout(timer);
+
+        timer = setTimeout(() => {
+
+            let url = new URL(window.location.href);
+
+            if (this.value) {
+                url.searchParams.set("searchString", this.value);
+            } else {
+                url.searchParams.delete("searchString");
+            }
+
+            url.searchParams.set("page", 1);
+
+            window.location.href = url.toString();
+
+        }, 500);
+    });
+
+    // focus + cursor end
+    window.onload = function () {
+        if (searchBox) {
+            searchBox.focus();
+            let val = searchBox.value;
+            searchBox.value = "";
+            searchBox.value = val;
+        }
+    };
+</script>

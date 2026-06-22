@@ -19,8 +19,10 @@ public class EquipmentDetailsController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> EquipmentDetailsList(int page = 1, int pageSize = 15)
+    public async Task<IActionResult> EquipmentDetailsList(int page = 1, string searchString = "")
     {
+        int pageSize = 15;
+
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
@@ -43,20 +45,34 @@ public class EquipmentDetailsController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
-        // 📄 Pagination data
-        var equipmentsDetails = await _context.TblEquipmentDetails
-            .OrderBy(r => r.EquipmentName)
+        var query = _context.TblEquipmentDetails.AsQueryable();
+
+        if (!string.IsNullOrWhiteSpace(searchString))
+        {
+            searchString = searchString.Trim();
+
+            query = query.Where(x =>
+                x.EquipmentName.Contains(searchString) ||
+                x.Brand.Contains(searchString) ||
+                x.Model.Contains(searchString) ||
+                x.CurrentLocation.Contains(searchString)
+            );
+        }
+
+        var totalRecords = await query.CountAsync();
+
+        var data = await query
+            .OrderBy(x => x.EquipmentName)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        var totalRecords = await _context.TblEquipmentDetails.CountAsync();
-
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
-        ViewBag.TotalEquipmentDetails = totalRecords;
+        ViewBag.SearchString = searchString;
+        ViewBag.totalEquipments = totalRecords;
 
-        return View(equipmentsDetails);
+        return View(data);
     }
 
     [HttpGet]

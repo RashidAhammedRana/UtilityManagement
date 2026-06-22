@@ -24,6 +24,7 @@ namespace UtilityManagement.Data
 
         public virtual DbSet<TblPermissionAction> TblPermissionAction { get; set; }
         public virtual DbSet<TblEquipmentDetails> TblEquipmentDetails { get; set; }
+        public virtual DbSet<TblRebReadingInfo> TblRebReadingInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -147,6 +148,35 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Slno)
                     .HasMaxLength(50)
                     .HasColumnName("SLNO");
+            });
+            // TblRebReadingInfo
+            modelBuilder.Entity<TblRebReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_REB_READING_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.BdtKwh).HasColumnName("BDT_KWH");
+                entity.Property(e => e.ElecGen).HasColumnName("ELEC_GEN");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.OtConsumable).HasColumnName("OT_CONSUMABLE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.RepairCharge).HasColumnName("REPAIR_CHARGE");
+                entity.Property(e => e.RunHr).HasColumnName("RUN_HR");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.TkKwh).HasColumnName("TK_KWH");
+                entity.Property(e => e.Total).HasColumnName("TOTAL");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Troubleshoot).HasColumnName("TROUBLESHOOT");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblRebReadingInfos)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_REB_READING_INFO_TBL_REB_READING_INFO");
             });
 
 

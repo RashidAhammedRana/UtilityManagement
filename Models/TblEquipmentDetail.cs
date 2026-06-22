@@ -25,4 +25,5 @@ public partial class TblEquipmentDetails
 
     [Required(ErrorMessage = "Current Location is required")]
     public string? CurrentLocation { get; set; }
+    public virtual ICollection<TblRebReadingInfo> TblRebReadingInfos { get; set; } = new List<TblRebReadingInfo>();
 }

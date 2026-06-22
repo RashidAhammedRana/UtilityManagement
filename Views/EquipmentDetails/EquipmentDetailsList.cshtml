@@ -8,15 +8,17 @@
 
     int pageSize = 15;
     int sl = (currentPage - 1) * pageSize;
+    int startPage = Math.Max(1, currentPage - 2);
+    int endPage = Math.Min(totalPages, currentPage + 2);
 
     bool canCreate = ViewBag.CanCreate ?? false;
     bool canEdit = ViewBag.CanEdit ?? false;
     bool canDelete = ViewBag.CanDelete ?? false;
 }
 
-<h2>Equipment Details List</h2>
+<h2 class="text-center">Equipment Details List</h2>
 
-<p class="text-muted">
+<p class="text-muted text-center">
     Total Equipments: <strong>@ViewBag.TotalEquipmentDetails</strong>
 </p>
 
@@ -102,32 +104,68 @@
 </div>
 
 <!-- PAGINATION -->
-<nav>
-    <ul class="pagination justify-content-center">
+<nav aria-label="Pagination">
+    <ul class="pagination justify-content-center flex-wrap">
 
+        <!-- Previous -->
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
             <a class="page-link"
-               asp-action="EquipmentDetailsList"
-               asp-route-page="@(currentPage - 1)">
+               href="@Url.Action("EquipmentDetailsList",new { page = currentPage - 1, searchString = ViewBag.SearchString })">
                 Previous
             </a>
         </li>
 
-        @for (int i = 1; i <= totalPages; i++)
+        <!-- First Page -->
+        @if (startPage > 1)
+        {
+            <li class="page-item">
+                <a class="page-link"
+                   href="@Url.Action("EquipmentDetailsList",new { page = 1, searchString = ViewBag.SearchString })">
+                1
+            </a>
+        </li>
+
+        @if (startPage > 2)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+        }
+
+        <!-- Current Range -->
+        @for (int i = startPage; i <= endPage; i++)
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
                 <a class="page-link"
-                   asp-action="EquipmentDetailsList"
-                   asp-route-page="@i">
-                    @i
-                </a>
-            </li>
-        }
+                   href="@Url.Action("EquipmentDetailsList", new { page = i, searchString = ViewBag.SearchString })">
+                @i
+            </a>
+        </li>
+                }
 
+        <!-- Last Page -->
+        @if (endPage < totalPages)
+        {
+            @if (endPage < totalPages - 1)
+            {
+                <li class="page-item disabled">
+                    <span class="page-link">...</span>
+                </li>
+            }
+
+            <li class="page-item">
+                <a class="page-link"
+                   href="@Url.Action("EquipmentDetailsList",new { page = totalPages, searchString = ViewBag.SearchString })">
+                @totalPages
+            </a>
+        </li>
+                }
+
+        <!-- Next -->
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
             <a class="page-link"
-               asp-action="EquipmentDetailsList"
-               asp-route-page="@(currentPage + 1)">
+               href="@Url.Action("EquipmentDetailsList", new { page = currentPage + 1, searchString = ViewBag.SearchString })">
                 Next
             </a>
         </li>

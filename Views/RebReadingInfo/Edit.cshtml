@@ -1,0 +1,221 @@
+﻿@model UtilityManagement.Models.TblRebReadingInfo
+
+@{
+    ViewData["Title"] = "Edit REB Reading";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            ```
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-warning text-dark">
+                    <h5 class="mb-0">Edit REB Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" method="post">
+
+                        <input type="hidden" asp-for="Trid" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-md-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Trdate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-md-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid"
+                                        asp-items="ViewBag.EquipmentList"
+                                        class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- ElecGen -->
+                            <div class="col-md-6">
+                                <label asp-for="ElecGen" class="form-label">
+                                    Electricity Generation(Kwh)
+                                </label>
+                                <input asp-for="ElecGen" class="form-control" />
+                                <span asp-validation-for="ElecGen" class="text-danger"></span>
+                            </div>
+
+                            <!-- RunHr -->
+                            <div class="col-md-6">
+                                <label asp-for="RunHr" class="form-label">
+                                    Running Hr
+                                </label>
+                                <input asp-for="RunHr" class="form-control" />
+                                <span asp-validation-for="RunHr" class="text-danger"></span>
+                            </div>
+
+                            <!-- BdtKwh -->
+                            <div class="col-md-6">
+                                <label asp-for="BdtKwh" class="form-label">
+                                    BDT(tk/kwh)
+                                </label>
+                                <input asp-for="BdtKwh" class="form-control" />
+                                <span asp-validation-for="BdtKwh" class="text-danger"></span>
+                            </div>
+
+                            <!-- OtConsumable -->
+                            <div class="col-md-6">
+                                <label asp-for="OtConsumable" class="form-label">
+                                    Others Consumable(TK)
+                                </label>
+                                <input asp-for="OtConsumable" class="form-control" />
+                                <span asp-validation-for="OtConsumable" class="text-danger"></span>
+                            </div>
+
+                            <!-- Troubleshoot -->
+                            <div class="col-md-6">
+                                <label asp-for="Troubleshoot" class="form-label">
+                                    Troubleshooting(Tk)
+                                </label>
+                                <input asp-for="Troubleshoot" class="form-control" />
+                                <span asp-validation-for="Troubleshoot" class="text-danger"></span>
+                            </div>
+
+                            <!-- ServiceCharge -->
+                            <div class="col-md-6">
+                                <label asp-for="ServiceCharge" class="form-label">
+                                    Service Charge
+                                </label>
+                                <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+                            </div>
+
+                            <!-- RepairCharge -->
+                            <div class="col-md-6">
+                                <label asp-for="RepairCharge" class="form-label">
+                                    Repair Charge
+                                </label>
+                                <input asp-for="RepairCharge" class="form-control" />
+                                <span asp-validation-for="RepairCharge" class="text-danger"></span>
+                            </div>
+
+                            <!-- Total -->
+                            <div class="col-md-6">
+                                <label asp-for="Total" class="form-label">
+                                    Total
+                                </label>
+                                <input asp-for="Total"
+                                       class="form-control"
+                                       readonly />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+
+                            <!-- TkKwh -->
+                            <div class="col-md-6">
+                                <label asp-for="TkKwh" class="form-label">
+                                    Tk/Kwh
+                                </label>
+                                <input asp-for="TkKwh"
+                                       class="form-control"
+                                       readonly />
+                                <span asp-validation-for="TkKwh" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="RebReadingInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Update Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+    ```
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const elecGen = document.getElementById("ElecGen");
+        const bdtKwh = document.getElementById("BdtKwh");
+        const otConsumable = document.getElementById("OtConsumable");
+        const troubleshoot = document.getElementById("Troubleshoot");
+        const serviceCharge = document.getElementById("ServiceCharge");
+        const repairCharge = document.getElementById("RepairCharge");
+
+        const total = document.getElementById("Total");
+        const tkKwh = document.getElementById("TkKwh");
+
+        function calculateValues() {
+
+            let totalValue =
+                (parseFloat(bdtKwh.value) || 0) +
+                (parseFloat(otConsumable.value) || 0) +
+                (parseFloat(troubleshoot.value) || 0) +
+                (parseFloat(serviceCharge.value) || 0) +
+                (parseFloat(repairCharge.value) || 0);
+
+            total.value = totalValue.toFixed(2);
+
+            let generation = parseFloat(elecGen.value) || 0;
+
+            tkKwh.value = generation > 0
+                ? (totalValue / generation).toFixed(2)
+                : "0.00";
+        }
+
+        [
+            elecGen,
+            bdtKwh,
+            otConsumable,
+            troubleshoot,
+            serviceCharge,
+            repairCharge
+        ].forEach(x => {
+            x.addEventListener("input", calculateValues);
+        });
+
+        calculateValues();
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

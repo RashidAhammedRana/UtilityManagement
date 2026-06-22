@@ -17,8 +17,9 @@ public class RebReadingInfoController : Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> RebReadingInfoList(int page = 1, int pageSize = 15)
+    public async Task<IActionResult> RebReadingInfoList(int page = 1, string searchString = "")
     {
+        int pageSize = 15;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
@@ -42,18 +43,43 @@ public class RebReadingInfoController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
-        // 📄 Pagination data
-        var rebReadings = await _context.TblRebReadingInfo
+        // =========================
+        // BASE QUERY
+        // =========================
+        var query = _context.TblRebReadingInfo
+            .Include(x => x.Eq)
+            .AsQueryable();
+
+        // =========================
+        // SEARCH FILTER
+        // =========================
+        if (!string.IsNullOrEmpty(searchString))
+        {
+            query = query.Where(x =>
+                x.Eq.EquipmentName.Contains(searchString) ||
+                x.Eq.CurrentLocation.Contains(searchString) ||
+                x.Trdate.ToString().Contains(searchString)
+            );
+        }
+
+        // =========================
+        // PAGINATION
+        // =========================
+        var totalRecords = await query.CountAsync();
+
+        var rebReadings = await query
             .OrderBy(r => r.Trid)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();
 
-        var totalRecords = await _context.TblRebReadingInfo.CountAsync();
-
+        // =========================
+        // VIEWBAG
+        // =========================
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
         ViewBag.totalRebReadings = totalRecords;
+        ViewBag.SearchString = searchString;
 
         return View(rebReadings);
     }
@@ -66,12 +92,12 @@ public class RebReadingInfoController : Controller
             Trdate = DateTime.Today
         };
         ViewBag.EquipmentList = _context.TblEquipmentDetails
-        .Select(x => new SelectListItem
-        {
-            Value = x.Eqid.ToString(),
-            Text = x.EquipmentName
-        })
-        .ToList();
+            .Select(x => new SelectListItem
+            {
+                Value = x.Eqid.ToString(),
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+            })
+            .ToList();
         return View(model);
     }
 
@@ -86,10 +112,28 @@ public class RebReadingInfoController : Controller
                 TempData["ErrorMessage"] = "Please fill all required fields.";
                 return View(rebReadingInfo);
             }
-            // Save current date & time
+
+            // Normalize date (only date part)
+            var dateOnly = rebReadingInfo.Trdate?.Date;
+
+            // ❌ CHECK DUPLICATE: Same Machine + Same Date
+            var isExists = await _context.TblRebReadingInfo
+                .AnyAsync(x =>
+                    x.Eqid == rebReadingInfo.Eqid &&
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value.Date == dateOnly
+                );
+
+            if (isExists)
+            {
+                ModelState.AddModelError("", "This machine already has a reading for this date!");
+                return View(rebReadingInfo);
+            }
+
+            // Save current time (keep datetime but same date)
             var now = DateTime.Now;
 
-            rebReadingInfo.Trdate = rebReadingInfo.Trdate?.Date
+            rebReadingInfo.Trdate = dateOnly?
                 .AddHours(now.Hour)
                 .AddMinutes(now.Minute)
                 .AddSeconds(now.Second);
@@ -101,10 +145,9 @@ public class RebReadingInfoController : Controller
 
             return RedirectToAction(nameof(RebReadingInfoList));
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             TempData["ErrorMessage"] = "Failed to create reading.";
-
             return View(rebReadingInfo);
         }
     }
@@ -122,7 +165,7 @@ public class RebReadingInfoController : Controller
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),
-                Text = x.EquipmentName
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
             })
             .ToList();
 

@@ -67,28 +67,37 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblEquipmentDetails model)
+    public async Task<IActionResult> Create(TblEquipmentDetails equipmentDetails)
     {
         try
         {
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(model);
+                return View(equipmentDetails);
             }
 
-            _context.TblEquipmentDetails.Add(model);
+            // ✅ CHECK DUPLICATE SL NO
+            var isExist = await _context.TblEquipmentDetails
+                .AnyAsync(x => x.Slno == equipmentDetails.Slno);
+
+            if (isExist)
+            {
+                ModelState.AddModelError("SlNo", "This SL No already exists!");
+                return View(equipmentDetails);
+            }
+
+            _context.TblEquipmentDetails.Add(equipmentDetails);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Equipment created successfully.";
 
             return RedirectToAction(nameof(EquipmentDetailsList));
         }
-        catch (Exception ex)
+        catch (Exception)
         {
             TempData["ErrorMessage"] = "Failed to create equipment.";
-
-            return View(model);
+            return View(equipmentDetails);
         }
     }
 
@@ -110,13 +119,13 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblEquipmentDetails model)
+    public async Task<IActionResult> Edit(TblEquipmentDetails equipmentDetails)
     {
         if (!ModelState.IsValid)
-            return View(model);
+            return View(equipmentDetails);
 
         var data = await _context.TblEquipmentDetails
-            .FirstOrDefaultAsync(x => x.Eqid == model.Eqid);
+            .FirstOrDefaultAsync(x => x.Eqid == equipmentDetails.Eqid);
 
         if (data == null)
         {
@@ -124,12 +133,12 @@ public class EquipmentDetailsController : Controller
             return RedirectToAction(nameof(EquipmentDetailsList));
         }
 
-        data.EquipmentName = model.EquipmentName;
-        data.Capacity = model.Capacity;
-        data.Brand = model.Brand;
-        data.Model = model.Model;
-        data.Slno = model.Slno;
-        data.CurrentLocation = model.CurrentLocation;
+        data.EquipmentName = equipmentDetails.EquipmentName;
+        data.Capacity = equipmentDetails.Capacity;
+        data.Brand = equipmentDetails.Brand;
+        data.Model = equipmentDetails.Model;
+        data.Slno = equipmentDetails.Slno;
+        data.CurrentLocation = equipmentDetails.CurrentLocation;
 
         await _context.SaveChangesAsync();
 

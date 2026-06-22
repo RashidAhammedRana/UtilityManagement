@@ -8,12 +8,15 @@
 
     int pageSize = 15;
     int sl = (currentPage - 1) * pageSize;
+
     int startPage = Math.Max(1, currentPage - 2);
     int endPage = Math.Min(totalPages, currentPage + 2);
 
     bool canCreate = ViewBag.CanCreate ?? false;
     bool canEdit = ViewBag.CanEdit ?? false;
     bool canDelete = ViewBag.CanDelete ?? false;
+
+    string search = ViewBag.SearchString ?? "";
 }
 
 <h2 class="text-center">REB Reading Info List</h2>
@@ -22,42 +25,72 @@
     Total Readings: <strong>@ViewBag.totalRebReadings</strong>
 </p>
 
-<!-- ACTION BUTTONS -->
-<div class="d-flex justify-content-end mb-3 gap-2">
+<div class="d-flex justify-content-between mb-3 align-items-center">
 
-    @if (canCreate)
-    {
-        <a asp-action="Create"
-           class="btn btn-primary">
-            + Create
-        </a>
-    }
+    <!-- LEFT: SEARCH + RESET -->
+    <form method="get" asp-action="RebReadingInfoList"
+          class="d-flex gap-2 align-items-center"
+          id="searchForm">
 
-    <button type="button"
-            class="btn btn-secondary"
-            onclick="window.history.back();">
-        Back
-    </button>
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="Search by Equipment / Company"
+               style="width: 300px;" />
+
+@*         <button type="submit" class="btn btn-primary btn-sm">
+            Search
+        </button>
+
+        <a asp-action="RebReadingInfoList"
+           class="btn btn-outline-secondary btn-sm">
+            Reset
+        </a> *@
+
+    </form>
+
+    <!-- RIGHT: ACTION BUTTONS -->
+    <div class="d-flex gap-2">
+
+        @if (canCreate)
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                + Create
+            </a>
+        }
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+            Back
+        </button>
+
+    </div>
+
 </div>
 
 <!-- TABLE -->
 <div class="table-responsive">
-    <table class="table table-bordered table-hover">
+    <table class="table table-bordered table-hover" id="rebTable">
 
         <thead class="table-dark">
-            <tr>
-                <th style="width: 5%;">SL</th>
+            <tr class="text-center">
+                <th>SL</th>
                 <th style="width: 10%;">Date</th>
-                <th style="width: 10%;">Electricity Generation(Kwh)</th>
-                <th style="width: 5%;">Running Hr</th>
-                <th style="width: 10%;">BDT(tk/kwh)</th>
-                <th style="width: 10%;">Others Consumable(TK)</th>
-                <th style="width: 10%;">Troubleshooting(Tk)</th>
-                <th style="width: 10%;">Service Charge(Tk)</th>
-                <th style="width: 10%;">Repair Charge (Tk)</th>
-                <th style="width: 5%;">Total(Tk)</th>
-                <th style="width: 5%;">Tk/Kwh</th>
-                <th style="width: 10%;" class="text-center">Actions</th>
+                <th>Equipment</th>
+                <th>Company</th>
+                <th>Elec Gen (Kwh)</th>
+                <th>Running Hr</th>
+                <th>BDT(Tk/Kwh)</th>
+                <th>Others</th>
+                <th>Troubleshooting(Tk)</th>
+                <th>Service Charge(Tk)</th>
+                <th>Repair Charge(Tk)</th>
+                <th>Total(Tk)</th>
+                <th>Tk/Kwh</th>
+                <th>Actions</th>
             </tr>
         </thead>
 
@@ -67,20 +100,21 @@
                 sl++;
 
                 <tr>
-                    <td>@sl</td>
-                    <td>@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td>@item.ElecGen</td>
-                    <td>@item.RunHr</td>
-                    <td>@item.BdtKwh</td>
-                    <td>@item.OtConsumable</td>
-                    <td>@item.Troubleshoot</td>
-                    <td>@item.ServiceCharge</td>
-                    <td>@item.RepairCharge</td>
-                    <td>@item.Total</td>
-                    <td>@item.TkKwh</td>
+                    <td class="text-center">@sl</td>
+                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
+                    <td class="text-center">@item.Eq?.EquipmentName</td>
+                    <td class="text-center">@item.Eq?.CurrentLocation</td>
+                    <td class="text-center">@item.ElecGen</td>
+                    <td class="text-center">@item.RunHr</td>
+                    <td class="text-center">@item.BdtKwh</td>
+                    <td class="text-center">@item.OtConsumable</td>
+                    <td class="text-center">@item.Troubleshoot</td>
+                    <td class="text-center">@item.ServiceCharge</td>
+                    <td class="text-center">@item.RepairCharge</td>
+                    <td class="text-center">@item.Total</td>
+                    <td class="text-center">@item.TkKwh</td>
 
                     <td class="text-center">
-
                         <div class="d-flex justify-content-center gap-2">
 
                             @if (canEdit)
@@ -102,7 +136,6 @@
                             }
 
                         </div>
-
                     </td>
                 </tr>
             }
@@ -112,70 +145,59 @@
 </div>
 
 <!-- PAGINATION -->
-<nav aria-label="Pagination">
+<nav>
     <ul class="pagination justify-content-center flex-wrap">
 
-        <!-- Previous -->
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("RebReadingInfoList",new { page = currentPage - 1, searchString = ViewBag.SearchString })">
-                Previous
+               href="@Url.Action("RebReadingInfoList", new { page = currentPage - 1, searchString = search })">
+                Prev
             </a>
         </li>
 
-        <!-- First Page -->
-        @if (startPage > 1)
-        {
-            <li class="page-item">
-                <a class="page-link"
-                   href="@Url.Action("RebReadingInfoList", new { page = 1, searchString = ViewBag.SearchString })">
-                1
-            </a>
-        </li>
-
-        @if (startPage > 2)
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>
-            }
-        }
-
-        <!-- Current Range -->
         @for (int i = startPage; i <= endPage; i++)
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
                 <a class="page-link"
-                   href="@Url.Action("RebReadingInfoList",new { page = i, searchString = ViewBag.SearchString })">
-                @i
-            </a>
-        </li>
-                }
+                   href="@Url.Action("RebReadingInfoList", new { page = i, searchString = search })">
+                    @i
+                </a>
+            </li>
+        }
 
-        <!-- Last Page -->
-        @if (endPage < totalPages)
-        {
-            @if (endPage < totalPages - 1)
-            {
-                <li class="page-item disabled">
-                    <span class="page-link">...</span>
-                </li>
-            }
-
-            <li class="page-item">
-                <a class="page-link" href="@Url.Action("RebReadingInfoList", new { page = totalPages, searchString = ViewBag.SearchString })">
-                @totalPages
-            </a>
-        </li>
-                }
-
-        <!-- Next -->
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("RebReadingInfoList",new { page = currentPage + 1, searchString = ViewBag.SearchString })">
+               href="@Url.Action("RebReadingInfoList", new { page = currentPage + 1, searchString = search })">
                 Next
             </a>
         </li>
 
     </ul>
 </nav>
+
+<!-- OPTIONAL: AUTO SUBMIT ON TYPING (NO BUTTON) -->
+<script>
+    document.querySelector("input[name='searchString']")
+        .addEventListener("input", function () {
+
+            clearTimeout(this.delay);
+
+            this.delay = setTimeout(() => {
+                this.form.submit();
+            }, 500); // debounce 0.5 sec
+        });
+
+         window.onload = function () {
+        let searchBox = document.getElementById("searchBox");
+
+        // cursor always in search box
+        if (searchBox) {
+            searchBox.focus();
+
+            // move cursor to end
+            let val = searchBox.value;
+            searchBox.value = "";
+            searchBox.value = val;
+        }
+    };
+</script>

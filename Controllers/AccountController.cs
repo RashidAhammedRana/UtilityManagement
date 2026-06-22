@@ -8,7 +8,7 @@ using UtilityManagement.Data;
 using UtilityManagement.Models;
 using UtilityManagement.ViewModels;
 
-public class AccountController: Controller
+public class AccountController : Controller
 {
     private readonly UserManager<IdentityUser> _userManager;
     private readonly SignInManager<IdentityUser> _signInManager;
@@ -24,7 +24,7 @@ public class AccountController: Controller
     }
     public IActionResult Index()
     {
-    return View();
+        return View();
     }
     [HttpGet]
     public IActionResult Register()
@@ -86,34 +86,62 @@ public class AccountController: Controller
     [HttpGet]
     public IActionResult Login()
     {
-        return View();
+        var model = new LoginViewModel();
+
+        if (Request.Cookies.TryGetValue("RememberedUser", out string? email))
+        {
+            model.Email = email;
+        }
+
+        if (Request.Cookies.TryGetValue("RememberMe", out string? remember))
+        {
+            model.RememberMe = remember == "true";
+        }
+
+        return View(model);
     }
+
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Login(LoginViewModel model)
     {
-        TempData["SuccessMessage"] = null;
-        TempData["ErrorMessage"] = null;
-
-        if (ModelState.IsValid)
-        {
-            var result = await _signInManager.PasswordSignInAsync(
-                model.Email, model.Password, model.RememberMe, false);
-
-            if (result.Succeeded)
-            {
-                TempData["SuccessMessage"] = "Login successful";
-                return RedirectToAction("Index", "Home");
-            }
-
-            TempData["ErrorMessage"] = "Invalid email or password";
-        }
-        else
+        if (!ModelState.IsValid)
         {
             TempData["ErrorMessage"] = "Please fill all fields";
+            return View(model);
         }
 
-        return RedirectToAction("Login");
+        var result = await _signInManager.PasswordSignInAsync(
+            model.Email,
+            model.Password,
+            model.RememberMe,
+            false);
+
+        if (result.Succeeded)
+        {
+            if (model.RememberMe)
+            {
+                var option = new CookieOptions
+                {
+                    Expires = DateTimeOffset.Now.AddDays(30),
+                    HttpOnly = true,
+                    IsEssential = true
+                };
+
+                Response.Cookies.Append("RememberedUser", model.Email, option);
+                Response.Cookies.Append("RememberMe", "true", option);
+            }
+            else
+            {
+                Response.Cookies.Delete("RememberedUser");
+                Response.Cookies.Delete("RememberMe");
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
+
+        TempData["ErrorMessage"] = "Invalid username or password";
+        return View(model);
     }
 
     [HttpGet]

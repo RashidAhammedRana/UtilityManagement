@@ -150,18 +150,20 @@
             <p class="login-subtitle">Please login to continue</p>
 
             <!-- FORM -->
-            <form asp-action="Login" method="post">
+            <form asp-action="Login" method="post" autocomplete="on">
 
                 <div asp-validation-summary="ModelOnly" class="text-danger small"></div>
 
                 <div class="mb-3">
                     <label>Username</label>
-                    <input asp-for="Email" class="form-control" placeholder="Enter username" />
+                    @* <input asp-for="Email" class="form-control" placeholder="Enter username" /> *@
+                    <input asp-for="Email" class="form-control" autocomplete="username" />
                 </div>
 
                 <div class="mb-3">
                     <label>Password</label>
-                    <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" />
+                    @* <input asp-for="Password" type="password" class="form-control" placeholder="Enter password" /> *@
+                    <input asp-for="Password" type="password" class="form-control" autocomplete="current-password" />
                 </div>
 
                 <div class="form-check mb-3">

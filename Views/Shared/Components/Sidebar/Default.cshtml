@@ -10,7 +10,46 @@
         background: #212529;
         display: flex;
         flex-direction: column;
+        transition: all .3s ease;
+        z-index: 1000;
     }
+
+        .sidebar.collapsed {
+            transform: translateX(-250px);
+        }
+
+    /* MAIN CONTENT MUST BE HERE */
+    .main-content {
+        margin-left: 250px;
+        padding: 20px;
+        transition: all .3s ease;
+    }
+
+        .main-content.full {
+            margin-left: 0 !important;
+        }
+
+    .toggle-btn {
+        position: fixed;
+        top: 15px;
+        left: 2px;
+        z-index: 1100;
+        border: none;
+        background: #212529;
+        color: white;
+        padding: 8px 12px;
+        border-radius: 5px;
+        cursor: pointer;
+        transition: .3s;
+    }
+
+        .toggle-btn:hover {
+            background: #343a40;
+        }
+
+        .toggle-btn i {
+            font-size: 18px;
+        }
 
     .menu-container {
         flex: 1;
@@ -36,7 +75,7 @@
         color: #ddd;
         padding: 10px 20px;
         text-decoration: none;
-        transition: 0.3s;
+        transition: .3s;
         font-size: 14px;
     }
 
@@ -56,15 +95,15 @@
 
     .logout-btn {
         width: 100%;
-        border: 1px solid #dc3545;
         background: transparent;
         color: #dc3545;
         padding: 14px 20px;
         font-weight: 500;
         text-align: left;
-        transition: 0.25s ease;
+        transition: .25s ease;
         display: flex;
         align-items: center;
+        border: none;
     }
 
         .logout-btn:hover {
@@ -73,9 +112,19 @@
         }
 </style>
 
-<div class="sidebar">
+@* <!-- TOGGLE BUTTON -->
+<button id="sidebarToggle" class="toggle-btn" type="button">
+    <i class="bi bi-list"></i>
+</button> *@
+
+<!-- SIDEBAR -->
+<div class="sidebar" id="sidebar">
 
     <div class="brand">
+        <!-- TOGGLE BUTTON -->
+        @* <button id="sidebarToggle" class="toggle-btn">
+            <i class="bi bi-list"></i>
+        </button> *@
         <img src="@Url.Content("~/images/cotton_logo.png")"
              style="width:160px;height:40px;object-fit:fill;" />
 
@@ -106,13 +155,31 @@
     @if (User.Identity.IsAuthenticated)
     {
         <div class="logout-section">
-            <form method="post" asp-controller="Account" asp-action="Logout">
+            <form method="post"
+                  asp-controller="Account"
+                  asp-action="Logout">
+
                 <button type="submit" class="logout-btn">
                     <i class="bi bi-box-arrow-right menu-icon"></i>
                     Logout
                 </button>
+
             </form>
         </div>
     }
 
 </div>
+
+@* <script>
+        document.getElementById("sidebarToggle").addEventListener("click", function () {
+
+        const sidebar = document.getElementById("sidebar");
+        const content = document.getElementById("mainContent");
+
+        sidebar.classList.toggle("collapsed");
+
+        if (content) {
+            content.classList.toggle("full");
+        }
+    });
+</script> *@

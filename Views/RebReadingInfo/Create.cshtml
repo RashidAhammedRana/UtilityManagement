@@ -3,6 +3,19 @@
 @{
     ViewData["Title"] = "Create REB Reading";
 }
+<style>
+    input[readonly] {
+        background-color: #e9ecef !important; /* standard bootstrap grey */
+        color: #495057 !important; /* normal readable text */
+        border: 1px solid #ced4da !important;
+        cursor: not-allowed;
+    }
+
+        input[readonly]:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+</style>
 
 <div class="container mt-4">
 
@@ -134,7 +147,7 @@
                             </a>
 
                             <button type="submit"
-                                    class="btn btn-success px-4">
+                                    class="btn btn-primary px-4">
                                 Save Reading
                             </button>
 

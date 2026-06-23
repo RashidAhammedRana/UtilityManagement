@@ -3,6 +3,19 @@
 @{
     ViewData["Title"] = "Edit NG Generator Reading";
 }
+<style>
+    input[readonly] {
+        background-color: #e9ecef !important; /* standard bootstrap grey */
+        color: #495057 !important; /* normal readable text */
+        border: 1px solid #ced4da !important;
+        cursor: not-allowed;
+    }
+
+        input[readonly]:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+</style>
 
 <div class="container mt-4">
 
@@ -11,7 +24,7 @@
 
             <div class="card shadow-lg border-0">
 
-                <div class="card-header bg-warning text-dark">
+                <div class="card-header bg-success text-dark">
                     <h5 class="mb-0">Edit NG Generator Reading</h5>
                 </div>
 
@@ -30,116 +43,135 @@
 
                             <!-- Date -->
                             <div class="col-md-3">
-                                <label asp-for="Trdate" class="form-label">Date</label>
+                                <label asp-for="Trdate" class="form-label">Date<span class="text-danger">*</span></label>
                                 <input asp-for="Trdate" type="date" class="form-control" />
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
 
                             <!-- Equipment -->
                             <div class="col-md-3">
-                                <label asp-for="Eqid" class="form-label">Equipment</label>
+                                <label asp-for="Eqid" class="form-label">Equipment<span class="text-danger">*</span></label>
 
                                 <select asp-for="Eqid"
                                         asp-items="ViewBag.EquipmentList"
                                         class="form-select">
                                     <option value="">-- Select Equipment --</option>
                                 </select>
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
                             </div>
 
                             <!-- NG Consumption M -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionM" class="form-label">NG Cons (m3)</label>
+                                <label asp-for="NgConsumptionM" class="form-label">NG Cons (m3)<span class="text-danger">*</span></label>
                                 <input asp-for="NgConsumptionM" class="form-control" />
+                                <span asp-validation-for="NgConsumptionM" class="text-danger"></span>
                             </div>
 
                             <!-- CNG Consumption -->
                             <div class="col-md-3">
-                                <label asp-for="CngConsumption" class="form-label">CNG Cons (m3)</label>
+                                <label asp-for="CngConsumption" class="form-label">CNG Cons (m3)<span class="text-danger">*</span></label>
                                 <input asp-for="CngConsumption" class="form-control" />
+                                <span asp-validation-for="CngConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- E Generation -->
                             <div class="col-md-3">
-                                <label asp-for="EGeneration" class="form-label">E Gen (Kwh)</label>
+                                <label asp-for="EGeneration" class="form-label">E Gen (Kwh)<span class="text-danger">*</span></label>
                                 <input asp-for="EGeneration" class="form-control" />
+                                <span asp-validation-for="EGeneration" class="text-danger"></span>
                             </div>
 
                             <!-- Running Hr -->
                             <div class="col-md-3">
-                                <label asp-for="RunningHr" class="form-label">Running Hr</label>
+                                <label asp-for="RunningHr" class="form-label">Running Hr <span class="text-danger">*</span></label>
                                 <input asp-for="RunningHr" class="form-control" />
+                                <span asp-validation-for="RunningHr" class="text-danger"></span>
                             </div>
 
                             <!-- NG / Hr -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionHr" class="form-label">NG / Hr</label>
+                                <label asp-for="NgConsumptionHr" class="form-label">NG / Hr <span class="text-danger">*</span></label>
                                 <input asp-for="NgConsumptionHr" class="form-control" />
+                                <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
                             </div>
 
                             <!-- NG / Kwh -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionKwh" class="form-label">NG / Kwh</label>
+                                <label asp-for="NgConsumptionKwh" class="form-label">NG / Kwh <span class="text-danger">*</span></label>
                                 <input asp-for="NgConsumptionKwh" class="form-control" />
+                                <span asp-validation-for="NgConsumptionKwh" class="text-danger"></span>
                             </div>
 
                             <!-- Kwh per NG -->
                             <div class="col-md-3">
-                                <label asp-for="KwhUnitNgConsumption" class="form-label">Kwh / NG</label>
+                                <label asp-for="KwhUnitNgConsumption" class="form-label">Kwh / NG <span class="text-danger">*</span></label>
                                 <input asp-for="KwhUnitNgConsumption" class="form-control" />
+                                <span asp-validation-for="KwhUnitNgConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- Lub Oil -->
                             <div class="col-md-3">
-                                <label asp-for="LubOilConsumption" class="form-label">Lub Oil</label>
+                                <label asp-for="LubOilConsumption" class="form-label">Lub Oil <span class="text-danger">*</span></label>
                                 <input asp-for="LubOilConsumption" class="form-control" />
+                                <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- Cost Fields -->
                             <div class="col-md-3">
-                                <label asp-for="NgTkM" class="form-label">NG Tk/m3</label>
+                                <label asp-for="NgTkM" class="form-label">NG Tk/m3 <span class="text-danger">*</span></label>
                                 <input asp-for="NgTkM" class="form-control" />
+                                <span asp-validation-for="NgTkM" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="ChemicalCost" class="form-label">Chemical Cost</label>
+                                <label asp-for="ChemicalCost" class="form-label">Chemical Cost <span class="text-danger">*</span></label>
                                 <input asp-for="ChemicalCost" class="form-control" />
+                                <span asp-validation-for="ChemicalCost" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="LubOilCost" class="form-label">Lub Oil Cost</label>
+                                <label asp-for="LubOilCost" class="form-label">Lub Oil Cost <span class="text-danger">*</span></label>
                                 <input asp-for="LubOilCost" class="form-control" />
+                                <span asp-validation-for="LubOilCost" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="CngCost" class="form-label">CNG Cost</label>
+                                <label asp-for="CngCost" class="form-label">CNG Cost <span class="text-danger">*</span></label>
                                 <input asp-for="CngCost" class="form-control" />
+                                <span asp-validation-for="CngCost" class="text-danger"></span>
                             </div>
 
                             <!-- Others -->
                             <div class="col-md-3">
-                                <label asp-for="Troubleshooting" class="form-label">Troubleshooting</label>
+                                <label asp-for="Troubleshooting" class="form-label">Troubleshooting <span class="text-danger">*</span></label>
                                 <input asp-for="Troubleshooting" class="form-control" />
+                                <span asp-validation-for="Troubleshooting" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="ServiceCharge" class="form-label">Service Charge</label>
+                                <label asp-for="ServiceCharge" class="form-label">Service Charge <span class="text-danger">*</span></label>
                                 <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="RepairCharge" class="form-label">Repair Charge</label>
+                                <label asp-for="RepairCharge" class="form-label">Repair Charge <span class="text-danger">*</span></label>
                                 <input asp-for="RepairCharge" class="form-control" />
+                                <span asp-validation-for="RepairCharge" class="text-danger"></span>
                             </div>
 
                             <!-- TOTAL -->
                             <div class="col-md-3">
-                                <label asp-for="Total" class="form-label">Total</label>
+                                <label asp-for="Total" class="form-label">Total <span class="text-danger">*</span></label>
                                 <input asp-for="Total" class="form-control" readonly />
+                                <span asp-validation-for="Total" class="text-danger"></span>
                             </div>
 
                             <!-- TK/KWH -->
                             <div class="col-md-3">
-                                <label asp-for="TkKwh" class="form-label">Tk/Kwh</label>
+                                <label asp-for="TkKwh" class="form-label">Tk/Kwh <span class="text-danger">*</span></label>
                                 <input asp-for="TkKwh" class="form-control" readonly />
+                                <span asp-validation-for="TkKwh" class="text-danger"></span>
                             </div>
 
                         </div>
@@ -153,7 +185,7 @@
 
                             <button type="submit"
                                     class="btn btn-success px-4">
-                                Update
+                                Update Reading
                             </button>
 
                         </div>

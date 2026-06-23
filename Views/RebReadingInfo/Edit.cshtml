@@ -3,15 +3,26 @@
 @{
     ViewData["Title"] = "Edit REB Reading";
 }
+<style>
+    input[readonly] {
+        background-color: #e9ecef !important; /* standard bootstrap grey */
+        color: #495057 !important; /* normal readable text */
+        border: 1px solid #ced4da !important;
+        cursor: not-allowed;
+    }
+
+        input[readonly]:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+</style>
 
 <div class="container mt-4">
     <div class="row justify-content-center">
         <div class="col-md-10">
-
-            ```
             <div class="card shadow-lg border-0">
 
-                <div class="card-header bg-warning text-dark">
+                <div class="card-header bg-success text-dark">
                     <h5 class="mb-0">Edit REB Reading</h5>
                 </div>
 
@@ -59,6 +70,7 @@
                             <div class="col-md-6">
                                 <label asp-for="ElecGen" class="form-label">
                                     Electricity Generation(Kwh)
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="ElecGen" class="form-control" />
                                 <span asp-validation-for="ElecGen" class="text-danger"></span>
@@ -68,6 +80,7 @@
                             <div class="col-md-6">
                                 <label asp-for="RunHr" class="form-label">
                                     Running Hr
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="RunHr" class="form-control" />
                                 <span asp-validation-for="RunHr" class="text-danger"></span>
@@ -77,6 +90,7 @@
                             <div class="col-md-6">
                                 <label asp-for="BdtKwh" class="form-label">
                                     BDT(tk/kwh)
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="BdtKwh" class="form-control" />
                                 <span asp-validation-for="BdtKwh" class="text-danger"></span>
@@ -86,6 +100,7 @@
                             <div class="col-md-6">
                                 <label asp-for="OtConsumable" class="form-label">
                                     Others Consumable(TK)
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="OtConsumable" class="form-control" />
                                 <span asp-validation-for="OtConsumable" class="text-danger"></span>
@@ -95,6 +110,7 @@
                             <div class="col-md-6">
                                 <label asp-for="Troubleshoot" class="form-label">
                                     Troubleshooting(Tk)
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="Troubleshoot" class="form-control" />
                                 <span asp-validation-for="Troubleshoot" class="text-danger"></span>
@@ -104,6 +120,7 @@
                             <div class="col-md-6">
                                 <label asp-for="ServiceCharge" class="form-label">
                                     Service Charge
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="ServiceCharge" class="form-control" />
                                 <span asp-validation-for="ServiceCharge" class="text-danger"></span>
@@ -113,6 +130,7 @@
                             <div class="col-md-6">
                                 <label asp-for="RepairCharge" class="form-label">
                                     Repair Charge
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="RepairCharge" class="form-control" />
                                 <span asp-validation-for="RepairCharge" class="text-danger"></span>
@@ -122,6 +140,7 @@
                             <div class="col-md-6">
                                 <label asp-for="Total" class="form-label">
                                     Total
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="Total"
                                        class="form-control"
@@ -133,6 +152,7 @@
                             <div class="col-md-6">
                                 <label asp-for="TkKwh" class="form-label">
                                     Tk/Kwh
+                                    <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="TkKwh"
                                        class="form-control"
@@ -150,7 +170,7 @@
                             </a>
 
                             <button type="submit"
-                                    class="btn btn-primary px-4">
+                                    class="btn btn-success px-4">
                                 Update Reading
                             </button>
 
@@ -164,8 +184,6 @@
 
         </div>
     </div>
-    ```
-
 </div>
 
 <script>

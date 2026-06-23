@@ -3,6 +3,19 @@
 @{
     ViewData["Title"] = "Create NG Generator Reading";
 }
+<style>
+    input[readonly] {
+        background-color: #e9ecef !important; /* standard bootstrap grey */
+        color: #495057 !important; /* normal readable text */
+        border: 1px solid #ced4da !important;
+        cursor: not-allowed;
+    }
+
+        input[readonly]:focus {
+            box-shadow: none !important;
+            outline: none !important;
+        }
+</style>
 
 <div class="container mt-4">
 
@@ -80,7 +93,7 @@
                                 <label asp-for="RunningHr" class="form-label">
                                     Running Hr<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="RunningHr" class="form-control" />
+                                <input asp-for="RunningHr" class="form-control"/>
                                 <span asp-validation-for="RunningHr" class="text-danger"></span>
                             </div>
                             <!-- NgConsumptionHr -->
@@ -88,7 +101,7 @@
                                 <label asp-for="NgConsumptionHr" class="form-label">
                                     NG Cons./Hr<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="NgConsumptionHr" class="form-control" />
+                                <input asp-for="NgConsumptionHr" class="form-control" readonly />
                                 <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
                             </div>
                             <!-- NgConsumptionKwh -->
@@ -184,7 +197,7 @@
                                 <label asp-for="TkKwh" class="form-label">
                                     Tk/Kwh <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="TkKwh" class="form-control" />
+                                <input asp-for="TkKwh" class="form-control" readonly />
                                 <span asp-validation-for="TkKwh" class="text-danger"></span>
                             </div>
 
@@ -192,7 +205,7 @@
 
                         <div class="d-flex justify-content-between mt-4">
 
-                            <a asp-action="RebReadingInfoList"
+                            <a asp-action="NgGeneratorReadingInfoList"
                                class="btn btn-outline-secondary">
                                 ← Back
                             </a>
@@ -217,15 +230,16 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        // ===== INPUT FIELDS (MATCH WITH YOUR MODEL) =====
-        const ngConsumptionM = document.getElementById("NgConsumptionM");
-        const cngConsumption = document.getElementById("CngConsumption");
+        // ================= INPUT FIELDS =================
+        const ngM = document.getElementById("NgConsumptionM");
+        const cng = document.getElementById("CngConsumption");
+        const runHr = document.getElementById("RunningHr");
+
         const eGeneration = document.getElementById("EGeneration");
-        const runningHr = document.getElementById("RunningHr");
-        const ngConsumptionHr = document.getElementById("NgConsumptionHr");
-        const ngConsumptionKwh = document.getElementById("NgConsumptionKwh");
-        const kwhUnitNgConsumption = document.getElementById("KwhUnitNgConsumption");
-        const lubOilConsumption = document.getElementById("LubOilConsumption");
+        const ngHr = document.getElementById("NgConsumptionHr");
+        const ngKwh = document.getElementById("NgConsumptionKwh");
+        const kwhUnit = document.getElementById("KwhUnitNgConsumption");
+        const lubOil = document.getElementById("LubOilConsumption");
 
         const ngTkM = document.getElementById("NgTkM");
         const chemicalCost = document.getElementById("ChemicalCost");
@@ -239,7 +253,21 @@
         const total = document.getElementById("Total");
         const tkKwh = document.getElementById("TkKwh");
 
-        // ===== CALCULATION =====
+        // ================= CALC: NG / HR =================
+        function calculateNgHr() {
+
+            let ngMVal = parseFloat(ngM?.value || 0);
+            let cngVal = parseFloat(cng?.value || 0);
+            let runHrVal = parseFloat(runHr?.value || 0);
+
+            let totalConsumption = ngMVal + cngVal;
+
+            ngHr.value = runHrVal > 0
+                ? (totalConsumption / runHrVal).toFixed(2)
+                : "0.00";
+        }
+
+        // ================= CALC: TOTAL + TK/KWH =================
         function calculateTotal() {
 
             let totalValue =
@@ -253,27 +281,32 @@
 
             total.value = totalValue.toFixed(2);
 
-            let generation = parseFloat(eGeneration?.value) || 0;
+            let generation = parseFloat(eGeneration?.value || 0);
 
             tkKwh.value = generation > 0
                 ? (totalValue / generation).toFixed(2)
                 : "0.00";
         }
 
-        // ===== EVENT LISTENERS =====
+        // ================= MASTER CALCULATE =================
+        function calculateAll() {
+            calculateNgHr();
+            calculateTotal();
+        }
+
+        // ================= EVENT LISTENERS =================
         [
-            ngTkM,
-            chemicalCost,
-            lubOilCost,
-            cngCost,
-            troubleshooting,
-            serviceCharge,
-            repairCharge
+            ngM, cng, runHr,
+            ngTkM, chemicalCost, lubOilCost, cngCost,
+            troubleshooting, serviceCharge, repairCharge,
+            eGeneration
         ].forEach(el => {
-            if (el) el.addEventListener("input", calculateTotal);
+            if (el) el.addEventListener("input", calculateAll);
         });
 
-        calculateTotal();
+        // ================= INITIAL RUN =================
+        calculateAll();
+
     });
 </script>
 

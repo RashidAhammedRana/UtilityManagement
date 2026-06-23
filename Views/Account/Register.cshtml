@@ -36,7 +36,10 @@
 
             <div class="d-flex justify-content-between mt-3">
                 <button type="submit" class="btn btn-primary w-50 me-2">Register</button>
-                <a asp-action="Login" class="btn btn-secondary w-50">Back to Login</a>
+                @* <a asp-action="Login" class="btn btn-secondary w-50">Cancel</a> *@
+                <button type="button" class="btn btn-secondary w-50" onclick="history.back();">
+                    Cancel
+                </button>
             </div>
         </form>
     </div>

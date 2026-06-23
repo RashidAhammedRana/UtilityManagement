@@ -169,20 +169,48 @@ public class AccountController : Controller
         return data;
     }
 
-    //[HttpGet]
-    //public async Task<IActionResult> Logout()
-    //{
-    //    await HttpContext.SignOutAsync(
-    //        IdentityConstants.ApplicationScheme);
-
-    //    return RedirectToAction("Login", "Account");
-    //}
-
     [HttpPost]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Logout()
     {
         await _signInManager.SignOutAsync();
         return RedirectToAction("login", "Account");
+    }
+    [HttpGet]
+    public IActionResult ResetPassword()
+    {
+        return View();
+    }
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> ResetPassword(ResetPasswordViewModel model)
+    {
+        if (!ModelState.IsValid)
+            return View(model);
+
+        // Find the user by email
+        var user = await _userManager.FindByEmailAsync(model.Email);
+        if (user == null)
+        {
+            TempData["ErrorMessage"] = "User not found.";
+            return RedirectToAction("ResetPassword"); // redirect so toaster shows
+        }
+
+        // Generate reset token
+        var token = await _userManager.GeneratePasswordResetTokenAsync(user);
+
+        // Reset password
+        var result = await _userManager.ResetPasswordAsync(user, token, model.NewPassword);
+
+        if (result.Succeeded)
+        {
+            TempData["SuccessMessage"] = $"Password for {model.Email} has been reset successfully!";
+            return RedirectToAction("Login"); // redirect so toaster shows on login page
+        }
+        else
+        {
+            TempData["ErrorMessage"] = string.Join(", ", result.Errors.Select(e => e.Description));
+            return RedirectToAction("ResetPassword");
+        }
     }
 }

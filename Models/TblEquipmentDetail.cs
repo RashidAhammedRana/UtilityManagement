@@ -1,10 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using UtilityManagement.Models;
 
 namespace UtilityManagement.Models;
 
-public partial class TblEquipmentDetails
+public partial class TblEquipmentDetail
 {
     public int Eqid { get; set; }
 
@@ -26,4 +27,5 @@ public partial class TblEquipmentDetails
     [Required(ErrorMessage = "Current Location is required")]
     public string? CurrentLocation { get; set; }
     public virtual ICollection<TblRebReadingInfo> TblRebReadingInfos { get; set; } = new List<TblRebReadingInfo>();
+    public virtual ICollection<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; } = new List<TblNgGeneratorReadingInfo>();
 }

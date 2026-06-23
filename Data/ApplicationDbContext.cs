@@ -23,8 +23,9 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblMenu> TblMenu { get; set; }
 
         public virtual DbSet<TblPermissionAction> TblPermissionAction { get; set; }
-        public virtual DbSet<TblEquipmentDetails> TblEquipmentDetails { get; set; }
+        public virtual DbSet<TblEquipmentDetail> TblEquipmentDetails { get; set; }
         public virtual DbSet<TblRebReadingInfo> TblRebReadingInfo { get; set; }
+        public virtual DbSet<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -123,7 +124,7 @@ namespace UtilityManagement.Data
             });
 
             // TblEquipmentDetails
-            modelBuilder.Entity<TblEquipmentDetails>(entity =>
+            modelBuilder.Entity<TblEquipmentDetail>(entity =>
             {
                 entity.HasKey(e => e.Eqid);
 
@@ -177,6 +178,43 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblRebReadingInfos)
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_REB_READING_INFO_TBL_REB_READING_INFO");
+            });
+
+            modelBuilder.Entity<TblNgGeneratorReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_NG_GENERATOR_READING_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ChemicalCost).HasColumnName("CHEMICAL_COST");
+                entity.Property(e => e.CngConsumption).HasColumnName("CNG_CONSUMPTION");
+                entity.Property(e => e.CngCost).HasColumnName("CNG_COST");
+                entity.Property(e => e.EGeneration).HasColumnName("E_GENERATION");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.KwhUnitNgConsumption).HasColumnName("KWH_UNIT_NG_CONSUMPTION");
+                entity.Property(e => e.LubOilConsumption).HasColumnName("LUB_OIL_CONSUMPTION");
+                entity.Property(e => e.LubOilCost).HasColumnName("LUB_OIL_COST");
+                entity.Property(e => e.NgConsumptionKwh).HasColumnName("NG_CONSUMPTION_KWH");
+                entity.Property(e => e.NgConsumptionHr).HasColumnName("NG_CONSUMPTION_HR");
+                entity.Property(e => e.NgConsumptionM).HasColumnName("NG_CONSUMPTION_M");
+                entity.Property(e => e.NgTkM).HasColumnName("NG_TK_M");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.RepairCharge).HasColumnName("REPAIR_CHARGE");
+                entity.Property(e => e.RunningHr).HasColumnName("RUNNING_HR");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.TkKwh).HasColumnName("TK_KWH");
+                entity.Property(e => e.Total).HasColumnName("TOTAL");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Troubleshooting).HasColumnName("TROUBLESHOOTING");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblNgGeneratorReadingInfos)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_NG_GENERATOR_READING_INFO_TBL_EQUIPMENT_DETAILS");
             });
 
 

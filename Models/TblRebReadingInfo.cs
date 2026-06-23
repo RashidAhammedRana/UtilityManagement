@@ -32,5 +32,5 @@ public partial class TblRebReadingInfo
 
     public string? Remarks { get; set; }
 
-    public virtual TblEquipmentDetails? Eq { get; set; }
+    public virtual TblEquipmentDetail? Eq { get; set; }
 }

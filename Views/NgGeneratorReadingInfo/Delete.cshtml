@@ -1,7 +1,7 @@
-﻿@model UtilityManagement.Models.TblEquipmentDetail
+﻿@model UtilityManagement.Models.TblNgGeneratorReadingInfo
 
 @{
-    ViewData["Title"] = "Delete Equipment";
+    ViewData["Title"] = "Delete Reading";
 }
 
 <div class="container mt-5">
@@ -29,11 +29,11 @@
 
                     <form asp-action="Delete" method="post">
 
-                        <input type="hidden" asp-for="Eqid" />
+                        <input type="hidden" asp-for="Trid" />
 
                         <div class="d-flex justify-content-between mt-4">
 
-                            <a asp-action="EquipmentDetailsList"
+                            <a asp-action="RebReadingInfoList"
                                class="btn btn-secondary">
                                 No
                             </a>

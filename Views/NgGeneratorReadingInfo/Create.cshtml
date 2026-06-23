@@ -1,0 +1,284 @@
+﻿@model UtilityManagement.Models.TblNgGeneratorReadingInfo
+
+@{
+    ViewData["Title"] = "Create NG Generator Reading";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New NG Generator Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-md-3">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-md-3">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- NgConsumptionM -->
+                            <div class="col-md-3">
+                                <label asp-for="NgConsumptionM" class="form-label">
+                                    NG Cons.(m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgConsumptionM" class="form-control" />
+                                <span asp-validation-for="NgConsumptionM" class="text-danger"></span>
+                            </div>
+
+                            <!-- CngConsumption -->
+                            <div class="col-md-3">
+                                <label asp-for="CngConsumption" class="form-label">
+                                    CNG Cons.(m3) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngConsumption" class="form-control" />
+                                <span asp-validation-for="CngConsumption" class="text-danger"></span>
+                            </div>
+
+                            <!-- EGeneration -->
+                            <div class="col-md-3">
+                                <label asp-for="EGeneration" class="form-label">
+                                    E. Gen.(Kwh)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="EGeneration" class="form-control" />
+                                <span asp-validation-for="EGeneration" class="text-danger"></span>
+                            </div>
+
+                            <!-- RunningHr -->
+                            <div class="col-md-3">
+                                <label asp-for="RunningHr" class="form-label">
+                                    Running Hr<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="RunningHr" class="form-control" />
+                                <span asp-validation-for="RunningHr" class="text-danger"></span>
+                            </div>
+                            <!-- NgConsumptionHr -->
+                            <div class="col-md-3">
+                                <label asp-for="NgConsumptionHr" class="form-label">
+                                    NG Cons./Hr<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgConsumptionHr" class="form-control" />
+                                <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
+                            </div>
+                            <!-- NgConsumptionKwh -->
+                            <div class="col-md-3">
+                                <label asp-for="NgConsumptionKwh" class="form-label">
+                                    NG Cons./Kwh(m3/Kwh)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgConsumptionKwh" class="form-control" />
+                                <span asp-validation-for="NgConsumptionKwh" class="text-danger"></span>
+                            </div>
+                            <!-- KwhUnitNgConsumption -->
+                            <div class="col-md-3">
+                                <label asp-for="KwhUnitNgConsumption" class="form-label">
+                                    Kwh/Per Unit NG Cons.(Kwh/m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="KwhUnitNgConsumption" class="form-control" />
+                                <span asp-validation-for="KwhUnitNgConsumption" class="text-danger"></span>
+                            </div>
+                            <!-- LubOilConsumption -->
+                            <div class="col-md-3">
+                                <label asp-for="LubOilConsumption" class="form-label">
+                                    Lub Oil Cons<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LubOilConsumption" class="form-control" />
+                                <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
+                            </div>
+                            <!-- NgTkM -->
+                            <div class="col-md-3">
+                                <label asp-for="NgTkM" class="form-label">
+                                    NG (Tk/m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgTkM" class="form-control" />
+                                <span asp-validation-for="NgTkM" class="text-danger"></span>
+                            </div>
+                            <!-- ChemicalCost -->
+                            <div class="col-md-3">
+                                <label asp-for="ChemicalCost" class="form-label">
+                                    Chemical Cost<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChemicalCost" class="form-control" />
+                                <span asp-validation-for="ChemicalCost" class="text-danger"></span>
+                            </div>
+                            <!-- LubOilCost -->
+                            <div class="col-md-3">
+                                <label asp-for="LubOilCost" class="form-label">
+                                    Lub Oil (Tk/Ltr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LubOilCost" class="form-control" />
+                                <span asp-validation-for="LubOilCost" class="text-danger"></span>
+                            </div>
+                            <!-- CngCost -->
+                            <div class="col-md-3">
+                                <label asp-for="CngCost" class="form-label">
+                                    CNG(Tk/m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngCost" class="form-control" />
+                                <span asp-validation-for="CngCost" class="text-danger"></span>
+                            </div>
+                            <!-- Troubleshooting -->
+                            <div class="col-md-3">
+                                <label asp-for="Troubleshooting" class="form-label">
+                                    Troubleshooting<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Troubleshooting" class="form-control" />
+                                <span asp-validation-for="Troubleshooting" class="text-danger"></span>
+                            </div>
+                            <!-- ServiceCharge -->
+                            <div class="col-md-3">
+                                <label asp-for="ServiceCharge" class="form-label">
+                                    Service Charge <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+                            </div>
+                            <!-- RepairCharge -->
+                            <div class="col-md-3">
+                                <label asp-for="RepairCharge" class="form-label">
+                                    Repair Charge <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="RepairCharge" class="form-control" />
+                                <span asp-validation-for="RepairCharge" class="text-danger"></span>
+                            </div>
+                            <!-- Total -->
+                            <div class="col-md-3">
+                                <label asp-for="Total" class="form-label">
+                                    Total <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Total" class="form-control" readonly />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+                            <!-- TkKwh -->
+                            <div class="col-md-3">
+                                <label asp-for="TkKwh" class="form-label">
+                                    Tk/Kwh <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TkKwh" class="form-control" />
+                                <span asp-validation-for="TkKwh" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="RebReadingInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Save Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // ===== INPUT FIELDS (MATCH WITH YOUR MODEL) =====
+        const ngConsumptionM = document.getElementById("NgConsumptionM");
+        const cngConsumption = document.getElementById("CngConsumption");
+        const eGeneration = document.getElementById("EGeneration");
+        const runningHr = document.getElementById("RunningHr");
+        const ngConsumptionHr = document.getElementById("NgConsumptionHr");
+        const ngConsumptionKwh = document.getElementById("NgConsumptionKwh");
+        const kwhUnitNgConsumption = document.getElementById("KwhUnitNgConsumption");
+        const lubOilConsumption = document.getElementById("LubOilConsumption");
+
+        const ngTkM = document.getElementById("NgTkM");
+        const chemicalCost = document.getElementById("ChemicalCost");
+        const lubOilCost = document.getElementById("LubOilCost");
+        const cngCost = document.getElementById("CngCost");
+
+        const troubleshooting = document.getElementById("Troubleshooting");
+        const serviceCharge = document.getElementById("ServiceCharge");
+        const repairCharge = document.getElementById("RepairCharge");
+
+        const total = document.getElementById("Total");
+        const tkKwh = document.getElementById("TkKwh");
+
+        // ===== CALCULATION =====
+        function calculateTotal() {
+
+            let totalValue =
+                (parseFloat(ngTkM?.value) || 0) +
+                (parseFloat(chemicalCost?.value) || 0) +
+                (parseFloat(lubOilCost?.value) || 0) +
+                (parseFloat(cngCost?.value) || 0) +
+                (parseFloat(troubleshooting?.value) || 0) +
+                (parseFloat(serviceCharge?.value) || 0) +
+                (parseFloat(repairCharge?.value) || 0);
+
+            total.value = totalValue.toFixed(2);
+
+            let generation = parseFloat(eGeneration?.value) || 0;
+
+            tkKwh.value = generation > 0
+                ? (totalValue / generation).toFixed(2)
+                : "0.00";
+        }
+
+        // ===== EVENT LISTENERS =====
+        [
+            ngTkM,
+            chemicalCost,
+            lubOilCost,
+            cngCost,
+            troubleshooting,
+            serviceCharge,
+            repairCharge
+        ].forEach(el => {
+            if (el) el.addEventListener("input", calculateTotal);
+        });
+
+        calculateTotal();
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

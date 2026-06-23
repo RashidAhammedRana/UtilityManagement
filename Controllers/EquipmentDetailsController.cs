@@ -83,7 +83,7 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblEquipmentDetails equipmentDetails)
+    public async Task<IActionResult> Create(TblEquipmentDetail equipmentDetails)
     {
         try
         {
@@ -135,7 +135,7 @@ public class EquipmentDetailsController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblEquipmentDetails equipmentDetails)
+    public async Task<IActionResult> Edit(TblEquipmentDetail equipmentDetails)
     {
         if (!ModelState.IsValid)
             return View(equipmentDetails);

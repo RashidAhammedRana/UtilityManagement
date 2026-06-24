@@ -28,4 +28,6 @@ public partial class TblEquipmentDetail
     public string? CurrentLocation { get; set; }
     public virtual ICollection<TblRebReadingInfo> TblRebReadingInfos { get; set; } = new List<TblRebReadingInfo>();
     public virtual ICollection<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; } = new List<TblNgGeneratorReadingInfo>();
+    public virtual ICollection<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfos { get; set; } = new List<TblDiselGeneratorReadingInfo>();
+
 }

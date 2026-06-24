@@ -26,6 +26,9 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblEquipmentDetail> TblEquipmentDetails { get; set; }
         public virtual DbSet<TblRebReadingInfo> TblRebReadingInfo { get; set; }
         public virtual DbSet<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; }
+        public virtual DbSet<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfo { get; set; }
+        public virtual DbSet<TblDieselRate> TblDieselRates { get; set; }
+        public virtual DbSet<TblLuboilRate> TblLuboilRates { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -179,7 +182,7 @@ namespace UtilityManagement.Data
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_REB_READING_INFO_TBL_REB_READING_INFO");
             });
-
+            //TblNgGeneratorReadingInfo
             modelBuilder.Entity<TblNgGeneratorReadingInfo>(entity =>
             {
                 entity.HasKey(e => e.Trid);
@@ -216,7 +219,84 @@ namespace UtilityManagement.Data
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_NG_GENERATOR_READING_INFO_TBL_EQUIPMENT_DETAILS");
             });
+            //TblDiselGeneratorReadingInfo
+            modelBuilder.Entity<TblDiselGeneratorReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
 
+                entity.ToTable("TBL_DISEL_GENERATOR_READING_INFO");
+
+                entity.Property(e => e.Trid)
+                    .ValueGeneratedNever()
+                    .HasColumnName("TRID");
+                entity.Property(e => e.Chemical).HasColumnName("CHEMICAL");
+                entity.Property(e => e.DieselConsumptionHr).HasColumnName("DIESEL_CONSUMPTION_HR");
+                entity.Property(e => e.DieselConsumptionKwh).HasColumnName("DIESEL_CONSUMPTION_KWH");
+                entity.Property(e => e.DieselConsumptionLtr).HasColumnName("DIESEL_CONSUMPTION_LTR");
+                entity.Property(e => e.DieselTkLtr).HasColumnName("DIESEL_TK_LTR");
+                entity.Property(e => e.ElectricityGenerationKwh).HasColumnName("ELECTRICITY_GENERATION_KWH");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.LubOilConsumption).HasColumnName("LUB_OIL_CONSUMPTION");
+                entity.Property(e => e.LubOilTkLtr).HasColumnName("LUB_OIL_TK_LTR");
+                entity.Property(e => e.OthersConsumable).HasColumnName("OTHERS_CONSUMABLE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.RepairCharge).HasColumnName("REPAIR_CHARGE");
+                entity.Property(e => e.RunningHr).HasColumnName("RUNNING_HR");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.TkKwh).HasColumnName("TK_KWH");
+                entity.Property(e => e.Total).HasColumnName("TOTAL");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Troubleshooting).HasColumnName("TROUBLESHOOTING");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblDiselGeneratorReadingInfos)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_DISEL_GENERATOR_READING_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+            //TblDieselRate
+            modelBuilder.Entity<TblDieselRate>(entity =>
+            {
+                entity.HasKey(e => e.Drid);
+
+                entity.ToTable("TBL_DIESEL_RATE");
+
+                entity.Property(e => e.Drid).HasColumnName("DRID");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
+            //TblLuboilRate
+            modelBuilder.Entity<TblLuboilRate>(entity =>
+            {
+                entity.HasKey(e => e.Loid);
+
+                entity.ToTable("TBL_LUBOIL_RATE");
+
+                entity.Property(e => e.Loid).HasColumnName("LOID");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom)
+                    .HasMaxLength(50)
+                    .HasColumnName("UOM");
+            });
 
             OnModelCreatingPartial(modelBuilder);
         }

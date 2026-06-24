@@ -3,19 +3,6 @@
 @{
     ViewData["Title"] = "Edit REB Reading";
 }
-<style>
-    input[readonly] {
-        background-color: #e9ecef !important; /* standard bootstrap grey */
-        color: #495057 !important; /* normal readable text */
-        border: 1px solid #ced4da !important;
-        cursor: not-allowed;
-    }
-
-        input[readonly]:focus {
-            box-shadow: none !important;
-            outline: none !important;
-        }
-</style>
 
 <div class="container mt-4">
     <div class="row justify-content-center">
@@ -164,7 +151,7 @@
 
                         <div class="d-flex justify-content-between mt-4">
 
-                            <a asp-action="RebReadingInfoList"
+                            <a asp-action="SolarReadingInfoList"
                                class="btn btn-outline-secondary">
                                 ← Back
                             </a>

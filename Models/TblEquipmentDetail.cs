@@ -29,5 +29,6 @@ public partial class TblEquipmentDetail
     public virtual ICollection<TblRebReadingInfo> TblRebReadingInfos { get; set; } = new List<TblRebReadingInfo>();
     public virtual ICollection<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; } = new List<TblNgGeneratorReadingInfo>();
     public virtual ICollection<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfos { get; set; } = new List<TblDiselGeneratorReadingInfo>();
+    public virtual ICollection<TblSolarReadingInfo> TblSolarReadingInfos { get; set; } = new List<TblSolarReadingInfo>();
 
 }

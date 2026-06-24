@@ -29,6 +29,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfo { get; set; }
         public virtual DbSet<TblDieselRate> TblDieselRates { get; set; }
         public virtual DbSet<TblLuboilRate> TblLuboilRates { get; set; }
+        public virtual DbSet<TblSolarReadingInfo> TblSolarReadingInfos { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -296,6 +297,31 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Uom)
                     .HasMaxLength(50)
                     .HasColumnName("UOM");
+            });
+            //TblSolarReadingInfo
+            modelBuilder.Entity<TblSolarReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_SOLAR_READING_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.GenerationKwh).HasColumnName("GENERATION_KWH");
+                entity.Property(e => e.PerUnitGenCost).HasColumnName("PER_UNIT_GEN_COST");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.ServiceChargeCost).HasColumnName("SERVICE_CHARGE_COST");
+                entity.Property(e => e.SparePartsCost).HasColumnName("SPARE_PARTS_COST");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblSolarReadingInfos)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_SOLAR_READING_INFO_TBL_EQUIPMENT_DETAILS");
             });
 
             OnModelCreatingPartial(modelBuilder);

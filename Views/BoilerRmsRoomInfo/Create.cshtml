@@ -1,0 +1,167 @@
+﻿@model UtilityManagement.Models.TblBoilerRmsRoom
+
+@{
+    ViewData["Title"] = "Create Boiler RMS Room Reading";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Boiler RMS Room Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-md-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-md-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- NgConsumption -->
+                            <div class="col-md-6">
+                                <label asp-for="NgConsumption" class="form-label">
+                                    NG Consumption(m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgConsumption" class="form-control" />
+                                <span asp-validation-for="NgConsumption" class="text-danger"></span>
+                            </div>
+
+                            <!-- NG(Tk/m3) -->
+                            <div class="col-md-6">
+                                <label asp-for="NgTk" class="form-label">
+                                    NG(Tk/m3) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgTk" class="form-control" readonly />
+                                <span asp-validation-for="NgTk" class="text-danger"></span>
+                            </div>
+
+                            <!-- ToalRh -->
+                            <div class="col-md-6">
+                                <label asp-for="ToalRh" class="form-label">
+                                    Total RH<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ToalRh" class="form-control" />
+                                <span asp-validation-for="ToalRh" class="text-danger"></span>
+                            </div>
+
+                            <!-- GenerationKwh -->
+                            <div class="col-md-6">
+                                <label asp-for="TkHr" class="form-label">
+                                    TK/Hr<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TkHr" class="form-control" readonly />
+                                <span asp-validation-for="TkHr" class="text-danger"></span>
+                            </div>
+                            <!-- NG Consumtion/Hr -->
+                            <div class="col-md-6">
+                                <label asp-for="NgConsumptionHr" class="form-label">
+                                    NG Consumtion/Hr<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgConsumptionHr" class="form-control" readonly />
+                                <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="BoilerRmsRoomInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const ngConsumption = document.getElementById("NgConsumption");
+        const ngTk = document.getElementById("NgTk");
+        const totalRh = document.getElementById("ToalRh");
+        const tkHr = document.getElementById("TkHr");
+        const ngConsumptionHr = document.getElementById("NgConsumptionHr");
+
+        // Rate from database
+        const ngRate = parseFloat('@ViewBag.NgRate') || 0;
+
+        function num(el) {
+            return parseFloat(el.value) || 0;
+        }
+
+        function calculateValues() {
+
+            const consumption = num(ngConsumption);
+            const rh = num(totalRh);
+
+            // NgTk = Consumption × Rate
+            const totalNgTk = consumption * ngRate;
+            ngTk.value = totalNgTk.toFixed(2);
+
+            // Tk/Hr = NgTk / Total RH
+            tkHr.value = rh > 0
+                ? (totalNgTk / rh).toFixed(2)
+                : "0.00";
+
+            // NG Consumption/Hr = Consumption / Total RH
+            ngConsumptionHr.value = rh > 0
+                ? (consumption / rh).toFixed(2)
+                : "0.00";
+        }
+
+        ngConsumption.addEventListener("input", calculateValues);
+        totalRh.addEventListener("input", calculateValues);
+
+        calculateValues();
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

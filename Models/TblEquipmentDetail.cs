@@ -30,5 +30,7 @@ public partial class TblEquipmentDetail
     public virtual ICollection<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; } = new List<TblNgGeneratorReadingInfo>();
     public virtual ICollection<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfos { get; set; } = new List<TblDiselGeneratorReadingInfo>();
     public virtual ICollection<TblSolarReadingInfo> TblSolarReadingInfos { get; set; } = new List<TblSolarReadingInfo>();
+    public virtual ICollection<TblBoilerRmsRoom> TblBoilerRmsRooms { get; set; } = new List<TblBoilerRmsRoom>();
+    public virtual ICollection<TblGenRmsRoom> TblGenRmsRooms { get; set; } = new List<TblGenRmsRoom>();
 
 }

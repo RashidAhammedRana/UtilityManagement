@@ -1,0 +1,186 @@
+﻿@model IEnumerable<UtilityManagement.Models.TblGenRmsRoom>
+
+@{
+    ViewData["Title"] = "Generator RMS Room Reading List";
+
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+
+    int pageSize = 15;
+    int sl = (currentPage - 1) * pageSize;
+
+    int startPage = Math.Max(1, currentPage - 2);
+    int endPage = Math.Min(totalPages, currentPage + 2);
+
+    bool canCreate = ViewBag.CanCreate ?? false;
+    bool canEdit = ViewBag.CanEdit ?? false;
+    bool canDelete = ViewBag.CanDelete ?? false;
+
+    string search = ViewBag.SearchString ?? "";
+}
+
+<h2 class="text-center">Generator RMS Room Info List</h2>
+
+<p class="text-muted text-center">
+    Total Readings: <strong>@ViewBag.totalReadings</strong>
+</p>
+
+<div class="d-flex justify-content-between mb-3 align-items-center">
+
+    <!-- LEFT: SEARCH + RESET -->
+    <form method="get" asp-action="GenRmsRoomInfoList"
+          class="d-flex gap-2 align-items-center"
+          id="searchForm">
+
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="Search by Equipment / Company/Date"
+               style="width: 300px;" />
+
+    </form>
+
+    <!-- RIGHT: ACTION BUTTONS -->
+    <div class="d-flex gap-2">
+
+        @if (canCreate)
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                + Create
+            </a>
+        }
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+            Back
+        </button>
+
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover" id="rebTable">
+
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th>SL</th>
+                <th style="width: 10%;">Date</th>
+                <th>Equipment</th>
+                <th>Company</th>
+                <th>NG Consumption(m3)</th>
+                <th>NG(Tk/m3)</th>
+                <th>Total RH</th>
+                <th>TK/Hr</th>
+                <th>NG Consumtion/Hr</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl++;
+
+                <tr>
+                    <td class="text-center">@sl</td>
+                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
+                    <td class="text-center">@item.Eq?.EquipmentName</td>
+                    <td class="text-center">@item.Eq?.CurrentLocation</td>
+                    <td class="text-center">@item.NgConsumption</td>
+                    <td class="text-center">@item.NgTk</td>
+                    <td class="text-center">@item.ToalRh</td>
+                    <td class="text-center">@item.TkHr</td>
+                    <td class="text-center">@item.NgConsumptionHr</td>
+
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+
+                            @if (canEdit)
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-success btn-sm">
+                                    Edit
+                                </a>
+                            }
+
+                            @if (canDelete)
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-danger btn-sm">
+                                    Delete
+                                </a>
+                            }
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+<!-- PAGINATION -->
+<nav>
+    <ul class="pagination justify-content-center flex-wrap">
+
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link"
+               href="@Url.Action("GenRmsRoomInfoList", new { page = currentPage - 1, searchString = search })">
+                Prev
+            </a>
+        </li>
+
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link"
+                   href="@Url.Action("GenRmsRoomInfoList", new { page = i, searchString = search })">
+                    @i
+                </a>
+            </li>
+        }
+
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+            <a class="page-link"
+               href="@Url.Action("GenRmsRoomInfoList", new { page = currentPage + 1, searchString = search })">
+                Next
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- OPTIONAL: AUTO SUBMIT ON TYPING (NO BUTTON) -->
+<script>
+    document.querySelector("input[name='searchString']")
+        .addEventListener("input", function () {
+
+            clearTimeout(this.delay);
+
+            this.delay = setTimeout(() => {
+                this.form.submit();
+            }, 1000); // debounce 0.10 sec
+        });
+
+         window.onload = function () {
+        let searchBox = document.getElementById("searchBox");
+
+        // cursor always in search box
+        if (searchBox) {
+            searchBox.focus();
+
+            // move cursor to end
+            let val = searchBox.value;
+            searchBox.value = "";
+            searchBox.value = val;
+        }
+    };
+</script>

@@ -5,11 +5,11 @@ using UtilityManagement.Data;
 using UtilityManagement.Models;
 using System.Globalization;
 
-public class NgGeneratorReadingInfoController : Controller
+public class BoilerRmsRoomInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public NgGeneratorReadingInfoController(ApplicationDbContext context)
+    public BoilerRmsRoomInfoController(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -18,14 +18,14 @@ public class NgGeneratorReadingInfoController : Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> NgGeneratorReadingInfoList(int page = 1, string searchString = "")
+    public async Task<IActionResult> BoilerRmsRoomInfoList(int page = 1, string searchString = "")
     {
         int pageSize = 15;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "NG Generator Reading")
+            .Where(x => x.MenuName == "Boiler RMS Room")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -47,7 +47,7 @@ public class NgGeneratorReadingInfoController : Controller
         // =========================
         // BASE QUERY
         // =========================
-        var query = _context.TblNgGeneratorReadingInfos
+        var query = _context.TblBoilerRmsRoom
             .Include(x => x.Eq)
             .AsQueryable();
 
@@ -157,7 +157,7 @@ public class NgGeneratorReadingInfoController : Controller
         // =========================
         var totalRecords = await query.CountAsync();
 
-        var ngGeneratorReadings = await query
+        var roomReadings = await query
             .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -171,15 +171,23 @@ public class NgGeneratorReadingInfoController : Controller
         ViewBag.totalReadings = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(ngGeneratorReadings);
+        return View(roomReadings);
     }
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblNgGeneratorReadingInfo
+        var model = new TblBoilerRmsRoom
         {
             Trdate = DateTime.Today
         };
+
+        var ngRate = _context.TblNgRate
+                     .OrderByDescending(x => x.NgrId)
+                     .Select(x => x.Rate)
+                     .FirstOrDefault();
+
+        ViewBag.NgRate = ngRate;
+
         ViewBag.EquipmentList = _context.TblEquipmentDetails
             .Select(x => new SelectListItem
             {
@@ -192,23 +200,23 @@ public class NgGeneratorReadingInfoController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblNgGeneratorReadingInfo ngGeneratorReadingInfo)
+    public async Task<IActionResult> Create(TblBoilerRmsRoom boilerRmsRoom)
     {
         try
         {
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(ngGeneratorReadingInfo);
+                return View(boilerRmsRoom);
             }
 
             // Normalize date (only date part)
-            var dateOnly = ngGeneratorReadingInfo.Trdate?.Date;
+            var dateOnly = boilerRmsRoom.Trdate?.Date;
 
             // ❌ CHECK DUPLICATE: Same Machine + Same Date
-            var isExists = await _context.TblNgGeneratorReadingInfos
+            var isExists = await _context.TblSolarReadingInfos
                 .AnyAsync(x =>
-                    x.Eqid == ngGeneratorReadingInfo.Eqid &&
+                    x.Eqid == boilerRmsRoom.Eqid &&
                     x.Trdate.HasValue &&
                     x.Trdate.Value.Date == dateOnly
                 );
@@ -216,39 +224,40 @@ public class NgGeneratorReadingInfoController : Controller
             if (isExists)
             {
                 ModelState.AddModelError("", "This machine already has a reading for this date!");
-                return View(ngGeneratorReadingInfo);
+                return View(boilerRmsRoom);
             }
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;
 
-            ngGeneratorReadingInfo.Trdate = dateOnly?
+            boilerRmsRoom.Trdate = dateOnly?
                 .AddHours(now.Hour)
                 .AddMinutes(now.Minute)
                 .AddSeconds(now.Second);
 
-            _context.TblNgGeneratorReadingInfos.Add(ngGeneratorReadingInfo);
+            _context.TblBoilerRmsRoom.Add(boilerRmsRoom);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading created successfully.";
 
-            return RedirectToAction(nameof(NgGeneratorReadingInfoList));
+            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
         }
         catch (Exception)
         {
             TempData["ErrorMessage"] = "Failed to create reading.";
-            return View(ngGeneratorReadingInfo);
+            return View(boilerRmsRoom);
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
-        var reading = await _context.TblNgGeneratorReadingInfos
+        var reading = await _context.TblBoilerRmsRoom
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (reading == null)
             return NotFound();
+
 
         ViewBag.EquipmentList = _context.TblEquipmentDetails
             .Select(x => new SelectListItem
@@ -258,12 +267,17 @@ public class NgGeneratorReadingInfoController : Controller
             })
             .ToList();
 
+        ViewBag.NgRate = await _context.TblNgRate
+            .Select(x => x.Rate)
+            .FirstOrDefaultAsync();
+
+
         return View(reading);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblNgGeneratorReadingInfo ngGeneratorReadingInfo)
+    public async Task<IActionResult> Edit(TblBoilerRmsRoom boilerRmsRoom)
     {
         try
         {
@@ -277,15 +291,15 @@ public class NgGeneratorReadingInfoController : Controller
                     })
                     .ToList();
 
-                return View(ngGeneratorReadingInfo);
+                return View(boilerRmsRoom);
             }
 
-            _context.Update(ngGeneratorReadingInfo);
+            _context.Update(boilerRmsRoom);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading updated successfully.";
 
-            return RedirectToAction(nameof(NgGeneratorReadingInfoList));
+            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
         }
         catch (Exception)
         {
@@ -299,13 +313,13 @@ public class NgGeneratorReadingInfoController : Controller
                 })
                 .ToList();
 
-            return View(ngGeneratorReadingInfo);
+            return View(boilerRmsRoom);
         }
     }
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblNgGeneratorReadingInfos.FindAsync(id);
+        var data = await _context.TblBoilerRmsRoom.FindAsync(id);
 
         if (data == null)
             return NotFound();
@@ -317,21 +331,21 @@ public class NgGeneratorReadingInfoController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var data = await _context.TblNgGeneratorReadingInfos
+        var data = await _context.TblBoilerRmsRoom
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
         {
             TempData["ErrorMessage"] = "Readings not found.";
-            return RedirectToAction(nameof(NgGeneratorReadingInfoList));
+            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
         }
 
-        _context.TblNgGeneratorReadingInfos.Remove(data);
+        _context.TblBoilerRmsRoom.Remove(data);
         await _context.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
-        return RedirectToAction(nameof(NgGeneratorReadingInfoList));
+        return RedirectToAction(nameof(BoilerRmsRoomInfoList));
     }
 }
 

@@ -29,7 +29,10 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfo { get; set; }
         public virtual DbSet<TblDieselRate> TblDieselRates { get; set; }
         public virtual DbSet<TblLuboilRate> TblLuboilRates { get; set; }
+        public virtual DbSet<TblNgRate> TblNgRate { get; set; }
         public virtual DbSet<TblSolarReadingInfo> TblSolarReadingInfos { get; set; }
+        public virtual DbSet<TblBoilerRmsRoom> TblBoilerRmsRoom { get; set; }
+        public virtual DbSet<TblGenRmsRoom> TblGenRmsRoom { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -298,6 +301,28 @@ namespace UtilityManagement.Data
                     .HasMaxLength(50)
                     .HasColumnName("UOM");
             });
+            //TblNgRate
+            modelBuilder.Entity<TblNgRate>(entity =>
+            {
+                entity.HasKey(e => e.NgrId);
+
+                entity.ToTable("TBL_NG_RATE");
+
+                entity.Property(e => e.NgrId).HasColumnName("NGRID");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom)
+                    .HasMaxLength(50)
+                    .HasColumnName("UOM");
+            });
             //TblSolarReadingInfo
             modelBuilder.Entity<TblSolarReadingInfo>(entity =>
             {
@@ -322,6 +347,57 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblSolarReadingInfos)
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_SOLAR_READING_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+            //TblBoilerRmsRoom
+            modelBuilder.Entity<TblBoilerRmsRoom>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_BOILER_RMS_ROOM");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.NgConsumption).HasColumnName("NG_CONSUMPTION");
+                entity.Property(e => e.NgConsumptionHr).HasColumnName("NG_CONSUMPTION_HR");
+                entity.Property(e => e.NgTk).HasColumnName("NG_TK");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.ToalRh).HasColumnName("TOAL_RH");
+                entity.Property(e => e.TkHr).HasColumnName("TK_HR");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblBoilerRmsRooms)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_BOILER_RMS_ROOM_TBL_EQUIPMENT_DETAILS");
+            });
+
+            //TblGenRmsRoom
+            modelBuilder.Entity<TblGenRmsRoom>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_GEN_RMS_ROOM");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.NgConsumption).HasColumnName("NG_CONSUMPTION");
+                entity.Property(e => e.NgConsumptionHr).HasColumnName("NG_CONSUMPTION_HR");
+                entity.Property(e => e.NgTk).HasColumnName("NG_TK");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.TkHr).HasColumnName("TK_HR");
+                entity.Property(e => e.ToalRh).HasColumnName("TOAL_RH");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblGenRmsRooms)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_GEN_RMS_ROOM_TBL_EQUIPMENT_DETAILS");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -4,9 +4,9 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UtilityManagement.Models;
 
-public partial class TblDieselRate
+public partial class TblCngRate
 {
-    public int Drid { get; set; }
+    public int Cngrid { get; set; }
     [Required(ErrorMessage = "Date is required")]
     public DateTime? TrDate { get; set; }
     [Required(ErrorMessage = "UOM is required")]

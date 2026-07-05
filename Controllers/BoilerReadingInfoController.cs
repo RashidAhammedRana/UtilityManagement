@@ -5,11 +5,11 @@ using UtilityManagement.Data;
 using UtilityManagement.Models;
 using System.Globalization;
 
-public class BoilerRmsRoomInfoController : Controller
+public class BoilerReadingInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public BoilerRmsRoomInfoController(ApplicationDbContext context)
+    public BoilerReadingInfoController(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -18,14 +18,14 @@ public class BoilerRmsRoomInfoController : Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> BoilerRmsRoomInfoList(int page = 1, string searchString = "")
+    public async Task<IActionResult> BoilerReadingInfoList(int page = 1, string searchString = "")
     {
         int pageSize = 15;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Boiler RMS Room")
+            .Where(x => x.MenuName == "Boiler Reading")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -47,7 +47,7 @@ public class BoilerRmsRoomInfoController : Controller
         // =========================
         // BASE QUERY
         // =========================
-        var query = _context.TblBoilerRmsRoom
+        var query = _context.TblBoilerReadingInfo
             .Include(x => x.Eq)
             .AsQueryable();
 
@@ -157,7 +157,7 @@ public class BoilerRmsRoomInfoController : Controller
         // =========================
         var totalRecords = await query.CountAsync();
 
-        var roomReadings = await query
+        var boilerReadings = await query
             .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -171,12 +171,12 @@ public class BoilerRmsRoomInfoController : Controller
         ViewBag.totalReadings = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(roomReadings);
+        return View(boilerReadings);
     }
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblBoilerRmsRoom
+        var model = new TblBoilerReadingInfo
         {
             Trdate = DateTime.Today
         };
@@ -185,8 +185,23 @@ public class BoilerRmsRoomInfoController : Controller
                      .OrderByDescending(x => x.NgrId)
                      .Select(x => x.Rate)
                      .FirstOrDefault();
+        var dieselRate = _context.TblDieselRates
+                     .OrderByDescending(x => x.Drid)
+                     .Select(x => x.Rate)
+                     .FirstOrDefault();
+        var cngRate = _context.TblCngRate
+                     .OrderByDescending(x => x.Cngrid)
+                     .Select(x => x.Rate)
+                     .FirstOrDefault();
+        var lpgRate = _context.TblLpgRate
+                     .OrderByDescending(x => x.Lpgrid)
+                     .Select(x => x.Rate)
+                     .FirstOrDefault();
 
         ViewBag.NgRate = ngRate;
+        ViewBag.DieselRate = dieselRate;
+        ViewBag.CngRate = cngRate;
+        ViewBag.LpgRate = lpgRate;
 
         ViewBag.EquipmentList = _context.TblEquipmentDetails
             .Select(x => new SelectListItem
@@ -200,23 +215,23 @@ public class BoilerRmsRoomInfoController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblBoilerRmsRoom boilerRmsRoom)
+    public async Task<IActionResult> Create(TblBoilerReadingInfo boilerReadingInfo)
     {
         try
         {
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(boilerRmsRoom);
+                return View(boilerReadingInfo);
             }
 
             // Normalize date (only date part)
-            var dateOnly = boilerRmsRoom.Trdate?.Date;
+            var dateOnly = boilerReadingInfo.Trdate?.Date;
 
             // ❌ CHECK DUPLICATE: Same Machine + Same Date
-            var isExists = await _context.TblBoilerRmsRoom
+            var isExists = await _context.TblBoilerReadingInfo
                 .AnyAsync(x =>
-                    x.Eqid == boilerRmsRoom.Eqid &&
+                    x.Eqid == boilerReadingInfo.Eqid &&
                     x.Trdate.HasValue &&
                     x.Trdate.Value.Date == dateOnly
                 );
@@ -224,35 +239,35 @@ public class BoilerRmsRoomInfoController : Controller
             if (isExists)
             {
                 ModelState.AddModelError("", "This machine already has a reading for this date!");
-                return View(boilerRmsRoom);
+                return View(boilerReadingInfo);
             }
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;
 
-            boilerRmsRoom.Trdate = dateOnly?
+            boilerReadingInfo.Trdate = dateOnly?
                 .AddHours(now.Hour)
                 .AddMinutes(now.Minute)
                 .AddSeconds(now.Second);
 
-            _context.TblBoilerRmsRoom.Add(boilerRmsRoom);
+            _context.TblBoilerReadingInfo.Add(boilerReadingInfo);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading created successfully.";
 
-            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
+            return RedirectToAction(nameof(BoilerReadingInfoList));
         }
         catch (Exception)
         {
             TempData["ErrorMessage"] = "Failed to create reading.";
-            return View(boilerRmsRoom);
+            return View(boilerReadingInfo);
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
-        var reading = await _context.TblBoilerRmsRoom
+        var reading = await _context.TblBoilerReadingInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (reading == null)
@@ -267,17 +282,38 @@ public class BoilerRmsRoomInfoController : Controller
             })
             .ToList();
 
-        ViewBag.NgRate = await _context.TblNgRate
-            .Select(x => x.Rate)
-            .FirstOrDefaultAsync();
 
+        var ngRate = _context.TblNgRate
+    .OrderByDescending(x => x.NgrId)
+    .Select(x => x.Rate)
+    .FirstOrDefault();
+
+        var dieselRate = _context.TblDieselRates
+            .OrderByDescending(x => x.Drid)
+            .Select(x => x.Rate)
+            .FirstOrDefault();
+
+        var cngRate = _context.TblCngRate
+            .OrderByDescending(x => x.Cngrid)
+            .Select(x => x.Rate)
+            .FirstOrDefault();
+
+        var lpgRate = _context.TblLpgRate
+            .OrderByDescending(x => x.Lpgrid)
+            .Select(x => x.Rate)
+            .FirstOrDefault();
+
+        ViewBag.NgRate = ngRate;
+        ViewBag.DieselRate = dieselRate;
+        ViewBag.CngRate = cngRate;
+        ViewBag.LpgRate = lpgRate;
 
         return View(reading);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblBoilerRmsRoom boilerRmsRoom)
+    public async Task<IActionResult> Edit(TblBoilerReadingInfo boilerReadingInfo)
     {
         try
         {
@@ -291,15 +327,15 @@ public class BoilerRmsRoomInfoController : Controller
                     })
                     .ToList();
 
-                return View(boilerRmsRoom);
+                return View(boilerReadingInfo);
             }
 
-            _context.Update(boilerRmsRoom);
+            _context.Update(boilerReadingInfo);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading updated successfully.";
 
-            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
+            return RedirectToAction(nameof(BoilerReadingInfoList));
         }
         catch (Exception)
         {
@@ -313,13 +349,13 @@ public class BoilerRmsRoomInfoController : Controller
                 })
                 .ToList();
 
-            return View(boilerRmsRoom);
+            return View(boilerReadingInfo);
         }
     }
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblBoilerRmsRoom.FindAsync(id);
+        var data = await _context.TblBoilerReadingInfo.FindAsync(id);
 
         if (data == null)
             return NotFound();
@@ -331,21 +367,22 @@ public class BoilerRmsRoomInfoController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var data = await _context.TblBoilerRmsRoom
+        var data = await _context.TblBoilerReadingInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
         {
             TempData["ErrorMessage"] = "Readings not found.";
-            return RedirectToAction(nameof(BoilerRmsRoomInfoList));
+            return RedirectToAction(nameof(BoilerReadingInfoList));
         }
 
-        _context.TblBoilerRmsRoom.Remove(data);
+        _context.TblBoilerReadingInfo.Remove(data);
         await _context.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
-        return RedirectToAction(nameof(BoilerRmsRoomInfoList));
+        return RedirectToAction(nameof(BoilerReadingInfoList));
     }
 }
+
 

@@ -1,0 +1,736 @@
+﻿@model UtilityManagement.Models.TblBoilerReadingInfo
+
+@{
+    ViewData["Title"] = "Create Boiler Reading";
+}
+
+<style>
+
+    .wizard-step {
+        display: none;
+    }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+        .wizard-step.active {
+            display: block;
+        }
+
+    @@keyframes fadeIn {
+        from
+
+    {
+        opacity: 0;
+        transform: translateX(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateX(0);
+    }
+
+    }
+
+    .stepper {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        margin-bottom: 25px;
+    }
+
+    .step {
+        width: 45px;
+        height: 45px;
+        border-radius: 50%;
+        background: #dee2e6;
+        color: #6c757d;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        transition: .3s;
+    }
+
+        .step.active {
+            background: #0d6efd;
+            color: #fff;
+        }
+
+    .line {
+        width: 140px;
+        height: 3px;
+        background: #dee2e6;
+    }
+
+        .line.active {
+            background: #0d6efd;
+        }
+
+    .card {
+        border: none;
+        border-radius: 14px;
+    }
+
+    .card-header {
+        border-radius: 14px 14px 0 0 !important;
+    }
+
+    .btn {
+        min-width: 120px;
+    }
+
+    .section-title {
+        font-size: 18px;
+        font-weight: 600;
+        margin-bottom: 20px;
+        color: #0d6efd;
+    }
+
+</style>
+
+<div class="container-fluid mt-3">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Boiler Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="stepper">
+
+                            <div id="stepCircle1" class="step active">
+                                1
+                            </div>
+
+                            <div id="stepLine" class="line"></div>
+
+                            <div id="stepCircle2" class="step">
+                                2
+                            </div>
+                        </div>
+
+                        <div id="step1" class="wizard-step active">
+
+                            <div class="section-title">
+
+                                Basic Information
+
+                            </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- DslConLtr -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DslConLtr" class="form-label">
+                                    Diesel Cons.(Ltr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DslConLtr" class="form-control" />
+                                <span asp-validation-for="DslConLtr" class="text-danger"></span>
+                            </div>
+
+                            <!-- DslRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DslRh" class="form-label">
+                                    Diesel RH <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DslRh" class="form-control" />
+                                <span asp-validation-for="DslRh" class="text-danger"></span>
+                            </div>
+
+                            <!-- DslLtrHr -->
+                                <!-- DslLtrHr=DslConLtr/DslRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DslLtrHr" class="form-label">
+                                    Diesel Ltr/Hr<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DslLtrHr" class="form-control"readonly />
+                                <span asp-validation-for="DslLtrHr" class="text-danger"></span>
+                            </div>
+                                <!-- NgConM -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="NgConM" class="form-label">
+                                        NG Cons.(m3)<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="NgConM" class="form-control" />
+                                    <span asp-validation-for="NgConM" class="text-danger"></span>
+                                </div>
+                                <!-- NgRh -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="NgRh" class="form-label">
+                                        NG RH<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="NgRh" class="form-control" />
+                                    <span asp-validation-for="NgRh" class="text-danger"></span>
+                                </div>
+                                <!-- MHr -->
+                                <!-- NgMHr=NgConM/NgRh -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="NgMHr" class="form-label">
+                                        NG (m3/Hr)<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="NgMHr" class="form-control" readonly />
+                                    <span asp-validation-for="NgMHr" class="text-danger"></span>
+                                </div>
+
+                            <!-- CngConM -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CngConM" class="form-label">
+                                    CNG Cons.(m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngConM" class="form-control" />
+                                <span asp-validation-for="CngConM" class="text-danger"></span>
+                            </div>
+                            <!-- CngRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CngRh" class="form-label">
+                                    CNG RH<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngRh" class="form-control" />
+                                <span asp-validation-for="CngRh" class="text-danger"></span>
+                            </div>
+                            <!-- CngMHr -->
+                                <!-- CngMHr=CngConM/CngRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CngMHr" class="form-label">
+                                    CNG (m3/Hr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngMHr" class="form-control"readonly />
+                                <span asp-validation-for="CngMHr" class="text-danger"></span>
+                            </div>
+                            <!-- LpgConKg -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="LpgConKg" class="form-label">
+                                    LPG Con.(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LpgConKg" class="form-control" />
+                                <span asp-validation-for="LpgConKg" class="text-danger"></span>
+                            </div>
+                            <!-- LpgRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="LpgRh" class="form-label">
+                                    LPG RH<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LpgRh" class="form-control" />
+                                <span asp-validation-for="LpgRh" class="text-danger"></span>
+                            </div>
+                            <!-- LpgKgHr -->
+                                <!-- LpgKgHr=LpgConKg/LpgRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="LpgKgHr" class="form-label">
+                                    LPG (Kg/Hr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LpgKgHr" class="form-control" readonly/>
+                                <span asp-validation-for="LpgKgHr" class="text-danger"></span>
+                            </div>
+                            <!-- WaterInletLtr -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="WaterInletLtr" class="form-label">
+                                    Water inlet(Ltr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="WaterInletLtr" class="form-control" />
+                                <span asp-validation-for="WaterInletLtr" class="text-danger"></span>
+                            </div>
+                            <!-- StaemGenKg -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="StaemGenKg" class="form-label">
+                                    Steam gen.(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="StaemGenKg" class="form-control" />
+                                <span asp-validation-for="StaemGenKg" class="text-danger"></span>
+                            </div>
+                            <!-- TotalRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalRh" class="form-label">
+                                    Total RH<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalRh" class="form-control" />
+                                <span asp-validation-for="TotalRh" class="text-danger"></span>
+                            </div>
+                            <!-- SteamKgHr -->
+                                <!-- SteamKgHr=StaemGenKg/TotalRh -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SteamKgHr" class="form-label">
+                                    Steam (Kg/hr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SteamKgHr" class="form-control"readonly />
+                                <span asp-validation-for="SteamKgHr" class="text-danger"></span>
+                            </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        onclick="history.back();">
+                                    ← Back
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-primary"
+                                        id="nextBtn">
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+                        <div id="step2" class="wizard-step">
+
+                            <div class="section-title">
+
+                                Cost & Maintenance
+
+                            </div>
+
+                            <div class="row g-3">
+                            <!-- NgTkM -->
+                                <!-- NgTkM=NgConM*UnitPrice -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="NgTkM" class="form-label">
+                                    NG (Tk/m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NgTkM" class="form-control" readonly />
+                                <span asp-validation-for="NgTkM" class="text-danger"></span>
+                            </div>
+                            <!-- DslTkLtr -->
+                                <!-- DslTkLtr=DslConLtr*UnitPrice -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DslTkLtr" class="form-label">
+                                    Diesel (Tk/Ltr)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DslTkLtr" class="form-control" readonly/>
+                                <span asp-validation-for="DslTkLtr" class="text-danger"></span>
+                            </div>
+                            <!-- CngTkM -->
+                                <!-- CngTkM=CngConM*UnitPrice -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CngTkM" class="form-label">
+                                    CNG (Tk/m3)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CngTkM" class="form-control"readonly />
+                                <span asp-validation-for="CngTkM" class="text-danger"></span>
+                            </div>
+                            <!-- LpgTkLtr -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="LpgTkLtr" class="form-label">
+                                    LPG (Tk/Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LpgTkLtr" class="form-control" />
+                                <span asp-validation-for="LpgTkLtr" class="text-danger"></span>
+                            </div>
+                            <!-- ChemicalTk -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChemicalTk" class="form-label">
+                                    Chemical Tk<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChemicalTk" class="form-control" />
+                                <span asp-validation-for="ChemicalTk" class="text-danger"></span>
+                            </div>
+                            <!-- OtherConsumable -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="OtherConsumable" class="form-label">
+                                    Other Consumable<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="OtherConsumable" class="form-control" />
+                                <span asp-validation-for="OtherConsumable" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Maintenance" class="form-label">
+                                    Maintenance<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Maintenance" class="form-control" />
+                                <span asp-validation-for="Maintenance" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Troubleshooting" class="form-label">
+                                    Trouble shooting<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Troubleshooting" class="form-control" />
+                                <span asp-validation-for="Troubleshooting" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ServiceCharge" class="form-label">
+                                    Service Charge<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+                            </div>
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Kwh" class="form-label">
+                                    KWH<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Kwh" class="form-control" />
+                                <span asp-validation-for="Kwh" class="text-danger"></span>
+                            </div>
+                                <!-- Total -->
+                                <!-- Total= NgTkM+DslTkLtr+CngTkM+LpgTkLtr+ChemicalTk+OtherConsumable+Maintenance+Troubleshooting+ServiceCharge+Kwh-->
+
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Total" class="form-label">
+                                    Total<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Total" class="form-control"readonly />
+                                <span asp-validation-for="Total" class="text-danger"></span>
+                            </div>
+                                <!-- TkKgSteamGenCost -->
+                                <!-- TkKgSteamGenCost=Total/StaemGenKg -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TkKgSteamGenCost" class="form-label">
+                                    Tk/kg Steam Gen. Cost
+                                    <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TkKgSteamGenCost" class="form-control" readonly />
+                                <span asp-validation-for="TkKgSteamGenCost" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                       @*  <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="BoilerRmsRoomInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save Reading
+                            </button>
+
+                        </div> *@
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <button type="button"
+                                    class="btn btn-outline-secondary"
+                                    id="previousBtn">
+                                ← Previous
+                            </button>
+
+                            <button type="submit"
+                                    class="btn btn-primary">
+                                Save Reading
+                            </button>
+
+                        </div>
+                    </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        const ngConsumption = document.getElementById("NgConsumption");
+        const ngTk = document.getElementById("NgTk");
+        const totalRh = document.getElementById("ToalRh");
+        const tkHr = document.getElementById("TkHr");
+        const ngConsumptionHr = document.getElementById("NgConsumptionHr");
+
+        // Rate from database
+        const ngRate = parseFloat('@ViewBag.NgRate') || 0;
+
+        function num(el) {
+            return parseFloat(el.value) || 0;
+        }
+
+        function calculateValues() {
+
+            const consumption = num(ngConsumption);
+            const rh = num(totalRh);
+
+            // NgTk = Consumption × Rate
+            const totalNgTk = consumption * ngRate;
+            ngTk.value = totalNgTk.toFixed(2);
+
+            // Tk/Hr = NgTk / Total RH
+            tkHr.value = rh > 0
+                ? (totalNgTk / rh).toFixed(2)
+                : "0.00";
+
+            // NG Consumption/Hr = Consumption / Total RH
+            ngConsumptionHr.value = rh > 0
+                ? (consumption / rh).toFixed(2)
+                : "0.00";
+        }
+
+        ngConsumption.addEventListener("input", calculateValues);
+        totalRh.addEventListener("input", calculateValues);
+
+        calculateValues();
+    });
+
+
+    //Next Button to load Data
+        document.addEventListener("DOMContentLoaded", function () {
+
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+
+        const nextBtn = document.getElementById("nextBtn");
+        const previousBtn = document.getElementById("previousBtn");
+
+        const circle1 = document.getElementById("stepCircle1");
+        const circle2 = document.getElementById("stepCircle2");
+        const line = document.getElementById("stepLine");
+
+        nextBtn.addEventListener("click", function () {
+
+            step1.classList.remove("active");
+            step2.classList.add("active");
+
+            circle1.classList.add("active");
+            circle2.classList.add("active");
+            line.classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+        previousBtn.addEventListener("click", function () {
+
+            step2.classList.remove("active");
+            step1.classList.add("active");
+
+            circle2.classList.remove("active");
+            line.classList.remove("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+
+    //Previous Button Control
+        document.addEventListener("DOMContentLoaded", function () {
+
+        const step1 = document.getElementById("step1");
+        const step2 = document.getElementById("step2");
+
+        const nextBtn = document.getElementById("nextBtn");
+        const previousBtn = document.getElementById("previousBtn");
+
+        const circle2 = document.getElementById("stepCircle2");
+        const line = document.getElementById("stepLine");
+
+        nextBtn.addEventListener("click", function () {
+
+            step1.classList.remove("active");
+            step2.classList.add("active");
+
+            circle2.classList.add("active");
+            line.classList.add("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+        previousBtn.addEventListener("click", function () {
+
+            step2.classList.remove("active");
+            step1.classList.add("active");
+
+            circle2.classList.remove("active");
+            line.classList.remove("active");
+
+            window.scrollTo({
+                top: 0,
+                behavior: "smooth"
+            });
+
+        });
+
+    });
+
+    //Auto Calculated Fields
+        document.addEventListener("DOMContentLoaded", function () {
+
+        //==========================
+        // Rates from Backend
+        //==========================
+        const ngRate = parseFloat('@ViewBag.NgRate') || 0;
+        const dieselRate = parseFloat('@ViewBag.DieselRate') || 0;
+        const cngRate = parseFloat('@ViewBag.CngRate') || 0;
+        const lpgRate = parseFloat('@ViewBag.LpgRate') || 0;
+
+        function val(id) {
+            return parseFloat(document.getElementById(id)?.value) || 0;
+        }
+
+        function set(id, value) {
+            const el = document.getElementById(id);
+            if (el) {
+                el.value = value.toFixed(2);
+            }
+        }
+
+        function calculate() {
+
+            //-----------------------------
+            // Diesel Ltr/Hr
+            //-----------------------------
+            const dslCon = val("DslConLtr");
+            const dslRh = val("DslRh");
+
+            set("DslLtrHr",
+                dslRh > 0 ? dslCon / dslRh : 0);
+
+            //-----------------------------
+            // NG m3/Hr
+            //-----------------------------
+            const ngCon = val("NgConM");
+            const ngRh = val("NgRh");
+
+            set("NgMHr",
+                ngRh > 0 ? ngCon / ngRh : 0);
+
+            //-----------------------------
+            // CNG m3/Hr
+            //-----------------------------
+            const cngCon = val("CngConM");
+            const cngRh = val("CngRh");
+
+                set("CngMHr",
+                    cngRh > 0 ? cngCon / cngRh : 0);
+
+            //-----------------------------
+            // LPG Kg/Hr
+            //-----------------------------
+            const lpgCon = val("LpgConKg");
+            const lpgRh = val("LpgRh");
+
+            set("LpgKgHr",
+                lpgRh > 0 ? lpgCon / lpgRh : 0);
+
+            //-----------------------------
+            // Steam Kg/Hr
+            //-----------------------------
+            const steamGen = val("StaemGenKg");
+            const totalRh = val("TotalRh");
+
+            set("SteamKgHr",
+                totalRh > 0 ? steamGen / totalRh : 0);
+
+            //-----------------------------
+            // NG Cost
+            //-----------------------------
+            const ngTk = ngCon * ngRate;
+            set("NgTkM", ngTk);
+
+            //-----------------------------
+            // Diesel Cost
+            //-----------------------------
+            const dieselTk = dslCon * dieselRate;
+            set("DslTkLtr", dieselTk);
+
+            //-----------------------------
+            // CNG Cost
+            //-----------------------------
+            const cngTk = cngCon * cngRate;
+            set("CngTkM", cngTk);
+
+            //-----------------------------
+            // LPG Cost
+            //-----------------------------
+            const lpgTk = lpgCon * lpgRate;
+            set("LpgTkLtr", lpgTk);
+
+            //-----------------------------
+            // Total Cost
+            //-----------------------------
+            const chemical = val("ChemicalTk");
+            const other = val("OtherConsumable");
+            const maintenance = val("Maintenance");
+            const trouble = val("Troubleshooting");
+            const service = val("ServiceCharge");
+            const kwh = val("Kwh");
+
+            const total =
+                ngTk +
+                dieselTk +
+                cngTk +
+                lpgTk +
+                chemical +
+                other +
+                maintenance +
+                trouble +
+                service +
+                kwh;
+
+            set("Total", total);
+
+            //-----------------------------
+            // Tk/Kg Steam Cost
+            //-----------------------------
+            set("TkKgSteamGenCost",
+                steamGen > 0 ? total / steamGen : 0);
+        }
+
+        //-----------------------------
+        // Auto Calculate
+        //-----------------------------
+        document.querySelectorAll("input").forEach(function (input) {
+            input.addEventListener("input", calculate);
+        });
+
+        calculate();
+
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -4,13 +4,13 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UtilityManagement.Models;
 
-public partial class TblDieselRate
+public partial class TblLpgRate
 {
-    public int Drid { get; set; }
+    public int Lpgrid { get; set; }
     [Required(ErrorMessage = "Date is required")]
     public DateTime? TrDate { get; set; }
     [Required(ErrorMessage = "UOM is required")]
-    public string? Uom { get; set; }
+    public String? Uom { get; set; }
     [Required(ErrorMessage = "Rate is required")]
     public double? Rate { get; set; }
     [Required(ErrorMessage = "Status is required")]
@@ -18,3 +18,4 @@ public partial class TblDieselRate
 
     public string? Remarks { get; set; }
 }
+

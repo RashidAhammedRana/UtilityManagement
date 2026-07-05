@@ -28,11 +28,14 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; }
         public virtual DbSet<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfo { get; set; }
         public virtual DbSet<TblDieselRate> TblDieselRates { get; set; }
+        public virtual DbSet<TblCngRate> TblCngRate { get; set; }
+        public virtual DbSet<TblLpgRate> TblLpgRate { get; set; }
         public virtual DbSet<TblLuboilRate> TblLuboilRates { get; set; }
         public virtual DbSet<TblNgRate> TblNgRate { get; set; }
         public virtual DbSet<TblSolarReadingInfo> TblSolarReadingInfos { get; set; }
         public virtual DbSet<TblBoilerRmsRoom> TblBoilerRmsRoom { get; set; }
         public virtual DbSet<TblGenRmsRoom> TblGenRmsRoom { get; set; }
+        public virtual DbSet<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -271,6 +274,45 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.TrDate)
                     .HasColumnType("datetime")
                     .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom).HasMaxLength(250).HasColumnName("UOM");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks).HasMaxLength(250).HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
+            //TblCngRate
+            modelBuilder.Entity<TblCngRate>(entity =>
+            {
+                entity.HasKey(e => e.Cngrid);
+
+                entity.ToTable("TBL_CNG_RATE");
+
+                entity.Property(e => e.Cngrid).HasColumnName("CNGRID");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom).HasMaxLength(250).HasColumnName("UOM");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
+            //TblLpgRate
+            modelBuilder.Entity<TblLpgRate>(entity =>
+            {
+                entity.HasKey(e => e.Lpgrid);
+
+                entity.ToTable("TBL_LPG_RATE");
+
+                entity.Property(e => e.Lpgrid).HasColumnName("LPGRID");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom).HasMaxLength(250).HasColumnName("UOM");
                 entity.Property(e => e.Rate).HasColumnName("RATE");
                 entity.Property(e => e.Remarks)
                     .HasMaxLength(250)
@@ -398,6 +440,50 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblGenRmsRooms)
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_GEN_RMS_ROOM_TBL_EQUIPMENT_DETAILS");
+            });
+            //TblBoilerReadingInfo
+            modelBuilder.Entity<TblBoilerReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_BOILER_READING_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ChemicalTk).HasColumnName("CHEMICAL_TK");
+                entity.Property(e => e.CngConM).HasColumnName("CNG_CON_M");
+                entity.Property(e => e.CngMHr).HasColumnName("CNG_M_HR");
+                entity.Property(e => e.CngRh).HasColumnName("CNG_RH");
+                entity.Property(e => e.CngTkM).HasColumnName("CNG_TK_M");
+                entity.Property(e => e.DslConLtr).HasColumnName("DSL_CON_LTR");
+                entity.Property(e => e.DslLtrHr).HasColumnName("DSL_LTR_HR");
+                entity.Property(e => e.DslRh).HasColumnName("DSL_RH");
+                entity.Property(e => e.DslTkLtr).HasColumnName("DSL_TK_LTR");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.LpgConKg).HasColumnName("LPG_CON_KG");
+                entity.Property(e => e.LpgKgHr).HasColumnName("LPG_KG_HR");
+                entity.Property(e => e.LpgRh).HasColumnName("LPG_RH");
+                entity.Property(e => e.LpgTkLtr).HasColumnName("LPG_TK_LTR");
+                entity.Property(e => e.Maintenance).HasColumnName("MAINTENANCE");
+                entity.Property(e => e.NgConM).HasColumnName("NG_CON_M");
+                entity.Property(e => e.NgMHr).HasColumnName("NG_M_HR");
+                entity.Property(e => e.NgRh).HasColumnName("NG_RH");
+                entity.Property(e => e.NgTkM).HasColumnName("NG_TK_M");
+                entity.Property(e => e.OtherConsumable).HasColumnName("OTHER_CONSUMABLE");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.StaemGenKg).HasColumnName("STAEM_GEN_KG");
+                entity.Property(e => e.SteamKgHr).HasColumnName("STEAM_KG_HR");
+                entity.Property(e => e.TkKgSteamGenCost).HasColumnName("TK_KG_STEAM_GEN_COST");
+                entity.Property(e => e.TotalRh).HasColumnName("TOTAL_RH");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.Troubleshooting).HasColumnName("TROUBLESHOOTING");
+                entity.Property(e => e.WaterInletLtr).HasColumnName("WATER_INLET_LTR");
+                entity.Property(e => e.Kwh).HasColumnName("KWH");
+                entity.Property(e => e.Total).HasColumnName("TOTAL");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblBoilerReadingInfo)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_BOILER_READING_INFO_TBL_BOILER_READING_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

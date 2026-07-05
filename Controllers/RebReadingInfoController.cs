@@ -25,7 +25,7 @@ public class RebReadingInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "REB Reading Info")
+            .Where(x => x.MenuName == "REB Reading")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

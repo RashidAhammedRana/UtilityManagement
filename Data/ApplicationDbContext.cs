@@ -32,10 +32,12 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblLpgRate> TblLpgRate { get; set; }
         public virtual DbSet<TblLuboilRate> TblLuboilRates { get; set; }
         public virtual DbSet<TblNgRate> TblNgRate { get; set; }
+        public virtual DbSet<TblNaclRate> TblNaclRate { get; set; }
         public virtual DbSet<TblSolarReadingInfo> TblSolarReadingInfos { get; set; }
         public virtual DbSet<TblBoilerRmsRoom> TblBoilerRmsRoom { get; set; }
         public virtual DbSet<TblGenRmsRoom> TblGenRmsRoom { get; set; }
         public virtual DbSet<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; }
+        public virtual DbSet<TblWtpPlanCostInfo> TblWtpPlanCostInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -321,6 +323,26 @@ namespace UtilityManagement.Data
                     .HasMaxLength(50)
                     .HasColumnName("STATUS");
             });
+            //TblNaclRate
+            modelBuilder.Entity<TblNaclRate>(entity =>
+            {
+                entity.HasKey(e => e.Naclrid);
+
+                entity.ToTable("TBL_NACL_RATE");
+
+                entity.Property(e => e.Naclrid).HasColumnName("NACLRID");
+                entity.Property(e => e.TrDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Uom).HasMaxLength(250).HasColumnName("UOM");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(250)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
             //TblLuboilRate
             modelBuilder.Entity<TblLuboilRate>(entity =>
             {
@@ -484,6 +506,41 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblBoilerReadingInfo)
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_BOILER_READING_INFO_TBL_BOILER_READING_INFO");
+            });
+            //TblWtpPlanCostInfo
+            modelBuilder.Entity<TblWtpPlanCostInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid).HasName("PK_TBL_WTP_PLAN_COST");
+                entity.ToTable("TBL_WTP_PLAN_COST_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.CraetedBy).HasMaxLength(50).HasColumnName("CRAETED_BY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.DeepPump1).HasColumnName("DEEP_PUMP_1");
+                entity.Property(e => e.DeepPump2).HasColumnName("DEEP_PUMP_2");
+                entity.Property(e => e.DeepPump3).HasColumnName("DEEP_PUMP_3");
+                entity.Property(e => e.DeepPump4).HasColumnName("DEEP_PUMP_4");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.Kwh).HasColumnName("KWH");
+                entity.Property(e => e.Maintenance).HasColumnName("MAINTENANCE");
+                entity.Property(e => e.NaclConsumption).HasColumnName("NACL_CONSUMPTION");
+                entity.Property(e => e.NaclCost).HasColumnName("NACL_COST");
+                entity.Property(e => e.Opt01).HasColumnName("OPT01");
+                entity.Property(e => e.Opt2).HasColumnName("OPT2");
+                entity.Property(e => e.Opt3).HasColumnName("OPT3");
+                entity.Property(e => e.Remarks).HasColumnName("REMARKS");
+                entity.Property(e => e.Softner1).HasColumnName("SOFTNER_1");
+                entity.Property(e => e.Softner2).HasColumnName("SOFTNER_2");
+                entity.Property(e => e.Softner3).HasColumnName("SOFTNER_3");
+                entity.Property(e => e.Softner4).HasColumnName("SOFTNER_4");
+                entity.Property(e => e.SoftnerGeneration).HasColumnName("SOFTNER_GENERATION");
+                entity.Property(e => e.TkMcSoftWater).HasColumnName("TK_MC_SOFT_WATER");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.TotalDrawing).HasColumnName("TOTAL_DRAWING");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblWtpPlanCostInfos).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_WTP_PLAN_COST_TBL_EQUIPMENT_DETAILS");
             });
 
             OnModelCreatingPartial(modelBuilder);

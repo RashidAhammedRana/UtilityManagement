@@ -1,0 +1,327 @@
+﻿@model UtilityManagement.Models.TblWtpPlanCostInfo
+
+@{
+    ViewData["Title"] = "Edit WTP Plan Cost Info";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        <i class="bi bi-pencil-square"></i>
+                        Edit WTP Plan Cost Info
+                    </h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="Trid" />
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- DeepPump1 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DeepPump1" class="form-label">
+                                    Deep Pump(01)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DeepPump1" class="form-control" />
+                                <span asp-validation-for="DeepPump1" class="text-danger"></span>
+                            </div>
+
+                            <!-- DeepPump2 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DeepPump2" class="form-label">
+                                    Deep Pump(02) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DeepPump2" class="form-control" />
+                                <span asp-validation-for="DeepPump2" class="text-danger"></span>
+                            </div>
+
+                            <!-- DeepPump3 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DeepPump3" class="form-label">
+                                    Deep Pump(03)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DeepPump3" class="form-control" />
+                                <span asp-validation-for="DeepPump3" class="text-danger"></span>
+                            </div>
+
+                            <!-- DeepPump4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DeepPump4" class="form-label">
+                                    Deep Pump(04)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DeepPump4" class="form-control" />
+                                <span asp-validation-for="DeepPump4" class="text-danger"></span>
+                            </div>
+                            <!-- TotalDrawing -->
+                            <!-- TotalDrawing=DeepPump1+DeepPump2+DeepPump3+DeepPump4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalDrawing" class="form-label">
+                                    Total Drawing<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalDrawing" class="form-control" readonly />
+                                <span asp-validation-for="TotalDrawing" class="text-danger"></span>
+                            </div>
+
+                            <!-- Softner1 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Softner1" class="form-label">
+                                    Softner(01)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Softner1" class="form-control" />
+                                <span asp-validation-for="Softner1" class="text-danger"></span>
+                            </div>
+                            <!-- Softner2 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Softner2" class="form-label">
+                                    Softner(02)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Softner2" class="form-control" />
+                                <span asp-validation-for="Softner2" class="text-danger"></span>
+                            </div>
+                            <!-- Softner3 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Softner3" class="form-label">
+                                    Softner(03)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Softner3" class="form-control" />
+                                <span asp-validation-for="Softner3" class="text-danger"></span>
+                            </div>
+                            <!-- Softner4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Softner4" class="form-label">
+                                    Softner(04)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Softner4" class="form-control" />
+                                <span asp-validation-for="Softner4" class="text-danger"></span>
+                            </div>
+                            <!-- SoftnerGeneration -->
+                            <!-- SoftnerGeneration=Softner1+Softner2+Softner3+Softner4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SoftnerGeneration" class="form-label">
+                                    Softner Generation<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SoftnerGeneration" class="form-control" readonly />
+                                <span asp-validation-for="SoftnerGeneration" class="text-danger"></span>
+                            </div>
+                            <!-- NaclConsumption -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="NaclConsumption" class="form-label">
+                                    NaCl Consumption (Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NaclConsumption" class="form-control" />
+                                <span asp-validation-for="NaclConsumption" class="text-danger"></span>
+                            </div>
+                            <!-- NaclCost -->
+                            <!-- NaclCost=NaclConsumption*Rate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="NaclCost" class="form-label">
+                                    Cost of NaCl<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="NaclCost" class="form-control" readonly />
+                                <span asp-validation-for="NaclCost" class="text-danger"></span>
+                            </div>
+                            <!-- Maintenance -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Maintenance" class="form-label">
+                                    Maintenance<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Maintenance" class="form-control" />
+                                <span asp-validation-for="Maintenance" class="text-danger"></span>
+                            </div>
+                            <!-- Kwh -->
+                            <!-- Electricity Consumption -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Kwh" class="form-label">
+                                    Kwh <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Kwh" class="form-control" />
+
+                                <span asp-validation-for="Kwh" class="text-danger"></span>
+                            </div>
+
+                            <!-- Total Cost = NaCl Cost + Maintenance + Electricity Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalCost" class="form-label">
+                                    Total Cost
+                                </label>
+
+                                <input asp-for="TotalCost" class="form-control" readonly />
+
+                                <span asp-validation-for="TotalCost" class="text-danger"></span>
+                            </div>
+
+                            <!-- Cost per m³ Soft Water -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TkMcSoftWater" class="form-label">
+                                    Tk/m³ of Soft Water
+                                </label>
+
+                                <input asp-for="TkMcSoftWater" class="form-control" readonly />
+
+                                <span asp-validation-for="TkMcSoftWater" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="WtpPlanCostInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success">
+                                <i class="bi bi-check-circle"></i>
+                                Update Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // NaCl Rate from database
+        const naclRate = parseFloat('@ViewBag.NaclRate') || 0;
+
+        // Helper function
+        function el(id) {
+            return document.getElementById(id);
+        }
+
+        function num(id) {
+            return parseFloat(el(id)?.value) || 0;
+        }
+
+        function calculate() {
+
+            // ==========================
+            // Total Drawing
+            // TotalDrawing = DeepPump1 + DeepPump2 + DeepPump3 + DeepPump4
+            // ==========================
+            const totalDrawing =
+                num("DeepPump1") +
+                num("DeepPump2") +
+                num("DeepPump3") +
+                num("DeepPump4");
+
+            el("TotalDrawing").value = totalDrawing.toFixed(2);
+
+            // ==========================
+            // Softner Generation
+            // SoftnerGeneration = Softner1 + Softner2 + Softner3 + Softner4
+            // ==========================
+            const softnerGeneration =
+                num("Softner1") +
+                num("Softner2") +
+                num("Softner3") +
+                num("Softner4");
+
+            el("SoftnerGeneration").value = softnerGeneration.toFixed(2);
+
+            // ==========================
+            // NaCl Cost
+            // NaclCost = NaclConsumption × Rate
+            // ==========================
+            const naclCost = num("NaclConsumption") * naclRate;
+
+            el("NaclCost").value = naclCost.toFixed(2);
+
+            // ==========================
+            // Total Cost
+            // TotalCost = NaclCost + Maintenance + Kwh
+            // ==========================
+            const totalCost =
+                naclCost +
+                num("Maintenance") +
+                num("Kwh");
+
+            el("TotalCost").value = totalCost.toFixed(2);
+
+            // ==========================
+            // Tk/m3 of Soft Water
+            // TkMcSoftWater = TotalCost / SoftnerGeneration
+            // ==========================
+            const tkMcSoftWater =
+                softnerGeneration > 0
+                    ? totalCost / softnerGeneration
+                    : 0;
+
+            el("TkMcSoftWater").value = tkMcSoftWater.toFixed(2);
+        }
+
+        // Fields that trigger recalculation
+        [
+            "DeepPump1",
+            "DeepPump2",
+            "DeepPump3",
+            "DeepPump4",
+            "Softner1",
+            "Softner2",
+            "Softner3",
+            "Softner4",
+            "NaclConsumption",
+            "Maintenance",
+            "Kwh"
+        ].forEach(id => {
+            const input = el(id);
+            if (input) {
+                input.addEventListener("input", calculate);
+            }
+        });
+
+        // Initial calculation
+        calculate();
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

@@ -5,11 +5,11 @@ using UtilityManagement.Data;
 using UtilityManagement.Models;
 using System.Globalization;
 
-public class WtpPlanCostInfoController : Controller
+public class WtpWaterConsumptionInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
 
-    public WtpPlanCostInfoController(ApplicationDbContext context)
+    public WtpWaterConsumptionInfoController(ApplicationDbContext context)
     {
         _context = context;
     }
@@ -18,14 +18,14 @@ public class WtpPlanCostInfoController : Controller
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> WtpPlanCostInfoList(int page = 1, string searchString = "")
+    public async Task<IActionResult> WtpWaterConsumptionInfoList(int page = 1, string searchString = "")
     {
         int pageSize = 15;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "WTP Plan Cost")
+            .Where(x => x.MenuName == "WTP Water Cons.")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -47,7 +47,7 @@ public class WtpPlanCostInfoController : Controller
         // =========================
         // BASE QUERY
         // =========================
-        var query = _context.TblWtpPlanCostInfo
+        var query = _context.TblWtpWaterConsumptionInfo
             .Include(x => x.Eq)
             .AsQueryable();
 
@@ -176,17 +176,10 @@ public class WtpPlanCostInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblWtpPlanCostInfo
+        var model = new TblWtpWaterConsumptionInfo
         {
             Trdate = DateTime.Today
         };
-
-        var naclRate = _context.TblNaclRate
-                     .OrderByDescending(x => x.Naclrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
-
-        ViewBag.NaclRate = naclRate;
 
         ViewBag.EquipmentList = _context.TblEquipmentDetails
             .Select(x => new SelectListItem
@@ -200,23 +193,23 @@ public class WtpPlanCostInfoController : Controller
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblWtpPlanCostInfo wtpPlanCostInfo)
+    public async Task<IActionResult> Create(TblWtpWaterConsumptionInfo wtpWaterConsumptionInfo)
     {
         try
         {
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(wtpPlanCostInfo);
+                return View(wtpWaterConsumptionInfo);
             }
 
             // Normalize date (only date part)
-            var dateOnly = wtpPlanCostInfo.Trdate?.Date;
+            var dateOnly = wtpWaterConsumptionInfo.Trdate?.Date;
 
             // ❌ CHECK DUPLICATE: Same Machine + Same Date
-            var isExists = await _context.TblWtpPlanCostInfo
+            var isExists = await _context.TblWtpWaterConsumptionInfo
                 .AnyAsync(x =>
-                    x.Eqid == wtpPlanCostInfo.Eqid &&
+                    x.Eqid == wtpWaterConsumptionInfo.Eqid &&
                     x.Trdate.HasValue &&
                     x.Trdate.Value.Date == dateOnly
                 );
@@ -224,39 +217,39 @@ public class WtpPlanCostInfoController : Controller
             if (isExists)
             {
                 ModelState.AddModelError("", "This machine already has a reading for this date!");
-                return View(wtpPlanCostInfo);
+                return View(wtpWaterConsumptionInfo);
             }
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;
             var currentUser = User.Identity?.Name ?? "System";
             // Created Information
-            wtpPlanCostInfo.CreatedAt = now;
-            wtpPlanCostInfo.CreatedBy = currentUser;
+            wtpWaterConsumptionInfo.CreatedAt = now;
+            wtpWaterConsumptionInfo.CreatedBy = currentUser;
 
-            wtpPlanCostInfo.Trdate = dateOnly?
+            wtpWaterConsumptionInfo.Trdate = dateOnly?
                 .AddHours(now.Hour)
                 .AddMinutes(now.Minute)
                 .AddSeconds(now.Second);
 
-            _context.TblWtpPlanCostInfo.Add(wtpPlanCostInfo);
+            _context.TblWtpWaterConsumptionInfo.Add(wtpWaterConsumptionInfo);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading created successfully.";
 
-            return RedirectToAction(nameof(WtpPlanCostInfoList));
+            return RedirectToAction(nameof(WtpWaterConsumptionInfoList));
         }
         catch (Exception)
         {
             TempData["ErrorMessage"] = "Failed to create reading.";
-            return View(wtpPlanCostInfo);
+            return View(wtpWaterConsumptionInfo);
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
-        var reading = await _context.TblWtpPlanCostInfo
+        var reading = await _context.TblWtpWaterConsumptionInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (reading == null)
@@ -271,17 +264,12 @@ public class WtpPlanCostInfoController : Controller
             })
             .ToList();
 
-        ViewBag.NaclRate = await _context.TblNaclRate
-            .Select(x => x.Rate)
-            .FirstOrDefaultAsync();
-
-
         return View(reading);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblWtpPlanCostInfo wtpPlanCostInfo)
+    public async Task<IActionResult> Edit(TblWtpWaterConsumptionInfo wtpWaterConsumptionInfo)
     {
         try
         {
@@ -295,11 +283,11 @@ public class WtpPlanCostInfoController : Controller
                     })
                     .ToList();
 
-                return View(wtpPlanCostInfo);
+                return View(wtpWaterConsumptionInfo);
             }
 
-            var existing = await _context.TblWtpPlanCostInfo
-                .FirstOrDefaultAsync(x => x.Trid == wtpPlanCostInfo.Trid);
+            var existing = await _context.TblWtpWaterConsumptionInfo
+                .FirstOrDefaultAsync(x => x.Trid == wtpWaterConsumptionInfo.Trid);
 
             if (existing == null)
             {
@@ -307,27 +295,29 @@ public class WtpPlanCostInfoController : Controller
             }
 
             // Update editable fields
-            existing.Trdate = wtpPlanCostInfo.Trdate;
-            existing.Eqid = wtpPlanCostInfo.Eqid;
+            existing.Trdate = wtpWaterConsumptionInfo.Trdate;
+            existing.Eqid = wtpWaterConsumptionInfo.Eqid;
 
-            existing.DeepPump1 = wtpPlanCostInfo.DeepPump1;
-            existing.DeepPump2 = wtpPlanCostInfo.DeepPump2;
-            existing.DeepPump3 = wtpPlanCostInfo.DeepPump3;
-            existing.DeepPump4 = wtpPlanCostInfo.DeepPump4;
-            existing.TotalDrawing = wtpPlanCostInfo.TotalDrawing;
+            existing.ConsumptionB1 = wtpWaterConsumptionInfo.ConsumptionB1;
+            existing.ConsumptionB11 = wtpWaterConsumptionInfo.ConsumptionB11;
+            existing.ConsumptionB12 = wtpWaterConsumptionInfo.ConsumptionB12;
+            existing.ConsumptionConstruction = wtpWaterConsumptionInfo.ConsumptionConstruction;
+            existing.BackWashWater = wtpWaterConsumptionInfo.BackWashWater;
+            existing.SurplusRawWater = wtpWaterConsumptionInfo.SurplusRawWater;
+            existing.TotalConsumptionRawWater = wtpWaterConsumptionInfo.TotalConsumptionRawWater;
 
-            existing.Softner1 = wtpPlanCostInfo.Softner1;
-            existing.Softner2 = wtpPlanCostInfo.Softner2;
-            existing.Softner3 = wtpPlanCostInfo.Softner3;
-            existing.Softner4 = wtpPlanCostInfo.Softner4;
-            existing.SoftnerGeneration = wtpPlanCostInfo.SoftnerGeneration;
+            existing.ConsumptionD1 = wtpWaterConsumptionInfo.ConsumptionD1;
+            existing.ConsumptionD2 = wtpWaterConsumptionInfo.ConsumptionD2;
+            existing.ConsumptionSlitting = wtpWaterConsumptionInfo.ConsumptionSlitting;
+            existing.ConsumptionFinishing = wtpWaterConsumptionInfo.ConsumptionFinishing;
+            existing.Washing = wtpWaterConsumptionInfo.Washing;
+            existing.ConsumptionChiller = wtpWaterConsumptionInfo.ConsumptionChiller;
+            existing.ConsumptionGenerator = wtpWaterConsumptionInfo.ConsumptionGenerator;
+            existing.ConsumptionSteam = wtpWaterConsumptionInfo.ConsumptionSteam;
+            existing.TotalConsumptionSoftWater = wtpWaterConsumptionInfo.TotalConsumptionSoftWater;
 
-            existing.NaclConsumption = wtpPlanCostInfo.NaclConsumption;
-            existing.NaclCost = wtpPlanCostInfo.NaclCost;
-            existing.Maintenance = wtpPlanCostInfo.Maintenance;
-            existing.Kwh = wtpPlanCostInfo.Kwh;
-            existing.TotalCost = wtpPlanCostInfo.TotalCost;
-            existing.TkMcSoftWater = wtpPlanCostInfo.TkMcSoftWater;
+            existing.ConDyeingHotWaterOut = wtpWaterConsumptionInfo.ConDyeingHotWaterOut;
+            existing.ConDyeingHotWaterIn = wtpWaterConsumptionInfo.ConDyeingHotWaterIn;
 
             // Update audit fields
             existing.UpdatedAt = DateTime.Now;
@@ -337,7 +327,7 @@ public class WtpPlanCostInfoController : Controller
 
             TempData["SuccessMessage"] = "Reading updated successfully.";
 
-            return RedirectToAction(nameof(WtpPlanCostInfoList));
+            return RedirectToAction(nameof(WtpWaterConsumptionInfoList));
         }
         catch (Exception)
         {
@@ -351,14 +341,14 @@ public class WtpPlanCostInfoController : Controller
                 })
                 .ToList();
 
-            return View(wtpPlanCostInfo);
+            return View(wtpWaterConsumptionInfo);
         }
     }
 
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblWtpPlanCostInfo.FindAsync(id);
+        var data = await _context.TblWtpWaterConsumptionInfo.FindAsync(id);
 
         if (data == null)
             return NotFound();
@@ -370,21 +360,21 @@ public class WtpPlanCostInfoController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var data = await _context.TblWtpPlanCostInfo
+        var data = await _context.TblWtpWaterConsumptionInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
         {
             TempData["ErrorMessage"] = "Readings not found.";
-            return RedirectToAction(nameof(WtpPlanCostInfoList));
+            return RedirectToAction(nameof(WtpWaterConsumptionInfoList));
         }
 
-        _context.TblWtpPlanCostInfo.Remove(data);
+        _context.TblWtpWaterConsumptionInfo.Remove(data);
         await _context.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
-        return RedirectToAction(nameof(WtpPlanCostInfoList));
+        return RedirectToAction(nameof(WtpWaterConsumptionInfoList));
     }
 }
 

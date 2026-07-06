@@ -38,6 +38,8 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblGenRmsRoom> TblGenRmsRoom { get; set; }
         public virtual DbSet<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; }
         public virtual DbSet<TblWtpPlanCostInfo> TblWtpPlanCostInfo { get; set; }
+        public virtual DbSet<TblWtpWaterConsumptionInfo> TblWtpWaterConsumptionInfo { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -513,7 +515,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid).HasName("PK_TBL_WTP_PLAN_COST");
                 entity.ToTable("TBL_WTP_PLAN_COST_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
-                entity.Property(e => e.CraetedBy).HasMaxLength(50).HasColumnName("CRAETED_BY");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.DeepPump1).HasColumnName("DEEP_PUMP_1");
                 entity.Property(e => e.DeepPump2).HasColumnName("DEEP_PUMP_2");
@@ -541,6 +543,44 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblWtpPlanCostInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_WTP_PLAN_COST_TBL_EQUIPMENT_DETAILS");
+            });
+            //TblWtpWaterConsumptionInfo
+            modelBuilder.Entity<TblWtpWaterConsumptionInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_WTP_WATER_CONSUMPTION_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.BackWashWater).HasColumnName("BACK_WASH_WATER");
+                entity.Property(e => e.ConDyeingHotWaterIn).HasColumnName("CON_DYEING_HOT_WATER_IN");
+                entity.Property(e => e.ConDyeingHotWaterOut).HasColumnName("CON_DYEING_HOT_WATER_OUT");
+                entity.Property(e => e.ConsumptionB1).HasColumnName("CONSUMPTION_B1");
+                entity.Property(e => e.ConsumptionB11).HasColumnName("CONSUMPTION_B11");
+                entity.Property(e => e.ConsumptionB12).HasColumnName("CONSUMPTION_B12");
+                entity.Property(e => e.ConsumptionB7).HasColumnName("CONSUMPTION_B7");
+                entity.Property(e => e.ConsumptionChiller).HasColumnName("CONSUMPTION_CHILLER");
+                entity.Property(e => e.ConsumptionConstruction).HasColumnName("CONSUMPTION_CONSTRUCTION");
+                entity.Property(e => e.ConsumptionD1).HasColumnName("CONSUMPTION_D1");
+                entity.Property(e => e.ConsumptionD2).HasColumnName("CONSUMPTION_D2");
+                entity.Property(e => e.ConsumptionFinishing).HasColumnName("CONSUMPTION_FINISHING");
+                entity.Property(e => e.ConsumptionGenerator).HasColumnName("CONSUMPTION_GENERATOR");
+                entity.Property(e => e.ConsumptionSlitting).HasColumnName("CONSUMPTION_SLITTING");
+                entity.Property(e => e.ConsumptionSteam).HasColumnName("CONSUMPTION_STEAM");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.Opt01).HasColumnName("OPT01");
+                entity.Property(e => e.Opt03).HasColumnName("OPT03");
+                entity.Property(e => e.Opto2).HasColumnName("OPTO2");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.SurplusRawWater).HasColumnName("SURPLUS_RAW_WATER");
+                entity.Property(e => e.TotalConsumptionRawWater).HasColumnName("TOTAL_CONSUMPTION_RAW_WATER");
+                entity.Property(e => e.TotalConsumptionSoftWater).HasColumnName("TOTAL_CONSUMPTION_SOFT_WATER");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.Property(e => e.Washing).HasColumnName("WASHING");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblWtpWaterConsumptionInfos).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_WTP_WATER_CONSUMPTION_INFO_TBL_EQUIPMENT_DETAILS");
             });
 
             OnModelCreatingPartial(modelBuilder);

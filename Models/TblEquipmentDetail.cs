@@ -34,5 +34,7 @@ public partial class TblEquipmentDetail
     public virtual ICollection<TblGenRmsRoom> TblGenRmsRooms { get; set; } = new List<TblGenRmsRoom>();
     public virtual ICollection<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; } = new List<TblBoilerReadingInfo>();
     public virtual ICollection<TblWtpPlanCostInfo> TblWtpPlanCostInfos { get; set; } = new List<TblWtpPlanCostInfo>();
+    public virtual ICollection<TblWtpWaterConsumptionInfo> TblWtpWaterConsumptionInfos { get; set; } = new List<TblWtpWaterConsumptionInfo>();
+
 
 }

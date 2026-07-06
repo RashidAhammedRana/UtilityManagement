@@ -4,7 +4,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace UtilityManagement.Models;
 
-public partial class TblWtpPlanCostInfo
+public partial class TblWtpWaterConsumptionInfo
 {
     public int Trid { get; set; }
     [Required(ErrorMessage = "This field is required")]
@@ -12,53 +12,58 @@ public partial class TblWtpPlanCostInfo
     [Required(ErrorMessage = "This field is required")]
     public int? Eqid { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? DeepPump1 { get; set; }
+    public double? ConsumptionB1 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? DeepPump2 { get; set; }
+    public double? ConsumptionB7 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? DeepPump3 { get; set; }
+    public double? ConsumptionB11 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? DeepPump4 { get; set; }
+    public double? ConsumptionB12 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? TotalDrawing { get; set; }
+    public double? ConsumptionConstruction { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Softner1 { get; set; }
+    public double? BackWashWater { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Softner2 { get; set; }
+    public double? SurplusRawWater { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Softner3 { get; set; }
+    public double? TotalConsumptionRawWater { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Softner4 { get; set; }
+    public double? ConsumptionD1 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? SoftnerGeneration { get; set; }
+    public double? ConsumptionD2 { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? NaclConsumption { get; set; }
+    public double? ConsumptionSlitting { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? NaclCost { get; set; }
+    public double? ConsumptionFinishing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Maintenance { get; set; }
+    public double? Washing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Kwh { get; set; }
+    public double? ConsumptionChiller { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? TotalCost { get; set; }
+    public double? ConsumptionGenerator { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? TkMcSoftWater { get; set; }
-
+    public double? ConsumptionSteam { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? TotalConsumptionSoftWater { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? ConDyeingHotWaterOut { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? ConDyeingHotWaterIn { get; set; }
     public double? Opt01 { get; set; }
 
-    public double? Opt2 { get; set; }
+    public double? Opto2 { get; set; }
 
-    public double? Opt3 { get; set; }
+    public double? Opt03 { get; set; }
 
-    public double? Remarks { get; set; }
-
-    public string? CreatedBy { get; set; }
+    public string? Remarks { get; set; }
 
     public DateTime? CreatedAt { get; set; }
 
-    public string? UpdatedBy { get; set; }
+    public string? CreatedBy { get; set; }
 
     public DateTime? UpdatedAt { get; set; }
+
+    public string? UpdatedBy { get; set; }
 
     public virtual TblEquipmentDetail? Eq { get; set; }
 }

@@ -21,4 +21,5 @@ public partial class TblBuildingInfo
     public virtual TblCompanyInfo? Com { get; set; }
 
     public virtual ICollection<TblFloorInfo> TblFloorInfo { get; set; } = new List<TblFloorInfo>();
+    public virtual ICollection<TblLoadChartMasterFile> TblLoadChartMasterFiles { get; set; } = new List<TblLoadChartMasterFile>();
 }

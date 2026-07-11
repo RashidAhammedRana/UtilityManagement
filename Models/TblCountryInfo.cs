@@ -16,4 +16,5 @@ public partial class TblCountryInfo
     public string? Status { get; set; }
 
     public string? Remarks { get; set; }
+    public virtual ICollection<TblLoadChartMasterFile> TblLoadChartMasterFiles { get; set; } = new List<TblLoadChartMasterFile>();
 }

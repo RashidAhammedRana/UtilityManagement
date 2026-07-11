@@ -46,6 +46,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblBrandInfo> TblBrandInfo { get; set; }
         public virtual DbSet<TblCountryInfo> TblCountryInfo { get; set; }
         public virtual DbSet<TblLoadTypeInfo> TblLoadTypeInfo { get; set; }
+        public virtual DbSet<TblLoadChartMasterFile> TblLoadChartMasterFile { get; set; }
 
 
 
@@ -716,6 +717,80 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Status)
                     .HasMaxLength(50)
                     .HasColumnName("STATUS");
+            });
+
+            //TblLoadChartMasterFile
+            modelBuilder.Entity<TblLoadChartMasterFile>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_LOAD_CHART_MASTER_FILE");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AmpSignalPhase).HasColumnName("AMP_SIGNAL_PHASE");
+                entity.Property(e => e.AmpThreePhase).HasColumnName("AMP_THREE_PHASE");
+                entity.Property(e => e.Bldid).HasColumnName("BLDID");
+                entity.Property(e => e.Brndid).HasColumnName("BRNDID");
+                entity.Property(e => e.Capacity)
+                    .HasMaxLength(50)
+                    .HasColumnName("CAPACITY");
+                entity.Property(e => e.CmsnDate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CMSN_DATE");
+                entity.Property(e => e.Cntid).HasColumnName("CNTID");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.Description)
+                    .HasMaxLength(50)
+                    .HasColumnName("DESCRIPTION");
+                entity.Property(e => e.Flid).HasColumnName("FLID");
+                entity.Property(e => e.Ltid).HasColumnName("LTID");
+                entity.Property(e => e.Model)
+                    .HasMaxLength(50)
+                    .HasColumnName("MODEL");
+                entity.Property(e => e.Pf).HasColumnName("PF");
+                entity.Property(e => e.Qty).HasColumnName("QTY");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Si)
+                    .HasMaxLength(50)
+                    .HasColumnName("SI");
+                entity.Property(e => e.StandbyLoadKw).HasColumnName("STANDBY_LOAD_KW");
+                entity.Property(e => e.SubTotalKw400v).HasColumnName("SUB_TOTAL_KW_400V");
+                entity.Property(e => e.SubTotalWatt).HasColumnName("SUB_TOTAL_WATT");
+                entity.Property(e => e.TotalLoadKw).HasColumnName("TOTAL_LOAD_KW");
+                entity.Property(e => e.TotalLoadWithoutStandby).HasColumnName("TOTAL_LOAD_WITHOUT_STANDBY");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Type)
+                    .HasMaxLength(50)
+                    .HasColumnName("TYPE");
+                entity.Property(e => e.Volt).HasColumnName("VOLT");
+                entity.Property(e => e.Watt).HasColumnName("WATT");
+
+                entity.HasOne(d => d.Brnd).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Brndid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_BRAND_INFO");
+
+                entity.HasOne(d => d.Cnt).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Cntid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_COUNTRY_INFO");
+
+                entity.HasOne(d => d.Fl).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Flid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_FLOOR_INFO");
+
+                entity.HasOne(d => d.Lt).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Ltid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_LOAD_TYPE_INFO");
+
+                entity.HasOne(d => d.Company).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_COMPANY_INFO");
+                entity.HasOne(d => d.Building).WithMany(p => p.TblLoadChartMasterFiles)
+                    .HasForeignKey(d => d.Bldid)
+                    .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_BUILDING_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

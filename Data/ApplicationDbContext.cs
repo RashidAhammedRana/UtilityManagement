@@ -40,6 +40,13 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblWtpPlanCostInfo> TblWtpPlanCostInfo { get; set; }
         public virtual DbSet<TblWtpWaterConsumptionInfo> TblWtpWaterConsumptionInfo { get; set; }
 
+        public virtual DbSet<TblBuildingInfo> TblBuildingInfo { get; set; }
+        public virtual DbSet<TblCompanyInfo> TblCompanyInfo { get; set; }
+        public virtual DbSet<TblFloorInfo> TblFloorInfo { get; set; }
+        public virtual DbSet<TblBrandInfo> TblBrandInfo { get; set; }
+        public virtual DbSet<TblCountryInfo> TblCountryInfo { get; set; }
+        public virtual DbSet<TblLoadTypeInfo> TblLoadTypeInfo { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -581,6 +588,134 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Washing).HasColumnName("WASHING");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblWtpWaterConsumptionInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_WTP_WATER_CONSUMPTION_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+
+            modelBuilder.Entity<TblBuildingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Bldid);
+
+                entity.ToTable("TBL_BUILDING_INFO");
+
+                entity.Property(e => e.Bldid).HasColumnName("BLDID");
+                entity.Property(e => e.BldName)
+                    .HasMaxLength(50)
+                    .HasColumnName("BLD_NAME");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(10)
+                    .IsFixedLength()
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+
+                entity.HasOne(d => d.Com).WithMany(p => p.TblBuildingInfo)
+                    .HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_BUILDING_INFO_TBL_BUILDING_INFO");
+            });
+
+            modelBuilder.Entity<TblCompanyInfo>(entity =>
+            {
+                entity.HasKey(e => e.Comid);
+
+                entity.ToTable("TBL_COMPANY_INFO");
+
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.ComAddress)
+                    .HasMaxLength(250)
+                    .HasColumnName("COM_ADDRESS");
+                entity.Property(e => e.ComContact)
+                    .HasMaxLength(50)
+                    .HasColumnName("COM_CONTACT");
+                entity.Property(e => e.ComEmail)
+                    .HasMaxLength(50)
+                    .HasColumnName("COM_EMAIL");
+                entity.Property(e => e.ComName)
+                    .HasMaxLength(50)
+                    .HasColumnName("COM_NAME");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
+
+            modelBuilder.Entity<TblFloorInfo>(entity =>
+            {
+                entity.HasKey(e => e.Flid);
+
+                entity.ToTable("TBL_FLOOR_INFO");
+
+                entity.Property(e => e.Flid).HasColumnName("FLID");
+                entity.Property(e => e.Bldid).HasColumnName("BLDID");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.Flname)
+                    .HasMaxLength(50)
+                    .HasColumnName("FLNAME");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+
+                entity.HasOne(d => d.Building).WithMany(p => p.TblFloorInfo)
+                    .HasForeignKey(d => d.Bldid)
+                    .HasConstraintName("FK_TBL_FLOOR_INFO_TBL_BUILDING_INFO");
+
+                entity.HasOne(d => d.Company).WithMany(p => p.TblFloorInfo)
+                    .HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_FLOOR_INFO_TBL_COMPANY_INFO");
+            });
+            //TblBrandInfo
+            modelBuilder.Entity<TblBrandInfo>(entity =>
+            {
+                entity.HasKey(e => e.Brndid);
+
+                entity.ToTable("TBL_BRAND_INFO");
+
+                entity.Property(e => e.Brndid).HasColumnName("BRNDID");
+                entity.Property(e => e.BrndName)
+                    .HasMaxLength(50)
+                    .HasColumnName("BRND_NAME");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+            });
+            //TblCountryInfo
+            modelBuilder.Entity<TblCountryInfo>(entity =>
+            {
+                entity.HasKey(e => e.Cntid);
+
+                entity.ToTable("TBL_COUNTRY_INFO");
+
+                entity.Property(e => e.Cntid).HasColumnName("CNTID");
+                entity.Property(e => e.CntCode).HasMaxLength(50).HasColumnName("CNT_CODE");
+                entity.Property(e => e.CntName).HasMaxLength(50).HasColumnName("CNT_NAME");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
+            });
+            //TblLoadTypeInfo
+            modelBuilder.Entity<TblLoadTypeInfo>(entity =>
+            {
+                entity.HasKey(e => e.Ltid);
+
+                entity.ToTable("TBL_LOAD_TYPE_INFO");
+
+                entity.Property(e => e.Ltid).HasColumnName("LTID");
+                entity.Property(e => e.Ltname)
+                    .HasMaxLength(50)
+                    .HasColumnName("LTNAME");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
             });
 
             OnModelCreatingPartial(modelBuilder);

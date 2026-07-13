@@ -34,11 +34,10 @@ public partial class TblLoadChartMasterFile
     [Required(ErrorMessage = "This field is required")]
     public string? Model { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    [Display(Name = "SI")]
-    public string? Si { get; set; }
+    [Display(Name = "Sl No.")]
+    public string? SlNo { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public string? Capacity { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Comissioning Date")]
     public DateTime? CmsnDate { get; set; }
     [Required(ErrorMessage = "This field is required")]
@@ -47,7 +46,7 @@ public partial class TblLoadChartMasterFile
     public int? Qty { get; set; }
     [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Sub Total Watt")]
-    public int? SubTotalWatt { get; set; }
+    public double? SubTotalWatt { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public int? Volt { get; set; }
     [Required(ErrorMessage = "This field is required")]
@@ -62,9 +61,6 @@ public partial class TblLoadChartMasterFile
     [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Sub Total(Kw 400v)")]
     public double? SubTotalKw400v { get; set; }
-    [Required(ErrorMessage = "This field is required")]
-    [Display(Name = "Total Load(Kw)")]
-    public double? TotalLoadKw { get; set; }
     [Required(ErrorMessage = "This field is required")]
     [Display(Name = "Standby Load(Kw)")]
     public double? StandbyLoadKw { get; set; }

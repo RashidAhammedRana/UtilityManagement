@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<UtilityManagement.Models.TblLoadChartMasterFile>
 
 @{
-    ViewData["Title"] = "Load Chart Master File List";
+    ViewData["Title"] = "Electrical Load Chart List";
 
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
@@ -19,10 +19,10 @@
     string search = ViewBag.SearchString ?? "";
 }
 
-<h2 class="text-center">Load Chart Master File List</h2>
+<h2 class="text-center">Electrical Load Chart List</h2>
 
 <p class="text-muted text-center">
-    Total Readings: <strong>@ViewBag.totalFiles</strong>
+    Total File: <strong>@ViewBag.totalFiles</strong>
 </p>
 
 <div class="d-flex justify-content-between mb-3 align-items-center">
@@ -69,7 +69,7 @@
         <thead class="table-dark">
             <tr class="text-center">
                 <th>SL</th>
-                <th style="width: 10%;">Date</th>
+                @* <th style="width: 10%;">Date</th> *@
                 <th>Company</th>
                 <th>Building</th>
                 <th>Floor</th>
@@ -91,17 +91,17 @@
 
                 <tr>
                     <td class="text-center">@sl</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
+                    @* <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td> *@
+                    <td class="text-center">@item.Company?.ComName</td>
+                    <td class="text-center">@item.Building?.BldName</td>
+                    <td class="text-center">@item.Fl?.Flname</td>
+                    <td class="text-center">@item.Lt?.Ltname</td>
+                    <td class="text-center">@item.Description</td>
+                    <td class="text-center">@item.Type</td>
+                    <td class="text-center">@item.Cnt?.CntName</td>
+                    <td class="text-center">@item.Brnd?.BrndName</td>
+                    <td class="text-center">@item.Model</td>
+                    <td class="text-center">@item.Capacity</td>
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
 

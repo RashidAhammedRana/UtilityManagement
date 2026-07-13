@@ -1,5 +1,465 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@model UtilityManagement.Models.TblLoadChartMasterFile
+
 @{
+    ViewData["Title"] = "Edit Electrical Load Chart";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Edit Electrical Load Chart Info</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" method="post">
+                        <input asp-for="Trid" type="hidden" />
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Company -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Comid" class="form-label">
+                                    Company <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Comid" asp-items="ViewBag.CompanyList" class="form-select">
+                                    <option value="">-- Select Company --</option>
+                                </select>
+
+                                <span asp-validation-for="Comid" class="text-danger"></span>
+                            </div>
+
+                            <!-- Building -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Bldid" class="form-label">
+                                    Building <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Bldid" asp-items="ViewBag.BuidingList" class="form-select">
+                                    <option value="">-- Select Building --</option>
+                                </select>
+
+                                <span asp-validation-for="Bldid" class="text-danger"></span>
+                            </div>
+
+                            <!-- Floor -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Flid" class="form-label">
+                                    Floor <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Flid" asp-items="ViewBag.FloorList" class="form-select">
+                                    <option value="">-- Select Floor --</option>
+                                </select>
+
+                                <span asp-validation-for="Flid" class="text-danger"></span>
+                            </div>
+
+                            <!-- Load Type -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Ltid" class="form-label">
+                                    Load Type <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Ltid" asp-items="ViewBag.LoadTypeList" class="form-select">
+                                    <option value="">-- Select Load Type --</option>
+                                </select>
+
+                                <span asp-validation-for="Ltid" class="text-danger"></span>
+                            </div>
+                            <!-- Description -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Description" class="form-label">
+                                    Description<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Description" class="form-control" />
+                                <span asp-validation-for="Description" class="text-danger"></span>
+                            </div>
+
+                            <!-- Type -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Type" class="form-label">
+                                    Type<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Type" class="form-control" />
+                                <span asp-validation-for="Type" class="text-danger"></span>
+                            </div>
+                            <!-- Origien -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Cntid" class="form-label">
+                                    Origien <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Cntid" asp-items="ViewBag.CountryList" class="form-select">
+                                    <option value="">-- Select Origien --</option>
+                                </select>
+
+                                <span asp-validation-for="Cntid" class="text-danger"></span>
+                            </div>
+                            <!-- Brand -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Brndid" class="form-label">
+                                    Brand <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Brndid" asp-items="ViewBag.BrandList" class="form-select">
+                                    <option value="">-- Select Brand --</option>
+                                </select>
+
+                                <span asp-validation-for="Brndid" class="text-danger"></span>
+                            </div>
+                            <!-- Model -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Model" class="form-label">
+                                    Model<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Model" class="form-control" />
+                                <span asp-validation-for="Model" class="text-danger"></span>
+                            </div>
+                            <!-- SI -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SlNo" class="form-label">
+                                    SL No.<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SlNo" class="form-control" />
+                                <span asp-validation-for="SlNo" class="text-danger"></span>
+                            </div>
+                            <!-- Capacity -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Capacity" class="form-label">
+                                    Capacity<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Capacity" class="form-control" />
+                                <span asp-validation-for="Capacity" class="text-danger"></span>
+                            </div>
+                            <!-- CmsnDate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CmsnDate" class="form-label">
+                                    Comissioning Date
+                                </label>
+                                <input asp-for="CmsnDate" type="date" class="form-control" />
+                            </div>
+                            <!-- Watt -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Watt" class="form-label">
+                                    Watt<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Watt" class="form-control" />
+                                <span asp-validation-for="Watt" class="text-danger"></span>
+                            </div>
+                            <!-- Qty -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Qty" class="form-label">
+                                    Qty<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Qty" class="form-control" />
+                                <span asp-validation-for="Qty" class="text-danger"></span>
+                            </div>
+                            <!-- Sub Total Watt -->
+                            <!-- SubTotalWatt=Watt*Qty -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SubTotalWatt" class="form-label">
+                                    Sub Total Watt<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SubTotalWatt" class="form-control" readonly />
+                                <span asp-validation-for="SubTotalWatt" class="text-danger"></span>
+                            </div>
+                            <!-- Volt -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Volt" class="form-label">
+                                    Volt <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Volt" class="form-select">
+                                    <option value="">-- Select Volt --</option>
+                                    <option value=220>220</option>
+                                    <option value=400>400</option>
+                                </select>
+
+                                <span asp-validation-for="Volt" class="text-danger"></span>
+                            </div>
+                            <!-- PF -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Pf" class="form-label">
+                                    PF<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Pf" class="form-control" />
+                                <span asp-validation-for="Pf" class="text-danger"></span>
+                            </div>
+
+                            <!-- AmpSignalPhase -->
+                            <!-- if volt=220 then: AmpSignalPhase=SubTotalWatt/220*.9 -->
+
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="AmpSignalPhase" class="form-label">
+                                    Amp(Signal Phase)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="AmpSignalPhase" class="form-control" readonly />
+                                <span asp-validation-for="AmpSignalPhase" class="text-danger"></span>
+                            </div>
+                            <!-- AmpThreePhase -->
+                            <!-- if volt=400 then: AmpThreePhase=SubTotalWatt/220*.9*1.73 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="AmpThreePhase" class="form-label">
+                                    Amp(Three Phase)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="AmpThreePhase" class="form-control" readonly />
+                                <span asp-validation-for="AmpThreePhase" class="text-danger"></span>
+                            </div>
+                            <!-- SubTotalKw400v -->
+                            <!-- if volt=400 then: SubTotalKw400v=SubTotalWatt/1000 -->
+                            <!-- if volt=220 then: SubTotalKw400v=SubTotalWatt/1000/3 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SubTotalKw400v" class="form-label">
+                                    Sub Total (Kw 400v)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SubTotalKw400v" class="form-control" readonly />
+                                <span asp-validation-for="SubTotalKw400v" class="text-danger"></span>
+                            </div>
+                            <!-- TotalLoadKw -->
+                            @*  <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalLoadKw" class="form-label">
+                                    Total Load(Kw)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalLoadKw" class="form-control" />
+                                <span asp-validation-for="TotalLoadKw" class="text-danger"></span>
+                            </div> *@
+                            <!-- StandbyLoadKw -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="StandbyLoadKw" class="form-label">
+                                    Standby Load(Kw)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="StandbyLoadKw" class="form-control" />
+                                <span asp-validation-for="StandbyLoadKw" class="text-danger"></span>
+                            </div>
+                            <!-- TotalLoadWithoutStandby -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalLoadWithoutStandby" class="form-label">
+                                    Total Load Without Standby<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalLoadWithoutStandby" class="form-control" />
+                                <span asp-validation-for="TotalLoadWithoutStandby" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="LoadChartMasterFileList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Update
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        $(document).ready(function () {
+
+            function calculateLoad() {
+
+                var watt = parseFloat($("#Watt").val()) || 0;
+                var qty = parseFloat($("#Qty").val()) || 0;
+                var volt = parseFloat($("#Volt").val()) || 0;
+                var pf = parseFloat($("#Pf").val()) || 0.9;
+
+                //---------------------------------
+                // Sub Total Watt
+                //---------------------------------
+
+                var subTotalWatt = watt * qty;
+
+                $("#SubTotalWatt").val(subTotalWatt.toFixed(2));
+
+                //---------------------------------
+                // Amp & KW Calculation
+                //---------------------------------
+
+                var subTotalKw400v = 0;
+
+                if (volt == 220) {
+
+                    var ampSignal = subTotalWatt / (220 * pf);
+
+                    $("#AmpSignalPhase").val(ampSignal.toFixed(2));
+                    $("#AmpThreePhase").val("0.00");
+
+                    subTotalKw400v = subTotalWatt / 1000 / 3;
+
+                    $("#SubTotalKw400v").val(subTotalKw400v.toFixed(2));
+
+                }
+                else if (volt == 400) {
+
+                    $("#AmpSignalPhase").val("0.00");
+
+                    var ampThree = subTotalWatt / (400 * pf * 1.73);
+
+                    $("#AmpThreePhase").val(ampThree.toFixed(2));
+
+                    subTotalKw400v = subTotalWatt / 1000;
+
+                    $("#SubTotalKw400v").val(subTotalKw400v.toFixed(2));
+
+                }
+                else {
+
+                    $("#AmpSignalPhase").val("");
+                    $("#AmpThreePhase").val("");
+                    $("#SubTotalKw400v").val("");
+
+                    subTotalKw400v = 0;
+
+                }
+
+                //---------------------------------
+                // Total Load (KW)
+                //---------------------------------
+
+                $("#TotalLoadKw").val(subTotalKw400v.toFixed(2));
+
+                //---------------------------------
+                // Standby Load = 10%
+                //---------------------------------
+
+                var standbyLoad = subTotalKw400v * 0.10;
+
+                $("#StandbyLoadKw").val(standbyLoad.toFixed(2));
+
+                //---------------------------------
+                // Total Load Without Standby
+                //---------------------------------
+
+                var totalWithoutStandby = subTotalKw400v - standbyLoad;
+
+                $("#TotalLoadWithoutStandby").val(totalWithoutStandby.toFixed(2));
+
+            }
+
+            //---------------------------------
+            // Events
+            //---------------------------------
+
+            $("#Watt").on("keyup change", calculateLoad);
+            $("#Qty").on("keyup change", calculateLoad);
+            $("#Volt").on("change", calculateLoad);
+            $("#Pf").on("keyup change", calculateLoad);
+
+            //---------------------------------
+            // Initial Calculation
+            //---------------------------------
+
+            calculateLoad();
+
+        });
+
+
+        //----Company Wise Building & Building Wise Floor-----
+                $(function () {
+
+            //-----------------------------
+            // Company Change
+            //-----------------------------
+
+            $("#Comid").change(function () {
+
+                var companyId = $(this).val();
+
+                $("#Bldid").empty();
+                $("#Flid").empty();
+
+                $("#Bldid").append('<option value="">-- Select Building --</option>');
+                $("#Flid").append('<option value="">-- Select Floor --</option>');
+
+                if (companyId == "")
+                    return;
+
+                $.get('/LoadChartMasterFile/GetBuildingByCompany',
+                    { companyId: companyId },
+                    function (data) {
+
+                        $.each(data, function (i, item) {
+
+                            $("#Bldid").append(
+                                $('<option></option>')
+                                    .val(item.value)
+                                    .text(item.text)
+                            );
+
+                        });
+
+                    });
+
+            });
+
+            //-----------------------------
+            // Building Change
+            //-----------------------------
+
+            $("#Bldid").change(function () {
+
+                var companyId = $("#Comid").val();
+                var buildingId = $(this).val();
+
+                $("#Flid").empty();
+
+                $("#Flid").append('<option value="">-- Select Floor --</option>');
+
+                if (buildingId == "")
+                    return;
+
+                $.get('/LoadChartMasterFile/GetFloorByBuilding',
+                    {
+                        companyId: companyId,
+                        buildingId: buildingId
+                    },
+                    function (data) {
+
+                        $.each(data, function (i, item) {
+
+                            $("#Flid").append(
+                                $('<option></option>')
+                                    .val(item.value)
+                                    .text(item.text)
+                            );
+
+                        });
+
+                    });
+
+            });
+
+        });
+
+
+    </script>
 }

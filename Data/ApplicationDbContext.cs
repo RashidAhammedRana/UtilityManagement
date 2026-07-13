@@ -752,13 +752,12 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Remarks)
                     .HasMaxLength(50)
                     .HasColumnName("REMARKS");
-                entity.Property(e => e.Si)
+                entity.Property(e => e.SlNo)
                     .HasMaxLength(50)
-                    .HasColumnName("SI");
+                    .HasColumnName("SL_NO");
                 entity.Property(e => e.StandbyLoadKw).HasColumnName("STANDBY_LOAD_KW");
                 entity.Property(e => e.SubTotalKw400v).HasColumnName("SUB_TOTAL_KW_400V");
                 entity.Property(e => e.SubTotalWatt).HasColumnName("SUB_TOTAL_WATT");
-                entity.Property(e => e.TotalLoadKw).HasColumnName("TOTAL_LOAD_KW");
                 entity.Property(e => e.TotalLoadWithoutStandby).HasColumnName("TOTAL_LOAD_WITHOUT_STANDBY");
                 entity.Property(e => e.Trdate)
                     .HasColumnType("datetime")

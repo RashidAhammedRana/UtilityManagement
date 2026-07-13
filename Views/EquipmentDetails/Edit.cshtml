@@ -67,12 +67,24 @@
                                 <input asp-for="Slno" class="form-control required-field" />
                                 <span asp-validation-for="Slno" class="text-danger"></span>
                             </div>
-
-                            <div class="col-md-6">
-                                <label class="form-label">
+                            <!-- Install Date -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="InstallDate" class="form-label">
+                                    Installation Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="InstallDate" type="date" class="form-control" />
+                                <span asp-validation-for="InstallDate" class="text-danger"></span>
+                            </div>
+                            <!-- CurrentLocation -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CurrentLocation" class="form-label">
                                     Current Location <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="CurrentLocation" class="form-control required-field" />
+
+                                <select asp-for="CurrentLocation" asp-items="ViewBag.CompanyList" class="form-select">
+                                    <option value="">-- Select Company --</option>
+                                </select>
+
                                 <span asp-validation-for="CurrentLocation" class="text-danger"></span>
                             </div>
 

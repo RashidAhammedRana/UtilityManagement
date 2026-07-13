@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
 using UtilityManagement.Data;
@@ -78,6 +79,13 @@ public class EquipmentDetailsController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        ViewBag.CompanyList = _context.TblCompanyInfo
+            .Select(x => new SelectListItem
+            {
+                Value = x.ComName,
+                Text = $"{x.ComName}"
+            })
+            .ToList();
         return View();
     }
 
@@ -130,6 +138,13 @@ public class EquipmentDetailsController : Controller
         {
             return NotFound();
         }
+        ViewBag.CompanyList = _context.TblCompanyInfo
+            .Select(x => new SelectListItem
+            {
+                Value = x.ComName,
+                Text = $"{x.ComName}"
+            })
+            .ToList();
         return View(equipments);
     }
 

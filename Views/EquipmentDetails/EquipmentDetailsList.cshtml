@@ -73,6 +73,7 @@
                 <th>Brand</th>
                 <th>Model</th>
                 <th>Serial No</th>
+                <th>Installation Date</th>
                 <th>Location</th>
                 <th>Actions</th>
             </tr>
@@ -90,6 +91,7 @@
                     <td>@item.Brand</td>
                     <td>@item.Model</td>
                     <td>@item.Slno</td>
+                    <td class="text-center">@item.InstallDate?.ToString("dd-MM-yyyy")</td>
                     <td>@item.CurrentLocation</td>
 
                     <!-- ACTIONS -->

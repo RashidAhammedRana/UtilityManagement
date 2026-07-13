@@ -171,6 +171,7 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Slno)
                     .HasMaxLength(50)
                     .HasColumnName("SLNO");
+                entity.Property(e => e.InstallDate).HasColumnType("datetime").HasColumnName("INSTALL_DATE");
             });
             // TblRebReadingInfo
             modelBuilder.Entity<TblRebReadingInfo>(entity =>

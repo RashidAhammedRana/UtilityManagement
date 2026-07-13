@@ -23,6 +23,8 @@ public partial class TblEquipmentDetail
 
     [Required(ErrorMessage = "SL No is required")]
     public string? Slno { get; set; }
+    [Required(ErrorMessage = "Date is required")]
+    public DateTime? InstallDate { get; set; }
 
     [Required(ErrorMessage = "Current Location is required")]
     public string? CurrentLocation { get; set; }

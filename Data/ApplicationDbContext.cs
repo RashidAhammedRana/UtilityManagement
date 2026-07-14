@@ -603,9 +603,7 @@ namespace UtilityManagement.Data
                     .HasMaxLength(50)
                     .HasColumnName("BLD_NAME");
                 entity.Property(e => e.Comid).HasColumnName("COMID");
-                entity.Property(e => e.Remarks)
-                    .HasMaxLength(10)
-                    .IsFixedLength()
+                entity.Property(e => e.Remarks).HasMaxLength(50).IsFixedLength()
                     .HasColumnName("REMARKS");
                 entity.Property(e => e.Status)
                     .HasMaxLength(50)

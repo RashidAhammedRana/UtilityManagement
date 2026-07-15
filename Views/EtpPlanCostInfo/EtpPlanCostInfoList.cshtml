@@ -1,7 +1,7 @@
-﻿@model IEnumerable<UtilityManagement.Models.TblWtpPlanCostInfo>
+﻿@model IEnumerable<UtilityManagement.Models.TblEtpPlanCostInfo>
 
 @{
-    ViewData["Title"] = "WTP Plan Cost Info List";
+    ViewData["Title"] = "ETP Plan Cost Info List";
 
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
@@ -19,7 +19,7 @@
     string search = ViewBag.SearchString ?? "";
 }
 
-<h2 class="text-center">WTP Plan Cost Info List</h2>
+<h2 class="text-center">ETP Plan Cost Info List</h2>
 
 <p class="text-muted text-center">
     Total Records: <strong>@ViewBag.planCostRecords</strong>
@@ -37,7 +37,7 @@
                id="searchBox"
                value="@ViewBag.SearchString"
                class="form-control"
-               placeholder="Search by Equipment / Company/Date"
+               placeholder="Search here..."
                style="width: 300px;" />
 
     </form>
@@ -72,10 +72,10 @@
                 <th style="width: 10%;">Date</th>
                 <th>Equipment</th>
                 <th>Company</th>
-                <th>Total Drawing</th>
-                <th>Softer Generation</th>
-                <th>Total Cost</th>
-                <th>Tk/m3 of Soft Water</th>
+                <th>Total Chemical Cost</th>
+                <th>Grand total Cost</th>
+                <th>Daily Effluent Follow</th>
+                <th>Effluent flow through ETP (m3/Hr)</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -90,10 +90,10 @@
                     <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
                     <td class="text-center">@item.Eq?.EquipmentName</td>
                     <td class="text-center">@item.Eq?.CurrentLocation</td>
-                    <td class="text-center">@item.TotalDrawing</td>
-                    <td class="text-center">@item.SoftnerGeneration</td>
-                    <td class="text-center">@item.TotalCost</td>
-                    <td class="text-center">@item.TkMcSoftWater</td>
+                    <td class="text-center">@item.TotalChemicalCost</td>
+                    <td class="text-center">@item.GrandTotalCost</td>
+                    <td class="text-center">@item.DailyEffluentFlow</td>
+                    <td class="text-center">@item.EffluentFlowThrough</td>
 
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
@@ -131,7 +131,7 @@
 
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("WtpPlanCostInfoList", new { page = currentPage - 1, searchString = search })">
+               href="@Url.Action("EtpPlanCostInfoList", new { page = currentPage - 1, searchString = search })">
                 Prev
             </a>
         </li>
@@ -140,7 +140,7 @@
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
                 <a class="page-link"
-                   href="@Url.Action("WtpPlanCostInfoList", new { page = i, searchString = search })">
+                   href="@Url.Action("EtpPlanCostInfoList", new { page = i, searchString = search })">
                     @i
                 </a>
             </li>
@@ -148,7 +148,7 @@
 
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("WtpPlanCostInfoList", new { page = currentPage + 1, searchString = search })">
+               href="@Url.Action("EtpPlanCostInfoList", new { page = currentPage + 1, searchString = search })">
                 Next
             </a>
         </li>

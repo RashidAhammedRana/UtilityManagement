@@ -157,7 +157,7 @@ public class WtpPlanCostInfoController : Controller
         // =========================
         var totalRecords = await query.CountAsync();
 
-        var roomReadings = await query
+        var planCostRecords = await query
             .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -171,7 +171,7 @@ public class WtpPlanCostInfoController : Controller
         ViewBag.totalReadings = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(roomReadings);
+        return View(planCostRecords);
     }
     [HttpGet]
     public IActionResult Create()

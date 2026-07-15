@@ -1,7 +1,7 @@
-﻿@model IEnumerable<UtilityManagement.Models.TblWtpPlanCostInfo>
+﻿@model IEnumerable<UtilityManagement.Models.TblFncItemRate>
 
 @{
-    ViewData["Title"] = "WTP Plan Cost Info List";
+    ViewData["Title"] = "Item Rate List";
 
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
@@ -19,16 +19,16 @@
     string search = ViewBag.SearchString ?? "";
 }
 
-<h2 class="text-center">WTP Plan Cost Info List</h2>
+<h2 class="text-center">Item Rate List</h2>
 
 <p class="text-muted text-center">
-    Total Records: <strong>@ViewBag.planCostRecords</strong>
+    Total Records: <strong>@ViewBag.totalRates</strong>
 </p>
 
 <div class="d-flex justify-content-between mb-3 align-items-center">
 
     <!-- LEFT: SEARCH + RESET -->
-    <form method="get" asp-action="WtpPlanCostInfoList"
+    <form method="get" asp-action="FncItemRateList"
           class="d-flex gap-2 align-items-center"
           id="searchForm">
 
@@ -37,7 +37,7 @@
                id="searchBox"
                value="@ViewBag.SearchString"
                class="form-control"
-               placeholder="Search by Equipment / Company/Date"
+               placeholder="Search here..."
                style="width: 300px;" />
 
     </form>
@@ -70,12 +70,9 @@
             <tr class="text-center">
                 <th>SL</th>
                 <th style="width: 10%;">Date</th>
-                <th>Equipment</th>
-                <th>Company</th>
-                <th>Total Drawing</th>
-                <th>Softer Generation</th>
-                <th>Total Cost</th>
-                <th>Tk/m3 of Soft Water</th>
+                <th>Item Name</th>
+                <th>Rate</th>
+                <th>Remarks</th>
                 <th>Actions</th>
             </tr>
         </thead>
@@ -87,13 +84,10 @@
 
                 <tr>
                     <td class="text-center">@sl</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Eq?.EquipmentName</td>
-                    <td class="text-center">@item.Eq?.CurrentLocation</td>
-                    <td class="text-center">@item.TotalDrawing</td>
-                    <td class="text-center">@item.SoftnerGeneration</td>
-                    <td class="text-center">@item.TotalCost</td>
-                    <td class="text-center">@item.TkMcSoftWater</td>
+                    <td class="text-center">@item.Date?.ToString("dd-MM-yyyy")</td>
+                    <td class="text-center">@item.Fnc?.ItemName</td>
+                    <td class="text-center">@item.Rate</td>
+                    <td class="text-center">@item.Remarks</td>
 
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
@@ -101,7 +95,7 @@
                             @if (canEdit)
                             {
                                 <a asp-action="Edit"
-                                   asp-route-id="@item.Trid"
+                                   asp-route-id="@item.Fncrid"
                                    class="btn btn-success btn-sm">
                                     Edit
                                 </a>
@@ -110,7 +104,7 @@
                             @if (canDelete)
                             {
                                 <a asp-action="Delete"
-                                   asp-route-id="@item.Trid"
+                                   asp-route-id="@item.Fncrid"
                                    class="btn btn-danger btn-sm">
                                     Delete
                                 </a>
@@ -131,7 +125,7 @@
 
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("WtpPlanCostInfoList", new { page = currentPage - 1, searchString = search })">
+               href="@Url.Action("FncItemRateList", new { page = currentPage - 1, searchString = search })">
                 Prev
             </a>
         </li>
@@ -140,7 +134,7 @@
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
                 <a class="page-link"
-                   href="@Url.Action("WtpPlanCostInfoList", new { page = i, searchString = search })">
+                   href="@Url.Action("FncItemRateList", new { page = i, searchString = search })">
                     @i
                 </a>
             </li>
@@ -148,7 +142,7 @@
 
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
             <a class="page-link"
-               href="@Url.Action("WtpPlanCostInfoList", new { page = currentPage + 1, searchString = search })">
+               href="@Url.Action("FncItemRateList", new { page = currentPage + 1, searchString = search })">
                 Next
             </a>
         </li>

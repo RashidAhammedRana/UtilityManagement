@@ -37,6 +37,5 @@ public partial class TblEquipmentDetail
     public virtual ICollection<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; } = new List<TblBoilerReadingInfo>();
     public virtual ICollection<TblWtpPlanCostInfo> TblWtpPlanCostInfos { get; set; } = new List<TblWtpPlanCostInfo>();
     public virtual ICollection<TblWtpWaterConsumptionInfo> TblWtpWaterConsumptionInfos { get; set; } = new List<TblWtpWaterConsumptionInfo>();
-
-
+    public virtual ICollection<TblEtpPlanCostInfo> TblEtpPlanCostInfo { get; set; } = new List<TblEtpPlanCostInfo>();
 }

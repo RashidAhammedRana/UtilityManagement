@@ -47,6 +47,10 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblCountryInfo> TblCountryInfo { get; set; }
         public virtual DbSet<TblLoadTypeInfo> TblLoadTypeInfo { get; set; }
         public virtual DbSet<TblLoadChartMasterFile> TblLoadChartMasterFile { get; set; }
+        public virtual DbSet<TblEtpPlanCostInfo> TblEtpPlanCosts { get; set; }
+        public virtual DbSet<TblFncItem> TblFncItems { get; set; }
+        public virtual DbSet<TblFncItemRate> TblFncItemRates { get; set; }
+        public virtual DbSet<TblEtpPlanCostInfo> TblEtpPlanCostInfo { get; set; }
 
 
 
@@ -574,8 +578,6 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.ConsumptionGenerator).HasColumnName("CONSUMPTION_GENERATOR");
                 entity.Property(e => e.ConsumptionSlitting).HasColumnName("CONSUMPTION_SLITTING");
                 entity.Property(e => e.ConsumptionSteam).HasColumnName("CONSUMPTION_STEAM");
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
-                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.Eqid).HasColumnName("EQID");
                 entity.Property(e => e.Opt01).HasColumnName("OPT01");
                 entity.Property(e => e.Opt03).HasColumnName("OPT03");
@@ -585,6 +587,8 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.TotalConsumptionRawWater).HasColumnName("TOTAL_CONSUMPTION_RAW_WATER");
                 entity.Property(e => e.TotalConsumptionSoftWater).HasColumnName("TOTAL_CONSUMPTION_SOFT_WATER");
                 entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.Property(e => e.Washing).HasColumnName("WASHING");
@@ -789,6 +793,93 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Building).WithMany(p => p.TblLoadChartMasterFiles)
                     .HasForeignKey(d => d.Bldid)
                     .HasConstraintName("FK_TBL_LOAD_CHART_MASTER_FILE_TBL_BUILDING_INFO");
+            });
+
+            modelBuilder.Entity<TblFncItem>(entity =>
+            {
+                entity.HasKey(e => e.Fncid);
+
+                entity.ToTable("TBL_FNC_ITEM");
+
+                entity.Property(e => e.Fncid).HasColumnName("FNCID");
+                entity.Property(e => e.ItemName)
+                    .HasMaxLength(50)
+                    .HasColumnName("ITEM_NAME");
+                entity.Property(e => e.Status)
+                    .HasMaxLength(50)
+                    .HasColumnName("STATUS");
+                entity.Property(e => e.Uom)
+                    .HasMaxLength(50)
+                    .HasColumnName("UOM");
+            });
+
+            modelBuilder.Entity<TblFncItemRate>(entity =>
+            {
+                entity.HasKey(e => e.Fncrid);
+
+                entity.ToTable("TBL_FNC_ITEM_RATE");
+
+                entity.Property(e => e.Fncrid).HasColumnName("FNCRID");
+                entity.Property(e => e.Date)
+                    .HasColumnType("datetime")
+                    .HasColumnName("DATE");
+                entity.Property(e => e.Fncid).HasColumnName("FNCID");
+                entity.Property(e => e.Rate).HasColumnName("RATE");
+                entity.Property(e => e.Remarks)
+                    .HasMaxLength(50)
+                    .HasColumnName("REMARKS");
+
+                entity.HasOne(d => d.Fnc).WithMany(p => p.TblFncItemRates)
+                    .HasForeignKey(d => d.Fncid)
+                    .HasConstraintName("FK_TBL_FNC_ITEM_RATE_TBL_FNC_ITEM");
+            });
+            modelBuilder.Entity<TblEtpPlanCostInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_ETP_PLAN_COST_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AntifoamConsumption).HasColumnName("ANTIFOAM_CONSUMPTION");
+                entity.Property(e => e.AntifoamCost).HasColumnName("ANTIFOAM_COST");
+                entity.Property(e => e.BiocleanConsumption).HasColumnName("BIOCLEAN_CONSUMPTION");
+                entity.Property(e => e.BiocleanCost).HasColumnName("BIOCLEAN_COST");
+                entity.Property(e => e.ChemicalCost).HasColumnName("CHEMICAL_COST");
+                entity.Property(e => e.DailyEffluentFlow).HasColumnName("DAILY_EFFLUENT_FLOW");
+                entity.Property(e => e.DapConsumption).HasColumnName("DAP_CONSUMPTION");
+                entity.Property(e => e.DapCost).HasColumnName("DAP_COST");
+                entity.Property(e => e.DecoloringConsumption).HasColumnName("DECOLORING_CONSUMPTION");
+                entity.Property(e => e.DecoloringCost).HasColumnName("DECOLORING_COST");
+                entity.Property(e => e.DyeingProduction).HasColumnName("DYEING_PRODUCTION");
+                entity.Property(e => e.EffluentFlowThrough).HasColumnName("EFFLUENT_FLOW_THROUGH");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.EtpChemCostPerKgDyeing).HasColumnName("ETP_CHEM_COST_PER_KG_DYEING");
+                entity.Property(e => e.EflluentTreatmentPerKgDyeing).HasColumnName("EFLLUENT_TREATMENT_PER_KG_DYEING");
+                entity.Property(e => e.GrandTotalCost).HasColumnName("GRAND_TOTAL_COST");
+                entity.Property(e => e.H2so4Consumption).HasColumnName("H2SO4_CONSUMPTION");
+                entity.Property(e => e.H2so4Cost).HasColumnName("H2SO4_COST");
+                entity.Property(e => e.MaintenanceCost).HasColumnName("MAINTENANCE_COST");
+                entity.Property(e => e.ManpowerSalary).HasColumnName("MANPOWER_SALARY");
+                entity.Property(e => e.MiscellaneousCost).HasColumnName("MISCELLANEOUS_COST");
+                entity.Property(e => e.MolassasesConsumption).HasColumnName("MOLASSASES_CONSUMPTION");
+                entity.Property(e => e.MolassasesCost).HasColumnName("MOLASSASES_COST");
+                entity.Property(e => e.DailyEtpCost).HasColumnName("DAILY_ETP_COST");
+                entity.Property(e => e.PolymerConsumption).HasColumnName("POLYMER_CONSUMPTION");
+                entity.Property(e => e.PolymerCost).HasColumnName("POLYMER_COST");
+                entity.Property(e => e.TotalChemicalCost).HasColumnName("TOTAL_CHEMICAL_COST");
+                entity.Property(e => e.Trdate)
+                    .HasColumnType("datetime")
+                    .HasColumnName("TRDATE");
+                entity.Property(e => e.UreaConsumption).HasColumnName("UREA_CONSUMPTION");
+                entity.Property(e => e.UreaCost).HasColumnName("UREA_COST");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblEtpPlanCostInfo)
+                    .HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_ETP_PLAN_COST_TBL_ETP_PLAN_COST_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -236,6 +236,10 @@ public class SolarReadingInfoController : Controller
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;
+            var currentUser = User.Identity?.Name ?? "System";
+            // Created Information
+            solarReadingInfo.CreatedAt = now;
+            solarReadingInfo.CreatedBy = currentUser;
 
             solarReadingInfo.Trdate = dateOnly?
                 .AddHours(now.Hour)
@@ -265,7 +269,19 @@ public class SolarReadingInfoController : Controller
         if (reading == null)
             return NotFound();
 
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%SOLAR%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),
@@ -294,8 +310,27 @@ public class SolarReadingInfoController : Controller
 
                 return View(solarReadingInfo);
             }
+            var existing = await _context.TblSolarReadingInfos
+                .FirstOrDefaultAsync(x => x.Trid == solarReadingInfo.Trid);
 
-            _context.Update(solarReadingInfo);
+            if (existing == null)
+            {
+                return NotFound();
+            }
+            //_context.Update(solarReadingInfo);
+            // Update editable fields
+            existing.Trdate = solarReadingInfo.Trdate;
+            existing.Eqid = solarReadingInfo.Eqid;
+
+            existing.ServiceChargeCost = solarReadingInfo.ServiceChargeCost;
+            existing.SparePartsCost = solarReadingInfo.SparePartsCost;
+            existing.GenerationKwh = solarReadingInfo.GenerationKwh;
+            existing.PerUnitGenCost = solarReadingInfo.PerUnitGenCost;
+            existing.TotalCost = solarReadingInfo.TotalCost;
+            existing.Remarks = solarReadingInfo.Remarks;
+            // Update audit fields
+            existing.UpdatedAt = DateTime.Now;
+            existing.UpdatedBy = User.Identity?.Name ?? "System";
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading updated successfully.";

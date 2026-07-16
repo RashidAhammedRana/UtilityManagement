@@ -189,21 +189,19 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.ElecGen).HasColumnName("ELEC_GEN");
                 entity.Property(e => e.Eqid).HasColumnName("EQID");
                 entity.Property(e => e.OtConsumable).HasColumnName("OT_CONSUMABLE");
-                entity.Property(e => e.Remarks)
-                    .HasMaxLength(250)
-                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Remarks).HasMaxLength(250).HasColumnName("REMARKS");
                 entity.Property(e => e.RepairCharge).HasColumnName("REPAIR_CHARGE");
                 entity.Property(e => e.RunHr).HasColumnName("RUN_HR");
                 entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
                 entity.Property(e => e.TkKwh).HasColumnName("TK_KWH");
                 entity.Property(e => e.Total).HasColumnName("TOTAL");
-                entity.Property(e => e.Trdate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
                 entity.Property(e => e.Troubleshoot).HasColumnName("TROUBLESHOOT");
-
-                entity.HasOne(d => d.Eq).WithMany(p => p.TblRebReadingInfos)
-                    .HasForeignKey(d => d.Eqid)
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblRebReadingInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_REB_READING_INFO_TBL_REB_READING_INFO");
             });
             //TblNgGeneratorReadingInfo
@@ -413,18 +411,16 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Eqid).HasColumnName("EQID");
                 entity.Property(e => e.GenerationKwh).HasColumnName("GENERATION_KWH");
                 entity.Property(e => e.PerUnitGenCost).HasColumnName("PER_UNIT_GEN_COST");
-                entity.Property(e => e.Remarks)
-                    .HasMaxLength(250)
-                    .HasColumnName("REMARKS");
+                entity.Property(e => e.Remarks).HasMaxLength(250).HasColumnName("REMARKS");
                 entity.Property(e => e.ServiceChargeCost).HasColumnName("SERVICE_CHARGE_COST");
                 entity.Property(e => e.SparePartsCost).HasColumnName("SPARE_PARTS_COST");
                 entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
-                entity.Property(e => e.Trdate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("TRDATE");
-
-                entity.HasOne(d => d.Eq).WithMany(p => p.TblSolarReadingInfos)
-                    .HasForeignKey(d => d.Eqid)
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblSolarReadingInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_SOLAR_READING_INFO_TBL_EQUIPMENT_DETAILS");
             });
             //TblBoilerRmsRoom
@@ -528,8 +524,6 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid).HasName("PK_TBL_WTP_PLAN_COST");
                 entity.ToTable("TBL_WTP_PLAN_COST_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
-                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.DeepPump1).HasColumnName("DEEP_PUMP_1");
                 entity.Property(e => e.DeepPump2).HasColumnName("DEEP_PUMP_2");
                 entity.Property(e => e.DeepPump3).HasColumnName("DEEP_PUMP_3");
@@ -552,6 +546,8 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
                 entity.Property(e => e.TotalDrawing).HasColumnName("TOTAL_DRAWING");
                 entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblWtpPlanCostInfos).HasForeignKey(d => d.Eqid)
@@ -734,42 +730,30 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.AmpThreePhase).HasColumnName("AMP_THREE_PHASE");
                 entity.Property(e => e.Bldid).HasColumnName("BLDID");
                 entity.Property(e => e.Brndid).HasColumnName("BRNDID");
-                entity.Property(e => e.Capacity)
-                    .HasMaxLength(50)
-                    .HasColumnName("CAPACITY");
-                entity.Property(e => e.CmsnDate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("CMSN_DATE");
+                entity.Property(e => e.Capacity).HasMaxLength(50).HasColumnName("CAPACITY");
+                entity.Property(e => e.CmsnDate).HasColumnType("datetime").HasColumnName("CMSN_DATE");
                 entity.Property(e => e.Cntid).HasColumnName("CNTID");
                 entity.Property(e => e.Comid).HasColumnName("COMID");
-                entity.Property(e => e.Description)
-                    .HasMaxLength(50)
-                    .HasColumnName("DESCRIPTION");
+                entity.Property(e => e.Description).HasMaxLength(50).HasColumnName("DESCRIPTION");
                 entity.Property(e => e.Flid).HasColumnName("FLID");
                 entity.Property(e => e.Ltid).HasColumnName("LTID");
-                entity.Property(e => e.Model)
-                    .HasMaxLength(50)
-                    .HasColumnName("MODEL");
+                entity.Property(e => e.Model).HasMaxLength(50).HasColumnName("MODEL");
                 entity.Property(e => e.Pf).HasColumnName("PF");
                 entity.Property(e => e.Qty).HasColumnName("QTY");
-                entity.Property(e => e.Remarks)
-                    .HasMaxLength(50)
-                    .HasColumnName("REMARKS");
-                entity.Property(e => e.SlNo)
-                    .HasMaxLength(50)
-                    .HasColumnName("SL_NO");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.SlNo).HasMaxLength(50).HasColumnName("SL_NO");
                 entity.Property(e => e.StandbyLoadKw).HasColumnName("STANDBY_LOAD_KW");
                 entity.Property(e => e.SubTotalKw400v).HasColumnName("SUB_TOTAL_KW_400V");
                 entity.Property(e => e.SubTotalWatt).HasColumnName("SUB_TOTAL_WATT");
                 entity.Property(e => e.TotalLoadWithoutStandby).HasColumnName("TOTAL_LOAD_WITHOUT_STANDBY");
-                entity.Property(e => e.Trdate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("TRDATE");
-                entity.Property(e => e.Type)
-                    .HasMaxLength(50)
-                    .HasColumnName("TYPE");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.Type).HasMaxLength(50).HasColumnName("TYPE");
                 entity.Property(e => e.Volt).HasColumnName("VOLT");
                 entity.Property(e => e.Watt).HasColumnName("WATT");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
 
                 entity.HasOne(d => d.Brnd).WithMany(p => p.TblLoadChartMasterFiles)
                     .HasForeignKey(d => d.Brndid)

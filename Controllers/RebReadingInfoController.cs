@@ -237,6 +237,10 @@ public class RebReadingInfoController : Controller
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;
+            var currentUser = User.Identity?.Name ?? "System";
+            // Created Information
+            rebReadingInfo.CreatedAt = now;
+            rebReadingInfo.CreatedBy = currentUser;
 
             rebReadingInfo.Trdate = dateOnly?
                 .AddHours(now.Hour)
@@ -266,7 +270,19 @@ public class RebReadingInfoController : Controller
         if (reading == null)
             return NotFound();
 
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%REB%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),
@@ -296,7 +312,29 @@ public class RebReadingInfoController : Controller
                 return View(rebReadingInfo);
             }
 
-            _context.Update(rebReadingInfo);
+            //_context.Update(rebReadingInfo);
+            var existing = await _context.TblRebReadingInfo
+              .FirstOrDefaultAsync(x => x.Trid == rebReadingInfo.Trid);
+
+            if (existing == null)
+            {
+                return NotFound();
+            }
+            // Update editable fields
+            existing.Trdate = rebReadingInfo.Trdate;
+            existing.Eqid = rebReadingInfo.Eqid;
+            existing.ElecGen = rebReadingInfo.ElecGen;
+            existing.RunHr = rebReadingInfo.RunHr;
+            existing.BdtKwh = rebReadingInfo.BdtKwh;
+            existing.OtConsumable = rebReadingInfo.OtConsumable;
+            existing.Troubleshoot = rebReadingInfo.Troubleshoot;
+            existing.ServiceCharge = rebReadingInfo.ServiceCharge;
+            existing.RepairCharge = rebReadingInfo.RepairCharge;
+            existing.Total = rebReadingInfo.Total;
+            existing.TkKwh = rebReadingInfo.TkKwh;
+            // Update audit fields
+            existing.UpdatedAt = DateTime.Now;
+            existing.UpdatedBy = User.Identity?.Name ?? "System";
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading updated successfully.";

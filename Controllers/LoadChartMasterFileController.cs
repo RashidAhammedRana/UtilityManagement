@@ -232,16 +232,12 @@ public class LoadChartMasterFileController : Controller
                 return View(loadChartMasterFile);
             }
 
-            // Normalize date (only date part)
-            var dateOnly = loadChartMasterFile.Trdate?.Date;
-
-            // Save current time (keep datetime but same date)
             var now = DateTime.Now;
+            var currentUser = User.Identity?.Name ?? "System";
 
-            loadChartMasterFile.Trdate = dateOnly?
-                .AddHours(now.Hour)
-                .AddMinutes(now.Minute)
-                .AddSeconds(now.Second);
+            loadChartMasterFile.Trdate = now;
+            loadChartMasterFile.CreatedAt = now;
+            loadChartMasterFile.CreatedBy = currentUser;
 
             _context.TblLoadChartMasterFile.Add(loadChartMasterFile);
             await _context.SaveChangesAsync();
@@ -266,12 +262,22 @@ public class LoadChartMasterFileController : Controller
         if (model == null)
             return NotFound();
 
+        var userId = _userManager.GetUserId(User);
+
+        var userCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+
         ViewBag.CompanyList = _context.TblCompanyInfo
+            .Where(x => x.ComName == userCompany)
             .Select(x => new SelectListItem
             {
                 Value = x.Comid.ToString(),
                 Text = x.ComName
-            }).ToList();
+            })
+            .ToList();
 
         ViewBag.BuidingList = _context.TblBuildingInfo
             .Where(x => x.Comid == model.Comid)
@@ -332,7 +338,42 @@ public class LoadChartMasterFileController : Controller
                 return View(loadChartMasterFile);
             }
 
-            _context.Update(loadChartMasterFile);
+            //_context.Update(loadChartMasterFile);
+            var existing = await _context.TblLoadChartMasterFile
+             .FirstOrDefaultAsync(x => x.Trid == loadChartMasterFile.Trid);
+
+            if (existing == null)
+            {
+                return NotFound();
+            }
+            // Update editable fields
+            existing.Comid = loadChartMasterFile.Comid;
+            existing.Bldid = loadChartMasterFile.Bldid;
+            existing.Flid = loadChartMasterFile.Flid;
+            existing.Ltid = loadChartMasterFile.Ltid;
+            existing.Description = loadChartMasterFile.Description;
+            existing.Type = loadChartMasterFile.Type;
+            existing.Cntid = loadChartMasterFile.Cntid;
+            existing.Brndid = loadChartMasterFile.Brndid;
+            existing.Model = loadChartMasterFile.Model;
+            existing.SlNo = loadChartMasterFile.SlNo;
+            existing.Capacity = loadChartMasterFile.Capacity;
+            existing.CmsnDate = loadChartMasterFile.CmsnDate;
+            existing.Watt = loadChartMasterFile.Watt;
+            existing.Qty = loadChartMasterFile.Qty;
+            existing.SubTotalWatt = loadChartMasterFile.SubTotalWatt;
+            existing.Volt = loadChartMasterFile.Volt;
+            existing.Pf = loadChartMasterFile.Pf;
+            existing.AmpSignalPhase = loadChartMasterFile.AmpSignalPhase;
+            existing.AmpThreePhase = loadChartMasterFile.AmpThreePhase;
+            existing.SubTotalKw400v = loadChartMasterFile.SubTotalKw400v;
+            existing.StandbyLoadKw = loadChartMasterFile.StandbyLoadKw;
+            existing.TotalLoadWithoutStandby = loadChartMasterFile.TotalLoadWithoutStandby;
+            existing.Remarks = loadChartMasterFile.Remarks;
+            // Update audit fields
+            existing.UpdatedAt = DateTime.Now;
+            existing.UpdatedBy = User.Identity?.Name ?? "System";
+            await _context.SaveChangesAsync();
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "File updated successfully.";

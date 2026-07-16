@@ -222,18 +222,18 @@ public class WtpWaterConsumptionInfoController : Controller
             var dateOnly = wtpWaterConsumptionInfo.Trdate?.Date;
 
             // ❌ CHECK DUPLICATE: Same Machine + Same Date
-            var isExists = await _context.TblWtpWaterConsumptionInfo
-                .AnyAsync(x =>
-                    x.Eqid == wtpWaterConsumptionInfo.Eqid &&
-                    x.Trdate.HasValue &&
-                    x.Trdate.Value.Date == dateOnly
-                );
+            //var isExists = await _context.TblWtpWaterConsumptionInfo
+            //    .AnyAsync(x =>
+            //        x.Eqid == wtpWaterConsumptionInfo.Eqid &&
+            //        x.Trdate.HasValue &&
+            //        x.Trdate.Value.Date == dateOnly
+            //    );
 
-            if (isExists)
-            {
-                ModelState.AddModelError("", "This machine already has a reading for this date!");
-                return View(wtpWaterConsumptionInfo);
-            }
+            //if (isExists)
+            //{
+            //    ModelState.AddModelError("", "Data already exist!");
+            //    return View(wtpWaterConsumptionInfo);
+            //}
 
             // Save current time (keep datetime but same date)
             var now = DateTime.Now;

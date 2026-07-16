@@ -3,19 +3,21 @@ using Microsoft.AspNetCore.Authentication;
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
 using UtilityManagement.ViewModels;
 
+
 public class AccountController : Controller
 {
-    private readonly UserManager<IdentityUser> _userManager;
-    private readonly SignInManager<IdentityUser> _signInManager;
+    private readonly UserManager<ApplicationUser> _userManager;
+    private readonly SignInManager<ApplicationUser> _signInManager;
     private readonly RoleManager<IdentityRole> _roleManager;
     private readonly ApplicationDbContext _context;
 
-    public AccountController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext context)
+    public AccountController(UserManager<ApplicationUser> userManager, SignInManager<ApplicationUser> signInManager, RoleManager<IdentityRole> roleManager, ApplicationDbContext context)
     {
         _userManager = userManager;
         _signInManager = signInManager;
@@ -29,7 +31,19 @@ public class AccountController : Controller
     [HttpGet]
     public IActionResult Register()
     {
-        return View();
+        var model = new RegisterViewModel
+        {
+            Companies = _context.TblCompanyInfo
+                .Where(x => x.Status == "Active")
+                .Select(x => new SelectListItem
+                {
+                    Value = x.ComName,
+                    Text = x.ComName
+                })
+                .ToList()
+        };
+
+        return View(model);
     }
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -38,12 +52,17 @@ public class AccountController : Controller
         if (ModelState.IsValid)
         {
             // Create a new user
-            var user = new IdentityUser
+            //var user = new IdentityUser
+            //{
+            //    UserName = model.Email,
+            //    Email = model.Email
+            //};
+            var user = new ApplicationUser
             {
+                Company = model.Company,
                 UserName = model.Email,
                 Email = model.Email
             };
-
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)

@@ -2,6 +2,7 @@
 using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.InfrastructureRegistration;
+using UtilityManagement.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -22,7 +23,7 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
 
 // Identity
-builder.Services.AddIdentity<IdentityUser, IdentityRole>(options =>
+builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
     options.Password.RequireDigit = false;
     options.Password.RequireLowercase = false;

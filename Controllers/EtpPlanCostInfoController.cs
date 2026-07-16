@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
@@ -10,10 +11,12 @@ using static System.Runtime.InteropServices.JavaScript.JSType;
 public class EtpPlanCostInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public EtpPlanCostInfoController(ApplicationDbContext context)
+    public EtpPlanCostInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -272,14 +275,28 @@ public class EtpPlanCostInfoController : Controller
         ViewBag.H2SO4Rate = h2so4Rate;
         ViewBag.BioCleanRate = bioCleanRate;
 
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
-                .Where(x => EF.Functions.Like(x.EquipmentName, "%ETP%"))
-                .Select(x => new SelectListItem
-                {
-                    Value = x.Eqid.ToString(),
-                    Text = $"{x.EquipmentName} - {x.CurrentLocation}"
-                })
-                .ToList();
+        var userId = _userManager.GetUserId(User);
+
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+    .Where(x => EF.Functions.Like(x.EquipmentName, "%ETP%"));
+
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
+            .Select(x => new SelectListItem
+            {
+                Value = x.Eqid.ToString(),
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+            })
+            .ToList();
+
         return View(model);
     }
 

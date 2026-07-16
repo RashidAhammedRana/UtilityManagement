@@ -1,17 +1,20 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
-using System.Globalization;
 
 public class NgGeneratorReadingInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public NgGeneratorReadingInfoController(ApplicationDbContext context)
+    public NgGeneratorReadingInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -180,7 +183,19 @@ public class NgGeneratorReadingInfoController : Controller
         {
             Trdate = DateTime.Today
         };
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%GAS%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),

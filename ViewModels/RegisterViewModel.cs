@@ -1,19 +1,26 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using Microsoft.AspNetCore.Mvc.Rendering;
+using System.ComponentModel.DataAnnotations;
 namespace UtilityManagement.ViewModels;
 
 public class RegisterViewModel
 {
     [Required]
+    [Display(Name = "Company")]
+    public string? Company { get; set; }
+
+    [Required]
     //[EmailAddress]
     [Display(Name = "Username")]
-    public string Email { get; set; }
+    public string? Email { get; set; }
 
     [Required]
     [DataType(DataType.Password)]
-    public string Password { get; set; }
+    public string? Password { get; set; }
 
     [Required]
     [DataType(DataType.Password)]
     [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
-    public string ConfirmPassword { get; set; }
+    public string? ConfirmPassword { get; set; }
+
+    public List<SelectListItem>? Companies { get; set; }
 }

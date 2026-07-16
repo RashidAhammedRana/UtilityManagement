@@ -4,14 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
 
 public class GenRmsRoomInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public GenRmsRoomInfoController(ApplicationDbContext context)
+    public GenRmsRoomInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -188,7 +191,20 @@ public class GenRmsRoomInfoController : Controller
 
         ViewBag.NgRate = ngRate;
 
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
+
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%GENERATOR RMS%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),

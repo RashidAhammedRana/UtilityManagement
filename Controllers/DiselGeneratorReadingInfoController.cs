@@ -4,14 +4,17 @@ using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
 using System.Globalization;
+using Microsoft.AspNetCore.Identity;
 
 public class DiselGeneratorReadingInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public DiselGeneratorReadingInfoController(ApplicationDbContext context)
+    public DiselGeneratorReadingInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager= userManager;
     }
     public IActionResult Index()
     {
@@ -180,7 +183,20 @@ public class DiselGeneratorReadingInfoController : Controller
         {
             Trdate = DateTime.Today
         };
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
+
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%DIESEL%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
             {
                 Value = x.Eqid.ToString(),

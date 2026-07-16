@@ -1,17 +1,21 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Globalization;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
-using System.Globalization;
 
 public class LoadChartMasterFileController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public LoadChartMasterFileController(ApplicationDbContext context)
+    public LoadChartMasterFileController(ApplicationDbContext context, UserManager<ApplicationUser> userManager
+)
     {
         _context = context;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -175,27 +179,23 @@ public class LoadChartMasterFileController : Controller
             Trdate = DateTime.Today,
             Pf = 0.90
         };
+        var userId = _userManager.GetUserId(User);
+
+        var userCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+
         ViewBag.CompanyList = _context.TblCompanyInfo
+            .Where(x => x.ComName == userCompany)
             .Select(x => new SelectListItem
             {
                 Value = x.Comid.ToString(),
-                Text = $"{x.ComName}"
+                Text = x.ComName
             })
             .ToList();
-        //ViewBag.BuidingList = _context.TblBuildingInfo
-        //    .Select(x => new SelectListItem
-        //    {
-        //        Value = x.Bldid.ToString(),
-        //        Text = $"{x.BldName}"
-        //    })
-        //    .ToList();
-        //ViewBag.FloorList = _context.TblFloorInfo
-        //    .Select(x => new SelectListItem
-        //    {
-        //        Value = x.Flid.ToString(),
-        //        Text = $"{x.Flname}"
-        //    })
-        //    .ToList();
+
         ViewBag.CountryList = _context.TblCountryInfo
            .Select(x => new SelectListItem
            {

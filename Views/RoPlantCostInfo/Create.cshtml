@@ -1,0 +1,321 @@
+﻿@model UtilityManagement.Models.TblRoPlantCostInfo
+
+@{
+    ViewData["Title"] = "Create RO Plant Cost Info";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New RO Plant Cost Info</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+
+                            <!-- Doshion51Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Doshion51Cons" class="form-label">
+                                    Doshion_51 Consumption(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Doshion51Cons" class="form-control" />
+                                <span asp-validation-for="Doshion51Cons" class="text-danger"></span>
+                            </div>
+
+                            <!-- Doshion51Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Doshion51Cost" class="form-label">
+                                    Doshion_51 Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Doshion51Cost" class="form-control" />
+                                <span asp-validation-for="Doshion51Cost" class="text-danger"></span>
+                            </div>
+
+                            <!-- Doshion52Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Doshion52Cons" class="form-label">
+                                    Doshion_52 Consumption(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Doshion52Cons" class="form-control" />
+                                <span asp-validation-for="Doshion52Cons" class="text-danger"></span>
+                            </div>
+
+                            <!-- Doshion52Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Doshion52Cost" class="form-label">
+                                    Doshion_52 Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Doshion52Cost" class="form-control" />
+                                <span asp-validation-for="Doshion52Cost" class="text-danger"></span>
+                            </div>
+                            <!-- DoScale65Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DoScale65Cons" class="form-label">
+                                    DoScale_65 Consumption(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DoScale65Cons" class="form-control" readonly />
+                                <span asp-validation-for="DoScale65Cons" class="text-danger"></span>
+                            </div>
+
+                            <!-- DailyRunningHour -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DailyRunningHour" class="form-label">
+                                    Daily Running Hour<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DailyRunningHour" class="form-control" />
+                                <span asp-validation-for="DailyRunningHour" class="text-danger"></span>
+                            </div>
+                            <!-- TotalChemicalCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalChemicalCost" class="form-label">
+                                    Total Chemical Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalChemicalCost" class="form-control" />
+                                <span asp-validation-for="TotalChemicalCost" class="text-danger"></span>
+                            </div>
+                            <!-- ServiceCharge -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ServiceCharge" class="form-label">
+                                    Service Charge(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+                            </div>
+                            <!-- MaintenanceCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="MaintenanceCost" class="form-label">
+                                    Maintenance Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="MaintenanceCost" class="form-control" />
+                                <span asp-validation-for="MaintenanceCost" class="text-danger"></span>
+                            </div>
+                            <!-- ManpowerSalary -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ManpowerSalary" class="form-label">
+                                    Manpower Salary(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ManpowerSalary" class="form-control" readonly />
+                                <span asp-validation-for="ManpowerSalary" class="text-danger"></span>
+                            </div>
+                            <!-- GrandTotalCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="GrandTotalCost" class="form-label">
+                                    Grand Total Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="GrandTotalCost" class="form-control" />
+                                <span asp-validation-for="GrandTotalCost" class="text-danger"></span>
+                            </div>
+                            <!-- EffFlowRoPlant -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="EffFlowRoPlant" class="form-label">
+                                    Eff.Flow RO Plant<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="EffFlowRoPlant" class="form-control" readonly />
+                                <span asp-validation-for="EffFlowRoPlant" class="text-danger"></span>
+                            </div>
+                            <!-- EffFlowRoSoft -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="EffFlowRoSoft" class="form-label">
+                                    Eff.Flow RO Soft<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="EffFlowRoSoft" class="form-control" />
+                                <span asp-validation-for="EffFlowRoSoft" class="text-danger"></span>
+                            </div>
+                            <!-- RoSoftWaterFlow -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="RoSoftWaterFlow" class="form-label">
+                                    RO Softwater Folow <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="RoSoftWaterFlow" class="form-control" />
+                                <span asp-validation-for="RoSoftWaterFlow" class="text-danger"></span>
+                            </div>
+
+                            <!-- EffFlowRoRejection -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="EffFlowRoRejection" class="form-label">
+                                    Eff.Flow RO Rejection
+                                </label>
+                                <input asp-for="EffFlowRoRejection" class="form-control" readonly />
+                                <span asp-validation-for="EffFlowRoRejection" class="text-danger"></span>
+                            </div>
+
+                            <!-- ChemCostEffTreatment -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChemCostEffTreatment" class="form-label">
+                                    Chem. Cost Eff. Treatment
+                                </label>
+                                <input asp-for="ChemCostEffTreatment" class="form-control" readonly />
+                                <span asp-validation-for="ChemCostEffTreatment" class="text-danger"></span>
+                            </div>
+                            <!--DailyRoCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DailyRoCost" class="form-label">
+                                    Daily RO Cost(Tk)
+                                </label>
+                                <input asp-for="DailyRoCost" class="form-control" readonly />
+                                <span asp-validation-for="DailyRoCost" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="RoPlantCostInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@* <script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // NaCl Rate from database
+        const naclRate = parseFloat('@ViewBag.NaclRate') || 0;
+
+        // Helper function
+        function el(id) {
+            return document.getElementById(id);
+        }
+
+        function num(id) {
+            return parseFloat(el(id)?.value) || 0;
+        }
+
+        function calculate() {
+
+            // ==========================
+            // Total Drawing
+            // TotalDrawing = DeepPump1 + DeepPump2 + DeepPump3 + DeepPump4
+            // ==========================
+            const totalDrawing =
+                num("DeepPump1") +
+                num("DeepPump2") +
+                num("DeepPump3") +
+                num("DeepPump4");
+
+            el("TotalDrawing").value = totalDrawing.toFixed(2);
+
+            // ==========================
+            // Softner Generation
+            // SoftnerGeneration = Softner1 + Softner2 + Softner3 + Softner4
+            // ==========================
+            const softnerGeneration =
+                num("Softner1") +
+                num("Softner2") +
+                num("Softner3") +
+                num("Softner4");
+
+            el("SoftnerGeneration").value = softnerGeneration.toFixed(2);
+
+            // ==========================
+            // NaCl Cost
+            // NaclCost = NaclConsumption × Rate
+            // ==========================
+            const naclCost = num("NaclConsumption") * naclRate;
+
+            el("NaclCost").value = naclCost.toFixed(2);
+
+            // ==========================
+            // Total Cost
+            // TotalCost = NaclCost + Maintenance + Kwh
+            // ==========================
+            const totalCost =
+                naclCost +
+                num("Maintenance") +
+                num("Kwh");
+
+            el("TotalCost").value = totalCost.toFixed(2);
+
+            // ==========================
+            // Tk/m3 of Soft Water
+            // TkMcSoftWater = TotalCost / SoftnerGeneration
+            // ==========================
+            const tkMcSoftWater =
+                softnerGeneration > 0
+                    ? totalCost / softnerGeneration
+                    : 0;
+
+            el("TkMcSoftWater").value = tkMcSoftWater.toFixed(2);
+        }
+
+        // Fields that trigger recalculation
+        [
+            "DeepPump1",
+            "DeepPump2",
+            "DeepPump3",
+            "DeepPump4",
+            "Softner1",
+            "Softner2",
+            "Softner3",
+            "Softner4",
+            "NaclConsumption",
+            "Maintenance",
+            "Kwh"
+        ].forEach(id => {
+            const input = el(id);
+            if (input) {
+                input.addEventListener("input", calculate);
+            }
+        });
+
+        // Initial calculation
+        calculate();
+    });
+</script> *@
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

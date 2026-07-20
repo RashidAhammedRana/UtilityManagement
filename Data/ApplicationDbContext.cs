@@ -39,7 +39,6 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblBoilerReadingInfo> TblBoilerReadingInfo { get; set; }
         public virtual DbSet<TblWtpPlanCostInfo> TblWtpPlanCostInfo { get; set; }
         public virtual DbSet<TblWtpWaterConsumptionInfo> TblWtpWaterConsumptionInfo { get; set; }
-
         public virtual DbSet<TblBuildingInfo> TblBuildingInfo { get; set; }
         public virtual DbSet<TblCompanyInfo> TblCompanyInfo { get; set; }
         public virtual DbSet<TblFloorInfo> TblFloorInfo { get; set; }
@@ -51,7 +50,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblFncItem> TblFncItems { get; set; }
         public virtual DbSet<TblFncItemRate> TblFncItemRates { get; set; }
         public virtual DbSet<TblEtpPlanCostInfo> TblEtpPlanCostInfo { get; set; }
-
+        public virtual DbSet<TblRoPlantCostInfo> TblRoPlantCostInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -864,6 +863,42 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblEtpPlanCostInfo)
                     .HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_ETP_PLAN_COST_TBL_ETP_PLAN_COST_INFO");
+            });
+
+            //TblRoPlantCostInfo
+            modelBuilder.Entity<TblRoPlantCostInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_RO_PLANT_COST_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ChemCostEffTreatment).HasColumnName("CHEM_COST_EFF_TREATMENT");
+                entity.Property(e => e.DailyRoCost).HasColumnName("DAILY_RO_COST");
+                entity.Property(e => e.DailyRunningHour).HasColumnName("DAILY_RUNNING_HOUR");
+                entity.Property(e => e.DoScale65Cons).HasColumnName("DO_SCALE65_CONS");
+                entity.Property(e => e.DoScale65Cost).HasColumnName("DO_SCALE65_COST");
+                entity.Property(e => e.Doshion51Cons).HasColumnName("DOSHION51_CONS");
+                entity.Property(e => e.Doshion51Cost).HasColumnName("DOSHION51_COST");
+                entity.Property(e => e.Doshion52Cons).HasColumnName("DOSHION52_CONS");
+                entity.Property(e => e.Doshion52Cost).HasColumnName("DOSHION52_COST");
+                entity.Property(e => e.EffFlowRoPlant).HasColumnName("EFF_FLOW_RO_PLANT");
+                entity.Property(e => e.EffFlowRoRejection).HasColumnName("EFF_FLOW_RO_REJECTION");
+                entity.Property(e => e.EffFlowRoSoft).HasColumnName("EFF_FLOW_RO_SOFT");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.GrandTotalCost).HasColumnName("GRAND_TOTAL_COST");
+                entity.Property(e => e.MaintenanceCost).HasColumnName("MAINTENANCE_COST");
+                entity.Property(e => e.ManpowerSalary).HasColumnName("MANPOWER_SALARY");
+                entity.Property(e => e.RoSoftWaterFlow).HasColumnName("RO_SOFT_WATER_FLOW");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.TotalChemicalCost).HasColumnName("TOTAL_CHEMICAL_COST");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblRoPlantCostInfos).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_RO_PLANT_COST_INFO_TBL_EQUIPMENT_DETAILS");
             });
 
             OnModelCreatingPartial(modelBuilder);

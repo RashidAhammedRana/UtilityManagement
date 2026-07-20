@@ -6,29 +6,30 @@ using System.Globalization;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
 
-public class BoilerReadingInfoController : Controller
+public class RoPlantCostInfoController : Controller
 {
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    public BoilerReadingInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+    public RoPlantCostInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;
+
     }
     public IActionResult Index()
     {
         return View();
     }
     [HttpGet]
-    public async Task<IActionResult> BoilerReadingInfoList(int page = 1, string searchString = "")
+    public async Task<IActionResult> RoPlantCostInfoList(int page = 1, string searchString = "")
     {
         int pageSize = 15;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Boiler Reading")
+            .Where(x => x.MenuName == "RO Plant Cost")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -50,7 +51,7 @@ public class BoilerReadingInfoController : Controller
         // =========================
         // BASE QUERY
         // =========================
-        var query = _context.TblBoilerReadingInfo
+        var query = _context.TblRoPlantCostInfo
             .Include(x => x.Eq)
             .AsQueryable();
 
@@ -160,7 +161,7 @@ public class BoilerReadingInfoController : Controller
         // =========================
         var totalRecords = await query.CountAsync();
 
-        var boilerReadings = await query
+        var plantCostRecords = await query
             .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -174,47 +175,16 @@ public class BoilerReadingInfoController : Controller
         ViewBag.totalReadings = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(boilerReadings);
+        return View(plantCostRecords);
     }
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblBoilerReadingInfo
+        var model = new TblRoPlantCostInfo
         {
             Trdate = DateTime.Today
         };
 
-        var ngRate = _context.TblNgRate
-                     .OrderByDescending(x => x.NgrId)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
-
-        var dieselRate = _context.TblFncItems
-            .Where(i => i.ItemName == "Diesel")
-            .Join(_context.TblFncItemRates,
-                item => item.Fncid,
-                rate => rate.Fncid,
-                (item, rate) => rate)
-            .OrderByDescending(r => r.Date)
-            .Select(r => r.Rate)
-            .FirstOrDefault();
-        //var dieselRate = _context.TblDieselRates
-        //             .OrderByDescending(x => x.Drid)
-        //             .Select(x => x.Rate)
-        //             .FirstOrDefault();
-        var cngRate = _context.TblCngRate
-                     .OrderByDescending(x => x.Cngrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
-        var lpgRate = _context.TblLpgRate
-                     .OrderByDescending(x => x.Lpgrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
-
-        ViewBag.NgRate = ngRate;
-        ViewBag.DieselRate = dieselRate;
-        ViewBag.CngRate = cngRate;
-        ViewBag.LpgRate = lpgRate;
 
         var userId = _userManager.GetUserId(User);
         var currentLocation = _context.Users
@@ -222,7 +192,94 @@ public class BoilerReadingInfoController : Controller
             .Select(x => x.Company)
             .FirstOrDefault();
         var query = _context.TblEquipmentDetails
-            .Where(x => EF.Functions.Like(x.EquipmentName, "%BOILER%"));
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
+            .Select(x => new SelectListItem
+            {
+                Value = x.Eqid.ToString(),
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+            })
+            .ToList();
+        return View(model);
+    }
+
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Create(TblRoPlantCostInfo roPlantCostInfo)
+    {
+        try
+        {
+            if (!ModelState.IsValid)
+            {
+                TempData["ErrorMessage"] = "Please fill all required fields.";
+                return View(roPlantCostInfo);
+            }
+
+            // Normalize date (only date part)
+            var dateOnly = roPlantCostInfo.Trdate?.Date;
+
+            // ❌ CHECK DUPLICATE: Same Machine + Same Date
+            var isExists = await _context.TblRoPlantCostInfo
+                .AnyAsync(x =>
+                    x.Eqid == roPlantCostInfo.Eqid &&
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value.Date == dateOnly
+                );
+
+            if (isExists)
+            {
+                ModelState.AddModelError("", "This machine already has a reading for this date!");
+                return View(roPlantCostInfo);
+            }
+
+            // Save current time (keep datetime but same date)
+            var now = DateTime.Now;
+            var currentUser = User.Identity?.Name ?? "System";
+            // Created Information
+            roPlantCostInfo.CreatedAt = now;
+            roPlantCostInfo.CreatedBy = currentUser;
+
+            roPlantCostInfo.Trdate = dateOnly?
+                .AddHours(now.Hour)
+                .AddMinutes(now.Minute)
+                .AddSeconds(now.Second);
+
+            _context.TblRoPlantCostInfo.Add(roPlantCostInfo);
+            await _context.SaveChangesAsync();
+
+            TempData["SuccessMessage"] = "Reading created successfully.";
+
+            return RedirectToAction(nameof(RoPlantCostInfoList));
+        }
+        catch (Exception)
+        {
+            TempData["ErrorMessage"] = "Failed to create reading.";
+            return View(roPlantCostInfo);
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
+    {
+        var reading = await _context.TblRoPlantCostInfo
+            .FirstOrDefaultAsync(x => x.Trid == id);
+
+        if (reading == null)
+            return NotFound();
+
+
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
         if (!string.IsNullOrEmpty(currentLocation))
         {
             query = query.Where(x => x.CurrentLocation == currentLocation);
@@ -236,110 +293,17 @@ public class BoilerReadingInfoController : Controller
             })
             .ToList();
 
-        return View(model);
-    }
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblBoilerReadingInfo boilerReadingInfo)
-    {
-        try
-        {
-            if (!ModelState.IsValid)
-            {
-                TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(boilerReadingInfo);
-            }
-
-            // Normalize date (only date part)
-            var dateOnly = boilerReadingInfo.Trdate?.Date;
-
-            // ❌ CHECK DUPLICATE: Same Machine + Same Date
-            var isExists = await _context.TblBoilerReadingInfo
-                .AnyAsync(x =>
-                    x.Eqid == boilerReadingInfo.Eqid &&
-                    x.Trdate.HasValue &&
-                    x.Trdate.Value.Date == dateOnly
-                );
-
-            if (isExists)
-            {
-                ModelState.AddModelError("", "This machine already has a reading for this date!");
-                return View(boilerReadingInfo);
-            }
-
-            // Save current time (keep datetime but same date)
-            var now = DateTime.Now;
-
-            boilerReadingInfo.Trdate = dateOnly?
-                .AddHours(now.Hour)
-                .AddMinutes(now.Minute)
-                .AddSeconds(now.Second);
-
-            _context.TblBoilerReadingInfo.Add(boilerReadingInfo);
-            await _context.SaveChangesAsync();
-
-            TempData["SuccessMessage"] = "Reading created successfully.";
-
-            return RedirectToAction(nameof(BoilerReadingInfoList));
-        }
-        catch (Exception)
-        {
-            TempData["ErrorMessage"] = "Failed to create reading.";
-            return View(boilerReadingInfo);
-        }
-    }
-
-    [HttpGet]
-    public async Task<IActionResult> Edit(int id)
-    {
-        var reading = await _context.TblBoilerReadingInfo
-            .FirstOrDefaultAsync(x => x.Trid == id);
-
-        if (reading == null)
-            return NotFound();
-
-
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
-            .Select(x => new SelectListItem
-            {
-                Value = x.Eqid.ToString(),
-                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
-            })
-            .ToList();
-
-
-        var ngRate = _context.TblNgRate
-    .OrderByDescending(x => x.NgrId)
-    .Select(x => x.Rate)
-    .FirstOrDefault();
-
-        var dieselRate = _context.TblDieselRates
-            .OrderByDescending(x => x.Drid)
+        ViewBag.NaclRate = await _context.TblNaclRate
             .Select(x => x.Rate)
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
-        var cngRate = _context.TblCngRate
-            .OrderByDescending(x => x.Cngrid)
-            .Select(x => x.Rate)
-            .FirstOrDefault();
-
-        var lpgRate = _context.TblLpgRate
-            .OrderByDescending(x => x.Lpgrid)
-            .Select(x => x.Rate)
-            .FirstOrDefault();
-
-        ViewBag.NgRate = ngRate;
-        ViewBag.DieselRate = dieselRate;
-        ViewBag.CngRate = cngRate;
-        ViewBag.LpgRate = lpgRate;
 
         return View(reading);
     }
 
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Edit(TblBoilerReadingInfo boilerReadingInfo)
+    public async Task<IActionResult> Edit(TblRoPlantCostInfo roPlantCostInfo)
     {
         try
         {
@@ -353,19 +317,52 @@ public class BoilerReadingInfoController : Controller
                     })
                     .ToList();
 
-                return View(boilerReadingInfo);
+                return View(roPlantCostInfo);
             }
 
-            _context.Update(boilerReadingInfo);
+            var existing = await _context.TblRoPlantCostInfo
+                .FirstOrDefaultAsync(x => x.Trid == roPlantCostInfo.Trid);
+
+            if (existing == null)
+            {
+                return NotFound();
+            }
+
+            // Update editable fields
+            existing.Trdate = roPlantCostInfo.Trdate;
+            existing.Eqid = roPlantCostInfo.Eqid;
+            existing.Doshion51Cons = roPlantCostInfo.Doshion51Cons;
+            existing.Doshion51Cost = roPlantCostInfo.Doshion51Cost;
+            existing.Doshion52Cons = roPlantCostInfo.Doshion52Cons;
+            existing.Doshion52Cost = roPlantCostInfo.Doshion52Cost;
+            existing.DoScale65Cons = roPlantCostInfo.DoScale65Cons;
+            existing.DoScale65Cost = roPlantCostInfo.DoScale65Cost;
+            existing.DailyRunningHour = roPlantCostInfo.DailyRunningHour;
+            existing.TotalChemicalCost = roPlantCostInfo.TotalChemicalCost;
+            existing.ServiceCharge = roPlantCostInfo.ServiceCharge;
+            existing.MaintenanceCost = roPlantCostInfo.MaintenanceCost;
+            existing.ManpowerSalary = roPlantCostInfo.ManpowerSalary;
+            existing.GrandTotalCost = roPlantCostInfo.GrandTotalCost;
+            existing.EffFlowRoPlant = roPlantCostInfo.EffFlowRoPlant;
+            existing.EffFlowRoSoft = roPlantCostInfo.EffFlowRoSoft;
+            existing.RoSoftWaterFlow = roPlantCostInfo.RoSoftWaterFlow;
+            existing.EffFlowRoRejection = roPlantCostInfo.EffFlowRoRejection;
+            existing.ChemCostEffTreatment = roPlantCostInfo.ChemCostEffTreatment;
+            existing.DailyRoCost = roPlantCostInfo.DailyRoCost;
+
+            // Update audit fields
+            existing.UpdatedAt = DateTime.Now;
+            existing.UpdatedBy = User.Identity?.Name ?? "System";
+
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading updated successfully.";
 
-            return RedirectToAction(nameof(BoilerReadingInfoList));
+            return RedirectToAction(nameof(RoPlantCostInfoList));
         }
         catch (Exception)
         {
-            TempData["ErrorMessage"] = "Failed to update reading.";
+            TempData["ErrorMessage"] = "Failed to update cost.";
 
             ViewBag.EquipmentList = _context.TblEquipmentDetails
                 .Select(x => new SelectListItem
@@ -375,13 +372,14 @@ public class BoilerReadingInfoController : Controller
                 })
                 .ToList();
 
-            return View(boilerReadingInfo);
+            return View(roPlantCostInfo);
         }
     }
+
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblBoilerReadingInfo.FindAsync(id);
+        var data = await _context.TblRoPlantCostInfo.FindAsync(id);
 
         if (data == null)
             return NotFound();
@@ -393,21 +391,21 @@ public class BoilerReadingInfoController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var data = await _context.TblBoilerReadingInfo
+        var data = await _context.TblRoPlantCostInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
         {
-            TempData["ErrorMessage"] = "Readings not found.";
-            return RedirectToAction(nameof(BoilerReadingInfoList));
+            TempData["ErrorMessage"] = "Cost not found.";
+            return RedirectToAction(nameof(RoPlantCostInfoList));
         }
 
-        _context.TblBoilerReadingInfo.Remove(data);
+        _context.TblRoPlantCostInfo.Remove(data);
         await _context.SaveChangesAsync();
 
-        TempData["SuccessMessage"] = "Readings deleted successfully.";
+        TempData["SuccessMessage"] = "Cost deleted successfully.";
 
-        return RedirectToAction(nameof(BoilerReadingInfoList));
+        return RedirectToAction(nameof(RoPlantCostInfoList));
     }
 }
 

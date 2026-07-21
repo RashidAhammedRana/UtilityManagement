@@ -105,19 +105,21 @@
                                 <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
                             </div>
                             <!-- NgConsumptionKwh -->
+                            <!-- NgConsumptionKwh=NgConsumptionM+CngConsumption/ EGeneration-->
                             <div class="col-md-3">
                                 <label asp-for="NgConsumptionKwh" class="form-label">
                                     NG Cons./Kwh(m3/Kwh)<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="NgConsumptionKwh" class="form-control" />
+                                <input asp-for="NgConsumptionKwh" class="form-control" readonly/>
                                 <span asp-validation-for="NgConsumptionKwh" class="text-danger"></span>
                             </div>
                             <!-- KwhUnitNgConsumption -->
+                            <!-- KwhUnitNgConsumption=EGeneration/NgConsumptionM+CngConsumption -->
                             <div class="col-md-3">
                                 <label asp-for="KwhUnitNgConsumption" class="form-label">
                                     Kwh/Per Unit NG Cons.(Kwh/m3)<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="KwhUnitNgConsumption" class="form-control" />
+                                <input asp-for="KwhUnitNgConsumption" class="form-control" readonly/>
                                 <span asp-validation-for="KwhUnitNgConsumption" class="text-danger"></span>
                             </div>
                             <!-- LubOilConsumption -->
@@ -133,7 +135,7 @@
                                 <label asp-for="NgTkM" class="form-label">
                                     NG (Tk/m3)<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="NgTkM" class="form-control" />
+                                <input asp-for="NgTkM" class="form-control" readonly/>
                                 <span asp-validation-for="NgTkM" class="text-danger"></span>
                             </div>
                             <!-- ChemicalCost -->
@@ -149,7 +151,7 @@
                                 <label asp-for="LubOilCost" class="form-label">
                                     Lub Oil (Tk/Ltr)<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="LubOilCost" class="form-control" />
+                                <input asp-for="LubOilCost" class="form-control" readonly/>
                                 <span asp-validation-for="LubOilCost" class="text-danger"></span>
                             </div>
                             <!-- CngCost -->
@@ -157,7 +159,7 @@
                                 <label asp-for="CngCost" class="form-label">
                                     CNG(Tk/m3)<span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="CngCost" class="form-control" />
+                                <input asp-for="CngCost" class="form-control"readonly />
                                 <span asp-validation-for="CngCost" class="text-danger"></span>
                             </div>
                             <!-- Troubleshooting -->
@@ -233,13 +235,13 @@
         // ================= INPUT FIELDS =================
         const ngM = document.getElementById("NgConsumptionM");
         const cng = document.getElementById("CngConsumption");
+        const lubOil = document.getElementById("LubOilConsumption");
         const runHr = document.getElementById("RunningHr");
 
         const eGeneration = document.getElementById("EGeneration");
         const ngHr = document.getElementById("NgConsumptionHr");
         const ngKwh = document.getElementById("NgConsumptionKwh");
         const kwhUnit = document.getElementById("KwhUnitNgConsumption");
-        const lubOil = document.getElementById("LubOilConsumption");
 
         const ngTkM = document.getElementById("NgTkM");
         const chemicalCost = document.getElementById("ChemicalCost");
@@ -253,19 +255,31 @@
         const total = document.getElementById("Total");
         const tkKwh = document.getElementById("TkKwh");
 
-        // ================= CALC: NG / HR =================
-        function calculateNgHr() {
+    // ================= CALC: NG / HR + NG/KWH + KWH/NG =================
+    function calculateNgHr() {
 
-            let ngMVal = parseFloat(ngM?.value || 0);
-            let cngVal = parseFloat(cng?.value || 0);
-            let runHrVal = parseFloat(runHr?.value || 0);
+        let ngMVal = parseFloat(ngM?.value || 0);
+        let cngVal = parseFloat(cng?.value || 0);
+        let runHrVal = parseFloat(runHr?.value || 0);
+        let generationVal = parseFloat(eGeneration?.value || 0);
 
-            let totalConsumption = ngMVal + cngVal;
+        let totalConsumption = ngMVal + cngVal;
 
-            ngHr.value = runHrVal > 0
-                ? (totalConsumption / runHrVal).toFixed(2)
-                : "0.00";
-        }
+        // NG Consumption / Hr
+        ngHr.value = runHrVal > 0
+            ? (totalConsumption / runHrVal).toFixed(2)
+            : "0.00";
+
+        // NG Consumption / Kwh = (NG + CNG) / Generation
+        ngKwh.value = generationVal > 0
+            ? (totalConsumption / generationVal).toFixed(2)
+            : "0.00";
+
+        // Kwh per Unit NG Consumption = Generation / (NG + CNG)
+        kwhUnit.value = totalConsumption > 0
+            ? (generationVal / totalConsumption).toFixed(2)
+            : "0.00";
+    }
 
         // ================= CALC: TOTAL + TK/KWH =================
         function calculateTotal() {
@@ -287,16 +301,35 @@
                 ? (totalValue / generation).toFixed(2)
                 : "0.00";
         }
+        function calculateCost() {
+        const cngRate = parseFloat('@ViewBag.CngRate') || 0;
+        const ngRate = parseFloat('@ViewBag.NgRate') || 0;
+        const lubOilRate = parseFloat('@ViewBag.LubOilRate') || 0;
+
+        let cngConsumption = parseFloat(cng?.value || 0);
+        let ngConsumption = parseFloat(ngM?.value || 0);
+        let lubOilConsumption = parseFloat(lubOil?.value || 0);
+
+        let cngCostValue = cngConsumption * cngRate;
+        let ngTkMValue = ngConsumption * ngRate;
+        let lubOilCostValue = lubOilConsumption * lubOilRate;
+
+        cngCost.value = cngCostValue.toFixed(2);
+        ngTkM.value = ngTkMValue.toFixed(2);
+        lubOilCost.value = lubOilCostValue.toFixed(2);
+        }
 
         // ================= MASTER CALCULATE =================
         function calculateAll() {
             calculateNgHr();
+            calculateCost();
             calculateTotal();
+            
         }
 
         // ================= EVENT LISTENERS =================
         [
-            ngM, cng, runHr,
+            ngM, cng,lubOil, runHr,
             ngTkM, chemicalCost, lubOilCost, cngCost,
             troubleshooting, serviceCharge, repairCharge,
             eGeneration

@@ -62,21 +62,21 @@
 
                             <!-- NG Consumption M -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionM" class="form-label">NG Cons (m3)<span class="text-danger">*</span></label>
+                                <label asp-for="NgConsumptionM" class="form-label">NG Cons.(m3)<span class="text-danger">*</span></label>
                                 <input asp-for="NgConsumptionM" class="form-control" />
                                 <span asp-validation-for="NgConsumptionM" class="text-danger"></span>
                             </div>
 
                             <!-- CNG Consumption -->
                             <div class="col-md-3">
-                                <label asp-for="CngConsumption" class="form-label">CNG Cons (m3)<span class="text-danger">*</span></label>
+                                <label asp-for="CngConsumption" class="form-label">CNG Cons.(m3)<span class="text-danger">*</span></label>
                                 <input asp-for="CngConsumption" class="form-control" />
                                 <span asp-validation-for="CngConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- E Generation -->
                             <div class="col-md-3">
-                                <label asp-for="EGeneration" class="form-label">E Gen (Kwh)<span class="text-danger">*</span></label>
+                                <label asp-for="EGeneration" class="form-label">E.Gen.(Kwh)<span class="text-danger">*</span></label>
                                 <input asp-for="EGeneration" class="form-control" />
                                 <span asp-validation-for="EGeneration" class="text-danger"></span>
                             </div>
@@ -90,36 +90,36 @@
 
                             <!-- NG / Hr -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionHr" class="form-label">NG / Hr <span class="text-danger">*</span></label>
-                                <input asp-for="NgConsumptionHr" class="form-control" />
+                                <label asp-for="NgConsumptionHr" class="form-label">NG Cons./Hr <span class="text-danger">*</span></label>
+                                <input asp-for="NgConsumptionHr" class="form-control"readonly />
                                 <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
                             </div>
 
                             <!-- NG / Kwh -->
                             <div class="col-md-3">
-                                <label asp-for="NgConsumptionKwh" class="form-label">NG / Kwh <span class="text-danger">*</span></label>
-                                <input asp-for="NgConsumptionKwh" class="form-control" />
+                                <label asp-for="NgConsumptionKwh" class="form-label">NG Cons./Kwh(m3/Kwh)<span class="text-danger">*</span></label>
+                                <input asp-for="NgConsumptionKwh" class="form-control"readonly />
                                 <span asp-validation-for="NgConsumptionKwh" class="text-danger"></span>
                             </div>
 
                             <!-- Kwh per NG -->
                             <div class="col-md-3">
-                                <label asp-for="KwhUnitNgConsumption" class="form-label">Kwh / NG <span class="text-danger">*</span></label>
-                                <input asp-for="KwhUnitNgConsumption" class="form-control" />
+                                <label asp-for="KwhUnitNgConsumption" class="form-label">Kwh/Per Unit NG Cons.(Kwh/m3)<span class="text-danger">*</span></label>
+                                <input asp-for="KwhUnitNgConsumption" class="form-control" readonly/>
                                 <span asp-validation-for="KwhUnitNgConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- Lub Oil -->
                             <div class="col-md-3">
-                                <label asp-for="LubOilConsumption" class="form-label">Lub Oil <span class="text-danger">*</span></label>
+                                <label asp-for="LubOilConsumption" class="form-label">Lub Oil Cons. <span class="text-danger">*</span></label>
                                 <input asp-for="LubOilConsumption" class="form-control" />
                                 <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
                             </div>
 
                             <!-- Cost Fields -->
                             <div class="col-md-3">
-                                <label asp-for="NgTkM" class="form-label">NG Tk/m3 <span class="text-danger">*</span></label>
-                                <input asp-for="NgTkM" class="form-control" />
+                                <label asp-for="NgTkM" class="form-label">NG (Tk/m3) <span class="text-danger">*</span></label>
+                                <input asp-for="NgTkM" class="form-control"readonly />
                                 <span asp-validation-for="NgTkM" class="text-danger"></span>
                             </div>
 
@@ -130,14 +130,14 @@
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="LubOilCost" class="form-label">Lub Oil Cost <span class="text-danger">*</span></label>
-                                <input asp-for="LubOilCost" class="form-control" />
+                                <label asp-for="LubOilCost" class="form-label">Lub Oil(Tk/Ltr) <span class="text-danger">*</span></label>
+                                <input asp-for="LubOilCost" class="form-control"readonly />
                                 <span asp-validation-for="LubOilCost" class="text-danger"></span>
                             </div>
 
                             <div class="col-md-3">
-                                <label asp-for="CngCost" class="form-label">CNG Cost <span class="text-danger">*</span></label>
-                                <input asp-for="CngCost" class="form-control" />
+                                <label asp-for="CngCost" class="form-label">CNG(Tk/m3) <span class="text-danger">*</span></label>
+                                <input asp-for="CngCost" class="form-control"readonly />
                                 <span asp-validation-for="CngCost" class="text-danger"></span>
                             </div>
 
@@ -205,44 +205,114 @@
 <script>
     document.addEventListener("DOMContentLoaded", function () {
 
-        const fields = [
-            "NgTkM",
-            "ChemicalCost",
-            "LubOilCost",
-            "CngCost",
-            "Troubleshooting",
-            "ServiceCharge",
-            "RepairCharge"
-        ].map(id => document.getElementById(id));
+        // ================= INPUT FIELDS =================
+        const ngM = document.getElementById("NgConsumptionM");
+        const cng = document.getElementById("CngConsumption");
+        const lubOil = document.getElementById("LubOilConsumption");
+        const runHr = document.getElementById("RunningHr");
+
+        const eGeneration = document.getElementById("EGeneration");
+        const ngHr = document.getElementById("NgConsumptionHr");
+        const ngKwh = document.getElementById("NgConsumptionKwh");
+        const kwhUnit = document.getElementById("KwhUnitNgConsumption");
+
+        const ngTkM = document.getElementById("NgTkM");
+        const chemicalCost = document.getElementById("ChemicalCost");
+        const lubOilCost = document.getElementById("LubOilCost");
+        const cngCost = document.getElementById("CngCost");
+
+        const troubleshooting = document.getElementById("Troubleshooting");
+        const serviceCharge = document.getElementById("ServiceCharge");
+        const repairCharge = document.getElementById("RepairCharge");
 
         const total = document.getElementById("Total");
-        const eGeneration = document.getElementById("EGeneration");
         const tkKwh = document.getElementById("TkKwh");
 
-        function calculate() {
+    // ================= CALC: NG / HR + NG/KWH + KWH/NG =================
+    function calculateNgHr() {
 
-            let sum = 0;
+        let ngMVal = parseFloat(ngM?.value || 0);
+        let cngVal = parseFloat(cng?.value || 0);
+        let runHrVal = parseFloat(runHr?.value || 0);
+        let generationVal = parseFloat(eGeneration?.value || 0);
 
-            fields.forEach(f => {
-                sum += parseFloat(f?.value || 0);
-            });
+        let totalConsumption = ngMVal + cngVal;
 
-            total.value = sum.toFixed(2);
+        // NG Consumption / Hr
+        ngHr.value = runHrVal > 0
+            ? (totalConsumption / runHrVal).toFixed(2)
+            : "0.00";
 
-            let gen = parseFloat(eGeneration?.value || 0);
+        // NG Consumption / Kwh = (NG + CNG) / Generation
+        ngKwh.value = generationVal > 0
+            ? (totalConsumption / generationVal).toFixed(2)
+            : "0.00";
 
-            tkKwh.value = gen > 0
-                ? (sum / gen).toFixed(2)
+        // Kwh per Unit NG Consumption = Generation / (NG + CNG)
+        kwhUnit.value = totalConsumption > 0
+            ? (generationVal / totalConsumption).toFixed(2)
+            : "0.00";
+    }
+
+        // ================= CALC: TOTAL + TK/KWH =================
+        function calculateTotal() {
+
+            let totalValue =
+                (parseFloat(ngTkM?.value) || 0) +
+                (parseFloat(chemicalCost?.value) || 0) +
+                (parseFloat(lubOilCost?.value) || 0) +
+                (parseFloat(cngCost?.value) || 0) +
+                (parseFloat(troubleshooting?.value) || 0) +
+                (parseFloat(serviceCharge?.value) || 0) +
+                (parseFloat(repairCharge?.value) || 0);
+
+            total.value = totalValue.toFixed(2);
+
+            let generation = parseFloat(eGeneration?.value || 0);
+
+            tkKwh.value = generation > 0
+                ? (totalValue / generation).toFixed(2)
                 : "0.00";
         }
+        function calculateCost() {
+        const cngRate = parseFloat('@ViewBag.CngRate') || 0;
+        const ngRate = parseFloat('@ViewBag.NgRate') || 0;
+        const lubOilRate = parseFloat('@ViewBag.LubOilRate') || 0;
 
-        fields.forEach(f => {
-            if (f) f.addEventListener("input", calculate);
+        let cngConsumption = parseFloat(cng?.value || 0);
+        let ngConsumption = parseFloat(ngM?.value || 0);
+        let lubOilConsumption = parseFloat(lubOil?.value || 0);
+
+        let cngCostValue = cngConsumption * cngRate;
+        let ngTkMValue = ngConsumption * ngRate;
+        let lubOilCostValue = lubOilConsumption * lubOilRate;
+
+        cngCost.value = cngCostValue.toFixed(2);
+        ngTkM.value = ngTkMValue.toFixed(2);
+        lubOilCost.value = lubOilCostValue.toFixed(2);
+        }
+
+        // ================= MASTER CALCULATE =================
+        function calculateAll() {
+            calculateNgHr();
+            calculateCost();
+            calculateTotal();
+
+        }
+
+        // ================= EVENT LISTENERS =================
+        [
+            ngM, cng,lubOil, runHr,
+            ngTkM, chemicalCost, lubOilCost, cngCost,
+            troubleshooting, serviceCharge, repairCharge,
+            eGeneration
+        ].forEach(el => {
+            if (el) el.addEventListener("input", calculateAll);
         });
 
-        eGeneration.addEventListener("input", calculate);
+        // ================= INITIAL RUN =================
+        calculateAll();
 
-        calculate();
     });
 </script>
 

@@ -202,6 +202,40 @@ public class NgGeneratorReadingInfoController : Controller
                 Text = $"{x.EquipmentName} - {x.CurrentLocation}"
             })
             .ToList();
+
+        var cngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "CNG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        var ngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "NG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        var lubOilRate = _context.TblFncItems
+        .Where(i => i.ItemName == "Lube Oil")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        ViewBag.CngRate = cngRate;
+        ViewBag.NgRate = ngRate;
+        ViewBag.LubOilRate = lubOilRate;
         return View(model);
     }
 
@@ -272,6 +306,39 @@ public class NgGeneratorReadingInfoController : Controller
                 Text = $"{x.EquipmentName} - {x.CurrentLocation}"
             })
             .ToList();
+        var cngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "CNG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        var ngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "NG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        var lubOilRate = _context.TblFncItems
+        .Where(i => i.ItemName == "Lube Oil")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        ViewBag.CngRate = cngRate;
+        ViewBag.NgRate = ngRate;
+        ViewBag.LubOilRate = lubOilRate;
 
         return View(reading);
     }

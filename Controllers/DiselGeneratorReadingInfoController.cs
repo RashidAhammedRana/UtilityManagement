@@ -354,7 +354,7 @@ public class DiselGeneratorReadingInfoController : Controller
     {
 
         var rate = _context.TblFncItems
-    .Where(i => i.ItemName == "DIESEL")
+    .Where(i => i.Fncid == 10)//DIESEL
     .Join(_context.TblFncItemRates,
         item => item.Fncid,
         rate => rate.Fncid,
@@ -369,7 +369,7 @@ public class DiselGeneratorReadingInfoController : Controller
     {
 
         var rate = _context.TblFncItems
-            .Where(i => i.ItemName == "Lube Oil")
+            .Where(i => i.Fncid == 12)//Lube Oil
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,

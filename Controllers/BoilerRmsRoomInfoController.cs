@@ -185,7 +185,7 @@ public class BoilerRmsRoomInfoController : Controller
         };
 
         var ngRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NG")
+            .Where(i => i.Fncid == 11)//NG
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -289,7 +289,7 @@ public class BoilerRmsRoomInfoController : Controller
             .ToList();
 
         var ngRate = _context.TblFncItems
-              .Where(i => i.ItemName == "NG")
+              .Where(i => i.Fncid == 11)//NG
               .Join(_context.TblFncItemRates,
                   item => item.Fncid,
                   rate => rate.Fncid,

@@ -186,7 +186,7 @@ public class WtpPlanCostInfoController : Controller
         };
 
         var naclRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NACL")
+            .Where(i => i.Fncid == 16)//NACL
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -305,14 +305,14 @@ public class WtpPlanCostInfoController : Controller
             .ToList();
 
         var naclRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NACL")
-            .Join(_context.TblFncItemRates,
-                item => item.Fncid,
-                rate => rate.Fncid,
-                (item, rate) => rate)
-            .OrderByDescending(r => r.Date)
-            .Select(r => r.Rate)
-            .FirstOrDefault();
+                .Where(i => i.Fncid == 16)//NACL
+                .Join(_context.TblFncItemRates,
+                    item => item.Fncid,
+                    rate => rate.Fncid,
+                    (item, rate) => rate)
+                .OrderByDescending(r => r.Date)
+                .Select(r => r.Rate)
+                .FirstOrDefault();
 
         ViewBag.NaclRate = naclRate;
 

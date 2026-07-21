@@ -205,6 +205,87 @@ public class RoPlantCostInfoController : Controller
                 Text = $"{x.EquipmentName} - {x.CurrentLocation}"
             })
             .ToList();
+
+        var doshion51Rate = _context.TblFncItems
+        .Where(i => i.Fncid == 17)//Doshion-51
+        .Join(_context.TblFncItemRates,
+           item => item.Fncid,
+           rate => rate.Fncid,
+           (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+        var doshion52Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 18)//Doshion-52
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var doScale65Rate = _context.TblFncItems
+           .Where(i => i.Fncid == 19)//Do Scale-65-Antiscalant
+           .Join(_context.TblFncItemRates,
+              item => item.Fncid,
+              rate => rate.Fncid,
+              (item, rate) => rate)
+           .OrderByDescending(r => r.Date)
+           .Select(r => r.Rate)
+           .FirstOrDefault();
+        var h2so4Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 7)//H2SO4
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var dispergoRate = _context.TblFncItems
+            .Where(i => i.Fncid == 20)//Dispergo 9800
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var na2s2o5Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 22)//Sodium Metabisulphite-SMBS (Na₂S₂O₅)
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var acidCleanerRate = _context.TblFncItems
+            .Where(i => i.Fncid == 23)//Weclean MA-3010-
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var alkalineCleanerRate = _context.TblFncItems
+            .Where(i => i.Fncid == 24)//Weclean MA-3000-Alkaline Cleaner
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        ViewBag.Doshion51Rate = doshion51Rate;
+        ViewBag.Doshion52Rate = doshion52Rate;
+        ViewBag.DoScale65Rate = doScale65Rate;
+        ViewBag.H2so4Rate = h2so4Rate;
+        ViewBag.DispergoRate = dispergoRate;
+        ViewBag.Na2s2o5Rate = na2s2o5Rate;
+        ViewBag.AcidCleanerRate = acidCleanerRate;
+        ViewBag.AlkalineCleanerRate = alkalineCleanerRate;
         return View(model);
     }
 
@@ -293,17 +374,86 @@ public class RoPlantCostInfoController : Controller
             })
             .ToList();
 
-        var naclRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NACL")
+        var doshion51Rate = _context.TblFncItems
+        .Where(i => i.Fncid == 17)//Doshion-51
+        .Join(_context.TblFncItemRates,
+           item => item.Fncid,
+           rate => rate.Fncid,
+           (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+        var doshion52Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 18)//Doshion-52
             .Join(_context.TblFncItemRates,
-                item => item.Fncid,
-                rate => rate.Fncid,
-                (item, rate) => rate)
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
             .OrderByDescending(r => r.Date)
             .Select(r => r.Rate)
             .FirstOrDefault();
-
-        ViewBag.NaclRate = naclRate;
+        var doScale65Rate = _context.TblFncItems
+           .Where(i => i.Fncid == 19)//Do Scale-65-Antiscalant
+           .Join(_context.TblFncItemRates,
+              item => item.Fncid,
+              rate => rate.Fncid,
+              (item, rate) => rate)
+           .OrderByDescending(r => r.Date)
+           .Select(r => r.Rate)
+           .FirstOrDefault();
+        var h2so4Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 7)//H2SO4
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var dispergoRate = _context.TblFncItems
+            .Where(i => i.Fncid == 20)//Dispergo 9800
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var na2s2o5Rate = _context.TblFncItems
+            .Where(i => i.Fncid == 22)//Sodium Metabisulphite-SMBS (Na₂S₂O₅)
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var acidCleanerRate = _context.TblFncItems
+            .Where(i => i.Fncid == 23)//Weclean MA-3010-
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        var alkalineCleanerRate = _context.TblFncItems
+            .Where(i => i.Fncid == 24)//Weclean MA-3000-Alkaline Cleaner
+            .Join(_context.TblFncItemRates,
+               item => item.Fncid,
+               rate => rate.Fncid,
+               (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        ViewBag.Doshion51Rate = doshion51Rate;
+        ViewBag.Doshion52Rate = doshion52Rate;
+        ViewBag.DoScale65Rate = doScale65Rate;
+        ViewBag.H2so4Rate = h2so4Rate;
+        ViewBag.DispergoRate = dispergoRate;
+        ViewBag.Na2s2o5Rate = na2s2o5Rate;
+        ViewBag.AcidCleanerRate = acidCleanerRate;
+        ViewBag.AlkalineCleanerRate = alkalineCleanerRate;
         return View(reading);
     }
 

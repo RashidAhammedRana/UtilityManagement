@@ -73,7 +73,7 @@
                 <th>Item Name</th>
                 <th>Rate</th>
                 <th>Remarks</th>
-                <th>Actions</th>
+                @* <th>Actions</th> *@
             </tr>
         </thead>
 
@@ -85,11 +85,11 @@
                 <tr>
                     <td class="text-center">@sl</td>
                     <td class="text-center">@item.Date?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Fnc?.ItemName</td>
+                    <td>@item.Fnc?.ItemName</td>
                     <td class="text-center">@item.Rate</td>
                     <td class="text-center">@item.Remarks</td>
 
-                    <td class="text-center">
+@*                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
 
                             @if (canEdit)
@@ -111,7 +111,7 @@
                             }
 
                         </div>
-                    </td>
+                    </td> *@
                 </tr>
             }
         </tbody>

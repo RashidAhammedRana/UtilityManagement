@@ -187,7 +187,7 @@ public class EtpPlanCostInfoController : Controller
         };
 
         var ureaRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Urea")
+        .Where(i => i.Fncid == 1)//Urea
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -197,7 +197,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var decoloringRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Decoloring")
+        .Where(i => i.Fncid == 2)//Decoloring
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -207,7 +207,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var dapRate = _context.TblFncItems
-        .Where(i => i.ItemName == "DAP")
+        .Where(i => i.Fncid == 3)//DAP
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -217,7 +217,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var polymerRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Polymer")
+        .Where(i => i.Fncid == 4)//Polymer
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -227,7 +227,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var molassasesRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Molassases")
+        .Where(i => i.Fncid == 5)//Molassases
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -237,7 +237,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var antifoamRate = _context.TblFncItems
-       .Where(i => i.ItemName == "Antifoam")
+       .Where(i => i.Fncid == 6)//Antifoam
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,
@@ -247,7 +247,7 @@ public class EtpPlanCostInfoController : Controller
        .FirstOrDefault();
 
         var h2so4Rate = _context.TblFncItems
-       .Where(i => i.ItemName == "H2SO4")
+       .Where(i => i.Fncid == 7)//H2SO4
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,
@@ -257,7 +257,7 @@ public class EtpPlanCostInfoController : Controller
        .FirstOrDefault();
 
         var bioCleanRate = _context.TblFncItems
-       .Where(i => i.ItemName == "Bio Clean")
+       .Where(i => i.Fncid == 8)//Bio Clean
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,
@@ -365,17 +365,17 @@ public class EtpPlanCostInfoController : Controller
             return NotFound();
 
         var ureaRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Urea")
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
+            .Where(i => i.Fncid == 1)//Urea
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         var decoloringRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Decoloring")
+        .Where(i => i.Fncid == 2)//Decoloring
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -385,7 +385,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var dapRate = _context.TblFncItems
-        .Where(i => i.ItemName == "DAP")
+        .Where(i => i.Fncid == 3)//DAP
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -395,7 +395,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var polymerRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Polymer")
+        .Where(i => i.Fncid == 4)//Polymer
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -405,7 +405,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var molassasesRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Molassases")
+        .Where(i => i.Fncid == 5)//Molassases
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -415,7 +415,7 @@ public class EtpPlanCostInfoController : Controller
         .FirstOrDefault();
 
         var antifoamRate = _context.TblFncItems
-       .Where(i => i.ItemName == "Antifoam")
+       .Where(i => i.Fncid == 6)//Antifoam
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,
@@ -425,7 +425,7 @@ public class EtpPlanCostInfoController : Controller
        .FirstOrDefault();
 
         var h2so4Rate = _context.TblFncItems
-       .Where(i => i.ItemName == "H2SO4")
+       .Where(i => i.Fncid == 7)//H2SO4
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,
@@ -435,7 +435,7 @@ public class EtpPlanCostInfoController : Controller
        .FirstOrDefault();
 
         var bioCleanRate = _context.TblFncItems
-       .Where(i => i.ItemName == "Bio Clean")
+       .Where(i => i.Fncid == 8)//Bio Clean
        .Join(_context.TblFncItemRates,
            item => item.Fncid,
            rate => rate.Fncid,

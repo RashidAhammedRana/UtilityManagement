@@ -24,6 +24,26 @@ public partial class TblRoPlantCostInfo
     [Required(ErrorMessage = "This field is required")]
     public double? DoScale65Cost { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public double? H2so4Cons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? H2so4Cost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? DispergoCons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? DispergoCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? Na2s2o5Cons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? Na2s2o5Cost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? AcidCleanerCons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? AcidCleanerCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? AlkalineCleanerCons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? AlkalineCleanerCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? DailyRunningHour { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? TotalChemicalCost { get; set; }

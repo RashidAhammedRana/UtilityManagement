@@ -204,7 +204,7 @@ public class NgGeneratorReadingInfoController : Controller
             .ToList();
 
         var cngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "CNG")
+        .Where(i => i.Fncid == 9)//CNG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -214,7 +214,7 @@ public class NgGeneratorReadingInfoController : Controller
         .FirstOrDefault();
 
         var ngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "NG")
+        .Where(i => i.Fncid == 11)//NG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -224,7 +224,7 @@ public class NgGeneratorReadingInfoController : Controller
         .FirstOrDefault();
 
         var lubOilRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Lube Oil")
+        .Where(i => i.Fncid ==12)//Lube Oil
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -307,7 +307,7 @@ public class NgGeneratorReadingInfoController : Controller
             })
             .ToList();
         var cngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "CNG")
+        .Where(i => i.Fncid == 9)//CNG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -317,7 +317,7 @@ public class NgGeneratorReadingInfoController : Controller
         .FirstOrDefault();
 
         var ngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "NG")
+        .Where(i => i.Fncid == 11)//NG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -327,7 +327,7 @@ public class NgGeneratorReadingInfoController : Controller
         .FirstOrDefault();
 
         var lubOilRate = _context.TblFncItems
-        .Where(i => i.ItemName == "Lube Oil")
+        .Where(i => i.Fncid == 12)//Lube Oil
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,

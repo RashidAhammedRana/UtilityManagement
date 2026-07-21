@@ -741,13 +741,19 @@ namespace UtilityManagement.Data
             modelBuilder.Entity<TblRoPlantCostInfo>(entity =>
             {
                 entity.HasKey(e => e.Trid);
-
                 entity.ToTable("TBL_RO_PLANT_COST_INFO");
-
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AcidCleanerCons).HasColumnName("ACID_CLEANER_CONS");
+                entity.Property(e => e.AcidCleanerCost).HasColumnName("ACID_CLEANER_COST");
+                entity.Property(e => e.AlkalineCleanerCons).HasColumnName("ALKALINE_CLEANER_CONS");
+                entity.Property(e => e.AlkalineCleanerCost).HasColumnName("ALKALINE_CLEANER_COST");
                 entity.Property(e => e.ChemCostEffTreatment).HasColumnName("CHEM_COST_EFF_TREATMENT");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.DailyRoCost).HasColumnName("DAILY_RO_COST");
                 entity.Property(e => e.DailyRunningHour).HasColumnName("DAILY_RUNNING_HOUR");
+                entity.Property(e => e.DispergoCons).HasColumnName("DISPERGO_CONS");
+                entity.Property(e => e.DispergoCost).HasColumnName("DISPERGO_COST");
                 entity.Property(e => e.DoScale65Cons).HasColumnName("DO_SCALE65_CONS");
                 entity.Property(e => e.DoScale65Cost).HasColumnName("DO_SCALE65_COST");
                 entity.Property(e => e.Doshion51Cons).HasColumnName("DOSHION51_CONS");
@@ -759,14 +765,16 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.EffFlowRoSoft).HasColumnName("EFF_FLOW_RO_SOFT");
                 entity.Property(e => e.Eqid).HasColumnName("EQID");
                 entity.Property(e => e.GrandTotalCost).HasColumnName("GRAND_TOTAL_COST");
+                entity.Property(e => e.H2so4Cons).HasColumnName("H2SO4_CONS");
+                entity.Property(e => e.H2so4Cost).HasColumnName("H2SO4_COST");
                 entity.Property(e => e.MaintenanceCost).HasColumnName("MAINTENANCE_COST");
                 entity.Property(e => e.ManpowerSalary).HasColumnName("MANPOWER_SALARY");
+                entity.Property(e => e.Na2s2o5Cons).HasColumnName("NA2S2O5_CONS");
+                entity.Property(e => e.Na2s2o5Cost).HasColumnName("NA2S2O5_COST");
                 entity.Property(e => e.RoSoftWaterFlow).HasColumnName("RO_SOFT_WATER_FLOW");
                 entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
                 entity.Property(e => e.TotalChemicalCost).HasColumnName("TOTAL_CHEMICAL_COST");
                 entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
-                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblRoPlantCostInfos).HasForeignKey(d => d.Eqid)

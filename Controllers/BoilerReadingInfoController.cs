@@ -185,7 +185,7 @@ public class BoilerReadingInfoController : Controller
         };
 
         var ngRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NG")
+            .Where(i => i.Fncid == 11)//NG
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -195,7 +195,7 @@ public class BoilerReadingInfoController : Controller
             .FirstOrDefault();
 
         var dieselRate = _context.TblFncItems
-            .Where(i => i.ItemName == "Diesel")
+            .Where(i => i.Fncid == 10)//Diesel
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -203,12 +203,8 @@ public class BoilerReadingInfoController : Controller
             .OrderByDescending(r => r.Date)
             .Select(r => r.Rate)
             .FirstOrDefault();
-        //var dieselRate = _context.TblDieselRates
-        //             .OrderByDescending(x => x.Drid)
-        //             .Select(x => x.Rate)
-        //             .FirstOrDefault();
         var cngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "CNG")
+        .Where(i => i.Fncid == 9)//CNG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -218,7 +214,7 @@ public class BoilerReadingInfoController : Controller
         .FirstOrDefault();
 
         var lpgRate = _context.TblFncItems
-            .Where(i => i.ItemName == "LPG")
+            .Where(i => i.Fncid == 13)//LPG
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -325,7 +321,7 @@ public class BoilerReadingInfoController : Controller
             .ToList();
 
         var ngRate = _context.TblFncItems
-            .Where(i => i.ItemName == "NG")
+            .Where(i => i.Fncid == 11)//NG
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -335,7 +331,7 @@ public class BoilerReadingInfoController : Controller
             .FirstOrDefault();
 
         var dieselRate = _context.TblFncItems
-            .Where(i => i.ItemName == "DIESEL")
+            .Where(i => i.Fncid == 10)//Diesel
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,
@@ -343,9 +339,8 @@ public class BoilerReadingInfoController : Controller
             .OrderByDescending(r => r.Date)
             .Select(r => r.Rate)
             .FirstOrDefault();
-
         var cngRate = _context.TblFncItems
-        .Where(i => i.ItemName == "CNG")
+        .Where(i => i.Fncid == 9)//CNG
         .Join(_context.TblFncItemRates,
             item => item.Fncid,
             rate => rate.Fncid,
@@ -353,8 +348,9 @@ public class BoilerReadingInfoController : Controller
         .OrderByDescending(r => r.Date)
         .Select(r => r.Rate)
         .FirstOrDefault();
+
         var lpgRate = _context.TblFncItems
-            .Where(i => i.ItemName == "LPG")
+            .Where(i => i.Fncid == 13)//LPG
             .Join(_context.TblFncItemRates,
                 item => item.Fncid,
                 rate => rate.Fncid,

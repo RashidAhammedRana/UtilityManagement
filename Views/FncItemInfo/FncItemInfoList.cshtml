@@ -72,7 +72,7 @@
                 <th>Item Name</th>
                 <th>UOM</th>
                 <th>Status</th>
-                <th>Actions</th>
+                @* <th>Actions</th> *@
             </tr>
         </thead>
 
@@ -83,11 +83,11 @@
 
                 <tr>
                     <td class="text-center">@sl</td>
-                    <td class="text-center">@item.ItemName</td>
+                    <td>@item.ItemName</td>
                     <td class="text-center">@item.Uom</td>
                     <td class="text-center">@item.Status</td>
 
-                    <td class="text-center">
+                    @* <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">
 
                             @if (canEdit)
@@ -109,7 +109,7 @@
                             }
 
                         </div>
-                    </td>
+                    </td> *@
                 </tr>
             }
         </tbody>

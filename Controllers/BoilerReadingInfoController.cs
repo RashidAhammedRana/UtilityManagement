@@ -184,10 +184,15 @@ public class BoilerReadingInfoController : Controller
             Trdate = DateTime.Today
         };
 
-        var ngRate = _context.TblNgRate
-                     .OrderByDescending(x => x.NgrId)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
+        var ngRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NG")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         var dieselRate = _context.TblFncItems
             .Where(i => i.ItemName == "Diesel")
@@ -202,14 +207,25 @@ public class BoilerReadingInfoController : Controller
         //             .OrderByDescending(x => x.Drid)
         //             .Select(x => x.Rate)
         //             .FirstOrDefault();
-        var cngRate = _context.TblCngRate
-                     .OrderByDescending(x => x.Cngrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
-        var lpgRate = _context.TblLpgRate
-                     .OrderByDescending(x => x.Lpgrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
+        var cngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "CNG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+
+        var lpgRate = _context.TblFncItems
+            .Where(i => i.ItemName == "LPG")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         ViewBag.NgRate = ngRate;
         ViewBag.DieselRate = dieselRate;
@@ -308,25 +324,43 @@ public class BoilerReadingInfoController : Controller
             })
             .ToList();
 
-
-        var ngRate = _context.TblNgRate
-    .OrderByDescending(x => x.NgrId)
-    .Select(x => x.Rate)
-    .FirstOrDefault();
-
-        var dieselRate = _context.TblDieselRates
-            .OrderByDescending(x => x.Drid)
-            .Select(x => x.Rate)
+        var ngRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NG")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
             .FirstOrDefault();
 
-        var cngRate = _context.TblCngRate
-            .OrderByDescending(x => x.Cngrid)
-            .Select(x => x.Rate)
+        var dieselRate = _context.TblFncItems
+            .Where(i => i.ItemName == "DIESEL")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
             .FirstOrDefault();
 
-        var lpgRate = _context.TblLpgRate
-            .OrderByDescending(x => x.Lpgrid)
-            .Select(x => x.Rate)
+        var cngRate = _context.TblFncItems
+        .Where(i => i.ItemName == "CNG")
+        .Join(_context.TblFncItemRates,
+            item => item.Fncid,
+            rate => rate.Fncid,
+            (item, rate) => rate)
+        .OrderByDescending(r => r.Date)
+        .Select(r => r.Rate)
+        .FirstOrDefault();
+        var lpgRate = _context.TblFncItems
+            .Where(i => i.ItemName == "LPG")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
             .FirstOrDefault();
 
         ViewBag.NgRate = ngRate;

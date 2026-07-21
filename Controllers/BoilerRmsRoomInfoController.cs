@@ -184,10 +184,15 @@ public class BoilerRmsRoomInfoController : Controller
             Trdate = DateTime.Today
         };
 
-        var ngRate = _context.TblNgRate
-                     .OrderByDescending(x => x.NgrId)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
+        var ngRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NG")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         ViewBag.NgRate = ngRate;
 
@@ -283,11 +288,17 @@ public class BoilerRmsRoomInfoController : Controller
             })
             .ToList();
 
-        ViewBag.NgRate = await _context.TblNgRate
-            .Select(x => x.Rate)
-            .FirstOrDefaultAsync();
+        var ngRate = _context.TblFncItems
+              .Where(i => i.ItemName == "NG")
+              .Join(_context.TblFncItemRates,
+                  item => item.Fncid,
+                  rate => rate.Fncid,
+                  (item, rate) => rate)
+              .OrderByDescending(r => r.Date)
+              .Select(r => r.Rate)
+              .FirstOrDefault();
 
-
+        ViewBag.NgRate = ngRate;
         return View(reading);
     }
 

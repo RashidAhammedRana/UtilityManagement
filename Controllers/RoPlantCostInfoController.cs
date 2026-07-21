@@ -293,11 +293,17 @@ public class RoPlantCostInfoController : Controller
             })
             .ToList();
 
-        ViewBag.NaclRate = await _context.TblNaclRate
-            .Select(x => x.Rate)
-            .FirstOrDefaultAsync();
+        var naclRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NACL")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
-
+        ViewBag.NaclRate = naclRate;
         return View(reading);
     }
 

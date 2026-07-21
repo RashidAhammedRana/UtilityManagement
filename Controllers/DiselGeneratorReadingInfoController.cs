@@ -14,7 +14,7 @@ public class DiselGeneratorReadingInfoController : Controller
     public DiselGeneratorReadingInfoController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
-        _userManager= userManager;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -349,22 +349,33 @@ public class DiselGeneratorReadingInfoController : Controller
 
         return RedirectToAction(nameof(DiselGeneratorReadingInfoList));
     }
-[HttpGet]
-public JsonResult GetLatestDieselRate()
+    [HttpGet]
+    public JsonResult GetLatestDieselRate()
     {
-        var rate = _context.TblDieselRates
-            .OrderByDescending(x => x.TrDate)
-            .Select(x => x.Rate)
-            .FirstOrDefault();
 
+        var rate = _context.TblFncItems
+    .Where(i => i.ItemName == "DIESEL")
+    .Join(_context.TblFncItemRates,
+        item => item.Fncid,
+        rate => rate.Fncid,
+        (item, rate) => rate)
+    .OrderByDescending(r => r.Date)
+    .Select(r => r.Rate)
+    .FirstOrDefault();
         return Json(rate);
     }
     [HttpGet]
     public JsonResult GetLatestLubOilRate()
     {
-        var rate = _context.TblLuboilRates
-            .OrderByDescending(x => x.TrDate)
-            .Select(x => x.Rate)
+
+        var rate = _context.TblFncItems
+            .Where(i => i.ItemName == "Lube Oil")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
             .FirstOrDefault();
 
         return Json(rate);

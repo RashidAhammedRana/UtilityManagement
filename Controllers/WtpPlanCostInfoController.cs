@@ -185,10 +185,15 @@ public class WtpPlanCostInfoController : Controller
             Trdate = DateTime.Today
         };
 
-        var naclRate = _context.TblNaclRate
-                     .OrderByDescending(x => x.Naclrid)
-                     .Select(x => x.Rate)
-                     .FirstOrDefault();
+        var naclRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NACL")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         ViewBag.NaclRate = naclRate;
 
@@ -299,9 +304,17 @@ public class WtpPlanCostInfoController : Controller
             })
             .ToList();
 
-        ViewBag.NaclRate = await _context.TblNaclRate
-            .Select(x => x.Rate)
-            .FirstOrDefaultAsync();
+        var naclRate = _context.TblFncItems
+            .Where(i => i.ItemName == "NACL")
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+
+        ViewBag.NaclRate = naclRate;
 
 
         return View(reading);

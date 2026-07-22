@@ -172,7 +172,7 @@ public class RoPlantCostInfoController : Controller
         // =========================
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
-        ViewBag.totalReadings = totalRecords;
+        ViewBag.totalPlantCost = totalRecords;
         ViewBag.SearchString = searchString;
 
         return View(plantCostRecords);

@@ -4,238 +4,489 @@
     ViewData["Title"] = "Edit WTP Water Consumption Info";
 }
 
-<div class="container mt-4">
+<div class="container-fluid mt-3 edit-page">
 
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <div class="row">
+        <div class="col-md-12">
 
             <div class="card shadow-lg border-0">
 
                 <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">
-                        <i class="bi bi-pencil-square"></i>
-                        Edit WTP Water Consumption Info
-                    </h5>
+                    <h5 class="mb-0">Edit WTP Water Consumption Info</h5>
                 </div>
 
                 <div class="card-body p-4">
 
                     <form asp-action="Edit" method="post">
-                        <input type="hidden" asp-for="Trid" />
+                        <input asp-for="Trid" hidden/>
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
 
-                        <div class="row g-3">
+                        <div class="stepper edit-stepper">
 
-                            <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="Trdate" class="form-label">
-                                    Date <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="Trdate" type="date" class="form-control" />
-
-                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            <div id="stepCircle1" class="step active edit-step">
+                                1
                             </div>
 
-                            <!-- Equipment -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="Eqid" class="form-label">
-                                    Equipment <span class="text-danger">*</span>
-                                </label>
+                            <div id="stepLine1" class="line"></div>
 
-                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
-                                    <option value="">-- Select Equipment --</option>
-                                </select>
+                            <div id="stepCircle2" class="step edit-step">
+                                2
+                            </div>
+                            <div id="stepLine2" class="line"></div>
 
-                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            <div id="stepCircle3" class="step edit-step">
+                                3
                             </div>
-                            <div class="col-12 mt-2">
-                                <h6 class="text-primary">Raw Water Consumption</h6>
-                                <hr class="border border-primary opacity-50 mb-2" />
+                            <div id="stepLine3" class="line"></div>
+
+                            <div id="stepCircle4" class="step edit-step">
+                                4
                             </div>
-                            <!-- ConsumptionB1 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionB1" class="form-label">
-                                    Consumption(Building-01)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionB1" class="form-control" />
-                                <span asp-validation-for="ConsumptionB1" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionB7 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionB7" class="form-label">
-                                    Consumption(Building-07)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionB7" class="form-control" />
-                                <span asp-validation-for="ConsumptionB7" class="text-danger"></span>
+                        </div>
+
+                        <div id="step1" class="wizard-step active">
+
+                            <div class="section-title">
+                                Raw Water Consumption
                             </div>
 
-                            <!-- ConsumptionB11 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionB11" class="form-label">
-                                    Consumption(Building-11) <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionB11" class="form-control" />
-                                <span asp-validation-for="ConsumptionB11" class="text-danger"></span>
+                            <hr class="border-success opacity-50">
+
+
+                            <!-- Common Information -->
+                            <div class="row g-3 mb-4">
+
+                                <!-- Date -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="Trdate" class="form-label">
+                                        Date <span class="text-danger">*</span>
+                                    </label>
+
+                                    <input asp-for="Trdate"
+                                           type="date"
+                                           class="form-control" />
+
+                                    <span asp-validation-for="Trdate"
+                                          class="text-danger"></span>
+                                </div>
+
+
+                                <!-- Equipment -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+
+                                    <label asp-for="Eqid" class="form-label">
+                                        Equipment <span class="text-danger">*</span>
+                                    </label>
+
+                                    <select asp-for="Eqid"
+                                            asp-items="ViewBag.EquipmentList"
+                                            class="form-select">
+
+                                        <option value="">
+                                            -- Select Equipment --
+                                        </option>
+
+                                    </select>
+
+                                    <span asp-validation-for="Eqid"
+                                          class="text-danger"></span>
+
+                                </div>
+
                             </div>
 
-                            <!-- ConsumptionB12 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionB12" class="form-label">
-                                    Consumption(Building-12)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionB12" class="form-control" />
-                                <span asp-validation-for="ConsumptionB12" class="text-danger"></span>
+                            <div class="row g-3">
+
+                                <!-- RawConsGarments -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsGarments" class="form-label">
+                                        Garments Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsGarments" class="form-control" />
+                                    <span asp-validation-for="RawConsGarments" class="text-danger"></span>
+                                </div>
+
+                                <!-- RawConsDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsDyeing" class="form-label">
+                                        Dyeing Consumption <span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsDyeing" class="form-control" />
+                                    <span asp-validation-for="RawConsDyeing" class="text-danger"></span>
+                                </div>
+
+                                <!-- DslLtrHr -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsDyeingFin" class="form-label">
+                                        Dyeing Finishing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsDyeingFin" class="form-control" />
+                                    <span asp-validation-for="RawConsDyeingFin" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsPrinting -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsPrinting" class="form-label">
+                                        Printing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsPrinting" class="form-control" />
+                                    <span asp-validation-for="RawConsPrinting" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsUtilityArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsUtilityArea" class="form-label">
+                                        Utility Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsUtilityArea" class="form-control" />
+                                    <span asp-validation-for="RawConsUtilityArea" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsWashing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsWashing" class="form-label">
+                                        Washing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsWashing" class="form-control" />
+                                    <span asp-validation-for="RawConsWashing" class="text-danger"></span>
+                                </div>
+
+                                <!-- RawConsSeamlessDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsSeamlessDyeing" class="form-label">
+                                        Seamless Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsSeamlessDyeing" class="form-control" />
+                                    <span asp-validation-for="RawConsSeamlessDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsLab -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsLab" class="form-label">
+                                        Lab Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsLab" class="form-control" />
+                                    <span asp-validation-for="RawConsLab" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsGardening -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsGardening" class="form-label">
+                                        Gardening Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsGardening" class="form-control" />
+                                    <span asp-validation-for="RawConsGardening" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsWashroomOthers -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsWashroomOthers" class="form-label">
+                                        All Washroom & Others Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsWashroomOthers" class="form-control" />
+                                    <span asp-validation-for="RawConsWashroomOthers" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsKnittingArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsKnittingArea" class="form-label">
+                                        Knitting Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsKnittingArea" class="form-control" />
+                                    <span asp-validation-for="RawConsKnittingArea" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsOthersArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsOthersArea" class="form-label">
+                                        Others Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsOthersArea" class="form-control" />
+                                    <span asp-validation-for="RawConsOthersArea" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsBackWash -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsBackWash" class="form-label">
+                                        Back Wash Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsBackWash" class="form-control" />
+                                    <span asp-validation-for="RawConsBackWash" class="text-danger"></span>
+                                </div>
+                                <!-- RawConsTotal -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RawConsTotal" class="form-label">
+                                        Total Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RawConsTotal" class="form-control" readonly />
+                                    <span asp-validation-for="RawConsTotal" class="text-danger"></span>
+                                </div>
                             </div>
 
-                            <!-- ConsumptionConstruction -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionConstruction" class="form-label">
-                                    Consumption(Construction)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionConstruction" class="form-control" />
-                                <span asp-validation-for="ConsumptionConstruction" class="text-danger"></span>
-                            </div>
-                            <!-- BackWashWater -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="BackWashWater" class="form-label">
-                                    Backwash Water<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="BackWashWater" class="form-control" />
-                                <span asp-validation-for="BackWashWater" class="text-danger"></span>
-                            </div>
+                            <div class="d-flex justify-content-between mt-4">
 
-                            <!-- SurplusRawWater -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="SurplusRawWater" class="form-label">
-                                    Surplus of Raw Water<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="SurplusRawWater" class="form-control" />
-                                <span asp-validation-for="SurplusRawWater" class="text-danger"></span>
-                            </div>
-                            <!-- TotalConsumptionRawWater -->
-                            <!-- TotalConsumptionRawWater=previuos field gulor sum -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="TotalConsumptionRawWater" class="form-label">
-                                    Total Cons.(Raw Water)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="TotalConsumptionRawWater" class="form-control" readonly />
-                                <span asp-validation-for="TotalConsumptionRawWater" class="text-danger"></span>
-                            </div>
-                            <div class="col-12 mt-2">
-                                <h6 class="text-primary">Soft Water Consumption</h6>
-                                <hr class="border border-primary opacity-50 mb-2" />
-                            </div>
-                            <!-- ConsumptionD1 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionD1" class="form-label">
-                                    Consumption(Dyeing-01)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionD1" class="form-control" />
-                                <span asp-validation-for="ConsumptionD1" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionD2 -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionD2" class="form-label">
-                                    Consumption(Dyeing-02)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionD2" class="form-control" />
-                                <span asp-validation-for="ConsumptionD2" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionSlitting -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionSlitting" class="form-label">
-                                    Consumption(Slitting)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionSlitting" class="form-control" />
-                                <span asp-validation-for="ConsumptionSlitting" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionFinishing -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionFinishing" class="form-label">
-                                    Consumption(Finishing)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionFinishing" class="form-control" />
-                                <span asp-validation-for="ConsumptionFinishing" class="text-danger"></span>
-                            </div>
-                            <!-- Washing -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="Washing" class="form-label">
-                                    Washing<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="Washing" class="form-control" />
-                                <span asp-validation-for="Washing" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionChiller -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionChiller" class="form-label">
-                                    Consumption(Chiller)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConsumptionChiller" class="form-control" />
-                                <span asp-validation-for="ConsumptionChiller" class="text-danger"></span>
-                            </div>
-                            <!-- ConsumptionGenerator -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionGenerator" class="form-label">
-                                    Consumption(Generator) <span class="text-danger">*</span>
-                                </label>
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        onclick="history.back();">
+                                    ← Back
+                                </button>
 
-                                <input asp-for="ConsumptionGenerator" class="form-control" />
+                                <button type="button"
+                                        class="btn btn-success"
+                                        id="nextBtn1">
+                                    Next →
+                                </button>
 
-                                <span asp-validation-for="ConsumptionGenerator" class="text-danger"></span>
-                            </div>
-
-                            <!-- ConsumptionSteam -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConsumptionSteam" class="form-label">
-                                    Consumption(Steam)
-                                </label>
-                                <input asp-for="ConsumptionSteam" class="form-control" />
-                                <span asp-validation-for="ConsumptionSteam" class="text-danger"></span>
-                            </div>
-                            <!-- TotalConsumptionSoftWater= ConsumptionD1+ConsumptionD2+ConsumptionSlitting+ConsumptionFinishing+Washing+ConsumptionChiller
-                                +ConsumptionGenerator+ConsumptionSteam
-                            -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="TotalConsumptionSoftWater" class="form-label">
-                                    Total Cons.(Soft Water)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="TotalConsumptionSoftWater" class="form-control" readonly />
-                                <span asp-validation-for="TotalConsumptionSoftWater" class="text-danger"></span>
-                            </div>
-                            <!-- ConDyeingHotWaterOut -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConDyeingHotWaterOut" class="form-label">
-                                    Cons.(Dye.Hot Water Out)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConDyeingHotWaterOut" class="form-control" />
-                                <span asp-validation-for="ConDyeingHotWaterOut" class="text-danger"></span>
-                            </div>
-                            <!-- ConDyeingHotWaterIn -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
-                                <label asp-for="ConDyeingHotWaterIn" class="form-label">
-                                    Cons.(Dye.Hot Water In)<span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ConDyeingHotWaterIn" class="form-control" />
-                                <span asp-validation-for="ConDyeingHotWaterIn" class="text-danger"></span>
                             </div>
 
                         </div>
+                        <div id="step2" class="wizard-step">
 
-                        <div class="d-flex justify-content-between mt-4">
+                            <div class="section-title">
+                                Soft Water Consumption
+                            </div>
+                            <hr class="border-success opacity-50">
 
-                            <a asp-action="WtpWaterConsumptionInfoList"
-                               class="btn btn-outline-secondary">
-                                ← Back
-                            </a>
+                            <div class="row g-3">
+                                <!-- SoftConsDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsDyeing" class="form-label">
+                                        Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsDyeing" class="form-control" />
+                                    <span asp-validation-for="SoftConsDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsDyeingFin -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsDyeingFin" class="form-label">
+                                        Dyeing Finishing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsDyeingFin" class="form-control" />
+                                    <span asp-validation-for="SoftConsDyeingFin" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsWashing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsWashing" class="form-label">
+                                        Washing Consumtion<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsWashing" class="form-control" />
+                                    <span asp-validation-for="SoftConsWashing" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsSeamlessDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsSeamlessDyeing" class="form-label">
+                                        Seamless Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsSeamlessDyeing" class="form-control" />
+                                    <span asp-validation-for="SoftConsSeamlessDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsLab -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsLab" class="form-label">
+                                        Lab Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsLab" class="form-control" />
+                                    <span asp-validation-for="SoftConsLab" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsOthersArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsOthersArea" class="form-label">
+                                        Others Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsOthersArea" class="form-control" />
+                                    <span asp-validation-for="SoftConsOthersArea" class="text-danger"></span>
+                                </div>
+                                <!-- SoftConsTotal -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="SoftConsTotal" class="form-label">
+                                        Total Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="SoftConsTotal" class="form-control" readonly />
+                                    <span asp-validation-for="SoftConsTotal" class="text-danger"></span>
+                                </div>
+                            </div>
 
-                            <button type="submit"
-                                    class="btn btn-success">
-                                <i class="bi bi-check-circle"></i>
-                                Update Reading
-                            </button>
+                            <div class="d-flex justify-content-between mt-4">
 
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        id="previousBtn2">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-success"
+                                        id="nextBtn2">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+                        <div id="step3" class="wizard-step">
+
+                            <div class="section-title">
+                                RO Water Consumption
+                            </div>
+                            <hr class="border-success opacity-50">
+
+                            <div class="row g-3">
+                                <!-- RoConsDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsDyeing" class="form-label">
+                                        Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsDyeing" class="form-control" />
+                                    <span asp-validation-for="RoConsDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsDyeingFin -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsDyeingFin" class="form-label">
+                                        Dyeing Finishing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsDyeingFin" class="form-control" />
+                                    <span asp-validation-for="RoConsDyeingFin" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsWashing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsWashing" class="form-label">
+                                        Washing Consumtion<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsWashing" class="form-control" />
+                                    <span asp-validation-for="RoConsWashing" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsSeamlessDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsSeamlessDyeing" class="form-label">
+                                        Seamless Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsSeamlessDyeing" class="form-control" />
+                                    <span asp-validation-for="RoConsSeamlessDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsLab -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsLab" class="form-label">
+                                        Lab Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsLab" class="form-control" />
+                                    <span asp-validation-for="RoConsLab" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsOthersArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsOthersArea" class="form-label">
+                                        Others Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsOthersArea" class="form-control" />
+                                    <span asp-validation-for="RoConsOthersArea" class="text-danger"></span>
+                                </div>
+                                <!-- RoConsTotal -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="RoConsTotal" class="form-label">
+                                        Total Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="RoConsTotal" class="form-control" readonly />
+                                    <span asp-validation-for="RoConsTotal" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        id="previousBtn3">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-success"
+                                        id="nextBtn3">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <div id="step4" class="wizard-step">
+
+                            <div class="section-title">
+                                Hot Water Consumption
+                            </div>
+                            <hr class="border-success opacity-50">
+
+                            <div class="row g-3">
+                                <!-- HotConsDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsDyeing" class="form-label">
+                                        Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsDyeing" class="form-control" />
+                                    <span asp-validation-for="HotConsDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsDyeingFin -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsDyeingFin" class="form-label">
+                                        Dyeing Finishing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsDyeingFin" class="form-control" />
+                                    <span asp-validation-for="HotConsDyeingFin" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsWashing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsWashing" class="form-label">
+                                        Washing Consumtion<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsWashing" class="form-control" />
+                                    <span asp-validation-for="HotConsWashing" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsSeamlessDyeing -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsSeamlessDyeing" class="form-label">
+                                        Seamless Dyeing Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsSeamlessDyeing" class="form-control" />
+                                    <span asp-validation-for="HotConsSeamlessDyeing" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsLab -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsLab" class="form-label">
+                                        Lab Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsLab" class="form-control" />
+                                    <span asp-validation-for="HotConsLab" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsOthersArea -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsOthersArea" class="form-label">
+                                        Others Area Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsOthersArea" class="form-control" />
+                                    <span asp-validation-for="HotConsOthersArea" class="text-danger"></span>
+                                </div>
+                                <!-- HotWaterReturn -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotWaterReturn" class="form-label">
+                                        Hot Water Return<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotWaterReturn" class="form-control" />
+                                    <span asp-validation-for="HotWaterReturn" class="text-danger"></span>
+                                </div>
+                                <!-- HotConsTotal -->
+                                <div class="col-lg-3 col-md-4 col-sm-6">
+                                    <label asp-for="HotConsTotal" class="form-label">
+                                        Total Consumption<span class="text-danger">*</span>
+                                    </label>
+                                    <input asp-for="HotConsTotal" class="form-control" readonly />
+                                    <span asp-validation-for="HotConsTotal" class="text-danger"></span>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary"
+                                        id="previousBtn4">
+                                    ← Previous
+                                </button>
+
+                                <button type="submit"
+                                        class="btn btn-success">
+                                    <i class="bi bi-check-circle"></i>
+                                    Update
+                                </button>
+
+                            </div>
                         </div>
 
                     </form>
@@ -248,84 +499,12 @@
     </div>
 
 </div>
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
 
-        // Helper
-        function el(id) {
-            return document.getElementById(id);
-        }
-
-        function num(id) {
-            return parseFloat(el(id)?.value) || 0;
-        }
-
-        function calculate() {
-
-            // ==========================
-            // Total Consumption of Raw Water
-            // ==========================
-            const totalRawWater =
-                num("ConsumptionB1") +
-                num("ConsumptionB7") +
-                num("ConsumptionB11") +
-                num("ConsumptionB12") +
-                num("ConsumptionConstruction") +
-                num("BackWashWater") +
-                num("SurplusRawWater");
-
-            el("TotalConsumptionRawWater").value = totalRawWater.toFixed(2);
-
-            // ==========================
-            // Total Consumption of Soft Water
-            // ==========================
-            const totalSoftWater =
-                num("ConsumptionD1") +
-                num("ConsumptionD2") +
-                num("ConsumptionSlitting") +
-                num("ConsumptionFinishing") +
-                num("Washing") +
-                num("ConsumptionChiller") +
-                num("ConsumptionGenerator") +
-                num("ConsumptionSteam");
-
-            el("TotalConsumptionSoftWater").value = totalSoftWater.toFixed(2);
-        }
-
-        // Fields to watch
-        [
-            "ConsumptionB1",
-            "ConsumptionB7",
-            "ConsumptionB11",
-            "ConsumptionB12",
-            "ConsumptionConstruction",
-            "BackWashWater",
-            "SurplusRawWater",
-
-            "ConsumptionD1",
-            "ConsumptionD2",
-            "ConsumptionSlitting",
-            "ConsumptionFinishing",
-            "Washing",
-            "ConsumptionChiller",
-            "ConsumptionGenerator",
-            "ConsumptionSteam"
-        ].forEach(id => {
-
-            const input = el(id);
-
-            if (input) {
-                input.addEventListener("input", calculate);
-            }
-        });
-
-        // Initial calculation
-        calculate();
-    });
-</script>
+<link rel="stylesheet" href="~/css/WtpWaterConsumption.css" asp-append-version="true" />
 
 @section Scripts {
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
+    <script src="~/js/WtpWaterConsumption.js"></script>
 }

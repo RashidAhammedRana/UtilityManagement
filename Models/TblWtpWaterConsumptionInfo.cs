@@ -12,57 +12,80 @@ public partial class TblWtpWaterConsumptionInfo
     [Required(ErrorMessage = "This field is required")]
     public int? Eqid { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionB1 { get; set; }
+    public double? RawConsGarments { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionB7 { get; set; }
+    public double? RawConsDyeing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionB11 { get; set; }
+    public double? RawConsDyeingFin { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionB12 { get; set; }
+    public double? RawConsPrinting { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionConstruction { get; set; }
+    public double? RawConsUtilityArea { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? BackWashWater { get; set; }
+    public double? RawConsWashing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? SurplusRawWater { get; set; }
+    public double? RawConsSeamlessDyeing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? TotalConsumptionRawWater { get; set; }
+    public double? RawConsLab { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionD1 { get; set; }
+    public double? RawConsGardening { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionD2 { get; set; }
+    public double? RawConsWashroomOthers { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionSlitting { get; set; }
+    public double? RawConsKnittingArea { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionFinishing { get; set; }
+    public double? RawConsOthersArea { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? Washing { get; set; }
+    public double? RawConsBackWash { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionChiller { get; set; }
+    public double? RawConsTotal { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionGenerator { get; set; }
+    public double? SoftConsDyeing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConsumptionSteam { get; set; }
+    public double? SoftConsDyeingFin { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? TotalConsumptionSoftWater { get; set; }
+    public double? SoftConsWashing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConDyeingHotWaterOut { get; set; }
+    public double? SoftConsSeamlessDyeing { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public double? ConDyeingHotWaterIn { get; set; }
-    public double? Opt01 { get; set; }
-
-    public double? Opto2 { get; set; }
-
-    public double? Opt03 { get; set; }
-
-    public string? Remarks { get; set; }
-
+    public double? SoftConsLab { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? SoftConsOthersArea { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? SoftConsTotal { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsDyeing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsDyeingFin { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsWashing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsSeamlessDyeing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsLab { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsOthersArea { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RoConsTotal { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsDyeing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsDyeingFin { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsWashing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsSeamlessDyeing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsLab { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsOthersArea { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotWaterReturn { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? HotConsTotal { get; set; }
     public DateTime? CreatedAt { get; set; }
-
     public string? CreatedBy { get; set; }
-
     public DateTime? UpdatedAt { get; set; }
-
     public string? UpdatedBy { get; set; }
 
     public virtual TblEquipmentDetail? Eq { get; set; }

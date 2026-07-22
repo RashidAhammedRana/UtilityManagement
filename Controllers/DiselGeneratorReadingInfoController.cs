@@ -244,6 +244,7 @@ public class DiselGeneratorReadingInfoController : Controller
                 .AddSeconds(now.Second);
 
             _context.TblDiselGeneratorReadingInfo.Add(diselGeneratorReadingInfo);
+            Console.WriteLine(diselGeneratorReadingInfo.Trid);
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] = "Reading created successfully.";

@@ -22,7 +22,7 @@
 <h2 class="text-center">WTP Water Consumption Info List</h2>
 
 <p class="text-muted text-center">
-    Total Readings: <strong>@ViewBag.totalReadings</strong>
+    Total Readings: <strong>@ViewBag.totalCost</strong>
 </p>
 
 <div class="d-flex justify-content-between mb-3 align-items-center">
@@ -90,10 +90,10 @@
                     <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
                     <td class="text-center">@item.Eq?.EquipmentName</td>
                     <td class="text-center">@item.Eq?.CurrentLocation</td>
-                    <td class="text-center">@item.TotalConsumptionRawWater</td>
-                    <td class="text-center">@item.TotalConsumptionSoftWater</td>
-                    <td class="text-center">@item.ConDyeingHotWaterOut</td>
-                    <td class="text-center">@item.ConDyeingHotWaterIn</td>
+                    <td class="text-center">@item.RawConsTotal</td>
+                    <td class="text-center">@item.SoftConsTotal</td>
+                    <td class="text-center">@item.RoConsTotal</td>
+                    <td class="text-center">@item.HotConsTotal</td>
 
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">

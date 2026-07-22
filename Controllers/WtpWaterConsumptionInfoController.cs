@@ -160,7 +160,7 @@ public class WtpWaterConsumptionInfoController : Controller
         // =========================
         var totalRecords = await query.CountAsync();
 
-        var roomReadings = await query
+        var waterCostInfo = await query
             .OrderByDescending(x => x.Trdate)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
@@ -171,10 +171,10 @@ public class WtpWaterConsumptionInfoController : Controller
         // =========================
         ViewBag.CurrentPage = page;
         ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
-        ViewBag.totalReadings = totalRecords;
+        ViewBag.totalCost = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(roomReadings);
+        return View(waterCostInfo);
     }
     [HttpGet]
     public IActionResult Create()
@@ -312,27 +312,46 @@ public class WtpWaterConsumptionInfoController : Controller
             // Update editable fields
             existing.Trdate = wtpWaterConsumptionInfo.Trdate;
             existing.Eqid = wtpWaterConsumptionInfo.Eqid;
-
-            existing.ConsumptionB1 = wtpWaterConsumptionInfo.ConsumptionB1;
-            existing.ConsumptionB11 = wtpWaterConsumptionInfo.ConsumptionB11;
-            existing.ConsumptionB12 = wtpWaterConsumptionInfo.ConsumptionB12;
-            existing.ConsumptionConstruction = wtpWaterConsumptionInfo.ConsumptionConstruction;
-            existing.BackWashWater = wtpWaterConsumptionInfo.BackWashWater;
-            existing.SurplusRawWater = wtpWaterConsumptionInfo.SurplusRawWater;
-            existing.TotalConsumptionRawWater = wtpWaterConsumptionInfo.TotalConsumptionRawWater;
-
-            existing.ConsumptionD1 = wtpWaterConsumptionInfo.ConsumptionD1;
-            existing.ConsumptionD2 = wtpWaterConsumptionInfo.ConsumptionD2;
-            existing.ConsumptionSlitting = wtpWaterConsumptionInfo.ConsumptionSlitting;
-            existing.ConsumptionFinishing = wtpWaterConsumptionInfo.ConsumptionFinishing;
-            existing.Washing = wtpWaterConsumptionInfo.Washing;
-            existing.ConsumptionChiller = wtpWaterConsumptionInfo.ConsumptionChiller;
-            existing.ConsumptionGenerator = wtpWaterConsumptionInfo.ConsumptionGenerator;
-            existing.ConsumptionSteam = wtpWaterConsumptionInfo.ConsumptionSteam;
-            existing.TotalConsumptionSoftWater = wtpWaterConsumptionInfo.TotalConsumptionSoftWater;
-
-            existing.ConDyeingHotWaterOut = wtpWaterConsumptionInfo.ConDyeingHotWaterOut;
-            existing.ConDyeingHotWaterIn = wtpWaterConsumptionInfo.ConDyeingHotWaterIn;
+            //Raw Water
+            existing.RawConsGarments = wtpWaterConsumptionInfo.RawConsGarments;
+            existing.RawConsDyeing = wtpWaterConsumptionInfo.RawConsDyeing;
+            existing.RawConsDyeingFin = wtpWaterConsumptionInfo.RawConsDyeingFin;
+            existing.RawConsPrinting = wtpWaterConsumptionInfo.RawConsPrinting;
+            existing.RawConsUtilityArea = wtpWaterConsumptionInfo.RawConsUtilityArea;
+            existing.RawConsWashing = wtpWaterConsumptionInfo.RawConsWashing;
+            existing.RawConsSeamlessDyeing = wtpWaterConsumptionInfo.RawConsSeamlessDyeing;
+            existing.RawConsLab = wtpWaterConsumptionInfo.RawConsLab;
+            existing.RawConsGardening = wtpWaterConsumptionInfo.RawConsGardening;
+            existing.RawConsWashroomOthers = wtpWaterConsumptionInfo.RawConsWashroomOthers;
+            existing.RawConsKnittingArea = wtpWaterConsumptionInfo.RawConsKnittingArea;
+            existing.RawConsOthersArea = wtpWaterConsumptionInfo.RawConsOthersArea;
+            existing.RawConsBackWash = wtpWaterConsumptionInfo.RawConsBackWash;
+            existing.RawConsTotal = wtpWaterConsumptionInfo.RawConsTotal;
+            //Soft Water
+            existing.SoftConsDyeing = wtpWaterConsumptionInfo.SoftConsDyeing;
+            existing.SoftConsDyeingFin = wtpWaterConsumptionInfo.SoftConsDyeingFin;
+            existing.SoftConsWashing = wtpWaterConsumptionInfo.SoftConsWashing;
+            existing.SoftConsSeamlessDyeing = wtpWaterConsumptionInfo.SoftConsSeamlessDyeing;
+            existing.SoftConsLab = wtpWaterConsumptionInfo.SoftConsLab;
+            existing.SoftConsOthersArea = wtpWaterConsumptionInfo.SoftConsOthersArea;
+            existing.SoftConsTotal = wtpWaterConsumptionInfo.SoftConsTotal;
+            //RO Water
+            existing.RoConsDyeing = wtpWaterConsumptionInfo.RoConsDyeing;
+            existing.RoConsDyeingFin = wtpWaterConsumptionInfo.RoConsDyeingFin;
+            existing.RoConsWashing = wtpWaterConsumptionInfo.RoConsWashing;
+            existing.RoConsSeamlessDyeing = wtpWaterConsumptionInfo.RoConsSeamlessDyeing;
+            existing.RoConsLab = wtpWaterConsumptionInfo.RoConsLab;
+            existing.RoConsOthersArea = wtpWaterConsumptionInfo.RoConsOthersArea;
+            existing.RoConsOthersArea = wtpWaterConsumptionInfo.RoConsOthersArea;
+            //Hot Water
+            existing.HotConsDyeing = wtpWaterConsumptionInfo.HotConsDyeing;
+            existing.HotConsDyeingFin = wtpWaterConsumptionInfo.HotConsDyeingFin;
+            existing.HotConsWashing = wtpWaterConsumptionInfo.HotConsWashing;
+            existing.HotConsSeamlessDyeing = wtpWaterConsumptionInfo.HotConsSeamlessDyeing;
+            existing.HotConsLab = wtpWaterConsumptionInfo.HotConsLab;
+            existing.HotConsOthersArea = wtpWaterConsumptionInfo.HotConsOthersArea;
+            existing.HotWaterReturn = wtpWaterConsumptionInfo.HotWaterReturn;
+            existing.HotConsTotal = wtpWaterConsumptionInfo.HotConsTotal;
 
             // Update audit fields
             existing.UpdatedAt = DateTime.Now;

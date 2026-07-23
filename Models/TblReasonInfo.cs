@@ -8,11 +8,11 @@ public partial class TblReasonInfo
 {
     public int Rid { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public int? Itid { get; set; }
+    public int Itid { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public string? ReasonName { get; set; }
+    public string ReasonName { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public string? Status { get; set; }
+    public string Status { get; set; }
 
     public string? Remarks { get; set; }
 

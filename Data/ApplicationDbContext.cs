@@ -45,7 +45,9 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblFncItemRate> TblFncItemRates { get; set; }
         public virtual DbSet<TblEtpPlanCostInfo> TblEtpPlanCostInfo { get; set; }
         public virtual DbSet<TblRoPlantCostInfo> TblRoPlantCostInfo { get; set; }
-
+        public virtual DbSet<TblDepartmentInfo> TblDepartmentInfo { get; set; }
+        public virtual DbSet<TblInterruptionTypeInfo> TblInterruptionTypeInfo { get; set; }
+        public virtual DbSet<TblReasonInfo> TblReasonInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -782,6 +784,39 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblRoPlantCostInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_RO_PLANT_COST_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+            //TblDepartmentInfo
+            modelBuilder.Entity<TblDepartmentInfo>(entity =>
+            {
+                entity.HasKey(e => e.Depid);
+                entity.ToTable("TBL_DEPARTMENT_INFO");
+                entity.Property(e => e.Depid).HasColumnName("DEPID");
+                entity.Property(e => e.DepartmentName).HasMaxLength(50).HasColumnName("DEPARTMENT_NAME");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
+            });
+            //TblInterruptionTypeInfo
+            modelBuilder.Entity<TblInterruptionTypeInfo>(entity =>
+            {
+                entity.HasKey(e => e.Itid);
+                entity.ToTable("TBL_INTERRUPTION_TYPE_INFO");
+                entity.Property(e => e.Itid).HasColumnName("ITID");
+                entity.Property(e => e.InterruptionTypeName).HasMaxLength(50).HasColumnName("INTERRUPTION_TYPE_NAME");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
+            });
+            //TblReasonInfo
+            modelBuilder.Entity<TblReasonInfo>(entity =>
+            {
+                entity.HasKey(e => e.Rid);
+                entity.ToTable("TBL_REASON_INFO");
+                entity.Property(e => e.Rid).HasColumnName("RID");
+                entity.Property(e => e.Itid).HasColumnName("ITID");
+                entity.Property(e => e.ReasonName).HasMaxLength(50).HasColumnName("REASON_NAME");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
+                entity.HasOne(d => d.It).WithMany(p => p.TblReasonInfos).HasForeignKey(d => d.Itid)
+                    .HasConstraintName("FK_TBL_REASON_INFO_TBL_INTERRUPTION_TYPE_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

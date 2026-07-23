@@ -1,7 +1,7 @@
-﻿@model UtilityManagement.Models.TblCountryInfo
+﻿@model UtilityManagement.Models.TblDepartmentInfo
 
 @{
-    ViewData["Title"] = "Edit Country";
+    ViewData["Title"] = "Create Department";
 }
 
 <div class="container mt-4">
@@ -11,36 +11,27 @@
 
             <div class="card shadow-lg border-0">
 
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Edit Country Information</h5>
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Department Information</h5>
                 </div>
 
                 <div class="card-body p-4">
 
-                    <form asp-action="Edit" method="post">
-                        <input asp-for="Cntid" type="hidden" />
+                    <form asp-action="Create" method="post">
+
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
 
                         <div class="row g-3">
-
-                            <!-- Country Code -->
+                            <!-- Department Name -->
                             <div class="col-md-6">
-                                <label asp-for="CntCode" class="form-label">
-                                    Country Code
+                                <label asp-for="DepartmentName" class="form-label">
+                                    Department Name <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="CntCode" class="form-control" />
+                                <input asp-for="DepartmentName" class="form-control" />
+                                <span asp-validation-for="DepartmentName" class="text-danger"></span>
                             </div>
-                            <!-- Country Name -->
-                            <div class="col-md-6">
-                                <label asp-for="CntName" class="form-label">
-                                    Country Name <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="CntName" class="form-control" />
-                                <span asp-validation-for="CntName" class="text-danger"></span>
-                            </div>
-
                             <!-- Status -->
                             <div class="col-md-6">
                                 <label asp-for="Status" class="form-label">
@@ -68,14 +59,14 @@
 
                         <div class="d-flex justify-content-between mt-4">
 
-                            <a asp-action="CountryInfoList"
+                            <a asp-action="DepartmentInfoList"
                                class="btn btn-outline-secondary">
                                 ← Back
                             </a>
 
                             <button type="submit"
-                                    class="btn btn-success px-4">
-                                Update
+                                    class="btn btn-primary px-4">
+                                Save
                             </button>
 
                         </div>

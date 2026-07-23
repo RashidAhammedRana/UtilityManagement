@@ -1,0 +1,185 @@
+﻿@model UtilityManagement.Models.TblElectricityInterruptionInfo
+
+@{
+    ViewData["Title"] = "Create Electricity Interruption Reading";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Electricity Interruption Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+                            <!-- Company -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="Comid" class="form-label">
+                                    Company <span class="text-danger">*</span>
+                                </label>
+                                <select asp-for="Comid" asp-items="ViewBag.CompanyList" class="form-select">
+                                    <option value="">-- Select Company --</option>
+                                </select>
+                                <span asp-validation-for="Comid" class="text-danger"></span>
+                            </div>
+                            <!-- Date -->
+                            <div class="col-lg-4 col-md-3 col-sm-6">
+                                <label asp-for="Date" id="Date" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Date" type="date" class="form-control" />
+                                <span asp-validation-for="Date" class="text-danger"></span>
+                            </div>
+                            <!-- Department -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="Depid" class="form-label">
+                                    Department <span class="text-danger">*</span>
+                                </label>
+                                <select asp-for="Depid" asp-items="ViewBag.DepartmentList" class="form-select">
+                                    <option value="">-- Select Department --</option>
+                                </select>
+                                <span asp-validation-for="Depid" class="text-danger"></span>
+                            </div>
+                            <!-- PowerOffTime -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="PowerOffTime" class="form-label">
+                                    Power Off Time <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="PowerOffTime" id="PowerOffTime" type="datetime-local" class="form-control" />
+                            </div>
+                            <!-- PowerOnTime -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="PowerOnTime" class="form-label">
+                                    Power On Time <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="PowerOnTime" id="PowerOnTime" type="datetime-local" class="form-control" />
+                            </div>
+                            <!-- DurationMin -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                            <label asp-for="DurationMin" class="form-label">
+                                Duration (Min) <span class="text-danger">*</span>
+                            </label>
+                            <input asp-for="DurationMin" id="DurationMin" class="form-control" readonly />
+                            </div>
+                            <!-- Interruption Type -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="Itid" class="form-label">
+                                    Interruption Type <span class="text-danger">*</span>
+                                </label>
+                                <select asp-for="Itid"
+                                        asp-items="ViewBag.InterruptiotypeList"
+                                        id="InterruptionType"
+                                        class="form-select">
+                                    <option value="">-- Select type --</option>
+                                </select>
+                                <span asp-validation-for="Itid" class="text-danger"></span>
+                            </div>
+                            <!-- Reason -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="Rid" class="form-label">
+                                    Reason <span class="text-danger">*</span>
+                                </label>
+                                <select asp-for="Rid"
+                                        id="Reason"
+                                        class="form-select">
+                                    <option value="">-- Select Reason --</option>
+                                </select>
+                                <span asp-validation-for="Rid" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="ElectricityInterruptionInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $("#InterruptionType").change(function () {
+
+            var itid = $(this).val();
+
+            $("#Reason").empty();
+            $("#Reason").append('<option value="">-- Select Reason --</option>');
+
+            if (itid) {
+                $.getJSON('/ElectricityInterruptionInfo/GetReasonsByType',
+                    { itid: itid },
+                    function (data) {
+
+                        $.each(data, function (i, item) {
+                            $("#Reason").append(
+                                $('<option></option>')
+                                    .val(item.value)
+                                    .text(item.text)
+                            );
+                        });
+
+                    });
+            }
+
+        });
+
+        //On Off and Duration Calculation
+                $(function () {
+
+            function calculateDuration() {
+
+                let start = $("#PowerOffTime").val();
+                let end = $("#PowerOnTime").val();
+
+                if (start && end) {
+
+                    let startTime = new Date(start);
+                    let endTime = new Date(end);
+
+                    let diff = (endTime - startTime) / 60000;
+
+                    if (diff >= 0)
+                        $("#DurationMin").val(diff);
+                    else
+                        $("#DurationMin").val("");
+                }
+            }
+
+            $("#PowerOffTime,#PowerOnTime").on("change", calculateDuration);
+
+        });
+    </script>
+}

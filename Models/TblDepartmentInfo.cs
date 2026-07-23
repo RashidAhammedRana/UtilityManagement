@@ -13,4 +13,6 @@ public partial class TblDepartmentInfo
     public string Status { get; set; }
 
     public string? Remarks { get; set; }
+    public virtual ICollection<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; } = new List<TblElectricityInterruptionInfo>();
+
 }

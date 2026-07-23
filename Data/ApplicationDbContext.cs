@@ -48,6 +48,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDepartmentInfo> TblDepartmentInfo { get; set; }
         public virtual DbSet<TblInterruptionTypeInfo> TblInterruptionTypeInfo { get; set; }
         public virtual DbSet<TblReasonInfo> TblReasonInfo { get; set; }
+        public virtual DbSet<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -817,6 +818,34 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
                 entity.HasOne(d => d.It).WithMany(p => p.TblReasonInfos).HasForeignKey(d => d.Itid)
                     .HasConstraintName("FK_TBL_REASON_INFO_TBL_INTERRUPTION_TYPE_INFO");
+            });
+            //TblElectricityInterruptionInfo
+            modelBuilder.Entity<TblElectricityInterruptionInfo>(entity =>
+            {
+                entity.HasKey(e => e.Eiid);
+                entity.ToTable("TBL_ELECTRICITY_INTERRUPTION_INFO");
+                entity.Property(e => e.Eiid).HasColumnName("EIID");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.Date).HasColumnType("datetime").HasColumnName("DATE");
+                entity.Property(e => e.Depid).HasColumnName("DEPID");
+                entity.Property(e => e.DurationMin).HasColumnName("DURATION_MIN");
+                entity.Property(e => e.Itid).HasColumnName("ITID");
+                entity.Property(e => e.PowerOffTime).HasColumnType("datetime").HasColumnName("POWER_OFF_TIME");
+                entity.Property(e => e.PowerOnTime).HasColumnType("datetime").HasColumnName("POWER_ON_TIME");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Rid).HasColumnName("RID");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Department).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Depid)
+                    .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_DEPARTMENT_INFO");
+                entity.HasOne(d => d.InterruptionType).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Itid)
+                    .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_INTERRUPTION_TYPE_INFO");
+                entity.HasOne(d => d.Reason).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Rid)
+                    .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_REASON_INFO");
+                entity.HasOne(d => d.Company).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_COMPANY_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

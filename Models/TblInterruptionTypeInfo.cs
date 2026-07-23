@@ -15,4 +15,6 @@ public partial class TblInterruptionTypeInfo
     public string? Remarks { get; set; }
 
     public virtual ICollection<TblReasonInfo> TblReasonInfos { get; set; } = new List<TblReasonInfo>();
+    public virtual ICollection<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; } = new List<TblElectricityInterruptionInfo>();
+
 }

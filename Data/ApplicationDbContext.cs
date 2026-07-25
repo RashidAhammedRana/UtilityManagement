@@ -49,6 +49,8 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblInterruptionTypeInfo> TblInterruptionTypeInfo { get; set; }
         public virtual DbSet<TblReasonInfo> TblReasonInfo { get; set; }
         public virtual DbSet<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; }
+        public virtual DbSet<TblSteamConsumptionReadingInfo> TblSteamConsumptionReadingInfo { get; set; }
+
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -826,8 +828,6 @@ namespace UtilityManagement.Data
                 entity.ToTable("TBL_ELECTRICITY_INTERRUPTION_INFO");
                 entity.Property(e => e.Eiid).HasColumnName("EIID");
                 entity.Property(e => e.Comid).HasColumnName("COMID");
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
-                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.Date).HasColumnType("datetime").HasColumnName("DATE");
                 entity.Property(e => e.Depid).HasColumnName("DEPID");
                 entity.Property(e => e.DurationMin).HasColumnName("DURATION_MIN");
@@ -836,6 +836,8 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.PowerOnTime).HasColumnType("datetime").HasColumnName("POWER_ON_TIME");
                 entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
                 entity.Property(e => e.Rid).HasColumnName("RID");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Department).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Depid)
@@ -846,6 +848,28 @@ namespace UtilityManagement.Data
                     .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_REASON_INFO");
                 entity.HasOne(d => d.Company).WithMany(p => p.TblElectricityInterruptionInfo).HasForeignKey(d => d.Comid)
                     .HasConstraintName("FK_TBL_ELECTRICITY_INTERRUPTION_INFO_TBL_COMPANY_INFO");
+            });
+
+            //TBL_STEAM_CONSUMPTION_READING_INFO
+            modelBuilder.Entity<TblSteamConsumptionReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_STEAM_CONSUMPTION_READING_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ChillerCons).HasColumnName("CHILLER_CONS");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.DyeingCons).HasColumnName("DYEING_CONS");
+                entity.Property(e => e.DyeingFinCons).HasColumnName("DYEING_FIN_CONS");
+                entity.Property(e => e.GarmentsCons).HasColumnName("GARMENTS_CONS");
+                entity.Property(e => e.LabCons).HasColumnName("LAB_CONS");
+                entity.Property(e => e.SeamlessDyeingCons).HasColumnName("SEAMLESS_DYEING_CONS");
+                entity.Property(e => e.SeamlessGarmentsCons).HasColumnName("SEAMLESS_GARMENTS_CONS");
+                entity.Property(e => e.WashingCons).HasColumnName("WASHING_CONS");
+                entity.Property(e => e.TotalCons).HasColumnName("TOTAL_CONS");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });
 
             OnModelCreatingPartial(modelBuilder);

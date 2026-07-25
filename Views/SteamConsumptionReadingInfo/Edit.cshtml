@@ -1,0 +1,177 @@
+﻿@model UtilityManagement.Models.TblSteamConsumptionReadingInfo
+
+@{
+    ViewData["Title"] = "Steam Consumption Reading Info";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Edit Steam Consumption Reading Info</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" method="post">
+                        <input asp-for="Trid" hidden />
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- DyeingCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DyeingCons" class="form-label">
+                                    Dyeing Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DyeingCons" class="form-control" />
+                                <span asp-validation-for="DyeingCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- DyeingFinCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="DyeingFinCons" class="form-label">
+                                    Dyeing Finishing Consumption  <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="DyeingFinCons" class="form-control" />
+                                <span asp-validation-for="DyeingFinCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- WashingCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="WashingCons" class="form-label">
+                                    Washing Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="WashingCons" class="form-control" />
+                                <span asp-validation-for="WashingCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- GarmentsCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="GarmentsCons" class="form-label">
+                                    Garments Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="GarmentsCons" class="form-control" />
+                                <span asp-validation-for="GarmentsCons" class="text-danger"></span>
+                            </div>
+                            <!-- ChillerCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChillerCons" class="form-label">
+                                    Chiller Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChillerCons" class="form-control" />
+                                <span asp-validation-for="ChillerCons" class="text-danger"></span>
+                            </div>
+                            <!-- SeamlessDyeingCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SeamlessDyeingCons" class="form-label">
+                                    Seamless Dyeing Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SeamlessDyeingCons" class="form-control" />
+                                <span asp-validation-for="SeamlessDyeingCons" class="text-danger"></span>
+                            </div>
+                            <!-- SeamlessGarmentsCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SeamlessGarmentsCons" class="form-label">
+                                    Seamless Garments Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SeamlessGarmentsCons" class="form-control" />
+                                <span asp-validation-for="SeamlessGarmentsCons" class="text-danger"></span>
+                            </div>
+                            <!-- LabCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="LabCons" class="form-label">
+                                    Lab Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="LabCons" class="form-control" />
+                                <span asp-validation-for="LabCons" class="text-danger"></span>
+                            </div>
+                            <!-- TotalCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalCons" class="form-label">
+                                    Total Consumption<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalCons" class="form-control" readonly />
+                                <span asp-validation-for="TotalCons" class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="SteamConsumptionReadingInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Update
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+<script>
+    $(document).ready(function () {
+
+        function calculateTotalCons() {
+
+            let total = 0;
+
+            const fields = [
+                "#DyeingCons",
+                "#DyeingFinCons",
+                "#WashingCons",
+                "#GarmentsCons",
+                "#ChillerCons",
+                "#SeamlessDyeingCons",
+                "#SeamlessGarmentsCons",
+                "#LabCons"
+            ];
+
+            fields.forEach(function (field) {
+                total += parseFloat($(field).val()) || 0;
+            });
+
+            $("#TotalCons").val(total.toFixed(2));
+        }
+
+        // Recalculate whenever any input changes
+        $("#DyeingCons,#DyeingFinCons,#WashingCons,#GarmentsCons,#ChillerCons,#SeamlessDyeingCons,#SeamlessGarmentsCons,#LabCons")
+            .on("input", calculateTotalCons);
+
+        // Initial calculation
+        calculateTotalCons();
+    });
+</script>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

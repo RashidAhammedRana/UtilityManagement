@@ -1,7 +1,7 @@
 ﻿@model UtilityManagement.Models.TblElectricityInterruptionInfo
 
 @{
-    ViewData["Title"] = "Edit Electricity Interruption Reading";
+    ViewData["Title"] = "Edit Utility Interruption Reading";
 }
 
 <div class="container mt-4">
@@ -12,7 +12,7 @@
             <div class="card shadow-lg border-0">
 
                 <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Edit Electricity Interruption Reading</h5>
+                    <h5 class="mb-0">Edit Utility Interruption Reading</h5>
                 </div>
 
                 <div class="card-body p-4">
@@ -97,6 +97,13 @@
                                         class="form-select">
                                     <option value="">-- Select Reason --</option>
                                 </select>
+                            </div>
+                            <!-- Remarks -->
+                            <div class="col-lg-4 col-md-4 col-sm-6">
+                                <label asp-for="Remarks" class="form-label">
+                                    Remarks
+                                </label>
+                                <input asp-for="Remarks" class="form-control" />
                             </div>
 
                         </div>

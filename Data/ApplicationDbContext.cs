@@ -50,6 +50,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblReasonInfo> TblReasonInfo { get; set; }
         public virtual DbSet<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; }
         public virtual DbSet<TblSteamConsumptionReadingInfo> TblSteamConsumptionReadingInfo { get; set; }
+        public virtual DbSet<TblElectricityConsumptionReadingInfo> TblElectricityConsumptionReadingInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -870,6 +871,34 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+            });
+            //TblElectricityConsumptionReadingInfo
+            modelBuilder.Entity<TblElectricityConsumptionReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_ELECTRICITY_CONSUMPTION_READING_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AllOfficeCons).HasColumnName("ALL_OFFICE_CONS");
+                entity.Property(e => e.AllUtilityCons).HasColumnName("ALL_UTILITY_CONS");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CuttingCons).HasColumnName("CUTTING_CONS");
+                entity.Property(e => e.DyeingCons).HasColumnName("DYEING_CONS");
+                entity.Property(e => e.DyeingFinCons).HasColumnName("DYEING_FIN_CONS");
+                entity.Property(e => e.EmbroideryCons).HasColumnName("EMBROIDERY_CONS");
+                entity.Property(e => e.GmntsFinCons).HasColumnName("GMNTS_FIN_CONS");
+                entity.Property(e => e.KnittingCons).HasColumnName("KNITTING_CONS");
+                entity.Property(e => e.OthersAreaCons).HasColumnName("OTHERS_AREA_CONS");
+                entity.Property(e => e.PrintingHeatsealCons).HasColumnName("PRINTING_HEATSEAL_CONS");
+                entity.Property(e => e.SeamlessDyeCons).HasColumnName("SEAMLESS_DYE_CONS");
+                entity.Property(e => e.SeamlessGmntCons).HasColumnName("SEAMLESS_GMNT_CONS");
+                entity.Property(e => e.SeamlessKnitCons).HasColumnName("SEAMLESS_KNIT_CONS");
+                entity.Property(e => e.TestingLabCons).HasColumnName("TESTING_LAB_CONS");
+                entity.Property(e => e.TotalCons).HasColumnName("TOTAL_CONS");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.Property(e => e.WashingCons).HasColumnName("WASHING_CONS");
             });
 
             OnModelCreatingPartial(modelBuilder);

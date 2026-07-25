@@ -68,7 +68,7 @@ public class ElectricityInterruptionInfoController : Controller
         var totalRecords = await query.CountAsync();
 
         var data = await query
-            .OrderBy(x => x.Eiid)
+            .OrderByDescending(x => x.Date)
             .Skip((page - 1) * pageSize)
             .Take(pageSize)
             .ToListAsync();

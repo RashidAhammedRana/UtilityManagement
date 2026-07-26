@@ -69,7 +69,7 @@ namespace UtilityManagement.Data
                 entity.ToTable("UserPermissions");
 
                 entity.Property(e => e.UserId)
-                    .HasColumnType("nvarchar(450)");
+                    .HasColumnType("nvarchar(50)");
 
                 entity.Property(e => e.IsAllowed)
                     .HasDefaultValue(true);
@@ -174,6 +174,12 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Slno)
                     .HasMaxLength(50)
                     .HasColumnName("SLNO");
+                entity.Property(e => e.Status).HasMaxLength(50).HasColumnName("STATUS");
+                entity.Property(e => e.Remarks).HasMaxLength(150).HasColumnName("REMARKS");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.Property(e => e.InstallDate).HasColumnType("datetime").HasColumnName("INSTALL_DATE");
             });
             // TblRebReadingInfo

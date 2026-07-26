@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Threading.Tasks;
@@ -9,10 +10,12 @@ using UtilityManagement.Models;
 public class EquipmentDetailsController : Controller
 {
     private readonly ApplicationDbContext _context;
+    private readonly UserManager<ApplicationUser> _userManager;
 
-    public EquipmentDetailsController(ApplicationDbContext context)
+    public EquipmentDetailsController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
     public IActionResult Index()
     {
@@ -46,7 +49,23 @@ public class EquipmentDetailsController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
-        var query = _context.TblEquipmentDetails.AsQueryable();
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        //var query = _context.TblEquipmentDetails
+        //    .Where(x => x.CurrentLocation == currentLocation);
+
+        var query = _context.TblEquipmentDetails
+            .Where(x => string.IsNullOrEmpty(currentLocation) || x.CurrentLocation == currentLocation);
+
+        ViewBag.EquipmentList = query
+            .Select(x => new SelectListItem
+            {
+                Value = x.Eqid.ToString(),
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+            })
+            .ToList();
 
         if (!string.IsNullOrWhiteSpace(searchString))
         {
@@ -77,7 +96,7 @@ public class EquipmentDetailsController : Controller
     }
 
     [HttpGet]
-    public IActionResult Create()
+    public async Task<IActionResult> CreateAsync()
     {
         ViewBag.CompanyList = _context.TblCompanyInfo
             .Select(x => new SelectListItem
@@ -86,6 +105,13 @@ public class EquipmentDetailsController : Controller
                 Text = $"{x.ComName}"
             })
             .ToList();
+        // Check Admin User
+        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        var user = await _context.Users
+            .FirstOrDefaultAsync(x => x.Id == userId);
+
+        ViewBag.IsAdmin = user != null && user.UserName == "admin.bpa";
         return View();
     }
 
@@ -95,6 +121,12 @@ public class EquipmentDetailsController : Controller
     {
         try
         {
+            if (equipmentDetails.Status == "Inactive" &&
+           string.IsNullOrWhiteSpace(equipmentDetails.Remarks))
+            {
+                ModelState.AddModelError("Remarks",
+                    "Remarks is required when Status is Inactive.");
+            }
             if (!ModelState.IsValid)
             {
                 TempData["ErrorMessage"] = "Please fill all required fields.";
@@ -110,7 +142,11 @@ public class EquipmentDetailsController : Controller
                 ModelState.AddModelError("SlNo", "This SL No already exists!");
                 return View(equipmentDetails);
             }
-
+            var now = DateTime.Now;
+            var currentUser = User.Identity?.Name ?? "System";
+            // Created Information
+            equipmentDetails.CreatedAt = now;
+            equipmentDetails.CreatedBy = currentUser;
             _context.TblEquipmentDetails.Add(equipmentDetails);
             await _context.SaveChangesAsync();
 
@@ -133,18 +169,34 @@ public class EquipmentDetailsController : Controller
             return NotFound();
         }
 
-        var equipments = await _context.TblEquipmentDetails.FindAsync(id);
+        var equipments = await _context.TblEquipmentDetails
+            .FirstOrDefaultAsync(x => x.Eqid == id);
+
         if (equipments == null)
         {
             return NotFound();
         }
-        ViewBag.CompanyList = _context.TblCompanyInfo
+
+
+        // Company dropdown
+        ViewBag.CompanyList = await _context.TblCompanyInfo
             .Select(x => new SelectListItem
             {
                 Value = x.ComName,
-                Text = $"{x.ComName}"
+                Text = x.ComName
             })
-            .ToList();
+            .ToListAsync();
+
+
+        // Check Admin User
+        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+        var user = await _context.Users
+            .FirstOrDefaultAsync(x => x.Id == userId);
+
+        ViewBag.IsAdmin = user != null && user.UserName == "admin.bpa";
+
+
         return View(equipments);
     }
 
@@ -152,6 +204,13 @@ public class EquipmentDetailsController : Controller
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> Edit(TblEquipmentDetail equipmentDetails)
     {
+        // Status Inactive হলে Remarks required
+        if (equipmentDetails.Status == "Inactive" &&
+            string.IsNullOrWhiteSpace(equipmentDetails.Remarks))
+        {
+            ModelState.AddModelError("Remarks",
+                "Remarks is required when Status is Inactive.");
+        }
         if (!ModelState.IsValid)
             return View(equipmentDetails);
 
@@ -170,7 +229,11 @@ public class EquipmentDetailsController : Controller
         data.Model = equipmentDetails.Model;
         data.Slno = equipmentDetails.Slno;
         data.CurrentLocation = equipmentDetails.CurrentLocation;
-
+        data.Status = equipmentDetails.Status;
+        data.Remarks = equipmentDetails.Remarks;
+        // Update audit fields
+        data.UpdatedAt = DateTime.Now;
+        data.UpdatedBy = User.Identity?.Name ?? "System";
         await _context.SaveChangesAsync();
 
         TempData["SuccessMessage"] = "Equipment updated successfully.";

@@ -28,6 +28,15 @@ public partial class TblEquipmentDetail
 
     [Required(ErrorMessage = "Current Location is required")]
     public string? CurrentLocation { get; set; }
+    [Required(ErrorMessage = "Status is required")]
+    public string? Status { get; set; }
+    public string? Remarks { get; set; }
+
+    public DateTime? CreatedAt { get; set; }
+    public string? CreatedBy { get; set; }
+    public DateTime? UpdatedAt { get; set; }
+    public string? UpdatedBy { get; set; }
+
     public virtual ICollection<TblRebReadingInfo> TblRebReadingInfos { get; set; } = new List<TblRebReadingInfo>();
     public virtual ICollection<TblNgGeneratorReadingInfo> TblNgGeneratorReadingInfos { get; set; } = new List<TblNgGeneratorReadingInfo>();
     public virtual ICollection<TblDiselGeneratorReadingInfo> TblDiselGeneratorReadingInfos { get; set; } = new List<TblDiselGeneratorReadingInfo>();

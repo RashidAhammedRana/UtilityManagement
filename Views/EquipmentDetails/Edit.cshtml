@@ -2,6 +2,7 @@
 
 @{
     ViewData["Title"] = "Edit Equipment Details";
+    bool isAdmin = ViewBag.IsAdmin ?? false;
 }
 
 <div class="container mt-4">
@@ -28,43 +29,43 @@
 
                         <div class="row g-3">
 
-                            <div class="col-md-6">
+                            <div class="col-lg-4 col-md-4 col-sm-6">
                                 <label class="form-label">
                                     Equipment Name <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="EquipmentName" class="form-control required-field" />
+                                <input asp-for="EquipmentName" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="EquipmentName" class="text-danger"></span>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-2 col-md-4 col-sm-6">
                                 <label class="form-label">
                                     Capacity <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="Capacity" class="form-control required-field" />
+                                <input asp-for="Capacity" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="Capacity" class="text-danger"></span>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label class="form-label">
                                     Brand <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="Brand" class="form-control required-field" />
+                                <input asp-for="Brand" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="Brand" class="text-danger"></span>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label class="form-label">
                                     Model <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="Model" class="form-control required-field" />
+                                <input asp-for="Model" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="Model" class="text-danger"></span>
                             </div>
 
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label class="form-label">
                                     SL No <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="Slno" class="form-control required-field" />
+                                <input asp-for="Slno" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="Slno" class="text-danger"></span>
                             </div>
                             <!-- Install Date -->
@@ -72,7 +73,7 @@
                                 <label asp-for="InstallDate" class="form-label">
                                     Installation Date <span class="text-danger">*</span>
                                 </label>
-                                <input asp-for="InstallDate" type="date" class="form-control" />
+                                <input asp-for="InstallDate" type="date" class="form-control required-field" readonly="@(!isAdmin)" />
                                 <span asp-validation-for="InstallDate" class="text-danger"></span>
                             </div>
                             <!-- CurrentLocation -->
@@ -81,11 +82,45 @@
                                     Current Location <span class="text-danger">*</span>
                                 </label>
 
-                                <select asp-for="CurrentLocation" asp-items="ViewBag.CompanyList" class="form-select">
+                                <select asp-for="CurrentLocation"
+                                        asp-items="ViewBag.CompanyList"
+                                        class="form-select"
+                                        disabled="@(!isAdmin)">
                                     <option value="">-- Select Company --</option>
                                 </select>
 
+                                @if (!isAdmin)
+                                {
+                                    <input type="hidden" asp-for="CurrentLocation" />
+                                }
+
                                 <span asp-validation-for="CurrentLocation" class="text-danger"></span>
+                            </div>
+                            <!-- Status -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Status" class="form-label">
+                                    Status <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Status" id="Status" class="form-select">
+                                    <option value="">-- Select Status --</option>
+                                    <option value="Active">Active</option>
+                                    <option value="Inactive">Inactive</option>
+                                </select>
+
+                                <span asp-validation-for="Status" class="text-danger"></span>
+                            </div>
+
+                            <!-- Remarks -->
+                            <div id="remarksDiv" class="col-lg-6 col-lg-3 col-md-4 col-sm-6 col-sm-6" style="display:none;">
+                                <label asp-for="Remarks" class="form-label">
+                                    Remarks <span id="remarksRequired" class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Remarks" id="Remarks" class="form-control" />
+
+                                <span asp-validation-for="Remarks" class="text-danger"></span>
+                                <span id="remarksError" class="text-danger"></span>
                             </div>
 
                         </div>
@@ -114,59 +149,76 @@
     </div>
 </div>
 
-@section Scripts {
-    <script>
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
 
-        document.addEventListener("DOMContentLoaded", function () {
+        const status = document.getElementById("Status");
+        const remarksDiv = document.getElementById("remarksDiv");
+        const remarks = document.getElementById("Remarks");
+        const remarksError = document.getElementById("remarksError");
 
-            const form = document.querySelector("form");
+        if (!status) return;
 
-            form.addEventListener("submit", function (e) {
 
-                let isValid = true;
+        function toggleRemarks() {
 
-                document.querySelectorAll(".required-field").forEach(input => {
+            if (status.value === "Inactive") {
 
-                    const span = document.querySelector(
-                        `[data-valmsg-for="${input.name}"]`
-                    );
+                remarksDiv.style.display = "block";
 
-                    if (input.value.trim() === "") {
+            } else {
 
-                        isValid = false;
+                remarksDiv.style.display = "none";
+                remarks.value = "";
+                remarksError.textContent = "";
 
-                        if (span) {
-                            span.textContent =
-                                input.previousElementSibling.innerText.replace('*', '').trim()
-                                + " is required";
-                        }
-                    }
-                });
+            }
+        }
 
-                if (!isValid) {
-                    e.preventDefault();
-                }
 
-            });
+        // page load
+        toggleRemarks();
 
-            document.querySelectorAll(".required-field")
-                .forEach(input => {
 
-                    input.addEventListener("input", function () {
-
-                        const span = document.querySelector(
-                            `[data-valmsg-for="${this.name}"]`
-                        );
-
-                        if (this.value.trim() !== "" && span) {
-                            span.textContent = "";
-                        }
-
-                    });
-
-                });
+        // status change
+        status.addEventListener("change", function () {
+            toggleRemarks();
         });
 
-    </script>
 
-}
+
+        // form submit validation
+        const form = document.querySelector("form");
+
+        form.addEventListener("submit", function (e) {
+
+            if (status.value === "Inactive" &&
+                remarks.value.trim() === "") {
+
+                e.preventDefault();
+
+                remarksDiv.style.display = "block";
+
+                remarksError.textContent =
+                    "Remarks is required when Status is Inactive.";
+
+                remarks.focus();
+
+                return false;
+            }
+
+        });
+
+
+
+        // clear error while typing
+        remarks.addEventListener("input", function () {
+
+            if (remarks.value.trim() !== "") {
+                remarksError.textContent = "";
+            }
+
+        });
+
+    });
+</script>

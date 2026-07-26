@@ -5,26 +5,18 @@
 }
 
 <div class="container mt-4">
-
     <div class="row justify-content-center">
         <div class="col-md-10">
-
             <div class="card shadow-lg border-0">
-
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Add New Electricity Consumption Reading Info</h5>
                 </div>
-
                 <div class="card-body p-4">
-
                     <form asp-action="Create" method="post">
-
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
-
                         <div class="row g-3">
-
                             <!-- Trdate -->
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label asp-for="Trdate" class="form-label">
@@ -34,7 +26,6 @@
 
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
-
                             <!-- DyeingCons -->
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label asp-for="DyeingCons" class="form-label">
@@ -43,7 +34,6 @@
                                 <input asp-for="DyeingCons" class="form-control" />
                                 <span asp-validation-for="DyeingCons" class="text-danger"></span>
                             </div>
-
                             <!-- DyeingFinCons -->
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label asp-for="DyeingFinCons" class="form-label">
@@ -52,7 +42,6 @@
                                 <input asp-for="DyeingFinCons" class="form-control" />
                                 <span asp-validation-for="DyeingFinCons" class="text-danger"></span>
                             </div>
-
                             <!-- TestingLabCons -->
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label asp-for="TestingLabCons" class="form-label">
@@ -61,7 +50,6 @@
                                 <input asp-for="TestingLabCons" class="form-control" />
                                 <span asp-validation-for="TestingLabCons" class="text-danger"></span>
                             </div>
-
                             <!-- WashingCons -->
                             <div class="col-lg-3 col-md-4 col-sm-6">
                                 <label asp-for="WashingCons" class="form-label">
@@ -167,7 +155,6 @@
                                 <span asp-validation-for="TotalCons" class="text-danger"></span>
                             </div>
                         </div>
-
                         <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="ElectricityConsumptionReadingInfoList"
@@ -181,20 +168,14 @@
                             </button>
 
                         </div>
-
                     </form>
-
                 </div>
-
             </div>
-
         </div>
     </div>
-
 </div>
 <script>
     $(function () {
-
         const fields = [
             "#DyeingCons",
             "#DyeingFinCons",

@@ -67,6 +67,19 @@ public partial class TblEtpPlanCostInfo
     public double? EtpChemCostPerKgDyeing { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? EflluentTreatmentPerKgDyeing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? NaoclConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? NaoclCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? C6H807Consumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? C6H807Cost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? PacConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? PacCost { get; set; }
+
 
     public string? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }

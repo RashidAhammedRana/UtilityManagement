@@ -700,9 +700,7 @@ namespace UtilityManagement.Data
             modelBuilder.Entity<TblEtpPlanCostInfo>(entity =>
             {
                 entity.HasKey(e => e.Trid);
-
                 entity.ToTable("TBL_ETP_PLAN_COST_INFO");
-
                 entity.Property(e => e.Trid).HasColumnName("TRID");
                 entity.Property(e => e.AntifoamConsumption).HasColumnName("ANTIFOAM_CONSUMPTION");
                 entity.Property(e => e.AntifoamCost).HasColumnName("ANTIFOAM_COST");
@@ -731,19 +729,20 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.PolymerConsumption).HasColumnName("POLYMER_CONSUMPTION");
                 entity.Property(e => e.PolymerCost).HasColumnName("POLYMER_COST");
                 entity.Property(e => e.TotalChemicalCost).HasColumnName("TOTAL_CHEMICAL_COST");
-                entity.Property(e => e.Trdate)
-                    .HasColumnType("datetime")
-                    .HasColumnName("TRDATE");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
                 entity.Property(e => e.UreaConsumption).HasColumnName("UREA_CONSUMPTION");
                 entity.Property(e => e.UreaCost).HasColumnName("UREA_COST");
+                entity.Property(e => e.NaoclConsumption).HasColumnName("NAOCL_CONSUMPTION");
+                entity.Property(e => e.NaoclCost).HasColumnName("NAOCL_COST");
+                entity.Property(e => e.C6H807Consumption).HasColumnName("C6H807_CONSUMPTION");
+                entity.Property(e => e.C6H807Cost).HasColumnName("C6H807_COST");
+                entity.Property(e => e.PacConsumption).HasColumnName("PAC_CONSUMPTION");
+                entity.Property(e => e.PacCost).HasColumnName("PAC_COST");
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
-
-                entity.HasOne(d => d.Eq).WithMany(p => p.TblEtpPlanCostInfo)
-                    .HasForeignKey(d => d.Eqid)
-                    .HasConstraintName("FK_TBL_ETP_PLAN_COST_TBL_ETP_PLAN_COST_INFO");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblEtpPlanCostInfo).HasForeignKey(d => d.Eqid).HasConstraintName("FK_TBL_ETP_PLAN_COST_TBL_ETP_PLAN_COST_INFO");
             });
 
             //TblRoPlantCostInfo

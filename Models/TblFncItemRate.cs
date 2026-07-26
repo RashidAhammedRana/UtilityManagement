@@ -8,7 +8,7 @@ public partial class TblFncItemRate
 {
     public int Fncrid { get; set; }
     [Required(ErrorMessage = "This field is required")]
-    public int? Fncid { get; set; }
+    public int Fncid { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public DateTime? Date { get; set; }
     [Required(ErrorMessage = "This field is required")]

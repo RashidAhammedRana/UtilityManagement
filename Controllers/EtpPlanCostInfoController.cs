@@ -6,7 +6,7 @@ using System.Globalization;
 using System.Numerics;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
-using static System.Runtime.InteropServices.JavaScript.JSType;
+
 
 public class EtpPlanCostInfoController : Controller
 {
@@ -30,7 +30,7 @@ public class EtpPlanCostInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "ETP Plan Cost")
+            .Where(x => x.MenuName == "ETP Plant Cost")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -181,121 +181,13 @@ public class EtpPlanCostInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadRates();
+        LoadEquipmentList();
+
         var model = new TblEtpPlanCostInfo
         {
             Trdate = DateTime.Today
         };
-
-        var ureaRate = _context.TblFncItems
-        .Where(i => i.Fncid == 1)//Urea
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var decoloringRate = _context.TblFncItems
-        .Where(i => i.Fncid == 2)//Decoloring
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var dapRate = _context.TblFncItems
-        .Where(i => i.Fncid == 3)//DAP
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var polymerRate = _context.TblFncItems
-        .Where(i => i.Fncid == 4)//Polymer
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var molassasesRate = _context.TblFncItems
-        .Where(i => i.Fncid == 5)//Molassases
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var antifoamRate = _context.TblFncItems
-       .Where(i => i.Fncid == 6)//Antifoam
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        var h2so4Rate = _context.TblFncItems
-       .Where(i => i.Fncid == 7)//H2SO4
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        var bioCleanRate = _context.TblFncItems
-       .Where(i => i.Fncid == 8)//Bio Clean
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        ViewBag.UreaRate = ureaRate;
-        ViewBag.DecoloringRate = decoloringRate;
-        ViewBag.DapRate = dapRate;
-        ViewBag.PolymerRate = polymerRate;
-        ViewBag.MolassasesRate = molassasesRate;
-        ViewBag.AntifoamRate = antifoamRate;
-        ViewBag.H2SO4Rate = h2so4Rate;
-        ViewBag.BioCleanRate = bioCleanRate;
-
-        var userId = _userManager.GetUserId(User);
-
-        var currentLocation = _context.Users
-            .Where(x => x.Id == userId)
-            .Select(x => x.Company)
-            .FirstOrDefault();
-        var query = _context.TblEquipmentDetails
-    .Where(x => EF.Functions.Like(x.EquipmentName, "%ETP%"));
-
-        if (!string.IsNullOrEmpty(currentLocation))
-        {
-            query = query.Where(x => x.CurrentLocation == currentLocation);
-        }
-
-        ViewBag.EquipmentList = query
-            .Select(x => new SelectListItem
-            {
-                Value = x.Eqid.ToString(),
-                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
-            })
-            .ToList();
 
         return View(model);
     }
@@ -356,111 +248,17 @@ public class EtpPlanCostInfoController : Controller
     }
 
     [HttpGet]
-    public async Task<IActionResult> Edit(int id)
+    public IActionResult Edit(int id)
     {
-        var reading = await _context.TblEtpPlanCostInfo
-            .FirstOrDefaultAsync(x => x.Trid == id);
+        LoadRates();
+        LoadEquipmentList();
 
-        if (reading == null)
+        var model = _context.TblEtpPlanCostInfo.Find(id);
+
+        if (model == null)
             return NotFound();
 
-        var ureaRate = _context.TblFncItems
-            .Where(i => i.Fncid == 1)//Urea
-            .Join(_context.TblFncItemRates,
-                item => item.Fncid,
-                rate => rate.Fncid,
-                (item, rate) => rate)
-            .OrderByDescending(r => r.Date)
-            .Select(r => r.Rate)
-            .FirstOrDefault();
-
-        var decoloringRate = _context.TblFncItems
-        .Where(i => i.Fncid == 2)//Decoloring
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var dapRate = _context.TblFncItems
-        .Where(i => i.Fncid == 3)//DAP
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var polymerRate = _context.TblFncItems
-        .Where(i => i.Fncid == 4)//Polymer
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var molassasesRate = _context.TblFncItems
-        .Where(i => i.Fncid == 5)//Molassases
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
-
-        var antifoamRate = _context.TblFncItems
-       .Where(i => i.Fncid == 6)//Antifoam
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        var h2so4Rate = _context.TblFncItems
-       .Where(i => i.Fncid == 7)//H2SO4
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        var bioCleanRate = _context.TblFncItems
-       .Where(i => i.Fncid == 8)//Bio Clean
-       .Join(_context.TblFncItemRates,
-           item => item.Fncid,
-           rate => rate.Fncid,
-           (item, rate) => rate)
-       .OrderByDescending(r => r.Date)
-       .Select(r => r.Rate)
-       .FirstOrDefault();
-
-        ViewBag.UreaRate = ureaRate;
-        ViewBag.DecoloringRate = decoloringRate;
-        ViewBag.DapRate = dapRate;
-        ViewBag.PolymerRate = polymerRate;
-        ViewBag.MolassasesRate = molassasesRate;
-        ViewBag.AntifoamRate = antifoamRate;
-        ViewBag.H2SO4Rate = h2so4Rate;
-        ViewBag.BioCleanRate = bioCleanRate;
-
-        ViewBag.EquipmentList = _context.TblEquipmentDetails
-            .Select(x => new SelectListItem
-            {
-                Value = x.Eqid.ToString(),
-                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
-            })
-            .ToList();
-        return View(reading);
+        return View(model);
     }
 
     [HttpPost]
@@ -583,6 +381,58 @@ public class EtpPlanCostInfoController : Controller
         TempData["SuccessMessage"] = "Data deleted successfully.";
 
         return RedirectToAction(nameof(EtpPlanCostInfoList));
+    }
+
+    private void LoadRates()
+    {
+        var rates = _context.TblFncItemRates
+            .GroupBy(x => x.Fncid)
+            .Select(g => new
+            {
+                Fncid = g.Key,
+                Rate = g.OrderByDescending(x => x.Date)
+                        .Select(x => x.Rate)
+                        .FirstOrDefault()
+            })
+            .ToDictionary(x => x.Fncid, x => x.Rate);
+
+        ViewBag.UreaRate = rates.GetValueOrDefault(1, 0);
+        ViewBag.DecoloringRate = rates.GetValueOrDefault(2, 0);
+        ViewBag.DapRate = rates.GetValueOrDefault(3, 0);
+        ViewBag.PolymerRate = rates.GetValueOrDefault(4, 0);
+        ViewBag.MolassasesRate = rates.GetValueOrDefault(5, 0);
+        ViewBag.AntifoamRate = rates.GetValueOrDefault(6, 0);
+        ViewBag.H2SO4Rate = rates.GetValueOrDefault(7, 0);
+        ViewBag.BioCleanRate = rates.GetValueOrDefault(8, 0);
+        ViewBag.NaoclRate = rates.GetValueOrDefault(15, 0);
+        ViewBag.C6H807Rate = rates.GetValueOrDefault(14, 0);
+        ViewBag.PacRate = rates.GetValueOrDefault(26, 0);
+    }
+
+    private void LoadEquipmentList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var query = _context.TblEquipmentDetails
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%ETP%"));
+
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
+
+        ViewBag.EquipmentList = query
+            .Select(x => new SelectListItem
+            {
+                Value = x.Eqid.ToString(),
+                Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+            })
+            .ToList();
     }
 }
 

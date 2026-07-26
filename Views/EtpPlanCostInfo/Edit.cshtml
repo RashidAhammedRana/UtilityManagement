@@ -14,17 +14,17 @@
         <div class="col-12">
             <div class="card shadow-lg border-0">
                 <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Edit ETP Plan Cost Info</h5>
+                    <h5 class="mb-0">Edit ETP Plant Cost Info</h5>
                 </div>
                 <div class="card-body p-4">
-                    <form asp-action="Create" method="post">
+                    <form asp-action="eDIT" method="post">
                         <input type="hidden" asp-for="Trid" />
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
                         <div class="row g-3">
                             <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -33,7 +33,7 @@
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
                             <!-- Equipment -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -44,7 +44,7 @@
                                 <span asp-validation-for="Eqid" class="text-danger"></span>
                             </div>
                             <!-- UreaConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="UreaConsumption" class="form-label">
                                     Urea Consumption<span class="text-danger">*</span>
                                 </label>
@@ -53,7 +53,7 @@
                             </div>
                             <!-- UreaCost -->
                             <!-- UreaCost=UreaConsumption*UreaRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="UreaCost" class="form-label">
                                     Urea Cost <UreaCost class="text-danger">*</UreaCost>
                                 </label>
@@ -61,7 +61,7 @@
                                 <span asp-validation-for="UreaCost" class="text-danger"></span>
                             </div>
                             <!-- DecoloringConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DecoloringConsumption" class="form-label">
                                     Decoloring Consumption<span class="text-danger">*</span>
                                 </label>
@@ -70,7 +70,7 @@
                             </div>
                             <!-- DecoloringCost -->
                             <!-- DecoloringCost=DecoloringConsumption*DecoloringRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DecoloringCost" class="form-label">
                                     Decoloring Cost<span class="text-danger">*</span>
                                 </label>
@@ -78,7 +78,7 @@
                                 <span asp-validation-for="DecoloringCost" class="text-danger"></span>
                             </div>
                             <!-- DapConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DapConsumption" class="form-label">
                                     DAP Consumption<span class="text-danger">*</span>
                                 </label>
@@ -87,7 +87,7 @@
                             </div>
                             <!-- DapCost -->
                             <!-- DapCost=DapConsumption*DapRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DapCost" class="form-label">
                                     DAP Cost<span class="text-danger">*</span>
                                 </label>
@@ -95,7 +95,7 @@
                                 <span asp-validation-for="DapCost" class="text-danger"></span>
                             </div>
                             <!-- PolymerConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="PolymerConsumption" class="form-label">
                                     Polymer Consumption<span class="text-danger">*</span>
                                 </label>
@@ -104,7 +104,7 @@
                             </div>
                             <!-- PolymerCost -->
                             <!-- PolymerCost=PolymerConsumption*PolymerRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="PolymerCost" class="form-label">
                                     Polymer Cost<span class="text-danger">*</span>
                                 </label>
@@ -112,7 +112,7 @@
                                 <span asp-validation-for="PolymerCost" class="text-danger"></span>
                             </div>
                             <!-- MolassasesConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="MolassasesConsumption" class="form-label">
                                     Molassases Consumption<span class="text-danger">*</span>
                                 </label>
@@ -121,7 +121,7 @@
                             </div>
                             <!-- MolassasesCost -->
                             <!-- MolassasesCost=MolassasesConsumption*MolassasesRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="MolassasesCost" class="form-label">
                                     Molassases Cost<span class="text-danger">*</span>
                                 </label>
@@ -129,7 +129,7 @@
                                 <span asp-validation-for="MolassasesCost" class="text-danger"></span>
                             </div>
                             <!-- AntifoamConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="AntifoamConsumption" class="form-label">
                                     Antifoam Consumption<span class="text-danger">*</span>
                                 </label>
@@ -137,7 +137,7 @@
                                 <span asp-validation-for="AntifoamConsumption" class="text-danger"></span>
                             </div>
                             <!-- AntifoamCost=AntifoamConsumption*AntifoamRate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="AntifoamCost" class="form-label">
                                     Antifoam Cost<span class="text-danger">*</span>
                                 </label>
@@ -145,24 +145,24 @@
                                 <span asp-validation-for="AntifoamCost" class="text-danger"></span>
                             </div>
                             <!-- H2so4Consumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="H2so4Consumption" class="form-label">
-                                    H2SO4 Consumption <span class="text-danger">*</span>
+                                    H₂SO₄ Consumption <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="H2so4Consumption" class="form-control" />
                                 <span asp-validation-for="H2so4Consumption" class="text-danger"></span>
                             </div>
                             <!-- H2so4Cost -->
                             <!-- H2so4Cost=H2so4Consumption*H2so4Rate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="H2so4Cost" class="form-label">
-                                    H2SO4 Cost <span class="text-danger">*</span>
+                                    H₂SO₄ Cost <span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="H2so4Cost" class="form-control" readonly />
                                 <span asp-validation-for="H2so4Cost" class="text-danger"></span>
                             </div>
                             <!-- BiocleanConsumption -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="BiocleanConsumption" class="form-label">
                                     Bioclean Consumption
                                 </label>
@@ -171,16 +171,68 @@
                             </div>
                             <!-- BiocleanCost -->
                             <!-- BiocleanCost= BiocleanConsumption*BiocleanRate-->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="BiocleanCost" class="form-label">
                                     Bioclean Cost
                                 </label>
                                 <input asp-for="BiocleanCost" class="form-control" readonly />
                                 <span asp-validation-for="BiocleanCost" class="text-danger"></span>
                             </div>
+
+                            <!-- NaoclConsumption -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="NaoclConsumption" class="form-label">
+                                    Sodium Hypochlorite Cons.
+                                </label>
+                                <input asp-for="NaoclConsumption" class="form-control" />
+                                <span asp-validation-for="NaoclConsumption" class="text-danger"></span>
+                            </div>
+                            <!-- NaoclCost -->
+                            <!-- NaoclCost= NaoclConsumption*NaoclRate-->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="NaoclCost" class="form-label">
+                                    Sodium Hypochlorite Cost
+                                </label>
+                                <input asp-for="NaoclCost" class="form-control" readonly />
+                                <span asp-validation-for="NaoclCost" class="text-danger"></span>
+                            </div>
+                            <!-- C6H807Consumption -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="C6H807Consumption" class="form-label">
+                                    Citric Acid Cons.
+                                </label>
+                                <input asp-for="C6H807Consumption" class="form-control" />
+                                <span asp-validation-for="C6H807Consumption" class="text-danger"></span>
+                            </div>
+                            <!-- C6H807Cost -->
+                            <!-- C6H807Cost= C6H807Consumption*C6H807Rate-->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="C6H807Cost" class="form-label">
+                                    Citric Acid Cost
+                                </label>
+                                <input asp-for="C6H807Cost" class="form-control" readonly />
+                                <span asp-validation-for="C6H807Cost" class="text-danger"></span>
+                            </div>
+                            <!-- PacConsumption -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="PacConsumption" class="form-label">
+                                    PAC Consumption
+                                </label>
+                                <input asp-for="PacConsumption" class="form-control" />
+                                <span asp-validation-for="PacConsumption" class="text-danger"></span>
+                            </div>
+                            <!-- PacCost -->
+                            <!-- PacCost= PacConsumption*PacRate-->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="PacCost" class="form-label">
+                                    PAC Cost
+                                </label>
+                                <input asp-for="PacCost" class="form-control" readonly />
+                                <span asp-validation-for="PacCost" class="text-danger"></span>
+                            </div>
                             <!-- TotalChemicalCost -->
                             <!-- TotalChemicalCost=UreaCost+DecoloringCost+DapCost+PolymerCost+MolassasesCost+AntifoamCost+H2so4Cost+BiocleanCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="TotalChemicalCost" class="form-label">
                                     Total Chemical Cost
                                 </label>
@@ -188,7 +240,7 @@
                                 <span asp-validation-for="TotalChemicalCost" class="text-danger"></span>
                             </div>
                             <!-- MaintenanceCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="MaintenanceCost" class="form-label">
                                     Maintenance Cost<span class="text-danger">*</span>
                                 </label>
@@ -196,7 +248,7 @@
                                 <span asp-validation-for="MaintenanceCost" class="text-danger"></span>
                             </div>
                             <!-- ManpowerSalary -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="ManpowerSalary" class="form-label">
                                     Manpower Salary
                                 </label>
@@ -204,7 +256,7 @@
                                 <span asp-validation-for="ManpowerSalary" class="text-danger"></span>
                             </div>
                             <!-- MiscellaneousCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="MiscellaneousCost" class="form-label">
                                     Miscellaneous Cost
                                 </label>
@@ -213,15 +265,15 @@
                             </div>
                             <!-- GrandTotalCost -->
                             <!-- GrandTotalCost= TotalChemicalCost+Maintenance+ManpowerSalary+MiscellaneousCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="GrandTotalCost" class="form-label">
                                     Grand Total Cost
                                 </label>
-                                <input asp-for="GrandTotalCost" class="form-control" />
+                                <input asp-for="GrandTotalCost" class="form-control"readonly />
                                 <span asp-validation-for="GrandTotalCost" class="text-danger"></span>
                             </div>
                             <!-- DailyEffluentFlow -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DailyEffluentFlow" class="form-label">
                                     Daily Effluent Flow
                                 </label>
@@ -230,16 +282,16 @@
                             </div>
                             <!-- EffluentFlowThrough -->
                             <!-- EffluentFlowThrough= DailyEffluentFlow/24-->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="EffluentFlowThrough" class="form-label">
-                                    Effluent Flow Through
+                                    Effluent Flow Through/Hr
                                 </label>
-                                <input asp-for="EffluentFlowThrough" class="form-control" />
+                                <input asp-for="EffluentFlowThrough" class="form-control" readonly/>
                                 <span asp-validation-for="EffluentFlowThrough" class="text-danger"></span>
                             </div>
                             <!-- ChemicalCost -->
                             <!-- ChemicalCost=TotalChemicalCost/DailyEffluentFlow -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="ChemicalCost" class="form-label">
                                     Chemical Cost
                                 </label>
@@ -248,7 +300,7 @@
                             </div>
                             <!-- DailyEtpCost -->
                             <!-- DailyEtpCost=GrandTotalCost/EffluentFlowThrough -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DailyEtpCost" class="form-label">
                                     Daily ETP Cost
                                 </label>
@@ -256,7 +308,7 @@
                                 <span asp-validation-for="DailyEtpCost" class="text-danger"></span>
                             </div>
                             <!-- DyeingProduction -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="DyeingProduction" class="form-label">
                                     Dyeing Production
                                 </label>
@@ -265,20 +317,20 @@
                             </div>
                             <!-- EtpChemCostPerKgDyeing -->
                             <!-- EtpChemCostPerKgDyeing=DyeingProduction/TotalChemicalCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="EtpChemCostPerKgDyeing" class="form-label">
                                     ETP Chemical Cost Per Kg Dyeing
                                 </label>
-                                <input asp-for="EtpChemCostPerKgDyeing" class="form-control" readonly/>
+                                <input asp-for="EtpChemCostPerKgDyeing" class="form-control" readonly />
                                 <span asp-validation-for="EtpChemCostPerKgDyeing" class="text-danger"></span>
                             </div>
                             <!-- EflluentTreatmentPerKgDyeing -->
                             <!-- EflluentTreatmentPerKgDyeing=EffluentFlowThrough/ -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="EflluentTreatmentPerKgDyeing" class="form-label">
                                     Eflluent Treatment Per Kg Dyeing
                                 </label>
-                                <input asp-for="EflluentTreatmentPerKgDyeing" class="form-control"readonly />
+                                <input asp-for="EflluentTreatmentPerKgDyeing" class="form-control" readonly />
                                 <span asp-validation-for="EflluentTreatmentPerKgDyeing" class="text-danger"></span>
                             </div>
                         </div>
@@ -316,6 +368,11 @@
         const h2so4Rate = parseFloat('@ViewBag.H2SO4Rate') || 0;
         const bioCleanRate = parseFloat('@ViewBag.BioCleanRate') || 0;
 
+        // New Rates
+        const naoclRate = parseFloat('@ViewBag.NaoclRate') || 0;
+        const c6h807Rate = parseFloat('@ViewBag.C6H807Rate') || 0;
+        const pacRate = parseFloat('@ViewBag.PacRate') || 0;
+
         function val(id) {
             return parseFloat($("#" + id).val()) || 0;
         }
@@ -336,6 +393,12 @@
             let h2so4Cost = val("H2so4Consumption") * h2so4Rate;
             let bioCleanCost = val("BiocleanConsumption") * bioCleanRate;
 
+            // New Chemical Costs
+            let naoclCost = val("NaoclConsumption") * naoclRate;
+            let c6h807Cost = val("C6H807Consumption") * c6h807Rate;
+            let pacCost = val("PacConsumption") * pacRate;
+
+            // Set Chemical Costs
             set("UreaCost", ureaCost);
             set("DecoloringCost", decoloringCost);
             set("DapCost", dapCost);
@@ -345,10 +408,24 @@
             set("H2so4Cost", h2so4Cost);
             set("BiocleanCost", bioCleanCost);
 
+            // Set New Chemical Costs
+            set("NaoclCost", naoclCost);
+            set("C6H807Cost", c6h807Cost);
+            set("PacCost", pacCost);
+
             // Total Chemical Cost
             let totalChemicalCost =
-                ureaCost + decoloringCost + dapCost + polymerCost +
-                molassasesCost + antifoamCost + h2so4Cost + bioCleanCost;
+                ureaCost +
+                decoloringCost +
+                dapCost +
+                polymerCost +
+                molassasesCost +
+                antifoamCost +
+                h2so4Cost +
+                bioCleanCost +
+                naoclCost +
+                c6h807Cost +
+                pacCost;
 
             set("TotalChemicalCost", totalChemicalCost);
 
@@ -361,17 +438,21 @@
 
             set("GrandTotalCost", grandTotal);
 
-            // Effluent Flow Through
+            // Effluent Flow Through (m³/hr)
             let dailyFlow = val("DailyEffluentFlow");
             let flowThrough = dailyFlow / 24;
             set("EffluentFlowThrough", flowThrough);
 
-            // Chemical Cost
-            let chemicalCost = dailyFlow > 0 ? totalChemicalCost / dailyFlow : 0;
+            // Chemical Cost per m³
+            let chemicalCost = dailyFlow > 0
+                ? totalChemicalCost / dailyFlow
+                : 0;
             set("ChemicalCost", chemicalCost);
 
-            // Daily ETP Cost
-            let dailyEtpCost = flowThrough > 0 ? grandTotal / dailyFlow : 0;
+            // Daily ETP Cost per m³
+            let dailyEtpCost = dailyFlow > 0
+                ? grandTotal / dailyFlow
+                : 0;
             set("DailyEtpCost", dailyEtpCost);
 
             // ETP Chemical Cost Per Kg Dyeing
@@ -382,8 +463,8 @@
             set("EtpChemCostPerKgDyeing", etpChemCostPerKg);
 
             // Effluent Treatment Per Kg Dyeing
-            let effluentTreatment = dyeingProduction > 0
-                ? dyeingProduction / dailyFlow
+            let effluentTreatment = (dailyFlow > 0 && dyeingProduction > 0)
+                ? dailyFlow / dyeingProduction
                 : 0;
             set("EflluentTreatmentPerKgDyeing", effluentTreatment);
         }

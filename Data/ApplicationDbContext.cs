@@ -51,6 +51,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; }
         public virtual DbSet<TblSteamConsumptionReadingInfo> TblSteamConsumptionReadingInfo { get; set; }
         public virtual DbSet<TblElectricityConsumptionReadingInfo> TblElectricityConsumptionReadingInfo { get; set; }
+        public virtual DbSet<TblChillerReadingInfo> TblChillerReadingInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -905,6 +906,43 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.Property(e => e.WashingCons).HasColumnName("WASHING_CONS");
             });
+
+            //TblChillerReadingInfo
+            modelBuilder.Entity<TblChillerReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_CHILLER_READING_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ChC2150Cons).HasColumnName("CH_C2150_CONS");
+                entity.Property(e => e.ChC2150Cost).HasColumnName("CH_C2150_COST");
+                entity.Property(e => e.ChC114Cons).HasColumnName("CH_C114_CONS");
+                entity.Property(e => e.ChC114Cost).HasColumnName("CH_C114_COST");
+                entity.Property(e => e.ChC2100bCons).HasColumnName("CH_C2100B_CONS");
+                entity.Property(e => e.ChC2100bCost).HasColumnName("CH_C2100B_COST");
+                entity.Property(e => e.ChC317Cons).HasColumnName("CH_C317_CONS");
+                entity.Property(e => e.ChC317Cost).HasColumnName("CH_C317_COST");
+                entity.Property(e => e.ChC615Cons).HasColumnName("CH_C615_CONS");
+                entity.Property(e => e.ChC615Cost).HasColumnName("CH_C615_COST");
+                entity.Property(e => e.CoolingCost).HasColumnName("COOLING_COST");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.MaintenanceCost).HasColumnName("MAINTENANCE_COST");
+                entity.Property(e => e.ServiceCharge).HasColumnName("SERVICE_CHARGE");
+                entity.Property(e => e.SparePartsCost).HasColumnName("SPARE_PARTS_COST");
+                entity.Property(e => e.SteamCons).HasColumnName("STEAM_CONS");
+                entity.Property(e => e.SteamRate).HasColumnName("STEAM_RATE");
+                entity.Property(e => e.SteamCost).HasColumnName("STEAM_COST");
+                entity.Property(e => e.TotalCoolingWater).HasColumnName("TOTAL_COOLING_WATER");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Equipments).WithMany(p => p.TblChillerReadingInfos).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_CHILLER_READING_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+
 
             OnModelCreatingPartial(modelBuilder);
         }

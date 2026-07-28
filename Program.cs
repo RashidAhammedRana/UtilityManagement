@@ -1,26 +1,37 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DevExpress.AspNetCore;
+using DevExpress.AspNetCore.Reporting;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
-using UtilityManagement.InfrastructureRegistration;
 using UtilityManagement.Models;
 
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Add services to the container.
+
+// MVC
 builder.Services.AddControllersWithViews();
 
+
+// DevExpress Reporting
+builder.Services.AddDevExpressControls();
+
+builder.Services.ConfigureReportingServices(configurator =>
+{
+    configurator.ConfigureWebDocumentViewer(viewerConfigurator =>
+    {
+        viewerConfigurator.UseCachedReportSourceBuilder();
+    });
+});
+
+
+// Database
 builder.Services.AddDbContext<ApplicationDbContext>(
     options =>
         options.UseSqlServer(
-            builder.Configuration.GetConnectionString("DefaultConnection")));
+            builder.Configuration.GetConnectionString("DefaultConnection")
+        ));
 
-// Identity
-//builder.Services.AddIdentity<IdentityUser, IdentityRole>()
-//    .AddEntityFrameworkStores<ApplicationDbContext>()
-//    .AddDefaultTokenProviders();
-
-//builder.Services.AddScoped<IPermissionRepository, PermissionRepository>();
 
 // Identity
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
@@ -33,11 +44,16 @@ builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 
     options.Lockout.MaxFailedAccessAttempts = 5;
     options.Lockout.DefaultLockoutTimeSpan = TimeSpan.FromMinutes(5);
+
 })
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+
+
 var app = builder.Build();
+
+
 
 if (!app.Environment.IsDevelopment())
 {
@@ -45,17 +61,28 @@ if (!app.Environment.IsDevelopment())
     app.UseHsts();
 }
 
+
 app.UseHttpsRedirection();
+
 app.UseStaticFiles();
 
 app.UseRouting();
 
-// 🔥 IMPORTANT (MISSING BEFORE)
-app.UseAuthentication();   // ✅ ADD THIS
+
+// DevExpress
+app.UseDevExpressControls();
+
+
+app.UseAuthentication();
+
 app.UseAuthorization();
+
+
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Account}/{action=Login}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}"
+);
+
 
 app.Run();

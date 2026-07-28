@@ -1,0 +1,372 @@
+﻿@model UtilityManagement.Models.TblChillerReadingInfo
+
+@{
+    ViewData["Title"] = "Edit Chiller Reading";
+}
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Edit Chiller Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit" method="post">
+                        <input asp-for="Trid" hidden />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label asp-for="Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Eqid" asp-items="ViewBag.EquipmentList" class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+                            <div class="col-12">
+                                <hr class="border border-success  opacity-85 my-2" />
+                            </div>
+
+                            <!-- SteamCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SteamCons" class="form-label">
+                                    Steam Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SteamCons" class="form-control" />
+                                <span asp-validation-for="SteamCons" class="text-danger"></span>
+                            </div>
+                            <!-- SteamRate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SteamRate" class="form-label">
+                                    Steam Rate/kg <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SteamRate" class="form-control" />
+                                <span asp-validation-for="SteamRate" class="text-danger"></span>
+                            </div>
+                            <!-- SteamCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SteamCost" class="form-label">
+                                    Steam Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SteamCost" class="form-control" readonly />
+                                <span asp-validation-for="SteamCost" class="text-danger"></span>
+                            </div>
+
+                            <!-- ChC114Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC114Cons" class="form-label">
+                                    Chem.Hyd.C114 Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC114Cons" class="form-control" />
+                                <span asp-validation-for="ChC114Cons" class="text-danger"></span>
+                            </div>
+                            <!-- ChC114Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC114Cost" class="form-label">
+                                    Chem.Hyd.C114 Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC114Cost" class="form-control" readonly />
+                                <span asp-validation-for="ChC114Cost" class="text-danger"></span>
+                            </div>
+
+                            <!-- ChC2100bCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC2100bCons" class="form-label">
+                                    Chem.Hyd.C2100B Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC2100bCons" class="form-control" />
+                                <span asp-validation-for="ChC2100bCons" class="text-danger"></span>
+                            </div>
+                            <!-- ChC2100bCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC2100bCost" class="form-label">
+                                    Chem.Hyd.C2100B Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC2100bCost" class="form-control" readonly />
+                                <span asp-validation-for="ChC2100bCost" class="text-danger"></span>
+                            </div>
+                            <!-- ChC2150Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC2150Cons" class="form-label">
+                                    Chem.Hyd.C2150 Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC2150Cons" class="form-control" />
+                                <span asp-validation-for="ChC2150Cons" class="text-danger"></span>
+                            </div>
+                            <!-- ChC2150Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC2150Cost" class="form-label">
+                                    Chem.Hyd.C2150 Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC2150Cost" class="form-control" readonly />
+                                <span asp-validation-for="ChC2150Cost" class="text-danger"></span>
+                            </div>
+                            <!-- ChC317Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC317Cons" class="form-label">
+                                    Chem.Hyd.C317 Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC317Cons" class="form-control" />
+                                <span asp-validation-for="ChC317Cons" class="text-danger"></span>
+                            </div>
+                            <!-- ChC317Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC317Cost" class="form-label">
+                                    Chem.Hyd.C317 Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC317Cost" class="form-control" readonly />
+                                <span asp-validation-for="ChC317Cost" class="text-danger"></span>
+                            </div>
+                            <!-- ChC615Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC615Cons" class="form-label">
+                                    Chem.Hyd.C615 Cons. <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC615Cons" class="form-control" />
+                                <span asp-validation-for="ChC615Cons" class="text-danger"></span>
+                            </div>
+                            <!-- ChC615Cost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ChC615Cost" class="form-label">
+                                    Chem.Hyd.C615 Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ChC615Cost" class="form-control" readonly />
+                                <span asp-validation-for="ChC615Cost" class="text-danger"></span>
+                            </div>
+                            <!-- ServiceCharge -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="ServiceCharge" class="form-label">
+                                    Service Charge <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ServiceCharge" class="form-control" />
+                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+                            </div>
+                            <!-- MaintenanceCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="MaintenanceCost" class="form-label">
+                                    Maintenance Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="MaintenanceCost" class="form-control" />
+                                <span asp-validation-for="MaintenanceCost" class="text-danger"></span>
+                            </div>
+                            <!-- SparePartsCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="SparePartsCost" class="form-label">
+                                    Spare Parts Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="SparePartsCost" class="form-control" />
+                                <span asp-validation-for="SparePartsCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalCost" class="form-label">
+                                    Total Cost <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalCost" class="form-control" readonly />
+                                <span asp-validation-for="TotalCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalCoolingWater -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="TotalCoolingWater" class="form-label">
+                                    Total Cooling Water<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalCoolingWater" class="form-control" />
+                                <span asp-validation-for="TotalCoolingWater" class="text-danger"></span>
+                            </div>
+                            <!-- CoolingCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="CoolingCost" class="form-label">
+                                    Cooling Cost/m³<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CoolingCost" class="form-control" />
+                                <span asp-validation-for="CoolingCost" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="ChillerReadingInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success">
+                                <i class="bi bi-check-circle"></i>
+                                Update Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+
+        // Chemical Rates from Backend
+        const c114Rate = @ViewBag.C114Rate;
+        const c2100bRate = @ViewBag.C2100bRate;
+        const c2150Rate = @ViewBag.C2150Rate;
+        const c317Rate = @ViewBag.C317Rate;
+        const c615Rate = @ViewBag.C615Rate;
+
+
+        $(document).ready(function () {
+
+
+            function getValue(selector) {
+                return parseFloat($(selector).val()) || 0;
+            }
+
+
+            function setCost(consumptionSelector, costSelector, rate) {
+
+                let consumption = getValue(consumptionSelector);
+                let cost = consumption * rate;
+
+                $(costSelector).val(cost.toFixed(2));
+            }
+
+
+
+            function calculate() {
+
+
+                // ============================
+                // Steam Calculation
+                // Cost = Consumption × User Rate
+                // ============================
+
+                let steamRate = getValue("#SteamRate");
+
+                setCost(
+                    "#SteamCons",
+                    "#SteamCost",
+                    steamRate
+                );
+
+
+
+                // ============================
+                // Chemical Calculation
+                // Cost = Consumption × Backend Rate
+                // ============================
+
+                setCost("#ChC114Cons", "#ChC114Cost", c114Rate);
+
+                setCost("#ChC2100bCons", "#ChC2100bCost", c2100bRate);
+
+                setCost("#ChC2150Cons", "#ChC2150Cost", c2150Rate);
+
+                setCost("#ChC317Cons", "#ChC317Cost", c317Rate);
+
+                setCost("#ChC615Cons", "#ChC615Cost", c615Rate);
+
+
+
+                // ============================
+                // Total Cost Calculation
+                // ============================
+
+                let totalCost =
+                    getValue("#SteamCost") +
+                    getValue("#ChC114Cost") +
+                    getValue("#ChC2100bCost") +
+                    getValue("#ChC2150Cost") +
+                    getValue("#ChC317Cost") +
+                    getValue("#ChC615Cost") +
+                    getValue("#ServiceCharge") +
+                    getValue("#MaintenanceCost") +
+                    getValue("#SparePartsCost");
+
+
+                $("#TotalCost").val(totalCost.toFixed(2));
+
+
+
+                // ============================
+                // Cooling Cost Calculation
+                // Cooling Cost = TotalCost / Water
+                // ============================
+
+                let totalCoolingWater = getValue("#TotalCoolingWater");
+
+
+                let coolingCost = 0;
+
+                if (totalCoolingWater > 0) {
+                    coolingCost = totalCost / totalCoolingWater;
+                }
+
+
+                $("#CoolingCost").val(coolingCost.toFixed(2));
+
+            }
+
+
+
+            // Recalculate on input change
+
+            $(
+                "#SteamRate," +
+                "#SteamCons," +
+                "#ChC114Cons," +
+                "#ChC2100bCons," +
+                "#ChC2150Cons," +
+                "#ChC317Cons," +
+                "#ChC615Cons," +
+                "#ServiceCharge," +
+                "#MaintenanceCost," +
+                "#SparePartsCost," +
+                "#TotalCoolingWater"
+            )
+            .on("input", calculate);
+
+
+
+            // Initial calculation
+            calculate();
+
+
+        });
+
+    </script>
+}

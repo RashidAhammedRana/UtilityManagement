@@ -1,0 +1,248 @@
+﻿@model UtilityManagement.Models.TblAirCompressorReadingInfo
+
+@{
+    ViewData["Title"] = "Create Air Compressor Reading";
+}
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Add New Air Compressor Reading</h5>
+                </div>
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-md-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="Trdate" class="text-danger"></span>
+                            </div>
+
+                            <!-- Equipment -->
+                            <div class="col-md-6">
+                                <label asp-for="Eqid" class="form-label">Equipment <span class="text-danger">*</span></label>
+                                <select asp-for="Eqid" class="form-select" id="Eqid">
+                                    <option value="">-- Select Equipment --</option>
+                                    @foreach (var item in ViewBag.EquipmentList)
+                                    {
+                                        <option value="@item.Eqid" data-capacity="@item.Capacity">
+                                            @item.EquipmentName - @item.Location
+                                        </option>
+                                    }
+                                </select>
+                                <span asp-validation-for="Eqid" class="text-danger"></span>
+                            </div>
+                            <!-- Capacity -->
+                            <div class="col-md-6">
+                                <label class="form-label">Capacity</label>
+                                <span id="CapacityDisplay" class="form-control bg-light">
+                                    -
+                                </span>
+                            </div>
+
+                            <!-- RunningHour -->
+                            <div class="col-md-6">
+                                <label asp-for="RunningHour" class="form-label">
+                                    Running Hours <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="RunningHour" class="form-control" />
+                                <span asp-validation-for="RunningHour" class="text-danger"></span>
+                            </div>
+
+                            <!-- PowerConsumption -->
+                            <div class="col-md-6">
+                                <label asp-for="PowerConsumption" class="form-label">
+                                    Power Consumption(Kwh)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="PowerConsumption" class="form-control" id="PowerConsumption" />
+                                <span asp-validation-for="PowerConsumption" class="text-danger"></span>
+                            </div>
+
+                            <!-- ElectricityRate -->
+                            <div class="col-md-6">
+                                <label asp-for="ElectricityRate" class="form-label">
+                                    Electricity Rate(Tk/kwh) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ElectricityRate" class="form-control" id="ElectricityRate" />
+                                <span asp-validation-for="ElectricityRate" class="text-danger"></span>
+                            </div>
+
+                            <!-- ElectricityCost -->
+                            <!-- ElectricityCost=PowerConsumption*ElectricityRate -->
+                            <div class="col-md-6">
+                                <label asp-for="ElectricityCost" class="form-label">
+                                    Electricity Cost(TK)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ElectricityCost" id="ElectricityCost" class="form-control" readonly/>
+                                <span asp-validation-for="ElectricityCost" class="text-danger"></span>
+                            </div>
+                            <!-- ServiceMaintenanceCost -->
+                            <div class="col-md-6">
+                                <label asp-for="ServiceMaintenanceCost" class="form-label">
+                                    Service & Maintenance Cost(Tk) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="ServiceMaintenanceCost" class="form-control" />
+                                <span asp-validation-for="ServiceMaintenanceCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalCost -->
+                            <!-- TotalCost =ElectricityCost+ServiceMaintenanceCost -->
+                            <div class="col-md-6">
+                                <label asp-for="TotalCost" class="form-label">
+                                    Total Cost(Tk) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="TotalCost" id="TotalCost" class="form-control" readonly />
+                                <span asp-validation-for="TotalCost" class="text-danger"></span>
+                            </div>
+                            <!-- AirFlow -->
+                            <div class="col-md-6">
+                                <label asp-for="AirFlow" class="form-label">
+                                    Air Flow(m³/min) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="AirFlow" class="form-control" />
+                                <span asp-validation-for="AirFlow" class="text-danger"></span>
+                            </div>
+                            <!-- AirProduced -->
+                            <div class="col-md-6">
+                                <label asp-for="AirProduced" class="form-label">
+                                    Air produced(m³) <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="AirProduced" class="form-control" />
+                                <span asp-validation-for="AirProduced" class="text-danger"></span>
+                            </div>
+                            
+                            <!-- CostPerM3Air -->
+                            <!-- CostPerM3Air =AirProduced/TotalCost-->
+                            <div class="col-md-6">
+                                <label asp-for="CostPerM3Air" class="form-label">
+                                    Cost/(m³ Air)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="CostPerM3Air" class="form-control"readonly />
+                                <span asp-validation-for="CostPerM3Air" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="AirCompressorReadingInfoList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save Reading
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // ==========================
+            // Capacity Auto Show
+            // ==========================
+
+            const equipment = document.getElementById("Eqid");
+            const capacity = document.getElementById("CapacityDisplay");
+
+            if (equipment) {
+
+                equipment.addEventListener("change", function () {
+
+                    let selectedOption = this.options[this.selectedIndex];
+                    let capacityValue = selectedOption.getAttribute("data-capacity");
+
+                    if (capacityValue) {
+                        capacity.innerText = capacityValue + " m³/min";
+                    }
+                    else {
+                        capacity.innerText = "-";
+                    }
+
+                });
+
+            }
+            // ==========================
+            // Calculation Fields
+            // ==========================
+            const powerConsumption = document.getElementById("PowerConsumption");
+            const electricityRate = document.getElementById("ElectricityRate");
+            const electricityCost = document.getElementById("ElectricityCost");
+            const serviceCost = document.getElementById("ServiceMaintenanceCost");
+            const totalCost = document.getElementById("TotalCost");
+            const airProduced = document.getElementById("AirProduced");
+            const costPerM3Air = document.getElementById("CostPerM3Air");
+
+            function calculateValues() {
+                // ElectricityCost = PowerConsumption * ElectricityRate
+                let power = parseFloat(powerConsumption.value) || 0;
+                let rate = parseFloat(electricityRate.value) || 0;
+                let electricity = power * rate;
+                electricityCost.value = electricity.toFixed(2);
+                // TotalCost = ElectricityCost + ServiceMaintenanceCost
+                let service = parseFloat(serviceCost.value) || 0;
+                let total = electricity + service;
+                totalCost.value = total.toFixed(2);
+
+                // CostPerM3Air = TotalCost / AirProduced
+                let produced = parseFloat(airProduced.value) || 0;
+                costPerM3Air.value = produced > 0
+                    ? (total / produced).toFixed(2)
+                    : "0.00";
+
+            }
+            // Input change event
+
+            [
+                powerConsumption,
+                electricityRate,
+                serviceCost,
+                airProduced
+
+            ].forEach(element => {
+
+                if(element){
+                    element.addEventListener("input", calculateValues);
+                }
+
+            });
+
+            // Initial calculation
+            calculateValues();
+        });
+
+    </script>
+}

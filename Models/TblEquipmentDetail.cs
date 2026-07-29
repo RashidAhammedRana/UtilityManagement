@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using UtilityManagement.Models;
 
 namespace UtilityManagement.Models;
 
@@ -49,6 +48,6 @@ public partial class TblEquipmentDetail
     public virtual ICollection<TblEtpPlanCostInfo> TblEtpPlanCostInfo { get; set; } = new List<TblEtpPlanCostInfo>();
     public virtual ICollection<TblRoPlantCostInfo> TblRoPlantCostInfos { get; set; } = new List<TblRoPlantCostInfo>();
     public virtual ICollection<TblChillerReadingInfo> TblChillerReadingInfos { get; set; } = new List<TblChillerReadingInfo>();
-
+    public virtual ICollection<TblAirCompressorReadingInfo> TblAirCompressorReadingInfos { get; set; } = new List<TblAirCompressorReadingInfo>();
 
 }

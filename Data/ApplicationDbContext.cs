@@ -52,6 +52,8 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblSteamConsumptionReadingInfo> TblSteamConsumptionReadingInfo { get; set; }
         public virtual DbSet<TblElectricityConsumptionReadingInfo> TblElectricityConsumptionReadingInfo { get; set; }
         public virtual DbSet<TblChillerReadingInfo> TblChillerReadingInfo { get; set; }
+        public virtual DbSet<TblAirCompressorReadingInfo> TblAirCompressorReadingInfo { get; set; }
+
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -941,6 +943,33 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
                 entity.HasOne(d => d.Equipments).WithMany(p => p.TblChillerReadingInfos).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_CHILLER_READING_INFO_TBL_EQUIPMENT_DETAILS");
+            });
+
+            //TblAirCompressorReadingInfo
+            modelBuilder.Entity<TblAirCompressorReadingInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_AIR_COMPRESSOR_READING_INFO");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AirFlow).HasColumnName("AIR_FLOW");
+                entity.Property(e => e.AirProduced).HasColumnName("AIR_PRODUCED");
+                entity.Property(e => e.CostPerM3Air).HasColumnName("COST_PER_M3_AIR");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.ElectricityCost).HasColumnName("ELECTRICITY_COST");
+                entity.Property(e => e.ElectricityRate).HasColumnName("ELECTRICITY_RATE");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.PowerConsumption).HasColumnName("POWER_CONSUMPTION");
+                entity.Property(e => e.RunningHour).HasColumnName("RUNNING_HOUR");
+                entity.Property(e => e.ServiceMaintenanceCost).HasColumnName("SERVICE_MAINTENANCE_COST");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Equipments).WithMany(p => p.TblAirCompressorReadingInfos).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_AIR_COMPRESSOR_READING_INFO_TBL_EQUIPMENT_DETAILS");
             });
 
 

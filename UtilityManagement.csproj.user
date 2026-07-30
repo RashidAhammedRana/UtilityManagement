@@ -11,6 +11,9 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Reports\rptNgGeneratorCost.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptRebCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>

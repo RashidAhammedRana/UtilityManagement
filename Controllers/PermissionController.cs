@@ -15,17 +15,31 @@ namespace UtilityManagement.Controllers
         {
             _context = context;
         }
-
+        [HttpGet]
         public async Task<IActionResult> Index(string? userId, int? moduleId, int? menuId)
         {
-            ViewBag.Users = await _context.Users.ToListAsync();
-            ViewBag.Modules = await _context.TblModule.ToListAsync();
-            ViewBag.Menus = await _context.TblMenu.ToListAsync();
+            // Users
+            ViewBag.Users = await _context.Users
+                .OrderBy(x => x.UserName)
+                .ToListAsync();
+
+            // Modules
+            ViewBag.Modules = await _context.TblModule
+                .OrderBy(x => x.ModuleName)
+                .ToListAsync();
+
+            // Menus (Module Wise)
+            ViewBag.Menus = await _context.TblMenu
+                .Where(x => !moduleId.HasValue || x.ModuleId == moduleId)
+                .OrderBy(x => x.MenuName)
+                .ToListAsync();
+
+            ViewBag.SelectedUserId = userId;
 
             if (string.IsNullOrEmpty(userId))
+            {
                 return View(new List<PermissionPageVm>());
-
-            var query = _context.TblModule.AsQueryable();
+            }
 
             var permissions = await (
                 from m in _context.TblModule
@@ -55,8 +69,6 @@ namespace UtilityManagement.Controllers
                     IsAllowed = pg != null && pg.IsAllowed
                 }
             ).ToListAsync();
-
-            ViewBag.SelectedUserId = userId;
 
             return View(permissions);
         }

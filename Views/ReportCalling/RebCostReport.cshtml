@@ -2,14 +2,14 @@
 @model DevExpress.XtraReports.UI.XtraReport
 
 @{
-    ViewData["Title"] = "Test Report";
+    ViewData["Title"] = "REB Cost Report";
 }
 <!-- DevExpress Report Viewer CSS -->
 <link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
 <script src="~/js/viewer.part.bundle.js"></script>
 
 <div class="container mt-3">
-    <h2 class="text-center">Test Report</h2>
+    <h2 class="text-center">REB Cost Report</h2>
     <div class="card shadow-lg p-3">
         @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(Model)
     </div>

@@ -120,5 +120,63 @@ public class ReportCallingController : Controller
             return Content(ex.InnerException?.Message ?? ex.Message);
         }
     }
+    public async Task<IActionResult> SolarCostReport(
+    int menuId,
+    string reportName = "rptSolarCost")
+    {
+        if (!await HasViewPermission(menuId))
+        {
+            return Forbid();
+        }
+
+        try
+        {
+            var rptPath = $"UtilityManagement.Reports.{reportName}";
+
+            var reportType = Type.GetType(rptPath);
+
+            if (reportType == null)
+            {
+                return NotFound($"Report '{reportName}' not found.");
+            }
+
+            var report = (XtraReport)Activator.CreateInstance(reportType);
+
+            return View(report);
+        }
+        catch (Exception ex)
+        {
+            return Content(ex.InnerException?.Message ?? ex.Message);
+        }
+    }
+    public async Task<IActionResult> BoilerCostReport(
+    int menuId,
+    string reportName = "rptBoilerCost")
+    {
+        if (!await HasViewPermission(menuId))
+        {
+            return Forbid();
+        }
+
+        try
+        {
+            var rptPath = $"UtilityManagement.Reports.{reportName}";
+
+            var reportType = Type.GetType(rptPath);
+
+            if (reportType == null)
+            {
+                return NotFound($"Report '{reportName}' not found.");
+            }
+
+            var report = (XtraReport)Activator.CreateInstance(reportType);
+
+            return View(report);
+        }
+        catch (Exception ex)
+        {
+            return Content(ex.InnerException?.Message ?? ex.Message);
+        }
+    }
 
 }

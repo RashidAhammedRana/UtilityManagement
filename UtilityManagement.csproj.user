@@ -11,6 +11,12 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Reports\rptBoilerCost.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptChillerCost.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptDieselGeneratorCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>

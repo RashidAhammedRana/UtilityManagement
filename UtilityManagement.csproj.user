@@ -11,6 +11,9 @@
     <DebuggerFlavor>ProjectDebugger</DebuggerFlavor>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Update="Reports\rptAirCompressorCost.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptBoilerCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
@@ -27,6 +30,9 @@
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\rptSolarCost.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptSteamConsumption.cs">
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\XtraReport1.cs">

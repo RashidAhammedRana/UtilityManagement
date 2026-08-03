@@ -29,7 +29,6 @@ public partial class TblAirCompressorReadingInfo
     public double? AirProduced { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? CostPerM3Air { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public DateTime? CreatedAt { get; set; }
     public string? CreatedBy { get; set; }
     public DateTime? UpdatedAt { get; set; }

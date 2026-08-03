@@ -1,0 +1,17 @@
+﻿@using UtilityManagement.Reports
+@model DevExpress.XtraReports.UI.XtraReport
+
+@{
+    ViewData["Title"] = "Air Compressor Cost Report";
+}
+<!-- DevExpress Report Viewer CSS -->
+<link rel="stylesheet" href="~/css/viewer.part.bundle.css" />
+<script src="~/js/viewer.part.bundle.js"></script>
+
+<div class="container mt-3">
+    <h2 class="text-center">Air Compressor Cost Report</h2>
+    <div class="card shadow-lg p-3">
+        @Html.DevExpress().WebDocumentViewer("DocumentViewer").Height("1000px").Bind(Model)
+    </div>
+</div>
+

@@ -23,6 +23,9 @@
     <Compile Update="Reports\rptDieselGeneratorCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\rptElectricityConsumption.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptNgGeneratorCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>

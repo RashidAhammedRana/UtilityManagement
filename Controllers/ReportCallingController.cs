@@ -270,4 +270,34 @@ public class ReportCallingController : Controller
             return Content(ex.InnerException?.Message ?? ex.Message);
         }
     }
+    [HttpGet]
+    public async Task<IActionResult> ElectricityConsumptionReport(
+    int menuId,
+    string reportName = "rptElectricityConsumption")
+    {
+        if (!await HasViewPermission(menuId))
+        {
+            return Forbid();
+        }
+
+        try
+        {
+            var rptPath = $"UtilityManagement.Reports.{reportName}";
+
+            var reportType = Type.GetType(rptPath);
+
+            if (reportType == null)
+            {
+                return NotFound($"Report '{reportName}' not found.");
+            }
+
+            var report = (XtraReport)Activator.CreateInstance(reportType);
+
+            return View(report);
+        }
+        catch (Exception ex)
+        {
+            return Content(ex.InnerException?.Message ?? ex.Message);
+        }
+    }
 }

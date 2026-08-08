@@ -35,6 +35,9 @@
     <Compile Update="Reports\rptRebCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\rptRmsRoom.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptRoPlantCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
@@ -42,6 +45,9 @@
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\rptSteamConsumption.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptWtpWaterConsumption.cs">
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\XtraReport1.cs">

@@ -427,7 +427,7 @@
             dynamicListLookUpSettings2.DataMember = "SP_SOLAR_COST_REPORT";
             dynamicListLookUpSettings2.DataSource = this.sqlDataSource1;
             dynamicListLookUpSettings2.DisplayMember = "EQUIPMENT_NAME";
-            dynamicListLookUpSettings2.FilterString = null;
+            dynamicListLookUpSettings2.FilterString = "[CURRENT_LOCATION] In (?Company)";
             dynamicListLookUpSettings2.SortMember = "EQUIPMENT_NAME";
             dynamicListLookUpSettings2.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
             dynamicListLookUpSettings2.ValueMember = "EQUIPMENT_NAME";

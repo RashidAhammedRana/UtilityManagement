@@ -137,10 +137,14 @@
             this.xrTableCell36 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell37 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell38 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrRichText1 = new DevExpress.XtraReports.UI.XRRichText();
+            this.xrRichText2 = new DevExpress.XtraReports.UI.XRRichText();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // sqlDataSource1
@@ -186,18 +190,24 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRichText2,
+            this.xrRichText1,
             this.label1});
-            this.ReportHeader.HeightF = 36.04167F;
+            this.ReportHeader.HeightF = 63.42261F;
             this.ReportHeader.Name = "ReportHeader";
             // 
             // label1
             // 
             this.label1.Font = new DevExpress.Drawing.DXFont("Calibri", 16F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.label1.ForeColor = System.Drawing.Color.Black;
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.label1.Name = "label1";
-            this.label1.SizeF = new System.Drawing.SizeF(780F, 24.19433F);
+            this.label1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.label1.SizeF = new System.Drawing.SizeF(1060F, 23.13094F);
             this.label1.StyleName = "Title";
             this.label1.StylePriority.UseFont = false;
+            this.label1.StylePriority.UseForeColor = false;
+            this.label1.StylePriority.UsePadding = false;
             this.label1.Text = "RMS Room Report";
             // 
             // GroupHeader1
@@ -606,7 +616,6 @@
             // Company
             // 
             this.Company.Description = "Select Company";
-            this.Company.MultiValue = true;
             this.Company.Name = "Company";
             dynamicListLookUpSettings1.DataMember = "SP_RMS_ROOM_REPORT";
             dynamicListLookUpSettings1.DataSource = this.sqlDataSource1;
@@ -679,6 +688,7 @@
             // 
             // tableCell3
             // 
+            this.tableCell3.BackColor = System.Drawing.Color.Teal;
             this.tableCell3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -688,6 +698,7 @@
             this.tableCell3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.tableCell3.RowSpan = 2;
             this.tableCell3.StyleName = "DetailCaption1";
+            this.tableCell3.StylePriority.UseBackColor = false;
             this.tableCell3.StylePriority.UseBorders = false;
             this.tableCell3.StylePriority.UseBorderWidth = false;
             this.tableCell3.StylePriority.UseFont = false;
@@ -699,6 +710,7 @@
             // 
             // xrTableCell20
             // 
+            this.xrTableCell20.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell20.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -708,6 +720,7 @@
             this.xrTableCell20.Name = "xrTableCell20";
             this.xrTableCell20.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrTableCell20.StyleName = "DetailCaption1";
+            this.xrTableCell20.StylePriority.UseBackColor = false;
             this.xrTableCell20.StylePriority.UseBorders = false;
             this.xrTableCell20.StylePriority.UseBorderWidth = false;
             this.xrTableCell20.StylePriority.UseFont = false;
@@ -719,6 +732,7 @@
             // 
             // xrTableCell27
             // 
+            this.xrTableCell27.BackColor = System.Drawing.Color.DarkBlue;
             this.xrTableCell27.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
             | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
@@ -727,6 +741,7 @@
             this.xrTableCell27.Multiline = true;
             this.xrTableCell27.Name = "xrTableCell27";
             this.xrTableCell27.StyleName = "DetailCaption1";
+            this.xrTableCell27.StylePriority.UseBackColor = false;
             this.xrTableCell27.StylePriority.UseBorders = false;
             this.xrTableCell27.StylePriority.UseBorderWidth = false;
             this.xrTableCell27.StylePriority.UseFont = false;
@@ -768,6 +783,7 @@
             // 
             // xrTableCell22
             // 
+            this.xrTableCell22.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell22.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell22.BorderWidth = 0.5F;
@@ -775,6 +791,7 @@
             this.xrTableCell22.Multiline = true;
             this.xrTableCell22.Name = "xrTableCell22";
             this.xrTableCell22.StyleName = "DetailCaption1";
+            this.xrTableCell22.StylePriority.UseBackColor = false;
             this.xrTableCell22.StylePriority.UseBorders = false;
             this.xrTableCell22.StylePriority.UseBorderWidth = false;
             this.xrTableCell22.StylePriority.UseFont = false;
@@ -785,6 +802,7 @@
             // 
             // xrTableCell24
             // 
+            this.xrTableCell24.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell24.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell24.BorderWidth = 0.5F;
@@ -792,6 +810,7 @@
             this.xrTableCell24.Multiline = true;
             this.xrTableCell24.Name = "xrTableCell24";
             this.xrTableCell24.StyleName = "DetailCaption1";
+            this.xrTableCell24.StylePriority.UseBackColor = false;
             this.xrTableCell24.StylePriority.UseBorders = false;
             this.xrTableCell24.StylePriority.UseBorderWidth = false;
             this.xrTableCell24.StylePriority.UseFont = false;
@@ -802,6 +821,7 @@
             // 
             // xrTableCell23
             // 
+            this.xrTableCell23.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell23.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell23.BorderWidth = 0.5F;
@@ -809,6 +829,7 @@
             this.xrTableCell23.Multiline = true;
             this.xrTableCell23.Name = "xrTableCell23";
             this.xrTableCell23.StyleName = "DetailCaption1";
+            this.xrTableCell23.StylePriority.UseBackColor = false;
             this.xrTableCell23.StylePriority.UseBorders = false;
             this.xrTableCell23.StylePriority.UseBorderWidth = false;
             this.xrTableCell23.StylePriority.UseFont = false;
@@ -819,6 +840,7 @@
             // 
             // xrTableCell25
             // 
+            this.xrTableCell25.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell25.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell25.BorderWidth = 0.5F;
@@ -826,6 +848,7 @@
             this.xrTableCell25.Multiline = true;
             this.xrTableCell25.Name = "xrTableCell25";
             this.xrTableCell25.StyleName = "DetailCaption1";
+            this.xrTableCell25.StylePriority.UseBackColor = false;
             this.xrTableCell25.StylePriority.UseBorders = false;
             this.xrTableCell25.StylePriority.UseBorderWidth = false;
             this.xrTableCell25.StylePriority.UseFont = false;
@@ -836,6 +859,7 @@
             // 
             // xrTableCell26
             // 
+            this.xrTableCell26.BackColor = System.Drawing.Color.DarkGreen;
             this.xrTableCell26.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell26.BorderWidth = 0.5F;
@@ -843,6 +867,7 @@
             this.xrTableCell26.Multiline = true;
             this.xrTableCell26.Name = "xrTableCell26";
             this.xrTableCell26.StyleName = "DetailCaption1";
+            this.xrTableCell26.StylePriority.UseBackColor = false;
             this.xrTableCell26.StylePriority.UseBorders = false;
             this.xrTableCell26.StylePriority.UseBorderWidth = false;
             this.xrTableCell26.StylePriority.UseFont = false;
@@ -853,6 +878,7 @@
             // 
             // xrTableCell28
             // 
+            this.xrTableCell28.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell28.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell28.BorderWidth = 0.5F;
@@ -860,6 +886,7 @@
             this.xrTableCell28.Multiline = true;
             this.xrTableCell28.Name = "xrTableCell28";
             this.xrTableCell28.StyleName = "DetailCaption1";
+            this.xrTableCell28.StylePriority.UseBackColor = false;
             this.xrTableCell28.StylePriority.UseBorders = false;
             this.xrTableCell28.StylePriority.UseBorderWidth = false;
             this.xrTableCell28.StylePriority.UseFont = false;
@@ -870,6 +897,7 @@
             // 
             // xrTableCell31
             // 
+            this.xrTableCell31.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell31.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell31.BorderWidth = 0.5F;
@@ -877,6 +905,7 @@
             this.xrTableCell31.Multiline = true;
             this.xrTableCell31.Name = "xrTableCell31";
             this.xrTableCell31.StyleName = "DetailCaption1";
+            this.xrTableCell31.StylePriority.UseBackColor = false;
             this.xrTableCell31.StylePriority.UseBorders = false;
             this.xrTableCell31.StylePriority.UseBorderWidth = false;
             this.xrTableCell31.StylePriority.UseFont = false;
@@ -887,6 +916,7 @@
             // 
             // xrTableCell29
             // 
+            this.xrTableCell29.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell29.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell29.BorderWidth = 0.5F;
@@ -894,6 +924,7 @@
             this.xrTableCell29.Multiline = true;
             this.xrTableCell29.Name = "xrTableCell29";
             this.xrTableCell29.StyleName = "DetailCaption1";
+            this.xrTableCell29.StylePriority.UseBackColor = false;
             this.xrTableCell29.StylePriority.UseBorders = false;
             this.xrTableCell29.StylePriority.UseBorderWidth = false;
             this.xrTableCell29.StylePriority.UseFont = false;
@@ -904,6 +935,7 @@
             // 
             // xrTableCell30
             // 
+            this.xrTableCell30.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell30.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell30.BorderWidth = 0.5F;
@@ -911,6 +943,7 @@
             this.xrTableCell30.Multiline = true;
             this.xrTableCell30.Name = "xrTableCell30";
             this.xrTableCell30.StyleName = "DetailCaption1";
+            this.xrTableCell30.StylePriority.UseBackColor = false;
             this.xrTableCell30.StylePriority.UseBorders = false;
             this.xrTableCell30.StylePriority.UseBorderWidth = false;
             this.xrTableCell30.StylePriority.UseFont = false;
@@ -921,6 +954,7 @@
             // 
             // xrTableCell32
             // 
+            this.xrTableCell32.BackColor = System.Drawing.Color.Navy;
             this.xrTableCell32.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right) 
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrTableCell32.BorderWidth = 0.5F;
@@ -928,6 +962,7 @@
             this.xrTableCell32.Multiline = true;
             this.xrTableCell32.Name = "xrTableCell32";
             this.xrTableCell32.StyleName = "DetailCaption1";
+            this.xrTableCell32.StylePriority.UseBackColor = false;
             this.xrTableCell32.StylePriority.UseBorders = false;
             this.xrTableCell32.StylePriority.UseBorderWidth = false;
             this.xrTableCell32.StylePriority.UseFont = false;
@@ -959,12 +994,14 @@
             // 
             // xrTable1
             // 
+            this.xrTable1.BackColor = System.Drawing.Color.WhiteSmoke;
             this.xrTable1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1F);
             this.xrTable1.Name = "xrTable1";
             this.xrTable1.OddStyleName = "DetailData3_Odd";
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
             this.xrTable1.SizeF = new System.Drawing.SizeF(1060F, 25F);
+            this.xrTable1.StylePriority.UseBackColor = false;
             // 
             // xrTableRow1
             // 
@@ -1239,12 +1276,14 @@
             // 
             // xrTable2
             // 
+            this.xrTable2.BackColor = System.Drawing.Color.WhiteSmoke;
             this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 29F);
             this.xrTable2.Name = "xrTable2";
             this.xrTable2.OddStyleName = "DetailData3_Odd";
             this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow2});
             this.xrTable2.SizeF = new System.Drawing.SizeF(1060F, 25F);
+            this.xrTable2.StylePriority.UseBackColor = false;
             // 
             // xrTableRow2
             // 
@@ -1517,6 +1556,26 @@
             this.xrTableCell38.TextFormatString = "{0:#,#}";
             this.xrTableCell38.Weight = 0.11946285516055355D;
             // 
+            // xrRichText1
+            // 
+            this.xrRichText1.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrRichText1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 23.13094F);
+            this.xrRichText1.Name = "xrRichText1";
+            this.xrRichText1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrRichText1.SerializableRtfString = resources.GetString("xrRichText1.SerializableRtfString");
+            this.xrRichText1.SizeF = new System.Drawing.SizeF(498.8095F, 20F);
+            this.xrRichText1.StylePriority.UseFont = false;
+            // 
+            // xrRichText2
+            // 
+            this.xrRichText2.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrRichText2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 43.13094F);
+            this.xrRichText2.Name = "xrRichText2";
+            this.xrRichText2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrRichText2.SerializableRtfString = resources.GetString("xrRichText2.SerializableRtfString");
+            this.xrRichText2.SizeF = new System.Drawing.SizeF(351.4881F, 20F);
+            this.xrRichText2.StylePriority.UseFont = false;
+            // 
             // rptRmsRoom
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -1566,6 +1625,8 @@
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -1656,5 +1717,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell9;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell10;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell11;
+        private DevExpress.XtraReports.UI.XRRichText xrRichText2;
+        private DevExpress.XtraReports.UI.XRRichText xrRichText1;
     }
 }

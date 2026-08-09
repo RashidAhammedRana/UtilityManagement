@@ -1,0 +1,404 @@
+﻿@model UtilityManagement.Models.TblDailyEnergyFuelConsumption
+
+@{
+    ViewData["Title"] = "Edit Daily Energy & Fuel Consumption";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card shadow-lg border-0 energy-card">
+
+            <!-- ===================================================== -->
+            <!-- HEADER                                                -->
+            <!-- ===================================================== -->
+            <style>
+                .energy-card {
+                    margin-left: 35px;
+                }
+
+                @@media (max-width: 768px) {
+                    .energy-card {
+                        margin-left: 15px;
+                    }
+                }
+
+                /* Remove number input spinner arrows - Chrome, Edge, Safari */
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                /* Remove number input spinner arrows - Firefox */
+                input[type="number"] {
+                    -moz-appearance: textfield;
+                    appearance: textfield;
+                }
+            </style>
+
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit Daily Energy & Fuel Consumption
+                </h5>
+            </div>
+
+
+            <!-- ================= BODY ================= -->
+
+            <div class="card-body p-4">
+
+                <form asp-action="Edit" method="post" id="editConsumptionForm">
+                    @Html.AntiForgeryToken()
+                    <!-- Hidden ID -->
+                    <input type="hidden" asp-for="Trid" />
+                    <!-- Validation -->
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+                    <!-- ================= TABLE ================= -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 150px; min-width: 150px;">Company</th>
+                                    <th style="width: 90px;">Date</th>
+                                    <th style="width: 85px;">Time</th>
+                                    <th style="width: 75px;">REB</th>
+                                    <th style="width: 75px;">GG-1</th>
+                                    <th style="width: 75px;">GG-2</th>
+                                    <th style="width: 75px;">GG-3</th>
+                                    <th style="width: 75px;">GG-4</th>
+                                    <th style="width: 75px;">DG-1</th>
+                                    <th style="width: 75px;">DG-2</th>
+                                    <th style="width: 75px;">DG-3</th>
+                                    <th style="width: 75px;">DG-4</th>
+                                    <th style="width: 75px;">Solar</th>
+                                    <th style="width: 95px;">Total</th>
+                                    <th style="width: 95px;">Captive Gen.</th>
+                                    <th style="width: 95px;">Ind. Boiler</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <!-- ================= COMPANY ================= -->
+                                    @* <td>
+                                        <select asp-for="Company" class="form-select form-select-sm" disabled>
+                                            <option value="@Model.Company">
+                                                @Model.Company
+                                            </option>
+                                        </select>
+                                        <!-- Disabled select does not submit -->
+                                        <input type="hidden" asp-for="Company" />
+                                        <span asp-validation-for="Company"
+                                              class="text-danger">
+                                        </span>
+                                    </td> *@
+                                    <td>
+                                        <input type="text"
+                                               id="inputCompany"
+                                               class="form-control form-control-sm"
+                                               value="@ViewBag.CurrentCompany"
+                                               readonly />
+                                    </td>
+
+                                    <!-- ================= DATE ================= -->
+
+                                    <td>
+
+                                        <input asp-for="Trdate" type="date" class="form-control form-control-sm" />
+                                        <span asp-validation-for="Trdate"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= TIME ================= -->
+                                    <td>
+                                        <input asp-for="Time" type="time"
+                                               class="form-control form-control-sm" />
+                                        <span asp-validation-for="Time"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= REB ================= -->
+                                    <td>
+                                        <input asp-for="Reb"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Reb"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= GG-1 ================= -->
+                                    <td>
+                                        <input asp-for="Gg1" type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+                                        <span asp-validation-for="Gg1"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= GG-2 ================= -->
+                                    <td>
+                                        <input asp-for="Gg2"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Gg2"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= GG-3 ================= -->
+                                    <td>
+                                        <input asp-for="Gg3"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Gg3"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= GG-4 ================= -->
+                                    <td>
+                                        <input asp-for="Gg4"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Gg4"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= DG-1 ================= -->
+                                    <td>
+                                        <input asp-for="Dg1"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Dg1"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= DG-2 ================= -->
+                                    <td>
+
+                                        <input asp-for="Dg2"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Dg2"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= DG-3 ================= -->
+                                    <td>
+
+                                        <input asp-for="Dg3"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Dg3"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= DG-4 ================= -->
+                                    <td>
+
+                                        <input asp-for="Dg4"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Dg4"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+                                    <!-- ================= SOLAR ================= -->
+                                    <td>
+                                        <input asp-for="Solar"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Solar"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= TOTAL ================= -->
+
+                                    <td>
+                                        <input asp-for="Total"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm total-input"
+                                               readonly />
+
+                                        <span asp-validation-for="Total"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= CAPTIVE GENERATOR ================= -->
+                                    <td>
+
+                                        <input asp-for="CaptiveGenerator"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm" />
+
+                                        <span asp-validation-for="CaptiveGenerator"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+
+                                    <!-- ================= INDUSTRIAL BOILER ================= -->
+
+                                    <td>
+
+                                        <input asp-for="IndustrialBoiler"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm" />
+
+                                        <span asp-validation-for="IndustrialBoiler"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- ================= BUTTONS ================= -->
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a asp-action="DailyEnergyFuelConsumptionList"
+                           class="btn btn-outline-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            <i class="bi bi-check-circle"></i>
+                            Update
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // =============================================
+            // CALCULATE TOTAL
+            // =============================================
+
+            function calculateTotal() {
+
+                let total = 0;
+
+                document
+                    .querySelectorAll(".energy-input")
+                    .forEach(function (input) {
+
+                        const value =
+                            parseFloat(input.value);
+
+                        if (!isNaN(value)) {
+                            total += value;
+                        }
+
+                    });
+
+
+                const totalInput =
+                    document.querySelector(".total-input");
+
+
+                if (totalInput) {
+
+                    totalInput.value = total
+
+                }
+            }
+            // =============================================
+            // CALCULATE WHEN VALUE CHANGES
+            // =============================================
+
+            document.addEventListener(
+                "input",
+                function (event) {
+
+                    if (
+                        event.target.classList.contains(
+                            "energy-input"
+                        )
+                    ) {
+
+                        calculateTotal();
+
+                    }
+
+                }
+            );
+
+
+            // =============================================
+            // INITIAL TOTAL
+            // =============================================
+
+            calculateTotal();
+
+        });
+
+    </script>
+}
+

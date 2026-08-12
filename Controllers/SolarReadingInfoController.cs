@@ -28,7 +28,7 @@ public class SolarReadingInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Solar Reading Info")
+            .Where(x => x.MenuName == "Solar")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

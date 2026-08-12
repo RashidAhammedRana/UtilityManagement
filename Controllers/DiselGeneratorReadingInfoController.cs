@@ -28,7 +28,7 @@ public class DiselGeneratorReadingInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Disel Gen. Reading")
+            .Where(x => x.MenuName == "Disel Generator")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

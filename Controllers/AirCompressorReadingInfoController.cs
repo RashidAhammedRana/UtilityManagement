@@ -27,7 +27,7 @@ public class AirCompressorReadingInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Air Comp. Reading")
+            .Where(x => x.MenuName == "Air Compressor")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

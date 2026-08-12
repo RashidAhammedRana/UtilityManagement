@@ -28,7 +28,7 @@ public class WtpWaterConsumptionInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "WTP Water Cons.")
+            .Where(x => x.MenuName == "Water Consumption")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

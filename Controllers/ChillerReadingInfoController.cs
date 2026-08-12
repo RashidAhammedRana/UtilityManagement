@@ -27,7 +27,7 @@ public class ChillerReadingInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Chiller Reading")
+            .Where(x => x.MenuName == "Chiller")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

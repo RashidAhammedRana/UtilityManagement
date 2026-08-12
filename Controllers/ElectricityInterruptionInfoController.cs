@@ -28,7 +28,7 @@ public class ElectricityInterruptionInfoController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Utility Intr. Reading")
+            .Where(x => x.MenuName == "Utility Interruption")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

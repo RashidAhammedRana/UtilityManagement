@@ -42,6 +42,8 @@ public class NgGeneratorReadingInfoController : Controller
             select pa.ActionName
         ).ToListAsync();
 
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
+
         ViewBag.CanView = userPermissions.Contains("View");
         ViewBag.CanCreate = userPermissions.Contains("Create");
         ViewBag.CanEdit = userPermissions.Contains("Edit");
@@ -53,6 +55,14 @@ public class NgGeneratorReadingInfoController : Controller
         var query = _context.TblNgGeneratorReadingInfos
             .Include(x => x.Eq)
             .AsQueryable();
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            currentUserCompany = currentUserCompany.Trim();
+
+            query = query.Where(x =>
+                x.Eq != null &&
+                x.Eq.CurrentLocation == currentUserCompany);
+        }
 
         // =========================
         // SEARCH LOGIC

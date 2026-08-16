@@ -43,6 +43,8 @@ public class WtpPlanCostInfoController : Controller
             select pa.ActionName
         ).ToListAsync();
 
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
+
         ViewBag.CanView = userPermissions.Contains("View");
         ViewBag.CanCreate = userPermissions.Contains("Create");
         ViewBag.CanEdit = userPermissions.Contains("Edit");
@@ -55,6 +57,15 @@ public class WtpPlanCostInfoController : Controller
             .Include(x => x.Eq)
             .AsQueryable();
 
+        //Company Wise Data
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            currentUserCompany = currentUserCompany.Trim();
+
+            query = query.Where(x =>
+                x.Eq != null &&
+                x.Eq.CurrentLocation == currentUserCompany);
+        }
         // =========================
         // SEARCH LOGIC
         if (!string.IsNullOrWhiteSpace(searchString))
@@ -285,12 +296,9 @@ public class WtpPlanCostInfoController : Controller
 
 
         var userId = _userManager.GetUserId(User);
-        var currentLocation = _context.Users
-            .Where(x => x.Id == userId)
-            .Select(x => x.Company)
-            .FirstOrDefault();
+        var currentLocation = _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefault();
         var query = _context.TblEquipmentDetails
-            .Where(x => EF.Functions.Like(x.EquipmentName, "%REB%"));
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%WTP%"));
         if (!string.IsNullOrEmpty(currentLocation))
         {
             query = query.Where(x => x.CurrentLocation == currentLocation);

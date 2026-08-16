@@ -46,13 +46,22 @@ public class RebReadingInfoController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
         // =========================
         // BASE QUERY
         // =========================
         var query = _context.TblRebReadingInfo
             .Include(x => x.Eq)
             .AsQueryable();
+        //Company Wise Data
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            currentUserCompany = currentUserCompany.Trim();
 
+            query = query.Where(x =>
+                x.Eq != null &&
+                x.Eq.CurrentLocation == currentUserCompany);
+        }
         // =========================
         // SEARCH LOGIC
         if (!string.IsNullOrWhiteSpace(searchString))

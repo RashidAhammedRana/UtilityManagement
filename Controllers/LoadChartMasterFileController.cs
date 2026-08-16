@@ -48,6 +48,7 @@ public class LoadChartMasterFileController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
         // =========================
         // BASE QUERY
         // =========================
@@ -60,6 +61,15 @@ public class LoadChartMasterFileController : Controller
             .Include(x => x.Brnd)
             .AsQueryable();
 
+        //Company Wise Data
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            currentUserCompany = currentUserCompany.Trim();
+
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company.ComName == currentUserCompany);
+        }
         // =========================
         // SEARCH LOGIC
         if (!string.IsNullOrWhiteSpace(searchString))

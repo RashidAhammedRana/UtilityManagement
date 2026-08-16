@@ -41,7 +41,7 @@ public class ElectricityInterruptionInfoController : Controller
                   && up.IsAllowed
             select pa.ActionName
         ).ToListAsync();
-
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
         ViewBag.CanView = userPermissions.Contains("View");
         ViewBag.CanCreate = userPermissions.Contains("Create");
         ViewBag.CanEdit = userPermissions.Contains("Edit");
@@ -53,6 +53,15 @@ public class ElectricityInterruptionInfoController : Controller
             .Include(x => x.InterruptionType)
             .Include(x => x.Reason)
             .AsQueryable();
+        //Company Wise Data
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            currentUserCompany = currentUserCompany.Trim();
+
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company.ComName == currentUserCompany);
+        }
 
         if (!string.IsNullOrWhiteSpace(searchString))
         {

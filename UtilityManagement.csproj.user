@@ -26,6 +26,9 @@
     <Compile Update="Reports\rptElectricityConsumption.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\rptEquipmentDetails.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptEtpPlantCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>

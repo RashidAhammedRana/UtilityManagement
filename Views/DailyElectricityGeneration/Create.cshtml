@@ -1,0 +1,334 @@
+﻿@model UtilityManagement.Models.TblDailyElectricityGeneration
+
+@{
+    ViewData["Title"] = "Create Electricity Generation Info.";
+}
+
+<div class="container mt-4">
+    <div class="row justify-content-center">
+        <div class="col-md-10">
+
+            <div class="card shadow-lg border-0">
+
+                <!-- Header -->
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">Create Electricity Generation Info.</h5>
+                </div>
+
+                <!-- Body -->
+                <div class="card-body p-4">
+
+                    <form asp-action="Create" method="post">
+
+                        <!-- Validation Summary -->
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Trdate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Trdate"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <!-- Reb -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Reb" class="form-label">
+                                    Reb (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Reb"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Reb"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                            <!-- Gg1 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Gg1" class="form-label">
+                                    GG_01 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Gg1"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Gg1"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Gg2 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Gg2" class="form-label">
+                                    GG_02 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Gg2"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Gg2"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Gg3 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Gg3" class="form-label">
+                                    GG_03 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Gg3"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Gg3"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Gg4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Gg4" class="form-label">
+                                    GG_04 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Gg4"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Gg4"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Dg1 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Dg1" class="form-label">
+                                    DG_01 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Dg1"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Dg1"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Dg2 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Dg2" class="form-label">
+                                    DG_02 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Dg2"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Dg2"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Dg3 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Dg3" class="form-label">
+                                    DG_03 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Dg3"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Dg3"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Dg4 -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Dg4" class="form-label">
+                                    DG_04 (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Dg4"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Dg4"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Solar -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Solar" class="form-label">
+                                    Solar (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Solar"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="Solar"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+
+                            <!-- Total -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="Total" class="form-label">
+                                    Total (Kwh)
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Total"
+                                       class="form-control bg-light fw-bold"
+                                       type="number"
+                                       step="0.01"
+                                       readonly />
+
+                                <span asp-validation-for="Total"
+                                      class="text-danger">
+                                </span>
+                            </div>
+
+                        </div>
+
+
+                        <!-- Buttons -->
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="DailyElectricityGenerationList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-primary px-4">
+                                Save
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+            </div>
+
+        </div>
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+
+            function calculateTotal() {
+
+                let reb = parseFloat($('#Reb').val()) || 0;
+                let gg1 = parseFloat($('#Gg1').val()) || 0;
+                let gg2 = parseFloat($('#Gg2').val()) || 0;
+                let gg3 = parseFloat($('#Gg3').val()) || 0;
+                let gg4 = parseFloat($('#Gg4').val()) || 0;
+
+                let dg1 = parseFloat($('#Dg1').val()) || 0;
+                let dg2 = parseFloat($('#Dg2').val()) || 0;
+                let dg3 = parseFloat($('#Dg3').val()) || 0;
+                let dg4 = parseFloat($('#Dg4').val()) || 0;
+
+                let solar = parseFloat($('#Solar').val()) || 0;
+
+                let total =
+                    reb +
+                    gg1 +
+                    gg2 +
+                    gg3 +
+                    gg4 +
+                    dg1 +
+                    dg2 +
+                    dg3 +
+                    dg4 +
+                    solar;
+
+                $('#Total').val(total.toFixed(2));
+            }
+
+
+            // Calculate when user types/changes any value
+            $('#Reb,#Gg1, #Gg2, #Gg3, #Gg4, #Dg1, #Dg2, #Dg3, #Dg4, #Solar')
+                .on('input change', function () {
+
+                    calculateTotal();
+
+                });
+
+
+            // Calculate on page load
+            calculateTotal();
+
+        });
+    </script>
+}

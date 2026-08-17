@@ -1,0 +1,1100 @@
+﻿@model UtilityManagement.Models.TblDailyStockConsumption
+
+@{
+    ViewData["Title"] = "Create Daily Stock & Consumption Info.";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow-lg border-0">
+
+                <!-- =====================================================
+                     HEADER
+                ====================================================== -->
+
+                <div class="card-header bg-primary text-white">
+                    <h5 class="mb-0">
+                        Create Daily Stock & Consumption Info.
+                    </h5>
+                </div>
+
+
+                <!-- =====================================================
+                     BODY
+                ====================================================== -->
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Create"
+                          method="post"
+                          id="stockForm">
+
+                        <!-- Validation Summary -->
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <!-- =================================================
+                             STEPPER
+                        ================================================== -->
+
+                        <div class="stepper-wrapper">
+
+                            <!-- Background Line -->
+                            <div class="stepper-line">
+
+                                <!-- Blue Progress -->
+                                <div class="stepper-line-progress"
+                                     id="stepperProgress">
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 1 -->
+                            <div class="step active"
+                                 data-step="1">
+
+                                <div class="step-circle">
+                                    1
+                                </div>
+
+                                <div class="step-title">
+                                    Diesel
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+                            <div class="step"
+                                 data-step="2">
+
+                                <div class="step-circle">
+                                    2
+                                </div>
+
+                                <div class="step-title">
+                                    LPG
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+                            <div class="step"
+                                 data-step="3">
+
+                                <div class="step-circle">
+                                    3
+                                </div>
+
+                                <div class="step-title">
+                                    CNG
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             STEP 1 - DIESEL
+                        ================================================== -->
+
+                        <div class="step-content active"
+                             id="step1">
+
+
+                            <!-- DATE -->
+
+                            <div class="row mb-4">
+
+                                <div class="col-md-4">
+
+                                    <label asp-for="Trdate"
+                                           class="form-label">
+
+                                        Date
+                                        <span class="text-danger">*</span>
+
+                                    </label>
+
+                                    <input asp-for="Trdate"
+                                           type="date"
+                                           class="form-control"
+                                           required />
+
+                                    <span asp-validation-for="Trdate"
+                                          class="text-danger">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- DIESEL -->
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        Diesel Stock & Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Opening Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="OsDiesel"
+                                                   class="form-label">
+
+                                                Opening Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="OsDiesel"
+                                                   id="OsDiesel"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="OsDiesel"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Receive -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ReceiveDiesel"
+                                                   class="form-label">
+
+                                                Receive
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ReceiveDiesel"
+                                                   id="ReceiveDiesel"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ReceiveDiesel"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Consumption -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ConsDiesel"
+                                                   class="form-label">
+
+                                                Consumption
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ConsDiesel"
+                                                   id="ConsDiesel"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ConsDiesel"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Closing Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CsDiesel"
+                                                   class="form-label">
+
+                                                Closing Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CsDiesel"
+                                                   id="CsDiesel"
+                                                   class="form-control closing-stock"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="CsDiesel"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+
+                                <!-- BACK -->
+                                <a asp-action="DailyStockConsumptionList"
+                                   class="btn btn-outline-secondary px-4">
+                                    ← Back
+                                </a>
+
+
+                                <!-- NEXT -->
+                                <button type="button"
+                                        class="btn btn-primary next-btn"
+                                        data-next="2">
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             STEP 2 - LPG
+                        ================================================== -->
+
+                        <div class="step-content"
+                             id="step2">
+
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        LPG Stock & Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Opening Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="OsLps"
+                                                   class="form-label">
+
+                                                Opening Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="OsLps"
+                                                   id="OsLps"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="OsLps"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Receive -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ReceiveLpg"
+                                                   class="form-label">
+
+                                                Receive
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ReceiveLpg"
+                                                   id="ReceiveLpg"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ReceiveLpg"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Consumption -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ConsLpg"
+                                                   class="form-label">
+
+                                                Consumption
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ConsLpg"
+                                                   id="ConsLpg"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ConsLpg"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Closing Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CsLpg"
+                                                   class="form-label">
+
+                                                Closing Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CsLpg"
+                                                   id="CsLpg"
+                                                   class="form-control closing-stock"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="CsLpg"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="1">
+
+                                    ← Previous
+
+                                </button>
+
+
+                                <button type="button"
+                                        class="btn btn-primary next-btn"
+                                        data-next="3">
+
+                                    Next →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+                        <!-- =================================================
+                             STEP 3 - CNG
+                        ================================================== -->
+
+                        <div class="step-content"
+                             id="step3">
+
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        CNG Stock & Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Opening Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="OsCng"
+                                                   class="form-label">
+
+                                                Opening Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="OsCng"
+                                                   id="OsCng"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="OsCng"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Receive -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ReceiveCng"
+                                                   class="form-label">
+
+                                                Receive
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ReceiveCng"
+                                                   id="ReceiveCng"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ReceiveCng"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Consumption -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="ConsCng"
+                                                   class="form-label">
+
+                                                Consumption
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="ConsCng"
+                                                   id="ConsCng"
+                                                   class="form-control"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="ConsCng"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Closing Stock -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CsCng"
+                                                   class="form-label">
+
+                                                Closing Stock
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CsCng"
+                                                   id="CsCng"
+                                                   class="form-control closing-stock"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="CsCng"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- FINAL BUTTONS -->
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="2">
+
+                                    ← Previous
+
+                                </button>
+
+
+                                <div>
+
+                                    <a asp-action="DailyStockConsumptionList"
+                                       class="btn btn-outline-secondary me-2">
+
+                                        ← Back
+
+                                    </a>
+
+                                    <button type="submit"
+                                            class="btn btn-primary px-4">
+
+                                        Save
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            // =====================================================
+            // SHOW STEP
+            // =====================================================
+
+            function showStep(stepNumber) {
+
+                // Hide all contents
+                $('.step-content')
+                    .removeClass('active');
+
+
+                // Show selected content
+                $('#step' + stepNumber)
+                    .addClass('active');
+
+
+                // Reset step classes
+                $('.step')
+                    .removeClass('active completed');
+
+
+                // Set active/completed steps
+                $('.step').each(function () {
+
+                    const currentStep =
+                        parseInt($(this).data('step'));
+
+
+                    if (currentStep < stepNumber) {
+
+                        $(this)
+                            .addClass('completed');
+
+                    }
+                    else if (currentStep === stepNumber) {
+
+                        $(this)
+                            .addClass('active');
+
+                    }
+
+                });
+
+
+                // =================================================
+                // PROGRESS
+                // =================================================
+
+                let progress = 0;
+
+
+                if (stepNumber === 2) {
+
+                    progress = 50;
+
+                }
+                else if (stepNumber === 3) {
+
+                    progress = 100;
+
+                }
+
+
+                $('#stepperProgress')
+                    .css('width', progress + '%');
+
+            }
+
+
+            // =====================================================
+            // NEXT
+            // =====================================================
+
+            $('.next-btn').on('click', function () {
+
+                const nextStep =
+                    parseInt($(this).data('next'));
+
+                showStep(nextStep);
+
+            });
+
+
+            // =====================================================
+            // PREVIOUS
+            // =====================================================
+
+            $('.prev-btn').on('click', function () {
+
+                const previousStep =
+                    parseInt($(this).data('prev'));
+
+                showStep(previousStep);
+
+            });
+
+
+            // =====================================================
+            // STEP CLICK
+            // =====================================================
+
+            $('.step').on('click', function () {
+
+                const stepNumber =
+                    parseInt($(this).data('step'));
+
+                showStep(stepNumber);
+
+            });
+
+
+            // =====================================================
+            // DIESEL CALCULATION
+            // Opening + Receive - Consumption
+            // =====================================================
+
+            function calculateDiesel() {
+
+                const opening =
+                    parseFloat($('#OsDiesel').val()) || 0;
+
+                const receive =
+                    parseFloat($('#ReceiveDiesel').val()) || 0;
+
+                const consumption =
+                    parseFloat($('#ConsDiesel').val()) || 0;
+
+                const closing =
+                    opening + receive - consumption;
+
+                $('#CsDiesel')
+                    .val(closing.toFixed(2));
+
+            }
+
+
+            // =====================================================
+            // LPG CALCULATION
+            // =====================================================
+
+            function calculateLpg() {
+
+                const opening =
+                    parseFloat($('#OsLps').val()) || 0;
+
+                const receive =
+                    parseFloat($('#ReceiveLpg').val()) || 0;
+
+                const consumption =
+                    parseFloat($('#ConsLpg').val()) || 0;
+
+                const closing =
+                    opening + receive - consumption;
+
+                $('#CsLpg')
+                    .val(closing.toFixed(2));
+
+            }
+
+
+            // =====================================================
+            // CNG CALCULATION
+            // =====================================================
+
+            function calculateCng() {
+
+                const opening =
+                    parseFloat($('#OsCng').val()) || 0;
+
+                const receive =
+                    parseFloat($('#ReceiveCng').val()) || 0;
+
+                const consumption =
+                    parseFloat($('#ConsCng').val()) || 0;
+
+                const closing =
+                    opening + receive - consumption;
+
+                $('#CsCng')
+                    .val(closing.toFixed(2));
+
+            }
+
+
+            // =====================================================
+            // AUTO CALCULATION
+            // =====================================================
+
+            $('#OsDiesel, #ReceiveDiesel, #ConsDiesel')
+                .on('input change', function () {
+
+                    calculateDiesel();
+
+                });
+
+
+            $('#OsLps, #ReceiveLpg, #ConsLpg')
+                .on('input change', function () {
+
+                    calculateLpg();
+
+                });
+
+
+            $('#OsCng, #ReceiveCng, #ConsCng')
+                .on('input change', function () {
+
+                    calculateCng();
+
+                });
+
+
+            // =====================================================
+            // INITIAL CALCULATION
+            // =====================================================
+
+            calculateDiesel();
+
+            calculateLpg();
+
+            calculateCng();
+
+
+            // =====================================================
+            // INITIAL STEP
+            // =====================================================
+
+            showStep(1);
+
+        });
+
+    </script>
+
+
+    <style>
+
+        /* =====================================================
+                   STEPPER WRAPPER
+
+                   IMPORTANT:
+                   No left/right padding here.
+                ===================================================== */
+
+        .stepper-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+                   BACKGROUND STEPPER LINE
+
+                   16.666% = center of Step 1
+                   83.333% = center of Step 3
+
+                   Therefore there is NO extra line
+                   on left or right.
+                ===================================================== */
+
+        .stepper-line {
+            position: absolute;
+            top: 20px;
+            left: 16.666667%;
+            right: 16.666667%;
+            height: 4px;
+            background-color: #dee2e6;
+            border-radius: 10px;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+                   BLUE PROGRESS LINE
+                ===================================================== */
+
+        .stepper-line-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #0d6efd;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+
+        /* =====================================================
+                   STEP
+                ===================================================== */
+
+        .step {
+            position: relative;
+            z-index: 1;
+            width: 33.333333%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+                   STEP CIRCLE
+                ===================================================== */
+
+        .step-circle {
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 50%;
+            background-color: #dee2e6;
+            color: #495057;
+            margin: 0 auto 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+
+        /* =====================================================
+                   STEP TITLE
+                ===================================================== */
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+
+        /* =====================================================
+                   ACTIVE STEP
+                ===================================================== */
+
+        .step.active .step-circle {
+            background-color: #0d6efd;
+            color: white;
+            box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.12);
+        }
+
+
+        .step.active .step-title {
+            color: #0d6efd;
+        }
+
+
+        /* =====================================================
+                   COMPLETED STEP
+                ===================================================== */
+
+        .step.completed .step-circle {
+            background-color: #0d6efd;
+            color: white;
+        }
+
+
+        .step.completed .step-title {
+            color: #0d6efd;
+        }
+
+
+        /* =====================================================
+                   STEP CONTENT
+                ===================================================== */
+
+        .step-content {
+            display: none;
+        }
+
+
+            .step-content.active {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+
+        /* =====================================================
+                   ANIMATION
+                ===================================================== */
+
+        @@keyframes fadeIn {
+            from
+
+        {
+            opacity: 0;
+            transform: translateX(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        }
+
+
+        /* =====================================================
+                   CLOSING STOCK
+                ===================================================== */
+
+        .closing-stock {
+            background-color: #f1f3f5 !important;
+            color: #198754;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+                   MOBILE
+                ===================================================== */
+
+        @@media (max-width: 576px) {
+            .stepper-wrapper
+
+        {
+            width: 100%;
+        }
+
+
+        .stepper-line {
+            top: 17px;
+            left: 16.666667%;
+            right: 16.666667%;
+            height: 3px;
+        }
+
+
+        .step-circle {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+
+        .step-title {
+            font-size: 11px;
+        }
+
+        }
+    </style>
+
+}

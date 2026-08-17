@@ -1,0 +1,860 @@
+﻿@model IEnumerable<UtilityManagement.Models.TblDailyStockConsumption>
+
+@{
+    ViewData["Title"] = "Daily Stock Consumption List";
+
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+
+    int pageSize = 15;
+    int sl = (currentPage - 1) * pageSize;
+
+    int startPage = Math.Max(1, currentPage - 2);
+    int endPage = Math.Min(totalPages, currentPage + 2);
+
+    bool canCreate = ViewBag.CanCreate ?? false;
+    bool canEdit = ViewBag.CanEdit ?? false;
+    bool canDelete = ViewBag.CanDelete ?? false;
+
+    string search = ViewBag.SearchString ?? "";
+}
+
+
+<!-- =========================================================
+     PAGE TITLE
+========================================================= -->
+
+<h2 class="text-center mb-1">
+    Daily Stock Consumption List
+</h2>
+
+<p class="text-muted text-center mb-4">
+    Total Records:
+    <strong>@ViewBag.totalReadings</strong>
+</p>
+
+
+<!-- =========================================================
+     SEARCH + ACTION BUTTONS
+========================================================= -->
+
+<div class="d-flex justify-content-between mb-3 align-items-center">
+
+    <!-- SEARCH -->
+
+    <form method="get"
+          asp-action="DailyStockConsumptionList"
+          class="d-flex gap-2 align-items-center"
+          id="searchForm">
+
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="Search here..."
+               autocomplete="off"
+               style="width: 300px;" />
+
+    </form>
+
+
+    <!-- ACTION BUTTONS -->
+
+    <div class="d-flex gap-2">
+
+        @if (canCreate)
+        {
+            <a asp-action="Create"
+               class="btn btn-primary">
+
+                + Create
+
+            </a>
+        }
+
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+
+            Back
+
+        </button>
+
+    </div>
+
+</div>
+
+
+
+<!-- =========================================================
+     TABLE
+========================================================= -->
+
+<div class="table-responsive">
+
+    <table class="table table-bordered table-hover stock-table">
+
+
+        <!-- =====================================================
+             TABLE HEADER
+        ====================================================== -->
+
+        <thead>
+
+
+            <!-- =================================================
+                 MAIN GROUP HEADER
+            ================================================== -->
+
+            <tr class="text-center align-middle">
+
+
+                <!-- SL -->
+
+                <th rowspan="2"
+                    class="sl-header"
+                    style="width: 5%;">
+
+                    SL
+
+                </th>
+
+
+                <!-- DATE -->
+
+                <th rowspan="2"
+                    class="date-header"
+                    style="width: 8%;">
+
+                    Date
+
+                </th>
+
+
+                <!-- DIESEL -->
+
+                <th colspan="4"
+                    class="diesel-header">
+
+                    DIESEL
+
+                </th>
+
+
+                <!-- CNG -->
+
+                <th colspan="4"
+                    class="cng-header">
+
+                    CNG
+
+                </th>
+
+
+                <!-- LPG -->
+
+                <th colspan="4"
+                    class="lpg-header">
+
+                    LPG
+
+                </th>
+
+
+                <!-- ACTIONS -->
+
+                <th rowspan="2"
+                    class="actions-header"
+                    style="width: 11%;">
+
+                    Actions
+
+                </th>
+
+            </tr>
+
+
+            <!-- =================================================
+                 SUB HEADER
+            ================================================== -->
+
+            <tr class="text-center align-middle">
+
+
+                <!-- ==========================
+                     DIESEL
+                =========================== -->
+
+                <th class="diesel-sub">
+                    Opening
+                </th>
+
+                <th class="diesel-sub">
+                    Receive
+                </th>
+
+                <th class="diesel-sub">
+                    Consumption
+                </th>
+
+                <th class="diesel-sub">
+                    Closing
+                </th>
+
+
+                <!-- ==========================
+                     CNG
+                =========================== -->
+
+                <th class="cng-sub">
+                    Opening
+                </th>
+
+                <th class="cng-sub">
+                    Receive
+                </th>
+
+                <th class="cng-sub">
+                    Consumption
+                </th>
+
+                <th class="cng-sub">
+                    Closing
+                </th>
+
+
+                <!-- ==========================
+                     LPG
+                =========================== -->
+
+                <th class="lpg-sub">
+                    Opening
+                </th>
+
+                <th class="lpg-sub">
+                    Receive
+                </th>
+
+                <th class="lpg-sub">
+                    Consumption
+                </th>
+
+                <th class="lpg-sub">
+                    Closing
+                </th>
+
+            </tr>
+
+        </thead>
+
+
+
+        <!-- =====================================================
+             TABLE BODY
+        ====================================================== -->
+
+        <tbody>
+
+            @foreach (var item in Model)
+            {
+                sl++;
+
+
+                <tr class="align-middle text-center">
+
+
+                    <!-- ==========================
+                         SL
+                    =========================== -->
+
+                    <td class="text-center fw-semibold">
+
+                        @sl
+
+                    </td>
+
+
+                    <!-- ==========================
+                         DATE
+                    =========================== -->
+
+                    <td class="text-center date-cell">
+
+                        @item.Trdate?.ToString("dd-MM-yyyy")
+
+                    </td>
+
+
+
+                    <!-- =================================================
+                         DIESEL
+                    ================================================== -->
+
+                    <td class="text-center diesel-cell">
+
+                        @item.OsDiesel?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center diesel-cell">
+
+                        @item.ReceiveDiesel?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center diesel-cell">
+
+                        @item.ConsDiesel?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center diesel-closing">
+
+                        @item.CsDiesel?.ToString("0.00")
+
+                    </td>
+
+
+
+                    <!-- =================================================
+                         CNG
+                    ================================================== -->
+
+                    <td class="text-center cng-cell">
+
+                        @item.OsCng?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center cng-cell">
+
+                        @item.ReceiveCng?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center cng-cell">
+
+                        @item.ConsCng?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center cng-closing">
+
+                        @item.CsCng?.ToString("0.00")
+
+                    </td>
+
+
+
+                    <!-- =================================================
+                         LPG
+                    ================================================== -->
+
+                    <td class="text-center lpg-cell">
+
+                        @item.OsLps?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center lpg-cell">
+
+                        @item.ReceiveLpg?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center lpg-cell">
+
+                        @item.ConsLpg?.ToString("0.00")
+
+                    </td>
+
+                    <td class="text-center lpg-closing">
+
+                        @item.CsLpg?.ToString("0.00")
+
+                    </td>
+
+
+
+                    <!-- =================================================
+                         ACTIONS
+                    ================================================== -->
+
+                    <td class="text-center">
+
+                        <div class="d-flex justify-content-center align-items-center gap-2">
+
+
+                            @if (canEdit)
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-success btn-sm">
+
+                                    Edit
+
+                                </a>
+                            }
+
+
+                            @if (canDelete)
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-danger btn-sm">
+
+                                    Delete
+
+                                </a>
+                            }
+
+
+                        </div>
+
+                    </td>
+
+
+                </tr>
+            }
+
+        </tbody>
+
+    </table>
+
+</div>
+
+
+
+<!-- =========================================================
+     PAGINATION
+========================================================= -->
+
+<nav class="mt-4">
+
+    <ul class="pagination justify-content-center flex-wrap">
+
+
+        <!-- PREVIOUS -->
+
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+
+            <a class="page-link"
+               href="@Url.Action(
+                                   "DailyStockConsumptionList",
+                                   new
+                                   {
+                                       page = currentPage - 1,
+                                       searchString = search
+                                   })">
+
+                Prev
+
+            </a>
+
+        </li>
+
+
+
+        <!-- PAGE NUMBERS -->
+        @for (int i = startPage; i <= endPage; i++)
+        {
+
+            <li class="page-item @(i == currentPage ? "active" : "")">
+
+                <a class="page-link"
+                   href="@Url.Action(
+                                           "DailyStockConsumptionList",
+                                           new
+                                           {
+                                               page = i,
+                                               searchString = search
+                                           })">
+
+                @i
+
+                </a>
+
+            </li>
+
+                }
+
+
+
+        <!-- NEXT -->
+
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+
+            <a class="page-link"
+               href="@Url.Action(
+                                   "DailyStockConsumptionList",
+                                   new
+                                   {
+                                       page = currentPage + 1,
+                                       searchString = search
+                                   })">
+
+                Next
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</nav>
+
+
+
+<!-- =========================================================
+     CSS
+========================================================= -->
+
+<style>
+
+
+    /* =========================================================
+           TABLE BASE
+        ========================================================== */
+
+    .stock-table {
+        min-width: 1250px;
+        margin-bottom: 0;
+        border-color: #dee2e6;
+        font-size: 14px;
+    }
+
+
+        .stock-table th,
+        .stock-table td {
+            text-align: center !important;
+            vertical-align: middle !important;
+            padding: 9px 8px;
+        }
+
+
+    /* =========================================================
+           SL HEADER
+        ========================================================== */
+
+    .sl-header {
+        background-color: #6f42c1 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           DATE HEADER
+        ========================================================== */
+
+    .date-header {
+        background-color: #0f766e !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           ACTIONS HEADER
+        ========================================================== */
+
+    .actions-header {
+        background-color: #4f46e5 !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           DIESEL MAIN HEADER
+        ========================================================== */
+
+    .diesel-header {
+        background-color: #0d6efd !important;
+        color: #ffffff !important;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+
+    /* =========================================================
+           DIESEL SUB HEADER
+        ========================================================== */
+
+    .diesel-sub {
+        background-color: #dbeafe !important;
+        color: #084298 !important;
+        font-weight: 600;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           DIESEL DATA
+        ========================================================== */
+
+    .diesel-cell {
+        background-color: #f5f9ff;
+        text-align: center !important;
+    }
+
+
+    .diesel-closing {
+        background-color: #e7f1ff !important;
+        color: #084298;
+        font-weight: 700;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           CNG MAIN HEADER
+        ========================================================== */
+
+    .cng-header {
+        background-color: #198754 !important;
+        color: #ffffff !important;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+
+    /* =========================================================
+           CNG SUB HEADER
+        ========================================================== */
+
+    .cng-sub {
+        background-color: #dff5e9 !important;
+        color: #146c43 !important;
+        font-weight: 600;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           CNG DATA
+        ========================================================== */
+
+    .cng-cell {
+        background-color: #f5fcf8;
+        text-align: center !important;
+    }
+
+
+    .cng-closing {
+        background-color: #e4f7ec !important;
+        color: #146c43;
+        font-weight: 700;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           LPG MAIN HEADER
+        ========================================================== */
+
+    .lpg-header {
+        background-color: #fd7e14 !important;
+        color: #ffffff !important;
+        font-size: 15px;
+        letter-spacing: 0.5px;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+    }
+
+
+    /* =========================================================
+           LPG SUB HEADER
+        ========================================================== */
+
+    .lpg-sub {
+        background-color: #fff0df !important;
+        color: #b45309 !important;
+        font-weight: 600;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           LPG DATA
+        ========================================================== */
+
+    .lpg-cell {
+        background-color: #fffaf5;
+        text-align: center !important;
+    }
+
+
+    .lpg-closing {
+        background-color: #fff0df !important;
+        color: #b45309;
+        font-weight: 700;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           DATE CELL
+        ========================================================== */
+
+    .date-cell {
+        background-color: #f0fdfa;
+        color: #115e59;
+        font-weight: 600;
+        white-space: nowrap;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           SL CELL
+        ========================================================== */
+
+    .stock-table tbody td:first-child {
+        background-color: #f5f3ff;
+        color: #5b21b6;
+        font-weight: 700;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           ACTION CELL
+        ========================================================== */
+
+    .stock-table tbody td:last-child {
+        background-color: #f5f3ff;
+        text-align: center !important;
+    }
+
+
+    /* =========================================================
+           HOVER
+        ========================================================== */
+
+    .stock-table tbody tr:hover td {
+        filter: brightness(0.97);
+    }
+
+
+    /* =========================================================
+           ACTION BUTTONS
+        ========================================================== */
+
+    .stock-table .btn {
+        min-width: 55px;
+        font-size: 13px;
+    }
+
+
+    /* =========================================================
+           RESPONSIVE
+        ========================================================== */
+
+    @@media (max-width: 768px) {
+        .stock-table
+
+    {
+        min-width: 1250px;
+    }
+
+
+    .table-responsive {
+        border-radius: 6px;
+    }
+
+
+    .stock-table th,
+    .stock-table td {
+        padding: 8px 6px;
+    }
+
+    }
+</style>
+
+
+
+<!-- =========================================================
+     SEARCH SCRIPT
+========================================================= -->
+
+<script>
+
+    document.addEventListener("DOMContentLoaded", function () {
+
+
+        const searchBox =
+            document.getElementById("searchBox");
+
+
+        const searchForm =
+            document.getElementById("searchForm");
+
+
+        if (searchBox && searchForm) {
+
+
+            /* ===============================================
+               AUTO SEARCH
+            ================================================ */
+
+            searchBox.addEventListener("input", function () {
+
+                clearTimeout(this.delay);
+
+
+                this.delay = setTimeout(function () {
+
+                    searchForm.submit();
+
+                }, 1000);
+
+            });
+
+
+            /* ===============================================
+               KEEP FOCUS
+            ================================================ */
+
+            searchBox.focus();
+
+
+            /* ===============================================
+               MOVE CURSOR TO END
+            ================================================ */
+
+            const value = searchBox.value;
+
+            searchBox.value = "";
+
+            searchBox.value = value;
+
+        }
+
+    });
+
+</script>

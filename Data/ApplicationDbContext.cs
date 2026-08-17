@@ -55,6 +55,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblAirCompressorReadingInfo> TblAirCompressorReadingInfo { get; set; }
         public virtual DbSet<TblDailyEnergyFuelConsumption> TblDailyEnergyFuelConsumption { get; set; }
         public virtual DbSet<TblDailyElectricityGeneration> TblDailyElectricityGenerations { get; set; }
+        public virtual DbSet<TblDailyStockConsumption> TblDailyStockConsumptions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1021,6 +1022,30 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+            });
+            //TblDailyStockConsumption
+            modelBuilder.Entity<TblDailyStockConsumption>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_DAILY_STOCK_CONSUMPTION");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.ConsCng).HasColumnName("CONS_CNG");
+                entity.Property(e => e.ConsDiesel).HasColumnName("CONS_DIESEL");
+                entity.Property(e => e.ConsLpg).HasColumnName("CONS_LPG");
+                entity.Property(e => e.CsCng).HasColumnName("CS_CNG");
+                entity.Property(e => e.CsDiesel).HasColumnName("CS_DIESEL");
+                entity.Property(e => e.CsLpg).HasColumnName("CS_LPG");
+                entity.Property(e => e.OsCng).HasColumnName("OS_CNG");
+                entity.Property(e => e.OsDiesel).HasColumnName("OS_DIESEL");
+                entity.Property(e => e.OsLps).HasColumnName("OS_LPS");
+                entity.Property(e => e.ReceiveCng).HasColumnName("RECEIVE_CNG");
+                entity.Property(e => e.ReceiveDiesel).HasColumnName("RECEIVE_DIESEL");
+                entity.Property(e => e.ReceiveLpg).HasColumnName("RECEIVE_LPG");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.CreatedtAt).HasColumnType("datetime").HasColumnName("CREATEDT_AT");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });

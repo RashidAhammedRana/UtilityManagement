@@ -1,0 +1,1297 @@
+﻿@model UtilityManagement.Models.TblDailyFuelConsumption
+
+@{
+    ViewData["Title"] = "Edit Daily Fuel Consumption";
+}
+
+<div class="container mt-4">
+
+    <div class="row justify-content-center">
+
+        <div class="col-lg-10">
+
+            <div class="card shadow-lg border-0">
+
+                <!-- =====================================================
+                     HEADER
+                ====================================================== -->
+
+                <div class="card-header bg-success text-white">
+
+                    <h5 class="mb-0">
+                        Edit Daily Fuel Consumption
+                    </h5>
+
+                </div>
+
+
+                <!-- =====================================================
+                     BODY
+                ====================================================== -->
+
+                <div class="card-body p-4">
+
+                    <form asp-action="Edit"
+                          method="post"
+                          id="fuelForm">
+
+                        <!-- =================================================
+                             PRIMARY KEY
+                        ================================================== -->
+
+                        <input type="hidden"
+                               asp-for="Trid" />
+
+
+                        <!-- Validation Summary -->
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+
+                        <!-- =================================================
+                             STEPPER
+                        ================================================== -->
+
+                        <div class="stepper-wrapper">
+
+                            <!-- Background Line -->
+
+                            <div class="stepper-line">
+
+                                <div class="stepper-line-progress"
+                                     id="stepperProgress">
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 1 -->
+
+                            <div class="step active"
+                                 data-step="1">
+
+                                <div class="step-circle">
+                                    1
+                                </div>
+
+                                <div class="step-title">
+                                    NG
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 2 -->
+
+                            <div class="step"
+                                 data-step="2">
+
+                                <div class="step-circle">
+                                    2
+                                </div>
+
+                                <div class="step-title">
+                                    Diesel
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 3 -->
+
+                            <div class="step"
+                                 data-step="3">
+
+                                <div class="step-circle">
+                                    3
+                                </div>
+
+                                <div class="step-title">
+                                    CNG
+                                </div>
+
+                            </div>
+
+
+                            <!-- STEP 4 -->
+
+                            <div class="step"
+                                 data-step="4">
+
+                                <div class="step-circle">
+                                    4
+                                </div>
+
+                                <div class="step-title">
+                                    LPG
+                                </div>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             STEP 1 - NG
+                        ================================================== -->
+
+                        <div class="step-content active"
+                             id="step1">
+
+
+                            <!-- DATE -->
+
+                            <div class="row mb-4">
+
+                                <div class="col-md-4">
+
+                                    <label asp-for="Trdate"
+                                           class="form-label">
+
+                                        Date
+                                        <span class="text-danger">*</span>
+
+                                    </label>
+
+                                    <input asp-for="Trdate"
+                                           type="date"
+                                           class="form-control"
+                                           required />
+
+                                    <span asp-validation-for="Trdate"
+                                          class="text-danger">
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- NG -->
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        Natural Gas (NG) Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Generator -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="NgGenerator"
+                                                   class="form-label">
+
+                                                Generator
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="NgGenerator"
+                                                   id="NgGenerator"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="NgGenerator"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Boiler -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="NgBoiler"
+                                                   class="form-label">
+
+                                                Boiler
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="NgBoiler"
+                                                   id="NgBoiler"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="NgBoiler"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- DFMA -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="NgDfma"
+                                                   class="form-label">
+
+                                                Dyeing Finishing M/C Area
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="NgDfma"
+                                                   id="NgDfma"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="NgDfma"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Total -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="NgTotal"
+                                                   class="form-label">
+
+                                                Total
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="NgTotal"
+                                                   id="NgTotal"
+                                                   class="form-control total-field"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="NgTotal"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+
+                                <a asp-action="DailyFuelConsumptionList"
+                                   class="btn btn-outline-secondary px-4">
+
+                                    ← Back
+
+                                </a>
+
+
+                                <button type="button"
+                                        class="btn btn-success next-btn"
+                                        data-next="2">
+
+                                    Next →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             STEP 2 - DIESEL
+                        ================================================== -->
+
+                        <div class="step-content"
+                             id="step2">
+
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        Diesel Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Generator -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="DieselGenerator"
+                                                   class="form-label">
+
+                                                Generator
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="DieselGenerator"
+                                                   id="DieselGenerator"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="DieselGenerator"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Boiler -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="DieselBoiler"
+                                                   class="form-label">
+
+                                                Boiler
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="DieselBoiler"
+                                                   id="DieselBoiler"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="DieselBoiler"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- FL -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="DieselFl"
+                                                   class="form-label">
+
+                                                Fork Lift
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="DieselFl"
+                                                   id="DieselFl"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="DieselFl"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Total -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="DieselTotal"
+                                                   class="form-label">
+
+                                                Total
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="DieselTotal"
+                                                   id="DieselTotal"
+                                                   class="form-control total-field"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="DieselTotal"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="1">
+
+                                    ← Previous
+
+                                </button>
+
+
+                                <button type="button"
+                                        class="btn btn-success next-btn"
+                                        data-next="3">
+
+                                    Next →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             STEP 3 - CNG
+                        ================================================== -->
+
+                        <div class="step-content"
+                             id="step3">
+
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        CNG Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Generator -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CngGenerator"
+                                                   class="form-label">
+
+                                                Generator
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CngGenerator"
+                                                   id="CngGenerator"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="CngGenerator"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Boiler -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CngBoiler"
+                                                   class="form-label">
+
+                                                Boiler
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CngBoiler"
+                                                   id="CngBoiler"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="CngBoiler"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- DFMA -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CngDfma"
+                                                   class="form-label">
+
+                                                Dyeing Finishing M/C Area
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CngDfma"
+                                                   id="CngDfma"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="CngDfma"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Total -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CngTotal"
+                                                   class="form-label">
+
+                                                Total
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="CngTotal"
+                                                   id="CngTotal"
+                                                   class="form-control total-field"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="CngTotal"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- BUTTONS -->
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="2">
+
+                                    ← Previous
+
+                                </button>
+
+
+                                <button type="button"
+                                        class="btn btn-success next-btn"
+                                        data-next="4">
+
+                                    Next →
+
+                                </button>
+
+                            </div>
+
+                        </div>
+
+
+
+                        <!-- =================================================
+                             STEP 4 - LPG
+                        ================================================== -->
+
+                        <div class="step-content"
+                             id="step4">
+
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+
+                                    <h6 class="mb-0">
+                                        LPG Consumption
+                                    </h6>
+
+                                </div>
+
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+
+                                        <!-- Boiler -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="LpgBoiler"
+                                                   class="form-label">
+
+                                                Boiler
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="LpgBoiler"
+                                                   id="LpgBoiler"
+                                                   class="form-control fuel-input"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   required />
+
+                                            <span asp-validation-for="LpgBoiler"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+
+                                        <!-- Total -->
+
+                                        <div class="col-md-6">
+
+                                            <label asp-for="LpgTotal"
+                                                   class="form-label">
+
+                                                Total
+                                                <span class="text-danger">*</span>
+
+                                            </label>
+
+                                            <input asp-for="LpgTotal"
+                                                   id="LpgTotal"
+                                                   class="form-control total-field"
+                                                   type="number"
+                                                   step="0.01"
+                                                   readonly />
+
+                                            <span asp-validation-for="LpgTotal"
+                                                  class="text-danger">
+                                            </span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+
+                            <!-- FINAL BUTTONS -->
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="3">
+
+                                    ← Previous
+
+                                </button>
+
+
+                                <div>
+
+                                    <a asp-action="DailyStockConsumptionList"
+                                       class="btn btn-outline-secondary me-2">
+
+                                        ← Back
+
+                                    </a>
+
+
+                                    <button type="submit"
+                                            class="btn btn-success px-4">
+
+                                        Update
+
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+
+        $(document).ready(function () {
+
+
+            // =====================================================
+            // SHOW STEP
+            // =====================================================
+
+            function showStep(stepNumber) {
+
+                $('.step-content')
+                    .removeClass('active');
+
+
+                $('#step' + stepNumber)
+                    .addClass('active');
+
+
+                $('.step')
+                    .removeClass('active completed');
+
+
+                $('.step').each(function () {
+
+                    const currentStep =
+                        parseInt($(this).data('step'));
+
+
+                    if (currentStep < stepNumber) {
+
+                        $(this)
+                            .addClass('completed');
+
+                    }
+                    else if (currentStep === stepNumber) {
+
+                        $(this)
+                            .addClass('active');
+
+                    }
+
+                });
+
+
+                // =================================================
+                // PROGRESS
+                // =================================================
+
+                let progress = 0;
+
+
+                if (stepNumber === 2) {
+
+                    progress = 33.333;
+
+                }
+                else if (stepNumber === 3) {
+
+                    progress = 66.666;
+
+                }
+                else if (stepNumber === 4) {
+
+                    progress = 100;
+
+                }
+
+
+                $('#stepperProgress')
+                    .css('width', progress + '%');
+
+            }
+
+
+
+            // =====================================================
+            // NEXT
+            // =====================================================
+
+            $('.next-btn').on('click', function () {
+
+                const nextStep =
+                    parseInt($(this).data('next'));
+
+
+                showStep(nextStep);
+
+            });
+
+
+
+            // =====================================================
+            // PREVIOUS
+            // =====================================================
+
+            $('.prev-btn').on('click', function () {
+
+                const previousStep =
+                    parseInt($(this).data('prev'));
+
+
+                showStep(previousStep);
+
+            });
+
+
+
+            // =====================================================
+            // STEP CLICK
+            // =====================================================
+
+            $('.step').on('click', function () {
+
+                const stepNumber =
+                    parseInt($(this).data('step'));
+
+
+                showStep(stepNumber);
+
+            });
+
+
+
+            // =====================================================
+            // NG TOTAL
+            // Generator + Boiler + DFMA
+            // =====================================================
+
+            function calculateNg() {
+
+                const generator =
+                    parseFloat($('#NgGenerator').val()) || 0;
+
+
+                const boiler =
+                    parseFloat($('#NgBoiler').val()) || 0;
+
+
+                const dfma =
+                    parseFloat($('#NgDfma').val()) || 0;
+
+
+                const total =
+                    generator + boiler + dfma;
+
+
+                $('#NgTotal')
+                    .val(total.toFixed(2));
+
+            }
+
+
+
+            // =====================================================
+            // DIESEL TOTAL
+            // Generator + Boiler + FL
+            // =====================================================
+
+            function calculateDiesel() {
+
+                const generator =
+                    parseFloat($('#DieselGenerator').val()) || 0;
+
+
+                const boiler =
+                    parseFloat($('#DieselBoiler').val()) || 0;
+
+
+                const fl =
+                    parseFloat($('#DieselFl').val()) || 0;
+
+
+                const total =
+                    generator + boiler + fl;
+
+
+                $('#DieselTotal')
+                    .val(total.toFixed(2));
+
+            }
+
+
+
+            // =====================================================
+            // CNG TOTAL
+            // Generator + Boiler + DFMA
+            // =====================================================
+
+            function calculateCng() {
+
+                const generator =
+                    parseFloat($('#CngGenerator').val()) || 0;
+
+
+                const boiler =
+                    parseFloat($('#CngBoiler').val()) || 0;
+
+
+                const dfma =
+                    parseFloat($('#CngDfma').val()) || 0;
+
+
+                const total =
+                    generator + boiler + dfma;
+
+
+                $('#CngTotal')
+                    .val(total.toFixed(2));
+
+            }
+
+
+
+            // =====================================================
+            // LPG TOTAL
+            // Boiler only
+            // =====================================================
+
+            function calculateLpg() {
+
+                const boiler =
+                    parseFloat($('#LpgBoiler').val()) || 0;
+
+
+                const total =
+                    boiler;
+
+
+                $('#LpgTotal')
+                    .val(total.toFixed(2));
+
+            }
+
+
+
+            // =====================================================
+            // AUTO CALCULATION
+            // =====================================================
+
+            $('#NgGenerator, #NgBoiler, #NgDfma')
+                .on('input change', function () {
+
+                    calculateNg();
+
+                });
+
+
+            $('#DieselGenerator, #DieselBoiler, #DieselFl')
+                .on('input change', function () {
+
+                    calculateDiesel();
+
+                });
+
+
+            $('#CngGenerator, #CngBoiler, #CngDfma')
+                .on('input change', function () {
+
+                    calculateCng();
+
+                });
+
+
+            $('#LpgBoiler')
+                .on('input change', function () {
+
+                    calculateLpg();
+
+                });
+
+
+
+            // =====================================================
+            // INITIAL CALCULATION
+            // =====================================================
+
+            calculateNg();
+
+            calculateDiesel();
+
+            calculateCng();
+
+            calculateLpg();
+
+
+
+            // =====================================================
+            // INITIAL STEP
+            // =====================================================
+
+            showStep(1);
+
+        });
+
+    </script>
+
+
+    <style>
+
+        /* =====================================================
+                   STEPPER WRAPPER
+                ====================================================== */
+
+        .stepper-wrapper {
+            position: relative;
+            width: 100%;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            margin-bottom: 30px;
+        }
+
+
+        /* =====================================================
+                   BACKGROUND STEPPER LINE
+                ====================================================== */
+
+        .stepper-line {
+            position: absolute;
+            top: 20px;
+            left: 12.5%;
+            right: 12.5%;
+            height: 4px;
+            background-color: #dee2e6;
+            border-radius: 10px;
+            z-index: 0;
+            overflow: hidden;
+        }
+
+
+        /* =====================================================
+                   BLUE PROGRESS LINE
+                ====================================================== */
+
+        .stepper-line-progress {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 0%;
+            height: 100%;
+            background-color: #198754;
+            border-radius: 10px;
+            transition: width 0.4s ease;
+        }
+
+
+        /* =====================================================
+                   STEP
+                ====================================================== */
+
+        .step {
+            position: relative;
+            z-index: 1;
+            width: 25%;
+            text-align: center;
+            cursor: pointer;
+        }
+
+
+        /* =====================================================
+                   STEP CIRCLE
+                ====================================================== */
+
+        .step-circle {
+            width: 42px;
+            height: 42px;
+            line-height: 42px;
+            border-radius: 50%;
+            background-color: #dee2e6;
+            color: #495057;
+            margin: 0 auto 8px;
+            font-weight: 700;
+            position: relative;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+
+
+        /* =====================================================
+                   STEP TITLE
+                ====================================================== */
+
+        .step-title {
+            font-size: 14px;
+            font-weight: 600;
+            color: #6c757d;
+        }
+
+
+        /* =====================================================
+                   ACTIVE STEP
+                ====================================================== */
+
+        .step.active .step-circle {
+            background-color: #198754;
+            color: white;
+            box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.12);
+        }
+
+
+        .step.active .step-title {
+            color: #198754;
+        }
+
+
+        /* =====================================================
+                   COMPLETED STEP
+                ====================================================== */
+
+        .step.completed .step-circle {
+            background-color: #198754;
+            color: white;
+        }
+
+
+        .step.completed .step-title {
+            color: #198754;
+        }
+
+
+        /* =====================================================
+                   STEP CONTENT
+                ====================================================== */
+
+        .step-content {
+            display: none;
+        }
+
+
+            .step-content.active {
+                display: block;
+                animation: fadeIn 0.3s ease-in-out;
+            }
+
+
+        /* =====================================================
+                   ANIMATION
+                ====================================================== */
+
+        @@keyframes fadeIn {
+
+            from {
+                opacity: 0;
+                transform: translateX(10px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+
+
+        /* =====================================================
+                   TOTAL FIELD
+                ====================================================== */
+
+        .total-field {
+            background-color: #f1f3f5 !important;
+            color: #198754;
+            font-weight: 700;
+            font-size: 17px;
+        }
+
+
+        /* =====================================================
+                   MOBILE
+                ====================================================== */
+
+        @@media (max-width: 576px) {
+
+            .stepper-wrapper {
+                width: 100%;
+            }
+
+
+            .stepper-line {
+                top: 17px;
+                left: 12.5%;
+                right: 12.5%;
+                height: 3px;
+            }
+
+
+            .step-circle {
+                width: 35px;
+                height: 35px;
+                line-height: 35px;
+            }
+
+
+            .step-title {
+                font-size: 11px;
+            }
+        }
+
+    </style>
+
+}

@@ -56,6 +56,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDailyEnergyFuelConsumption> TblDailyEnergyFuelConsumption { get; set; }
         public virtual DbSet<TblDailyElectricityGeneration> TblDailyElectricityGenerations { get; set; }
         public virtual DbSet<TblDailyStockConsumption> TblDailyStockConsumptions { get; set; }
+        public virtual DbSet<TblDailyFuelConsumption> TblDailyFuelConsumption { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1046,6 +1047,32 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.CreatedtAt).HasColumnType("datetime").HasColumnName("CREATEDT_AT");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+            });
+            //TblDailyFuelConsumption
+            modelBuilder.Entity<TblDailyFuelConsumption>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_DAILY_FUEL_CONSUMPTION");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.CngBoiler).HasColumnName("CNG_BOILER");
+                entity.Property(e => e.CngDfma).HasColumnName("CNG_DFMA");
+                entity.Property(e => e.CngGenerator).HasColumnName("CNG_GENERATOR");
+                entity.Property(e => e.CngTotal).HasColumnName("CNG_TOTAL");
+                entity.Property(e => e.DieselBoiler).HasColumnName("DIESEL_BOILER");
+                entity.Property(e => e.DieselFl).HasColumnName("DIESEL_FL");
+                entity.Property(e => e.DieselGenerator).HasColumnName("DIESEL_GENERATOR");
+                entity.Property(e => e.DieselTotal).HasColumnName("DIESEL_TOTAL");
+                entity.Property(e => e.LpgBoiler).HasColumnName("LPG_BOILER");
+                entity.Property(e => e.LpgTotal).HasColumnName("LPG_TOTAL");
+                entity.Property(e => e.NgBoiler).HasColumnName("NG_BOILER");
+                entity.Property(e => e.NgDfma).HasColumnName("NG_DFMA");
+                entity.Property(e => e.NgGenerator).HasColumnName("NG_GENERATOR");
+                entity.Property(e => e.NgTotal).HasColumnName("NG_TOTAL");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });

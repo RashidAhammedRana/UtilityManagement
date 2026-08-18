@@ -142,18 +142,17 @@
                              id="step1">
 
 
-                            <!-- DATE -->
+                            <!-- DATE & COMPANY -->
 
                             <div class="row mb-4">
 
+                                <!-- DATE -->
                                 <div class="col-md-4">
 
                                     <label asp-for="Trdate"
                                            class="form-label">
-
                                         Date
                                         <span class="text-danger">*</span>
-
                                     </label>
 
                                     <input asp-for="Trdate"
@@ -164,6 +163,33 @@
                                     <span asp-validation-for="Trdate"
                                           class="text-danger">
                                     </span>
+
+                                </div>
+
+
+                                <!-- COMPANY -->
+                                <div class="col-md-4">
+
+                                    <label class="form-label">
+                                        Company
+                                        <span class="text-danger">*</span>
+                                    </label>
+
+                                    <select name="Company"
+                                            class="form-select"
+                                            required>
+
+                                        <option value="">-- Select Company --</option>
+
+                                        @if (!string.IsNullOrEmpty(ViewBag.CurrentCompany))
+                                        {
+                                            <option value="@ViewBag.CurrentCompany"
+                                                    selected>
+                                                @ViewBag.CurrentCompany
+                                            </option>
+                                        }
+
+                                    </select>
 
                                 </div>
 

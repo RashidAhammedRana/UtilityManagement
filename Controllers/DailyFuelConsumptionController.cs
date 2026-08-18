@@ -235,6 +235,7 @@ public class DailyFuelConsumptionController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadCompanyList();
         var model = new TblDailyFuelConsumption
         {
             Trdate = DateOnly.FromDateTime(DateTime.Today)
@@ -283,6 +284,7 @@ public class DailyFuelConsumptionController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblDailyFuelConsumption
             .FirstOrDefaultAsync(x => x.Trid == id);
         if (reading == null)
@@ -373,6 +375,18 @@ public class DailyFuelConsumptionController : Controller
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
         return RedirectToAction(nameof(DailyFuelConsumptionList));
+    }
+
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

@@ -10,6 +10,8 @@ public partial class TblDailyFuelConsumption
     [Required(ErrorMessage = "This field is required")]
     public DateOnly? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? NgGenerator { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? NgBoiler { get; set; }

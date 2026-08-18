@@ -67,18 +67,14 @@
         {
             <a asp-action="Create"
                class="btn btn-primary">
-
                 + Create
-
             </a>
         }
 
         <button type="button"
                 class="btn btn-secondary"
                 onclick="window.history.back();">
-
             Back
-
         </button>
 
     </div>
@@ -111,9 +107,7 @@
 
                 <th rowspan="2"
                     class="sl-header">
-
                     SL
-
                 </th>
 
 
@@ -121,9 +115,15 @@
 
                 <th rowspan="2"
                     class="date-header">
-
                     Date
+                </th>
 
+
+                <!-- COMPANY -->
+
+                <th rowspan="2"
+                    class="company-header">
+                    Company
                 </th>
 
 
@@ -131,9 +131,7 @@
 
                 <th colspan="4"
                     class="ng-header">
-
                     NATURAL GAS (NG)
-
                 </th>
 
 
@@ -141,9 +139,7 @@
 
                 <th colspan="4"
                     class="diesel-header">
-
                     DIESEL
-
                 </th>
 
 
@@ -151,9 +147,7 @@
 
                 <th colspan="4"
                     class="cng-header">
-
                     CNG
-
                 </th>
 
 
@@ -161,9 +155,7 @@
 
                 <th colspan="2"
                     class="lpg-header">
-
                     LPG
-
                 </th>
 
 
@@ -171,9 +163,7 @@
 
                 <th rowspan="2"
                     class="actions-header">
-
                     Actions
-
                 </th>
 
             </tr>
@@ -283,9 +273,7 @@
                     =========================== -->
 
                     <td class="text-center fw-semibold">
-
                         @sl
-
                     </td>
 
 
@@ -294,9 +282,16 @@
                     =========================== -->
 
                     <td class="text-center date-cell">
-
                         @item.Trdate?.ToString("dd-MM-yyyy")
+                    </td>
 
+
+                    <!-- ==========================
+                         COMPANY
+                    =========================== -->
+
+                    <td class="text-center company-cell">
+                        @item.Company
                     </td>
 
 
@@ -306,27 +301,19 @@
                     ================================================== -->
 
                     <td class="text-center ng-cell">
-
                         @item.NgGenerator?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center ng-cell">
-
                         @item.NgBoiler?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center ng-cell">
-
                         @item.NgDfma?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center ng-total">
-
                         @item.NgTotal?.ToString("0.00")
-
                     </td>
 
 
@@ -336,27 +323,19 @@
                     ================================================== -->
 
                     <td class="text-center diesel-cell">
-
                         @item.DieselGenerator?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center diesel-cell">
-
                         @item.DieselBoiler?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center diesel-cell">
-
                         @item.DieselFl?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center diesel-total">
-
                         @item.DieselTotal?.ToString("0.00")
-
                     </td>
 
 
@@ -366,27 +345,19 @@
                     ================================================== -->
 
                     <td class="text-center cng-cell">
-
                         @item.CngGenerator?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center cng-cell">
-
                         @item.CngBoiler?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center cng-cell">
-
                         @item.CngDfma?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center cng-total">
-
                         @item.CngTotal?.ToString("0.00")
-
                     </td>
 
 
@@ -396,15 +367,11 @@
                     ================================================== -->
 
                     <td class="text-center lpg-cell">
-
                         @item.LpgBoiler?.ToString("0.00")
-
                     </td>
 
                     <td class="text-center lpg-total">
-
                         @item.LpgTotal?.ToString("0.00")
-
                     </td>
 
 
@@ -422,9 +389,7 @@
                                 <a asp-action="Edit"
                                    asp-route-id="@item.Trid"
                                    class="btn btn-success btn-sm">
-
                                     Edit
-
                                 </a>
                             }
 
@@ -434,9 +399,7 @@
                                 <a asp-action="Delete"
                                    asp-route-id="@item.Trid"
                                    class="btn btn-danger btn-sm">
-
                                     Delete
-
                                 </a>
                             }
 
@@ -469,15 +432,13 @@
 
             <a class="page-link"
                href="@Url.Action(
-                                   "DailyStockConsumptionList",
-                                   new
-                                   {
-                                       page = currentPage - 1,
-                                       searchString = search
-                                   })">
-
+                                          "DailyStockConsumptionList",
+                                          new
+                                          {
+                                              page = currentPage - 1,
+                                              searchString = search
+                                          })">
                 Prev
-
             </a>
 
         </li>
@@ -491,12 +452,12 @@
 
                 <a class="page-link"
                    href="@Url.Action(
-                                           "DailyStockConsumptionList",
-                                           new
-                                           {
-                                               page = i,
-                                               searchString = search
-                                           })">
+                                                  "DailyStockConsumptionList",
+                                                  new
+                                                  {
+                                                      page = i,
+                                                      searchString = search
+                                                  })">
 
                 @i
 
@@ -513,15 +474,13 @@
 
             <a class="page-link"
                href="@Url.Action(
-                                   "DailyStockConsumptionList",
-                                   new
-                                   {
-                                       page = currentPage + 1,
-                                       searchString = search
-                                   })">
-
+                                          "DailyStockConsumptionList",
+                                          new
+                                          {
+                                              page = currentPage + 1,
+                                              searchString = search
+                                          })">
                 Next
-
             </a>
 
         </li>
@@ -560,7 +519,7 @@
 
 
             /* =========================================================
-           SL COLUMN - SMALL
+           SL COLUMN
         ========================================================== */
 
             .stock-table th.sl-header,
@@ -572,7 +531,7 @@
 
 
             /* =========================================================
-           DATE COLUMN - SMALL
+           DATE COLUMN
         ========================================================== */
 
             .stock-table th.date-header,
@@ -584,15 +543,46 @@
 
 
             /* =========================================================
-           ACTION COLUMN - SMALL
+           COMPANY COLUMN
         ========================================================== */
 
-            .stock-table th.actions-header,
-            .stock-table tbody td:last-child {
-                width: 7% !important;
-                min-width: 105px;
-                max-width: 120px;
+            .stock-table th.company-header,
+            .stock-table tbody .company-cell {
+                width: 10% !important;
+                min-width: 160px;
+                max-width: 200px;
             }
+
+
+    .company-header {
+        background-color: #0f766e !important;
+        color: #ffffff !important;
+        font-weight: 700;
+        text-align: center !important;
+        vertical-align: middle !important;
+        white-space: nowrap;
+    }
+
+
+    .company-cell {
+        background-color: #f0fdfa;
+        color: #115e59;
+        font-weight: 600;
+        text-align: center !important;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           ACTION COLUMN
+        ========================================================== */
+
+    .stock-table th.actions-header,
+    .stock-table tbody td:last-child {
+        width: 7% !important;
+        min-width: 105px;
+        max-width: 120px;
+    }
 
 
     /* =========================================================
@@ -601,14 +591,13 @@
 
     .ng-cell,
     .diesel-cell,
-    .cng-cell,
-    .lpg-cell {
+    .cng-cell {
         min-width: 80px;
     }
 
 
     /* =========================================================
-           NG TOTAL - MORE SPACE
+           NG TOTAL
         ========================================================== */
 
     .stock-table th.ng-total-sub,
@@ -619,7 +608,7 @@
 
 
     /* =========================================================
-           DIESEL TOTAL - MORE SPACE
+           DIESEL TOTAL
         ========================================================== */
 
     .stock-table th.diesel-total-sub,
@@ -630,7 +619,7 @@
 
 
     /* =========================================================
-           CNG TOTAL - MORE SPACE
+           CNG TOTAL
         ========================================================== */
 
     .stock-table th.cng-total-sub,
@@ -641,13 +630,42 @@
 
 
     /* =========================================================
-           LPG TOTAL - MORE SPACE
+           LPG - COMPACT
         ========================================================== */
 
-    .stock-table th.lpg-total-sub,
-    .stock-table td.lpg-total {
-        width: 9% !important;
-        min-width: 110px;
+    .lpg-cell {
+        background-color: #fffaf5;
+        text-align: center !important;
+        min-width: 60px !important;
+        width: 60px !important;
+        max-width: 65px !important;
+        padding: 6px 3px !important;
+    }
+
+
+    .lpg-total {
+        background-color: #fff0df !important;
+        color: #b45309;
+        font-weight: 700;
+        text-align: center !important;
+        min-width: 65px !important;
+        width: 65px !important;
+        max-width: 70px !important;
+        padding: 6px 3px !important;
+    }
+
+
+    .stock-table th.lpg-sub {
+        min-width: 60px !important;
+        width: 60px !important;
+        padding: 6px 3px !important;
+    }
+
+
+    .stock-table th.lpg-total-sub {
+        min-width: 65px !important;
+        width: 65px !important;
+        padding: 6px 3px !important;
     }
 
 
@@ -904,24 +922,6 @@
 
 
     /* =========================================================
-           LPG DATA
-        ========================================================== */
-
-    .lpg-cell {
-        background-color: #fffaf5;
-        text-align: center !important;
-    }
-
-
-    .lpg-total {
-        background-color: #fff0df !important;
-        color: #b45309;
-        font-weight: 700;
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
            DATE CELL
         ========================================================== */
 
@@ -1014,6 +1014,7 @@
 
         const searchForm =
             document.getElementById("searchForm");
+
 
         if (searchBox && searchForm) {
 

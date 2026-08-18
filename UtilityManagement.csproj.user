@@ -20,6 +20,15 @@
     <Compile Update="Reports\rptChillerCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\rptDailyEnergyFuelConsumption.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptDailyEnergyFuelConsumption1.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptDailyEnergyFuelConsumption2.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptDieselGeneratorCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>

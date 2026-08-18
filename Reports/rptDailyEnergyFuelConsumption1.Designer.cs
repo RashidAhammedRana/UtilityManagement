@@ -357,7 +357,7 @@
             this.tableCell4.StylePriority.UseFont = false;
             this.tableCell4.StylePriority.UsePadding = false;
             this.tableCell4.StylePriority.UseTextAlignment = false;
-            this.tableCell4.Text = "Solar Generation";
+            this.tableCell4.Text = "Solar Generation(Kwh)";
             this.tableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell4.Weight = 0.0963535249654086D;
             // 
@@ -376,7 +376,7 @@
             this.tableCell5.StylePriority.UseFont = false;
             this.tableCell5.StylePriority.UsePadding = false;
             this.tableCell5.StylePriority.UseTextAlignment = false;
-            this.tableCell5.Text = "Gas Generation";
+            this.tableCell5.Text = "Gas Gen. Generation(Kwh)";
             this.tableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell5.Weight = 0.096353525156578218D;
             // 
@@ -395,7 +395,7 @@
             this.tableCell6.StylePriority.UseFont = false;
             this.tableCell6.StylePriority.UsePadding = false;
             this.tableCell6.StylePriority.UseTextAlignment = false;
-            this.tableCell6.Text = "REB";
+            this.tableCell6.Text = "REB Generation(Kwh)";
             this.tableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell6.Weight = 0.096353526302753484D;
             // 
@@ -414,7 +414,7 @@
             this.tableCell7.StylePriority.UseFont = false;
             this.tableCell7.StylePriority.UsePadding = false;
             this.tableCell7.StylePriority.UseTextAlignment = false;
-            this.tableCell7.Text = "Diesel Generator";
+            this.tableCell7.Text = "Diesel Gen.Generation(Kwh)";
             this.tableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell7.Weight = 0.10649609947998043D;
             // 

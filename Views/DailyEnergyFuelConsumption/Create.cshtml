@@ -12,6 +12,7 @@
             <!-- ===================================================== -->
             <!-- HEADER                                                -->
             <!-- ===================================================== -->
+
             <style>
                 .energy-card {
                     margin-left: 35px;
@@ -23,23 +24,26 @@
                     }
                 }
 
-                /* Remove number input spinner arrows - Chrome, Edge, Safari */
+                /* Remove number input spinner arrows */
                 input[type="number"]::-webkit-inner-spin-button,
                 input[type="number"]::-webkit-outer-spin-button {
                     -webkit-appearance: none;
                     margin: 0;
                 }
 
-                /* Remove number input spinner arrows - Firefox */
                 input[type="number"] {
                     -moz-appearance: textfield;
                     appearance: textfield;
                 }
             </style>
+
+
             <div class="card-header bg-primary text-white">
+
                 <h5 class="mb-0">
                     Add Daily Energy & Fuel Consumption Info
                 </h5>
+
             </div>
 
 
@@ -70,25 +74,79 @@
                         <table class="table table-bordered table-sm align-middle mb-0">
 
                             <thead class="table-dark">
+
                                 <tr>
-                                    <th style="width: 150px; min-width: 150px;">Company</th>
-                                    <th style="width: 90px;">Date</th>
-                                    <th style="width: 85px;">Time</th>
-                                    <th style="width: 75px;">REB</th>
-                                    <th style="width: 75px;">GG-1</th>
-                                    <th style="width: 75px;">GG-2</th>
-                                    <th style="width: 75px;">GG-3</th>
-                                    <th style="width: 75px;">GG-4</th>
-                                    <th style="width: 75px;">DG-1</th>
-                                    <th style="width: 75px;">DG-2</th>
-                                    <th style="width: 75px;">DG-3</th>
-                                    <th style="width: 75px;">DG-4</th>
-                                    <th style="width: 75px;">Solar</th>
-                                    <th style="width: 95px;">Total</th>
-                                    <th style="width: 95px;">Captive Gen.</th>
-                                    <th style="width: 95px;">Ind. Boiler</th>
-                                    <th style="width: 55px;">Add</th>
+
+                                    <th style="width: 150px; min-width: 150px;">
+                                        Company
+                                    </th>
+
+                                    <th style="width: 90px;">
+                                        Date
+                                    </th>
+
+                                    <th style="width: 85px;">
+                                        Time
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        REB
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        GG-1
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        GG-2
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        GG-3
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        GG-4
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        DG-1
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        DG-2
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        DG-3
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        DG-4
+                                    </th>
+
+                                    <th style="width: 75px;">
+                                        Solar
+                                    </th>
+
+                                    <th style="width: 95px;">
+                                        Total
+                                    </th>
+
+                                    <th style="width: 95px;">
+                                        Captive Gen.
+                                    </th>
+
+                                    <th style="width: 95px;">
+                                        Ind. Boiler
+                                    </th>
+
+                                    <th style="width: 55px;">
+                                        Add
+                                    </th>
+
                                 </tr>
+
                             </thead>
 
 
@@ -96,21 +154,24 @@
 
                                 <tr id="inputRow">
 
-                                    <!-- ================================= -->
-                                    <!-- COMPANY                            -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- COMPANY                                        -->
+                                    <!-- ================================================= -->
+
                                     <td>
+
                                         <input type="text"
                                                id="inputCompany"
                                                class="form-control form-control-sm"
                                                value="@ViewBag.CurrentCompany"
                                                readonly />
+
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- DATE                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- DATE                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -123,20 +184,18 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- TIME                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- TIME                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
-                                        <!-- Display AM / PM -->
                                         <input type="text"
                                                id="inputTimeDisplay"
                                                class="form-control form-control-sm"
                                                value="08:00 AM"
                                                readonly />
 
-                                        <!-- Actual value for database -->
                                         <input type="hidden"
                                                id="inputTime"
                                                value="08:00" />
@@ -144,9 +203,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- REB                                -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- REB                                            -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -159,9 +218,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- GG-1                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- GG-1                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -174,9 +233,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- GG-2                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- GG-2                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -189,9 +248,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- GG-3                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- GG-3                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -204,9 +263,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- GG-4                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- GG-4                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -219,9 +278,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- DG-1                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- DG-1                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -234,9 +293,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- DG-2                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- DG-2                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -249,9 +308,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- DG-3                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- DG-3                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -264,9 +323,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- DG-4                               -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- DG-4                                           -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -279,9 +338,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- SOLAR                              -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- SOLAR                                          -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -294,9 +353,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- TOTAL                              -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- TOTAL                                          -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -309,9 +368,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- CAPTIVE GENERATOR                  -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- CAPTIVE GENERATOR                              -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -324,9 +383,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- INDUSTRIAL BOILER                  -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- INDUSTRIAL BOILER                              -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -339,9 +398,9 @@
                                     </td>
 
 
-                                    <!-- ================================= -->
-                                    <!-- ADD BUTTON                         -->
-                                    <!-- ================================= -->
+                                    <!-- ================================================= -->
+                                    <!-- ADD BUTTON                                     -->
+                                    <!-- ================================================= -->
 
                                     <td class="text-center">
 
@@ -382,35 +441,79 @@
                                    id="temporaryTable">
 
                                 <thead class="table-secondary">
+
                                     <tr>
-                                        <th style="width: 150px; min-width: 150px;">Company</th>
-                                        <th style="width: 90px;">Date</th>
-                                        <th style="width: 85px;">Time</th>
-                                        <th style="width: 75px;">REB</th>
-                                        <th style="width: 75px;">GG-1</th>
-                                        <th style="width: 75px;">GG-2</th>
-                                        <th style="width: 75px;">GG-3</th>
-                                        <th style="width: 75px;">GG-4</th>
-                                        <th style="width: 75px;">DG-1</th>
-                                        <th style="width: 75px;">DG-2</th>
-                                        <th style="width: 75px;">DG-3</th>
-                                        <th style="width: 75px;">DG-4</th>
-                                        <th style="width: 75px;">Solar</th>
-                                        <th style="width: 95px;">Total</th>
-                                        <th style="width: 95px;">Captive Gen.</th>
-                                        <th style="width: 95px;">Ind. Boiler</th>
+
+                                        <th style="width: 150px; min-width: 150px;">
+                                            Company
+                                        </th>
+
+                                        <th style="width: 90px;">
+                                            Date
+                                        </th>
+
+                                        <th style="width: 85px;">
+                                            Time
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            REB
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            GG-1
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            GG-2
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            GG-3
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            GG-4
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            DG-1
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            DG-2
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            DG-3
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            DG-4
+                                        </th>
+
+                                        <th style="width: 75px;">
+                                            Solar
+                                        </th>
+
+                                        <th style="width: 95px;">
+                                            Total
+                                        </th>
+
+                                        <th style="width: 95px;">
+                                            Captive Gen.
+                                        </th>
+
+                                        <th style="width: 95px;">
+                                            Ind. Boiler
+                                        </th>
+
                                     </tr>
 
                                 </thead>
 
 
                                 <tbody id="temporaryBody">
-
-                                    <!--
-                                        Temporary rows
-                                        will be added here
-                                    -->
-
                                 </tbody>
 
 
@@ -516,296 +619,121 @@
                 const currentCompany =
                     @Html.Raw(
                         System.Text.Json.JsonSerializer.Serialize(
-                                        ViewBag.CurrentCompany ?? ""
+                                ViewBag.CurrentCompany ?? ""
                         )
-                                                        );
+                                );
 
 
-        // ======================================================
-        // TODAY
-        // ======================================================
+            // ======================================================
+            // TODAY
+            // ======================================================
 
-        const today =
-            "@DateTime.Today.ToString("yyyy-MM-dd")";
-
-
-        // ======================================================
-        // ELEMENTS
-        // ======================================================
-
-        const addButton =
-            document.getElementById("addRow");
+            const today =
+                "@DateTime.Today.ToString("yyyy-MM-dd")";
 
 
-        const temporaryBody =
-            document.getElementById("temporaryBody");
+            // ======================================================
+            // ELEMENTS
+            // ======================================================
+
+            const addButton =
+                document.getElementById("addRow");
 
 
-        const hiddenContainer =
-            document.getElementById(
-                "hiddenItemsContainer"
-            );
+            const temporaryBody =
+                document.getElementById(
+                    "temporaryBody"
+                );
 
 
-        const temporaryFooter =
-            document.getElementById(
-                "temporaryFooter"
-            );
+            const hiddenContainer =
+                document.getElementById(
+                    "hiddenItemsContainer"
+                );
 
 
-        const grandTotalElement =
-            document.getElementById(
-                "grandTotal"
-            );
+            const temporaryFooter =
+                document.getElementById(
+                    "temporaryFooter"
+                );
 
 
-        // ======================================================
-        // ENERGY FIELDS
-        // ======================================================
-
-        const energyFields = [
-
-            "Reb",
-
-            "Gg1",
-
-            "Gg2",
-
-            "Gg3",
-
-            "Gg4",
-
-            "Dg1",
-
-            "Dg2",
-
-            "Dg3",
-
-            "Dg4",
-
-            "Solar"
-
-        ];
+            const grandTotalElement =
+                document.getElementById(
+                    "grandTotal"
+                );
 
 
-        // ======================================================
-        // ROW COUNT
-        // ======================================================
+            // ======================================================
+            // MAXIMUM ROW LIMIT
+            // ======================================================
 
-        let rowCount = 0;
-
-
-        // ======================================================
-        // GET INPUT VALUE
-        // ======================================================
-
-        function getInputValue(id) {
-
-            const element =
-                document.getElementById(id);
+            const MAX_ROWS = 24;
 
 
-            if (!element) {
+            // ======================================================
+            // ENERGY FIELDS
+            // ======================================================
 
-                return "";
+            const energyFields = [
+
+                "Reb",
+
+                "Gg1",
+
+                "Gg2",
+
+                "Gg3",
+
+                "Gg4",
+
+                "Dg1",
+
+                "Dg2",
+
+                "Dg3",
+
+                "Dg4",
+
+                "Solar"
+
+            ];
+
+
+            // ======================================================
+            // ROW COUNT
+            // ======================================================
+
+            let rowCount = 0;
+
+
+            // ======================================================
+            // GET INPUT VALUE
+            // ======================================================
+
+            function getInputValue(id) {
+
+                const element =
+                    document.getElementById(id);
+
+
+                if (!element) {
+
+                    return "";
+
+                }
+
+
+                return element.value;
 
             }
 
 
-            return element.value;
-
-        }
-
-
-        // ======================================================
-        // CALCULATE INPUT TOTAL
-        // ======================================================
-
-        function calculateInputTotal() {
-
-            let total = 0;
-
-
-            energyFields.forEach(
-                function (field) {
-
-                    const value =
-                        parseFloat(
-                            getInputValue(
-                                "input" + field
-                            )
-                        );
-
-
-                    if (!isNaN(value)) {
-
-                        total += value;
-
-                    }
-
-                }
-            );
-
-
-            document.getElementById(
-                "inputTotal"
-            ).value = total;
-
-        }
-
-
-        // ======================================================
-        // INPUT TOTAL CALCULATION
-        // ======================================================
-
-        document.addEventListener(
-            "input",
-            function (event) {
-
-                if (
-                    event.target.classList.contains(
-                        "energy-input"
-                    )
-                ) {
-
-                    calculateInputTotal();
-
-                }
-
-            }
-        );
-
-
-        // ======================================================
-        // GET TIME
-        //
-        // 08:00 AM
-        // 09:00 AM
-        // 10:00 AM
-        // ...
-        // 12:00 PM
-        // 01:00 PM
-        // ...
-        // 11:00 PM
-        // 12:00 AM
-        // ======================================================
-
-        function getTime(index) {
-
-            const hour24 =
-                (8 + index) % 24;
-
-
-            const period =
-                hour24 >= 12
-                    ? "PM"
-                    : "AM";
-
-
-            let hour12 =
-                hour24 % 12;
-
-
-            if (hour12 === 0) {
-
-                hour12 = 12;
-
-            }
-
-
-            const actualHour =
-                String(hour24)
-                    .padStart(2, "0");
-
-
-            const displayHour =
-                String(hour12)
-                    .padStart(2, "0");
-
-
-            return {
-
-                actual:
-                    actualHour + ":00",
-
-                display:
-                    displayHour +
-                    ":00 " +
-                    period
-
-            };
-
-        }
-
-
-        // ======================================================
-        // ADD BUTTON
-        // ======================================================
-
-        addButton.addEventListener(
-            "click",
-            function () {
-
-
-                // ==================================================
-                // GET BASIC VALUES
-                // ==================================================
-
-                const company =
-                    getInputValue(
-                        "inputCompany"
-                    );
-
-
-                const date =
-                    getInputValue(
-                        "inputDate"
-                    );
-
-
-                const time =
-                    getInputValue(
-                        "inputTime"
-                    );
-
-
-                const timeDisplay =
-                    getInputValue(
-                        "inputTimeDisplay"
-                    );
-
-
-                // ==================================================
-                // VALIDATION
-                // ==================================================
-
-                if (!company) {
-
-                    alert(
-                        "Company is required."
-                    );
-
-                    return;
-
-                }
-
-
-                if (!date) {
-
-                    alert(
-                        "Date is required."
-                    );
-
-                    return;
-
-                }
-
-
-                // ==================================================
-                // GET ENERGY VALUES
-                // ==================================================
-
-                const values = {};
+            // ======================================================
+            // CALCULATE INPUT TOTAL
+            // ======================================================
+
+            function calculateInputTotal() {
 
                 let total = 0;
 
@@ -814,22 +742,618 @@
                     function (field) {
 
                         const value =
-                            getInputValue(
-                                "input" + field
+                            parseFloat(
+                                getInputValue(
+                                    "input" + field
+                                )
                             );
 
 
-                        values[field] =
-                            value;
+                        if (!isNaN(value)) {
+
+                            total += value;
+
+                        }
+
+                    }
+                );
 
 
-                        const number =
-                            parseFloat(value);
+                document.getElementById(
+                    "inputTotal"
+                ).value =
+                    total.toFixed(2);
+
+            }
 
 
-                        if (!isNaN(number)) {
+            // ======================================================
+            // INPUT TOTAL CALCULATION
+            // ======================================================
 
-                            total += number;
+            document.addEventListener(
+                "input",
+                function (event) {
+
+                    if (
+                        event.target.classList.contains(
+                            "energy-input"
+                        )
+                    ) {
+
+                        calculateInputTotal();
+
+                    }
+
+                }
+            );
+
+
+            // ======================================================
+            // GET TIME
+            // ======================================================
+
+            function getTime(index) {
+
+                const hour24 =
+                    (8 + index) % 24;
+
+
+                const period =
+                    hour24 >= 12
+                        ? "PM"
+                        : "AM";
+
+
+                let hour12 =
+                    hour24 % 12;
+
+
+                if (hour12 === 0) {
+
+                    hour12 = 12;
+
+                }
+
+
+                const actualHour =
+                    String(hour24)
+                        .padStart(2, "0");
+
+
+                const displayHour =
+                    String(hour12)
+                        .padStart(2, "0");
+
+
+                return {
+
+                    actual:
+                        actualHour + ":00",
+
+                    display:
+                        displayHour +
+                        ":00 " +
+                        period
+
+                };
+
+            }
+
+
+            // ======================================================
+            // ADD BUTTON
+            // ======================================================
+
+            addButton.addEventListener(
+                "click",
+                function () {
+
+
+                    // ==================================================
+                    // MAXIMUM 24 ROW CHECK
+                    // ==================================================
+
+                    if (rowCount >= MAX_ROWS) {
+
+                        alert(
+                            "Maximum 24 readings are allowed for one day."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // ==================================================
+                    // GET BASIC VALUES
+                    // ==================================================
+
+                    const company =
+                        getInputValue(
+                            "inputCompany"
+                        );
+
+
+                    const date =
+                        getInputValue(
+                            "inputDate"
+                        );
+
+
+                    const time =
+                        getInputValue(
+                            "inputTime"
+                        );
+
+
+                    const timeDisplay =
+                        getInputValue(
+                            "inputTimeDisplay"
+                        );
+
+
+                    // ==================================================
+                    // VALIDATION
+                    // ==================================================
+
+                    if (!company) {
+
+                        alert(
+                            "Company is required."
+                        );
+
+                        return;
+
+                    }
+
+
+                    if (!date) {
+
+                        alert(
+                            "Date is required."
+                        );
+
+                        return;
+
+                    }
+
+
+                    // ==================================================
+                    // GET ENERGY VALUES
+                    // ==================================================
+
+                    const values = {};
+
+                    let total = 0;
+
+
+                    energyFields.forEach(
+                        function (field) {
+
+                            const value =
+                                getInputValue(
+                                    "input" + field
+                                );
+
+
+                            values[field] =
+                                value;
+
+
+                            const number =
+                                parseFloat(value);
+
+
+                            if (!isNaN(number)) {
+
+                                total += number;
+
+                            }
+
+                        }
+                    );
+
+
+                    // ==================================================
+                    // OTHER VALUES
+                    // ==================================================
+
+                    values.CaptiveGenerator =
+                        getInputValue(
+                            "inputCaptiveGenerator"
+                        );
+
+
+                    values.IndustrialBoiler =
+                        getInputValue(
+                            "inputIndustrialBoiler"
+                        );
+
+
+                    // ==================================================
+                    // CREATE TEMPORARY ROW
+                    // ==================================================
+
+                    const row =
+                        document.createElement(
+                            "tr"
+                        );
+
+
+                    row.className =
+                        "temporary-row";
+
+
+                    row.dataset.index =
+                        rowCount;
+
+
+                    // ==================================================
+                    // ROW HTML
+                    // ==================================================
+
+                    row.innerHTML = `
+
+                        <!-- COMPANY -->
+
+                        <td>
+
+                            <input type="text"
+                                   class="form-control form-control-sm"
+                                   value="${escapeHtml(company)}"
+                                   readonly>
+
+                        </td>
+
+
+                        <!-- DATE -->
+
+                        <td>
+
+                            <input type="date"
+                                   class="form-control form-control-sm"
+                                   value="${date}"
+                                   readonly>
+
+                        </td>
+
+
+                        <!-- TIME -->
+
+                        <td>
+
+                            <input type="text"
+                                   class="form-control form-control-sm"
+                                   value="${escapeHtml(timeDisplay)}"
+                                   readonly>
+
+                            <input type="hidden"
+                                   class="row-time"
+                                   value="${time}">
+
+                        </td>
+
+
+                        <!-- REB -->
+
+                        ${createEditableCell(
+                            "Reb",
+                            values.Reb
+                        )}
+
+
+                        <!-- GG-1 -->
+
+                        ${createEditableCell(
+                            "Gg1",
+                            values.Gg1
+                        )}
+
+
+                        <!-- GG-2 -->
+
+                        ${createEditableCell(
+                            "Gg2",
+                            values.Gg2
+                        )}
+
+
+                        <!-- GG-3 -->
+
+                        ${createEditableCell(
+                            "Gg3",
+                            values.Gg3
+                        )}
+
+
+                        <!-- GG-4 -->
+
+                        ${createEditableCell(
+                            "Gg4",
+                            values.Gg4
+                        )}
+
+
+                        <!-- DG-1 -->
+
+                        ${createEditableCell(
+                            "Dg1",
+                            values.Dg1
+                        )}
+
+
+                        <!-- DG-2 -->
+
+                        ${createEditableCell(
+                            "Dg2",
+                            values.Dg2
+                        )}
+
+
+                        <!-- DG-3 -->
+
+                        ${createEditableCell(
+                            "Dg3",
+                            values.Dg3
+                        )}
+
+
+                        <!-- DG-4 -->
+
+                        ${createEditableCell(
+                            "Dg4",
+                            values.Dg4
+                        )}
+
+
+                        <!-- SOLAR -->
+
+                        ${createEditableCell(
+                            "Solar",
+                            values.Solar
+                        )}
+
+
+                        <!-- TOTAL -->
+
+                        <td>
+
+                            <input type="number"
+                                   class="form-control form-control-sm row-total"
+                                   value="${total.toFixed(2)}"
+                                   readonly>
+
+                        </td>
+
+
+                        <!-- CAPTIVE GENERATOR -->
+
+                        ${createEditableCell(
+                            "CaptiveGenerator",
+                            values.CaptiveGenerator
+                        )}
+
+
+                        <!-- INDUSTRIAL BOILER -->
+
+                        ${createEditableCell(
+                            "IndustrialBoiler",
+                            values.IndustrialBoiler
+                        )}
+
+                    `;
+
+
+                    // ==================================================
+                    // ADD ROW TO TEMPORARY TABLE
+                    // ==================================================
+
+                    temporaryBody.appendChild(row);
+
+
+                    // ==================================================
+                    // CREATE HIDDEN POST FIELDS
+                    // ==================================================
+
+                    createHiddenInput(
+                        rowCount,
+                        "Company",
+                        company
+                    );
+
+
+                    createHiddenInput(
+                        rowCount,
+                        "Trdate",
+                        date
+                    );
+
+
+                    createHiddenInput(
+                        rowCount,
+                        "Time",
+                        time
+                    );
+
+
+                    energyFields.forEach(
+                        function (field) {
+
+                            createHiddenInput(
+                                rowCount,
+                                field,
+                                values[field]
+                            );
+
+                        }
+                    );
+
+
+                    createHiddenInput(
+                        rowCount,
+                        "Total",
+                        total.toFixed(2)
+                    );
+
+
+                    createHiddenInput(
+                        rowCount,
+                        "CaptiveGenerator",
+                        values.CaptiveGenerator
+                    );
+
+
+                    createHiddenInput(
+                        rowCount,
+                        "IndustrialBoiler",
+                        values.IndustrialBoiler
+                    );
+
+
+                    // ==================================================
+                    // SET EDIT EVENTS
+                    // ==================================================
+
+                    setupRowEvents(row);
+
+
+                    // ==================================================
+                    // INCREASE ROW COUNT
+                    // ==================================================
+
+                    rowCount++;
+
+
+                    // ==================================================
+                    // SHOW FOOTER
+                    // ==================================================
+
+                    temporaryFooter.classList.remove(
+                        "d-none"
+                    );
+
+
+                    // ==================================================
+                    // UPDATE GRAND TOTAL
+                    // ==================================================
+
+                    updateGrandTotal();
+
+
+                    // ==================================================
+                    // RESET INPUT ROW
+                    // ==================================================
+
+                    if (rowCount < MAX_ROWS) {
+
+                        resetInputRow();
+
+                    }
+
+                }
+            );
+
+
+            // ======================================================
+            // CREATE EDITABLE CELL
+            // ======================================================
+
+            function createEditableCell(
+                field,
+                value
+            ) {
+
+                return `
+
+                    <td>
+
+                        <input type="number"
+                               step="any"
+                               class="form-control form-control-sm editable-field"
+                               data-field="${field}"
+                               value="${value ?? ""}">
+
+                    </td>
+
+                `;
+
+            }
+
+
+            // ======================================================
+            // SETUP EDIT EVENTS
+            // ======================================================
+
+            function setupRowEvents(row) {
+
+                const editableFields =
+                    row.querySelectorAll(
+                        ".editable-field"
+                    );
+
+
+                editableFields.forEach(
+                    function (input) {
+
+                        input.addEventListener(
+                            "input",
+                            function () {
+
+                                updateTemporaryRow(
+                                    row
+                                );
+
+                            }
+                        );
+
+                    }
+                );
+
+            }
+
+
+            // ======================================================
+            // UPDATE TEMPORARY ROW
+            // ======================================================
+
+            function updateTemporaryRow(row) {
+
+                const index =
+                    parseInt(
+                        row.dataset.index
+                    );
+
+
+                let total = 0;
+
+
+                // ==================================================
+                // RECALCULATE TOTAL
+                // ==================================================
+
+                energyFields.forEach(
+                    function (field) {
+
+                        const input =
+                            row.querySelector(
+                                `[data-field="${field}"]`
+                            );
+
+
+                        if (input) {
+
+                            const value =
+                                parseFloat(
+                                    input.value
+                                );
+
+
+                            if (!isNaN(value)) {
+
+                                total += value;
+
+                            }
 
                         }
 
@@ -838,281 +1362,67 @@
 
 
                 // ==================================================
-                // OTHER VALUES
+                // UPDATE TOTAL DISPLAY
                 // ==================================================
 
-                values.CaptiveGenerator =
-                    getInputValue(
-                        "inputCaptiveGenerator"
+                const totalInput =
+                    row.querySelector(
+                        ".row-total"
                     );
 
 
-                values.IndustrialBoiler =
-                    getInputValue(
-                        "inputIndustrialBoiler"
-                    );
+                if (totalInput) {
+
+                    totalInput.value =
+                        total.toFixed(2);
+
+                }
 
 
                 // ==================================================
-                // CREATE TEMPORARY ROW
+                // UPDATE HIDDEN VALUES
                 // ==================================================
-
-                const row =
-                    document.createElement(
-                        "tr"
-                    );
-
-
-                row.className =
-                    "temporary-row";
-
-
-                row.dataset.index =
-                    rowCount;
-
-
-                // ==================================================
-                // ROW HTML
-                // ==================================================
-
-                row.innerHTML = `
-
-                    <!-- COMPANY -->
-
-                    <td>
-
-                        <input type="text"
-                               class="form-control form-control-sm"
-                               value="${escapeHtml(company)}"
-                               readonly>
-
-                    </td>
-
-
-                    <!-- DATE -->
-
-                    <td>
-
-                        <input type="date"
-                               class="form-control form-control-sm"
-                               value="${date}"
-                               readonly>
-
-                    </td>
-
-
-                    <!-- TIME -->
-
-                    <td>
-
-                        <input type="text"
-                               class="form-control form-control-sm"
-                               value="${escapeHtml(timeDisplay)}"
-                               readonly>
-
-                        <input type="hidden"
-                               class="row-time"
-                               value="${time}">
-
-                    </td>
-
-
-                    <!-- REB -->
-
-                    ${createEditableCell(
-                        "Reb",
-                        values.Reb
-                    )}
-
-
-                    <!-- GG-1 -->
-
-                    ${createEditableCell(
-                        "Gg1",
-                        values.Gg1
-                    )}
-
-
-                    <!-- GG-2 -->
-
-                    ${createEditableCell(
-                        "Gg2",
-                        values.Gg2
-                    )}
-
-
-                    <!-- GG-3 -->
-
-                    ${createEditableCell(
-                        "Gg3",
-                        values.Gg3
-                    )}
-
-
-                    <!-- GG-4 -->
-
-                    ${createEditableCell(
-                        "Gg4",
-                        values.Gg4
-                    )}
-
-
-                    <!-- DG-1 -->
-
-                    ${createEditableCell(
-                        "Dg1",
-                        values.Dg1
-                    )}
-
-
-                    <!-- DG-2 -->
-
-                    ${createEditableCell(
-                        "Dg2",
-                        values.Dg2
-                    )}
-
-
-                    <!-- DG-3 -->
-
-                    ${createEditableCell(
-                        "Dg3",
-                        values.Dg3
-                    )}
-
-
-                    <!-- DG-4 -->
-
-                    ${createEditableCell(
-                        "Dg4",
-                        values.Dg4
-                    )}
-
-
-                    <!-- SOLAR -->
-
-                    ${createEditableCell(
-                        "Solar",
-                        values.Solar
-                    )}
-
-
-                    <!-- TOTAL -->
-
-                    <td>
-
-                        <input type="number"
-                               class="form-control form-control-sm row-total"
-                               value="${total.toFixed(2)}"
-                               readonly>
-
-                    </td>
-
-
-                    <!-- CAPTIVE GENERATOR -->
-
-                    ${createEditableCell(
-                        "CaptiveGenerator",
-                        values.CaptiveGenerator
-                    )}
-
-
-                    <!-- INDUSTRIAL BOILER -->
-
-                    ${createEditableCell(
-                        "IndustrialBoiler",
-                        values.IndustrialBoiler
-                    )}
-
-                `;
-
-
-                // ==================================================
-                // ADD ROW TO TEMPORARY TABLE
-                // ==================================================
-
-                temporaryBody.appendChild(row);
-
-
-                // ==================================================
-                // CREATE HIDDEN POST FIELDS
-                // ==================================================
-
-                createHiddenInput(
-                    rowCount,
-                    "Company",
-                    company
-                );
-
-
-                createHiddenInput(
-                    rowCount,
-                    "Trdate",
-                    date
-                );
-
-
-                createHiddenInput(
-                    rowCount,
-                    "Time",
-                    time
-                );
-
 
                 energyFields.forEach(
                     function (field) {
 
-                        createHiddenInput(
-                            rowCount,
+                        updateHiddenInput(
+                            index,
                             field,
-                            values[field]
+                            getRowValue(
+                                row,
+                                field
+                            )
                         );
 
                     }
                 );
 
 
-                createHiddenInput(
-                    rowCount,
+                updateHiddenInput(
+                    index,
                     "Total",
                     total.toFixed(2)
                 );
 
 
-                createHiddenInput(
-                    rowCount,
+                updateHiddenInput(
+                    index,
                     "CaptiveGenerator",
-                    values.CaptiveGenerator
+                    getRowValue(
+                        row,
+                        "CaptiveGenerator"
+                    )
                 );
 
 
-                createHiddenInput(
-                    rowCount,
+                updateHiddenInput(
+                    index,
                     "IndustrialBoiler",
-                    values.IndustrialBoiler
-                );
-
-
-                // ==================================================
-                // SET EDIT EVENTS
-                // ==================================================
-
-                setupRowEvents(row);
-
-
-                // ==================================================
-                // INCREASE ROW COUNT
-                // ==================================================
-
-                rowCount++;
-
-
-                // ==================================================
-                // SHOW FOOTER
-                // ==================================================
-
-                temporaryFooter.classList.remove(
-                    "d-none"
+                    getRowValue(
+                        row,
+                        "IndustrialBoiler"
+                    )
                 );
 
 
@@ -1122,410 +1432,324 @@
 
                 updateGrandTotal();
 
+            }
 
-                // ==================================================
-                // RESET INPUT ROW
-                // ==================================================
 
-                resetInputRow();
+            // ======================================================
+            // GET TEMPORARY ROW VALUE
+            // ======================================================
+
+            function getRowValue(
+                row,
+                field
+            ) {
+
+                const input =
+                    row.querySelector(
+                        `[data-field="${field}"]`
+                    );
+
+
+                return input
+                    ? input.value
+                    : "";
 
             }
-        );
 
 
-        // ======================================================
-        // CREATE EDITABLE CELL
-        // ======================================================
+            // ======================================================
+            // CREATE HIDDEN INPUT
+            // ======================================================
 
-        function createEditableCell(
-            field,
-            value
-        ) {
+            function createHiddenInput(
+                index,
+                field,
+                value
+            ) {
 
-            return `
-
-                <td>
-
-                    <input type="number"
-                           step="any"
-                           class="form-control form-control-sm editable-field"
-                           data-field="${field}"
-                           value="${value ?? ""}">
-
-                </td>
-
-            `;
-
-        }
+                const input =
+                    document.createElement(
+                        "input"
+                    );
 
 
-        // ======================================================
-        // SETUP EDIT EVENTS
-        // ======================================================
+                input.type =
+                    "hidden";
 
-        function setupRowEvents(row) {
 
-            const editableFields =
-                row.querySelectorAll(
-                    ".editable-field"
+                input.name =
+                    `Items[${index}].${field}`;
+
+
+                input.value =
+                    value ?? "";
+
+
+                input.dataset.index =
+                    index;
+
+
+                input.dataset.field =
+                    field;
+
+
+                hiddenContainer.appendChild(
+                    input
+                );
+
+            }
+
+
+            // ======================================================
+            // UPDATE HIDDEN INPUT
+            // ======================================================
+
+            function updateHiddenInput(
+                index,
+                field,
+                value
+            ) {
+
+                const input =
+                    hiddenContainer.querySelector(
+                        `input[data-index="${index}"][data-field="${field}"]`
+                    );
+
+
+                if (input) {
+
+                    input.value =
+                        value ?? "";
+
+                }
+
+            }
+
+
+            // ======================================================
+            // RESET INPUT ROW
+            // ======================================================
+
+            function resetInputRow() {
+
+
+                // ==================================================
+                // COMPANY
+                // ==================================================
+
+                document.getElementById(
+                    "inputCompany"
+                ).value =
+                    currentCompany;
+
+
+                // ==================================================
+                // DATE
+                // ==================================================
+
+                document.getElementById(
+                    "inputDate"
+                ).value =
+                    today;
+
+
+                // ==================================================
+                // NEXT TIME
+                // ==================================================
+
+                const nextTime =
+                    getTime(rowCount);
+
+
+                document.getElementById(
+                    "inputTime"
+                ).value =
+                    nextTime.actual;
+
+
+                document.getElementById(
+                    "inputTimeDisplay"
+                ).value =
+                    nextTime.display;
+
+
+                // ==================================================
+                // CLEAR ENERGY FIELDS
+                // ==================================================
+
+                energyFields.forEach(
+                    function (field) {
+
+                        document.getElementById(
+                            "input" + field
+                        ).value = "";
+
+                    }
                 );
 
 
-            editableFields.forEach(
-                function (input) {
+                // ==================================================
+                // CLEAR OTHER FIELDS
+                // ==================================================
 
-                    input.addEventListener(
-                        "input",
-                        function () {
+                document.getElementById(
+                    "inputCaptiveGenerator"
+                ).value = "";
 
-                            updateTemporaryRow(
-                                row
-                            );
+
+                document.getElementById(
+                    "inputIndustrialBoiler"
+                ).value = "";
+
+
+                // ==================================================
+                // RESET TOTAL
+                // ==================================================
+
+                document.getElementById(
+                    "inputTotal"
+                ).value =
+                    "0.00";
+
+
+                // ==================================================
+                // FOCUS REB
+                // ==================================================
+
+                document.getElementById(
+                    "inputReb"
+                ).focus();
+
+            }
+
+
+            // ======================================================
+            // GRAND TOTAL
+            // ======================================================
+
+            function updateGrandTotal() {
+
+                let total = 0;
+
+
+                temporaryBody
+                    .querySelectorAll(
+                        ".row-total"
+                    )
+                    .forEach(
+                        function (input) {
+
+                            const value =
+                                parseFloat(
+                                    input.value
+                                );
+
+
+                            if (!isNaN(value)) {
+
+                                total += value;
+
+                            }
 
                         }
                     );
 
-                }
-            );
 
-        }
-
-
-        // ======================================================
-        // UPDATE TEMPORARY ROW
-        // ======================================================
-
-        function updateTemporaryRow(row) {
-
-            const index =
-                parseInt(
-                    row.dataset.index
-                );
-
-
-            let total = 0;
-
-
-            // ==================================================
-            // RECALCULATE TOTAL
-            // ==================================================
-
-            energyFields.forEach(
-                function (field) {
-
-                    const input =
-                        row.querySelector(
-                            `[data-field="${field}"]`
-                        );
-
-
-                    if (input) {
-
-                        const value =
-                            parseFloat(
-                                input.value
-                            );
-
-
-                        if (!isNaN(value)) {
-
-                            total += value;
-
-                        }
-
-                    }
-
-                }
-            );
-
-
-            // ==================================================
-            // UPDATE TOTAL DISPLAY
-            // ==================================================
-
-            const totalInput =
-                row.querySelector(
-                    ".row-total"
-                );
-
-
-            if (totalInput) {
-
-                totalInput.value =
+                grandTotalElement.textContent =
                     total.toFixed(2);
 
             }
 
 
-            // ==================================================
-            // UPDATE HIDDEN VALUES
-            // ==================================================
+            // ======================================================
+            // HTML ESCAPE
+            // ======================================================
 
-            energyFields.forEach(
-                function (field) {
+            function escapeHtml(value) {
 
-                    updateHiddenInput(
-                        index,
-                        field,
-                        getRowValue(
-                            row,
-                            field
-                        )
-                    );
+                if (
+                    value === null ||
+                    value === undefined
+                ) {
+
+                    return "";
 
                 }
-            );
 
 
-            updateHiddenInput(
-                index,
-                "Total",
-                total.toFixed(2)
-            );
+                return String(value)
 
+                    .replace(
+                        /&/g,
+                        "&amp;"
+                    )
 
-            updateHiddenInput(
-                index,
-                "CaptiveGenerator",
-                getRowValue(
-                    row,
-                    "CaptiveGenerator"
-                )
-            );
+                    .replace(
+                        /</g,
+                        "&lt;"
+                    )
 
+                    .replace(
+                        />/g,
+                        "&gt;"
+                    )
 
-            updateHiddenInput(
-                index,
-                "IndustrialBoiler",
-                getRowValue(
-                    row,
-                    "IndustrialBoiler"
-                )
-            );
+                    .replace(
+                        /"/g,
+                        "&quot;"
+                    )
 
-
-            // ==================================================
-            // UPDATE GRAND TOTAL
-            // ==================================================
-
-            updateGrandTotal();
-
-        }
-
-
-        // ======================================================
-        // GET TEMPORARY ROW VALUE
-        // ======================================================
-
-        function getRowValue(
-            row,
-            field
-        ) {
-
-            const input =
-                row.querySelector(
-                    `[data-field="${field}"]`
-                );
-
-
-            return input
-                ? input.value
-                : "";
-
-        }
-
-
-        // ======================================================
-        // CREATE HIDDEN INPUT
-        // ======================================================
-
-        function createHiddenInput(
-            index,
-            field,
-            value
-        ) {
-
-            const input =
-                document.createElement(
-                    "input"
-                );
-
-
-            input.type =
-                "hidden";
-
-
-            input.name =
-                `Items[${index}].${field}`;
-
-
-            input.value =
-                value ?? "";
-
-
-            input.dataset.index =
-                index;
-
-
-            input.dataset.field =
-                field;
-
-
-            hiddenContainer.appendChild(
-                input
-            );
-
-        }
-
-
-        // ======================================================
-        // UPDATE HIDDEN INPUT
-        // ======================================================
-
-        function updateHiddenInput(
-            index,
-            field,
-            value
-        ) {
-
-            const input =
-                hiddenContainer.querySelector(
-                    `input[data-index="${index}"][data-field="${field}"]`
-                );
-
-
-            if (input) {
-
-                input.value =
-                    value ?? "";
+                    .replace(
+                        /'/g,
+                        "&#039;"
+                    );
 
             }
 
-        }
 
+            // ======================================================
+            // SAVE VALIDATION
+            // ======================================================
 
-        // ======================================================
-        // RESET INPUT ROW
-        // ======================================================
-
-        function resetInputRow() {
-
-
-            // ==================================================
-            // COMPANY
-            // ==================================================
-
-            document.getElementById(
-                "inputCompany"
-            ).value =
-                currentCompany;
-
-
-            // ==================================================
-            // DATE
-            // ==================================================
-
-            document.getElementById(
-                "inputDate"
-            ).value =
-                today;
-
-
-            // ==================================================
-            // NEXT TIME
-            // ==================================================
-
-            const nextTime =
-                getTime(rowCount);
-
-
-            document.getElementById(
-                "inputTime"
-            ).value =
-                nextTime.actual;
-
-
-            document.getElementById(
-                "inputTimeDisplay"
-            ).value =
-                nextTime.display;
-
-
-            // ==================================================
-            // CLEAR ENERGY FIELDS
-            // ==================================================
-
-            energyFields.forEach(
-                function (field) {
-
-                    document.getElementById(
-                        "input" + field
-                    ).value = "";
-
-                }
-            );
-
-
-            // ==================================================
-            // CLEAR OTHER FIELDS
-            // ==================================================
-
-            document.getElementById(
-                "inputCaptiveGenerator"
-            ).value = "";
-
-
-            document.getElementById(
-                "inputIndustrialBoiler"
-            ).value = "";
-
-
-            // ==================================================
-            // RESET TOTAL
-            // ==================================================
-
-            document.getElementById(
-                "inputTotal"
-            ).value =
-                "0.00";
-
-
-            // ==================================================
-            // FOCUS REB
-            // ==================================================
-
-            document.getElementById(
-                "inputReb"
-            ).focus();
-
-        }
-
-
-        // ======================================================
-        // GRAND TOTAL
-        // ======================================================
-
-        function updateGrandTotal() {
-
-            let total = 0;
-
-
-            temporaryBody
-                .querySelectorAll(
-                    ".row-total"
+            document
+                .getElementById(
+                    "consumptionForm"
                 )
-                .forEach(
-                    function (input) {
+                .addEventListener(
+                    "submit",
+                    function (event) {
 
-                        const value =
-                            parseFloat(
-                                input.value
+
+                        if (rowCount === 0) {
+
+                            event.preventDefault();
+
+
+                            alert(
+                                "Please add at least one reading before saving."
                             );
 
 
-                        if (!isNaN(value)) {
+                            return false;
 
-                            total += value;
+                        }
+
+
+                        // ==================================================
+                        // EXTRA 24 ROW SAFETY CHECK
+                        // ==================================================
+
+                        if (rowCount > MAX_ROWS) {
+
+                            event.preventDefault();
+
+
+                            alert(
+                                "Maximum 24 readings are allowed for one day."
+                            );
+
+
+                            return false;
 
                         }
 
@@ -1533,96 +1757,14 @@
                 );
 
 
-            grandTotalElement.textContent =
-                total.toFixed(2);
+            // ======================================================
+            // INITIAL CALCULATION
+            // ======================================================
+
+            calculateInputTotal();
 
         }
-
-
-        // ======================================================
-        // HTML ESCAPE
-        // ======================================================
-
-        function escapeHtml(value) {
-
-            if (
-                value === null ||
-                value === undefined
-            ) {
-
-                return "";
-
-            }
-
-
-            return String(value)
-
-                .replace(
-                    /&/g,
-                    "&amp;"
-                )
-
-                .replace(
-                    /</g,
-                    "&lt;"
-                )
-
-                .replace(
-                    />/g,
-                    "&gt;"
-                )
-
-                .replace(
-                    /"/g,
-                    "&quot;"
-                )
-
-                .replace(
-                    /'/g,
-                    "&#039;"
-                );
-
-        }
-
-
-        // ======================================================
-        // SAVE VALIDATION
-        // ======================================================
-
-        document
-            .getElementById(
-                "consumptionForm"
-            )
-            .addEventListener(
-                "submit",
-                function (event) {
-
-                    if (rowCount === 0) {
-
-                        event.preventDefault();
-
-
-                        alert(
-                            "Please add at least one reading before saving."
-                        );
-
-
-                        return false;
-
-                    }
-
-                }
-            );
-
-
-        // ======================================================
-        // INITIAL CALCULATION
-        // ======================================================
-
-        calculateInputTotal();
-
-    });
+    );
 
 </script>
 }
-

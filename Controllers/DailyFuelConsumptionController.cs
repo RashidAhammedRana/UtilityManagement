@@ -327,6 +327,10 @@ public class DailyFuelConsumptionController : Controller
             existing.DieselTotal = dailyFuelConsumption.DieselTotal;
             existing.LpgBoiler = dailyFuelConsumption.LpgBoiler;
             existing.LpgTotal = dailyFuelConsumption.LpgTotal;
+            existing.NgThermalHeater = dailyFuelConsumption.NgThermalHeater;
+            existing.CngThermalHeater = dailyFuelConsumption.CngThermalHeater;
+            existing.DieselThermalHeater = dailyFuelConsumption.DieselThermalHeater;
+            existing.LpgThermalHeater = dailyFuelConsumption.LpgThermalHeater;
 
             // Update audit fields
             existing.UpdatedAt = DateTime.Now;

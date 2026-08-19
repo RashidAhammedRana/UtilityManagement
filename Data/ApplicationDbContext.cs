@@ -1073,6 +1073,10 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.NgTotal).HasColumnName("NG_TOTAL");
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");
                 entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
+                entity.Property(e => e.NgThermalHeater).HasColumnName("NG_THERMAL_HEATER");
+                entity.Property(e => e.CngThermalHeater).HasColumnName("CNG_THERMAL_HEATER");
+                entity.Property(e => e.DieselThermalHeater).HasColumnName("DIESEL_THERMAL_HEATER");
+                entity.Property(e => e.LpgThermalHeater).HasColumnName("LPG_THERMAL_HEATER");
                 entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");

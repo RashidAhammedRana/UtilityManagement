@@ -39,6 +39,14 @@ public partial class TblDailyFuelConsumption
     public double? DieselTotal { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? LpgTotal { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? NgThermalHeater { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? CngThermalHeater { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? DieselThermalHeater { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? LpgThermalHeater { get; set; }
 
     public DateTime? CreatedAt { get; set; }
     public string? CreatedBy { get; set; }

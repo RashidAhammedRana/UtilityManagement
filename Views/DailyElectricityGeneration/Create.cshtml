@@ -41,6 +41,24 @@
                                       class="text-danger">
                                 </span>
                             </div>
+                            <!-- COMPANY -->
+                            <div class="col-lg-6 col-md-6 col-sm-6">
+                                <label class="form-label">
+                                    Company
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select name="Company" class="form-select" required>
+                                    <option value="">-- Select Company --</option>
+                                    @if (!string.IsNullOrEmpty(ViewBag.CurrentCompany))
+                                    {
+                                        <option value="@ViewBag.CurrentCompany"
+                                                selected>
+                                            @ViewBag.CurrentCompany
+                                        </option>
+                                    }
+                                </select>
+                            </div>
 
                             <!-- Reb -->
                             <div class="col-lg-3 col-md-4 col-sm-6">

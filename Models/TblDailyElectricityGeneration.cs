@@ -10,6 +10,8 @@ public partial class TblDailyElectricityGeneration
     [Required(ErrorMessage = "This field is required")]
     public DateOnly? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? Reb { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? Gg1 { get; set; }

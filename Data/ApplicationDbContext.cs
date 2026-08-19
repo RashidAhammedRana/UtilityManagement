@@ -1009,6 +1009,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid);
                 entity.ToTable("TBL_DAILY_ELECTRICITY_GENERATION");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.Dg1).HasColumnName("DG_1");
                 entity.Property(e => e.Dg2).HasColumnName("DG_2");
                 entity.Property(e => e.Dg3).HasColumnName("DG_3");

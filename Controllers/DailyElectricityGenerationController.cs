@@ -235,6 +235,7 @@ public class DailyElectricityGenerationController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadCompanyList();
         var model = new TblDailyElectricityGeneration
         {
             Trdate = DateOnly.FromDateTime(DateTime.Today)
@@ -283,6 +284,7 @@ public class DailyElectricityGenerationController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblDailyElectricityGenerations
             .FirstOrDefaultAsync(x => x.Trid == id);
         if (reading == null)
@@ -311,6 +313,8 @@ public class DailyElectricityGenerationController : Controller
 
             // Update editable fields
             existing.Trdate = dailyElectricityGeneration.Trdate;
+            existing.Company = dailyElectricityGeneration.Company;
+            existing.Reb = dailyElectricityGeneration.Reb;
             existing.Gg1 = dailyElectricityGeneration.Gg1;
             existing.Gg2 = dailyElectricityGeneration.Gg2;
             existing.Gg3 = dailyElectricityGeneration.Gg3;
@@ -369,6 +373,17 @@ public class DailyElectricityGenerationController : Controller
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
         return RedirectToAction(nameof(DailyElectricityGenerationList));
+    }
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

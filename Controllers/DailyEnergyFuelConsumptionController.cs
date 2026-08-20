@@ -1,6 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using System.Globalization;
 using UtilityManagement.Data;
@@ -12,22 +11,50 @@ public class DailyEnergyFuelConsumptionController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
 
+    private const int PageSize = 15;
+    private const int StartHour = 6;
 
-    public DailyEnergyFuelConsumptionController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
+    public DailyEnergyFuelConsumptionController(
+        ApplicationDbContext context,
+        UserManager<ApplicationUser> userManager)
     {
         _context = context;
         _userManager = userManager;
     }
+
+    // =========================================================
+    // INDEX
+    // =========================================================
+
+    [HttpGet]
     public IActionResult Index()
     {
         return View();
     }
-    [HttpGet]
-    public async Task<IActionResult> DailyEnergyFuelConsumptionList(int page = 1, string searchString = "")
-    {
-        int pageSize = 15;
 
-        var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+    // =========================================================
+    // DAILY ENERGY & FUEL CONSUMPTION LIST
+    // =========================================================
+
+    [HttpGet]
+    public async Task<IActionResult> DailyEnergyFuelConsumptionList(
+        int page = 1,
+        string searchString = "")
+    {
+        if (page < 1)
+        {
+            page = 1;
+        }
+
+        // -----------------------------------------------------
+        // Current User
+        // -----------------------------------------------------
+
+        var userId = _userManager.GetUserId(User);
+
+        // -----------------------------------------------------
+        // Permissions
+        // -----------------------------------------------------
 
         var menuId = await _context.TblMenu
             .Where(x => x.MenuName == "Energy & Fuel Cons.")
@@ -49,101 +76,119 @@ public class DailyEnergyFuelConsumptionController : Controller
         ViewBag.CanEdit = userPermissions.Contains("Edit");
         ViewBag.CanDelete = userPermissions.Contains("Delete");
 
-        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
-        // =========================
-        // BASE QUERY
-        // =========================
-        var query = _context.TblDailyEnergyFuelConsumption
-            .AsQueryable();
+        // -----------------------------------------------------
+        // Current User Company
+        // -----------------------------------------------------
 
-        //Company Wise Data
+        var currentUserCompany = await _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefaultAsync();
+
         if (!string.IsNullOrWhiteSpace(currentUserCompany))
         {
             currentUserCompany = currentUserCompany.Trim();
-            query = query.Where(x => x.Company != null && x.Company == currentUserCompany);
         }
 
-        // =========================================================
-        // SEARCH LOGIC
-        // =========================================================
+        // -----------------------------------------------------
+        // BASE QUERY
+        // -----------------------------------------------------
+
+        var query = _context.TblDailyEnergyFuelConsumption
+            .AsNoTracking()
+            .AsQueryable();
+
+        // -----------------------------------------------------
+        // COMPANY FILTER
+        //
+        // User with a company:
+        //     Only see own company data.
+        //
+        // User without a company:
+        //     Can see all data.
+        // -----------------------------------------------------
+
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company == currentUserCompany);
+        }
+
+        // =====================================================
+        // SEARCH
+        // =====================================================
 
         if (!string.IsNullOrWhiteSpace(searchString))
         {
             searchString = searchString.Trim();
 
-            var parts = searchString.Split(
-                '-',
-                StringSplitOptions.RemoveEmptyEntries
-            );
-
-            bool isNumber =
-                int.TryParse(searchString, out int number);
-
-
-            // =====================================================
-            // CASE 1: FULL DATE
+            // -------------------------------------------------
+            // FULL DATE SEARCH
             //
-            // 09-07-2026  -> 09 July 2026
-            // 9-7-2026    -> 09 July 2026
-            // 09/07/2026  -> 09 July 2026
+            // Examples:
             //
-            // Also supports:
+            // 09-07-2026
+            // 9-7-2026
+            // 09/07/2026
+            // 9/7/2026
             // 2026-07-09
             // 2026/07/09
-            // =====================================================
+            // -------------------------------------------------
 
-            bool isFullDate =
-                DateTime.TryParseExact(
-                    searchString,
-
-                    new[]
-                    {
-                "dd-MM-yyyy",
-                "d-M-yyyy",
-
-                "dd/MM/yyyy",
-                "d/M/yyyy",
-
-                "yyyy-MM-dd",
-                "yyyy/MM/dd"
-                    },
-
-                    System.Globalization.CultureInfo.InvariantCulture,
-
-                    System.Globalization.DateTimeStyles.None,
-
-                    out DateTime parsedDate
-                );
-
+            bool isFullDate = DateTime.TryParseExact(
+                searchString,
+                new[]
+                {
+                    "dd-MM-yyyy",
+                    "d-M-yyyy",
+                    "dd/MM/yyyy",
+                    "d/M/yyyy",
+                    "yyyy-MM-dd",
+                    "yyyy/MM/dd"
+                },
+                CultureInfo.InvariantCulture,
+                DateTimeStyles.None,
+                out DateTime parsedDate
+            );
 
             if (isFullDate)
             {
-                // Convert DateTime to DateOnly
-                var searchDate =
-                    DateOnly.FromDateTime(parsedDate);
+                var searchDate = DateOnly.FromDateTime(parsedDate);
 
-
-                // EXACT DATE MATCH
                 query = query.Where(x =>
                     x.Trdate.HasValue &&
-                    x.Trdate.Value == searchDate
-                );
+                    x.Trdate.Value == searchDate);
             }
-
-
-            // =====================================================
-            // CASE 2: YEAR-MONTH
-            //
-            // 2026-07
-            // 2026/07
-            // =====================================================
-
-            else if (
-                parts.Length == 2 &&
-                parts[0].Length == 4
-            )
+            else
             {
+                // -------------------------------------------------
+                // Normalize separators
+                //
+                // Convert:
+                // 2026/07 -> 2026-07
+                // 09/07   -> 09-07
+                // -------------------------------------------------
+
+                var normalizedSearch = searchString.Replace('/', '-');
+
+                var parts = normalizedSearch
+                    .Split(
+                        '-',
+                        StringSplitOptions.RemoveEmptyEntries |
+                        StringSplitOptions.TrimEntries
+                    );
+
+                // -------------------------------------------------
+                // YEAR-MONTH
+                //
+                // 2026-07
+                // 2026/07
+                // -------------------------------------------------
+
                 if (
+                    parts.Length == 2 &&
+                    parts[0].Length == 4 &&
                     int.TryParse(parts[0], out int year) &&
                     int.TryParse(parts[1], out int month)
                 )
@@ -153,111 +198,138 @@ public class DailyEnergyFuelConsumptionController : Controller
                         query = query.Where(x =>
                             x.Trdate.HasValue &&
                             x.Trdate.Value.Year == year &&
-                            x.Trdate.Value.Month == month
-                        );
+                            x.Trdate.Value.Month == month);
                     }
                 }
-            }
 
+                // -------------------------------------------------
+                // MONTH-DAY / DAY-MONTH
+                //
+                // 07-09
+                // 09-07
+                //
+                // Both can find:
+                // 09 July
+                // -------------------------------------------------
 
-            // =====================================================
-            // CASE 3: MONTH-DAY / DAY-MONTH
-            //
-            // 07-09
-            // 09-07
-            //
-            // Both will find:
-            // 09 July
-            // =====================================================
-
-            else if (parts.Length == 2)
-            {
-                if (
-                    int.TryParse(parts[0], out int a) &&
-                    int.TryParse(parts[1], out int b)
+                else if (
+                    parts.Length == 2 &&
+                    int.TryParse(parts[0], out int firstNumber) &&
+                    int.TryParse(parts[1], out int secondNumber)
                 )
                 {
                     query = query.Where(x =>
                         x.Trdate.HasValue &&
                         (
                             (
-                                x.Trdate.Value.Month == a &&
-                                x.Trdate.Value.Day == b
+                                x.Trdate.Value.Month == firstNumber &&
+                                x.Trdate.Value.Day == secondNumber
                             )
                             ||
                             (
-                                x.Trdate.Value.Month == b &&
-                                x.Trdate.Value.Day == a
+                                x.Trdate.Value.Month == secondNumber &&
+                                x.Trdate.Value.Day == firstNumber
                             )
                         )
                     );
                 }
-            }
 
+                // -------------------------------------------------
+                // SINGLE NUMBER
+                //
+                // 9
+                // 7
+                // 2026
+                // -------------------------------------------------
 
-            // =====================================================
-            // CASE 4: SINGLE NUMBER
-            //
-            // 9
-            // 7
-            // 2026
-            // =====================================================
-
-            else if (isNumber)
-            {
-                query = query.Where(x =>
-                    x.Trdate.HasValue &&
-                    (
-                        x.Trdate.Value.Day == number ||
-                        x.Trdate.Value.Month == number ||
-                        x.Trdate.Value.Year == number
-                    )
-                );
+                else if (
+                    parts.Length == 1 &&
+                    int.TryParse(parts[0], out int number)
+                )
+                {
+                    query = query.Where(x =>
+                        x.Trdate.HasValue &&
+                        (
+                            x.Trdate.Value.Day == number ||
+                            x.Trdate.Value.Month == number ||
+                            x.Trdate.Value.Year == number
+                        )
+                    );
+                }
             }
         }
 
-
-        // =========================
+        // =====================================================
         // PAGINATION
-        // =========================
+        // =====================================================
+
         var totalRecords = await query.CountAsync();
 
-        var rebReadings = await query
+        var totalPages = (int)Math.Ceiling(
+            totalRecords / (double)PageSize
+        );
+
+        // Prevent invalid page
+        if (totalPages > 0 && page > totalPages)
+        {
+            page = totalPages;
+        }
+
+        var readings = await query
             .OrderByDescending(x => x.Trdate)
-            .Skip((page - 1) * pageSize)
-            .Take(pageSize)
+            .ThenByDescending(x => x.Time)
+            .Skip((page - 1) * PageSize)
+            .Take(PageSize)
             .ToListAsync();
 
-        // =========================
+        // =====================================================
         // VIEWBAG
-        // =========================
+        // =====================================================
+
         ViewBag.CurrentPage = page;
-        ViewBag.TotalPages = (int)Math.Ceiling(totalRecords / (double)pageSize);
+        ViewBag.TotalPages = totalPages;
         ViewBag.totalReadings = totalRecords;
         ViewBag.SearchString = searchString;
 
-        return View(rebReadings);
+        return View(readings);
     }
 
-    [HttpGet]
-    public IActionResult Create()
-    {
-        LoadCompanyList();
+    // =========================================================
+    // CREATE - GET
+    // =========================================================
 
+    [HttpGet]
+    public async Task<IActionResult> Create()
+    {
         var model = new DailyEnergyFuelConsumptionCreateViewModel
         {
-            Items = new List<TblDailyEnergyFuelConsumption>
-        {
-            new TblDailyEnergyFuelConsumption
-            {
-                Trdate = DateOnly.FromDateTime(DateTime.Today)
-            }
-        }
+            Items = new List<TblDailyEnergyFuelConsumption>()
         };
+
+        await LoadCreateTimeDataAsync(model);
+
+        // =====================================================
+        // IMPORTANT:
+        // If database has no record for today,
+        // first slot MUST be 06:00.
+        // =====================================================
+
+        var existingTimes =
+            ViewBag.ExistingTimes as List<string>
+            ?? new List<string>();
+
+        var firstAvailable =
+            GetFirstAvailableTimeFromList(existingTimes);
+
+        ViewBag.NextAvailableTime =
+            firstAvailable ?? "06:00";
 
         return View(model);
     }
 
+    // =========================================================
+    // CREATE - POST
+    // =========================================================
 
     [HttpPost]
     [ValidateAntiForgeryToken]
@@ -266,9 +338,13 @@ public class DailyEnergyFuelConsumptionController : Controller
     {
         try
         {
+            // -------------------------------------------------
+            // Validate Model
+            // -------------------------------------------------
+
             if (!ModelState.IsValid)
             {
-                LoadCompanyList();
+                await LoadCreateTimeDataAsync(model);
 
                 TempData["ErrorMessage"] =
                     "Please fill all required fields.";
@@ -276,12 +352,64 @@ public class DailyEnergyFuelConsumptionController : Controller
                 return View(model);
             }
 
+            // -------------------------------------------------
+            // Check Items
+            // -------------------------------------------------
+
+            if (model.Items == null || model.Items.Count == 0)
+            {
+                await LoadCreateTimeDataAsync(model);
+
+                TempData["ErrorMessage"] =
+                    "Please add at least one reading.";
+
+                return View(model);
+            }
+
+            // -------------------------------------------------
+            // Current User
+            // -------------------------------------------------
+
+            var userId = _userManager.GetUserId(User);
+
+            var currentCompany = await _context.Users
+                .Where(x => x.Id == userId)
+                .Select(x => x.Company)
+                .FirstOrDefaultAsync();
+
+            if (!string.IsNullOrWhiteSpace(currentCompany))
+            {
+                currentCompany = currentCompany.Trim();
+            }
+
+            var currentUser =
+                User.Identity?.Name ?? "System";
+
             var now = DateTime.Now;
-            var currentUser = User.Identity?.Name ?? "System";
+
+            // -------------------------------------------------
+            // Process Each Reading
+            // -------------------------------------------------
 
             foreach (var energyFuelConsumption in model.Items)
             {
+                // -------------------------------------------------
+                // COMPANY SECURITY
+                //
+                // If current user has a company,
+                // always force the record to that company.
+                // -------------------------------------------------
+
+                if (!string.IsNullOrWhiteSpace(currentCompany))
+                {
+                    energyFuelConsumption.Company =
+                        currentCompany;
+                }
+
+                // -------------------------------------------------
                 // Calculate Total
+                // -------------------------------------------------
+
                 energyFuelConsumption.Total =
                     energyFuelConsumption.Reb +
                     energyFuelConsumption.Gg1 +
@@ -294,7 +422,10 @@ public class DailyEnergyFuelConsumptionController : Controller
                     energyFuelConsumption.Dg4 +
                     energyFuelConsumption.Solar;
 
+                // -------------------------------------------------
                 // Created Information
+                // -------------------------------------------------
+
                 energyFuelConsumption.CreatedAt = now;
                 energyFuelConsumption.CreatedBy = currentUser;
 
@@ -302,17 +433,22 @@ public class DailyEnergyFuelConsumptionController : Controller
                     .Add(energyFuelConsumption);
             }
 
+            // -------------------------------------------------
+            // Save
+            // -------------------------------------------------
+
             await _context.SaveChangesAsync();
 
             TempData["SuccessMessage"] =
                 "Reading(s) created successfully.";
 
             return RedirectToAction(
-                nameof(DailyEnergyFuelConsumptionList));
+                nameof(DailyEnergyFuelConsumptionList)
+            );
         }
         catch (Exception)
         {
-            LoadCompanyList();
+            await LoadCreateTimeDataAsync(model);
 
             TempData["ErrorMessage"] =
                 "Failed to create reading.";
@@ -321,21 +457,48 @@ public class DailyEnergyFuelConsumptionController : Controller
         }
     }
 
+    // =========================================================
+    // LOAD CURRENT COMPANY
+    // =========================================================
 
-    private void LoadCompanyList()
+    private async Task<string?> GetCurrentUserCompanyAsync()
     {
         var userId = _userManager.GetUserId(User);
 
-        var currentCompany = _context.Users
+        if (string.IsNullOrWhiteSpace(userId))
+        {
+            return null;
+        }
+
+        var company = await _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
-        ViewBag.CurrentCompany = currentCompany;
+        return string.IsNullOrWhiteSpace(company)
+            ? null
+            : company.Trim();
     }
 
-[HttpGet]
-public async Task<IActionResult> Edit(int id)
+    // =========================================================
+    // LOAD COMPANY LIST / VIEWBAG
+    // =========================================================
+
+    private async Task LoadCompanyListAsync()
+    {
+        var currentCompany =
+            await GetCurrentUserCompanyAsync();
+
+        ViewBag.CurrentCompany =
+            currentCompany;
+    }
+
+    // =========================================================
+    // EDIT - GET
+    // =========================================================
+
+    [HttpGet]
+    public async Task<IActionResult> Edit(int id)
     {
         var energyFuelConsumption =
             await _context.TblDailyEnergyFuelConsumption
@@ -346,22 +509,32 @@ public async Task<IActionResult> Edit(int id)
             return NotFound();
         }
 
-        // Current user company
-        var userId =
-            _userManager.GetUserId(User);
+        // -----------------------------------------------------
+        // Current User Company
+        // -----------------------------------------------------
 
         var currentCompany =
-            await _context.Users
-                .Where(x => x.Id == userId)
-                .Select(x => x.Company)
-                .FirstOrDefaultAsync();
+            await GetCurrentUserCompanyAsync();
 
-        // Security:
-        // User with company can edit only own company data.
-        // User without company can edit all data.
+        // -----------------------------------------------------
+        // COMPANY SECURITY
+        //
+        // User with company:
+        // only own company records.
+        //
+        // User without company:
+        // can edit any company.
+        // -----------------------------------------------------
+
         if (!string.IsNullOrWhiteSpace(currentCompany))
         {
-            if (energyFuelConsumption.Company != currentCompany)
+            if (
+                !string.Equals(
+                    energyFuelConsumption.Company,
+                    currentCompany,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            )
             {
                 return Forbid();
             }
@@ -373,27 +546,28 @@ public async Task<IActionResult> Edit(int id)
         return View(energyFuelConsumption);
     }
 
+    // =========================================================
+    // EDIT - POST
+    // =========================================================
 
-[HttpPost]
-[ValidateAntiForgeryToken]
-public async Task<IActionResult> Edit(
-    int id,
-    TblDailyEnergyFuelConsumption energyFuelConsumption)
+    [HttpPost]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> Edit(
+        int id,
+        TblDailyEnergyFuelConsumption energyFuelConsumption)
     {
-        // Declare outside try so it can be used in catch
-        var userId = _userManager.GetUserId(User);
+        // -----------------------------------------------------
+        // Current User Company
+        // -----------------------------------------------------
 
         var currentCompany =
-            await _context.Users
-                .Where(x => x.Id == userId)
-                .Select(x => x.Company)
-                .FirstOrDefaultAsync();
+            await GetCurrentUserCompanyAsync();
 
         try
         {
-            // =============================================
+            // =================================================
             // GET EXISTING RECORD
-            // =============================================
+            // =================================================
 
             var existingRecord =
                 await _context.TblDailyEnergyFuelConsumption
@@ -404,48 +578,54 @@ public async Task<IActionResult> Edit(
                 return NotFound();
             }
 
-
-            // =============================================
+            // =================================================
             // COMPANY SECURITY
-            // =============================================
+            // =================================================
 
-            // If user has a company,
-            // user can edit only that company's data.
             if (!string.IsNullOrWhiteSpace(currentCompany))
             {
-                if (existingRecord.Company != currentCompany)
+                // User can edit only own company data.
+                if (
+                    !string.Equals(
+                        existingRecord.Company,
+                        currentCompany,
+                        StringComparison.OrdinalIgnoreCase
+                    )
+                )
                 {
                     return Forbid();
                 }
 
-                // Don't allow company change
+                // Never allow company to be changed.
                 energyFuelConsumption.Company =
                     existingRecord.Company;
             }
             else
             {
-                // User without company
-                // keeps existing company
+                // User without company:
+                // keep the original company.
                 energyFuelConsumption.Company =
                     existingRecord.Company;
             }
 
-
-            // =============================================
+            // =================================================
             // MODEL VALIDATION
-            // =============================================
+            // =================================================
 
             if (!ModelState.IsValid)
             {
-                ViewBag.CurrentCompany = currentCompany;
+                ViewBag.CurrentCompany =
+                    currentCompany;
 
                 return View(energyFuelConsumption);
             }
 
-
-            // =============================================
+            // =================================================
             // UPDATE FIELDS
-            // =============================================
+            // =================================================
+
+            existingRecord.Company =
+                energyFuelConsumption.Company;
 
             existingRecord.Trdate =
                 energyFuelConsumption.Trdate;
@@ -483,19 +663,33 @@ public async Task<IActionResult> Edit(
             existingRecord.Solar =
                 energyFuelConsumption.Solar;
 
-            existingRecord.Total =
-                energyFuelConsumption.Total;
-
             existingRecord.CaptiveGenerator =
                 energyFuelConsumption.CaptiveGenerator;
 
             existingRecord.IndustrialBoiler =
                 energyFuelConsumption.IndustrialBoiler;
 
+            // =================================================
+            // RECALCULATE TOTAL
+            //
+            // Do not trust the Total value submitted by browser.
+            // =================================================
 
-            // =============================================
+            existingRecord.Total =
+                existingRecord.Reb +
+                existingRecord.Gg1 +
+                existingRecord.Gg2 +
+                existingRecord.Gg3 +
+                existingRecord.Gg4 +
+                existingRecord.Dg1 +
+                existingRecord.Dg2 +
+                existingRecord.Dg3 +
+                existingRecord.Dg4 +
+                existingRecord.Solar;
+
+            // =================================================
             // UPDATED INFORMATION
-            // =============================================
+            // =================================================
 
             existingRecord.UpdatedAt =
                 DateTime.Now;
@@ -503,13 +697,11 @@ public async Task<IActionResult> Edit(
             existingRecord.UpdatedBy =
                 User.Identity?.Name ?? "System";
 
-
-            // =============================================
+            // =================================================
             // SAVE
-            // =============================================
+            // =================================================
 
             await _context.SaveChangesAsync();
-
 
             TempData["SuccessMessage"] =
                 "Reading updated successfully.";
@@ -532,7 +724,8 @@ public async Task<IActionResult> Edit(
             TempData["ErrorMessage"] =
                 "The record was modified by another user. Please try again.";
 
-            ViewBag.CurrentCompany = currentCompany;
+            ViewBag.CurrentCompany =
+                currentCompany;
 
             return View(energyFuelConsumption);
         }
@@ -541,43 +734,453 @@ public async Task<IActionResult> Edit(
             TempData["ErrorMessage"] =
                 "Failed to update reading.";
 
-            ViewBag.CurrentCompany = currentCompany;
+            ViewBag.CurrentCompany =
+                currentCompany;
 
             return View(energyFuelConsumption);
         }
     }
 
+    // =========================================================
+    // DELETE - GET
+    // =========================================================
 
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblDailyEnergyFuelConsumption.FindAsync(id);
+        var data =
+            await _context.TblDailyEnergyFuelConsumption
+                .AsNoTracking()
+                .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
+        {
             return NotFound();
+        }
+
+        // -----------------------------------------------------
+        // COMPANY SECURITY
+        // -----------------------------------------------------
+
+        var currentCompany =
+            await GetCurrentUserCompanyAsync();
+
+        if (!string.IsNullOrWhiteSpace(currentCompany))
+        {
+            if (
+                !string.Equals(
+                    data.Company,
+                    currentCompany,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            )
+            {
+                return Forbid();
+            }
+        }
 
         return View(data);
     }
 
-    [HttpPost, ActionName("Delete")]
+    // =========================================================
+    // DELETE - POST
+    // =========================================================
+
+    [HttpPost]
+    [ActionName("Delete")]
     [ValidateAntiForgeryToken]
     public async Task<IActionResult> DeleteConfirmed(int id)
     {
-        var data = await _context.TblDailyEnergyFuelConsumption
-            .FirstOrDefaultAsync(x => x.Trid == id);
+        var data =
+            await _context.TblDailyEnergyFuelConsumption
+                .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
         {
-            TempData["ErrorMessage"] = "Readings not found.";
-            return RedirectToAction(nameof(DailyEnergyFuelConsumptionList));
+            TempData["ErrorMessage"] =
+                "Reading not found.";
+
+            return RedirectToAction(
+                nameof(DailyEnergyFuelConsumptionList)
+            );
         }
 
-        _context.TblDailyEnergyFuelConsumption.Remove(data);
+        // -----------------------------------------------------
+        // COMPANY SECURITY
+        // -----------------------------------------------------
+
+        var currentCompany =
+            await GetCurrentUserCompanyAsync();
+
+        if (!string.IsNullOrWhiteSpace(currentCompany))
+        {
+            if (
+                !string.Equals(
+                    data.Company,
+                    currentCompany,
+                    StringComparison.OrdinalIgnoreCase
+                )
+            )
+            {
+                return Forbid();
+            }
+        }
+
+        // -----------------------------------------------------
+        // DELETE
+        // -----------------------------------------------------
+
+        _context.TblDailyEnergyFuelConsumption
+            .Remove(data);
+
         await _context.SaveChangesAsync();
 
-        TempData["SuccessMessage"] = "Readings deleted successfully.";
+        TempData["SuccessMessage"] =
+            "Reading deleted successfully.";
 
-        return RedirectToAction(nameof(DailyEnergyFuelConsumptionList));
+        return RedirectToAction(
+            nameof(DailyEnergyFuelConsumptionList)
+        );
+    }
+
+    // =========================================================
+    // GET AVAILABLE TIMES FOR SELECTED DATE
+    // =========================================================
+    //
+    // JavaScript can call:
+    //
+    // /DailyEnergyFuelConsumption/GetAvailableTimes?date=2026-08-19
+    //
+    // It checks:
+    //
+    // Company + Selected Date
+    //
+    // It does NOT automatically use today's date.
+    //
+    // =========================================================
+
+    [HttpGet]
+    public async Task<IActionResult> GetAvailableTimes(
+        DateOnly date)
+    {
+        var company =
+            await GetCurrentUserCompanyAsync();
+
+        // -----------------------------------------------------
+        // Company validation
+        // -----------------------------------------------------
+
+        if (string.IsNullOrWhiteSpace(company))
+        {
+            return Json(new
+            {
+                success = false,
+                message = "Company is not available.",
+                existingTimes = new List<string>(),
+                nextTime = ""
+            });
+        }
+
+        // -----------------------------------------------------
+        // Get existing times for selected date
+        // -----------------------------------------------------
+
+        var existingTimeValues =
+            await _context
+                .TblDailyEnergyFuelConsumption
+                .AsNoTracking()
+                .Where(x =>
+                    x.Company == company &&
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value == date &&
+                    x.Time.HasValue)
+                .Select(x => x.Time!.Value)
+                .OrderBy(x => x)
+                .ToListAsync();
+
+        // -----------------------------------------------------
+        // Convert to HH:mm AFTER EF query
+        //
+        // This avoids SQL translation problems with:
+        // TimeOnly.ToString("HH:mm")
+        // -----------------------------------------------------
+
+        var existingTimes =
+            existingTimeValues
+                .Select(x => x.ToString("HH:mm"))
+                .ToList();
+
+        // -----------------------------------------------------
+        // Get next available time
+        // -----------------------------------------------------
+
+        var nextTime =
+            await GetFirstAvailableTimeAsync(
+                company,
+                date
+            );
+
+        // -----------------------------------------------------
+        // Return JSON
+        // -----------------------------------------------------
+
+        return Json(new
+        {
+            success = true,
+
+            existingTimes = existingTimes,
+
+            nextTime = nextTime.HasValue
+                ? nextTime.Value.ToString("HH:mm")
+                : ""
+        });
+    }
+
+    // =========================================================
+    // GET FIRST AVAILABLE TIME
+    // =========================================================
+    //
+    // Daily sequence:
+    //
+    // 06:00
+    // 07:00
+    // 08:00
+    // ...
+    // 23:00
+    // 00:00
+    // 01:00
+    // 02:00
+    // 03:00
+    // 04:00
+    // 05:00
+    //
+    // Total = 24 hourly slots.
+    //
+    // =========================================================
+
+    private async Task<TimeOnly?> GetFirstAvailableTimeAsync(
+        string company,
+        DateOnly date)
+    {
+        // -----------------------------------------------------
+        // Company validation
+        // -----------------------------------------------------
+
+        if (string.IsNullOrWhiteSpace(company))
+        {
+            return null;
+        }
+
+        company = company.Trim();
+
+        // -----------------------------------------------------
+        // Get existing times
+        // -----------------------------------------------------
+
+        var existingTimes =
+            await _context
+                .TblDailyEnergyFuelConsumption
+                .AsNoTracking()
+                .Where(x =>
+                    x.Company == company &&
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value == date &&
+                    x.Time.HasValue)
+                .Select(x => x.Time!.Value)
+                .ToListAsync();
+
+        // -----------------------------------------------------
+        // HashSet for quick lookup
+        // -----------------------------------------------------
+
+        var existingSet =
+            existingTimes.ToHashSet();
+
+        // -----------------------------------------------------
+        // Check all 24 hourly slots
+        //
+        // Starts at 06:00.
+        //
+        // 06 -> 23
+        // 00 -> 05
+        // -----------------------------------------------------
+
+        for (int i = 0; i < 24; i++)
+        {
+            int hour =
+                (StartHour + i) % 24;
+
+            var time =
+                new TimeOnly(hour, 0);
+
+            if (!existingSet.Contains(time))
+            {
+                return time;
+            }
+        }
+
+        // -----------------------------------------------------
+        // All 24 slots are already used.
+        // -----------------------------------------------------
+
+        return null;
+    }
+
+    // =========================================================
+    // LOAD CREATE TIME DATA
+    // =========================================================
+    //
+    // Loads:
+    //
+    // ViewBag.ExistingTimes
+    // ViewBag.NextAvailableTime
+    //
+    // Date selection:
+    //
+    // 1. If model has a date -> use model date.
+    // 2. Otherwise -> use today's date.
+    //
+    // =========================================================
+
+    private async Task LoadCreateTimeDataAsync(
+        DailyEnergyFuelConsumptionCreateViewModel model)
+    {
+        // -----------------------------------------------------
+        // Load current company
+        // -----------------------------------------------------
+
+        await LoadCompanyListAsync();
+
+        var company =
+            ViewBag.CurrentCompany as string;
+
+        // -----------------------------------------------------
+        // No company
+        // -----------------------------------------------------
+
+        if (string.IsNullOrWhiteSpace(company))
+        {
+            ViewBag.ExistingTimes =
+                new List<string>();
+
+            ViewBag.NextAvailableTime =
+                "";
+
+            return;
+        }
+
+        company = company.Trim();
+
+        // -----------------------------------------------------
+        // Default date = Today
+        // -----------------------------------------------------
+
+        DateOnly selectedDate =
+            DateOnly.FromDateTime(
+                DateTime.Today
+            );
+
+        // -----------------------------------------------------
+        // If model has date, use that date
+        // -----------------------------------------------------
+
+        if (
+            model.Items != null &&
+            model.Items.Count > 0
+        )
+        {
+            var firstItem =
+                model.Items.FirstOrDefault();
+
+            if (firstItem != null &&
+                firstItem.Trdate.HasValue)
+            {
+                selectedDate =
+                    firstItem.Trdate.Value;
+            }
+        }
+
+        // -----------------------------------------------------
+        // Get existing times
+        // -----------------------------------------------------
+
+        var existingTimeValues =
+            await _context
+                .TblDailyEnergyFuelConsumption
+                .AsNoTracking()
+                .Where(x =>
+                    x.Company == company &&
+                    x.Trdate.HasValue &&
+                    x.Trdate.Value == selectedDate &&
+                    x.Time.HasValue)
+                .Select(x => x.Time!.Value)
+                .OrderBy(x => x)
+                .ToListAsync();
+
+        // -----------------------------------------------------
+        // Convert TimeOnly to HH:mm after DB query
+        // -----------------------------------------------------
+
+        var existingTimes =
+            existingTimeValues
+                .Select(x => x.ToString("HH:mm"))
+                .ToList();
+
+        // -----------------------------------------------------
+        // Get next available time
+        // -----------------------------------------------------
+
+        var nextTime =
+            await GetFirstAvailableTimeAsync(
+                company,
+                selectedDate
+            );
+
+        // -----------------------------------------------------
+        // ViewBag
+        // -----------------------------------------------------
+
+        ViewBag.ExistingTimes =
+            existingTimes;
+
+        ViewBag.NextAvailableTime =
+            nextTime.HasValue
+                ? nextTime.Value.ToString("HH:mm")
+                : "";
+    }
+    // =========================================================
+    // GET FIRST AVAILABLE TIME FROM STRING LIST
+    // =========================================================
+
+    [HttpGet]
+    private string? GetFirstAvailableTimeFromList(
+        List<string> existingTimes)
+    {
+        var existingSet =
+            existingTimes
+                .Where(x => !string.IsNullOrWhiteSpace(x))
+                .Select(x => x.Trim().Substring(0, 5))
+                .ToHashSet();
+
+        // =====================================================
+        // 06:00 -> 23:00
+        // 00:00 -> 05:00
+        // =====================================================
+
+        for (int i = 0; i < 24; i++)
+        {
+            int hour =
+                (StartHour + i) % 24;
+
+            string time =
+                $"{hour:00}:00";
+
+            if (!existingSet.Contains(time))
+            {
+                return time;
+            }
+        }
+
+        return null;
     }
 }
-

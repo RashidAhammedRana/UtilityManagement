@@ -1,53 +1,91 @@
 ﻿@model UtilityManagement.ViewModels.DailyEnergyFuelConsumptionCreateViewModel
 
+@using System.Text.Json
+
 @{
     ViewData["Title"] = "Create Daily Energy & Fuel Consumption Info";
+
+    var currentCompany = ViewBag.CurrentCompany as string ?? "";
+
+    var existingTimes = ViewBag.ExistingTimes as List<string>
+        ?? new List<string>();
+
+    var nextAvailableTime = ViewBag.NextAvailableTime as string ?? "";
 }
 
 <div class="row justify-content-center">
+
     <div class="col-md-12">
 
         <div class="card shadow-lg border-0 energy-card">
 
+            <link href="~/css/dailyenergyfuelconsumption.css" rel="stylesheet" />
             <!-- ===================================================== -->
             <!-- HEADER                                                -->
             <!-- ===================================================== -->
 
-            <style>
-                .energy-card {
-                    margin-left: 35px;
-                }
-
-                @@media (max-width: 768px) {
-                    .energy-card {
-                        margin-left: 15px;
-                    }
-                }
-
-                /* Remove number input spinner arrows */
-                input[type="number"]::-webkit-inner-spin-button,
-                input[type="number"]::-webkit-outer-spin-button {
-                    -webkit-appearance: none;
-                    margin: 0;
-                }
-
-                input[type="number"] {
-                    -moz-appearance: textfield;
-                    appearance: textfield;
-                }
-            </style>
-
-
             <div class="card-header bg-primary text-white">
 
                 <h5 class="mb-0">
+
+                    <i class="bi bi-lightning-charge me-1"></i>
+
                     Add Daily Energy & Fuel Consumption Info
+
                 </h5>
 
             </div>
 
 
+            <!-- ===================================================== -->
+            <!-- CARD BODY                                              -->
+            <!-- ===================================================== -->
+
             <div class="card-body p-5">
+
+
+                <!-- ================================================= -->
+                <!-- MESSAGES                                          -->
+                <!-- ================================================= -->
+                @if (TempData["ErrorMessage"] != null)
+                {
+                    <div class="alert alert-danger alert-dismissible fade show"
+                         role="alert">
+
+                        <i class="bi bi-exclamation-triangle me-1"></i>
+
+                        @TempData["ErrorMessage"]
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert">
+                        </button>
+
+                    </div>
+                }
+
+
+                @if (TempData["SuccessMessage"] != null)
+                {
+                    <div class="alert alert-success alert-dismissible fade show"
+                         role="alert">
+
+                        <i class="bi bi-check-circle me-1"></i>
+
+                        @TempData["SuccessMessage"]
+
+                        <button type="button"
+                                class="btn-close"
+                                data-bs-dismiss="alert">
+                        </button>
+
+                    </div>
+                }
+
+
+                <!-- ================================================= -->
+                <!-- FORM                                               -->
+                <!-- ================================================= -->
 
                 <form asp-action="Create"
                       method="post"
@@ -57,7 +95,7 @@
 
 
                     <!-- ================================================= -->
-                    <!-- VALIDATION                                        -->
+                    <!-- MODEL VALIDATION                                  -->
                     <!-- ================================================= -->
 
                     <div asp-validation-summary="ModelOnly"
@@ -66,82 +104,82 @@
 
 
                     <!-- ================================================= -->
-                    <!-- INPUT SECTION                                    -->
+                    <!-- INPUT TABLE                                       -->
                     <!-- ================================================= -->
 
-                    <div class="table-responsive">
+                    <div class="input-table-wrapper">
 
-                        <table class="table table-bordered table-sm align-middle mb-0">
+                        <table class="table table-bordered table-sm align-middle mb-0 energy-table">
 
                             <thead class="table-dark">
 
                                 <tr>
 
-                                    <th style="width: 150px; min-width: 150px;">
+                                    <th>
                                         Company
                                     </th>
 
-                                    <th style="width: 90px;">
+                                    <th>
                                         Date
                                     </th>
 
-                                    <th style="width: 85px;">
+                                    <th>
                                         Time
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         REB
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         GG-1
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         GG-2
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         GG-3
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         GG-4
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         DG-1
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         DG-2
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         DG-3
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         DG-4
                                     </th>
 
-                                    <th style="width: 75px;">
+                                    <th>
                                         Solar
                                     </th>
 
-                                    <th style="width: 95px;">
+                                    <th>
                                         Total
                                     </th>
 
-                                    <th style="width: 95px;">
+                                    <th>
                                         Captive Gen.
                                     </th>
 
-                                    <th style="width: 95px;">
+                                    <th>
                                         Ind. Boiler
                                     </th>
 
-                                    <th style="width: 55px;">
+                                    <th>
                                         Add
                                     </th>
 
@@ -154,24 +192,21 @@
 
                                 <tr id="inputRow">
 
-                                    <!-- ================================================= -->
-                                    <!-- COMPANY                                        -->
-                                    <!-- ================================================= -->
+
+                                    <!-- COMPANY -->
 
                                     <td>
 
                                         <input type="text"
                                                id="inputCompany"
                                                class="form-control form-control-sm"
-                                               value="@ViewBag.CurrentCompany"
+                                               value="@currentCompany"
                                                readonly />
 
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- DATE                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- DATE -->
 
                                     <td>
 
@@ -184,28 +219,24 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- TIME                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- TIME -->
 
                                     <td>
 
                                         <input type="text"
                                                id="inputTimeDisplay"
-                                               class="form-control form-control-sm"
-                                               value="08:00 AM"
+                                               class="form-control form-control-sm time-display"
+                                               value=""
                                                readonly />
 
                                         <input type="hidden"
                                                id="inputTime"
-                                               value="08:00" />
+                                               value="@nextAvailableTime" />
 
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- REB                                            -->
-                                    <!-- ================================================= -->
+                                    <!-- REB -->
 
                                     <td>
 
@@ -218,9 +249,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- GG-1                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- GG1 -->
 
                                     <td>
 
@@ -233,9 +262,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- GG-2                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- GG2 -->
 
                                     <td>
 
@@ -248,9 +275,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- GG-3                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- GG3 -->
 
                                     <td>
 
@@ -263,9 +288,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- GG-4                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- GG4 -->
 
                                     <td>
 
@@ -278,9 +301,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- DG-1                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- DG1 -->
 
                                     <td>
 
@@ -293,9 +314,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- DG-2                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- DG2 -->
 
                                     <td>
 
@@ -308,9 +327,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- DG-3                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- DG3 -->
 
                                     <td>
 
@@ -323,9 +340,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- DG-4                                           -->
-                                    <!-- ================================================= -->
+                                    <!-- DG4 -->
 
                                     <td>
 
@@ -338,9 +353,7 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- SOLAR                                          -->
-                                    <!-- ================================================= -->
+                                    <!-- SOLAR -->
 
                                     <td>
 
@@ -353,54 +366,46 @@
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- TOTAL                                          -->
-                                    <!-- ================================================= -->
+                                    <!-- TOTAL -->
 
                                     <td>
 
                                         <input type="number"
                                                id="inputTotal"
-                                               class="form-control form-control-sm"
+                                               class="form-control form-control-sm total-display"
                                                value="0.00"
                                                readonly />
 
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- CAPTIVE GENERATOR                              -->
-                                    <!-- ================================================= -->
+                                    <!-- CAPTIVE GENERATOR -->
 
                                     <td>
 
                                         <input type="number"
                                                id="inputCaptiveGenerator"
                                                step="any"
-                                               class="form-control form-control-sm"
+                                               class="form-control form-control-sm required-consumption-field"
                                                autocomplete="off" />
 
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- INDUSTRIAL BOILER                              -->
-                                    <!-- ================================================= -->
+                                    <!-- INDUSTRIAL BOILER -->
 
                                     <td>
 
                                         <input type="number"
                                                id="inputIndustrialBoiler"
                                                step="any"
-                                               class="form-control form-control-sm"
+                                               class="form-control form-control-sm required-consumption-field"
                                                autocomplete="off" />
 
                                     </td>
 
 
-                                    <!-- ================================================= -->
-                                    <!-- ADD BUTTON                                     -->
-                                    <!-- ================================================= -->
+                                    <!-- ADD BUTTON -->
 
                                     <td class="text-center">
 
@@ -425,13 +430,32 @@
 
 
                     <!-- ================================================= -->
-                    <!-- TEMPORARY LIST                                   -->
+                    <!-- TIME FULL MESSAGE                                 -->
+                    <!-- ================================================= -->
+
+                    <div id="timeFullMessage"
+                         class="time-full-message mt-2 d-none">
+
+                        <i class="bi bi-exclamation-circle me-1"></i>
+
+                        All 24 hourly slots for this date have already
+                        been entered.
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- CONSUMPTION LIST                                  -->
                     <!-- ================================================= -->
 
                     <div class="mt-4">
 
                         <h6 class="fw-bold text-primary mb-2">
+
+                            <i class="bi bi-list-ul me-1"></i>
+
                             Consumption List
+
                         </h6>
 
 
@@ -444,69 +468,37 @@
 
                                     <tr>
 
-                                        <th style="width: 150px; min-width: 150px;">
-                                            Company
-                                        </th>
+                                        <th>Company</th>
 
-                                        <th style="width: 90px;">
-                                            Date
-                                        </th>
+                                        <th>Date</th>
 
-                                        <th style="width: 85px;">
-                                            Time
-                                        </th>
+                                        <th>Time</th>
 
-                                        <th style="width: 75px;">
-                                            REB
-                                        </th>
+                                        <th>REB</th>
 
-                                        <th style="width: 75px;">
-                                            GG-1
-                                        </th>
+                                        <th>GG-1</th>
 
-                                        <th style="width: 75px;">
-                                            GG-2
-                                        </th>
+                                        <th>GG-2</th>
 
-                                        <th style="width: 75px;">
-                                            GG-3
-                                        </th>
+                                        <th>GG-3</th>
 
-                                        <th style="width: 75px;">
-                                            GG-4
-                                        </th>
+                                        <th>GG-4</th>
 
-                                        <th style="width: 75px;">
-                                            DG-1
-                                        </th>
+                                        <th>DG-1</th>
 
-                                        <th style="width: 75px;">
-                                            DG-2
-                                        </th>
+                                        <th>DG-2</th>
 
-                                        <th style="width: 75px;">
-                                            DG-3
-                                        </th>
+                                        <th>DG-3</th>
 
-                                        <th style="width: 75px;">
-                                            DG-4
-                                        </th>
+                                        <th>DG-4</th>
 
-                                        <th style="width: 75px;">
-                                            Solar
-                                        </th>
+                                        <th>Solar</th>
 
-                                        <th style="width: 95px;">
-                                            Total
-                                        </th>
+                                        <th>Total</th>
 
-                                        <th style="width: 95px;">
-                                            Captive Gen.
-                                        </th>
+                                        <th>Captive Gen.</th>
 
-                                        <th style="width: 95px;">
-                                            Ind. Boiler
-                                        </th>
+                                        <th>Ind. Boiler</th>
 
                                     </tr>
 
@@ -529,7 +521,6 @@
 
                                         </th>
 
-
                                         <th id="grandTotal"
                                             class="text-primary">
 
@@ -537,8 +528,8 @@
 
                                         </th>
 
-
-                                        <th colspan="2"></th>
+                                        <th colspan="2">
+                                        </th>
 
                                     </tr>
 
@@ -555,7 +546,8 @@
                     <!-- HIDDEN POST DATA                                  -->
                     <!-- ================================================= -->
 
-                    <div id="hiddenItemsContainer"></div>
+                    <div id="hiddenItemsContainer">
+                    </div>
 
 
                     <!-- ================================================= -->
@@ -564,23 +556,21 @@
 
                     <div class="d-flex justify-content-between mt-4">
 
-                        <!-- BACK -->
-
                         <a asp-action="DailyEnergyFuelConsumptionList"
                            class="btn btn-outline-secondary">
 
-                            ← Back
+                            <i class="bi bi-arrow-left me-1"></i>
+
+                            Back
 
                         </a>
 
-
-                        <!-- SAVE ALL -->
 
                         <button type="submit"
                                 id="saveAllButton"
                                 class="btn btn-primary px-4">
 
-                            <i class="bi bi-save"></i>
+                            <i class="bi bi-save me-1"></i>
 
                             Save All
 
@@ -595,6 +585,38 @@
         </div>
 
     </div>
+
+</div>
+
+
+<!-- ============================================================= -->
+<!-- SAVING OVERLAY                                                -->
+<!-- ============================================================= -->
+
+<div id="savingOverlay"
+     class="saving-overlay">
+
+    <div class="saving-box">
+
+        <div class="spinner-border text-primary mb-3"
+             role="status">
+
+            <span class="visually-hidden">
+                Saving...
+            </span>
+
+        </div>
+
+        <div class="fw-bold">
+            Saving readings...
+        </div>
+
+        <small class="text-muted">
+            Please wait.
+        </small>
+
+    </div>
+
 </div>
 
 
@@ -604,1167 +626,13 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
-
     <script>
-
-        document.addEventListener(
-            "DOMContentLoaded",
-            function () {
-
-
-                // ======================================================
-                // CURRENT COMPANY
-                // ======================================================
-
-                const currentCompany =
-                    @Html.Raw(
-                        System.Text.Json.JsonSerializer.Serialize(
-                                ViewBag.CurrentCompany ?? ""
-                        )
-                                );
-
-
-            // ======================================================
-            // TODAY
-            // ======================================================
-
-            const today =
-                "@DateTime.Today.ToString("yyyy-MM-dd")";
-
-
-            // ======================================================
-            // ELEMENTS
-            // ======================================================
-
-            const addButton =
-                document.getElementById("addRow");
-
-
-            const temporaryBody =
-                document.getElementById(
-                    "temporaryBody"
-                );
-
-
-            const hiddenContainer =
-                document.getElementById(
-                    "hiddenItemsContainer"
-                );
-
-
-            const temporaryFooter =
-                document.getElementById(
-                    "temporaryFooter"
-                );
-
-
-            const grandTotalElement =
-                document.getElementById(
-                    "grandTotal"
-                );
-
-
-            // ======================================================
-            // MAXIMUM ROW LIMIT
-            // ======================================================
-
-            const MAX_ROWS = 24;
-
-
-            // ======================================================
-            // ENERGY FIELDS
-            // ======================================================
-
-            const energyFields = [
-
-                "Reb",
-
-                "Gg1",
-
-                "Gg2",
-
-                "Gg3",
-
-                "Gg4",
-
-                "Dg1",
-
-                "Dg2",
-
-                "Dg3",
-
-                "Dg4",
-
-                "Solar"
-
-            ];
-
-
-            // ======================================================
-            // ROW COUNT
-            // ======================================================
-
-            let rowCount = 0;
-
-
-            // ======================================================
-            // GET INPUT VALUE
-            // ======================================================
-
-            function getInputValue(id) {
-
-                const element =
-                    document.getElementById(id);
-
-
-                if (!element) {
-
-                    return "";
-
-                }
-
-
-                return element.value;
-
-            }
-
-
-            // ======================================================
-            // CALCULATE INPUT TOTAL
-            // ======================================================
-
-            function calculateInputTotal() {
-
-                let total = 0;
-
-
-                energyFields.forEach(
-                    function (field) {
-
-                        const value =
-                            parseFloat(
-                                getInputValue(
-                                    "input" + field
-                                )
-                            );
-
-
-                        if (!isNaN(value)) {
-
-                            total += value;
-
-                        }
-
-                    }
-                );
-
-
-                document.getElementById(
-                    "inputTotal"
-                ).value =
-                    total.toFixed(2);
-
-            }
-
-
-            // ======================================================
-            // INPUT TOTAL CALCULATION
-            // ======================================================
-
-            document.addEventListener(
-                "input",
-                function (event) {
-
-                    if (
-                        event.target.classList.contains(
-                            "energy-input"
-                        )
-                    ) {
-
-                        calculateInputTotal();
-
-                    }
-
-                }
-            );
-
-
-            // ======================================================
-            // GET TIME
-            // ======================================================
-
-            function getTime(index) {
-
-                const hour24 =
-                    (8 + index) % 24;
-
-
-                const period =
-                    hour24 >= 12
-                        ? "PM"
-                        : "AM";
-
-
-                let hour12 =
-                    hour24 % 12;
-
-
-                if (hour12 === 0) {
-
-                    hour12 = 12;
-
-                }
-
-
-                const actualHour =
-                    String(hour24)
-                        .padStart(2, "0");
-
-
-                const displayHour =
-                    String(hour12)
-                        .padStart(2, "0");
-
-
-                return {
-
-                    actual:
-                        actualHour + ":00",
-
-                    display:
-                        displayHour +
-                        ":00 " +
-                        period
-
-                };
-
-            }
-
-
-            // ======================================================
-            // ADD BUTTON
-            // ======================================================
-
-            addButton.addEventListener(
-                "click",
-                function () {
-
-
-                    // ==================================================
-                    // MAXIMUM 24 ROW CHECK
-                    // ==================================================
-
-                    if (rowCount >= MAX_ROWS) {
-
-                        alert(
-                            "Maximum 24 readings are allowed for one day."
-                        );
-
-                        return;
-
-                    }
-
-
-                    // ==================================================
-                    // GET BASIC VALUES
-                    // ==================================================
-
-                    const company =
-                        getInputValue(
-                            "inputCompany"
-                        );
-
-
-                    const date =
-                        getInputValue(
-                            "inputDate"
-                        );
-
-
-                    const time =
-                        getInputValue(
-                            "inputTime"
-                        );
-
-
-                    const timeDisplay =
-                        getInputValue(
-                            "inputTimeDisplay"
-                        );
-
-
-                    // ==================================================
-                    // VALIDATION
-                    // ==================================================
-
-                    if (!company) {
-
-                        alert(
-                            "Company is required."
-                        );
-
-                        return;
-
-                    }
-
-
-                    if (!date) {
-
-                        alert(
-                            "Date is required."
-                        );
-
-                        return;
-
-                    }
-
-
-                    // ==================================================
-                    // GET ENERGY VALUES
-                    // ==================================================
-
-                    const values = {};
-
-                    let total = 0;
-
-
-                    energyFields.forEach(
-                        function (field) {
-
-                            const value =
-                                getInputValue(
-                                    "input" + field
-                                );
-
-
-                            values[field] =
-                                value;
-
-
-                            const number =
-                                parseFloat(value);
-
-
-                            if (!isNaN(number)) {
-
-                                total += number;
-
-                            }
-
-                        }
-                    );
-
-
-                    // ==================================================
-                    // OTHER VALUES
-                    // ==================================================
-
-                    values.CaptiveGenerator =
-                        getInputValue(
-                            "inputCaptiveGenerator"
-                        );
-
-
-                    values.IndustrialBoiler =
-                        getInputValue(
-                            "inputIndustrialBoiler"
-                        );
-
-
-                    // ==================================================
-                    // CREATE TEMPORARY ROW
-                    // ==================================================
-
-                    const row =
-                        document.createElement(
-                            "tr"
-                        );
-
-
-                    row.className =
-                        "temporary-row";
-
-
-                    row.dataset.index =
-                        rowCount;
-
-
-                    // ==================================================
-                    // ROW HTML
-                    // ==================================================
-
-                    row.innerHTML = `
-
-                        <!-- COMPANY -->
-
-                        <td>
-
-                            <input type="text"
-                                   class="form-control form-control-sm"
-                                   value="${escapeHtml(company)}"
-                                   readonly>
-
-                        </td>
-
-
-                        <!-- DATE -->
-
-                        <td>
-
-                            <input type="date"
-                                   class="form-control form-control-sm"
-                                   value="${date}"
-                                   readonly>
-
-                        </td>
-
-
-                        <!-- TIME -->
-
-                        <td>
-
-                            <input type="text"
-                                   class="form-control form-control-sm"
-                                   value="${escapeHtml(timeDisplay)}"
-                                   readonly>
-
-                            <input type="hidden"
-                                   class="row-time"
-                                   value="${time}">
-
-                        </td>
-
-
-                        <!-- REB -->
-
-                        ${createEditableCell(
-                            "Reb",
-                            values.Reb
-                        )}
-
-
-                        <!-- GG-1 -->
-
-                        ${createEditableCell(
-                            "Gg1",
-                            values.Gg1
-                        )}
-
-
-                        <!-- GG-2 -->
-
-                        ${createEditableCell(
-                            "Gg2",
-                            values.Gg2
-                        )}
-
-
-                        <!-- GG-3 -->
-
-                        ${createEditableCell(
-                            "Gg3",
-                            values.Gg3
-                        )}
-
-
-                        <!-- GG-4 -->
-
-                        ${createEditableCell(
-                            "Gg4",
-                            values.Gg4
-                        )}
-
-
-                        <!-- DG-1 -->
-
-                        ${createEditableCell(
-                            "Dg1",
-                            values.Dg1
-                        )}
-
-
-                        <!-- DG-2 -->
-
-                        ${createEditableCell(
-                            "Dg2",
-                            values.Dg2
-                        )}
-
-
-                        <!-- DG-3 -->
-
-                        ${createEditableCell(
-                            "Dg3",
-                            values.Dg3
-                        )}
-
-
-                        <!-- DG-4 -->
-
-                        ${createEditableCell(
-                            "Dg4",
-                            values.Dg4
-                        )}
-
-
-                        <!-- SOLAR -->
-
-                        ${createEditableCell(
-                            "Solar",
-                            values.Solar
-                        )}
-
-
-                        <!-- TOTAL -->
-
-                        <td>
-
-                            <input type="number"
-                                   class="form-control form-control-sm row-total"
-                                   value="${total.toFixed(2)}"
-                                   readonly>
-
-                        </td>
-
-
-                        <!-- CAPTIVE GENERATOR -->
-
-                        ${createEditableCell(
-                            "CaptiveGenerator",
-                            values.CaptiveGenerator
-                        )}
-
-
-                        <!-- INDUSTRIAL BOILER -->
-
-                        ${createEditableCell(
-                            "IndustrialBoiler",
-                            values.IndustrialBoiler
-                        )}
-
-                    `;
-
-
-                    // ==================================================
-                    // ADD ROW TO TEMPORARY TABLE
-                    // ==================================================
-
-                    temporaryBody.appendChild(row);
-
-
-                    // ==================================================
-                    // CREATE HIDDEN POST FIELDS
-                    // ==================================================
-
-                    createHiddenInput(
-                        rowCount,
-                        "Company",
-                        company
-                    );
-
-
-                    createHiddenInput(
-                        rowCount,
-                        "Trdate",
-                        date
-                    );
-
-
-                    createHiddenInput(
-                        rowCount,
-                        "Time",
-                        time
-                    );
-
-
-                    energyFields.forEach(
-                        function (field) {
-
-                            createHiddenInput(
-                                rowCount,
-                                field,
-                                values[field]
-                            );
-
-                        }
-                    );
-
-
-                    createHiddenInput(
-                        rowCount,
-                        "Total",
-                        total.toFixed(2)
-                    );
-
-
-                    createHiddenInput(
-                        rowCount,
-                        "CaptiveGenerator",
-                        values.CaptiveGenerator
-                    );
-
-
-                    createHiddenInput(
-                        rowCount,
-                        "IndustrialBoiler",
-                        values.IndustrialBoiler
-                    );
-
-
-                    // ==================================================
-                    // SET EDIT EVENTS
-                    // ==================================================
-
-                    setupRowEvents(row);
-
-
-                    // ==================================================
-                    // INCREASE ROW COUNT
-                    // ==================================================
-
-                    rowCount++;
-
-
-                    // ==================================================
-                    // SHOW FOOTER
-                    // ==================================================
-
-                    temporaryFooter.classList.remove(
-                        "d-none"
-                    );
-
-
-                    // ==================================================
-                    // UPDATE GRAND TOTAL
-                    // ==================================================
-
-                    updateGrandTotal();
-
-
-                    // ==================================================
-                    // RESET INPUT ROW
-                    // ==================================================
-
-                    if (rowCount < MAX_ROWS) {
-
-                        resetInputRow();
-
-                    }
-
-                }
-            );
-
-
-            // ======================================================
-            // CREATE EDITABLE CELL
-            // ======================================================
-
-            function createEditableCell(
-                field,
-                value
-            ) {
-
-                return `
-
-                    <td>
-
-                        <input type="number"
-                               step="any"
-                               class="form-control form-control-sm editable-field"
-                               data-field="${field}"
-                               value="${value ?? ""}">
-
-                    </td>
-
-                `;
-
-            }
-
-
-            // ======================================================
-            // SETUP EDIT EVENTS
-            // ======================================================
-
-            function setupRowEvents(row) {
-
-                const editableFields =
-                    row.querySelectorAll(
-                        ".editable-field"
-                    );
-
-
-                editableFields.forEach(
-                    function (input) {
-
-                        input.addEventListener(
-                            "input",
-                            function () {
-
-                                updateTemporaryRow(
-                                    row
-                                );
-
-                            }
-                        );
-
-                    }
-                );
-
-            }
-
-
-            // ======================================================
-            // UPDATE TEMPORARY ROW
-            // ======================================================
-
-            function updateTemporaryRow(row) {
-
-                const index =
-                    parseInt(
-                        row.dataset.index
-                    );
-
-
-                let total = 0;
-
-
-                // ==================================================
-                // RECALCULATE TOTAL
-                // ==================================================
-
-                energyFields.forEach(
-                    function (field) {
-
-                        const input =
-                            row.querySelector(
-                                `[data-field="${field}"]`
-                            );
-
-
-                        if (input) {
-
-                            const value =
-                                parseFloat(
-                                    input.value
-                                );
-
-
-                            if (!isNaN(value)) {
-
-                                total += value;
-
-                            }
-
-                        }
-
-                    }
-                );
-
-
-                // ==================================================
-                // UPDATE TOTAL DISPLAY
-                // ==================================================
-
-                const totalInput =
-                    row.querySelector(
-                        ".row-total"
-                    );
-
-
-                if (totalInput) {
-
-                    totalInput.value =
-                        total.toFixed(2);
-
-                }
-
-
-                // ==================================================
-                // UPDATE HIDDEN VALUES
-                // ==================================================
-
-                energyFields.forEach(
-                    function (field) {
-
-                        updateHiddenInput(
-                            index,
-                            field,
-                            getRowValue(
-                                row,
-                                field
-                            )
-                        );
-
-                    }
-                );
-
-
-                updateHiddenInput(
-                    index,
-                    "Total",
-                    total.toFixed(2)
-                );
-
-
-                updateHiddenInput(
-                    index,
-                    "CaptiveGenerator",
-                    getRowValue(
-                        row,
-                        "CaptiveGenerator"
-                    )
-                );
-
-
-                updateHiddenInput(
-                    index,
-                    "IndustrialBoiler",
-                    getRowValue(
-                        row,
-                        "IndustrialBoiler"
-                    )
-                );
-
-
-                // ==================================================
-                // UPDATE GRAND TOTAL
-                // ==================================================
-
-                updateGrandTotal();
-
-            }
-
-
-            // ======================================================
-            // GET TEMPORARY ROW VALUE
-            // ======================================================
-
-            function getRowValue(
-                row,
-                field
-            ) {
-
-                const input =
-                    row.querySelector(
-                        `[data-field="${field}"]`
-                    );
-
-
-                return input
-                    ? input.value
-                    : "";
-
-            }
-
-
-            // ======================================================
-            // CREATE HIDDEN INPUT
-            // ======================================================
-
-            function createHiddenInput(
-                index,
-                field,
-                value
-            ) {
-
-                const input =
-                    document.createElement(
-                        "input"
-                    );
-
-
-                input.type =
-                    "hidden";
-
-
-                input.name =
-                    `Items[${index}].${field}`;
-
-
-                input.value =
-                    value ?? "";
-
-
-                input.dataset.index =
-                    index;
-
-
-                input.dataset.field =
-                    field;
-
-
-                hiddenContainer.appendChild(
-                    input
-                );
-
-            }
-
-
-            // ======================================================
-            // UPDATE HIDDEN INPUT
-            // ======================================================
-
-            function updateHiddenInput(
-                index,
-                field,
-                value
-            ) {
-
-                const input =
-                    hiddenContainer.querySelector(
-                        `input[data-index="${index}"][data-field="${field}"]`
-                    );
-
-
-                if (input) {
-
-                    input.value =
-                        value ?? "";
-
-                }
-
-            }
-
-
-            // ======================================================
-            // RESET INPUT ROW
-            // ======================================================
-
-            function resetInputRow() {
-
-
-                // ==================================================
-                // COMPANY
-                // ==================================================
-
-                document.getElementById(
-                    "inputCompany"
-                ).value =
-                    currentCompany;
-
-
-                // ==================================================
-                // DATE
-                // ==================================================
-
-                document.getElementById(
-                    "inputDate"
-                ).value =
-                    today;
-
-
-                // ==================================================
-                // NEXT TIME
-                // ==================================================
-
-                const nextTime =
-                    getTime(rowCount);
-
-
-                document.getElementById(
-                    "inputTime"
-                ).value =
-                    nextTime.actual;
-
-
-                document.getElementById(
-                    "inputTimeDisplay"
-                ).value =
-                    nextTime.display;
-
-
-                // ==================================================
-                // CLEAR ENERGY FIELDS
-                // ==================================================
-
-                energyFields.forEach(
-                    function (field) {
-
-                        document.getElementById(
-                            "input" + field
-                        ).value = "";
-
-                    }
-                );
-
-
-                // ==================================================
-                // CLEAR OTHER FIELDS
-                // ==================================================
-
-                document.getElementById(
-                    "inputCaptiveGenerator"
-                ).value = "";
-
-
-                document.getElementById(
-                    "inputIndustrialBoiler"
-                ).value = "";
-
-
-                // ==================================================
-                // RESET TOTAL
-                // ==================================================
-
-                document.getElementById(
-                    "inputTotal"
-                ).value =
-                    "0.00";
-
-
-                // ==================================================
-                // FOCUS REB
-                // ==================================================
-
-                document.getElementById(
-                    "inputReb"
-                ).focus();
-
-            }
-
-
-            // ======================================================
-            // GRAND TOTAL
-            // ======================================================
-
-            function updateGrandTotal() {
-
-                let total = 0;
-
-
-                temporaryBody
-                    .querySelectorAll(
-                        ".row-total"
-                    )
-                    .forEach(
-                        function (input) {
-
-                            const value =
-                                parseFloat(
-                                    input.value
-                                );
-
-
-                            if (!isNaN(value)) {
-
-                                total += value;
-
-                            }
-
-                        }
-                    );
-
-
-                grandTotalElement.textContent =
-                    total.toFixed(2);
-
-            }
-
-
-            // ======================================================
-            // HTML ESCAPE
-            // ======================================================
-
-            function escapeHtml(value) {
-
-                if (
-                    value === null ||
-                    value === undefined
-                ) {
-
-                    return "";
-
-                }
-
-
-                return String(value)
-
-                    .replace(
-                        /&/g,
-                        "&amp;"
-                    )
-
-                    .replace(
-                        /</g,
-                        "&lt;"
-                    )
-
-                    .replace(
-                        />/g,
-                        "&gt;"
-                    )
-
-                    .replace(
-                        /"/g,
-                        "&quot;"
-                    )
-
-                    .replace(
-                        /'/g,
-                        "&#039;"
-                    );
-
-            }
-
-
-            // ======================================================
-            // SAVE VALIDATION
-            // ======================================================
-
-            document
-                .getElementById(
-                    "consumptionForm"
-                )
-                .addEventListener(
-                    "submit",
-                    function (event) {
-
-
-                        if (rowCount === 0) {
-
-                            event.preventDefault();
-
-
-                            alert(
-                                "Please add at least one reading before saving."
-                            );
-
-
-                            return false;
-
-                        }
-
-
-                        // ==================================================
-                        // EXTRA 24 ROW SAFETY CHECK
-                        // ==================================================
-
-                        if (rowCount > MAX_ROWS) {
-
-                            event.preventDefault();
-
-
-                            alert(
-                                "Maximum 24 readings are allowed for one day."
-                            );
-
-
-                            return false;
-
-                        }
-
-                    }
-                );
-
-
-            // ======================================================
-            // INITIAL CALCULATION
-            // ======================================================
-
-            calculateInputTotal();
-
-        }
-    );
-
-</script>
+        window.dailyEnergyConfig = {
+            currentCompany: @Html.Raw(JsonSerializer.Serialize(currentCompany)),
+            getAvailableTimesUrl: '@Url.Action("GetAvailableTimes")'
+        };
+    </script>
+
+    <script src="~/js/dailyenergyfuelconsumption.js"
+            asp-append-version="true"></script>
 }

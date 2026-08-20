@@ -97,11 +97,11 @@
                                         </span>
                                     </td> *@
                                     <td>
-                                        <input type="text"
-                                               id="inputCompany"
+                                        <input asp-for="Company"
                                                class="form-control form-control-sm"
-                                               value="@ViewBag.CurrentCompany"
                                                readonly />
+
+                                        <span asp-validation-for="Company" class="text-danger"></span>
                                     </td>
 
                                     <!-- ================= DATE ================= -->

@@ -71,9 +71,11 @@
     // =========================================================
 
     if (!form || !addButton || !temporaryBody) {
+
         console.error(
             "Daily Energy Fuel Consumption elements were not found."
         );
+
         return;
     }
 
@@ -93,62 +95,6 @@
         "Dg3",
         "Dg4",
         "Solar"
-    ];
-
-
-    // =========================================================
-    // REQUIRED FIELDS
-    // =========================================================
-
-    const requiredFields = [
-        {
-            id: "inputReb",
-            name: "REB"
-        },
-        {
-            id: "inputGg1",
-            name: "GG-1"
-        },
-        {
-            id: "inputGg2",
-            name: "GG-2"
-        },
-        {
-            id: "inputGg3",
-            name: "GG-3"
-        },
-        {
-            id: "inputGg4",
-            name: "GG-4"
-        },
-        {
-            id: "inputDg1",
-            name: "DG-1"
-        },
-        {
-            id: "inputDg2",
-            name: "DG-2"
-        },
-        {
-            id: "inputDg3",
-            name: "DG-3"
-        },
-        {
-            id: "inputDg4",
-            name: "DG-4"
-        },
-        {
-            id: "inputSolar",
-            name: "Solar"
-        },
-        {
-            id: "inputCaptiveGenerator",
-            name: "Captive Generator"
-        },
-        {
-            id: "inputIndustrialBoiler",
-            name: "Industrial Boiler"
-        }
     ];
 
 
@@ -662,66 +608,6 @@
 
 
     // =========================================================
-    // VALIDATE REQUIRED FIELDS
-    // =========================================================
-
-    function validateRequiredFields() {
-
-        for (const field of requiredFields) {
-
-            const element =
-                document.getElementById(
-                    field.id
-                );
-
-
-            if (!element) {
-                continue;
-            }
-
-
-            const value =
-                String(
-                    element.value ?? ""
-                ).trim();
-
-
-            if (value === "") {
-
-                alert(
-                    field.name +
-                    " is required. Please enter a value."
-                );
-
-                element.focus();
-
-                return false;
-            }
-
-
-            const number =
-                Number(value);
-
-
-            if (!Number.isFinite(number)) {
-
-                alert(
-                    field.name +
-                    " must contain a valid number."
-                );
-
-                element.focus();
-
-                return false;
-            }
-        }
-
-
-        return true;
-    }
-
-
-    // =========================================================
     // CREATE EDITABLE CELL
     // =========================================================
 
@@ -755,11 +641,9 @@
                 getFirstAvailableTime();
 
 
+            // No warning/alert for Add Row
+            // when all time slots are occupied.
             if (!currentTime) {
-
-                alert(
-                    "All 24 hourly slots for this date have already been entered."
-                );
 
                 setNextAvailableTime();
 
@@ -789,29 +673,17 @@
                 );
 
 
-            if (!company) {
-
-                alert(
-                    "Company is required."
-                );
-
-                return;
-            }
-
-
-            if (!date) {
-
-                alert(
-                    "Date is required."
-                );
-
-                return;
-            }
-
-
-            if (!validateRequiredFields()) {
-                return;
-            }
+            // =================================================
+            // NO REQUIRED VALIDATION HERE
+            // =================================================
+            // Company can be empty.
+            // Date can be empty.
+            // Energy fields can be empty.
+            // Captive Generator can be empty.
+            // Industrial Boiler can be empty.
+            //
+            // No alert/warning will be shown.
+            // =================================================
 
 
             const values = {};

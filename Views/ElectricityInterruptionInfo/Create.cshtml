@@ -45,12 +45,13 @@
                             <!-- Department -->
                             <div class="col-lg-4 col-md-4 col-sm-6">
                                 <label asp-for="Depid" class="form-label">
-                                    Department <span class="text-danger">*</span>
+                                    Department 
+                                    @* <span class="text-danger">*</span> *@
                                 </label>
                                 <select asp-for="Depid" asp-items="ViewBag.DepartmentList" class="form-select">
                                     <option value="">-- Select Department --</option>
                                 </select>
-                                <span asp-validation-for="Depid" class="text-danger"></span>
+                                @* <span asp-validation-for="Depid" class="text-danger"></span> *@
                             </div>
                             <!-- PowerOffTime -->
                             <div class="col-lg-4 col-md-4 col-sm-6">

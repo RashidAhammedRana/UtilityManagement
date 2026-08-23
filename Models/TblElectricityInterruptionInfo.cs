@@ -9,8 +9,8 @@ public partial class TblElectricityInterruptionInfo
     public int Eiid { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public int Comid { get; set; }
-    [Required(ErrorMessage = "This field is required")]
-    public int Depid { get; set; }
+    //[Required(ErrorMessage = "This field is required")]
+    public int? Depid { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public int Itid { get; set; }
     [Required(ErrorMessage = "This field is required")]

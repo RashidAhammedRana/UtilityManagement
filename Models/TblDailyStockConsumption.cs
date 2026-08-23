@@ -10,6 +10,8 @@ public partial class TblDailyStockConsumption
     [Required(ErrorMessage = "This field is required")]
     public DateOnly? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? OsDiesel { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? ReceiveDiesel { get; set; }

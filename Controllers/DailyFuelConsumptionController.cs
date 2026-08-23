@@ -380,7 +380,7 @@ public class DailyFuelConsumptionController : Controller
 
         return RedirectToAction(nameof(DailyFuelConsumptionList));
     }
-
+    [HttpGet]
     private void LoadCompanyList()
     {
         var userId = _userManager.GetUserId(User);

@@ -30,7 +30,7 @@ public class DailyStockConsumptionController : Controller
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Daily Stock & Cons.")
+            .Where(x => x.MenuName == "Fuel Stock & Cons.")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 
@@ -235,7 +235,8 @@ public class DailyStockConsumptionController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblDailyStockConsumption
+        LoadCompanyList();
+            var model = new TblDailyStockConsumption
         {
             Trdate = DateOnly.FromDateTime(DateTime.Today)
         };
@@ -283,6 +284,7 @@ public class DailyStockConsumptionController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblDailyStockConsumptions
             .FirstOrDefaultAsync(x => x.Trid == id);
         if (reading == null)
@@ -371,6 +373,18 @@ public class DailyStockConsumptionController : Controller
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
         return RedirectToAction(nameof(DailyStockConsumptionList));
+    }
+    [HttpGet]
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

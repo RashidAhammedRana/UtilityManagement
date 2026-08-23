@@ -1034,6 +1034,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid);
                 entity.ToTable("TBL_DAILY_STOCK_CONSUMPTION");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.ConsCng).HasColumnName("CONS_CNG");
                 entity.Property(e => e.ConsDiesel).HasColumnName("CONS_DIESEL");
                 entity.Property(e => e.ConsLpg).HasColumnName("CONS_LPG");

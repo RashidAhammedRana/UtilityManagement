@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<UtilityManagement.Models.TblDailyStockConsumption>
 
 @{
-    ViewData["Title"] = "Daily Stock Consumption List";
+    ViewData["Title"] = "Daily Fuel Stock Consumption List";
 
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
@@ -129,6 +129,13 @@
                     style="width: 8%;">
 
                     Date
+
+                </th>
+                <th rowspan="2"
+                    class="date-header"
+                    style="width: 10%;">
+
+                    Company
 
                 </th>
 
@@ -285,6 +292,12 @@
                         @item.Trdate?.ToString("dd-MM-yyyy")
 
                     </td>
+                    <td class="text-center date-cell">
+
+                        @item.Company
+
+                    </td>
+
 
 
 

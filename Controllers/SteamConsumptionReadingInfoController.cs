@@ -167,6 +167,7 @@ public class SteamConsumptionReadingInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadCompanyList();
         var model = new TblSteamConsumptionReadingInfo
         {
             Trdate = DateTime.Today
@@ -218,6 +219,7 @@ public class SteamConsumptionReadingInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblSteamConsumptionReadingInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
         if (reading == null)
@@ -305,6 +307,18 @@ public class SteamConsumptionReadingInfoController : Controller
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
         return RedirectToAction(nameof(SteamConsumptionReadingInfoList));
+    }
+    [HttpGet]
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

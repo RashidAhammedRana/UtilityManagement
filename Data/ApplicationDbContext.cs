@@ -868,6 +868,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid);
                 entity.ToTable("TBL_STEAM_CONSUMPTION_READING_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.ChillerCons).HasColumnName("CHILLER_CONS");
                 entity.Property(e => e.Trdate).HasColumnType("datetime").HasColumnName("TRDATE");
                 entity.Property(e => e.DyeingCons).HasColumnName("DYEING_CONS");

@@ -10,6 +10,8 @@ public partial class TblSteamConsumptionReadingInfo
     [Required(ErrorMessage = "This field is required")]
     public DateTime? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? DyeingCons { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? DyeingFinCons { get; set; }

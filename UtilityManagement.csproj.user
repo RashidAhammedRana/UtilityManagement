@@ -29,6 +29,9 @@
     <Compile Update="Reports\rptDailyEnergyFuelConsumption2.cs">
       <SubType>XtraReport</SubType>
     </Compile>
+    <Compile Update="Reports\rptDailyEnergyPowerFuel.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
     <Compile Update="Reports\rptDieselGeneratorCost.cs">
       <SubType>XtraReport</SubType>
     </Compile>
@@ -57,6 +60,9 @@
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\rptSteamConsumption.cs">
+      <SubType>XtraReport</SubType>
+    </Compile>
+    <Compile Update="Reports\rptUtilityInterruption.cs">
       <SubType>XtraReport</SubType>
     </Compile>
     <Compile Update="Reports\rptWtpWaterConsumption.cs">

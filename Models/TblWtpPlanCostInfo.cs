@@ -10,6 +10,8 @@ public partial class TblWtpPlanCostInfo
     [Required(ErrorMessage = "This field is required")]
     public DateTime? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public int? Eqid { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? DeepPump1 { get; set; }

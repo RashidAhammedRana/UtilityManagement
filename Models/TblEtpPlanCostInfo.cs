@@ -8,6 +8,8 @@ public partial class TblEtpPlanCostInfo
 {
     public int Trid { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public string? Company { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public int? Eqid { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public DateTime? Trdate { get; set; }
@@ -55,6 +57,8 @@ public partial class TblEtpPlanCostInfo
     public double? GrandTotalCost { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? DailyEffluentFlow { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? DailyEffluentFlowOut { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? EffluentFlowThrough { get; set; }
     [Required(ErrorMessage = "This field is required")]

@@ -34,6 +34,24 @@
 
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
+                            <!-- COMPANY -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label class="form-label">
+                                    Company
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select name="Company" class="form-select" required>
+                                    <option value="">-- Select Company --</option>
+                                    @if (!string.IsNullOrEmpty(ViewBag.CurrentCompany))
+                                    {
+                                        <option value="@ViewBag.CurrentCompany"
+                                                selected>
+                                            @ViewBag.CurrentCompany
+                                        </option>
+                                    }
+                                </select>
+                            </div>
 
                             <!-- Equipment -->
                             <div class="col-lg-3 col-md-4 col-sm-6">

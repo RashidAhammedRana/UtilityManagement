@@ -32,6 +32,24 @@
 
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
+                            <!-- COMPANY -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label class="form-label">
+                                    Company
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <select name="Company" class="form-select" required>
+                                    <option value="">-- Select Company --</option>
+                                    @if (!string.IsNullOrEmpty(ViewBag.CurrentCompany))
+                                    {
+                                        <option value="@ViewBag.CurrentCompany"
+                                                selected>
+                                            @ViewBag.CurrentCompany
+                                        </option>
+                                    }
+                                </select>
+                            </div>
                             <!-- Equipment -->
                             <div class="col-lg-2 col-md-3 col-sm-6">
                                 <label asp-for="Eqid" class="form-label">
@@ -279,6 +297,14 @@
                                 </label>
                                 <input asp-for="DailyEffluentFlow" class="form-control" />
                                 <span asp-validation-for="DailyEffluentFlow" class="text-danger"></span>
+                            </div>
+                            <!-- DailyEffluentFlowOut -->
+                            <div class="col-lg-2 col-md-3 col-sm-6">
+                                <label asp-for="DailyEffluentFlowOut" class="form-label">
+                                    Daily Effluent Flow(Out)
+                                </label>
+                                <input asp-for="DailyEffluentFlowOut" class="form-control" />
+                                <span asp-validation-for="DailyEffluentFlowOut" class="text-danger"></span>
                             </div>
                             <!-- EffluentFlowThrough -->
                             <!-- EffluentFlowThrough= DailyEffluentFlow/24-->

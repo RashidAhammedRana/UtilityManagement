@@ -191,6 +191,7 @@ public class WtpPlanCostInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadCompanyList();
         var model = new TblWtpPlanCostInfo
         {
             Trdate = DateTime.Today
@@ -288,6 +289,7 @@ public class WtpPlanCostInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblWtpPlanCostInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
@@ -357,6 +359,7 @@ public class WtpPlanCostInfoController : Controller
 
             // Update editable fields
             existing.Trdate = wtpPlanCostInfo.Trdate;
+            existing.Company = wtpPlanCostInfo.Company;
             existing.Eqid = wtpPlanCostInfo.Eqid;
 
             existing.DeepPump1 = wtpPlanCostInfo.DeepPump1;
@@ -434,6 +437,19 @@ public class WtpPlanCostInfoController : Controller
         TempData["SuccessMessage"] = "Readings deleted successfully.";
 
         return RedirectToAction(nameof(WtpPlanCostInfoList));
+    }
+
+    [HttpGet]
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

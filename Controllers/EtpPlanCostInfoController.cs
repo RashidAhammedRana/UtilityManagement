@@ -191,6 +191,7 @@ public class EtpPlanCostInfoController : Controller
     {
         LoadRates();
         LoadEquipmentList();
+        LoadCompanyList();
 
         var model = new TblEtpPlanCostInfo
         {
@@ -260,6 +261,7 @@ public class EtpPlanCostInfoController : Controller
     {
         LoadRates();
         LoadEquipmentList();
+        LoadCompanyList();
 
         var model = _context.TblEtpPlanCostInfo.Find(id);
 
@@ -298,6 +300,7 @@ public class EtpPlanCostInfoController : Controller
 
             // Update editable fields
             existing.Trdate = etpPlanCostInfo.Trdate;
+            existing.Company = etpPlanCostInfo.Company;
             existing.Eqid = etpPlanCostInfo.Eqid;
 
             existing.UreaConsumption = etpPlanCostInfo.UreaConsumption;
@@ -321,17 +324,19 @@ public class EtpPlanCostInfoController : Controller
             existing.TotalChemicalCost = etpPlanCostInfo.TotalChemicalCost;
             existing.MaintenanceCost = etpPlanCostInfo.MaintenanceCost;
             existing.ManpowerSalary = etpPlanCostInfo.ManpowerSalary;
-            existing.ManpowerSalary = etpPlanCostInfo.ManpowerSalary;
             existing.MiscellaneousCost = etpPlanCostInfo.MiscellaneousCost;
             existing.GrandTotalCost = etpPlanCostInfo.GrandTotalCost;
             existing.DailyEffluentFlow = etpPlanCostInfo.DailyEffluentFlow;
-            existing.DailyEffluentFlow = etpPlanCostInfo.DailyEffluentFlow;
+            existing.DailyEffluentFlowOut = etpPlanCostInfo.DailyEffluentFlowOut;
             existing.EffluentFlowThrough = etpPlanCostInfo.EffluentFlowThrough;
             existing.ChemicalCost = etpPlanCostInfo.ChemicalCost;
             existing.DailyEtpCost = etpPlanCostInfo.DailyEtpCost;
             existing.DyeingProduction = etpPlanCostInfo.DyeingProduction;
             existing.EtpChemCostPerKgDyeing = etpPlanCostInfo.EtpChemCostPerKgDyeing;
             existing.EflluentTreatmentPerKgDyeing = etpPlanCostInfo.EflluentTreatmentPerKgDyeing;
+            existing.NaoclConsumption = etpPlanCostInfo.NaoclConsumption;
+            existing.C6H807Consumption = etpPlanCostInfo.C6H807Consumption;
+            existing.PacConsumption = etpPlanCostInfo.PacConsumption;
 
             // Update audit fields
             existing.UpdatedAt = DateTime.Now;
@@ -441,6 +446,19 @@ public class EtpPlanCostInfoController : Controller
                 Text = $"{x.EquipmentName} - {x.CurrentLocation}"
             })
             .ToList();
+    }
+
+    [HttpGet]
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

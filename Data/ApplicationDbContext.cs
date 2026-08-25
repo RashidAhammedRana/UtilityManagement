@@ -403,6 +403,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid).HasName("PK_TBL_WTP_PLAN_COST");
                 entity.ToTable("TBL_WTP_PLAN_COST_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.DeepPump1).HasColumnName("DEEP_PUMP_1");
                 entity.Property(e => e.DeepPump2).HasColumnName("DEEP_PUMP_2");
                 entity.Property(e => e.DeepPump3).HasColumnName("DEEP_PUMP_3");
@@ -714,12 +715,14 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid);
                 entity.ToTable("TBL_ETP_PLAN_COST_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.AntifoamConsumption).HasColumnName("ANTIFOAM_CONSUMPTION");
                 entity.Property(e => e.AntifoamCost).HasColumnName("ANTIFOAM_COST");
                 entity.Property(e => e.BiocleanConsumption).HasColumnName("BIOCLEAN_CONSUMPTION");
                 entity.Property(e => e.BiocleanCost).HasColumnName("BIOCLEAN_COST");
                 entity.Property(e => e.ChemicalCost).HasColumnName("CHEMICAL_COST");
                 entity.Property(e => e.DailyEffluentFlow).HasColumnName("DAILY_EFFLUENT_FLOW");
+                entity.Property(e => e.DailyEffluentFlowOut).HasColumnName("DAILY_EFFLUENT_FLOW_OUT");
                 entity.Property(e => e.DapConsumption).HasColumnName("DAP_CONSUMPTION");
                 entity.Property(e => e.DapCost).HasColumnName("DAP_COST");
                 entity.Property(e => e.DecoloringConsumption).HasColumnName("DECOLORING_CONSUMPTION");
@@ -763,6 +766,7 @@ namespace UtilityManagement.Data
                 entity.HasKey(e => e.Trid);
                 entity.ToTable("TBL_RO_PLANT_COST_INFO");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
                 entity.Property(e => e.AcidCleanerCons).HasColumnName("ACID_CLEANER_CONS");
                 entity.Property(e => e.AcidCleanerCost).HasColumnName("ACID_CLEANER_COST");
                 entity.Property(e => e.AlkalineCleanerCons).HasColumnName("ALKALINE_CLEANER_CONS");

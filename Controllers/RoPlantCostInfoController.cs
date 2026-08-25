@@ -188,6 +188,7 @@ public class RoPlantCostInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
+        LoadCompanyList();
         var model = new TblRoPlantCostInfo
         {
             Trdate = DateTime.Today
@@ -200,7 +201,7 @@ public class RoPlantCostInfoController : Controller
             .Select(x => x.Company)
             .FirstOrDefault();
         var query = _context.TblEquipmentDetails
-            .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
+     .Where(x => x.EquipmentName.ToLower() == "ro");
         if (!string.IsNullOrEmpty(currentLocation))
         {
             query = query.Where(x => x.CurrentLocation == currentLocation);
@@ -355,6 +356,7 @@ public class RoPlantCostInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        LoadCompanyList();
         var reading = await _context.TblRoPlantCostInfo
             .FirstOrDefaultAsync(x => x.Trid == id);
 
@@ -494,6 +496,7 @@ public class RoPlantCostInfoController : Controller
 
             // Update editable fields
             existing.Trdate = roPlantCostInfo.Trdate;
+            existing.Company = roPlantCostInfo.Company;
             existing.Eqid = roPlantCostInfo.Eqid;
             existing.Doshion51Cons = roPlantCostInfo.Doshion51Cons;
             existing.Doshion51Cost = roPlantCostInfo.Doshion51Cost;
@@ -570,6 +573,20 @@ public class RoPlantCostInfoController : Controller
         TempData["SuccessMessage"] = "Cost deleted successfully.";
 
         return RedirectToAction(nameof(RoPlantCostInfoList));
+    }
+
+
+    [HttpGet]
+    private void LoadCompanyList()
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentCompany = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        ViewBag.CurrentCompany = currentCompany;
     }
 }
 

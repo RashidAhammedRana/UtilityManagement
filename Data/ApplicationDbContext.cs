@@ -57,6 +57,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDailyElectricityGeneration> TblDailyElectricityGenerations { get; set; }
         public virtual DbSet<TblDailyStockConsumption> TblDailyStockConsumptions { get; set; }
         public virtual DbSet<TblDailyFuelConsumption> TblDailyFuelConsumption { get; set; }
+        public virtual DbSet<TblBoilerSteamGenerationInfo> TblBoilerSteamGenerationInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1089,6 +1090,30 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });
 
+            //TblBoilerSteamGenerationInfo
+            modelBuilder.Entity<TblBoilerSteamGenerationInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_BOILER_STEAM_GENERATION_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.B1UsageFuel).HasMaxLength(50).HasColumnName("B1_USAGE_FUEL");
+                entity.Property(e => e.B2UsageFuel).HasMaxLength(50).HasColumnName("B2_USAGE_FUEL");
+                entity.Property(e => e.B3UsageFuel).HasMaxLength(50).HasColumnName("B3_USAGE_FUEL");
+                entity.Property(e => e.Boiler1SteamGeneration).HasColumnName("BOILER1_STEAM_GENERATION");
+                entity.Property(e => e.Boiler2SteamGeneration).HasColumnName("BOILER2_STEAM_GENERATION");
+                entity.Property(e => e.Boiler3SteamGeneration).HasColumnName("BOILER3_STEAM_GENERATION");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.EgbBoilerSteamGeneration).HasColumnName("EGB_BOILER_STEAM_GENERATION");
+                entity.Property(e => e.GasPressure).HasColumnName("GAS_PRESSURE");
+                entity.Property(e => e.HeaderSteamPressure).HasColumnName("HEADER_STEAM_PRESSURE");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Time).HasColumnName("TIME");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+            });
             OnModelCreatingPartial(modelBuilder);
         }
 

@@ -1,0 +1,186 @@
+﻿@model IEnumerable<UtilityManagement.Models.TblBoilerSteamGenerationInfo>
+
+@{
+    ViewData["Title"] = "Boiler Steam Generation Info List";
+
+    int currentPage = ViewBag.CurrentPage;
+    int totalPages = ViewBag.TotalPages;
+
+    int pageSize = 15;
+    int sl = (currentPage - 1) * pageSize;
+
+    int startPage = Math.Max(1, currentPage - 2);
+    int endPage = Math.Min(totalPages, currentPage + 2);
+
+    bool canCreate = ViewBag.CanCreate ?? false;
+    bool canEdit = ViewBag.CanEdit ?? false;
+    bool canDelete = ViewBag.CanDelete ?? false;
+
+    string search = ViewBag.SearchString ?? "";
+}
+
+<h2 class="text-center">Boiler Steam Generation Info List</h2>
+
+<p class="text-muted text-center">
+    Total Records: <strong>@ViewBag.totalReadings</strong>
+</p>
+
+<div class="d-flex justify-content-between mb-3 align-items-center">
+
+    <!-- LEFT: SEARCH + RESET -->
+    <form method="get" asp-action="DailyEnergyFuelConsumptionList"
+          class="d-flex gap-2 align-items-center"
+          id="searchForm">
+
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@ViewBag.SearchString"
+               class="form-control"
+               placeholder="Search here..."
+               style="width: 300px;" />
+
+    </form>
+
+    <!-- RIGHT: ACTION BUTTONS -->
+    <div class="d-flex gap-2">
+
+        @if (canCreate)
+        {
+            <a asp-action="Create" class="btn btn-primary">
+                + Create
+            </a>
+        }
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+            Back
+        </button>
+
+    </div>
+
+</div>
+
+<!-- TABLE -->
+<div class="table-responsive">
+    <table class="table table-bordered table-hover">
+
+        <thead class="table-dark">
+            <tr class="text-center">
+                <th>SL</th>
+                <th>Company</th>
+                <th>Date</th>
+                <th>Time</th>
+                <th>Gas Pressure</th>
+                <th>Header Steam Pressure</th>
+                <th>Boiler1 Steam Generation</th>
+                <th>Boiler2 Steam Generation</th>
+                <th>Boiler3 Steam Generation</th>
+                <th>Egb Boiler Steam Generation</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl++;
+
+                <tr>
+                    <td class="text-center">@sl</td>
+                    <td class="text-center">@item.Company</td>
+                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
+                    <td class="text-center">@item.Time</td>
+                    <td class="text-center">@item.GasPressure</td>
+                    <td class="text-center">@item.HeaderSteamPressure</td>
+                    <td class="text-center">@item.Boiler1SteamGeneration</td>
+                    <td class="text-center">@item.Boiler2SteamGeneration</td>
+                    <td class="text-center">@item.EgbBoilerSteamGeneration</td>
+                    <td class="text-center">
+                        <div class="d-flex justify-content-center gap-2">
+
+                            @if (canEdit)
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-success btn-sm">
+                                    Edit
+                                </a>
+                            }
+
+                            @if (canDelete)
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-danger btn-sm">
+                                    Delete
+                                </a>
+                            }
+
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+
+    </table>
+</div>
+
+<!-- PAGINATION -->
+<nav>
+    <ul class="pagination justify-content-center flex-wrap">
+
+        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+            <a class="page-link"
+               href="@Url.Action("BoilerSteamGenerationInfoList", new { page = currentPage - 1, searchString = search })">
+                Prev
+            </a>
+        </li>
+
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link"
+                   href="@Url.Action("BoilerSteamGenerationInfoList", new { page = i, searchString = search })">
+                    @i
+                </a>
+            </li>
+        }
+
+        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+            <a class="page-link"
+               href="@Url.Action("BoilerSteamGenerationInfoList", new { page = currentPage + 1, searchString = search })">
+                Next
+            </a>
+        </li>
+
+    </ul>
+</nav>
+
+<!-- OPTIONAL: AUTO SUBMIT ON TYPING (NO BUTTON) -->
+<script>
+    document.querySelector("input[name='searchString']")
+        .addEventListener("input", function () {
+
+            clearTimeout(this.delay);
+
+            this.delay = setTimeout(() => {
+                this.form.submit();
+            }, 1000); // debounce 0.10 sec
+        });
+
+         window.onload = function () {
+        let searchBox = document.getElementById("searchBox");
+
+        // cursor always in search box
+        if (searchBox) {
+            searchBox.focus();
+
+            // move cursor to end
+            let val = searchBox.value;
+            searchBox.value = "";
+            searchBox.value = val;
+        }
+    };
+</script>

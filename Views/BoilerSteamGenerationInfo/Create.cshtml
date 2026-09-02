@@ -12,7 +12,7 @@
 
     var nextAvailableTime = ViewBag.NextAvailableTime as string ?? "";
 }
-
+<link href="~/css/boilersteamgeneration.css" rel="stylesheet" />
 <div class="row justify-content-center">
 
     <div class="col-md-12">
@@ -132,17 +132,19 @@
 
                                     <th>Boiler-1 Steam Generation</th>
 
-                                    <th>Boiler-2 Steam Generation</th>
-
-                                    <th>Boiler-3 Steam Generation</th>
-
-                                    <th>EGB Boiler Steam Generation</th>
-
                                     <th>B1 Usage Fuel</th>
+
+                                    <th>Boiler-2 Steam Generation</th>
 
                                     <th>B2 Usage Fuel</th>
 
+                                    <th>Boiler-3 Steam Generation</th>
+
                                     <th>B3 Usage Fuel</th>
+
+                                    <th>EGB Boiler Steam Generation</th>
+
+                                    <th>Total Generation</th>
 
                                     <th>Add</th>
 
@@ -156,7 +158,9 @@
                                 <tr id="inputRow">
 
 
-                                    <!-- COMPANY -->
+                                    <!-- ================================================= -->
+                                    <!-- COMPANY                                          -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -169,7 +173,9 @@
                                     </td>
 
 
-                                    <!-- DATE -->
+                                    <!-- ================================================= -->
+                                    <!-- DATE                                             -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -181,7 +187,9 @@
                                     </td>
 
 
-                                    <!-- TIME -->
+                                    <!-- ================================================= -->
+                                    <!-- TIME                                             -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -198,7 +206,9 @@
                                     </td>
 
 
-                                    <!-- GAS PRESSURE -->
+                                    <!-- ================================================= -->
+                                    <!-- GAS PRESSURE                                     -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -211,7 +221,9 @@
                                     </td>
 
 
-                                    <!-- HEADER STEAM PRESSURE -->
+                                    <!-- ================================================= -->
+                                    <!-- HEADER STEAM PRESSURE                            -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -224,91 +236,57 @@
                                     </td>
 
 
-                                    <!-- BOILER 1 -->
+                                    <!-- ================================================= -->
+                                    <!-- BOILER 1 STEAM GENERATION                       -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
                                         <input type="number"
                                                id="inputBoiler1SteamGeneration"
                                                step="any"
-                                               class="form-control form-control-sm boiler-input"
+                                               min="0"
+                                               class="form-control form-control-sm boiler-input generation-input"
                                                autocomplete="off" />
 
                                     </td>
 
 
-                                    <!-- BOILER 2 -->
+                                    <!-- ================================================= -->
+                                    <!-- B1 USAGE FUEL                                   -->
+                                    <!-- ================================================= -->
+
+                                    <td>
+
+                                        <select id="inputB1UsageFuel"class="form-select form-select-sm">
+                                            <option value="">Select</option>
+                                            <option value="NG">NG</option>
+                                            <option value="CNG">CNG</option>
+                                            <option value="LPG">LPG</option>
+                                            <option value="DIESEL">DIESEL</option>
+                                        </select>
+                                    </td>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- BOILER 2 STEAM GENERATION                       -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
                                         <input type="number"
                                                id="inputBoiler2SteamGeneration"
                                                step="any"
-                                               class="form-control form-control-sm boiler-input"
+                                               min="0"
+                                               class="form-control form-control-sm boiler-input generation-input"
                                                autocomplete="off" />
 
                                     </td>
 
 
-                                    <!-- BOILER 3 -->
-
-                                    <td>
-
-                                        <input type="number"
-                                               id="inputBoiler3SteamGeneration"
-                                               step="any"
-                                               class="form-control form-control-sm boiler-input"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- EGB BOILER -->
-
-                                    <td>
-
-                                        <input type="number"
-                                               id="inputEgbBoilerSteamGeneration"
-                                               step="any"
-                                               class="form-control form-control-sm boiler-input"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- B1 FUEL -->
-
-                                    <td>
-
-                                        <select id="inputB1UsageFuel"
-                                                class="form-select form-select-sm">
-
-                                            <option value="">
-                                                -- Select Fuel --
-                                            </option>
-
-                                            <option value="NG">
-                                                NG
-                                            </option>
-
-                                            <option value="CNG">
-                                                CNG
-                                            </option>
-
-                                            <option value="LPG">
-                                                LPG
-                                            </option>
-
-                                            <option value="DIESEL">
-                                                DIESEL
-                                            </option>
-
-                                        </select>
-
-                                    </td>
-
-
-                                    <!-- B2 FUEL -->
+                                    <!-- ================================================= -->
+                                    <!-- B2 USAGE FUEL                                   -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -316,7 +294,7 @@
                                                 class="form-select form-select-sm">
 
                                             <option value="">
-                                                -- Select Fuel --
+                                                Select
                                             </option>
 
                                             <option value="NG">
@@ -340,7 +318,25 @@
                                     </td>
 
 
-                                    <!-- B3 FUEL -->
+                                    <!-- ================================================= -->
+                                    <!-- BOILER 3 STEAM GENERATION                       -->
+                                    <!-- ================================================= -->
+
+                                    <td>
+
+                                        <input type="number"
+                                               id="inputBoiler3SteamGeneration"
+                                               step="any"
+                                               min="0"
+                                               class="form-control form-control-sm boiler-input generation-input"
+                                               autocomplete="off" />
+
+                                    </td>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- B3 USAGE FUEL                                   -->
+                                    <!-- ================================================= -->
 
                                     <td>
 
@@ -348,7 +344,7 @@
                                                 class="form-select form-select-sm">
 
                                             <option value="">
-                                                -- Select Fuel --
+                                                Select
                                             </option>
 
                                             <option value="NG">
@@ -372,7 +368,41 @@
                                     </td>
 
 
-                                    <!-- ADD -->
+                                    <!-- ================================================= -->
+                                    <!-- EGB BOILER STEAM GENERATION                     -->
+                                    <!-- ================================================= -->
+
+                                    <td>
+
+                                        <input type="number"
+                                               id="inputEgbBoilerSteamGeneration"
+                                               step="any"
+                                               min="0"
+                                               class="form-control form-control-sm boiler-input generation-input"
+                                               autocomplete="off" />
+
+                                    </td>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- TOTAL GENERATION                                -->
+                                    <!-- ================================================= -->
+
+                                    <td>
+
+                                        <input type="number"
+                                               id="inputTotalGeneration"
+                                               class="form-control form-control-sm total-generation"
+                                               value="0"
+                                               readonly
+                                               tabindex="-1" />
+
+                                    </td>
+
+
+                                    <!-- ================================================= -->
+                                    <!-- ADD                                             -->
+                                    <!-- ================================================= -->
 
                                     <td class="text-center">
 
@@ -400,13 +430,10 @@
                     <!-- TIME FULL MESSAGE                                -->
                     <!-- ================================================= -->
 
-                    <div id="timeFullMessage"
-                         class="time-full-message mt-2 d-none">
+                    <div id="timeFullMessage" class="time-full-message mt-2 d-none text-danger fw-semibold">
+                        <i class="bi bi-exclamation-triangle-fill me-1"></i>
 
-                        <i class="bi bi-exclamation-circle me-1"></i>
-
-                        All 24 hourly slots for this date have already
-                        been entered.
+                        All 24 hourly time slots for this date have already been entered.
 
                     </div>
 
@@ -449,17 +476,19 @@
 
                                         <th>Boiler-1 Steam Generation</th>
 
-                                        <th>Boiler-2 Steam Generation</th>
-
-                                        <th>Boiler-3 Steam Generation</th>
-
-                                        <th>EGB Boiler Steam Generation</th>
-
                                         <th>B1 Usage Fuel</th>
+
+                                        <th>Boiler-2 Steam Generation</th>
 
                                         <th>B2 Usage Fuel</th>
 
+                                        <th>Boiler-3 Steam Generation</th>
+
                                         <th>B3 Usage Fuel</th>
+
+                                        <th>EGB Boiler Steam Generation</th>
+
+                                        <th>Total Generation</th>
 
                                     </tr>
 
@@ -560,6 +589,11 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
+
+    <!-- ========================================================= -->
+    <!-- BOILER CONFIG                                             -->
+    <!-- ========================================================= -->
+
     <script>
 
         window.boilerSteamConfig = {
@@ -574,6 +608,87 @@
 
     </script>
 
+
+    <!-- ========================================================= -->
+    <!-- TOTAL GENERATION CALCULATION                              -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const b1Input =
+                document.getElementById("inputBoiler1SteamGeneration");
+
+            const b2Input =
+                document.getElementById("inputBoiler2SteamGeneration");
+
+            const b3Input =
+                document.getElementById("inputBoiler3SteamGeneration");
+
+            const egbInput =
+                document.getElementById("inputEgbBoilerSteamGeneration");
+
+            const totalInput =
+                document.getElementById("inputTotalGeneration");
+
+
+            function calculateTotalGeneration() {
+
+                const b1 =
+                    parseFloat(b1Input.value) || 0;
+
+                const b2 =
+                    parseFloat(b2Input.value) || 0;
+
+                const b3 =
+                    parseFloat(b3Input.value) || 0;
+
+                const egb =
+                    parseFloat(egbInput.value) || 0;
+
+
+                const total =
+                    b1 + b2 + b3 + egb;
+
+
+                totalInput.value =
+                    total.toFixed(2);
+
+            }
+
+
+            b1Input.addEventListener(
+                "input",
+                calculateTotalGeneration
+            );
+
+            b2Input.addEventListener(
+                "input",
+                calculateTotalGeneration
+            );
+
+            b3Input.addEventListener(
+                "input",
+                calculateTotalGeneration
+            );
+
+            egbInput.addEventListener(
+                "input",
+                calculateTotalGeneration
+            );
+
+
+            calculateTotalGeneration();
+
+        });
+
+    </script>
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN BOILER JS                                            -->
+    <!-- ========================================================= -->
 
     <script src="~/js/boilersteamgeneration.js"
             asp-append-version="true">

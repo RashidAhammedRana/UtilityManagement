@@ -98,7 +98,9 @@
 
         "Boiler3SteamGeneration",
 
-        "EgbBoilerSteamGeneration"
+        "EgbBoilerSteamGeneration",
+
+        "TotalGeneration"
 
     ];
 
@@ -130,17 +132,19 @@
 
         "Boiler1SteamGeneration",
 
-        "Boiler2SteamGeneration",
-
-        "Boiler3SteamGeneration",
-
-        "EgbBoilerSteamGeneration",
-
         "B1UsageFuel",
+
+        "Boiler2SteamGeneration",
 
         "B2UsageFuel",
 
-        "B3UsageFuel"
+        "Boiler3SteamGeneration",
+
+        "B3UsageFuel",
+
+        "EgbBoilerSteamGeneration",
+
+        "TotalGeneration"
 
     ];
 
@@ -184,6 +188,66 @@
         }
 
         return element.value ?? "";
+    }
+
+
+    // =========================================================
+    // CALCULATE TOTAL GENERATION
+    // =========================================================
+
+    function calculateTotalGeneration() {
+
+        const b1 =
+            parseFloat(
+                getInputValue(
+                    "inputBoiler1SteamGeneration"
+                )
+            ) || 0;
+
+
+        const b2 =
+            parseFloat(
+                getInputValue(
+                    "inputBoiler2SteamGeneration"
+                )
+            ) || 0;
+
+
+        const b3 =
+            parseFloat(
+                getInputValue(
+                    "inputBoiler3SteamGeneration"
+                )
+            ) || 0;
+
+
+        const egb =
+            parseFloat(
+                getInputValue(
+                    "inputEgbBoilerSteamGeneration"
+                )
+            ) || 0;
+
+
+        const total =
+            b1 + b2 + b3 + egb;
+
+
+        const totalInput =
+            document.getElementById(
+                "inputTotalGeneration"
+            );
+
+
+        if (totalInput) {
+
+            totalInput.value =
+                total.toFixed(2);
+
+        }
+
+
+        return total.toFixed(2);
     }
 
 
@@ -551,31 +615,59 @@
     // DATE CHANGE
     // =========================================================
 
-    dateInput.addEventListener(
-        "change",
-        async function () {
+    if (dateInput) {
 
-            const newDate =
-                dateInput.value;
+        dateInput.addEventListener(
+            "change",
+            async function () {
 
-
-            if (!newDate) {
-
-                return;
-            }
+                const newDate =
+                    dateInput.value;
 
 
-            if (rowCount > 0) {
+                if (!newDate) {
 
-                const confirmed =
-                    confirm(
-                        "Temporary readings have already been added.\n\n" +
-                        "Changing the date will clear all temporary readings.\n\n" +
-                        "Do you want to continue?"
+                    return;
+                }
+
+
+                if (rowCount > 0) {
+
+                    const confirmed =
+                        confirm(
+                            "Temporary readings have already been added.\n\n" +
+                            "Changing the date will clear all temporary readings.\n\n" +
+                            "Do you want to continue?"
+                        );
+
+
+                    if (!confirmed) {
+
+                        dateInput.value =
+                            previousDate;
+
+                        return;
+                    }
+
+
+                    temporaryBody.innerHTML =
+                        "";
+
+                    hiddenContainer.innerHTML =
+                        "";
+
+                    rowCount =
+                        0;
+                }
+
+
+                const loaded =
+                    await loadAvailableTimes(
+                        newDate
                     );
 
 
-                if (!confirmed) {
+                if (!loaded) {
 
                     dateInput.value =
                         previousDate;
@@ -584,36 +676,13 @@
                 }
 
 
-                temporaryBody.innerHTML =
-                    "";
+                previousDate =
+                    newDate;
 
-                hiddenContainer.innerHTML =
-                    "";
-
-                rowCount =
-                    0;
             }
+        );
 
-
-            const loaded =
-                await loadAvailableTimes(
-                    newDate
-                );
-
-
-            if (!loaded) {
-
-                dateInput.value =
-                    previousDate;
-
-                return;
-            }
-
-
-            previousDate =
-                newDate;
-        }
-    );
+    }
 
 
     // =========================================================
@@ -622,16 +691,18 @@
 
     function createNumberCell(
         field,
-        value
+        value,
+        readonly = false
     ) {
 
         return `
             <td>
                 <input type="number"
                        step="any"
-                       class="form-control form-control-sm editable-field"
+                       class="form-control form-control-sm editable-field ${readonly ? "total-generation" : ""}"
                        data-field="${escapeHtml(field)}"
                        value="${escapeHtml(value)}"
+                       ${readonly ? "readonly tabindex='-1'" : ""}
                        autocomplete="off">
             </td>
         `;
@@ -639,7 +710,7 @@
 
 
     // =========================================================
-    // CREATE FUEL DROPDOWN
+    // CREATE FUEL CELL
     // =========================================================
 
     function createFuelCell(
@@ -673,10 +744,10 @@
 
                 html += `
 
-                    <option value="${fuel}"
+                    <option value="${escapeHtml(fuel)}"
                             ${selected}>
 
-                        ${fuel}
+                        ${escapeHtml(fuel)}
 
                     </option>
 
@@ -706,6 +777,18 @@
         "click",
         function () {
 
+            // -------------------------------------------------
+            // CALCULATE TOTAL FIRST
+            // -------------------------------------------------
+
+            const totalGeneration =
+                calculateTotalGeneration();
+
+
+            // -------------------------------------------------
+            // GET AVAILABLE TIME
+            // -------------------------------------------------
+
             const currentTime =
                 getFirstAvailableTime();
 
@@ -717,6 +800,10 @@
                 return;
             }
 
+
+            // -------------------------------------------------
+            // BASIC VALUES
+            // -------------------------------------------------
 
             const company =
                 getInputValue(
@@ -734,6 +821,10 @@
                 currentTime;
 
 
+            // -------------------------------------------------
+            // GET ALL DATA VALUES
+            // -------------------------------------------------
+
             const values = {};
 
 
@@ -749,8 +840,15 @@
             );
 
 
+            // Make absolutely sure TotalGeneration
+            // contains calculated value.
+
+            values.TotalGeneration =
+                totalGeneration;
+
+
             // =================================================
-            // CREATE ROW
+            // CREATE TEMPORARY ROW
             // =================================================
 
             const row =
@@ -832,35 +930,11 @@
             )}
 
 
-                <!-- BOILER 1 -->
+                <!-- BOILER 1 GENERATION -->
 
                 ${createNumberCell(
                 "Boiler1SteamGeneration",
                 values.Boiler1SteamGeneration
-            )}
-
-
-                <!-- BOILER 2 -->
-
-                ${createNumberCell(
-                "Boiler2SteamGeneration",
-                values.Boiler2SteamGeneration
-            )}
-
-
-                <!-- BOILER 3 -->
-
-                ${createNumberCell(
-                "Boiler3SteamGeneration",
-                values.Boiler3SteamGeneration
-            )}
-
-
-                <!-- EGB BOILER -->
-
-                ${createNumberCell(
-                "EgbBoilerSteamGeneration",
-                values.EgbBoilerSteamGeneration
             )}
 
 
@@ -872,6 +946,14 @@
             )}
 
 
+                <!-- BOILER 2 GENERATION -->
+
+                ${createNumberCell(
+                "Boiler2SteamGeneration",
+                values.Boiler2SteamGeneration
+            )}
+
+
                 <!-- B2 FUEL -->
 
                 ${createFuelCell(
@@ -880,11 +962,36 @@
             )}
 
 
+                <!-- BOILER 3 GENERATION -->
+
+                ${createNumberCell(
+                "Boiler3SteamGeneration",
+                values.Boiler3SteamGeneration
+            )}
+
+
                 <!-- B3 FUEL -->
 
                 ${createFuelCell(
                 "B3UsageFuel",
                 values.B3UsageFuel
+            )}
+
+
+                <!-- EGB BOILER -->
+
+                ${createNumberCell(
+                "EgbBoilerSteamGeneration",
+                values.EgbBoilerSteamGeneration
+            )}
+
+
+                <!-- TOTAL GENERATION -->
+
+                ${createNumberCell(
+                "TotalGeneration",
+                values.TotalGeneration,
+                true
             )}
 
             `;
@@ -896,7 +1003,7 @@
 
 
             // =================================================
-            // HIDDEN INPUTS
+            // CREATE HIDDEN INPUTS
             // =================================================
 
             createHiddenInput(
@@ -933,6 +1040,10 @@
             );
 
 
+            // =================================================
+            // ROW EVENTS
+            // =================================================
+
             setupRowEvents(row);
 
 
@@ -940,7 +1051,7 @@
 
 
             // =================================================
-            // RESET INPUTS
+            // RESET INPUT ROW
             // =================================================
 
             resetInputRow();
@@ -1011,14 +1122,89 @@
         }
 
 
+        // -----------------------------------------------------
+        // RECALCULATE TOTAL
+        // -----------------------------------------------------
+
+        const b1 =
+            parseFloat(
+                getRowValue(
+                    row,
+                    "Boiler1SteamGeneration"
+                )
+            ) || 0;
+
+
+        const b2 =
+            parseFloat(
+                getRowValue(
+                    row,
+                    "Boiler2SteamGeneration"
+                )
+            ) || 0;
+
+
+        const b3 =
+            parseFloat(
+                getRowValue(
+                    row,
+                    "Boiler3SteamGeneration"
+                )
+            ) || 0;
+
+
+        const egb =
+            parseFloat(
+                getRowValue(
+                    row,
+                    "EgbBoilerSteamGeneration"
+                )
+            ) || 0;
+
+
+        const total =
+            b1 + b2 + b3 + egb;
+
+
+        // -----------------------------------------------------
+        // UPDATE TOTAL CELL
+        // -----------------------------------------------------
+
+        const totalInput =
+            row.querySelector(
+                '[data-field="TotalGeneration"]'
+            );
+
+
+        if (totalInput) {
+
+            totalInput.value =
+                total.toFixed(2);
+        }
+
+
+        // -----------------------------------------------------
+        // UPDATE ALL HIDDEN VALUES
+        // -----------------------------------------------------
+
         dataFields.forEach(
             function (field) {
 
-                const value =
+                let value =
                     getRowValue(
                         row,
                         field
                     );
+
+
+                if (
+                    field ===
+                    "TotalGeneration"
+                ) {
+
+                    value =
+                        total.toFixed(2);
+                }
 
 
                 updateHiddenInput(
@@ -1130,7 +1316,9 @@
 
     function resetInputRow() {
 
+        // -----------------------------------------------------
         // COMPANY
+        // -----------------------------------------------------
 
         const companyInput =
             document.getElementById(
@@ -1145,7 +1333,9 @@
         }
 
 
+        // -----------------------------------------------------
         // NUMERIC FIELDS
+        // -----------------------------------------------------
 
         numericFields.forEach(
             function (field) {
@@ -1166,7 +1356,9 @@
         );
 
 
+        // -----------------------------------------------------
         // FUEL DROPDOWNS
+        // -----------------------------------------------------
 
         fuelFields.forEach(
             function (field) {
@@ -1187,12 +1379,16 @@
         );
 
 
+        // -----------------------------------------------------
         // NEXT TIME
+        // -----------------------------------------------------
 
         setNextAvailableTime();
 
 
+        // -----------------------------------------------------
         // FOCUS
+        // -----------------------------------------------------
 
         const gasPressure =
             document.getElementById(
@@ -1273,6 +1469,25 @@
 
 
             // -------------------------------------------------
+            // FINAL TOTAL UPDATE
+            // -------------------------------------------------
+
+            temporaryBody
+                .querySelectorAll(
+                    ".temporary-row"
+                )
+                .forEach(
+                    function (row) {
+
+                        updateTemporaryRow(
+                            row
+                        );
+
+                    }
+                );
+
+
+            // -------------------------------------------------
             // DUPLICATE TIME CHECK
             // -------------------------------------------------
 
@@ -1347,7 +1562,7 @@
 
 
             // =================================================
-            // SHOW SAVING OVERLAY ONLY NOW
+            // SHOW SAVING OVERLAY
             // =================================================
 
             event.preventDefault();
@@ -1369,7 +1584,9 @@
             }
 
 
-            // Submit after overlay becomes visible
+            // -------------------------------------------------
+            // SUBMIT
+            // -------------------------------------------------
 
             setTimeout(
                 function () {
@@ -1395,9 +1612,9 @@
     }
 
 
-    // IMPORTANT:
-    // Make absolutely sure overlay is hidden
-    // when page initially loads.
+    // ---------------------------------------------------------
+    // HIDE SAVING OVERLAY ON PAGE LOAD
+    // ---------------------------------------------------------
 
     if (savingOverlay) {
 
@@ -1409,6 +1626,43 @@
             "show"
         );
     }
+
+
+    // =========================================================
+    // GENERATION INPUT EVENTS
+    // =========================================================
+
+    const generationInputs = [
+
+        "inputBoiler1SteamGeneration",
+
+        "inputBoiler2SteamGeneration",
+
+        "inputBoiler3SteamGeneration",
+
+        "inputEgbBoilerSteamGeneration"
+
+    ];
+
+
+    generationInputs.forEach(
+        function (id) {
+
+            const input =
+                document.getElementById(id);
+
+
+            if (input) {
+
+                input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+            }
+
+        }
+    );
 
 
     // =========================================================
@@ -1429,5 +1683,12 @@
 
         setNextAvailableTime();
     }
+
+
+    // =========================================================
+    // INITIAL TOTAL
+    // =========================================================
+
+    calculateTotalGeneration();
 
 });

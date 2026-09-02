@@ -1,5 +1,461 @@
-﻿@*
-    For more information on enabling MVC for empty projects, visit https://go.microsoft.com/fwlink/?LinkID=397860
-*@
+﻿@using System.Text.Json
+@model UtilityManagement.Models.TblBoilerSteamGenerationInfo
+
 @{
+    ViewData["Title"] = "Edit Boiler Steam Generation Info";
+    var currentCompany = ViewBag.CurrentCompany as string ?? "";
 }
+<link href="~/css/boilersteamgeneration.css" rel="stylesheet" />
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card shadow-lg border-0 energy-card">
+
+            <!-- ===================================================== -->
+            <!-- HEADER                                                -->
+            <!-- ===================================================== -->
+            <style>
+                .energy-card {
+                    margin-left: 35px;
+                }
+
+                @@media (max-width: 768px) {
+                    .energy-card {
+                        margin-left: 15px;
+                    }
+                }
+
+                /* Remove number input spinner arrows - Chrome, Edge, Safari */
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                /* Remove number input spinner arrows - Firefox */
+                input[type="number"] {
+                    -moz-appearance: textfield;
+                    appearance: textfield;
+                }
+            </style>
+
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-pencil-square"></i>
+                    Edit Boiler Steam Generation Info
+                </h5>
+            </div>
+
+
+            <!-- ================= BODY ================= -->
+
+            <div class="card-body p-4">
+
+                <form asp-action="Edit" method="post" id="editBoilerSteamGenerationForm">
+                    @Html.AntiForgeryToken()
+                    <!-- Hidden ID -->
+                    <input type="hidden" asp-for="Trid" />
+                    <!-- Validation -->
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+                    <!-- ================= TABLE ================= -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 150px; min-width: 150px;">Company</th>
+                                    <th style="width: 90px;">Date</th>
+                                    <th style="width: 85px;">Time</th>
+                                    <th style="width: 75px;">Gas Pressure</th>
+                                    <th style="width: 75px;">Header Steam Pressure</th>
+                                    <th style="width: 75px;">Boiler1 Steam Generation</th>
+                                    <th style="width: 75px;">B1 Usage Fuel</th>
+                                    <th style="width: 75px;">Boiler2 Steam Generation</th>
+                                    <th style="width: 75px;">B2 Usage Fuel</th>
+                                    <th style="width: 75px;">Boiler3 Steam Generation</th>
+                                    <th style="width: 75px;">B3 Usage Fuel</th>
+                                    <th style="width: 75px;">EgbBoilerSteamGeneration</th>
+                                    <th style="width: 75px;">Total Generation</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <!-- ================= COMPANY ================= -->
+                                    @* <td>
+                                        <select asp-for="Company" class="form-select form-select-sm" disabled>
+                                            <option value="@Model.Company">
+                                                @Model.Company
+                                            </option>
+                                        </select>
+                                        <!-- Disabled select does not submit -->
+                                        <input type="hidden" asp-for="Company" />
+                                        <span asp-validation-for="Company"
+                                              class="text-danger">
+                                        </span>
+                                    </td> *@
+                                    <td>
+                                        <input asp-for="Company"
+                                               class="form-control form-control-sm"
+                                               readonly />
+
+                                        <span asp-validation-for="Company" class="text-danger"></span>
+                                    </td>
+
+                                    <!-- ================= DATE ================= -->
+
+                                    <td>
+
+                                        <input asp-for="Trdate" type="date" class="form-control form-control-sm" />
+                                        <span asp-validation-for="Trdate"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= TIME ================= -->
+                                    <td>
+                                        <input asp-for="Time" type="time"
+                                               class="form-control form-control-sm" />
+                                        <span asp-validation-for="Time"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= GasPressure ================= -->
+                                    <td>
+                                        <input asp-for="GasPressure"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="GasPressure"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= HeaderSteamPressure ================= -->
+                                    <td>
+                                        <input asp-for="HeaderSteamPressure" type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+                                        <span asp-validation-for="HeaderSteamPressure"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= GG-2 ================= -->
+                                    <td>
+                                        <input asp-for="Boiler1SteamGeneration"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Boiler1SteamGeneration"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= B1 USAGE FUEL ================= -->
+
+                                    <td>
+                                        <select asp-for="B1UsageFuel" class="form-select form-select-sm">
+                                            <option value="">Select</option>
+                                            <option value="NG">NG</option>
+                                            <option value="CNG">CNG</option>
+                                            <option value="LPG">LPG</option>
+                                            <option value="DIESEL">DIESEL</option>
+                                        </select>
+                                        <span asp-validation-for="B1UsageFuel" class="text-danger"></span>
+                                    </td>
+                                    <!-- ================= Boiler2SteamGeneration ================= -->
+                                    <td>
+                                        <input asp-for="Boiler2SteamGeneration"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Boiler2SteamGeneration"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= B2UsageFuel ================= -->
+                                    <!-- ================= B2 USAGE FUEL ================= -->
+
+                                    <td>
+
+                                        <select asp-for="B2UsageFuel"class="form-select form-select-sm">
+                                            <option value="">Select</option>
+                                            <option value="NG">NG</option>
+                                            <option value="CNG">CNG</option>
+                                            <option value="LPG">LPG</option>
+                                            <option value="DIESEL">DIESEL</option>
+                                        </select>
+                                        <span asp-validation-for="B2UsageFuel"class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= Boiler3SteamGeneration ================= -->
+                                    <td>
+
+                                        <input asp-for="Boiler3SteamGeneration"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Boiler3SteamGeneration"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= B3UsageFuel ================= -->
+                                    <td>
+                                        <select asp-for="B3UsageFuel"class="form-select form-select-sm">
+                                            <option value="">Select</option>
+                                            <option value="NG">NG</option>
+                                            <option value="CNG">CNG</option>
+                                            <option value="LPG">LPG</option>
+                                            <option value="DIESEL">DIESEL</option>
+                                        </select>
+                                        <span asp-validation-for="B3UsageFuel"class="text-danger"></span>
+                                    </td>
+                                    <!-- ================= EgbBoilerSteamGeneration ================= -->
+                                    <td>
+
+                                        <input asp-for="EgbBoilerSteamGeneration"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="EgbBoilerSteamGeneration"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+                                    <!-- ================= TOTAL ================= -->
+
+                                    <td>
+                                        <input asp-for="TotalGeneration"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm total-input"
+                                               readonly />
+
+                                        <span asp-validation-for="TotalGeneration"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- ================= BUTTONS ================= -->
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a asp-action="BoilerSteamGenerationList"
+                           class="btn btn-outline-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            <i class="bi bi-check-circle"></i>
+                            Update
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <!-- ========================================================= -->
+    <!-- BOILER CONFIG                                             -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        window.boilerSteamConfig = {
+
+            currentCompany:
+                @Html.Raw(JsonSerializer.Serialize(currentCompany)),
+
+            getAvailableTimesUrl:
+                '@Url.Action("GetAvailableTimes")'
+
+        };
+
+    </script>
+
+
+    <!-- ========================================================= -->
+    <!-- TOTAL GENERATION CALCULATION                              -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            // =====================================================
+            // INPUT ELEMENTS
+            // =====================================================
+
+            const b1Input =
+                document.getElementById("Boiler1SteamGeneration");
+
+            const b2Input =
+                document.getElementById("Boiler2SteamGeneration");
+
+            const b3Input =
+                document.getElementById("Boiler3SteamGeneration");
+
+            const egbInput =
+                document.getElementById("EgbBoilerSteamGeneration");
+
+            const totalInput =
+                document.getElementById("TotalGeneration");
+
+
+            // =====================================================
+            // CALCULATE TOTAL GENERATION
+            // =====================================================
+
+            function calculateTotalGeneration() {
+
+                const b1 =
+                    parseFloat(b1Input?.value) || 0;
+
+                const b2 =
+                    parseFloat(b2Input?.value) || 0;
+
+                const b3 =
+                    parseFloat(b3Input?.value) || 0;
+
+                const egb =
+                    parseFloat(egbInput?.value) || 0;
+
+
+                const total =
+                    b1 + b2 + b3 + egb;
+
+
+                if (totalInput) {
+
+                    totalInput.value =
+                        total.toFixed(2);
+
+                }
+
+            }
+
+
+            // =====================================================
+            // INPUT EVENT
+            // =====================================================
+
+            if (b1Input) {
+
+                b1Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                b1Input.addEventListener(
+                    "change",
+                    calculateTotalGeneration
+                );
+
+            }
+
+
+            if (b2Input) {
+
+                b2Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                b2Input.addEventListener(
+                    "change",
+                    calculateTotalGeneration
+                );
+
+            }
+
+
+            if (b3Input) {
+
+                b3Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                b3Input.addEventListener(
+                    "change",
+                    calculateTotalGeneration
+                );
+
+            }
+
+
+            if (egbInput) {
+
+                egbInput.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                egbInput.addEventListener(
+                    "change",
+                    calculateTotalGeneration
+                );
+
+            }
+
+
+            // =====================================================
+            // INITIAL CALCULATION
+            // =====================================================
+
+            calculateTotalGeneration();
+
+        });
+
+    </script>
+
+
+
+    <!-- ========================================================= -->
+    <!-- MAIN BOILER JS                                            -->
+    <!-- ========================================================= -->
+
+    <script src="~/js/boilersteamgeneration.js"
+            asp-append-version="true">
+    </script>
+
+}
+

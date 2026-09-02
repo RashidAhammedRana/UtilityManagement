@@ -1107,6 +1107,7 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.EgbBoilerSteamGeneration).HasColumnName("EGB_BOILER_STEAM_GENERATION");
                 entity.Property(e => e.GasPressure).HasColumnName("GAS_PRESSURE");
+                entity.Property(e => e.TotalGeneration).HasColumnName("TOTAL_GENERATION");
                 entity.Property(e => e.HeaderSteamPressure).HasColumnName("HEADER_STEAM_PRESSURE");
                 entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
                 entity.Property(e => e.Time).HasColumnName("TIME");

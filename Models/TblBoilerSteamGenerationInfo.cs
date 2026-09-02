@@ -26,6 +26,8 @@ public partial class TblBoilerSteamGenerationInfo
     [Required(ErrorMessage = "This field is required")]
     public double? EgbBoilerSteamGeneration { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public double? TotalGeneration { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public string? B1UsageFuel { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public string? B2UsageFuel { get; set; }

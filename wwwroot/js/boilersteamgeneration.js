@@ -5,14 +5,14 @@
     // =========================================================
 
     const START_HOUR = 6;
+    const TOTAL_SLOTS = 24;
 
 
     // =========================================================
     // SERVER CONFIG
     // =========================================================
 
-    const config =
-        window.boilerSteamConfig || {};
+    const config = window.boilerSteamConfig || {};
 
     const currentCompany =
         config.currentCompany || "";
@@ -20,6 +20,10 @@
     const getAvailableTimesUrl =
         config.getAvailableTimesUrl || "";
 
+
+    // =========================================================
+    // VARIABLES
+    // =========================================================
 
     let existingTimes = [];
 
@@ -257,13 +261,139 @@
 
     function normalizeTime(time) {
 
-        if (!time) {
+        if (
+            time === null ||
+            time === undefined ||
+            time === ""
+        ) {
 
             return "";
         }
 
-        return String(time)
-            .substring(0, 5);
+
+        let value =
+            String(time)
+                .trim();
+
+
+        // -----------------------------------------------------
+        // SQL TIME FORMAT
+        // Example: 06:00:00
+        // Example: 6:00:00
+        // -----------------------------------------------------
+
+        const sqlTimeMatch =
+            value.match(
+                /^(\d{1,2}):(\d{2})(?::\d{2})?$/
+            );
+
+
+        if (sqlTimeMatch) {
+
+            const hour =
+                parseInt(
+                    sqlTimeMatch[1],
+                    10
+                );
+
+
+            const minute =
+                parseInt(
+                    sqlTimeMatch[2],
+                    10
+                );
+
+
+            if (
+                isNaN(hour) ||
+                isNaN(minute)
+            ) {
+
+                return "";
+            }
+
+
+            return (
+                String(hour).padStart(2, "0") +
+                ":" +
+                String(minute).padStart(2, "0")
+            );
+        }
+
+
+        // -----------------------------------------------------
+        // AM / PM FORMAT
+        // Example: 6:00 AM
+        // Example: 06:00 AM
+        // Example: 6:00 PM
+        // -----------------------------------------------------
+
+        const amPmMatch =
+            value.match(
+                /^(\d{1,2}):(\d{2})\s*(AM|PM)$/i
+            );
+
+
+        if (amPmMatch) {
+
+            let hour =
+                parseInt(
+                    amPmMatch[1],
+                    10
+                );
+
+
+            const minute =
+                parseInt(
+                    amPmMatch[2],
+                    10
+                );
+
+
+            const period =
+                amPmMatch[3]
+                    .toUpperCase();
+
+
+            if (
+                isNaN(hour) ||
+                isNaN(minute)
+            ) {
+
+                return "";
+            }
+
+
+            if (period === "AM") {
+
+                if (hour === 12) {
+
+                    hour = 0;
+                }
+
+            }
+            else {
+
+                if (hour !== 12) {
+
+                    hour += 12;
+                }
+            }
+
+
+            return (
+                String(hour).padStart(2, "0") +
+                ":" +
+                String(minute).padStart(2, "0")
+            );
+        }
+
+
+        // -----------------------------------------------------
+        // FALLBACK
+        // -----------------------------------------------------
+
+        return value.substring(0, 5);
     }
 
 
@@ -273,14 +403,14 @@
 
     function formatTime(time) {
 
-        if (!time) {
+        const normalized =
+            normalizeTime(time);
+
+
+        if (!normalized) {
 
             return "";
         }
-
-
-        const normalized =
-            normalizeTime(time);
 
 
         const parts =
@@ -293,7 +423,7 @@
         }
 
 
-        const hour =
+        let hour =
             parseInt(
                 parts[0],
                 10
@@ -346,9 +476,13 @@
             new Set();
 
 
+        // =====================================================
         // DATABASE TIMES
+        // =====================================================
 
-        if (Array.isArray(existingTimes)) {
+        if (
+            Array.isArray(existingTimes)
+        ) {
 
             existingTimes.forEach(
                 function (time) {
@@ -369,10 +503,14 @@
         }
 
 
+        // =====================================================
         // TEMPORARY ROW TIMES
+        // =====================================================
 
         temporaryBody
-            .querySelectorAll(".temporary-row")
+            .querySelectorAll(
+                ".temporary-row"
+            )
             .forEach(
                 function (row) {
 
@@ -391,12 +529,19 @@
             );
 
 
+        console.log(
+            "Used boiler time slots:",
+            Array.from(used)
+        );
+
+
         return used;
     }
 
 
     // =========================================================
-    // DAILY TIME SLOTS
+    // DAILY 24 HOURS
+    // START FROM 06:00 AM
     // =========================================================
 
     function getDailySlots() {
@@ -404,7 +549,11 @@
         const slots = [];
 
 
-        for (let i = 0; i < 24; i++) {
+        for (
+            let i = 0;
+            i < TOTAL_SLOTS;
+            i++
+        ) {
 
             const hour =
                 (START_HOUR + i) % 24;
@@ -437,9 +586,13 @@
             getDailySlots();
 
 
-        for (const slot of slots) {
+        for (
+            const slot of slots
+        ) {
 
-            if (!used.has(slot)) {
+            if (
+                !used.has(slot)
+            ) {
 
                 return slot;
             }
@@ -464,47 +617,81 @@
             next || "";
 
 
+        // =====================================================
+        // ALL 24 SLOTS COMPLETED
+        // =====================================================
+
         if (!next) {
 
-            timeInput.value = "";
+            if (timeInput) {
 
-            timeDisplayInput.value =
-                "Completed";
+                timeInput.value = "";
+            }
+
+
+            if (timeDisplayInput) {
+
+                timeDisplayInput.value =
+                    "Completed";
+            }
 
 
             addButton.disabled =
                 true;
 
 
-            timeFullMessage
-                .classList
-                .remove("d-none");
+            if (timeFullMessage) {
+
+                timeFullMessage
+                    .classList
+                    .remove("d-none");
+            }
 
 
             return;
         }
 
 
-        timeInput.value =
-            next;
+        // =====================================================
+        // NEXT AVAILABLE SLOT
+        // =====================================================
+
+        if (timeInput) {
+
+            timeInput.value =
+                next;
+        }
 
 
-        timeDisplayInput.value =
-            formatTime(next);
+        if (timeDisplayInput) {
+
+            timeDisplayInput.value =
+                formatTime(next);
+        }
 
 
         addButton.disabled =
             false;
 
 
-        timeFullMessage
-            .classList
-            .add("d-none");
+        if (timeFullMessage) {
+
+            timeFullMessage
+                .classList
+                .add("d-none");
+        }
+
+
+        console.log(
+            "Next available boiler time:",
+            next,
+            formatTime(next)
+        );
     }
 
 
     // =========================================================
-    // LOAD AVAILABLE TIMES
+    // LOAD AVAILABLE TIMES FROM DATABASE
     // =========================================================
 
     async function loadAvailableTimes(date) {
@@ -525,6 +712,8 @@
                 "GetAvailableTimes URL is missing."
             );
 
+            existingTimes = [];
+
             setNextAvailableTime();
 
             return false;
@@ -533,11 +722,36 @@
 
         try {
 
+            // -------------------------------------------------
+            // SEND DATE + COMPANY
+            // -------------------------------------------------
+
+            const separator =
+                getAvailableTimesUrl.includes("?")
+                    ? "&"
+                    : "?";
+
+
             const url =
                 getAvailableTimesUrl +
-                "?date=" +
-                encodeURIComponent(date);
+                separator +
+                "date=" +
+                encodeURIComponent(date) +
+                "&company=" +
+                encodeURIComponent(
+                    currentCompany
+                );
 
+
+            console.log(
+                "Checking boiler existing times:",
+                url
+            );
+
+
+            // -------------------------------------------------
+            // FETCH
+            // -------------------------------------------------
 
             const response =
                 await fetch(
@@ -564,20 +778,43 @@
             }
 
 
+            // -------------------------------------------------
+            // JSON
+            // -------------------------------------------------
+
             const data =
                 await response.json();
 
 
+            console.log(
+                "GetAvailableTimes response:",
+                data
+            );
+
+
+            // -------------------------------------------------
+            // RESPONSE CHECK
+            // -------------------------------------------------
+
             if (!data.success) {
+
+                existingTimes = [];
 
                 alert(
                     data.message ||
                     "Could not load available times."
                 );
 
+
+                setNextAvailableTime();
+
                 return false;
             }
 
+
+            // -------------------------------------------------
+            // EXISTING TIMES
+            // -------------------------------------------------
 
             existingTimes =
                 Array.isArray(
@@ -586,6 +823,17 @@
                     ? data.existingTimes
                     : [];
 
+
+            console.log(
+                "Database existing boiler times:",
+                existingTimes
+            );
+
+
+            // -------------------------------------------------
+            // IMPORTANT
+            // Recalculate AFTER database response
+            // -------------------------------------------------
 
             setNextAvailableTime();
 
@@ -601,9 +849,15 @@
             );
 
 
+            existingTimes = [];
+
+
             alert(
                 "Could not check existing time slots."
             );
+
+
+            setNextAvailableTime();
 
 
             return false;
@@ -631,6 +885,10 @@
                 }
 
 
+                // ------------------------------------------------
+                // CLEAR TEMPORARY DATA IF NEEDED
+                // ------------------------------------------------
+
                 if (rowCount > 0) {
 
                     const confirmed =
@@ -653,13 +911,18 @@
                     temporaryBody.innerHTML =
                         "";
 
+
                     hiddenContainer.innerHTML =
                         "";
 
-                    rowCount =
-                        0;
+
+                    rowCount = 0;
                 }
 
+
+                // ------------------------------------------------
+                // LOAD DB TIMES
+                // ------------------------------------------------
 
                 const loaded =
                     await loadAvailableTimes(
@@ -681,7 +944,6 @@
 
             }
         );
-
     }
 
 
@@ -727,9 +989,8 @@
                     data-field="${escapeHtml(field)}">
 
                     <option value="">
-                        -- Select Fuel --
+                        Select
                     </option>
-
         `;
 
 
@@ -778,7 +1039,7 @@
         function () {
 
             // -------------------------------------------------
-            // CALCULATE TOTAL FIRST
+            // CALCULATE TOTAL
             // -------------------------------------------------
 
             const totalGeneration =
@@ -786,12 +1047,16 @@
 
 
             // -------------------------------------------------
-            // GET AVAILABLE TIME
+            // GET NEXT AVAILABLE TIME
             // -------------------------------------------------
 
             const currentTime =
                 getFirstAvailableTime();
 
+
+            // -------------------------------------------------
+            // NO SLOT AVAILABLE
+            // -------------------------------------------------
 
             if (!currentTime) {
 
@@ -822,7 +1087,7 @@
 
 
             // -------------------------------------------------
-            // GET ALL DATA VALUES
+            // GET DATA VALUES
             // -------------------------------------------------
 
             const values = {};
@@ -840,8 +1105,9 @@
             );
 
 
-            // Make absolutely sure TotalGeneration
-            // contains calculated value.
+            // -------------------------------------------------
+            // FORCE CALCULATED TOTAL
+            // -------------------------------------------------
 
             values.TotalGeneration =
                 totalGeneration;
@@ -930,7 +1196,7 @@
             )}
 
 
-                <!-- BOILER 1 GENERATION -->
+                <!-- BOILER 1 -->
 
                 ${createNumberCell(
                 "Boiler1SteamGeneration",
@@ -946,7 +1212,7 @@
             )}
 
 
-                <!-- BOILER 2 GENERATION -->
+                <!-- BOILER 2 -->
 
                 ${createNumberCell(
                 "Boiler2SteamGeneration",
@@ -962,7 +1228,7 @@
             )}
 
 
-                <!-- BOILER 3 GENERATION -->
+                <!-- BOILER 3 -->
 
                 ${createNumberCell(
                 "Boiler3SteamGeneration",
@@ -986,7 +1252,7 @@
             )}
 
 
-                <!-- TOTAL GENERATION -->
+                <!-- TOTAL -->
 
                 ${createNumberCell(
                 "TotalGeneration",
@@ -1123,7 +1389,7 @@
 
 
         // -----------------------------------------------------
-        // RECALCULATE TOTAL
+        // GET GENERATION VALUES
         // -----------------------------------------------------
 
         const b1 =
@@ -1162,8 +1428,15 @@
             ) || 0;
 
 
+        // -----------------------------------------------------
+        // TOTAL
+        // -----------------------------------------------------
+
         const total =
-            b1 + b2 + b3 + egb;
+            b1 +
+            b2 +
+            b3 +
+            egb;
 
 
         // -----------------------------------------------------
@@ -1184,7 +1457,7 @@
 
 
         // -----------------------------------------------------
-        // UPDATE ALL HIDDEN VALUES
+        // UPDATE HIDDEN INPUTS
         // -----------------------------------------------------
 
         dataFields.forEach(
@@ -1380,7 +1653,7 @@
 
 
         // -----------------------------------------------------
-        // NEXT TIME
+        // SET NEXT AVAILABLE TIME
         // -----------------------------------------------------
 
         setNextAvailableTime();
@@ -1538,6 +1811,60 @@
 
 
             // -------------------------------------------------
+            // CHECK AGAINST DATABASE
+            // -------------------------------------------------
+
+            const databaseTimes =
+                getUsedTimes();
+
+
+            let duplicateDatabaseTime =
+                null;
+
+
+            for (
+                const time of times
+            ) {
+
+                if (
+                    existingTimes.some(
+                        function (existingTime) {
+
+                            return normalizeTime(
+                                existingTime
+                            ) === time;
+
+                        }
+                    )
+                ) {
+
+                    duplicateDatabaseTime =
+                        time;
+
+                    break;
+                }
+            }
+
+
+            if (duplicateDatabaseTime) {
+
+                event.preventDefault();
+
+
+                alert(
+                    "The time slot " +
+                    formatTime(
+                        duplicateDatabaseTime
+                    ) +
+                    " has already been saved."
+                );
+
+
+                return;
+            }
+
+
+            // -------------------------------------------------
             // HIDDEN DATA CHECK
             // -------------------------------------------------
 
@@ -1547,7 +1874,9 @@
                 );
 
 
-            if (hiddenInputs.length === 0) {
+            if (
+                hiddenInputs.length === 0
+            ) {
 
                 event.preventDefault();
 
@@ -1568,19 +1897,23 @@
             event.preventDefault();
 
 
-            saveAllButton.disabled =
-                true;
+            if (saveAllButton) {
+
+                saveAllButton.disabled =
+                    true;
+            }
 
 
             if (savingOverlay) {
 
-                savingOverlay.classList.remove(
-                    "d-none"
-                );
+                savingOverlay
+                    .classList
+                    .remove("d-none");
 
-                savingOverlay.classList.add(
-                    "show"
-                );
+
+                savingOverlay
+                    .classList
+                    .add("show");
             }
 
 
@@ -1602,29 +1935,19 @@
 
 
     // =========================================================
-    // INITIALIZATION
+    // HIDE SAVING OVERLAY
     // =========================================================
-
-    if (dateInput) {
-
-        previousDate =
-            dateInput.value;
-    }
-
-
-    // ---------------------------------------------------------
-    // HIDE SAVING OVERLAY ON PAGE LOAD
-    // ---------------------------------------------------------
 
     if (savingOverlay) {
 
-        savingOverlay.classList.add(
-            "d-none"
-        );
+        savingOverlay
+            .classList
+            .add("d-none");
 
-        savingOverlay.classList.remove(
-            "show"
-        );
+
+        savingOverlay
+            .classList
+            .remove("show");
     }
 
 
@@ -1666,7 +1989,18 @@
 
 
     // =========================================================
-    // LOAD EXISTING TIMES
+    // INITIALIZE DATE
+    // =========================================================
+
+    if (dateInput) {
+
+        previousDate =
+            dateInput.value;
+    }
+
+
+    // =========================================================
+    // LOAD EXISTING DATABASE TIMES
     // =========================================================
 
     if (
@@ -1690,5 +2024,36 @@
     // =========================================================
 
     calculateTotalGeneration();
+
+
+    // =========================================================
+    // DEBUG INFORMATION
+    // =========================================================
+
+    console.log(
+        "Boiler Steam Generation initialized."
+    );
+
+    console.log(
+        "Company:",
+        currentCompany
+    );
+
+    console.log(
+        "Date:",
+        dateInput
+            ? dateInput.value
+            : ""
+    );
+
+    console.log(
+        "Existing times:",
+        existingTimes
+    );
+
+    console.log(
+        "Next available:",
+        nextAvailableTime
+    );
 
 });

@@ -838,7 +838,7 @@ public class BoilerSteamGenerationInfoController : Controller
 
         var existingTimeValues =
             await _context
-                .TblDailyEnergyFuelConsumption
+                .TblBoilerSteamGenerationInfo
                 .AsNoTracking()
                 .Where(x =>
                     x.Company == company &&

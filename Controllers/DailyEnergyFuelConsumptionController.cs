@@ -57,7 +57,7 @@ public class DailyEnergyFuelConsumptionController : Controller
         // -----------------------------------------------------
 
         var menuId = await _context.TblMenu
-            .Where(x => x.MenuName == "Energy & Fuel Cons.")
+            .Where(x => x.MenuName == "Hourly KW Reading & Fuel Pressure")
             .Select(x => x.MenuId)
             .FirstOrDefaultAsync();
 

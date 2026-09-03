@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
+using UtilityManagement.ViewModels;
 
 public class ElectricityInterruptionInfoController : Controller
 {
@@ -93,86 +94,253 @@ public class ElectricityInterruptionInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> Create()
     {
-
-        var model = new TblElectricityInterruptionInfo
+        var model = new ElectricityInterruptionViewModel
         {
-            Date = DateTime.Today
+            Item = new TblElectricityInterruptionInfo
+            {
+                Date = DateTime.Today
+            },
+            Items = new List<TblElectricityInterruptionInfo>()
         };
+
+        // Interruption Type
         ViewBag.InterruptiotypeList = await _context.TblInterruptionTypeInfo
-        .OrderBy(x => x.InterruptionTypeName)
-        .Select(x => new SelectListItem
-        {
-            Value = x.Itid.ToString(),
-            Text = x.InterruptionTypeName
-        })
-        .ToListAsync();
+            .OrderBy(x => x.InterruptionTypeName)
+            .Select(x => new SelectListItem
+            {
+                Value = x.Itid.ToString(),
+                Text = x.InterruptionTypeName
+            })
+            .ToListAsync();
 
+        // Department
         ViewBag.DepartmentList = await _context.TblDepartmentInfo
-        .OrderBy(x => x.DepartmentName)
-        .Select(x => new SelectListItem
-        {
-            Value = x.Depid.ToString(),
-            Text = x.DepartmentName
-        })
-        .ToListAsync();
+            .OrderBy(x => x.DepartmentName)
+            .Select(x => new SelectListItem
+            {
+                Value = x.Depid.ToString(),
+                Text = x.DepartmentName
+            })
+            .ToListAsync();
 
+        // Reason
         ViewBag.ReasonList = await _context.TblReasonInfo
-        .OrderBy(x => x.ReasonName)
-        .Select(x => new SelectListItem
-        {
-            Value = x.Rid.ToString(),
-            Text = x.ReasonName
-        })
-        .ToListAsync();
+            .OrderBy(x => x.ReasonName)
+            .Select(x => new SelectListItem
+            {
+                Value = x.Rid.ToString(),
+                Text = x.ReasonName
+            })
+            .ToListAsync();
 
+        // Current User
         var userId = _userManager.GetUserId(User);
 
-        var userCompany = _context.Users
+        var userCompany = await _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
-            .FirstOrDefault();
+            .FirstOrDefaultAsync();
 
-
-        ViewBag.CompanyList = _context.TblCompanyInfo
+        // Company
+        ViewBag.CompanyList = await _context.TblCompanyInfo
             .Where(x => x.ComName == userCompany)
             .Select(x => new SelectListItem
             {
                 Value = x.Comid.ToString(),
                 Text = x.ComName
             })
-            .ToList();
+            .ToListAsync();
+
         return View(model);
     }
 
+
     [HttpPost]
     [ValidateAntiForgeryToken]
-    public async Task<IActionResult> Create(TblElectricityInterruptionInfo electricityInterruptionInfo)
+    public async Task<IActionResult> Create(ElectricityInterruptionViewModel model)
     {
         try
         {
-            if (!ModelState.IsValid)
+            // No records added
+            if (model.Items == null || !model.Items.Any())
             {
-                TempData["ErrorMessage"] = "Please fill all required fields.";
-                return View(electricityInterruptionInfo);
+                TempData["ErrorMessage"] =
+                    "Please add at least one interruption reading.";
+
+                await LoadDropdowns();
+
+                return View(model);
             }
+
+
+            // Validate each record
+            foreach (var item in model.Items)
+            {
+                if (item.Comid == null || item.Comid == 0)
+                {
+                    TempData["ErrorMessage"] =
+                        "Company is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+
+                if (item.Date == null)
+                {
+                    TempData["ErrorMessage"] =
+                        "Date is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+
+                if (item.PowerOffTime == null)
+                {
+                    TempData["ErrorMessage"] =
+                        "Power Off Time is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+
+                if (item.PowerOnTime == null)
+                {
+                    TempData["ErrorMessage"] =
+                        "Power On Time is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+
+                if (item.Itid == null || item.Itid == 0)
+                {
+                    TempData["ErrorMessage"] =
+                        "Interruption Type is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+
+                if (item.Rid == null || item.Rid == 0)
+                {
+                    TempData["ErrorMessage"] =
+                        "Reason is required.";
+
+                    await LoadDropdowns();
+
+                    return View(model);
+                }
+            }
+
+
             // Created Information
             var now = DateTime.Now;
             var currentUser = User.Identity?.Name ?? "System";
-            electricityInterruptionInfo.CreatedAt = now;
-            electricityInterruptionInfo.CreatedBy = currentUser;
-            _context.TblElectricityInterruptionInfo.Add(electricityInterruptionInfo);
+
+
+            // Add all records
+            foreach (var item in model.Items)
+            {
+                item.CreatedAt = now;
+                item.CreatedBy = currentUser;
+
+                _context.TblElectricityInterruptionInfo.Add(item);
+            }
+
+
+            // Save all records at once
             await _context.SaveChangesAsync();
 
-            TempData["SuccessMessage"] = "Data Created successfully.";
 
-            return RedirectToAction(nameof(ElectricityInterruptionInfoList));
+            TempData["SuccessMessage"] =
+                $"{model.Items.Count} interruption reading(s) created successfully.";
+
+
+            return RedirectToAction(
+                nameof(ElectricityInterruptionInfoList)
+            );
         }
         catch (Exception)
         {
-            TempData["ErrorMessage"] = "Failed to create.";
-            return View(electricityInterruptionInfo);
+            TempData["ErrorMessage"] =
+                "Failed to create interruption reading(s).";
+
+            await LoadDropdowns();
+
+            return View(model);
         }
     }
+
+
+    // ======================================================
+    // Dropdown Loading Method
+    // ======================================================
+
+    private async Task LoadDropdowns()
+    {
+        // Interruption Type
+        ViewBag.InterruptiotypeList =
+            await _context.TblInterruptionTypeInfo
+                .OrderBy(x => x.InterruptionTypeName)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Itid.ToString(),
+                    Text = x.InterruptionTypeName
+                })
+                .ToListAsync();
+
+
+        // Department
+        ViewBag.DepartmentList =
+            await _context.TblDepartmentInfo
+                .OrderBy(x => x.DepartmentName)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Depid.ToString(),
+                    Text = x.DepartmentName
+                })
+                .ToListAsync();
+
+
+        // Reason
+        ViewBag.ReasonList =
+            await _context.TblReasonInfo
+                .OrderBy(x => x.ReasonName)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Rid.ToString(),
+                    Text = x.ReasonName
+                })
+                .ToListAsync();
+
+
+        // Current User
+        var userId = _userManager.GetUserId(User);
+
+        var userCompany =
+            await _context.Users
+                .Where(x => x.Id == userId)
+                .Select(x => x.Company)
+                .FirstOrDefaultAsync();
+
+
+        // Company
+        ViewBag.CompanyList =
+            await _context.TblCompanyInfo
+                .Where(x => x.ComName == userCompany)
+                .Select(x => new SelectListItem
+                {
+                    Value = x.Comid.ToString(),
+                    Text = x.ComName
+                })
+                .ToListAsync();
+    }
+
 
     [HttpGet]
     public async Task<IActionResult> Edit(int? id)

@@ -1,192 +1,1438 @@
-﻿@model UtilityManagement.Models.TblElectricityInterruptionInfo
+﻿@model UtilityManagement.ViewModels.ElectricityInterruptionViewModel
 
 @{
     ViewData["Title"] = "Create Utility Interruption Reading";
 }
 
-<div class="container mt-4">
+<div class="container-fluid mt-4 px-4">
 
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <div class="card shadow-lg border-0">
 
-            <div class="card shadow-lg border-0">
+        <!-- ===================================================== -->
+        <!-- HEADER -->
+        <!-- ===================================================== -->
 
-                <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add New Utility Interruption Reading</h5>
+        <div class="card-header bg-primary text-white">
+            <h5 class="mb-0">
+                Add New Utility Interruption Reading
+            </h5>
+        </div>
+
+
+        <div class="card-body p-4">
+
+            <!-- ===================================================== -->
+            <!-- ALERT -->
+            <!-- ===================================================== -->
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show"
+                     role="alert">
+
+                    @TempData["SuccessMessage"]
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
+
                 </div>
+            }
 
-                <div class="card-body p-4">
 
-                    <form asp-action="Create" method="post">
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show"
+                     role="alert">
 
-                        <div asp-validation-summary="ModelOnly"
-                             class="text-danger mb-3">
-                        </div>
+                    @TempData["ErrorMessage"]
 
-                        <div class="row g-3">
-                            <!-- Company -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="Comid" class="form-label">
-                                    Company <span class="text-danger">*</span>
-                                </label>
-                                <select asp-for="Comid" asp-items="ViewBag.CompanyList" class="form-select">
-                                    <option value="">-- Select Company --</option>
-                                </select>
-                                <span asp-validation-for="Comid" class="text-danger"></span>
-                            </div>
-                            <!-- Date -->
-                            <div class="col-lg-4 col-md-3 col-sm-6">
-                                <label asp-for="Date" id="Date" class="form-label">
-                                    Date <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="Date" type="date" class="form-control" />
-                                <span asp-validation-for="Date" class="text-danger"></span>
-                            </div>
-                            <!-- Department -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="Depid" class="form-label">
-                                    Department 
-                                    @* <span class="text-danger">*</span> *@
-                                </label>
-                                <select asp-for="Depid" asp-items="ViewBag.DepartmentList" class="form-select">
-                                    <option value="">-- Select Department --</option>
-                                </select>
-                                @* <span asp-validation-for="Depid" class="text-danger"></span> *@
-                            </div>
-                            <!-- PowerOffTime -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="PowerOffTime" class="form-label">
-                                    Power Off Time <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="PowerOffTime" id="PowerOffTime" type="datetime-local" class="form-control" />
-                            </div>
-                            <!-- PowerOnTime -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="PowerOnTime" class="form-label">
-                                    Power On Time <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="PowerOnTime" id="PowerOnTime" type="datetime-local" class="form-control" />
-                            </div>
-                            <!-- DurationMin -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                            <label asp-for="DurationMin" class="form-label">
-                                Duration (Min) <span class="text-danger">*</span>
-                            </label>
-                            <input asp-for="DurationMin" id="DurationMin" class="form-control" readonly />
-                            </div>
-                            <!-- Interruption Type -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="Itid" class="form-label">
-                                    Interruption Type <span class="text-danger">*</span>
-                                </label>
-                                <select asp-for="Itid"
-                                        asp-items="ViewBag.InterruptiotypeList"
-                                        id="InterruptionType"
-                                        class="form-select">
-                                    <option value="">-- Select type --</option>
-                                </select>
-                                <span asp-validation-for="Itid" class="text-danger"></span>
-                            </div>
-                            <!-- Reason -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="Rid" class="form-label">
-                                    Reason <span class="text-danger">*</span>
-                                </label>
-                                <select asp-for="Rid"
-                                        id="Reason"
-                                        class="form-select">
-                                    <option value="">-- Select Reason --</option>
-                                </select>
-                                <span asp-validation-for="Rid" class="text-danger"></span>
-                            </div>
-                            <!-- Remarks -->
-                            <div class="col-lg-4 col-md-4 col-sm-6">
-                                <label asp-for="Remarks" class="form-label">
-                                    Remarks
-                                </label>
-                                <input asp-for="Remarks" class="form-control" />
-                            </div>
-                        </div>
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
 
-                        <div class="d-flex justify-content-between mt-4">
+                </div>
+            }
 
-                            <a asp-action="ElectricityInterruptionInfoList"
-                               class="btn btn-outline-secondary">
-                                ← Back
-                            </a>
 
-                            <button type="submit"
-                                    class="btn btn-primary px-4">
-                                Save
-                            </button>
+            <div asp-validation-summary="ModelOnly"
+                 class="text-danger mb-3">
+            </div>
 
-                        </div>
 
-                    </form>
+            <!-- ===================================================== -->
+            <!-- INPUT AREA -->
+            <!-- ===================================================== -->
+
+            <div class="border rounded p-4 bg-light">
+
+                <h6 class="fw-bold mb-3">
+                    Interruption Information
+                </h6>
+
+
+                <div class="row g-3">
+
+
+                    <!-- ================================================= -->
+                    <!-- COMPANY -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Comid"
+                               class="form-label">
+
+                            Company
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <select asp-for="Item.Comid"
+                                asp-items="ViewBag.CompanyList"
+                                id="Comid"
+                                class="form-select">
+
+                            <option value="">
+                                -- Select Company --
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="Item.Comid"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- DATE -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Date"
+                               class="form-label">
+
+                            Date
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input asp-for="Item.Date"
+                               id="Date"
+                               type="date"
+                               class="form-control" />
+
+                        <span asp-validation-for="Item.Date"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- DEPARTMENT -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Depid"
+                               class="form-label">
+
+                            Department
+
+                        </label>
+
+                        <select asp-for="Item.Depid"
+                                asp-items="ViewBag.DepartmentList"
+                                id="Depid"
+                                class="form-select">
+
+                            <option value="">
+                                -- Select Department --
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- INTERRUPTION TYPE -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Itid"
+                               class="form-label">
+
+                            Interruption Type
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <select asp-for="Item.Itid"
+                                asp-items="ViewBag.InterruptiotypeList"
+                                id="InterruptionType"
+                                class="form-select">
+
+                            <option value="">
+                                -- Select Type --
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="Item.Itid"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- POWER OFF TIME -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.PowerOffTime"
+                               class="form-label">
+
+                            Power Off Time
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input asp-for="Item.PowerOffTime"
+                               id="PowerOffTime"
+                               type="datetime-local"
+                               class="form-control" />
+
+                        <span asp-validation-for="Item.PowerOffTime"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- POWER ON TIME -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.PowerOnTime"
+                               class="form-label">
+
+                            Power On Time
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input asp-for="Item.PowerOnTime"
+                               id="PowerOnTime"
+                               type="datetime-local"
+                               class="form-control" />
+
+                        <span asp-validation-for="Item.PowerOnTime"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- DURATION -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.DurationMin"
+                               class="form-label">
+
+                            Duration (Min)
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <input asp-for="Item.DurationMin"
+                               id="DurationMin"
+                               class="form-control"
+                               readonly />
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- REASON -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Rid"
+                               class="form-label">
+
+                            Reason
+                            <span class="text-danger">*</span>
+
+                        </label>
+
+                        <select asp-for="Item.Rid"
+                                id="Reason"
+                                class="form-select">
+
+                            <option value="">
+                                -- Select Reason --
+                            </option>
+
+                        </select>
+
+                        <span asp-validation-for="Item.Rid"
+                              class="text-danger">
+                        </span>
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- REMARKS -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-9 col-md-6 col-sm-12">
+
+                        <label asp-for="Item.Remarks"
+                               class="form-label">
+
+                            Remarks
+
+                        </label>
+
+                        <input asp-for="Item.Remarks"
+                               id="Remarks"
+                               class="form-control" />
+
+                    </div>
+
+
+                    <!-- ================================================= -->
+                    <!-- ADD BUTTON -->
+                    <!-- ================================================= -->
+
+                    <div class="col-lg-3 col-md-6 col-sm-12
+                                d-flex
+                                align-items-end
+                                justify-content-end">
+
+                        <button type="button"
+                                id="btnAdd"
+                                class="btn btn-success px-5">
+
+                            <i class="bi bi-plus-circle me-1"></i>
+
+                            Add
+
+                        </button>
+
+                    </div>
 
                 </div>
 
             </div>
 
+
+            <!-- ===================================================== -->
+            <!-- ADDED RECORD LIST -->
+            <!-- ===================================================== -->
+
+            <div class="mt-4">
+
+                <div class="d-flex
+                            justify-content-between
+                            align-items-center
+                            mb-3">
+
+                    <h5 class="mb-0">
+                        Added Interruption Readings
+                    </h5>
+
+                    <span id="itemCount"
+                          class="badge bg-primary">
+
+                        0 Records
+
+                    </span>
+
+                </div>
+
+
+                <div class="table-responsive">
+
+                    <table class="table
+                                  table-bordered
+                                  table-hover
+                                  table-striped
+                                  align-middle"
+                           id="readingTable">
+
+                        <thead class="table-dark">
+
+                            <tr>
+
+                                <th class="text-center">
+                                    #
+                                </th>
+
+                                <th>
+                                    Company
+                                </th>
+
+                                <th>
+                                    Date
+                                </th>
+
+                                <th>
+                                    Department
+                                </th>
+
+                                <th>
+                                    Power Off
+                                </th>
+
+                                <th>
+                                    Power On
+                                </th>
+
+                                <th>
+                                    Duration
+                                </th>
+
+                                <th>
+                                    Type
+                                </th>
+
+                                <th>
+                                    Reason
+                                </th>
+
+                                <th>
+                                    Remarks
+                                </th>
+
+                                <th class="text-center">
+                                    Action
+                                </th>
+
+                            </tr>
+
+                        </thead>
+
+
+                        <tbody id="readingTableBody">
+
+                            <tr id="emptyRow">
+
+                                <td colspan="11"
+                                    class="text-center
+                                           text-muted
+                                           py-4">
+
+                                    No records added yet.
+
+                                </td>
+
+                            </tr>
+
+                        </tbody>
+
+                    </table>
+
+                </div>
+
+            </div>
+
+
+            <!-- ===================================================== -->
+            <!-- FINAL BUTTONS -->
+            <!-- ===================================================== -->
+
+            <div class="d-flex
+                        justify-content-between
+                        mt-4">
+
+                <a asp-action="ElectricityInterruptionInfoList"
+                   class="btn btn-outline-secondary">
+
+                    ← Back
+
+                </a>
+
+
+                <button type="button"
+                        id="btnSave"
+                        class="btn btn-primary px-5">
+
+                    <i class="bi bi-save me-1"></i>
+
+                    Save All
+
+                </button>
+
+            </div>
+
         </div>
+
     </div>
 
 </div>
+
+
 @section Scripts {
+
     @{
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
+
     <script>
-        $("#InterruptionType").change(function () {
 
-            var itid = $(this).val();
+        $(document).ready(function () {
 
-            $("#Reason").empty();
-            $("#Reason").append('<option value="">-- Select Reason --</option>');
+            // =====================================================
+            // TEMPORARY ARRAY
+            // =====================================================
 
-            if (itid) {
-                $.getJSON('/ElectricityInterruptionInfo/GetReasonsByType',
-                    { itid: itid },
-                    function (data) {
+            let readings = [];
 
-                        $.each(data, function (i, item) {
-                            $("#Reason").append(
-                                $('<option></option>')
-                                    .val(item.value)
-                                    .text(item.text)
+
+            // =====================================================
+            // INTERRUPTION TYPE -> REASON
+            // =====================================================
+
+            $("#InterruptionType").on("change", function () {
+
+                var itid = $(this).val();
+
+                var reasonDropdown = $("#Reason");
+
+
+                // Clear existing options
+
+                reasonDropdown.empty();
+
+
+                // Default option
+
+                reasonDropdown.append(
+                    new Option(
+                        "-- Select Reason --",
+                        ""
+                    )
+                );
+
+
+                if (!itid) {
+
+                    return;
+
+                }
+
+
+                $.ajax({
+
+                    url: '@Url.Action(
+                                            "GetReasonsByType",
+                                            "ElectricityInterruptionInfo"
+                                    )',
+
+                type: "GET",
+
+                    data: {
+                        itid: itid
+                    },
+
+
+                    success: function (data) {
+
+                        console.log(
+                            "Reason API Response:",
+                            data
+                        );
+
+
+                        if (data && data.length > 0) {
+
+                            $.each(
+                                data,
+                                function (index, item) {
+
+                                    reasonDropdown.append(
+
+                                        new Option(
+                                            item.text,
+                                            item.value
+                                        )
+
+                                    );
+
+                                }
                             );
-                        });
 
-                    });
-            }
+                        }
+                        else {
 
-        });
+                            reasonDropdown.append(
 
-        //On Off and Duration Calculation
-                $(function () {
+                                new Option(
+                                    "-- No Reason Found --",
+                                    ""
+                                )
+
+                            );
+
+                        }
+
+                    },
+
+
+                    error: function (xhr) {
+
+                        console.error(
+                            "Reason API Error:",
+                            xhr.responseText
+                        );
+
+
+                        reasonDropdown.empty();
+
+
+                        reasonDropdown.append(
+
+                            new Option(
+                                "-- Failed to Load Reasons --",
+                                ""
+                            )
+
+                        );
+
+                    }
+
+                });
+
+            });
+
+
+            // =====================================================
+            // DURATION CALCULATION
+            // =====================================================
 
             function calculateDuration() {
 
-                let start = $("#PowerOffTime").val();
-                let end = $("#PowerOnTime").val();
+                let start =
+                    $("#PowerOffTime").val();
 
-                if (start && end) {
+                let end =
+                    $("#PowerOnTime").val();
 
-                    let startTime = new Date(start);
-                    let endTime = new Date(end);
 
-                    let diff = (endTime - startTime) / 60000;
+                if (!start || !end) {
 
-                    if (diff >= 0)
-                        $("#DurationMin").val(diff);
-                    else
-                        $("#DurationMin").val("");
+                    $("#DurationMin").val("");
+
+                    return;
+
                 }
+
+
+                let startTime =
+                    new Date(start);
+
+                let endTime =
+                    new Date(end);
+
+
+                let diff =
+                    (endTime - startTime) / 60000;
+
+
+                if (diff >= 0) {
+
+                    $("#DurationMin").val(
+                        Math.round(diff)
+                    );
+
+                }
+                else {
+
+                    $("#DurationMin").val("");
+
+                }
+
             }
 
-            $("#PowerOffTime,#PowerOnTime").on("change", calculateDuration);
+
+            $("#PowerOffTime, #PowerOnTime")
+                .on(
+                    "change",
+                    calculateDuration
+                );
+
+
+            // =====================================================
+            // ADD BUTTON
+            // =====================================================
+
+            $("#btnAdd").on("click", function () {
+
+
+                // -------------------------------------------------
+                // GET VALUES
+                // -------------------------------------------------
+
+                let companyId =
+                    $("#Comid").val();
+
+                let companyText =
+                    $("#Comid option:selected").text();
+
+
+                let date =
+                    $("#Date").val();
+
+
+                let departmentId =
+                    $("#Depid").val();
+
+                let departmentText =
+                    $("#Depid option:selected").text();
+
+
+                let powerOffTime =
+                    $("#PowerOffTime").val();
+
+
+                let powerOnTime =
+                    $("#PowerOnTime").val();
+
+
+                let duration =
+                    $("#DurationMin").val();
+
+
+                let interruptionTypeId =
+                    $("#InterruptionType").val();
+
+                let interruptionTypeText =
+                    $("#InterruptionType option:selected").text();
+
+
+                let reasonId =
+                    $("#Reason").val();
+
+                let reasonText =
+                    $("#Reason option:selected").text();
+
+
+                let remarks =
+                    $("#Remarks").val();
+
+
+                // -------------------------------------------------
+                // VALIDATION
+                // -------------------------------------------------
+
+                if (!companyId) {
+
+                    alert(
+                        "Please select Company."
+                    );
+
+                    $("#Comid").focus();
+
+                    return;
+
+                }
+
+
+                if (!date) {
+
+                    alert(
+                        "Please select Date."
+                    );
+
+                    $("#Date").focus();
+
+                    return;
+
+                }
+
+
+                if (!powerOffTime) {
+
+                    alert(
+                        "Please select Power Off Time."
+                    );
+
+                    $("#PowerOffTime").focus();
+
+                    return;
+
+                }
+
+
+                if (!powerOnTime) {
+
+                    alert(
+                        "Please select Power On Time."
+                    );
+
+                    $("#PowerOnTime").focus();
+
+                    return;
+
+                }
+
+
+                if (!duration) {
+
+                    alert(
+                        "Please provide a valid Power Off and Power On time."
+                    );
+
+                    return;
+
+                }
+
+
+                if (!interruptionTypeId) {
+
+                    alert(
+                        "Please select Interruption Type."
+                    );
+
+                    $("#InterruptionType").focus();
+
+                    return;
+
+                }
+
+
+                if (!reasonId) {
+
+                    alert(
+                        "Please select Reason."
+                    );
+
+                    $("#Reason").focus();
+
+                    return;
+
+                }
+
+
+                // -------------------------------------------------
+                // CREATE OBJECT
+                // -------------------------------------------------
+
+                let reading = {
+
+                    Comid:
+                        companyId,
+
+                    CompanyName:
+                        companyText,
+
+                    Date:
+                        date,
+
+                    Depid:
+                        departmentId,
+
+                    DepartmentName:
+                        departmentText,
+
+                    PowerOffTime:
+                        powerOffTime,
+
+                    PowerOnTime:
+                        powerOnTime,
+
+                    DurationMin:
+                        duration,
+
+                    Itid:
+                        interruptionTypeId,
+
+                    InterruptionTypeName:
+                        interruptionTypeText,
+
+                    Rid:
+                        reasonId,
+
+                    ReasonName:
+                        reasonText,
+
+                    Remarks:
+                        remarks
+
+                };
+
+
+                // -------------------------------------------------
+                // ADD TO ARRAY
+                // -------------------------------------------------
+
+                readings.push(reading);
+
+
+                // -------------------------------------------------
+                // UPDATE TABLE
+                // -------------------------------------------------
+
+                renderTable();
+
+
+                // -------------------------------------------------
+                // CLEAR INPUT
+                // -------------------------------------------------
+
+                clearForm();
+
+            });
+
+
+            // =====================================================
+            // RENDER TABLE
+            // =====================================================
+
+            function renderTable() {
+
+                let tbody =
+                    $("#readingTableBody");
+
+
+                tbody.empty();
+
+
+                if (readings.length === 0) {
+
+                    tbody.append(`
+
+                        <tr>
+
+                            <td colspan="11"
+                                class="text-center
+                                       text-muted
+                                       py-4">
+
+                                No records added yet.
+
+                            </td>
+
+                        </tr>
+
+                    `);
+
+
+                    $("#itemCount")
+                        .text("0 Records");
+
+
+                    return;
+
+                }
+
+
+                $.each(
+                    readings,
+                    function (index, item) {
+
+
+                        let row = `
+
+                            <tr>
+
+                                <td class="text-center">
+                                    ${index + 1}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.CompanyName
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.Date
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.DepartmentName
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        formatDateTime(
+                                            item.PowerOffTime
+                                        )
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        formatDateTime(
+                                            item.PowerOnTime
+                                        )
+                                    )}
+                                </td>
+
+                                <td class="text-center">
+
+                                    <span class="badge bg-info text-dark">
+
+                                        ${escapeHtml(
+                                            item.DurationMin
+                                        )}
+                                        Min
+
+                                    </span>
+
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.InterruptionTypeName
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.ReasonName
+                                    )}
+                                </td>
+
+                                <td>
+                                    ${escapeHtml(
+                                        item.Remarks || ""
+                                    )}
+                                </td>
+
+                                <td class="text-center">
+
+                                    <button type="button"
+                                            class="btn btn-sm btn-danger btnRemove"
+                                            data-index="${index}">
+
+                                        <i class="bi bi-trash"></i>
+
+                                    </button>
+
+                                </td>
+
+                            </tr>
+
+                        `;
+
+
+                        tbody.append(row);
+
+                    }
+                );
+
+
+                $("#itemCount").text(
+                    readings.length + " Records"
+                );
+
+            }
+
+
+            // =====================================================
+            // REMOVE RECORD
+            // =====================================================
+
+            $(document).on(
+                "click",
+                ".btnRemove",
+                function () {
+
+                    let index =
+                        $(this).data("index");
+
+
+                    readings.splice(
+                        index,
+                        1
+                    );
+
+
+                    renderTable();
+
+                }
+            );
+
+
+            // =====================================================
+            // CLEAR FORM
+            // =====================================================
+
+            function clearForm() {
+
+                $("#Comid").val("");
+
+                $("#Date").val("");
+
+                $("#Depid").val("");
+
+                $("#PowerOffTime").val("");
+
+                $("#PowerOnTime").val("");
+
+                $("#DurationMin").val("");
+
+                $("#InterruptionType").val("");
+
+                $("#Reason").empty();
+
+                $("#Reason").append(
+                    new Option(
+                        "-- Select Reason --",
+                        ""
+                    )
+                );
+
+                $("#Remarks").val("");
+
+            }
+
+
+            // =====================================================
+            // FORMAT DATETIME
+            // =====================================================
+
+            function formatDateTime(value) {
+
+                if (!value) {
+
+                    return "";
+
+                }
+
+
+                let date =
+                    new Date(value);
+
+
+                if (isNaN(date.getTime())) {
+
+                    return value;
+
+                }
+
+
+                let year =
+                    date.getFullYear();
+
+
+                let month =
+                    String(
+                        date.getMonth() + 1
+                    ).padStart(2, "0");
+
+
+                let day =
+                    String(
+                        date.getDate()
+                    ).padStart(2, "0");
+
+
+                let hours =
+                    String(
+                        date.getHours()
+                    ).padStart(2, "0");
+
+
+                let minutes =
+                    String(
+                        date.getMinutes()
+                    ).padStart(2, "0");
+
+
+                return `${year}-${month}-${day} ${hours}:${minutes}`;
+
+            }
+
+
+            // =====================================================
+            // ESCAPE HTML
+            // =====================================================
+
+            function escapeHtml(text) {
+
+                if (
+                    text === null ||
+                    text === undefined
+                ) {
+
+                    return "";
+
+                }
+
+
+                return $("<div>")
+                    .text(text)
+                    .html();
+
+            }
+
+
+            // =====================================================
+            // SAVE ALL
+            // =====================================================
+
+            $("#btnSave").on("click", function () {
+
+
+                // -------------------------------------------------
+                // CHECK RECORDS
+                // -------------------------------------------------
+
+                if (readings.length === 0) {
+
+                    alert(
+                        "Please add at least one interruption reading."
+                    );
+
+                    return;
+
+                }
+
+
+                // -------------------------------------------------
+                // CREATE FORM
+                // -------------------------------------------------
+
+                let form =
+                    $("<form></form>");
+
+
+                form.attr(
+                    "method",
+                    "post"
+                );
+
+
+                form.attr(
+                    "action",
+                    '@Url.Action(
+                                        "Create",
+                                        "ElectricityInterruptionInfo"
+                                )'
+            );
+
+
+                // -------------------------------------------------
+                // ANTI FORGERY TOKEN
+                // -------------------------------------------------
+
+                form.append(
+                    '@Html.AntiForgeryToken()'
+                );
+
+
+                // -------------------------------------------------
+                // ADD ALL ITEMS
+                // -------------------------------------------------
+
+                $.each(
+                    readings,
+                    function (index, item) {
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Comid`
+                                )
+                                .val(
+                                    item.Comid
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Date`
+                                )
+                                .val(
+                                    item.Date
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Depid`
+                                )
+                                .val(
+                                    item.Depid
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].PowerOffTime`
+                                )
+                                .val(
+                                    item.PowerOffTime
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].PowerOnTime`
+                                )
+                                .val(
+                                    item.PowerOnTime
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].DurationMin`
+                                )
+                                .val(
+                                    item.DurationMin
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Itid`
+                                )
+                                .val(
+                                    item.Itid
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Rid`
+                                )
+                                .val(
+                                    item.Rid
+                                )
+
+                        );
+
+
+                        form.append(
+
+                            $("<input>")
+                                .attr(
+                                    "type",
+                                    "hidden"
+                                )
+                                .attr(
+                                    "name",
+                                    `Items[${index}].Remarks`
+                                )
+                                .val(
+                                    item.Remarks || ""
+                                )
+
+                        );
+
+                    }
+                );
+
+
+                // -------------------------------------------------
+                // DIRECT SUBMIT
+                // NO CONFIRMATION / NO WARNING
+                // -------------------------------------------------
+
+                $("body").append(form);
+
+                form.submit();
+
+            });
+
 
         });
+
     </script>
 }

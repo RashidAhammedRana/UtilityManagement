@@ -12,18 +12,21 @@
 
     var nextAvailableTime = ViewBag.NextAvailableTime as string ?? "";
 }
-<link href="~/css/boilersteamgeneration.css" rel="stylesheet" />
+
+<link href="~/css/boilersteamgeneration.css"
+      rel="stylesheet"
+      asp-append-version="true" />
+
+
 <div class="row justify-content-center">
 
     <div class="col-md-12">
 
         <div class="card shadow-lg border-0 boiler-card">
 
-            <link href="~/css/boilersteamgeneration.css"
-                  rel="stylesheet" />
 
             <!-- ===================================================== -->
-            <!-- HEADER                                                -->
+            <!-- HEADER -->
             <!-- ===================================================== -->
 
             <div class="card-header bg-primary text-white">
@@ -40,7 +43,7 @@
 
 
             <!-- ===================================================== -->
-            <!-- CARD BODY                                             -->
+            <!-- CARD BODY -->
             <!-- ===================================================== -->
 
             <div class="card-body p-5">
@@ -97,15 +100,6 @@
                       id="boilerForm">
 
                     @Html.AntiForgeryToken()
-
-
-                    <!-- ================================================= -->
-                    <!-- VALIDATION                                        -->
-                    <!-- ================================================= -->
-
-                    <div asp-validation-summary="ModelOnly"
-                         class="text-danger mb-3">
-                    </div>
 
 
                     <!-- ================================================= -->
@@ -258,13 +252,31 @@
 
                                     <td>
 
-                                        <select id="inputB1UsageFuel"class="form-select form-select-sm">
-                                            <option value="">Select</option>
-                                            <option value="NG">NG</option>
-                                            <option value="CNG">CNG</option>
-                                            <option value="LPG">LPG</option>
-                                            <option value="DIESEL">DIESEL</option>
+                                        <select id="inputB1UsageFuel"
+                                                class="form-select form-select-sm">
+
+                                            <option value="">
+                                                Select
+                                            </option>
+
+                                            <option value="NG">
+                                                NG
+                                            </option>
+
+                                            <option value="CNG">
+                                                CNG
+                                            </option>
+
+                                            <option value="LPG">
+                                                LPG
+                                            </option>
+
+                                            <option value="DIESEL">
+                                                DIESEL
+                                            </option>
+
                                         </select>
+
                                     </td>
 
 
@@ -401,7 +413,7 @@
 
 
                                     <!-- ================================================= -->
-                                    <!-- ADD                                             -->
+                                    <!-- ADD BUTTON                                       -->
                                     <!-- ================================================= -->
 
                                     <td class="text-center">
@@ -430,10 +442,13 @@
                     <!-- TIME FULL MESSAGE                                -->
                     <!-- ================================================= -->
 
-                    <div id="timeFullMessage" class="time-full-message mt-2 d-none text-danger fw-semibold">
+                    <div id="timeFullMessage"
+                         class="time-full-message mt-2 d-none text-danger fw-semibold">
+
                         <i class="bi bi-exclamation-triangle-fill me-1"></i>
 
-                        All 24 hourly time slots for this date have already been entered.
+                        All 24 hourly time slots for this date have already
+                        been entered.
 
                     </div>
 
@@ -585,16 +600,11 @@
 
 @section Scripts {
 
-    @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
-    }
-
-
-    <!-- ========================================================= -->
-    <!-- BOILER CONFIG                                             -->
-    <!-- ========================================================= -->
-
     <script>
+
+        // =========================================================
+        // CONFIGURATION
+        // =========================================================
 
         window.boilerSteamConfig = {
 
@@ -610,88 +620,198 @@
 
 
     <!-- ========================================================= -->
-    <!-- TOTAL GENERATION CALCULATION                              -->
+    <!-- TOTAL GENERATION                                         -->
     <!-- ========================================================= -->
 
     <script>
 
-        document.addEventListener("DOMContentLoaded", function () {
+        document.addEventListener(
+            "DOMContentLoaded",
+            function () {
 
-            const b1Input =
-                document.getElementById("inputBoiler1SteamGeneration");
+                const b1Input =
+                    document.getElementById(
+                        "inputBoiler1SteamGeneration"
+                    );
 
-            const b2Input =
-                document.getElementById("inputBoiler2SteamGeneration");
+                const b2Input =
+                    document.getElementById(
+                        "inputBoiler2SteamGeneration"
+                    );
 
-            const b3Input =
-                document.getElementById("inputBoiler3SteamGeneration");
+                const b3Input =
+                    document.getElementById(
+                        "inputBoiler3SteamGeneration"
+                    );
 
-            const egbInput =
-                document.getElementById("inputEgbBoilerSteamGeneration");
+                const egbInput =
+                    document.getElementById(
+                        "inputEgbBoilerSteamGeneration"
+                    );
 
-            const totalInput =
-                document.getElementById("inputTotalGeneration");
-
-
-            function calculateTotalGeneration() {
-
-                const b1 =
-                    parseFloat(b1Input.value) || 0;
-
-                const b2 =
-                    parseFloat(b2Input.value) || 0;
-
-                const b3 =
-                    parseFloat(b3Input.value) || 0;
-
-                const egb =
-                    parseFloat(egbInput.value) || 0;
+                const totalInput =
+                    document.getElementById(
+                        "inputTotalGeneration"
+                    );
 
 
-                const total =
-                    b1 + b2 + b3 + egb;
+                function calculateTotalGeneration() {
+
+                    const b1 =
+                        parseFloat(b1Input.value) || 0;
+
+                    const b2 =
+                        parseFloat(b2Input.value) || 0;
+
+                    const b3 =
+                        parseFloat(b3Input.value) || 0;
+
+                    const egb =
+                        parseFloat(egbInput.value) || 0;
 
 
-                totalInput.value =
-                    total.toFixed(2);
-
-            }
+                    const total =
+                        b1 + b2 + b3 + egb;
 
 
-            b1Input.addEventListener(
-                "input",
-                calculateTotalGeneration
-            );
+                    totalInput.value =
+                        total.toFixed(2);
 
-            b2Input.addEventListener(
-                "input",
-                calculateTotalGeneration
-            );
-
-            b3Input.addEventListener(
-                "input",
-                calculateTotalGeneration
-            );
-
-            egbInput.addEventListener(
-                "input",
-                calculateTotalGeneration
-            );
+                }
 
 
-            calculateTotalGeneration();
+                b1Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
 
-        });
+                b2Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                b3Input.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+                egbInput.addEventListener(
+                    "input",
+                    calculateTotalGeneration
+                );
+
+
+                calculateTotalGeneration();
+
+            });
 
     </script>
 
 
     <!-- ========================================================= -->
-    <!-- MAIN BOILER JS                                            -->
+    <!-- MAIN BOILER JAVASCRIPT                                   -->
     <!-- ========================================================= -->
 
     <script src="~/js/boilersteamgeneration.js"
             asp-append-version="true">
+    </script>
+
+
+    <!-- ========================================================= -->
+    <!-- SAVE ALL - NO FIELD VALIDATION                            -->
+    <!-- ========================================================= -->
+
+    <script>
+
+        $(document).ready(function () {
+
+            /*
+             * IMPORTANT:
+             *
+             * Save All does NOT validate the input fields.
+             *
+             * The user can save the records that have already
+             * been added to the temporary list.
+             *
+             * No required-field check is performed here.
+             *
+             * No confirmation/warning is shown here.
+             */
+
+
+            $("#boilerForm").on(
+                "submit",
+                function (e) {
+
+                    /*
+                     * If boilersteamgeneration.js has already
+                     * created hidden Items[], let normal submit
+                     * continue.
+                     */
+
+                    const hiddenContainer =
+                        $("#hiddenItemsContainer");
+
+
+                    /*
+                     * If hidden items already exist, simply submit.
+                     */
+
+                    if (
+                        hiddenContainer.children(
+                            "input"
+                        ).length > 0
+                    ) {
+
+                        $("#savingOverlay")
+                            .removeClass("d-none");
+
+                        return true;
+
+                    }
+
+
+                    /*
+                     * Otherwise, check whether the temporary
+                     * table contains rows.
+                     *
+                     * This is NOT field validation.
+                     */
+
+                    const rows =
+                        $("#temporaryBody tr");
+
+
+                    if (rows.length === 0) {
+
+                        /*
+                         * No warning / confirmation.
+                         *
+                         * Just prevent an empty submission.
+                         */
+
+                        e.preventDefault();
+
+                        return false;
+
+                    }
+
+
+                    /*
+                     * If your external JS has not generated the
+                     * hidden inputs, create them from the temporary
+                     * table/data if available.
+                     */
+
+                    $("#savingOverlay")
+                        .removeClass("d-none");
+
+                }
+
+            );
+
+        });
+
     </script>
 
 }

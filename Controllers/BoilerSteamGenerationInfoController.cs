@@ -619,6 +619,7 @@ public class BoilerSteamGenerationInfoController : Controller
             existingRecord.B2UsageFuel = boilerSteamGenerationInfo.B2UsageFuel;
             existingRecord.B3UsageFuel = boilerSteamGenerationInfo.B3UsageFuel;
             existingRecord.Remarks = boilerSteamGenerationInfo.Remarks;
+            existingRecord.TotalGeneration = boilerSteamGenerationInfo.TotalGeneration;
 
             // =================================================
             // RECALCULATE TOTAL

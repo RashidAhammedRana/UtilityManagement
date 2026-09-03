@@ -13,25 +13,15 @@ public partial class TblBoilerSteamGenerationInfo
     public TimeOnly? Time { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public string? Company { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? GasPressure { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? HeaderSteamPressure { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? Boiler1SteamGeneration { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? Boiler2SteamGeneration { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? Boiler3SteamGeneration { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? EgbBoilerSteamGeneration { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public double? TotalGeneration { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public string? B1UsageFuel { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public string? B2UsageFuel { get; set; }
-    [Required(ErrorMessage = "This field is required")]
     public string? B3UsageFuel { get; set; }
     public string? Remarks { get; set; }
 

@@ -409,7 +409,7 @@
             relationColumnInfo11.NestedKeyColumn = "COM_NAME";
             relationColumnInfo11.ParentKeyColumn = "COMPANY";
             masterDetailInfo6.KeyColumns.Add(relationColumnInfo11);
-            masterDetailInfo6.MasterQueryName = "FuelStockAndConsumption";
+            masterDetailInfo6.MasterQueryName = "Query";
             this.sqlDataSource1.Relations.AddRange(new DevExpress.DataAccess.Sql.MasterDetailInfo[] {
             masterDetailInfo1,
             masterDetailInfo2,
@@ -664,8 +664,8 @@
             // 
             this.xrTableCell1.Borders = DevExpress.XtraPrinting.BorderSide.None;
             this.xrTableCell1.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[COMPANY]")});
-            this.xrTableCell1.Font = new DevExpress.Drawing.DXFont("Cambria", 22F);
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[QueryCompanyList].[COM_NAME]")});
+            this.xrTableCell1.Font = new DevExpress.Drawing.DXFont("Cambria", 22F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell1.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell1.Multiline = true;
             this.xrTableCell1.Name = "xrTableCell1";
@@ -685,9 +685,9 @@
             // 
             // Company
             // 
-            this.Company.AllowNull = true;
             this.Company.Description = "Select Company";
             this.Company.Name = "Company";
+            this.Company.ValueInfo = "Tropical Knitex Limited";
             dynamicListLookUpSettings1.DataMember = "CompanyList";
             dynamicListLookUpSettings1.DataSource = this.sqlDataSource1;
             dynamicListLookUpSettings1.DisplayMember = "COM_NAME";
@@ -3173,8 +3173,8 @@
             // xrRichText2
             // 
             this.xrRichText2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Rtf", "[CompanyList].[COM_ADDRESS]")});
-            this.xrRichText2.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Rtf", "[QueryCompanyList].[COM_ADDRESS]")});
+            this.xrRichText2.Font = new DevExpress.Drawing.DXFont("Cambria", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrRichText2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 72.37498F);
             this.xrRichText2.Name = "xrRichText2";
             this.xrRichText2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);

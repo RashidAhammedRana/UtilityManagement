@@ -329,7 +329,7 @@
             this.xrTableCell13.StylePriority.UseFont = false;
             this.xrTableCell13.StylePriority.UseForeColor = false;
             this.xrTableCell13.StylePriority.UseTextAlignment = false;
-            this.xrTableCell13.Text = "Total Gen.";
+            this.xrTableCell13.Text = "Total Gen.(Kwh)";
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell13.Weight = 0.50786566222739549D;
             // 
@@ -344,7 +344,7 @@
             this.xrTableCell14.StylePriority.UseFont = false;
             this.xrTableCell14.StylePriority.UseForeColor = false;
             this.xrTableCell14.StylePriority.UseTextAlignment = false;
-            this.xrTableCell14.Text = "Diesel Cons.";
+            this.xrTableCell14.Text = "Diesel Cons. (Ltr)";
             this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell14.Weight = 0.50786566430587543D;
             // 
@@ -359,7 +359,7 @@
             this.xrTableCell15.StylePriority.UseFont = false;
             this.xrTableCell15.StylePriority.UseForeColor = false;
             this.xrTableCell15.StylePriority.UseTextAlignment = false;
-            this.xrTableCell15.Text = "NG Cons.";
+            this.xrTableCell15.Text = "NG Cons. (m³)";
             this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell15.Weight = 0.42322139008466342D;
             // 
@@ -374,7 +374,7 @@
             this.xrTableCell16.StylePriority.UseFont = false;
             this.xrTableCell16.StylePriority.UseForeColor = false;
             this.xrTableCell16.StylePriority.UseTextAlignment = false;
-            this.xrTableCell16.Text = "CNG Cons.";
+            this.xrTableCell16.Text = "CNG Cons. (m³)";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell16.Weight = 0.46554353273199173D;
             // 
@@ -389,7 +389,7 @@
             this.xrTableCell1.StylePriority.UseFont = false;
             this.xrTableCell1.StylePriority.UseForeColor = false;
             this.xrTableCell1.StylePriority.UseTextAlignment = false;
-            this.xrTableCell1.Text = "LPG Cons.";
+            this.xrTableCell1.Text = "LPG Cons. (Kg)";
             this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell1.Weight = 0.46554354371419293D;
             // 
@@ -404,7 +404,7 @@
             this.xrTableCell8.StylePriority.UseFont = false;
             this.xrTableCell8.StylePriority.UseForeColor = false;
             this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.Text = "Total Cost";
+            this.xrTableCell8.Text = "Total Cost (Tk)";
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell8.Weight = 0.72424018089673425D;
             // 
@@ -419,7 +419,7 @@
             this.xrTableCell29.StylePriority.UseFont = false;
             this.xrTableCell29.StylePriority.UseForeColor = false;
             this.xrTableCell29.StylePriority.UseTextAlignment = false;
-            this.xrTableCell29.Text = "Diesel Closing";
+            this.xrTableCell29.Text = "Diesel Closing (Ltr)";
             this.xrTableCell29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell29.Weight = 0.5755810838566906D;
             // 
@@ -601,7 +601,7 @@
             // 
             this.xrTableCell23.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell23.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseStockRegister].[TOTAL_GENERATION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TOTAL_GENERATION]")});
             this.xrTableCell23.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell23.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell23.Multiline = true;
@@ -617,7 +617,7 @@
             // 
             this.xrTableCell24.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell24.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseStockRegister].[DIESEL_CONSUMPTION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DIESEL_CONSUMPTION]")});
             this.xrTableCell24.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell24.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell24.Multiline = true;
@@ -633,7 +633,7 @@
             // 
             this.xrTableCell25.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell25.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseStockRegister].[NG_CONSUMPTION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NG_CONSUMPTION]")});
             this.xrTableCell25.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell25.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell25.Multiline = true;
@@ -649,7 +649,7 @@
             // 
             this.xrTableCell26.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell26.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseStockRegister].[CNG_CONSUMPTION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CNG_CONSUMPTION]")});
             this.xrTableCell26.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell26.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell26.Multiline = true;
@@ -665,7 +665,7 @@
             // 
             this.xrTableCell27.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell27.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CAPTIVE_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LPG_CONSUMPTION]")});
             this.xrTableCell27.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell27.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell27.Multiline = true;
@@ -676,13 +676,14 @@
             this.xrTableCell27.StylePriority.UseTextAlignment = false;
             this.xrTableCell27.Text = "xrTableCell27";
             this.xrTableCell27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell27.TextFormatString = "{0:#.00}";
             this.xrTableCell27.Weight = 0.43129610447780703D;
             // 
             // xrTableCell28
             // 
             this.xrTableCell28.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell28.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[INDUSTRIAL_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TOTAL_COST]")});
             this.xrTableCell28.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell28.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell28.Multiline = true;
@@ -693,6 +694,7 @@
             this.xrTableCell28.StylePriority.UseTextAlignment = false;
             this.xrTableCell28.Text = "xrTableCell28";
             this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell28.TextFormatString = "{0:#.00}";
             this.xrTableCell28.Weight = 0.66654922793582383D;
             // 
             // xrTableCell30

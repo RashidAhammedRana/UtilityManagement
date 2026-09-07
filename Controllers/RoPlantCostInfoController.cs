@@ -200,8 +200,10 @@ public class RoPlantCostInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
-        var query = _context.TblEquipmentDetails
-     .Where(x => x.EquipmentName.ToLower() == "ro");
+        //var query = _context.TblEquipmentDetails
+        //    .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
+        var query = _context.TblEquipmentDetails.Where(x => x.EquipmentName == "RO");
+
         if (!string.IsNullOrEmpty(currentLocation))
         {
             query = query.Where(x => x.CurrentLocation == currentLocation);
@@ -369,8 +371,9 @@ public class RoPlantCostInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
-        var query = _context.TblEquipmentDetails
-            .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
+        //var query = _context.TblEquipmentDetails
+        //    .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
+        var query = _context.TblEquipmentDetails.Where(x => x.EquipmentName == "RO");
         if (!string.IsNullOrEmpty(currentLocation))
         {
             query = query.Where(x => x.CurrentLocation == currentLocation);

@@ -410,17 +410,17 @@ public class DailyEnergyFuelConsumptionController : Controller
                 // Calculate Total
                 // -------------------------------------------------
 
-                energyFuelConsumption.Total =
-                    energyFuelConsumption.Reb +
-                    energyFuelConsumption.Gg1 +
-                    energyFuelConsumption.Gg2 +
-                    energyFuelConsumption.Gg3 +
-                    energyFuelConsumption.Gg4 +
-                    energyFuelConsumption.Dg1 +
-                    energyFuelConsumption.Dg2 +
-                    energyFuelConsumption.Dg3 +
-                    energyFuelConsumption.Dg4 +
-                    energyFuelConsumption.Solar;
+                //energyFuelConsumption.Total =
+                //    energyFuelConsumption.Reb +
+                //    energyFuelConsumption.Gg1 +
+                //    energyFuelConsumption.Gg2 +
+                //    energyFuelConsumption.Gg3 +
+                //    energyFuelConsumption.Gg4 +
+                //    energyFuelConsumption.Dg1 +
+                //    energyFuelConsumption.Dg2 +
+                //    energyFuelConsumption.Dg3 +
+                //    energyFuelConsumption.Dg4 +
+                //    energyFuelConsumption.Solar;
 
                 // -------------------------------------------------
                 // Created Information
@@ -668,6 +668,8 @@ public class DailyEnergyFuelConsumptionController : Controller
 
             existingRecord.IndustrialBoiler =
                 energyFuelConsumption.IndustrialBoiler;
+            existingRecord.Total =
+                energyFuelConsumption.Total;
 
             // =================================================
             // RECALCULATE TOTAL
@@ -675,17 +677,17 @@ public class DailyEnergyFuelConsumptionController : Controller
             // Do not trust the Total value submitted by browser.
             // =================================================
 
-            existingRecord.Total =
-                existingRecord.Reb +
-                existingRecord.Gg1 +
-                existingRecord.Gg2 +
-                existingRecord.Gg3 +
-                existingRecord.Gg4 +
-                existingRecord.Dg1 +
-                existingRecord.Dg2 +
-                existingRecord.Dg3 +
-                existingRecord.Dg4 +
-                existingRecord.Solar;
+            //existingRecord.Total =
+            //    existingRecord.Reb +
+            //    existingRecord.Gg1 +
+            //    existingRecord.Gg2 +
+            //    existingRecord.Gg3 +
+            //    existingRecord.Gg4 +
+            //    existingRecord.Dg1 +
+            //    existingRecord.Dg2 +
+            //    existingRecord.Dg3 +
+            //    existingRecord.Dg4 +
+            //    existingRecord.Solar;
 
             // =================================================
             // UPDATED INFORMATION

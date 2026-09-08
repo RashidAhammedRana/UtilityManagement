@@ -190,7 +190,7 @@
             this.xrTableCell10.StylePriority.UseFont = false;
             this.xrTableCell10.StylePriority.UseForeColor = false;
             this.xrTableCell10.StylePriority.UseTextAlignment = false;
-            this.xrTableCell10.Text = "Gas Pressure";
+            this.xrTableCell10.Text = "Gas Pressure\r\n(Boiler Room)";
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell10.Weight = 0.43373189276207669D;
             // 

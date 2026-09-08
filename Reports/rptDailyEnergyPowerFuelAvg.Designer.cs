@@ -81,6 +81,9 @@
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrLine19 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine64 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLine63 = new DevExpress.XtraReports.UI.XRLine();
@@ -312,18 +315,25 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrSubreport8 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrLabel155 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel154 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport7 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrSubreport6 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrLabel153 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel152 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport5 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrSubreport3 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel143 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport2 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel142 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel134 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrTable2 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow2 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell4 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrLabel156 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport9 = new DevExpress.XtraReports.UI.XRSubreport();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // sqlDataSource1
@@ -354,7 +364,6 @@
             selectQuery1.MetaSerializable = "<Meta X=\"1377\" Y=\"20\" Width=\"107\" Height=\"81\" />";
             selectQuery1.Name = "CompanyList";
             selectQuery1.Tables.Add(table1);
-            storedProcQuery2.MetaSerializable = "<Meta X=\"232\" Y=\"20\" Width=\"185\" Height=\"261\" />";
             storedProcQuery2.Name = "SteamGenerationData";
             queryParameter3.Name = "@COMPANY";
             queryParameter3.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -365,8 +374,7 @@
             storedProcQuery2.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter3,
             queryParameter4});
-            storedProcQuery2.StoredProcName = "SP_GET_STEAM_GENERATION_DATA";
-            storedProcQuery3.MetaSerializable = "<Meta X=\"437\" Y=\"20\" Width=\"149\" Height=\"181\" />";
+            storedProcQuery2.StoredProcName = "SP_GET_AVG_STEAM_GENERATION_DATA";
             storedProcQuery3.Name = "WaterGenerationData";
             queryParameter5.Name = "@COMPANY";
             queryParameter5.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -377,8 +385,7 @@
             storedProcQuery3.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter5,
             queryParameter6});
-            storedProcQuery3.StoredProcName = "SP_GET_WATER_GEN_DATA";
-            storedProcQuery4.MetaSerializable = "<Meta X=\"606\" Y=\"20\" Width=\"206\" Height=\"201\" />";
+            storedProcQuery3.StoredProcName = "SP_GET_AVG_WATER_GEN_DATA";
             storedProcQuery4.Name = "LoadSheddingData";
             queryParameter7.Name = "@COMPANY";
             queryParameter7.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -389,8 +396,7 @@
             storedProcQuery4.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter7,
             queryParameter8});
-            storedProcQuery4.StoredProcName = "SP_GET_LOAD_SHEDDING_DATA";
-            storedProcQuery5.MetaSerializable = "<Meta X=\"832\" Y=\"20\" Width=\"171\" Height=\"641\" />";
+            storedProcQuery4.StoredProcName = "SP_GET_AVG_LOAD_SHEDDING_DATA";
             storedProcQuery5.Name = "FuelConsumption";
             queryParameter9.Name = "@COMPANY";
             queryParameter9.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -401,7 +407,7 @@
             storedProcQuery5.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter9,
             queryParameter10});
-            storedProcQuery5.StoredProcName = "SP_GET_DAILY_FUEL_CONSUMPTION_DATA";
+            storedProcQuery5.StoredProcName = "SP_GET_AVG_DAILY_FUEL_CONSUMPTION_DATA";
             storedProcQuery6.MetaSerializable = "<Meta X=\"1023\" Y=\"20\" Width=\"140\" Height=\"181\" />";
             storedProcQuery6.Name = "LoadSheddingLog";
             queryParameter11.Name = "@COMPANY";
@@ -414,7 +420,6 @@
             queryParameter11,
             queryParameter12});
             storedProcQuery6.StoredProcName = "SP_GET_LOAD_SHEDDING_LOG";
-            storedProcQuery7.MetaSerializable = "<Meta X=\"1183\" Y=\"20\" Width=\"174\" Height=\"381\" />";
             storedProcQuery7.Name = "FuelStockAndConsumption";
             queryParameter13.Name = "@COMPANY";
             queryParameter13.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -425,7 +430,7 @@
             storedProcQuery7.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter13,
             queryParameter14});
-            storedProcQuery7.StoredProcName = "SP_GET_FUEL_STOCK_CONSUMPTION_DATA";
+            storedProcQuery7.StoredProcName = "SP_GET_AVG_FUEL_STOCK_CONSUMPTION_DATA";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1,
             selectQuery1,
@@ -741,6 +746,35 @@
             this.label1});
             this.ReportHeader.HeightF = 1550.696F;
             this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrTable2
+            // 
+            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(710.0009F, 67.37498F);
+            this.xrTable2.Name = "xrTable2";
+            this.xrTable2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow2});
+            this.xrTable2.SizeF = new System.Drawing.SizeF(100F, 25F);
+            // 
+            // xrTableRow2
+            // 
+            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell4});
+            this.xrTableRow2.Name = "xrTableRow2";
+            this.xrTableRow2.Weight = 1D;
+            // 
+            // xrTableCell4
+            // 
+            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Date")});
+            this.xrTableCell4.Font = new DevExpress.Drawing.DXFont("Cambria", 14F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell4.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell4.Multiline = true;
+            this.xrTableCell4.Name = "xrTableCell4";
+            this.xrTableCell4.StylePriority.UseFont = false;
+            this.xrTableCell4.StylePriority.UseForeColor = false;
+            this.xrTableCell4.TextFormatString = "{0:dd-MMM-yy}";
+            this.xrTableCell4.Weight = 1D;
             // 
             // xrLine19
             // 
@@ -1680,7 +1714,7 @@
             // 
             this.xrLabel145.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel145.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[TOTAL_LOAD_SHEDDING_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_TOTAL_LOAD_SHEDDING_HOURS]")});
             this.xrLabel145.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel145.ForeColor = System.Drawing.Color.Black;
             this.xrLabel145.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1494.678F);
@@ -1716,6 +1750,8 @@
             // xrLabel147
             // 
             this.xrLabel147.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel147.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_EPISODS]")});
             this.xrLabel147.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel147.ForeColor = System.Drawing.Color.Black;
             this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1494.678F);
@@ -1752,6 +1788,8 @@
             // xrLabel149
             // 
             this.xrLabel149.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel149.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_SHARE_OF_DAY]")});
             this.xrLabel149.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel149.ForeColor = System.Drawing.Color.Black;
             this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1494.679F);
@@ -1789,7 +1827,7 @@
             // 
             this.xrLabel151.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel151.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_REB_AVAILABLE_HOURS]")});
             this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel151.ForeColor = System.Drawing.Color.Black;
             this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1494.679F);
@@ -1826,7 +1864,7 @@
             // 
             this.xrLabel38.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel38.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[SOFTNER_GENERATION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[AVG_SOFTNER_GENERATION]")});
             this.xrLabel38.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel38.ForeColor = System.Drawing.Color.Black;
             this.xrLabel38.LocationFloat = new DevExpress.Utils.PointFloat(172.2082F, 400.25F);
@@ -1923,7 +1961,7 @@
             // 
             this.xrLabel137.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel137.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[DIESEL_APPROX_DAYS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_DIESEL_APPROX_DAYS]")});
             this.xrLabel137.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel137.ForeColor = System.Drawing.Color.Black;
             this.xrLabel137.LocationFloat = new DevExpress.Utils.PointFloat(0F, 899.7474F);
@@ -1961,7 +1999,7 @@
             // 
             this.xrLabel139.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel139.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[LPG_APPROX_DAYS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_LPG_APPROX_DAYS]")});
             this.xrLabel139.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel139.ForeColor = System.Drawing.Color.Black;
             this.xrLabel139.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 900.7471F);
@@ -1999,7 +2037,7 @@
             // 
             this.xrLabel141.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel141.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CNG_APPROX_DAYS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CNG_APPROX_DAYS]")});
             this.xrLabel141.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel141.ForeColor = System.Drawing.Color.Black;
             this.xrLabel141.LocationFloat = new DevExpress.Utils.PointFloat(328.1244F, 899.7475F);
@@ -2068,6 +2106,8 @@
             // xrLabel123
             // 
             this.xrLabel123.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel123.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_LPG_TOTAL_TK]")});
             this.xrLabel123.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel123.ForeColor = System.Drawing.Color.Black;
             this.xrLabel123.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1368.251F);
@@ -2105,6 +2145,8 @@
             // xrLabel133
             // 
             this.xrLabel133.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel133.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_LPG_TOTAL]")});
             this.xrLabel133.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel133.ForeColor = System.Drawing.Color.Black;
             this.xrLabel133.LocationFloat = new DevExpress.Utils.PointFloat(243.233F, 1368.25F);
@@ -2142,6 +2184,8 @@
             // xrLabel131
             // 
             this.xrLabel131.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel131.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_FL]")});
             this.xrLabel131.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel131.ForeColor = System.Drawing.Color.Black;
             this.xrLabel131.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1274.5F);
@@ -2178,6 +2222,8 @@
             // xrLabel129
             // 
             this.xrLabel129.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel129.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_THERMAL_HEATER]")});
             this.xrLabel129.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel129.ForeColor = System.Drawing.Color.Black;
             this.xrLabel129.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1177.708F);
@@ -2215,6 +2261,8 @@
             // xrLabel52
             // 
             this.xrLabel52.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel52.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_THERMAL_HEATER]")});
             this.xrLabel52.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel52.ForeColor = System.Drawing.Color.Black;
             this.xrLabel52.LocationFloat = new DevExpress.Utils.PointFloat(378.1794F, 1083.292F);
@@ -2234,7 +2282,7 @@
             // 
             this.xrLabel80.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel80.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_OS_CNG]")});
             this.xrLabel80.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel80.ForeColor = System.Drawing.Color.Black;
             this.xrLabel80.LocationFloat = new DevExpress.Utils.PointFloat(0F, 809.4012F);
@@ -2252,7 +2300,7 @@
             // 
             this.xrLabel78.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel78.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_RECEIVE_CNG]")});
             this.xrLabel78.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel78.ForeColor = System.Drawing.Color.Black;
             this.xrLabel78.LocationFloat = new DevExpress.Utils.PointFloat(172.2076F, 809.4016F);
@@ -2270,7 +2318,7 @@
             // 
             this.xrLabel76.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel76.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CONS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CONS_CNG]")});
             this.xrLabel76.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel76.ForeColor = System.Drawing.Color.Black;
             this.xrLabel76.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 809.4011F);
@@ -2288,7 +2336,7 @@
             // 
             this.xrLabel74.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel74.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CS_CNG]")});
             this.xrLabel74.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel74.ForeColor = System.Drawing.Color.Black;
             this.xrLabel74.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 809.4017F);
@@ -2337,6 +2385,8 @@
             // xrLabel90
             // 
             this.xrLabel90.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel90.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_DFMA]")});
             this.xrLabel90.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel90.ForeColor = System.Drawing.Color.Black;
             this.xrLabel90.LocationFloat = new DevExpress.Utils.PointFloat(243.2331F, 1083.291F);
@@ -2374,6 +2424,8 @@
             // xrLabel88
             // 
             this.xrLabel88.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel88.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_BOILER]")});
             this.xrLabel88.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel88.ForeColor = System.Drawing.Color.Black;
             this.xrLabel88.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1083.292F);
@@ -2411,6 +2463,8 @@
             // xrLabel86
             // 
             this.xrLabel86.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel86.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_GENERATOR]")});
             this.xrLabel86.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel86.ForeColor = System.Drawing.Color.Black;
             this.xrLabel86.LocationFloat = new DevExpress.Utils.PointFloat(2.000173F, 1083.291F);
@@ -2448,6 +2502,8 @@
             // xrLabel92
             // 
             this.xrLabel92.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel92.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_TOTAL]")});
             this.xrLabel92.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel92.ForeColor = System.Drawing.Color.Black;
             this.xrLabel92.LocationFloat = new DevExpress.Utils.PointFloat(498.9585F, 1083.291F);
@@ -2504,6 +2560,8 @@
             // xrLabel100
             // 
             this.xrLabel100.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel100.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_TOTAL]")});
             this.xrLabel100.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel100.ForeColor = System.Drawing.Color.Black;
             this.xrLabel100.LocationFloat = new DevExpress.Utils.PointFloat(498.9584F, 1177.709F);
@@ -2541,6 +2599,8 @@
             // xrLabel98
             // 
             this.xrLabel98.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel98.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_GENERATOR]")});
             this.xrLabel98.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel98.ForeColor = System.Drawing.Color.Black;
             this.xrLabel98.LocationFloat = new DevExpress.Utils.PointFloat(1.999991F, 1177.708F);
@@ -2578,6 +2638,8 @@
             // xrLabel96
             // 
             this.xrLabel96.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel96.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_BOILER]")});
             this.xrLabel96.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel96.ForeColor = System.Drawing.Color.Black;
             this.xrLabel96.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1177.708F);
@@ -2615,6 +2677,8 @@
             // xrLabel94
             // 
             this.xrLabel94.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel94.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_DFMA]")});
             this.xrLabel94.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel94.ForeColor = System.Drawing.Color.Black;
             this.xrLabel94.LocationFloat = new DevExpress.Utils.PointFloat(243.2331F, 1177.708F);
@@ -2659,6 +2723,8 @@
             // xrLabel109
             // 
             this.xrLabel109.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel109.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_THERMAL_HEATER]")});
             this.xrLabel109.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel109.ForeColor = System.Drawing.Color.Black;
             this.xrLabel109.LocationFloat = new DevExpress.Utils.PointFloat(243.2333F, 1274.5F);
@@ -2695,6 +2761,8 @@
             // xrLabel107
             // 
             this.xrLabel107.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel107.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_BOILER]")});
             this.xrLabel107.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel107.ForeColor = System.Drawing.Color.Black;
             this.xrLabel107.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1274.5F);
@@ -2732,7 +2800,7 @@
             // 
             this.xrLabel105.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel105.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[DIESEL_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_GENERATOR]")});
             this.xrLabel105.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel105.ForeColor = System.Drawing.Color.Black;
             this.xrLabel105.LocationFloat = new DevExpress.Utils.PointFloat(0.0002497718F, 1273.5F);
@@ -2768,6 +2836,8 @@
             // xrLabel103
             // 
             this.xrLabel103.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel103.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_TOTAL]")});
             this.xrLabel103.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel103.ForeColor = System.Drawing.Color.Black;
             this.xrLabel103.LocationFloat = new DevExpress.Utils.PointFloat(498.9586F, 1276.5F);
@@ -2824,7 +2894,7 @@
             // 
             this.xrLabel116.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel116.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[LPG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_LPG_BOILER]")});
             this.xrLabel116.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel116.ForeColor = System.Drawing.Color.Black;
             this.xrLabel116.LocationFloat = new DevExpress.Utils.PointFloat(2.000173F, 1367.25F);
@@ -2855,6 +2925,8 @@
             // xrLabel113
             // 
             this.xrLabel113.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel113.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_NG_TOTAL_TK]")});
             this.xrLabel113.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel113.ForeColor = System.Drawing.Color.Black;
             this.xrLabel113.LocationFloat = new DevExpress.Utils.PointFloat(638.6669F, 1083.292F);
@@ -2892,6 +2964,8 @@
             // xrLabel115
             // 
             this.xrLabel115.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel115.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_CNG_TOTAL_TK]")});
             this.xrLabel115.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel115.ForeColor = System.Drawing.Color.Black;
             this.xrLabel115.LocationFloat = new DevExpress.Utils.PointFloat(639.1273F, 1177.709F);
@@ -2929,6 +3003,8 @@
             // xrLabel119
             // 
             this.xrLabel119.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel119.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_DIESEL_TOTAL_TK]")});
             this.xrLabel119.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel119.ForeColor = System.Drawing.Color.Black;
             this.xrLabel119.LocationFloat = new DevExpress.Utils.PointFloat(638.6669F, 1273.5F);
@@ -2966,7 +3042,7 @@
             // 
             this.xrLabel121.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel121.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[LPG_THERMAL_HEATER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_LPG_THERMAL_HEATER]")});
             this.xrLabel121.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel121.ForeColor = System.Drawing.Color.Black;
             this.xrLabel121.LocationFloat = new DevExpress.Utils.PointFloat(121.5412F, 1367.25F);
@@ -3026,7 +3102,7 @@
             this.xrLabel126.BorderColor = System.Drawing.Color.IndianRed;
             this.xrLabel126.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel126.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[Total_Utility_Cost]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_Total_Utility_Cost]")});
             this.xrLabel126.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel126.ForeColor = System.Drawing.Color.Black;
             this.xrLabel126.LocationFloat = new DevExpress.Utils.PointFloat(638.6673F, 1367.25F);
@@ -3381,7 +3457,7 @@
             this.xrLabel17.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
             this.xrLabel17.StylePriority.UseFont = false;
             this.xrLabel17.StylePriority.UseForeColor = false;
-            this.xrLabel17.Text = "02 Steam Generation";
+            this.xrLabel17.Text = "02 Steam Generation (Avg.)";
             // 
             // xrLabel31
             // 
@@ -3401,7 +3477,7 @@
             // 
             this.xrLabel30.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel30.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[TOTAL_GENERATION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_TOTAL_GENERATION]")});
             this.xrLabel30.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel30.ForeColor = System.Drawing.Color.Black;
             this.xrLabel30.LocationFloat = new DevExpress.Utils.PointFloat(664.084F, 284F);
@@ -3438,7 +3514,7 @@
             // 
             this.xrLabel28.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel28.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[EGB_Boiler_Percentage]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_EGB_Boiler_Percentage]")});
             this.xrLabel28.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrLabel28.ForeColor = System.Drawing.Color.Black;
             this.xrLabel28.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 306F);
@@ -3459,7 +3535,7 @@
             // 
             this.xrLabel27.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel27.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[EGB_Boiler]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_EGB_Boiler]")});
             this.xrLabel27.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel27.ForeColor = System.Drawing.Color.Black;
             this.xrLabel27.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 284F);
@@ -3498,7 +3574,7 @@
             // 
             this.xrLabel25.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel25.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_3_Percentage]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_3_Percentage]")});
             this.xrLabel25.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrLabel25.ForeColor = System.Drawing.Color.Black;
             this.xrLabel25.LocationFloat = new DevExpress.Utils.PointFloat(328.125F, 306F);
@@ -3538,7 +3614,7 @@
             // 
             this.xrLabel23.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel23.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_2_Percentage]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_2_Percentage]")});
             this.xrLabel23.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrLabel23.ForeColor = System.Drawing.Color.Black;
             this.xrLabel23.LocationFloat = new DevExpress.Utils.PointFloat(151.0418F, 306F);
@@ -3558,7 +3634,7 @@
             // 
             this.xrLabel22.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_2]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_2]")});
             this.xrLabel22.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel22.ForeColor = System.Drawing.Color.Black;
             this.xrLabel22.LocationFloat = new DevExpress.Utils.PointFloat(151.0418F, 284F);
@@ -3596,7 +3672,7 @@
             // 
             this.xrLabel20.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_1_Percentage]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_1_Percentage]")});
             this.xrLabel20.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrLabel20.ForeColor = System.Drawing.Color.Black;
             this.xrLabel20.LocationFloat = new DevExpress.Utils.PointFloat(0F, 306F);
@@ -3618,7 +3694,7 @@
             // 
             this.xrLabel19.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel19.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_1]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_1]")});
             this.xrLabel19.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel19.ForeColor = System.Drawing.Color.Black;
             this.xrLabel19.LocationFloat = new DevExpress.Utils.PointFloat(0F, 284F);
@@ -3657,7 +3733,7 @@
             // 
             this.xrLabel32.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel32.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[SteamGenerationData].[Steam_Boiler_3]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[Query].[QuerySteamGenerationData].[AVG_Steam_Boiler_3]")});
             this.xrLabel32.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel32.ForeColor = System.Drawing.Color.Black;
             this.xrLabel32.LocationFloat = new DevExpress.Utils.PointFloat(328.125F, 284F);
@@ -3683,13 +3759,13 @@
             this.xrLabel33.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
             this.xrLabel33.StylePriority.UseFont = false;
             this.xrLabel33.StylePriority.UseForeColor = false;
-            this.xrLabel33.Text = "03 Water Generation ";
+            this.xrLabel33.Text = "03 Water Generation (Avg.)";
             // 
             // xrLabel44
             // 
             this.xrLabel44.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel44.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[ETP_WATER_INLET]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[AVG_ETP_WATER_INLET]")});
             this.xrLabel44.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel44.ForeColor = System.Drawing.Color.Black;
             this.xrLabel44.LocationFloat = new DevExpress.Utils.PointFloat(474.9166F, 400.25F);
@@ -3727,7 +3803,7 @@
             // 
             this.xrLabel41.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel41.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[RO_WATER_GEN]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[AVG_RO_WATER_GEN]")});
             this.xrLabel41.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel41.ForeColor = System.Drawing.Color.Black;
             this.xrLabel41.LocationFloat = new DevExpress.Utils.PointFloat(328.1251F, 400.25F);
@@ -3765,7 +3841,7 @@
             // 
             this.xrLabel35.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel35.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[TOTAL_DRAWING]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[AVG_TOTAL_DRAWING]")});
             this.xrLabel35.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel35.ForeColor = System.Drawing.Color.Black;
             this.xrLabel35.LocationFloat = new DevExpress.Utils.PointFloat(0.0002543131F, 400.25F);
@@ -3803,7 +3879,7 @@
             // 
             this.xrLabel47.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel47.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[ETP_WATER_OUTLET]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WaterGenerationData].[AVG_ETP_WATER_OUTLET]")});
             this.xrLabel47.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel47.ForeColor = System.Drawing.Color.Black;
             this.xrLabel47.LocationFloat = new DevExpress.Utils.PointFloat(664.0842F, 400.25F);
@@ -3845,16 +3921,16 @@
             this.xrLabel36.Multiline = true;
             this.xrLabel36.Name = "xrLabel36";
             this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel36.SizeF = new System.Drawing.SizeF(200F, 23F);
+            this.xrLabel36.SizeF = new System.Drawing.SizeF(251.0417F, 23.00003F);
             this.xrLabel36.StylePriority.UseFont = false;
             this.xrLabel36.StylePriority.UseForeColor = false;
-            this.xrLabel36.Text = "04 Load Shedding";
+            this.xrLabel36.Text = "04 Load Shedding (Avg.)";
             // 
             // xrLabel54
             // 
             this.xrLabel54.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel54.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_REB_AVAILABLE_HOURS]")});
             this.xrLabel54.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel54.ForeColor = System.Drawing.Color.Black;
             this.xrLabel54.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 496.7083F);
@@ -3891,6 +3967,8 @@
             // xrLabel50
             // 
             this.xrLabel50.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel50.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_SHARE_OF_DAY]")});
             this.xrLabel50.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel50.ForeColor = System.Drawing.Color.Black;
             this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(328.1251F, 496.7083F);
@@ -3928,6 +4006,8 @@
             // xrLabel48
             // 
             this.xrLabel48.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel48.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_EPISODS]")});
             this.xrLabel48.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel48.ForeColor = System.Drawing.Color.Black;
             this.xrLabel48.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 496.7083F);
@@ -3966,7 +4046,7 @@
             // 
             this.xrLabel42.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel42.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[TOTAL_LOAD_SHEDDING_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_TOTAL_LOAD_SHEDDING_HOURS]")});
             this.xrLabel42.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel42.ForeColor = System.Drawing.Color.Black;
             this.xrLabel42.LocationFloat = new DevExpress.Utils.PointFloat(7.064253E-05F, 496.7083F);
@@ -4008,16 +4088,16 @@
             this.xrLabel55.Multiline = true;
             this.xrLabel55.Name = "xrLabel55";
             this.xrLabel55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel55.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
+            this.xrLabel55.SizeF = new System.Drawing.SizeF(319.4174F, 23F);
             this.xrLabel55.StylePriority.UseFont = false;
             this.xrLabel55.StylePriority.UseForeColor = false;
-            this.xrLabel55.Text = "05 Fuel Stock & Consumption";
+            this.xrLabel55.Text = "05 Fuel Stock & Consumption (Avg.)";
             // 
             // xrLabel63
             // 
             this.xrLabel63.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel63.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CS_DIESEL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CS_DIESEL]")});
             this.xrLabel63.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel63.ForeColor = System.Drawing.Color.Black;
             this.xrLabel63.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 631.4854F);
@@ -4054,7 +4134,7 @@
             // 
             this.xrLabel61.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel61.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CONS_DIESEL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CONS_DIESEL]")});
             this.xrLabel61.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel61.ForeColor = System.Drawing.Color.Black;
             this.xrLabel61.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 631.4854F);
@@ -4091,7 +4171,7 @@
             // 
             this.xrLabel59.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel59.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[RECEIVE_DIESEL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_RECEIVE_DIESEL]")});
             this.xrLabel59.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel59.ForeColor = System.Drawing.Color.Black;
             this.xrLabel59.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 631.4854F);
@@ -4128,7 +4208,7 @@
             // 
             this.xrLabel57.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel57.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[OS_DIESEL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_OS_DIESEL]")});
             this.xrLabel57.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel57.ForeColor = System.Drawing.Color.Black;
             this.xrLabel57.LocationFloat = new DevExpress.Utils.PointFloat(0F, 631.4852F);
@@ -4184,7 +4264,7 @@
             // 
             this.xrLabel73.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel73.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CS_LPG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CS_LPG]")});
             this.xrLabel73.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel73.ForeColor = System.Drawing.Color.Black;
             this.xrLabel73.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 717.4434F);
@@ -4221,7 +4301,7 @@
             // 
             this.xrLabel71.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel71.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[CONS_LPG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_CONS_LPG]")});
             this.xrLabel71.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel71.ForeColor = System.Drawing.Color.Black;
             this.xrLabel71.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 717.4434F);
@@ -4258,7 +4338,7 @@
             // 
             this.xrLabel69.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel69.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[RECEIVE_LPG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_RECEIVE_LPG]")});
             this.xrLabel69.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel69.ForeColor = System.Drawing.Color.Black;
             this.xrLabel69.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 717.4434F);
@@ -4295,7 +4375,7 @@
             // 
             this.xrLabel67.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel67.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[OS_LPS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelStockAndConsumption].[AVG_OS_LPS]")});
             this.xrLabel67.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel67.ForeColor = System.Drawing.Color.Black;
             this.xrLabel67.LocationFloat = new DevExpress.Utils.PointFloat(0F, 717.4434F);
@@ -4450,7 +4530,7 @@
             this.label1.SizeF = new System.Drawing.SizeF(809.9997F, 24.19433F);
             this.label1.StyleName = "Title";
             this.label1.StylePriority.UseFont = false;
-            this.label1.Text = "Daily Average  Energy,Power&Fuel Report";
+            this.label1.Text = "Daily Average  Energy,Power & Fuel Report";
             // 
             // Detail
             // 
@@ -4554,29 +4634,127 @@
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel156,
+            this.xrSubreport9,
+            this.xrSubreport8,
+            this.xrLabel155,
+            this.xrLabel154,
+            this.xrSubreport7,
+            this.xrSubreport6,
+            this.xrLabel153,
+            this.xrLabel152,
+            this.xrSubreport5,
             this.xrSubreport3,
             this.xrLabel143,
             this.xrSubreport2,
             this.xrLabel142,
             this.xrLabel134,
             this.xrSubreport1});
-            this.ReportFooter.HeightF = 183.9999F;
+            this.ReportFooter.HeightF = 525.3813F;
             this.ReportFooter.Name = "ReportFooter";
+            // 
+            // xrSubreport8
+            // 
+            this.xrSubreport8.LocationFloat = new DevExpress.Utils.PointFloat(0.08303324F, 430.3813F);
+            this.xrSubreport8.Name = "xrSubreport8";
+            this.xrSubreport8.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport8.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport8.ReportSource = new UtilityManagement.Reports.rptDayWiseLpgStockAndConsumption();
+            this.xrSubreport8.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
+            // 
+            // xrLabel155
+            // 
+            this.xrLabel155.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel155.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel155.LocationFloat = new DevExpress.Utils.PointFloat(0F, 407.3815F);
+            this.xrLabel155.Multiline = true;
+            this.xrLabel155.Name = "xrLabel155";
+            this.xrLabel155.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel155.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel155.StylePriority.UseFont = false;
+            this.xrLabel155.StylePriority.UseForeColor = false;
+            this.xrLabel155.Text = "14 Day-wise LPG Stock & Consumption (m³)";
+            // 
+            // xrLabel154
+            // 
+            this.xrLabel154.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel154.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel154.LocationFloat = new DevExpress.Utils.PointFloat(2.083008F, 339.0898F);
+            this.xrLabel154.Multiline = true;
+            this.xrLabel154.Name = "xrLabel154";
+            this.xrLabel154.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel154.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel154.StylePriority.UseFont = false;
+            this.xrLabel154.StylePriority.UseForeColor = false;
+            this.xrLabel154.Text = "13 Day-wise CNG Stock & Consumption (m³)";
+            // 
+            // xrSubreport7
+            // 
+            this.xrSubreport7.LocationFloat = new DevExpress.Utils.PointFloat(2.166051F, 362.0896F);
+            this.xrSubreport7.Name = "xrSubreport7";
+            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport7.ReportSource = new UtilityManagement.Reports.rptDayWiseCngStockAndConsumption();
+            this.xrSubreport7.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
+            // 
+            // xrSubreport6
+            // 
+            this.xrSubreport6.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 293.0896F);
+            this.xrSubreport6.Name = "xrSubreport6";
+            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport6.ReportSource = new UtilityManagement.Reports.rptDayWiseDieselStockAndConsumption();
+            this.xrSubreport6.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
+            // 
+            // xrLabel153
+            // 
+            this.xrLabel153.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel153.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel153.LocationFloat = new DevExpress.Utils.PointFloat(0F, 270.0898F);
+            this.xrLabel153.Multiline = true;
+            this.xrLabel153.Name = "xrLabel153";
+            this.xrLabel153.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel153.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel153.StylePriority.UseFont = false;
+            this.xrLabel153.StylePriority.UseForeColor = false;
+            this.xrLabel153.Text = "12 Day-wise Diesel Stock & Consumption (Ltr)";
+            // 
+            // xrLabel152
+            // 
+            this.xrLabel152.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel152.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel152.LocationFloat = new DevExpress.Utils.PointFloat(0F, 204F);
+            this.xrLabel152.Multiline = true;
+            this.xrLabel152.Name = "xrLabel152";
+            this.xrLabel152.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel152.SizeF = new System.Drawing.SizeF(235.6685F, 23.00003F);
+            this.xrLabel152.StylePriority.UseFont = false;
+            this.xrLabel152.StylePriority.UseForeColor = false;
+            this.xrLabel152.Text = "11 Day-wise Water Generation";
+            // 
+            // xrSubreport5
+            // 
+            this.xrSubreport5.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 226.9999F);
+            this.xrSubreport5.Name = "xrSubreport5";
+            this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport5.ReportSource = new UtilityManagement.Reports.rptDayWiseWaterGeneration();
+            this.xrSubreport5.SizeF = new System.Drawing.SizeF(809.0442F, 23.00002F);
             // 
             // xrSubreport3
             // 
-            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(5.00001F, 96.99995F);
+            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 96.99992F);
             this.xrSubreport3.Name = "xrSubreport3";
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport3.ReportSource = new UtilityManagement.Reports.rpt24HourBoilerSteamGeneration();
-            this.xrSubreport3.SizeF = new System.Drawing.SizeF(805F, 22.99999F);
+            this.xrSubreport3.SizeF = new System.Drawing.SizeF(809.0443F, 22.99999F);
             // 
             // xrLabel143
             // 
             this.xrLabel143.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel143.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(2.916931F, 74F);
+            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(0F, 74F);
             this.xrLabel143.Multiline = true;
             this.xrLabel143.Name = "xrLabel143";
             this.xrLabel143.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -4587,26 +4765,25 @@
             // 
             // xrSubreport2
             // 
-            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(4.999796F, 160.9999F);
+            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 161F);
             this.xrSubreport2.Name = "xrSubreport2";
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
-            this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
-            this.xrSubreport2.ReportSource = new UtilityManagement.Reports.rptDayWiseStockRegister();
-            this.xrSubreport2.SizeF = new System.Drawing.SizeF(802.0832F, 22.99998F);
+            this.xrSubreport2.ReportSource = new UtilityManagement.Reports.rptDayWiseStockRegisterAvg();
+            this.xrSubreport2.SizeF = new System.Drawing.SizeF(809.0443F, 22.99998F);
             // 
             // xrLabel142
             // 
             this.xrLabel142.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel142.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(2.916718F, 138F);
+            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(0F, 138F);
             this.xrLabel142.Multiline = true;
             this.xrLabel142.Name = "xrLabel142";
             this.xrLabel142.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel142.SizeF = new System.Drawing.SizeF(299.1664F, 23.00001F);
+            this.xrLabel142.SizeF = new System.Drawing.SizeF(228.6245F, 23.00002F);
             this.xrLabel142.StylePriority.UseFont = false;
             this.xrLabel142.StylePriority.UseForeColor = false;
-            this.xrLabel142.Text = "10 Day-wise energy,fuel & stock register";
+            this.xrLabel142.Text = "10 Day-wise Energy Generation";
             // 
             // xrLabel134
             // 
@@ -4623,41 +4800,34 @@
             // 
             // xrSubreport1
             // 
-            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(2.083079F, 29.99995F);
+            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 29.99995F);
             this.xrSubreport1.Name = "xrSubreport1";
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport1.ReportSource = new UtilityManagement.Reports.rpt24HourLoadAndGenerationLog();
-            this.xrSubreport1.SizeF = new System.Drawing.SizeF(805F, 22.99999F);
+            this.xrSubreport1.SizeF = new System.Drawing.SizeF(809.044F, 22.99999F);
             // 
-            // xrTable2
+            // xrLabel156
             // 
-            this.xrTable2.LocationFloat = new DevExpress.Utils.PointFloat(710.0009F, 67.37498F);
-            this.xrTable2.Name = "xrTable2";
-            this.xrTable2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTable2.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow2});
-            this.xrTable2.SizeF = new System.Drawing.SizeF(100F, 25F);
+            this.xrLabel156.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel156.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel156.LocationFloat = new DevExpress.Utils.PointFloat(2.083069F, 479.3815F);
+            this.xrLabel156.Multiline = true;
+            this.xrLabel156.Name = "xrLabel156";
+            this.xrLabel156.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel156.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel156.StylePriority.UseFont = false;
+            this.xrLabel156.StylePriority.UseForeColor = false;
+            this.xrLabel156.Text = "15 Day-wise NG Consumption (m³)";
             // 
-            // xrTableRow2
+            // xrSubreport9
             // 
-            this.xrTableRow2.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell4});
-            this.xrTableRow2.Name = "xrTableRow2";
-            this.xrTableRow2.Weight = 1D;
-            // 
-            // xrTableCell4
-            // 
-            this.xrTableCell4.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "?Date")});
-            this.xrTableCell4.Font = new DevExpress.Drawing.DXFont("Cambria", 14F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrTableCell4.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell4.Multiline = true;
-            this.xrTableCell4.Name = "xrTableCell4";
-            this.xrTableCell4.StylePriority.UseFont = false;
-            this.xrTableCell4.StylePriority.UseForeColor = false;
-            this.xrTableCell4.TextFormatString = "{0:dd-MMM-yy}";
-            this.xrTableCell4.Weight = 1D;
+            this.xrSubreport9.LocationFloat = new DevExpress.Utils.PointFloat(2.166102F, 502.3813F);
+            this.xrSubreport9.Name = "xrSubreport9";
+            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport9.ReportSource = new UtilityManagement.Reports.rptDayWiseNgConsumption();
+            this.xrSubreport9.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
             // 
             // rptDailyEnergyPowerFuelAvg
             // 
@@ -4691,9 +4861,9 @@
             this.DetailData3_Odd,
             this.PageInfo});
             this.Version = "23.2";
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }
@@ -4946,5 +5116,15 @@
         private DevExpress.XtraReports.UI.XRTable xrTable2;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell4;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel152;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport5;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport6;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel153;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel154;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport7;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport8;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel155;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel156;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport9;
     }
 }

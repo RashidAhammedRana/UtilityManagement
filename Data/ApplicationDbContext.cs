@@ -58,6 +58,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDailyStockConsumption> TblDailyStockConsumptions { get; set; }
         public virtual DbSet<TblDailyFuelConsumption> TblDailyFuelConsumption { get; set; }
         public virtual DbSet<TblBoilerSteamGenerationInfo> TblBoilerSteamGenerationInfo { get; set; }
+        public virtual DbSet<TblDailyGasPressureRecord> TblDailyGasPressureRecord { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1109,6 +1110,24 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.GasPressure).HasColumnName("GAS_PRESSURE");
                 entity.Property(e => e.TotalGeneration).HasColumnName("TOTAL_GENERATION");
                 entity.Property(e => e.HeaderSteamPressure).HasColumnName("HEADER_STEAM_PRESSURE");
+                entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
+                entity.Property(e => e.Time).HasColumnName("TIME");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+            });
+
+            modelBuilder.Entity<TblDailyGasPressureRecord>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_DAILY_GAS_PRESSURE_RECORD");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.GpBefore).HasColumnName("GP_BEFORE");
+                entity.Property(e => e.GpCr).HasColumnName("GP_CR");
+                entity.Property(e => e.GpIr).HasColumnName("GP_IR");
                 entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
                 entity.Property(e => e.Time).HasColumnName("TIME");
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");

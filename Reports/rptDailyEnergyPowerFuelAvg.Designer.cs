@@ -56,6 +56,9 @@
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery7 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter13 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter14 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery8 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter15 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter16 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo1 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
             DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo2 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
@@ -315,6 +318,8 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrLabel156 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport9 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrSubreport8 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel155 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel154 = new DevExpress.XtraReports.UI.XRLabel();
@@ -329,8 +334,6 @@
             this.xrLabel142 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel134 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrLabel156 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrSubreport9 = new DevExpress.XtraReports.UI.XRSubreport();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
@@ -396,7 +399,7 @@
             storedProcQuery4.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter7,
             queryParameter8});
-            storedProcQuery4.StoredProcName = "SP_GET_AVG_LOAD_SHEDDING_DATA";
+            storedProcQuery4.StoredProcName = "SP_GET_LOAD_SHEDDING_DATA";
             storedProcQuery5.Name = "FuelConsumption";
             queryParameter9.Name = "@COMPANY";
             queryParameter9.Type = typeof(global::DevExpress.DataAccess.Expression);
@@ -431,6 +434,17 @@
             queryParameter13,
             queryParameter14});
             storedProcQuery7.StoredProcName = "SP_GET_AVG_FUEL_STOCK_CONSUMPTION_DATA";
+            storedProcQuery8.Name = "LoadSheedingAvgData";
+            queryParameter15.Name = "@COMPANY";
+            queryParameter15.Type = typeof(global::DevExpress.DataAccess.Expression);
+            queryParameter15.Value = new DevExpress.DataAccess.Expression("?Company", typeof(string));
+            queryParameter16.Name = "@TRDATE";
+            queryParameter16.Type = typeof(global::DevExpress.DataAccess.Expression);
+            queryParameter16.Value = new DevExpress.DataAccess.Expression("?Date", typeof(System.DateTime));
+            storedProcQuery8.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
+            queryParameter15,
+            queryParameter16});
+            storedProcQuery8.StoredProcName = "SP_GET_AVG_LOAD_SHEDDING_DATA";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1,
             selectQuery1,
@@ -439,7 +453,8 @@
             storedProcQuery4,
             storedProcQuery5,
             storedProcQuery6,
-            storedProcQuery7});
+            storedProcQuery7,
+            storedProcQuery8});
             masterDetailInfo1.DetailQueryName = "SteamGenerationData";
             relationColumnInfo1.NestedKeyColumn = "COMPANY";
             relationColumnInfo1.ParentKeyColumn = "COMPANY";
@@ -1714,7 +1729,7 @@
             // 
             this.xrLabel145.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel145.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_TOTAL_LOAD_SHEDDING_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[TOTAL_LOAD_SHEDDING_HOURS]")});
             this.xrLabel145.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel145.ForeColor = System.Drawing.Color.Black;
             this.xrLabel145.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1494.678F);
@@ -1751,7 +1766,7 @@
             // 
             this.xrLabel147.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel147.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_EPISODS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[EPISODS]")});
             this.xrLabel147.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel147.ForeColor = System.Drawing.Color.Black;
             this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1494.678F);
@@ -1789,7 +1804,7 @@
             // 
             this.xrLabel149.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel149.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_SHARE_OF_DAY]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[SHARE_OF_DAY]")});
             this.xrLabel149.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel149.ForeColor = System.Drawing.Color.Black;
             this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1494.679F);
@@ -1827,7 +1842,7 @@
             // 
             this.xrLabel151.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel151.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_REB_AVAILABLE_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE]")});
             this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel151.ForeColor = System.Drawing.Color.Black;
             this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1494.679F);
@@ -3930,7 +3945,7 @@
             // 
             this.xrLabel54.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel54.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_REB_AVAILABLE_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheedingAvgData].[AVG_REB_AVAILABLE]")});
             this.xrLabel54.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel54.ForeColor = System.Drawing.Color.Black;
             this.xrLabel54.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 496.7083F);
@@ -3968,7 +3983,7 @@
             // 
             this.xrLabel50.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel50.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_SHARE_OF_DAY]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheedingAvgData].[AVG_SHARE_OF_DAY]")});
             this.xrLabel50.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel50.ForeColor = System.Drawing.Color.Black;
             this.xrLabel50.LocationFloat = new DevExpress.Utils.PointFloat(328.1251F, 496.7083F);
@@ -4007,7 +4022,7 @@
             // 
             this.xrLabel48.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel48.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_EPISODS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheedingAvgData].[AVG_EPISODS]")});
             this.xrLabel48.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel48.ForeColor = System.Drawing.Color.Black;
             this.xrLabel48.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 496.7083F);
@@ -4046,7 +4061,7 @@
             // 
             this.xrLabel42.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel42.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[AVG_TOTAL_LOAD_SHEDDING_HOURS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheedingAvgData].[AVG_TOTAL_LOAD_SHEDDING_HOURS]")});
             this.xrLabel42.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel42.ForeColor = System.Drawing.Color.Black;
             this.xrLabel42.LocationFloat = new DevExpress.Utils.PointFloat(7.064253E-05F, 496.7083F);
@@ -4653,6 +4668,28 @@
             this.ReportFooter.HeightF = 525.3813F;
             this.ReportFooter.Name = "ReportFooter";
             // 
+            // xrLabel156
+            // 
+            this.xrLabel156.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel156.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel156.LocationFloat = new DevExpress.Utils.PointFloat(2.083069F, 479.3815F);
+            this.xrLabel156.Multiline = true;
+            this.xrLabel156.Name = "xrLabel156";
+            this.xrLabel156.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel156.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel156.StylePriority.UseFont = false;
+            this.xrLabel156.StylePriority.UseForeColor = false;
+            this.xrLabel156.Text = "15 Day-wise NG Consumption (m³)";
+            // 
+            // xrSubreport9
+            // 
+            this.xrSubreport9.LocationFloat = new DevExpress.Utils.PointFloat(2.166102F, 502.3813F);
+            this.xrSubreport9.Name = "xrSubreport9";
+            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport9.ReportSource = new UtilityManagement.Reports.rptDayWiseNgConsumption();
+            this.xrSubreport9.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
+            // 
             // xrSubreport8
             // 
             this.xrSubreport8.LocationFloat = new DevExpress.Utils.PointFloat(0.08303324F, 430.3813F);
@@ -4806,28 +4843,6 @@
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport1.ReportSource = new UtilityManagement.Reports.rpt24HourLoadAndGenerationLog();
             this.xrSubreport1.SizeF = new System.Drawing.SizeF(809.044F, 22.99999F);
-            // 
-            // xrLabel156
-            // 
-            this.xrLabel156.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel156.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel156.LocationFloat = new DevExpress.Utils.PointFloat(2.083069F, 479.3815F);
-            this.xrLabel156.Multiline = true;
-            this.xrLabel156.Name = "xrLabel156";
-            this.xrLabel156.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel156.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
-            this.xrLabel156.StylePriority.UseFont = false;
-            this.xrLabel156.StylePriority.UseForeColor = false;
-            this.xrLabel156.Text = "15 Day-wise NG Consumption (m³)";
-            // 
-            // xrSubreport9
-            // 
-            this.xrSubreport9.LocationFloat = new DevExpress.Utils.PointFloat(2.166102F, 502.3813F);
-            this.xrSubreport9.Name = "xrSubreport9";
-            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
-            this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
-            this.xrSubreport9.ReportSource = new UtilityManagement.Reports.rptDayWiseNgConsumption();
-            this.xrSubreport9.SizeF = new System.Drawing.SizeF(807.8339F, 22.99997F);
             // 
             // rptDailyEnergyPowerFuelAvg
             // 

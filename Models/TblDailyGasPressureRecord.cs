@@ -13,11 +13,11 @@ public partial class TblDailyGasPressureRecord
     public DateOnly? Trdate { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public TimeOnly? Time { get; set; }
-    [Required(ErrorMessage = "This field is required")]
+    //[Required(ErrorMessage = "This field is required")]
     public double? GpBefore { get; set; }
-    [Required(ErrorMessage = "This field is required")]
+    //[Required(ErrorMessage = "This field is required")]
     public double? GpIr { get; set; }
-    [Required(ErrorMessage = "This field is required")]
+    //[Required(ErrorMessage = "This field is required")]
     public double? GpCr { get; set; }
     public string? Remarks { get; set; }
 

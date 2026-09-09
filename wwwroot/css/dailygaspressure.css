@@ -1,0 +1,134 @@
+﻿/* =========================================================
+   SAVING OVERLAY
+   Transparent background
+   No blur
+   ========================================================= */
+
+#savingOverlay {
+    display: none;
+    position: fixed;
+    inset: 0;
+    width: 100vw;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    /* No background color */
+    background: transparent;
+    /* No blur */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    z-index: 99999;
+    pointer-events: all;
+}
+
+
+    /* =========================================================
+   SAVING CARD
+   ========================================================= */
+
+    #savingOverlay .saving-card {
+        width: min(350px, calc(100vw - 40px));
+        padding: 24px 28px;
+        /* Different background color */
+        background: #eff6ff;
+        border: 1px solid #bfdbfe;
+        border-radius: 16px;
+        text-align: center;
+        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18), 0 4px 12px rgba(0, 0, 0, 0.10);
+        animation: savingCardIn 0.25s ease-out;
+    }
+
+
+    /* =========================================================
+   LOADING SPINNER
+   ========================================================= */
+
+    #savingOverlay .saving-spinner {
+        width: 48px;
+        height: 48px;
+        margin: 0 auto 15px;
+        border: 5px solid #dbeafe;
+        /* Different spinner color */
+        border-top-color: #7c3aed;
+        border-right-color: #9333ea;
+        border-radius: 50%;
+        animation: savingSpin 0.75s linear infinite;
+    }
+
+
+    /* =========================================================
+   SAVING TITLE
+   ========================================================= */
+
+    #savingOverlay .saving-title {
+        color: #1e3a8a;
+        font-size: 19px;
+        font-weight: 700;
+        margin-bottom: 5px;
+    }
+
+
+    /* =========================================================
+   SAVING MESSAGE
+   ========================================================= */
+
+    #savingOverlay .saving-message {
+        color: #475569;
+        font-size: 13px;
+        line-height: 1.5;
+    }
+
+
+/* =========================================================
+   SPINNER ANIMATION
+   ========================================================= */
+
+@keyframes savingSpin {
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+
+/* =========================================================
+   CARD ANIMATION
+   ========================================================= */
+
+@keyframes savingCardIn {
+
+    from {
+        opacity: 0;
+        transform: scale(0.94) translateY(8px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+
+/* =========================================================
+   24 SLOT WARNING
+   ========================================================= */
+
+#timeFullMessage.time-full-warning {
+    display: inline-block !important;
+    color: #dc2626 !important;
+    background: #fef2f2;
+    border: 1px solid #fca5a5;
+    border-radius: 8px;
+    padding: 10px 14px;
+    margin-top: 8px;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 1.4;
+    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.10);
+}
+
+.time-full-message {
+    color: #dc3545;
+    font-weight: 600;
+    font-size: 13px;
+}

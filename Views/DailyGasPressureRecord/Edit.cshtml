@@ -1,0 +1,195 @@
+﻿@model UtilityManagement.Models.TblDailyGasPressureRecord
+
+@{
+    ViewData["Title"] = "Edit Daily Gas Pressure Record";
+}
+
+<div class="row justify-content-center">
+    <div class="col-md-12">
+
+        <div class="card shadow-lg border-0 energy-card">
+
+            <!-- ===================================================== -->
+            <!-- HEADER                                                -->
+            <!-- ===================================================== -->
+            <style>
+                .energy-card {
+                    margin-left: 35px;
+                }
+
+                @@media (max-width: 768px) {
+                    .energy-card {
+                        margin-left: 15px;
+                    }
+                }
+
+                /* Remove number input spinner arrows - Chrome, Edge, Safari */
+                input[type="number"]::-webkit-inner-spin-button,
+                input[type="number"]::-webkit-outer-spin-button {
+                    -webkit-appearance: none;
+                    margin: 0;
+                }
+
+                /* Remove number input spinner arrows - Firefox */
+                input[type="number"] {
+                    -moz-appearance: textfield;
+                    appearance: textfield;
+                }
+            </style>
+
+            <div class="card-header bg-success text-white">
+                <h5 class="mb-0">
+                    <i class="bi bi-pencil-square"></i>
+                    Add Daily Gas Pressure Record
+                </h5>
+            </div>
+
+
+            <!-- ================= BODY ================= -->
+
+            <div class="card-body p-4">
+
+                <form asp-action="Edit" method="post" id="editDailyGasPressureForm">
+                    @Html.AntiForgeryToken()
+                    <!-- Hidden ID -->
+                    <input type="hidden" asp-for="Trid" />
+                    <!-- Validation -->
+                    <div asp-validation-summary="ModelOnly"
+                         class="text-danger mb-3">
+                    </div>
+                    <!-- ================= TABLE ================= -->
+                    <div class="table-responsive">
+                        <table class="table table-bordered table-sm align-middle">
+                            <thead class="table-dark">
+                                <tr>
+                                    <th style="width: 150px; min-width: 150px;">Company</th>
+                                    <th style="width: 90px;">Date</th>
+                                    <th style="width: 85px;">Time</th>
+                                    <th style="width: 75px;">Gas Pressure RMS Room Before Gas Regulator(PSI)</th>
+                                    <th style="width: 75px;">Gas Pressure Industrial Run(PSI)</th>
+                                    <th style="width: 75px;">Gas Pressure Captive Run(PSI)</th>
+                                    <th style="width: 75px;">Remarks</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+
+                                <tr>
+                                    <td>
+                                        <input asp-for="Company"
+                                               class="form-control form-control-sm"
+                                               readonly />
+
+                                        <span asp-validation-for="Company" class="text-danger"></span>
+                                    </td>
+
+                                    <!-- ================= DATE ================= -->
+
+                                    <td>
+
+                                        <input asp-for="Trdate" type="date" class="form-control form-control-sm" />
+                                        <span asp-validation-for="Trdate"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= TIME ================= -->
+                                    <td>
+                                        <input asp-for="Time" type="time"
+                                               class="form-control form-control-sm" />
+                                        <span asp-validation-for="Time"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+
+                                    <!-- ================= GpBefore ================= -->
+                                    <td>
+                                        <input asp-for="GpBefore"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="GpBefore"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= GpIr ================= -->
+                                    <td>
+                                        <input asp-for="GpIr" type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+                                        <span asp-validation-for="GpIr"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+                                    <!-- ================= GG-2 ================= -->
+                                    <td>
+                                        <input asp-for="GpCr"
+                                               type="number"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="GpCr"
+                                              class="text-danger">
+                                        </span>
+                                    </td>
+                                    <!-- ================= Remarks ================= -->
+                                    <td>
+                                        <input asp-for="Remarks"
+                                               type="Text"
+                                               step="any"
+                                               class="form-control form-control-sm energy-input" />
+
+                                        <span asp-validation-for="Remarks"
+                                              class="text-danger">
+                                        </span>
+
+                                    </td>
+
+                                </tr>
+
+                            </tbody>
+
+                        </table>
+
+                    </div>
+
+
+                    <!-- ================= BUTTONS ================= -->
+
+                    <div class="d-flex justify-content-between mt-4">
+
+                        <a asp-action="DailyGasPressureRecordList"
+                           class="btn btn-outline-secondary">
+
+                            <i class="bi bi-arrow-left"></i>
+                            Back
+
+                        </a>
+
+                        <button type="submit"
+                                class="btn btn-success">
+                            <i class="bi bi-check-circle"></i>
+                            Update
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+}
+

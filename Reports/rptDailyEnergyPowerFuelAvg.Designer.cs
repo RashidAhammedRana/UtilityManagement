@@ -3165,10 +3165,10 @@
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel1.SizeF = new System.Drawing.SizeF(251.0417F, 22.99999F);
+            this.xrLabel1.SizeF = new System.Drawing.SizeF(291.6667F, 22.99999F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
-            this.xrLabel1.Text = "01. Power Generation (Avg.)";
+            this.xrLabel1.Text = "01. Power Generation (Avg./Day)";
             // 
             // xrLabel2
             // 
@@ -3478,10 +3478,10 @@
             this.xrLabel17.Multiline = true;
             this.xrLabel17.Name = "xrLabel17";
             this.xrLabel17.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel17.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
+            this.xrLabel17.SizeF = new System.Drawing.SizeF(302.0834F, 23F);
             this.xrLabel17.StylePriority.UseFont = false;
             this.xrLabel17.StylePriority.UseForeColor = false;
-            this.xrLabel17.Text = "02. Steam Generation (Avg.)";
+            this.xrLabel17.Text = "02. Steam Generation (Avg./Day)";
             // 
             // xrLabel31
             // 
@@ -3780,10 +3780,10 @@
             this.xrLabel33.Multiline = true;
             this.xrLabel33.Name = "xrLabel33";
             this.xrLabel33.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel33.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
+            this.xrLabel33.SizeF = new System.Drawing.SizeF(302.0834F, 23F);
             this.xrLabel33.StylePriority.UseFont = false;
             this.xrLabel33.StylePriority.UseForeColor = false;
-            this.xrLabel33.Text = "03. Water Generation (Avg.)";
+            this.xrLabel33.Text = "03. Water Generation (Avg./Day)";
             // 
             // xrLabel44
             // 
@@ -3945,10 +3945,10 @@
             this.xrLabel36.Multiline = true;
             this.xrLabel36.Name = "xrLabel36";
             this.xrLabel36.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel36.SizeF = new System.Drawing.SizeF(251.0417F, 23.00003F);
+            this.xrLabel36.SizeF = new System.Drawing.SizeF(302.0834F, 23.00006F);
             this.xrLabel36.StylePriority.UseFont = false;
             this.xrLabel36.StylePriority.UseForeColor = false;
-            this.xrLabel36.Text = "04. Load Shedding (Avg.)";
+            this.xrLabel36.Text = "04. Load Shedding (Avg./Day)";
             // 
             // xrLabel54
             // 
@@ -4112,10 +4112,10 @@
             this.xrLabel55.Multiline = true;
             this.xrLabel55.Name = "xrLabel55";
             this.xrLabel55.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel55.SizeF = new System.Drawing.SizeF(319.4174F, 23F);
+            this.xrLabel55.SizeF = new System.Drawing.SizeF(368.715F, 23F);
             this.xrLabel55.StylePriority.UseFont = false;
             this.xrLabel55.StylePriority.UseForeColor = false;
-            this.xrLabel55.Text = "05. Fuel Stock & Consumption (Avg.)";
+            this.xrLabel55.Text = "05. Fuel Stock & Consumption (Avg./Day)";
             // 
             // xrLabel63
             // 

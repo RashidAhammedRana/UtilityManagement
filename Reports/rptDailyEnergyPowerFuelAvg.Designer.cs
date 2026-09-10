@@ -318,6 +318,8 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrSubreport10 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrLabel157 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel156 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport9 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrSubreport8 = new DevExpress.XtraReports.UI.XRSubreport();
@@ -526,17 +528,24 @@
             // 
             this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.pageInfo1.Name = "pageInfo1";
+            this.pageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.pageInfo1.SizeF = new System.Drawing.SizeF(559.5F, 23F);
+            this.pageInfo1.SizeF = new System.Drawing.SizeF(202.2083F, 23F);
             this.pageInfo1.StyleName = "PageInfo";
+            this.pageInfo1.StylePriority.UsePadding = false;
+            this.pageInfo1.StylePriority.UseTextAlignment = false;
+            this.pageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleLeft;
             // 
             // pageInfo2
             // 
-            this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(559.5001F, 0F);
+            this.pageInfo2.LocationFloat = new DevExpress.Utils.PointFloat(699.0834F, 0F);
             this.pageInfo2.Name = "pageInfo2";
-            this.pageInfo2.SizeF = new System.Drawing.SizeF(220.4998F, 23F);
+            this.pageInfo2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.pageInfo2.SizeF = new System.Drawing.SizeF(108.8335F, 23F);
             this.pageInfo2.StyleName = "PageInfo";
-            this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopRight;
+            this.pageInfo2.StylePriority.UsePadding = false;
+            this.pageInfo2.StylePriority.UseTextAlignment = false;
+            this.pageInfo2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.pageInfo2.TextFormatString = "Page {0} of {1}";
             // 
             // ReportHeader
@@ -814,7 +823,7 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLine64.BorderWidth = 1F;
             this.xrLine64.LineWidth = 0.5F;
-            this.xrLine64.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1517.679F);
+            this.xrLine64.LocationFloat = new DevExpress.Utils.PointFloat(398.9362F, 1517.679F);
             this.xrLine64.Name = "xrLine64";
             this.xrLine64.SizeF = new System.Drawing.SizeF(147.243F, 2F);
             this.xrLine64.StylePriority.UseBorderColor = false;
@@ -829,9 +838,9 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLine63.BorderWidth = 1F;
             this.xrLine63.LineWidth = 0.5F;
-            this.xrLine63.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1517.679F);
+            this.xrLine63.LocationFloat = new DevExpress.Utils.PointFloat(280.3853F, 1517.678F);
             this.xrLine63.Name = "xrLine63";
-            this.xrLine63.SizeF = new System.Drawing.SizeF(85.15256F, 2F);
+            this.xrLine63.SizeF = new System.Drawing.SizeF(108.7328F, 2.000122F);
             this.xrLine63.StylePriority.UseBorderColor = false;
             this.xrLine63.StylePriority.UseBorders = false;
             this.xrLine63.StylePriority.UseBorderWidth = false;
@@ -844,9 +853,9 @@
             | DevExpress.XtraPrinting.BorderSide.Bottom)));
             this.xrLine62.BorderWidth = 1F;
             this.xrLine62.LineWidth = 0.5F;
-            this.xrLine62.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1517.679F);
+            this.xrLine62.LocationFloat = new DevExpress.Utils.PointFloat(164.0418F, 1517.679F);
             this.xrLine62.Name = "xrLine62";
-            this.xrLine62.SizeF = new System.Drawing.SizeF(89.99991F, 2F);
+            this.xrLine62.SizeF = new System.Drawing.SizeF(104.5832F, 2F);
             this.xrLine62.StylePriority.UseBorderColor = false;
             this.xrLine62.StylePriority.UseBorders = false;
             this.xrLine62.StylePriority.UseBorderWidth = false;
@@ -1749,11 +1758,11 @@
             | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel146.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel146.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel146.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1472.679F);
+            this.xrLabel146.LocationFloat = new DevExpress.Utils.PointFloat(164.0418F, 1472.679F);
             this.xrLabel146.Multiline = true;
             this.xrLabel146.Name = "xrLabel146";
             this.xrLabel146.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel146.SizeF = new System.Drawing.SizeF(90F, 23F);
+            this.xrLabel146.SizeF = new System.Drawing.SizeF(104.5833F, 23F);
             this.xrLabel146.StylePriority.UseBorders = false;
             this.xrLabel146.StylePriority.UseFont = false;
             this.xrLabel146.StylePriority.UseForeColor = false;
@@ -1769,11 +1778,11 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[EPISODS]")});
             this.xrLabel147.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel147.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1494.678F);
+            this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(164.0418F, 1494.678F);
             this.xrLabel147.Multiline = true;
             this.xrLabel147.Name = "xrLabel147";
             this.xrLabel147.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel147.SizeF = new System.Drawing.SizeF(89.99988F, 23F);
+            this.xrLabel147.SizeF = new System.Drawing.SizeF(104.5832F, 23F);
             this.xrLabel147.StylePriority.UseBorders = false;
             this.xrLabel147.StylePriority.UseFont = false;
             this.xrLabel147.StylePriority.UseForeColor = false;
@@ -1787,11 +1796,11 @@
             | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel148.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel148.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel148.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1472.679F);
+            this.xrLabel148.LocationFloat = new DevExpress.Utils.PointFloat(280.3853F, 1472.679F);
             this.xrLabel148.Multiline = true;
             this.xrLabel148.Name = "xrLabel148";
             this.xrLabel148.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel148.SizeF = new System.Drawing.SizeF(85.15256F, 23.00012F);
+            this.xrLabel148.SizeF = new System.Drawing.SizeF(108.733F, 23.00012F);
             this.xrLabel148.StylePriority.UseBorders = false;
             this.xrLabel148.StylePriority.UseFont = false;
             this.xrLabel148.StylePriority.UseForeColor = false;
@@ -1807,11 +1816,11 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[SHARE_OF_DAY]")});
             this.xrLabel149.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel149.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1494.679F);
+            this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(280.3853F, 1494.679F);
             this.xrLabel149.Multiline = true;
             this.xrLabel149.Name = "xrLabel149";
             this.xrLabel149.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel149.SizeF = new System.Drawing.SizeF(85.15268F, 23F);
+            this.xrLabel149.SizeF = new System.Drawing.SizeF(108.7331F, 23F);
             this.xrLabel149.StylePriority.UseBorders = false;
             this.xrLabel149.StylePriority.UseFont = false;
             this.xrLabel149.StylePriority.UseForeColor = false;
@@ -1825,7 +1834,7 @@
             | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel150.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel150.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel150.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1472.679F);
+            this.xrLabel150.LocationFloat = new DevExpress.Utils.PointFloat(398.9362F, 1472.679F);
             this.xrLabel150.Multiline = true;
             this.xrLabel150.Name = "xrLabel150";
             this.xrLabel150.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
@@ -1845,7 +1854,7 @@
             new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE]")});
             this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel151.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1494.679F);
+            this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(398.9362F, 1494.679F);
             this.xrLabel151.Multiline = true;
             this.xrLabel151.Name = "xrLabel151";
             this.xrLabel151.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -2088,7 +2097,7 @@
             // 
             // xrLabel124
             // 
-            this.xrLabel124.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel124.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel124.ForeColor = System.Drawing.Color.IndianRed;
             this.xrLabel124.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 1437.576F);
             this.xrLabel124.Multiline = true;
@@ -2097,7 +2106,7 @@
             this.xrLabel124.SizeF = new System.Drawing.SizeF(399.4582F, 23F);
             this.xrLabel124.StylePriority.UseFont = false;
             this.xrLabel124.StylePriority.UseForeColor = false;
-            this.xrLabel124.Text = "07 Load Shedding Log - REB Outage Episods";
+            this.xrLabel124.Text = "07. Load Shedding Log - REB Outage Episods";
             // 
             // xrLabel122
             // 
@@ -2376,7 +2385,7 @@
             this.xrLabel83.SizeF = new System.Drawing.SizeF(187.7977F, 23F);
             this.xrLabel83.StylePriority.UseFont = false;
             this.xrLabel83.StylePriority.UseForeColor = false;
-            this.xrLabel83.Text = "06 Fuel Consumption";
+            this.xrLabel83.Text = "06. Fuel Consumption";
             // 
             // xrLine3
             // 
@@ -3159,7 +3168,7 @@
             this.xrLabel1.SizeF = new System.Drawing.SizeF(251.0417F, 22.99999F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
-            this.xrLabel1.Text = "01 Power Generation (Avg.)";
+            this.xrLabel1.Text = "01. Power Generation (Avg.)";
             // 
             // xrLabel2
             // 
@@ -3472,7 +3481,7 @@
             this.xrLabel17.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
             this.xrLabel17.StylePriority.UseFont = false;
             this.xrLabel17.StylePriority.UseForeColor = false;
-            this.xrLabel17.Text = "02 Steam Generation (Avg.)";
+            this.xrLabel17.Text = "02. Steam Generation (Avg.)";
             // 
             // xrLabel31
             // 
@@ -3774,7 +3783,7 @@
             this.xrLabel33.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
             this.xrLabel33.StylePriority.UseFont = false;
             this.xrLabel33.StylePriority.UseForeColor = false;
-            this.xrLabel33.Text = "03 Water Generation (Avg.)";
+            this.xrLabel33.Text = "03. Water Generation (Avg.)";
             // 
             // xrLabel44
             // 
@@ -3939,7 +3948,7 @@
             this.xrLabel36.SizeF = new System.Drawing.SizeF(251.0417F, 23.00003F);
             this.xrLabel36.StylePriority.UseFont = false;
             this.xrLabel36.StylePriority.UseForeColor = false;
-            this.xrLabel36.Text = "04 Load Shedding (Avg.)";
+            this.xrLabel36.Text = "04. Load Shedding (Avg.)";
             // 
             // xrLabel54
             // 
@@ -4106,7 +4115,7 @@
             this.xrLabel55.SizeF = new System.Drawing.SizeF(319.4174F, 23F);
             this.xrLabel55.StylePriority.UseFont = false;
             this.xrLabel55.StylePriority.UseForeColor = false;
-            this.xrLabel55.Text = "05 Fuel Stock & Consumption (Avg.)";
+            this.xrLabel55.Text = "05. Fuel Stock & Consumption (Avg.)";
             // 
             // xrLabel63
             // 
@@ -4649,6 +4658,8 @@
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrSubreport10,
+            this.xrLabel157,
             this.xrLabel156,
             this.xrSubreport9,
             this.xrSubreport8,
@@ -4665,25 +4676,47 @@
             this.xrLabel142,
             this.xrLabel134,
             this.xrSubreport1});
-            this.ReportFooter.HeightF = 525.3813F;
+            this.ReportFooter.HeightF = 746.3812F;
             this.ReportFooter.Name = "ReportFooter";
+            // 
+            // xrSubreport10
+            // 
+            this.xrSubreport10.LocationFloat = new DevExpress.Utils.PointFloat(0.9560167F, 153F);
+            this.xrSubreport10.Name = "xrSubreport10";
+            this.xrSubreport10.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport10.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport10.ReportSource = new UtilityManagement.Reports.rptDayWiseGasPressureRecord();
+            this.xrSubreport10.SizeF = new System.Drawing.SizeF(809.044F, 22.99999F);
+            // 
+            // xrLabel157
+            // 
+            this.xrLabel157.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel157.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel157.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 126F);
+            this.xrLabel157.Multiline = true;
+            this.xrLabel157.Name = "xrLabel157";
+            this.xrLabel157.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel157.SizeF = new System.Drawing.SizeF(499.9079F, 23F);
+            this.xrLabel157.StylePriority.UseFont = false;
+            this.xrLabel157.StylePriority.UseForeColor = false;
+            this.xrLabel157.Text = "09. 24-Hour Instantaneous RMS Room Gas Pressure Reading";
             // 
             // xrLabel156
             // 
-            this.xrLabel156.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel156.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel156.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel156.LocationFloat = new DevExpress.Utils.PointFloat(2.083069F, 479.3815F);
+            this.xrLabel156.LocationFloat = new DevExpress.Utils.PointFloat(2.083069F, 696.3815F);
             this.xrLabel156.Multiline = true;
             this.xrLabel156.Name = "xrLabel156";
             this.xrLabel156.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel156.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
             this.xrLabel156.StylePriority.UseFont = false;
             this.xrLabel156.StylePriority.UseForeColor = false;
-            this.xrLabel156.Text = "15 Day-wise NG Consumption (m³)";
+            this.xrLabel156.Text = "16. Day-wise NG Consumption (m³)";
             // 
             // xrSubreport9
             // 
-            this.xrSubreport9.LocationFloat = new DevExpress.Utils.PointFloat(2.166102F, 502.3813F);
+            this.xrSubreport9.LocationFloat = new DevExpress.Utils.PointFloat(2.166102F, 723.3813F);
             this.xrSubreport9.Name = "xrSubreport9";
             this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport9.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4692,7 +4725,7 @@
             // 
             // xrSubreport8
             // 
-            this.xrSubreport8.LocationFloat = new DevExpress.Utils.PointFloat(0.08303324F, 430.3813F);
+            this.xrSubreport8.LocationFloat = new DevExpress.Utils.PointFloat(0.08303324F, 645.3813F);
             this.xrSubreport8.Name = "xrSubreport8";
             this.xrSubreport8.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport8.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4701,33 +4734,33 @@
             // 
             // xrLabel155
             // 
-            this.xrLabel155.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel155.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel155.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel155.LocationFloat = new DevExpress.Utils.PointFloat(0F, 407.3815F);
+            this.xrLabel155.LocationFloat = new DevExpress.Utils.PointFloat(0F, 618.3816F);
             this.xrLabel155.Multiline = true;
             this.xrLabel155.Name = "xrLabel155";
             this.xrLabel155.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel155.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel155.SizeF = new System.Drawing.SizeF(444.4584F, 23.00003F);
             this.xrLabel155.StylePriority.UseFont = false;
             this.xrLabel155.StylePriority.UseForeColor = false;
-            this.xrLabel155.Text = "14 Day-wise LPG Stock & Consumption (m³)";
+            this.xrLabel155.Text = "15. Day-wise LPG Stock & Consumption (m³)";
             // 
             // xrLabel154
             // 
-            this.xrLabel154.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel154.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel154.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel154.LocationFloat = new DevExpress.Utils.PointFloat(2.083008F, 339.0898F);
+            this.xrLabel154.LocationFloat = new DevExpress.Utils.PointFloat(2.083079F, 539.0898F);
             this.xrLabel154.Multiline = true;
             this.xrLabel154.Name = "xrLabel154";
             this.xrLabel154.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel154.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel154.SizeF = new System.Drawing.SizeF(442.3756F, 23.00003F);
             this.xrLabel154.StylePriority.UseFont = false;
             this.xrLabel154.StylePriority.UseForeColor = false;
-            this.xrLabel154.Text = "13 Day-wise CNG Stock & Consumption (m³)";
+            this.xrLabel154.Text = "14. Day-wise CNG Stock & Consumption (m³)";
             // 
             // xrSubreport7
             // 
-            this.xrSubreport7.LocationFloat = new DevExpress.Utils.PointFloat(2.166051F, 362.0896F);
+            this.xrSubreport7.LocationFloat = new DevExpress.Utils.PointFloat(2.166051F, 566.0896F);
             this.xrSubreport7.Name = "xrSubreport7";
             this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4736,7 +4769,7 @@
             // 
             // xrSubreport6
             // 
-            this.xrSubreport6.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 293.0896F);
+            this.xrSubreport6.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 487.0896F);
             this.xrSubreport6.Name = "xrSubreport6";
             this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4745,33 +4778,33 @@
             // 
             // xrLabel153
             // 
-            this.xrLabel153.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel153.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel153.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel153.LocationFloat = new DevExpress.Utils.PointFloat(0F, 270.0898F);
+            this.xrLabel153.LocationFloat = new DevExpress.Utils.PointFloat(0F, 460.0898F);
             this.xrLabel153.Multiline = true;
             this.xrLabel153.Name = "xrLabel153";
             this.xrLabel153.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel153.SizeF = new System.Drawing.SizeF(339.8861F, 23.00003F);
+            this.xrLabel153.SizeF = new System.Drawing.SizeF(444.4584F, 23.00003F);
             this.xrLabel153.StylePriority.UseFont = false;
             this.xrLabel153.StylePriority.UseForeColor = false;
-            this.xrLabel153.Text = "12 Day-wise Diesel Stock & Consumption (Ltr)";
+            this.xrLabel153.Text = "13. Day-wise Diesel Stock & Consumption (Ltr)";
             // 
             // xrLabel152
             // 
-            this.xrLabel152.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel152.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel152.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel152.LocationFloat = new DevExpress.Utils.PointFloat(0F, 204F);
+            this.xrLabel152.LocationFloat = new DevExpress.Utils.PointFloat(0F, 378F);
             this.xrLabel152.Multiline = true;
             this.xrLabel152.Name = "xrLabel152";
             this.xrLabel152.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel152.SizeF = new System.Drawing.SizeF(235.6685F, 23.00003F);
+            this.xrLabel152.SizeF = new System.Drawing.SizeF(344.8858F, 23.00003F);
             this.xrLabel152.StylePriority.UseFont = false;
             this.xrLabel152.StylePriority.UseForeColor = false;
-            this.xrLabel152.Text = "11 Day-wise Water Generation";
+            this.xrLabel152.Text = "12. Day-wise Water Generation";
             // 
             // xrSubreport5
             // 
-            this.xrSubreport5.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 226.9999F);
+            this.xrSubreport5.LocationFloat = new DevExpress.Utils.PointFloat(0.08304302F, 404.9999F);
             this.xrSubreport5.Name = "xrSubreport5";
             this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4780,7 +4813,7 @@
             // 
             // xrSubreport3
             // 
-            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 96.99992F);
+            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 240.9999F);
             this.xrSubreport3.Name = "xrSubreport3";
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4789,20 +4822,20 @@
             // 
             // xrLabel143
             // 
-            this.xrLabel143.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel143.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel143.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(0F, 74F);
+            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(0F, 214F);
             this.xrLabel143.Multiline = true;
             this.xrLabel143.Name = "xrLabel143";
             this.xrLabel143.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel143.SizeF = new System.Drawing.SizeF(444.4585F, 23F);
+            this.xrLabel143.SizeF = new System.Drawing.SizeF(400.2332F, 23F);
             this.xrLabel143.StylePriority.UseFont = false;
             this.xrLabel143.StylePriority.UseForeColor = false;
-            this.xrLabel143.Text = "09 24-Hour Boiler Steam Generation Log";
+            this.xrLabel143.Text = "10 24-Hour Boiler Steam Generation Log";
             // 
             // xrSubreport2
             // 
-            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 161F);
+            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 327F);
             this.xrSubreport2.Name = "xrSubreport2";
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -4811,33 +4844,33 @@
             // 
             // xrLabel142
             // 
-            this.xrLabel142.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel142.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel142.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(0F, 138F);
+            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(0F, 300F);
             this.xrLabel142.Multiline = true;
             this.xrLabel142.Name = "xrLabel142";
             this.xrLabel142.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel142.SizeF = new System.Drawing.SizeF(228.6245F, 23.00002F);
+            this.xrLabel142.SizeF = new System.Drawing.SizeF(344.8858F, 23.00002F);
             this.xrLabel142.StylePriority.UseFont = false;
             this.xrLabel142.StylePriority.UseForeColor = false;
-            this.xrLabel142.Text = "10 Day-wise Energy Generation";
+            this.xrLabel142.Text = "11. Day-wise Energy Generation";
             // 
             // xrLabel134
             // 
-            this.xrLabel134.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel134.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel134.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel134.LocationFloat = new DevExpress.Utils.PointFloat(0F, 7F);
+            this.xrLabel134.LocationFloat = new DevExpress.Utils.PointFloat(0F, 42F);
             this.xrLabel134.Multiline = true;
             this.xrLabel134.Name = "xrLabel134";
             this.xrLabel134.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel134.SizeF = new System.Drawing.SizeF(444.4585F, 23F);
             this.xrLabel134.StylePriority.UseFont = false;
             this.xrLabel134.StylePriority.UseForeColor = false;
-            this.xrLabel134.Text = "08 24-Hour Instantaneous Load & Generation Log";
+            this.xrLabel134.Text = "08. 24-Hour Instantaneous Load & Generation Log";
             // 
             // xrSubreport1
             // 
-            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 29.99995F);
+            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0.08309193F, 68.99995F);
             this.xrSubreport1.Name = "xrSubreport1";
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
@@ -5141,5 +5174,7 @@
         private DevExpress.XtraReports.UI.XRLabel xrLabel155;
         private DevExpress.XtraReports.UI.XRLabel xrLabel156;
         private DevExpress.XtraReports.UI.XRSubreport xrSubreport9;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport10;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel157;
     }
 }

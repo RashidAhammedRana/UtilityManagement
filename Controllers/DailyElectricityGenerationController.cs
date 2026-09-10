@@ -56,6 +56,13 @@ public class DailyElectricityGenerationController : Controller
         var query = _context.TblDailyElectricityGenerations
             .AsQueryable();
 
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company == currentUserCompany);
+        }
+
         // =========================================================
         // SEARCH LOGIC
         // =========================================================

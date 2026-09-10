@@ -55,6 +55,13 @@ public class DailyStockConsumptionController : Controller
         // =========================
         var query = _context.TblDailyStockConsumptions
             .AsQueryable();
+        //Company Wise Data
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company == currentUserCompany);
+        }
 
         // =========================================================
         // SEARCH LOGIC

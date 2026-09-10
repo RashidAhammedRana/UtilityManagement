@@ -52,6 +52,14 @@ public class ElectricityConsumptionReadingInfoController : Controller
         // =========================
         var query = _context.TblElectricityConsumptionReadingInfo
             .AsQueryable();
+        //Company Wise Data
+        var currentUserCompany = await _context.Users.Where(x => x.Id == userId).Select(x => x.Company).FirstOrDefaultAsync();
+        if (!string.IsNullOrWhiteSpace(currentUserCompany))
+        {
+            query = query.Where(x =>
+                x.Company != null &&
+                x.Company == currentUserCompany);
+        }
 
         // =========================
         // SEARCH LOGIC

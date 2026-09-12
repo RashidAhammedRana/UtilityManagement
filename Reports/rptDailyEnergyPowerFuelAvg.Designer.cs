@@ -1806,7 +1806,7 @@
             this.xrLabel148.StylePriority.UseForeColor = false;
             this.xrLabel148.StylePriority.UsePadding = false;
             this.xrLabel148.StylePriority.UseTextAlignment = false;
-            this.xrLabel148.Text = "Share of Day";
+            this.xrLabel148.Text = "Load Shedding %";
             this.xrLabel148.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel149
@@ -1851,7 +1851,7 @@
             // 
             this.xrLabel151.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel151.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE_HOURS]")});
             this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel151.ForeColor = System.Drawing.Color.Black;
             this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(398.9362F, 1494.679F);
@@ -4101,7 +4101,7 @@
             this.xrLabel39.StylePriority.UseForeColor = false;
             this.xrLabel39.StylePriority.UsePadding = false;
             this.xrLabel39.StylePriority.UseTextAlignment = false;
-            this.xrLabel39.Text = "Today Total load Shedding(Hr)";
+            this.xrLabel39.Text = "Load Shedding(Hr)";
             this.xrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel55
@@ -4831,7 +4831,7 @@
             this.xrLabel143.SizeF = new System.Drawing.SizeF(444.4587F, 23F);
             this.xrLabel143.StylePriority.UseFont = false;
             this.xrLabel143.StylePriority.UseForeColor = false;
-            this.xrLabel143.Text = "10 24-Hour Boiler Steam Generation Log - kg/Hr";
+            this.xrLabel143.Text = "10. 24-Hour Boiler Steam Generation Log - kg/Hr";
             // 
             // xrSubreport2
             // 

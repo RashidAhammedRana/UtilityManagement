@@ -81,6 +81,75 @@
             this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrLine64 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine63 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine62 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine61 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine60 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine59 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine58 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine57 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine56 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine55 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine54 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine53 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine52 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine51 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine50 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine49 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine48 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine47 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine46 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine45 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine44 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine43 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine42 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine41 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine40 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine39 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine38 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine37 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine36 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine35 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine34 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine33 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine32 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine31 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine30 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine29 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine28 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine27 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine26 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine25 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine24 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine23 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine22 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine21 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine20 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine19 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine18 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine17 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine16 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine15 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine14 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine13 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine12 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine11 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine10 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine9 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine8 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine7 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine6 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLine4 = new DevExpress.XtraReports.UI.XRLine();
+            this.xrLabel144 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel145 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel146 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel147 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel148 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel149 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel150 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrLabel151 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel37 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel38 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrTable1 = new DevExpress.XtraReports.UI.XRTable();
@@ -244,81 +313,14 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.xrLabel157 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport10 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrSubreport3 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel143 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport2 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel142 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel134 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.xrLabel144 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel145 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel146 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel147 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel148 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel149 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel150 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLabel151 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrLine4 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine5 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine6 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine7 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine8 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine9 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine10 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine11 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine12 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine13 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine14 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine15 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine16 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine17 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine18 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine19 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine20 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine21 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine22 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine23 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine24 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine25 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine26 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine27 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine28 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine29 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine30 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine31 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine32 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine33 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine34 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine35 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine36 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine37 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine38 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine39 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine40 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine41 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine42 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine43 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine44 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine45 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine46 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine47 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine48 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine49 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine50 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine51 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine52 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine53 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine54 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine55 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine56 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine57 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine58 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine59 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine60 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine61 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine62 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine63 = new DevExpress.XtraReports.UI.XRLine();
-            this.xrLine64 = new DevExpress.XtraReports.UI.XRLine();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
@@ -741,6 +743,1067 @@
             this.ReportHeader.HeightF = 1550.696F;
             this.ReportHeader.Name = "ReportHeader";
             // 
+            // xrLine64
+            // 
+            this.xrLine64.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine64.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine64.BorderWidth = 1F;
+            this.xrLine64.LineWidth = 0.5F;
+            this.xrLine64.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1517.679F);
+            this.xrLine64.Name = "xrLine64";
+            this.xrLine64.SizeF = new System.Drawing.SizeF(147.243F, 2F);
+            this.xrLine64.StylePriority.UseBorderColor = false;
+            this.xrLine64.StylePriority.UseBorders = false;
+            this.xrLine64.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine63
+            // 
+            this.xrLine63.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine63.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine63.BorderWidth = 1F;
+            this.xrLine63.LineWidth = 0.5F;
+            this.xrLine63.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1517.679F);
+            this.xrLine63.Name = "xrLine63";
+            this.xrLine63.SizeF = new System.Drawing.SizeF(85.15256F, 2F);
+            this.xrLine63.StylePriority.UseBorderColor = false;
+            this.xrLine63.StylePriority.UseBorders = false;
+            this.xrLine63.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine62
+            // 
+            this.xrLine62.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine62.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine62.BorderWidth = 1F;
+            this.xrLine62.LineWidth = 0.5F;
+            this.xrLine62.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1517.679F);
+            this.xrLine62.Name = "xrLine62";
+            this.xrLine62.SizeF = new System.Drawing.SizeF(89.99991F, 2F);
+            this.xrLine62.StylePriority.UseBorderColor = false;
+            this.xrLine62.StylePriority.UseBorders = false;
+            this.xrLine62.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine61
+            // 
+            this.xrLine61.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine61.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine61.BorderWidth = 1F;
+            this.xrLine61.LineWidth = 0.5F;
+            this.xrLine61.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1517.679F);
+            this.xrLine61.Name = "xrLine61";
+            this.xrLine61.SizeF = new System.Drawing.SizeF(151.0416F, 2F);
+            this.xrLine61.StylePriority.UseBorderColor = false;
+            this.xrLine61.StylePriority.UseBorders = false;
+            this.xrLine61.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine60
+            // 
+            this.xrLine60.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine60.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine60.BorderWidth = 1F;
+            this.xrLine60.LineWidth = 0.5F;
+            this.xrLine60.LocationFloat = new DevExpress.Utils.PointFloat(638.6674F, 1390.25F);
+            this.xrLine60.Name = "xrLine60";
+            this.xrLine60.SizeF = new System.Drawing.SizeF(170.4597F, 2.000122F);
+            this.xrLine60.StylePriority.UseBorderColor = false;
+            this.xrLine60.StylePriority.UseBorders = false;
+            this.xrLine60.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine59
+            // 
+            this.xrLine59.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine59.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine59.BorderWidth = 1F;
+            this.xrLine59.LineWidth = 0.5F;
+            this.xrLine59.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1390.25F);
+            this.xrLine59.Name = "xrLine59";
+            this.xrLine59.SizeF = new System.Drawing.SizeF(168F, 2.000122F);
+            this.xrLine59.StylePriority.UseBorderColor = false;
+            this.xrLine59.StylePriority.UseBorders = false;
+            this.xrLine59.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine58
+            // 
+            this.xrLine58.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine58.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine58.BorderWidth = 1F;
+            this.xrLine58.LineWidth = 0.5F;
+            this.xrLine58.LocationFloat = new DevExpress.Utils.PointFloat(243.7149F, 1390.25F);
+            this.xrLine58.Name = "xrLine58";
+            this.xrLine58.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
+            this.xrLine58.StylePriority.UseBorderColor = false;
+            this.xrLine58.StylePriority.UseBorders = false;
+            this.xrLine58.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine57
+            // 
+            this.xrLine57.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine57.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine57.BorderWidth = 1F;
+            this.xrLine57.LineWidth = 0.5F;
+            this.xrLine57.LocationFloat = new DevExpress.Utils.PointFloat(121.6674F, 1390.25F);
+            this.xrLine57.Name = "xrLine57";
+            this.xrLine57.SizeF = new System.Drawing.SizeF(109.8739F, 2F);
+            this.xrLine57.StylePriority.UseBorderColor = false;
+            this.xrLine57.StylePriority.UseBorders = false;
+            this.xrLine57.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine56
+            // 
+            this.xrLine56.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine56.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine56.BorderWidth = 1F;
+            this.xrLine56.LineWidth = 0.5F;
+            this.xrLine56.LocationFloat = new DevExpress.Utils.PointFloat(2.083107F, 1390.25F);
+            this.xrLine56.Name = "xrLine56";
+            this.xrLine56.SizeF = new System.Drawing.SizeF(107.9171F, 2F);
+            this.xrLine56.StylePriority.UseBorderColor = false;
+            this.xrLine56.StylePriority.UseBorders = false;
+            this.xrLine56.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine55
+            // 
+            this.xrLine55.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine55.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine55.BorderWidth = 1F;
+            this.xrLine55.LineWidth = 0.5F;
+            this.xrLine55.LocationFloat = new DevExpress.Utils.PointFloat(638.6674F, 1296.5F);
+            this.xrLine55.Name = "xrLine55";
+            this.xrLine55.SizeF = new System.Drawing.SizeF(169.9999F, 2F);
+            this.xrLine55.StylePriority.UseBorderColor = false;
+            this.xrLine55.StylePriority.UseBorders = false;
+            this.xrLine55.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine54
+            // 
+            this.xrLine54.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine54.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine54.BorderWidth = 1F;
+            this.xrLine54.LineWidth = 0.5F;
+            this.xrLine54.LocationFloat = new DevExpress.Utils.PointFloat(498.9585F, 1297.5F);
+            this.xrLine54.Name = "xrLine54";
+            this.xrLine54.SizeF = new System.Drawing.SizeF(130F, 2F);
+            this.xrLine54.StylePriority.UseBorderColor = false;
+            this.xrLine54.StylePriority.UseBorders = false;
+            this.xrLine54.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine53
+            // 
+            this.xrLine53.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine53.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine53.BorderWidth = 1F;
+            this.xrLine53.LineWidth = 0.5F;
+            this.xrLine53.LocationFloat = new DevExpress.Utils.PointFloat(378.1792F, 1296.5F);
+            this.xrLine53.Name = "xrLine53";
+            this.xrLine53.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine53.StylePriority.UseBorderColor = false;
+            this.xrLine53.StylePriority.UseBorders = false;
+            this.xrLine53.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine52
+            // 
+            this.xrLine52.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine52.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine52.BorderWidth = 1F;
+            this.xrLine52.LineWidth = 0.5F;
+            this.xrLine52.LocationFloat = new DevExpress.Utils.PointFloat(243.233F, 1296.5F);
+            this.xrLine52.Name = "xrLine52";
+            this.xrLine52.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
+            this.xrLine52.StylePriority.UseBorderColor = false;
+            this.xrLine52.StylePriority.UseBorders = false;
+            this.xrLine52.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine51
+            // 
+            this.xrLine51.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine51.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine51.BorderWidth = 1F;
+            this.xrLine51.LineWidth = 0.5F;
+            this.xrLine51.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1296.5F);
+            this.xrLine51.Name = "xrLine51";
+            this.xrLine51.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine51.StylePriority.UseBorderColor = false;
+            this.xrLine51.StylePriority.UseBorders = false;
+            this.xrLine51.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine50
+            // 
+            this.xrLine50.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine50.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine50.BorderWidth = 1F;
+            this.xrLine50.LineWidth = 0.5F;
+            this.xrLine50.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1296.5F);
+            this.xrLine50.Name = "xrLine50";
+            this.xrLine50.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine50.StylePriority.UseBorderColor = false;
+            this.xrLine50.StylePriority.UseBorders = false;
+            this.xrLine50.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine49
+            // 
+            this.xrLine49.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine49.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine49.BorderWidth = 1F;
+            this.xrLine49.LineWidth = 0.5F;
+            this.xrLine49.LocationFloat = new DevExpress.Utils.PointFloat(639.4178F, 1200.708F);
+            this.xrLine49.Name = "xrLine49";
+            this.xrLine49.SizeF = new System.Drawing.SizeF(169.7095F, 2F);
+            this.xrLine49.StylePriority.UseBorderColor = false;
+            this.xrLine49.StylePriority.UseBorders = false;
+            this.xrLine49.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine48
+            // 
+            this.xrLine48.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine48.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine48.BorderWidth = 1F;
+            this.xrLine48.LineWidth = 0.5F;
+            this.xrLine48.LocationFloat = new DevExpress.Utils.PointFloat(498.9584F, 1200.708F);
+            this.xrLine48.Name = "xrLine48";
+            this.xrLine48.SizeF = new System.Drawing.SizeF(130F, 2F);
+            this.xrLine48.StylePriority.UseBorderColor = false;
+            this.xrLine48.StylePriority.UseBorders = false;
+            this.xrLine48.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine47
+            // 
+            this.xrLine47.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine47.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine47.BorderWidth = 1F;
+            this.xrLine47.LineWidth = 0.5F;
+            this.xrLine47.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1200.708F);
+            this.xrLine47.Name = "xrLine47";
+            this.xrLine47.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine47.StylePriority.UseBorderColor = false;
+            this.xrLine47.StylePriority.UseBorders = false;
+            this.xrLine47.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine46
+            // 
+            this.xrLine46.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine46.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine46.BorderWidth = 1F;
+            this.xrLine46.LineWidth = 0.5F;
+            this.xrLine46.LocationFloat = new DevExpress.Utils.PointFloat(243.233F, 1200.708F);
+            this.xrLine46.Name = "xrLine46";
+            this.xrLine46.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
+            this.xrLine46.StylePriority.UseBorderColor = false;
+            this.xrLine46.StylePriority.UseBorders = false;
+            this.xrLine46.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine45
+            // 
+            this.xrLine45.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine45.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine45.BorderWidth = 1F;
+            this.xrLine45.LineWidth = 0.5F;
+            this.xrLine45.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1200.708F);
+            this.xrLine45.Name = "xrLine45";
+            this.xrLine45.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine45.StylePriority.UseBorderColor = false;
+            this.xrLine45.StylePriority.UseBorders = false;
+            this.xrLine45.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine44
+            // 
+            this.xrLine44.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine44.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine44.BorderWidth = 1F;
+            this.xrLine44.LineWidth = 0.5F;
+            this.xrLine44.LocationFloat = new DevExpress.Utils.PointFloat(2.083107F, 1200.709F);
+            this.xrLine44.Name = "xrLine44";
+            this.xrLine44.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine44.StylePriority.UseBorderColor = false;
+            this.xrLine44.StylePriority.UseBorders = false;
+            this.xrLine44.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine43
+            // 
+            this.xrLine43.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine43.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine43.BorderWidth = 1F;
+            this.xrLine43.LineWidth = 0.5F;
+            this.xrLine43.LocationFloat = new DevExpress.Utils.PointFloat(638.667F, 1106.29F);
+            this.xrLine43.Name = "xrLine43";
+            this.xrLine43.SizeF = new System.Drawing.SizeF(169.9999F, 2F);
+            this.xrLine43.StylePriority.UseBorderColor = false;
+            this.xrLine43.StylePriority.UseBorders = false;
+            this.xrLine43.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine42
+            // 
+            this.xrLine42.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine42.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine42.BorderWidth = 1F;
+            this.xrLine42.LineWidth = 0.5F;
+            this.xrLine42.LocationFloat = new DevExpress.Utils.PointFloat(498.9585F, 1106.292F);
+            this.xrLine42.Name = "xrLine42";
+            this.xrLine42.SizeF = new System.Drawing.SizeF(130F, 2F);
+            this.xrLine42.StylePriority.UseBorderColor = false;
+            this.xrLine42.StylePriority.UseBorders = false;
+            this.xrLine42.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine41
+            // 
+            this.xrLine41.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine41.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine41.BorderWidth = 1F;
+            this.xrLine41.LineWidth = 0.5F;
+            this.xrLine41.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1106.29F);
+            this.xrLine41.Name = "xrLine41";
+            this.xrLine41.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine41.StylePriority.UseBorderColor = false;
+            this.xrLine41.StylePriority.UseBorders = false;
+            this.xrLine41.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine40
+            // 
+            this.xrLine40.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine40.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine40.BorderWidth = 1F;
+            this.xrLine40.LineWidth = 0.5F;
+            this.xrLine40.LocationFloat = new DevExpress.Utils.PointFloat(243.2331F, 1106.292F);
+            this.xrLine40.Name = "xrLine40";
+            this.xrLine40.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
+            this.xrLine40.StylePriority.UseBorderColor = false;
+            this.xrLine40.StylePriority.UseBorders = false;
+            this.xrLine40.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine39
+            // 
+            this.xrLine39.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine39.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine39.BorderWidth = 1F;
+            this.xrLine39.LineWidth = 0.5F;
+            this.xrLine39.LocationFloat = new DevExpress.Utils.PointFloat(121.541F, 1106.292F);
+            this.xrLine39.Name = "xrLine39";
+            this.xrLine39.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine39.StylePriority.UseBorderColor = false;
+            this.xrLine39.StylePriority.UseBorders = false;
+            this.xrLine39.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine38
+            // 
+            this.xrLine38.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine38.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine38.BorderWidth = 1F;
+            this.xrLine38.LineWidth = 0.5F;
+            this.xrLine38.LocationFloat = new DevExpress.Utils.PointFloat(1.99989F, 1106.292F);
+            this.xrLine38.Name = "xrLine38";
+            this.xrLine38.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
+            this.xrLine38.StylePriority.UseBorderColor = false;
+            this.xrLine38.StylePriority.UseBorders = false;
+            this.xrLine38.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine37
+            // 
+            this.xrLine37.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine37.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine37.BorderWidth = 1F;
+            this.xrLine37.LineWidth = 0.5F;
+            this.xrLine37.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 922.7476F);
+            this.xrLine37.Name = "xrLine37";
+            this.xrLine37.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
+            this.xrLine37.StylePriority.UseBorderColor = false;
+            this.xrLine37.StylePriority.UseBorders = false;
+            this.xrLine37.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine36
+            // 
+            this.xrLine36.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine36.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine36.BorderWidth = 1F;
+            this.xrLine36.LineWidth = 0.5F;
+            this.xrLine36.LocationFloat = new DevExpress.Utils.PointFloat(172.2084F, 923.7472F);
+            this.xrLine36.Name = "xrLine36";
+            this.xrLine36.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
+            this.xrLine36.StylePriority.UseBorderColor = false;
+            this.xrLine36.StylePriority.UseBorders = false;
+            this.xrLine36.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine35
+            // 
+            this.xrLine35.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine35.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine35.BorderWidth = 1F;
+            this.xrLine35.LineWidth = 0.5F;
+            this.xrLine35.LocationFloat = new DevExpress.Utils.PointFloat(0.0003532127F, 922.7476F);
+            this.xrLine35.Name = "xrLine35";
+            this.xrLine35.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
+            this.xrLine35.StylePriority.UseBorderColor = false;
+            this.xrLine35.StylePriority.UseBorders = false;
+            this.xrLine35.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine34
+            // 
+            this.xrLine34.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine34.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine34.BorderWidth = 1F;
+            this.xrLine34.LineWidth = 0.5F;
+            this.xrLine34.LocationFloat = new DevExpress.Utils.PointFloat(483.1674F, 832.401F);
+            this.xrLine34.Name = "xrLine34";
+            this.xrLine34.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
+            this.xrLine34.StylePriority.UseBorderColor = false;
+            this.xrLine34.StylePriority.UseBorders = false;
+            this.xrLine34.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine33
+            // 
+            this.xrLine33.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine33.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine33.BorderWidth = 1F;
+            this.xrLine33.LineWidth = 0.5F;
+            this.xrLine33.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 832.4011F);
+            this.xrLine33.Name = "xrLine33";
+            this.xrLine33.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
+            this.xrLine33.StylePriority.UseBorderColor = false;
+            this.xrLine33.StylePriority.UseBorders = false;
+            this.xrLine33.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine32
+            // 
+            this.xrLine32.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine32.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine32.BorderWidth = 1F;
+            this.xrLine32.LineWidth = 0.5F;
+            this.xrLine32.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 832.4011F);
+            this.xrLine32.Name = "xrLine32";
+            this.xrLine32.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
+            this.xrLine32.StylePriority.UseBorderColor = false;
+            this.xrLine32.StylePriority.UseBorders = false;
+            this.xrLine32.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine31
+            // 
+            this.xrLine31.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine31.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine31.BorderWidth = 1F;
+            this.xrLine31.LineWidth = 0.5F;
+            this.xrLine31.LocationFloat = new DevExpress.Utils.PointFloat(0F, 832.4012F);
+            this.xrLine31.Name = "xrLine31";
+            this.xrLine31.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
+            this.xrLine31.StylePriority.UseBorderColor = false;
+            this.xrLine31.StylePriority.UseBorders = false;
+            this.xrLine31.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine30
+            // 
+            this.xrLine30.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine30.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine30.BorderWidth = 1F;
+            this.xrLine30.LineWidth = 0.5F;
+            this.xrLine30.LocationFloat = new DevExpress.Utils.PointFloat(483.1685F, 740.4434F);
+            this.xrLine30.Name = "xrLine30";
+            this.xrLine30.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
+            this.xrLine30.StylePriority.UseBorderColor = false;
+            this.xrLine30.StylePriority.UseBorders = false;
+            this.xrLine30.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine29
+            // 
+            this.xrLine29.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine29.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine29.BorderWidth = 1F;
+            this.xrLine29.LineWidth = 0.5F;
+            this.xrLine29.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 740.4433F);
+            this.xrLine29.Name = "xrLine29";
+            this.xrLine29.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
+            this.xrLine29.StylePriority.UseBorderColor = false;
+            this.xrLine29.StylePriority.UseBorders = false;
+            this.xrLine29.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine28
+            // 
+            this.xrLine28.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine28.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine28.BorderWidth = 1F;
+            this.xrLine28.LineWidth = 0.5F;
+            this.xrLine28.LocationFloat = new DevExpress.Utils.PointFloat(172.2076F, 740.4433F);
+            this.xrLine28.Name = "xrLine28";
+            this.xrLine28.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
+            this.xrLine28.StylePriority.UseBorderColor = false;
+            this.xrLine28.StylePriority.UseBorders = false;
+            this.xrLine28.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine27
+            // 
+            this.xrLine27.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine27.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine27.BorderWidth = 1F;
+            this.xrLine27.LineWidth = 0.5F;
+            this.xrLine27.LocationFloat = new DevExpress.Utils.PointFloat(0F, 740.4434F);
+            this.xrLine27.Name = "xrLine27";
+            this.xrLine27.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
+            this.xrLine27.StylePriority.UseBorderColor = false;
+            this.xrLine27.StylePriority.UseBorders = false;
+            this.xrLine27.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine26
+            // 
+            this.xrLine26.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine26.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine26.BorderWidth = 1F;
+            this.xrLine26.LineWidth = 0.5F;
+            this.xrLine26.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 654.4852F);
+            this.xrLine26.Name = "xrLine26";
+            this.xrLine26.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
+            this.xrLine26.StylePriority.UseBorderColor = false;
+            this.xrLine26.StylePriority.UseBorders = false;
+            this.xrLine26.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine25
+            // 
+            this.xrLine25.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine25.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine25.BorderWidth = 1F;
+            this.xrLine25.LineWidth = 0.5F;
+            this.xrLine25.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 654.4852F);
+            this.xrLine25.Name = "xrLine25";
+            this.xrLine25.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
+            this.xrLine25.StylePriority.UseBorderColor = false;
+            this.xrLine25.StylePriority.UseBorders = false;
+            this.xrLine25.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine24
+            // 
+            this.xrLine24.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine24.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine24.BorderWidth = 1F;
+            this.xrLine24.LineWidth = 0.5F;
+            this.xrLine24.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 654.4854F);
+            this.xrLine24.Name = "xrLine24";
+            this.xrLine24.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
+            this.xrLine24.StylePriority.UseBorderColor = false;
+            this.xrLine24.StylePriority.UseBorders = false;
+            this.xrLine24.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine23
+            // 
+            this.xrLine23.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine23.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine23.BorderWidth = 1F;
+            this.xrLine23.LineWidth = 0.5F;
+            this.xrLine23.LocationFloat = new DevExpress.Utils.PointFloat(0F, 654.4852F);
+            this.xrLine23.Name = "xrLine23";
+            this.xrLine23.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
+            this.xrLine23.StylePriority.UseBorderColor = false;
+            this.xrLine23.StylePriority.UseBorders = false;
+            this.xrLine23.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine22
+            // 
+            this.xrLine22.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine22.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine22.BorderWidth = 1F;
+            this.xrLine22.LineWidth = 0.5F;
+            this.xrLine22.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 519.7083F);
+            this.xrLine22.Name = "xrLine22";
+            this.xrLine22.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
+            this.xrLine22.StylePriority.UseBorderColor = false;
+            this.xrLine22.StylePriority.UseBorders = false;
+            this.xrLine22.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine21
+            // 
+            this.xrLine21.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine21.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine21.BorderWidth = 1F;
+            this.xrLine21.LineWidth = 0.5F;
+            this.xrLine21.LocationFloat = new DevExpress.Utils.PointFloat(328.1251F, 519.7083F);
+            this.xrLine21.Name = "xrLine21";
+            this.xrLine21.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
+            this.xrLine21.StylePriority.UseBorderColor = false;
+            this.xrLine21.StylePriority.UseBorders = false;
+            this.xrLine21.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine20
+            // 
+            this.xrLine20.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine20.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine20.BorderWidth = 1F;
+            this.xrLine20.LineWidth = 0.5F;
+            this.xrLine20.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 519.7083F);
+            this.xrLine20.Name = "xrLine20";
+            this.xrLine20.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
+            this.xrLine20.StylePriority.UseBorderColor = false;
+            this.xrLine20.StylePriority.UseBorders = false;
+            this.xrLine20.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine19
+            // 
+            this.xrLine19.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine19.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine19.BorderWidth = 1F;
+            this.xrLine19.LineWidth = 0.5F;
+            this.xrLine19.LocationFloat = new DevExpress.Utils.PointFloat(0.0002825701F, 519.7083F);
+            this.xrLine19.Name = "xrLine19";
+            this.xrLine19.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
+            this.xrLine19.StylePriority.UseBorderColor = false;
+            this.xrLine19.StylePriority.UseBorders = false;
+            this.xrLine19.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine18
+            // 
+            this.xrLine18.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine18.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine18.BorderWidth = 1F;
+            this.xrLine18.LineWidth = 0.5F;
+            this.xrLine18.LocationFloat = new DevExpress.Utils.PointFloat(664.0839F, 423.25F);
+            this.xrLine18.Name = "xrLine18";
+            this.xrLine18.SizeF = new System.Drawing.SizeF(145.917F, 2F);
+            this.xrLine18.StylePriority.UseBorderColor = false;
+            this.xrLine18.StylePriority.UseBorders = false;
+            this.xrLine18.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine17
+            // 
+            this.xrLine17.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine17.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine17.BorderWidth = 1F;
+            this.xrLine17.LineWidth = 0.5F;
+            this.xrLine17.LocationFloat = new DevExpress.Utils.PointFloat(474.9166F, 423.25F);
+            this.xrLine17.Name = "xrLine17";
+            this.xrLine17.SizeF = new System.Drawing.SizeF(178.0829F, 2F);
+            this.xrLine17.StylePriority.UseBorderColor = false;
+            this.xrLine17.StylePriority.UseBorders = false;
+            this.xrLine17.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine16
+            // 
+            this.xrLine16.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine16.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine16.BorderWidth = 1F;
+            this.xrLine16.LineWidth = 0.5F;
+            this.xrLine16.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 423.25F);
+            this.xrLine16.Name = "xrLine16";
+            this.xrLine16.SizeF = new System.Drawing.SizeF(137.5001F, 2F);
+            this.xrLine16.StylePriority.UseBorderColor = false;
+            this.xrLine16.StylePriority.UseBorders = false;
+            this.xrLine16.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine15
+            // 
+            this.xrLine15.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine15.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine15.BorderWidth = 1F;
+            this.xrLine15.LineWidth = 0.5F;
+            this.xrLine15.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 423.25F);
+            this.xrLine15.Name = "xrLine15";
+            this.xrLine15.SizeF = new System.Drawing.SizeF(147.2082F, 2F);
+            this.xrLine15.StylePriority.UseBorderColor = false;
+            this.xrLine15.StylePriority.UseBorders = false;
+            this.xrLine15.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine14
+            // 
+            this.xrLine14.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine14.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine14.BorderWidth = 1F;
+            this.xrLine14.LineWidth = 0.5F;
+            this.xrLine14.LocationFloat = new DevExpress.Utils.PointFloat(0F, 423.25F);
+            this.xrLine14.Name = "xrLine14";
+            this.xrLine14.SizeF = new System.Drawing.SizeF(162.5002F, 2F);
+            this.xrLine14.StylePriority.UseBorderColor = false;
+            this.xrLine14.StylePriority.UseBorders = false;
+            this.xrLine14.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine13
+            // 
+            this.xrLine13.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine13.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine13.BorderWidth = 1F;
+            this.xrLine13.LineWidth = 0.5F;
+            this.xrLine13.LocationFloat = new DevExpress.Utils.PointFloat(664.084F, 322F);
+            this.xrLine13.Name = "xrLine13";
+            this.xrLine13.SizeF = new System.Drawing.SizeF(145.9169F, 2.000015F);
+            this.xrLine13.StylePriority.UseBorderColor = false;
+            this.xrLine13.StylePriority.UseBorders = false;
+            this.xrLine13.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine12
+            // 
+            this.xrLine12.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine12.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine12.BorderWidth = 1F;
+            this.xrLine12.LineWidth = 0.5F;
+            this.xrLine12.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 322F);
+            this.xrLine12.Name = "xrLine12";
+            this.xrLine12.SizeF = new System.Drawing.SizeF(179.0837F, 2F);
+            this.xrLine12.StylePriority.UseBorderColor = false;
+            this.xrLine12.StylePriority.UseBorders = false;
+            this.xrLine12.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine11
+            // 
+            this.xrLine11.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine11.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine11.BorderWidth = 1F;
+            this.xrLine11.LineWidth = 0.5F;
+            this.xrLine11.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 322F);
+            this.xrLine11.Name = "xrLine11";
+            this.xrLine11.SizeF = new System.Drawing.SizeF(137.4999F, 2F);
+            this.xrLine11.StylePriority.UseBorderColor = false;
+            this.xrLine11.StylePriority.UseBorders = false;
+            this.xrLine11.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine10
+            // 
+            this.xrLine10.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine10.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine10.BorderWidth = 1F;
+            this.xrLine10.LineWidth = 0.5F;
+            this.xrLine10.LocationFloat = new DevExpress.Utils.PointFloat(151.0418F, 322F);
+            this.xrLine10.Name = "xrLine10";
+            this.xrLine10.SizeF = new System.Drawing.SizeF(168.3753F, 2F);
+            this.xrLine10.StylePriority.UseBorderColor = false;
+            this.xrLine10.StylePriority.UseBorders = false;
+            this.xrLine10.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine9
+            // 
+            this.xrLine9.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine9.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine9.BorderWidth = 1F;
+            this.xrLine9.LineWidth = 0.5F;
+            this.xrLine9.LocationFloat = new DevExpress.Utils.PointFloat(0F, 322F);
+            this.xrLine9.Name = "xrLine9";
+            this.xrLine9.SizeF = new System.Drawing.SizeF(140.625F, 2.000015F);
+            this.xrLine9.StylePriority.UseBorderColor = false;
+            this.xrLine9.StylePriority.UseBorders = false;
+            this.xrLine9.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine8
+            // 
+            this.xrLine8.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine8.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine8.BorderWidth = 1F;
+            this.xrLine8.LineWidth = 0.5F;
+            this.xrLine8.LocationFloat = new DevExpress.Utils.PointFloat(664.0839F, 204.6667F);
+            this.xrLine8.Name = "xrLine8";
+            this.xrLine8.SizeF = new System.Drawing.SizeF(145.9169F, 2.000015F);
+            this.xrLine8.StylePriority.UseBorderColor = false;
+            this.xrLine8.StylePriority.UseBorders = false;
+            this.xrLine8.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine7
+            // 
+            this.xrLine7.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine7.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine7.BorderWidth = 1F;
+            this.xrLine7.LineWidth = 0.5F;
+            this.xrLine7.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 204.6667F);
+            this.xrLine7.Name = "xrLine7";
+            this.xrLine7.SizeF = new System.Drawing.SizeF(178.0829F, 2.000015F);
+            this.xrLine7.StylePriority.UseBorderColor = false;
+            this.xrLine7.StylePriority.UseBorders = false;
+            this.xrLine7.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine6
+            // 
+            this.xrLine6.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine6.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine6.BorderWidth = 1F;
+            this.xrLine6.LineWidth = 0.5F;
+            this.xrLine6.LocationFloat = new DevExpress.Utils.PointFloat(328.125F, 204.6667F);
+            this.xrLine6.Name = "xrLine6";
+            this.xrLine6.SizeF = new System.Drawing.SizeF(137.4999F, 2F);
+            this.xrLine6.StylePriority.UseBorderColor = false;
+            this.xrLine6.StylePriority.UseBorders = false;
+            this.xrLine6.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine5
+            // 
+            this.xrLine5.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine5.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine5.BorderWidth = 1F;
+            this.xrLine5.LineWidth = 0.5F;
+            this.xrLine5.LocationFloat = new DevExpress.Utils.PointFloat(150.0418F, 204.6667F);
+            this.xrLine5.Name = "xrLine5";
+            this.xrLine5.SizeF = new System.Drawing.SizeF(169.3748F, 2F);
+            this.xrLine5.StylePriority.UseBorderColor = false;
+            this.xrLine5.StylePriority.UseBorders = false;
+            this.xrLine5.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLine4
+            // 
+            this.xrLine4.BorderColor = System.Drawing.Color.IndianRed;
+            this.xrLine4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right) 
+            | DevExpress.XtraPrinting.BorderSide.Bottom)));
+            this.xrLine4.BorderWidth = 1F;
+            this.xrLine4.LineWidth = 0.5F;
+            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 204.6667F);
+            this.xrLine4.Name = "xrLine4";
+            this.xrLine4.SizeF = new System.Drawing.SizeF(140.625F, 2.000015F);
+            this.xrLine4.StylePriority.UseBorderColor = false;
+            this.xrLine4.StylePriority.UseBorders = false;
+            this.xrLine4.StylePriority.UseBorderWidth = false;
+            // 
+            // xrLabel144
+            // 
+            this.xrLabel144.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel144.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel144.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel144.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1472.679F);
+            this.xrLabel144.Multiline = true;
+            this.xrLabel144.Name = "xrLabel144";
+            this.xrLabel144.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
+            this.xrLabel144.SizeF = new System.Drawing.SizeF(151.0417F, 23F);
+            this.xrLabel144.StylePriority.UseBorders = false;
+            this.xrLabel144.StylePriority.UseFont = false;
+            this.xrLabel144.StylePriority.UseForeColor = false;
+            this.xrLabel144.StylePriority.UsePadding = false;
+            this.xrLabel144.StylePriority.UseTextAlignment = false;
+            this.xrLabel144.Text = "Today Total load Shedding(Hr)";
+            this.xrLabel144.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrLabel145
+            // 
+            this.xrLabel145.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel145.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[TOTAL_LOAD_SHEDDING_HOURS]")});
+            this.xrLabel145.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel145.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel145.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1494.678F);
+            this.xrLabel145.Multiline = true;
+            this.xrLabel145.Name = "xrLabel145";
+            this.xrLabel145.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel145.SizeF = new System.Drawing.SizeF(151.0417F, 22.99997F);
+            this.xrLabel145.StylePriority.UseBorders = false;
+            this.xrLabel145.StylePriority.UseFont = false;
+            this.xrLabel145.StylePriority.UseForeColor = false;
+            this.xrLabel145.StylePriority.UseTextAlignment = false;
+            this.xrLabel145.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel146
+            // 
+            this.xrLabel146.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel146.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel146.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel146.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1472.679F);
+            this.xrLabel146.Multiline = true;
+            this.xrLabel146.Name = "xrLabel146";
+            this.xrLabel146.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
+            this.xrLabel146.SizeF = new System.Drawing.SizeF(90F, 23F);
+            this.xrLabel146.StylePriority.UseBorders = false;
+            this.xrLabel146.StylePriority.UseFont = false;
+            this.xrLabel146.StylePriority.UseForeColor = false;
+            this.xrLabel146.StylePriority.UsePadding = false;
+            this.xrLabel146.StylePriority.UseTextAlignment = false;
+            this.xrLabel146.Text = "Total Episods";
+            this.xrLabel146.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrLabel147
+            // 
+            this.xrLabel147.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel147.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel147.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1494.678F);
+            this.xrLabel147.Multiline = true;
+            this.xrLabel147.Name = "xrLabel147";
+            this.xrLabel147.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel147.SizeF = new System.Drawing.SizeF(89.99988F, 23F);
+            this.xrLabel147.StylePriority.UseBorders = false;
+            this.xrLabel147.StylePriority.UseFont = false;
+            this.xrLabel147.StylePriority.UseForeColor = false;
+            this.xrLabel147.StylePriority.UseTextAlignment = false;
+            this.xrLabel147.Text = "[LoadSheddingData.EPISODS]";
+            this.xrLabel147.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel148
+            // 
+            this.xrLabel148.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel148.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel148.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel148.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1472.679F);
+            this.xrLabel148.Multiline = true;
+            this.xrLabel148.Name = "xrLabel148";
+            this.xrLabel148.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
+            this.xrLabel148.SizeF = new System.Drawing.SizeF(85.15256F, 23.00012F);
+            this.xrLabel148.StylePriority.UseBorders = false;
+            this.xrLabel148.StylePriority.UseFont = false;
+            this.xrLabel148.StylePriority.UseForeColor = false;
+            this.xrLabel148.StylePriority.UsePadding = false;
+            this.xrLabel148.StylePriority.UseTextAlignment = false;
+            this.xrLabel148.Text = "Share of Day";
+            this.xrLabel148.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrLabel149
+            // 
+            this.xrLabel149.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel149.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel149.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1494.679F);
+            this.xrLabel149.Multiline = true;
+            this.xrLabel149.Name = "xrLabel149";
+            this.xrLabel149.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel149.SizeF = new System.Drawing.SizeF(85.15268F, 23F);
+            this.xrLabel149.StylePriority.UseBorders = false;
+            this.xrLabel149.StylePriority.UseFont = false;
+            this.xrLabel149.StylePriority.UseForeColor = false;
+            this.xrLabel149.StylePriority.UseTextAlignment = false;
+            this.xrLabel149.Text = "[LoadSheddingData.SHARE_OF_DAY]";
+            this.xrLabel149.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
+            // xrLabel150
+            // 
+            this.xrLabel150.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
+            | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel150.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel150.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel150.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1472.679F);
+            this.xrLabel150.Multiline = true;
+            this.xrLabel150.Name = "xrLabel150";
+            this.xrLabel150.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
+            this.xrLabel150.SizeF = new System.Drawing.SizeF(147.243F, 23.00012F);
+            this.xrLabel150.StylePriority.UseBorders = false;
+            this.xrLabel150.StylePriority.UseFont = false;
+            this.xrLabel150.StylePriority.UseForeColor = false;
+            this.xrLabel150.StylePriority.UsePadding = false;
+            this.xrLabel150.StylePriority.UseTextAlignment = false;
+            this.xrLabel150.Text = "REB Available";
+            this.xrLabel150.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
+            // 
+            // xrLabel151
+            // 
+            this.xrLabel151.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
+            this.xrLabel151.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE_HOURS]")});
+            this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel151.ForeColor = System.Drawing.Color.Black;
+            this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1494.679F);
+            this.xrLabel151.Multiline = true;
+            this.xrLabel151.Name = "xrLabel151";
+            this.xrLabel151.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel151.SizeF = new System.Drawing.SizeF(147.243F, 23F);
+            this.xrLabel151.StylePriority.UseBorders = false;
+            this.xrLabel151.StylePriority.UseFont = false;
+            this.xrLabel151.StylePriority.UseForeColor = false;
+            this.xrLabel151.StylePriority.UseTextAlignment = false;
+            this.xrLabel151.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            // 
             // xrLabel37
             // 
             this.xrLabel37.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
@@ -982,7 +2045,7 @@
             this.xrLabel124.SizeF = new System.Drawing.SizeF(399.4582F, 23F);
             this.xrLabel124.StylePriority.UseFont = false;
             this.xrLabel124.StylePriority.UseForeColor = false;
-            this.xrLabel124.Text = "07 Load Shedding Log - REB Outage Episods";
+            this.xrLabel124.Text = "07. Load Shedding Log - REB Outage Episods";
             // 
             // xrLabel122
             // 
@@ -1251,7 +2314,7 @@
             this.xrLabel83.SizeF = new System.Drawing.SizeF(187.7977F, 23F);
             this.xrLabel83.StylePriority.UseFont = false;
             this.xrLabel83.StylePriority.UseForeColor = false;
-            this.xrLabel83.Text = "06 Fuel Consumption";
+            this.xrLabel83.Text = "06. Fuel Consumption";
             // 
             // xrLine3
             // 
@@ -2006,7 +3069,7 @@
             this.xrLabel1.SizeF = new System.Drawing.SizeF(216.5179F, 23F);
             this.xrLabel1.StylePriority.UseFont = false;
             this.xrLabel1.StylePriority.UseForeColor = false;
-            this.xrLabel1.Text = "01 Power Generation";
+            this.xrLabel1.Text = "01. Power Generation";
             // 
             // xrLabel2
             // 
@@ -2311,7 +3374,7 @@
             this.xrLabel17.SizeF = new System.Drawing.SizeF(200F, 23F);
             this.xrLabel17.StylePriority.UseFont = false;
             this.xrLabel17.StylePriority.UseForeColor = false;
-            this.xrLabel17.Text = "02 Steam Generation";
+            this.xrLabel17.Text = "02. Steam Generation";
             // 
             // xrLabel31
             // 
@@ -2941,7 +4004,7 @@
             this.xrLabel55.SizeF = new System.Drawing.SizeF(251.0417F, 23F);
             this.xrLabel55.StylePriority.UseFont = false;
             this.xrLabel55.StylePriority.UseForeColor = false;
-            this.xrLabel55.Text = "05 Fuel Stock & Consumption";
+            this.xrLabel55.Text = "05. Fuel Stock & Consumption";
             // 
             // xrLabel63
             // 
@@ -3394,7 +4457,7 @@
             // 
             // Detail
             // 
-            this.Detail.HeightF = 1.5124F;
+            this.Detail.HeightF = 2.691396F;
             this.Detail.Name = "Detail";
             // 
             // Title
@@ -3494,1142 +4557,105 @@
             // ReportFooter
             // 
             this.ReportFooter.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrLabel157,
+            this.xrSubreport10,
             this.xrSubreport3,
             this.xrLabel143,
             this.xrSubreport2,
             this.xrLabel142,
             this.xrLabel134,
             this.xrSubreport1});
-            this.ReportFooter.HeightF = 183.9999F;
+            this.ReportFooter.HeightF = 254.9999F;
             this.ReportFooter.Name = "ReportFooter";
+            // 
+            // xrLabel157
+            // 
+            this.xrLabel157.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel157.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel157.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 0F);
+            this.xrLabel157.Multiline = true;
+            this.xrLabel157.Name = "xrLabel157";
+            this.xrLabel157.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel157.SizeF = new System.Drawing.SizeF(545.3061F, 22.99998F);
+            this.xrLabel157.StylePriority.UseFont = false;
+            this.xrLabel157.StylePriority.UseForeColor = false;
+            this.xrLabel157.Text = "08. 24-Hour Instantaneous RMS Room Gas Pressure Reading - PSI";
+            // 
+            // xrSubreport10
+            // 
+            this.xrSubreport10.LocationFloat = new DevExpress.Utils.PointFloat(0.9560167F, 27.00004F);
+            this.xrSubreport10.Name = "xrSubreport10";
+            this.xrSubreport10.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
+            this.xrSubreport10.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
+            this.xrSubreport10.ReportSource = new UtilityManagement.Reports.rptDayWiseGasPressureRecord();
+            this.xrSubreport10.SizeF = new System.Drawing.SizeF(809.044F, 22.99999F);
             // 
             // xrSubreport3
             // 
-            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(5.00001F, 96.99995F);
+            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0F, 160F);
             this.xrSubreport3.Name = "xrSubreport3";
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport3.ReportSource = new UtilityManagement.Reports.rpt24HourBoilerSteamGeneration();
-            this.xrSubreport3.SizeF = new System.Drawing.SizeF(805F, 22.99999F);
+            this.xrSubreport3.SizeF = new System.Drawing.SizeF(810.0001F, 22.99998F);
             // 
             // xrLabel143
             // 
-            this.xrLabel143.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel143.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel143.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(2.916931F, 74F);
+            this.xrLabel143.LocationFloat = new DevExpress.Utils.PointFloat(2.916931F, 133F);
             this.xrLabel143.Multiline = true;
             this.xrLabel143.Name = "xrLabel143";
             this.xrLabel143.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel143.SizeF = new System.Drawing.SizeF(444.4585F, 23F);
             this.xrLabel143.StylePriority.UseFont = false;
             this.xrLabel143.StylePriority.UseForeColor = false;
-            this.xrLabel143.Text = "09 24-Hour Boiler Steam Generation Log";
+            this.xrLabel143.Text = "10. 24-Hour Boiler Steam Generation Log";
             // 
             // xrSubreport2
             // 
-            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(4.999796F, 160.9999F);
+            this.xrSubreport2.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 226.9999F);
             this.xrSubreport2.Name = "xrSubreport2";
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport2.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport2.ReportSource = new UtilityManagement.Reports.rptDayWiseStockRegister();
-            this.xrSubreport2.SizeF = new System.Drawing.SizeF(802.0832F, 22.99998F);
+            this.xrSubreport2.SizeF = new System.Drawing.SizeF(806.308F, 22.99998F);
             // 
             // xrLabel142
             // 
-            this.xrLabel142.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel142.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel142.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(2.916718F, 138F);
+            this.xrLabel142.LocationFloat = new DevExpress.Utils.PointFloat(0F, 200F);
             this.xrLabel142.Multiline = true;
             this.xrLabel142.Name = "xrLabel142";
             this.xrLabel142.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel142.SizeF = new System.Drawing.SizeF(299.1664F, 23.00001F);
+            this.xrLabel142.SizeF = new System.Drawing.SizeF(400.2332F, 23.00002F);
             this.xrLabel142.StylePriority.UseFont = false;
             this.xrLabel142.StylePriority.UseForeColor = false;
-            this.xrLabel142.Text = "10 Day-wise energy,fuel & stock register";
+            this.xrLabel142.Text = "11. Day-wise energy,fuel & stock register";
             // 
             // xrLabel134
             // 
-            this.xrLabel134.Font = new DevExpress.Drawing.DXFont("Calibri", 12F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel134.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel134.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel134.LocationFloat = new DevExpress.Utils.PointFloat(0F, 7F);
+            this.xrLabel134.LocationFloat = new DevExpress.Utils.PointFloat(0F, 67F);
             this.xrLabel134.Multiline = true;
             this.xrLabel134.Name = "xrLabel134";
             this.xrLabel134.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrLabel134.SizeF = new System.Drawing.SizeF(444.4585F, 23F);
             this.xrLabel134.StylePriority.UseFont = false;
             this.xrLabel134.StylePriority.UseForeColor = false;
-            this.xrLabel134.Text = "08 24-Hour Instantaneous Load & Generation Log";
+            this.xrLabel134.Text = "09. 24-Hour Instantaneous Load & Generation Log";
             // 
             // xrSubreport1
             // 
-            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(2.083079F, 29.99995F);
+            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 93.99992F);
             this.xrSubreport1.Name = "xrSubreport1";
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Company", this.Company));
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Date", this.Date));
             this.xrSubreport1.ReportSource = new UtilityManagement.Reports.rpt24HourLoadAndGenerationLog();
-            this.xrSubreport1.SizeF = new System.Drawing.SizeF(805F, 22.99999F);
-            // 
-            // xrLabel144
-            // 
-            this.xrLabel144.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel144.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel144.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel144.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1472.679F);
-            this.xrLabel144.Multiline = true;
-            this.xrLabel144.Name = "xrLabel144";
-            this.xrLabel144.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel144.SizeF = new System.Drawing.SizeF(151.0417F, 23F);
-            this.xrLabel144.StylePriority.UseBorders = false;
-            this.xrLabel144.StylePriority.UseFont = false;
-            this.xrLabel144.StylePriority.UseForeColor = false;
-            this.xrLabel144.StylePriority.UsePadding = false;
-            this.xrLabel144.StylePriority.UseTextAlignment = false;
-            this.xrLabel144.Text = "Today Total load Shedding(Hr)";
-            this.xrLabel144.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel145
-            // 
-            this.xrLabel145.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel145.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[TOTAL_LOAD_SHEDDING_HOURS]")});
-            this.xrLabel145.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel145.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel145.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1494.678F);
-            this.xrLabel145.Multiline = true;
-            this.xrLabel145.Name = "xrLabel145";
-            this.xrLabel145.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel145.SizeF = new System.Drawing.SizeF(151.0417F, 22.99997F);
-            this.xrLabel145.StylePriority.UseBorders = false;
-            this.xrLabel145.StylePriority.UseFont = false;
-            this.xrLabel145.StylePriority.UseForeColor = false;
-            this.xrLabel145.StylePriority.UseTextAlignment = false;
-            this.xrLabel145.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel146
-            // 
-            this.xrLabel146.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel146.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel146.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel146.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1472.679F);
-            this.xrLabel146.Multiline = true;
-            this.xrLabel146.Name = "xrLabel146";
-            this.xrLabel146.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel146.SizeF = new System.Drawing.SizeF(90F, 23F);
-            this.xrLabel146.StylePriority.UseBorders = false;
-            this.xrLabel146.StylePriority.UseFont = false;
-            this.xrLabel146.StylePriority.UseForeColor = false;
-            this.xrLabel146.StylePriority.UsePadding = false;
-            this.xrLabel146.StylePriority.UseTextAlignment = false;
-            this.xrLabel146.Text = "Total Episods";
-            this.xrLabel146.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel147
-            // 
-            this.xrLabel147.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel147.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel147.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel147.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1494.678F);
-            this.xrLabel147.Multiline = true;
-            this.xrLabel147.Name = "xrLabel147";
-            this.xrLabel147.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel147.SizeF = new System.Drawing.SizeF(89.99988F, 23F);
-            this.xrLabel147.StylePriority.UseBorders = false;
-            this.xrLabel147.StylePriority.UseFont = false;
-            this.xrLabel147.StylePriority.UseForeColor = false;
-            this.xrLabel147.StylePriority.UseTextAlignment = false;
-            this.xrLabel147.Text = "[LoadSheddingData.EPISODS]";
-            this.xrLabel147.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel148
-            // 
-            this.xrLabel148.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel148.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel148.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel148.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1472.679F);
-            this.xrLabel148.Multiline = true;
-            this.xrLabel148.Name = "xrLabel148";
-            this.xrLabel148.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel148.SizeF = new System.Drawing.SizeF(85.15256F, 23.00012F);
-            this.xrLabel148.StylePriority.UseBorders = false;
-            this.xrLabel148.StylePriority.UseFont = false;
-            this.xrLabel148.StylePriority.UseForeColor = false;
-            this.xrLabel148.StylePriority.UsePadding = false;
-            this.xrLabel148.StylePriority.UseTextAlignment = false;
-            this.xrLabel148.Text = "Share of Day";
-            this.xrLabel148.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel149
-            // 
-            this.xrLabel149.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel149.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel149.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel149.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1494.679F);
-            this.xrLabel149.Multiline = true;
-            this.xrLabel149.Name = "xrLabel149";
-            this.xrLabel149.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel149.SizeF = new System.Drawing.SizeF(85.15268F, 23F);
-            this.xrLabel149.StylePriority.UseBorders = false;
-            this.xrLabel149.StylePriority.UseFont = false;
-            this.xrLabel149.StylePriority.UseForeColor = false;
-            this.xrLabel149.StylePriority.UseTextAlignment = false;
-            this.xrLabel149.Text = "[LoadSheddingData.SHARE_OF_DAY]";
-            this.xrLabel149.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLabel150
-            // 
-            this.xrLabel150.Borders = ((DevExpress.XtraPrinting.BorderSide)(((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel150.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel150.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel150.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1472.679F);
-            this.xrLabel150.Multiline = true;
-            this.xrLabel150.Name = "xrLabel150";
-            this.xrLabel150.Padding = new DevExpress.XtraPrinting.PaddingInfo(0, 0, 2, 0, 100F);
-            this.xrLabel150.SizeF = new System.Drawing.SizeF(147.243F, 23.00012F);
-            this.xrLabel150.StylePriority.UseBorders = false;
-            this.xrLabel150.StylePriority.UseFont = false;
-            this.xrLabel150.StylePriority.UseForeColor = false;
-            this.xrLabel150.StylePriority.UsePadding = false;
-            this.xrLabel150.StylePriority.UseTextAlignment = false;
-            this.xrLabel150.Text = "REB Available";
-            this.xrLabel150.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
-            // 
-            // xrLabel151
-            // 
-            this.xrLabel151.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
-            this.xrLabel151.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LoadSheddingData].[REB_AVAILABLE_HOURS]")});
-            this.xrLabel151.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel151.ForeColor = System.Drawing.Color.Black;
-            this.xrLabel151.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1494.679F);
-            this.xrLabel151.Multiline = true;
-            this.xrLabel151.Name = "xrLabel151";
-            this.xrLabel151.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel151.SizeF = new System.Drawing.SizeF(147.243F, 23F);
-            this.xrLabel151.StylePriority.UseBorders = false;
-            this.xrLabel151.StylePriority.UseFont = false;
-            this.xrLabel151.StylePriority.UseForeColor = false;
-            this.xrLabel151.StylePriority.UseTextAlignment = false;
-            this.xrLabel151.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            // 
-            // xrLine4
-            // 
-            this.xrLine4.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine4.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine4.BorderWidth = 1F;
-            this.xrLine4.LineWidth = 0.5F;
-            this.xrLine4.LocationFloat = new DevExpress.Utils.PointFloat(0F, 204.6667F);
-            this.xrLine4.Name = "xrLine4";
-            this.xrLine4.SizeF = new System.Drawing.SizeF(140.625F, 2.000015F);
-            this.xrLine4.StylePriority.UseBorderColor = false;
-            this.xrLine4.StylePriority.UseBorders = false;
-            this.xrLine4.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine5
-            // 
-            this.xrLine5.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine5.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine5.BorderWidth = 1F;
-            this.xrLine5.LineWidth = 0.5F;
-            this.xrLine5.LocationFloat = new DevExpress.Utils.PointFloat(150.0418F, 204.6667F);
-            this.xrLine5.Name = "xrLine5";
-            this.xrLine5.SizeF = new System.Drawing.SizeF(169.3748F, 2F);
-            this.xrLine5.StylePriority.UseBorderColor = false;
-            this.xrLine5.StylePriority.UseBorders = false;
-            this.xrLine5.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine6
-            // 
-            this.xrLine6.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine6.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine6.BorderWidth = 1F;
-            this.xrLine6.LineWidth = 0.5F;
-            this.xrLine6.LocationFloat = new DevExpress.Utils.PointFloat(328.125F, 204.6667F);
-            this.xrLine6.Name = "xrLine6";
-            this.xrLine6.SizeF = new System.Drawing.SizeF(137.4999F, 2F);
-            this.xrLine6.StylePriority.UseBorderColor = false;
-            this.xrLine6.StylePriority.UseBorders = false;
-            this.xrLine6.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine7
-            // 
-            this.xrLine7.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine7.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine7.BorderWidth = 1F;
-            this.xrLine7.LineWidth = 0.5F;
-            this.xrLine7.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 204.6667F);
-            this.xrLine7.Name = "xrLine7";
-            this.xrLine7.SizeF = new System.Drawing.SizeF(178.0829F, 2.000015F);
-            this.xrLine7.StylePriority.UseBorderColor = false;
-            this.xrLine7.StylePriority.UseBorders = false;
-            this.xrLine7.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine8
-            // 
-            this.xrLine8.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine8.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine8.BorderWidth = 1F;
-            this.xrLine8.LineWidth = 0.5F;
-            this.xrLine8.LocationFloat = new DevExpress.Utils.PointFloat(664.0839F, 204.6667F);
-            this.xrLine8.Name = "xrLine8";
-            this.xrLine8.SizeF = new System.Drawing.SizeF(145.9169F, 2.000015F);
-            this.xrLine8.StylePriority.UseBorderColor = false;
-            this.xrLine8.StylePriority.UseBorders = false;
-            this.xrLine8.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine9
-            // 
-            this.xrLine9.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine9.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine9.BorderWidth = 1F;
-            this.xrLine9.LineWidth = 0.5F;
-            this.xrLine9.LocationFloat = new DevExpress.Utils.PointFloat(0F, 322F);
-            this.xrLine9.Name = "xrLine9";
-            this.xrLine9.SizeF = new System.Drawing.SizeF(140.625F, 2.000015F);
-            this.xrLine9.StylePriority.UseBorderColor = false;
-            this.xrLine9.StylePriority.UseBorders = false;
-            this.xrLine9.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine10
-            // 
-            this.xrLine10.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine10.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine10.BorderWidth = 1F;
-            this.xrLine10.LineWidth = 0.5F;
-            this.xrLine10.LocationFloat = new DevExpress.Utils.PointFloat(151.0418F, 322F);
-            this.xrLine10.Name = "xrLine10";
-            this.xrLine10.SizeF = new System.Drawing.SizeF(168.3753F, 2F);
-            this.xrLine10.StylePriority.UseBorderColor = false;
-            this.xrLine10.StylePriority.UseBorders = false;
-            this.xrLine10.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine11
-            // 
-            this.xrLine11.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine11.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine11.BorderWidth = 1F;
-            this.xrLine11.LineWidth = 0.5F;
-            this.xrLine11.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 322F);
-            this.xrLine11.Name = "xrLine11";
-            this.xrLine11.SizeF = new System.Drawing.SizeF(137.4999F, 2F);
-            this.xrLine11.StylePriority.UseBorderColor = false;
-            this.xrLine11.StylePriority.UseBorders = false;
-            this.xrLine11.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine12
-            // 
-            this.xrLine12.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine12.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine12.BorderWidth = 1F;
-            this.xrLine12.LineWidth = 0.5F;
-            this.xrLine12.LocationFloat = new DevExpress.Utils.PointFloat(474.9167F, 322F);
-            this.xrLine12.Name = "xrLine12";
-            this.xrLine12.SizeF = new System.Drawing.SizeF(179.0837F, 2F);
-            this.xrLine12.StylePriority.UseBorderColor = false;
-            this.xrLine12.StylePriority.UseBorders = false;
-            this.xrLine12.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine13
-            // 
-            this.xrLine13.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine13.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine13.BorderWidth = 1F;
-            this.xrLine13.LineWidth = 0.5F;
-            this.xrLine13.LocationFloat = new DevExpress.Utils.PointFloat(664.084F, 322F);
-            this.xrLine13.Name = "xrLine13";
-            this.xrLine13.SizeF = new System.Drawing.SizeF(145.9169F, 2.000015F);
-            this.xrLine13.StylePriority.UseBorderColor = false;
-            this.xrLine13.StylePriority.UseBorders = false;
-            this.xrLine13.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine14
-            // 
-            this.xrLine14.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine14.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine14.BorderWidth = 1F;
-            this.xrLine14.LineWidth = 0.5F;
-            this.xrLine14.LocationFloat = new DevExpress.Utils.PointFloat(0F, 423.25F);
-            this.xrLine14.Name = "xrLine14";
-            this.xrLine14.SizeF = new System.Drawing.SizeF(162.5002F, 2F);
-            this.xrLine14.StylePriority.UseBorderColor = false;
-            this.xrLine14.StylePriority.UseBorders = false;
-            this.xrLine14.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine15
-            // 
-            this.xrLine15.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine15.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine15.BorderWidth = 1F;
-            this.xrLine15.LineWidth = 0.5F;
-            this.xrLine15.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 423.25F);
-            this.xrLine15.Name = "xrLine15";
-            this.xrLine15.SizeF = new System.Drawing.SizeF(147.2082F, 2F);
-            this.xrLine15.StylePriority.UseBorderColor = false;
-            this.xrLine15.StylePriority.UseBorders = false;
-            this.xrLine15.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine16
-            // 
-            this.xrLine16.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine16.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine16.BorderWidth = 1F;
-            this.xrLine16.LineWidth = 0.5F;
-            this.xrLine16.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 423.25F);
-            this.xrLine16.Name = "xrLine16";
-            this.xrLine16.SizeF = new System.Drawing.SizeF(137.5001F, 2F);
-            this.xrLine16.StylePriority.UseBorderColor = false;
-            this.xrLine16.StylePriority.UseBorders = false;
-            this.xrLine16.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine17
-            // 
-            this.xrLine17.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine17.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine17.BorderWidth = 1F;
-            this.xrLine17.LineWidth = 0.5F;
-            this.xrLine17.LocationFloat = new DevExpress.Utils.PointFloat(474.9166F, 423.25F);
-            this.xrLine17.Name = "xrLine17";
-            this.xrLine17.SizeF = new System.Drawing.SizeF(178.0829F, 2F);
-            this.xrLine17.StylePriority.UseBorderColor = false;
-            this.xrLine17.StylePriority.UseBorders = false;
-            this.xrLine17.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine18
-            // 
-            this.xrLine18.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine18.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine18.BorderWidth = 1F;
-            this.xrLine18.LineWidth = 0.5F;
-            this.xrLine18.LocationFloat = new DevExpress.Utils.PointFloat(664.0839F, 423.25F);
-            this.xrLine18.Name = "xrLine18";
-            this.xrLine18.SizeF = new System.Drawing.SizeF(145.917F, 2F);
-            this.xrLine18.StylePriority.UseBorderColor = false;
-            this.xrLine18.StylePriority.UseBorders = false;
-            this.xrLine18.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine19
-            // 
-            this.xrLine19.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine19.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine19.BorderWidth = 1F;
-            this.xrLine19.LineWidth = 0.5F;
-            this.xrLine19.LocationFloat = new DevExpress.Utils.PointFloat(0.0002825701F, 519.7083F);
-            this.xrLine19.Name = "xrLine19";
-            this.xrLine19.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
-            this.xrLine19.StylePriority.UseBorderColor = false;
-            this.xrLine19.StylePriority.UseBorders = false;
-            this.xrLine19.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine20
-            // 
-            this.xrLine20.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine20.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine20.BorderWidth = 1F;
-            this.xrLine20.LineWidth = 0.5F;
-            this.xrLine20.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 519.7083F);
-            this.xrLine20.Name = "xrLine20";
-            this.xrLine20.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
-            this.xrLine20.StylePriority.UseBorderColor = false;
-            this.xrLine20.StylePriority.UseBorders = false;
-            this.xrLine20.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine21
-            // 
-            this.xrLine21.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine21.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine21.BorderWidth = 1F;
-            this.xrLine21.LineWidth = 0.5F;
-            this.xrLine21.LocationFloat = new DevExpress.Utils.PointFloat(328.1251F, 519.7083F);
-            this.xrLine21.Name = "xrLine21";
-            this.xrLine21.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
-            this.xrLine21.StylePriority.UseBorderColor = false;
-            this.xrLine21.StylePriority.UseBorders = false;
-            this.xrLine21.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine22
-            // 
-            this.xrLine22.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine22.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine22.BorderWidth = 1F;
-            this.xrLine22.LineWidth = 0.5F;
-            this.xrLine22.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 519.7083F);
-            this.xrLine22.Name = "xrLine22";
-            this.xrLine22.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
-            this.xrLine22.StylePriority.UseBorderColor = false;
-            this.xrLine22.StylePriority.UseBorders = false;
-            this.xrLine22.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine23
-            // 
-            this.xrLine23.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine23.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine23.BorderWidth = 1F;
-            this.xrLine23.LineWidth = 0.5F;
-            this.xrLine23.LocationFloat = new DevExpress.Utils.PointFloat(0F, 654.4852F);
-            this.xrLine23.Name = "xrLine23";
-            this.xrLine23.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
-            this.xrLine23.StylePriority.UseBorderColor = false;
-            this.xrLine23.StylePriority.UseBorders = false;
-            this.xrLine23.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine24
-            // 
-            this.xrLine24.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine24.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine24.BorderWidth = 1F;
-            this.xrLine24.LineWidth = 0.5F;
-            this.xrLine24.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 654.4854F);
-            this.xrLine24.Name = "xrLine24";
-            this.xrLine24.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
-            this.xrLine24.StylePriority.UseBorderColor = false;
-            this.xrLine24.StylePriority.UseBorders = false;
-            this.xrLine24.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine25
-            // 
-            this.xrLine25.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine25.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine25.BorderWidth = 1F;
-            this.xrLine25.LineWidth = 0.5F;
-            this.xrLine25.LocationFloat = new DevExpress.Utils.PointFloat(328.1248F, 654.4852F);
-            this.xrLine25.Name = "xrLine25";
-            this.xrLine25.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
-            this.xrLine25.StylePriority.UseBorderColor = false;
-            this.xrLine25.StylePriority.UseBorders = false;
-            this.xrLine25.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine26
-            // 
-            this.xrLine26.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine26.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine26.BorderWidth = 1F;
-            this.xrLine26.LineWidth = 0.5F;
-            this.xrLine26.LocationFloat = new DevExpress.Utils.PointFloat(483.1678F, 654.4852F);
-            this.xrLine26.Name = "xrLine26";
-            this.xrLine26.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
-            this.xrLine26.StylePriority.UseBorderColor = false;
-            this.xrLine26.StylePriority.UseBorders = false;
-            this.xrLine26.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine27
-            // 
-            this.xrLine27.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine27.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine27.BorderWidth = 1F;
-            this.xrLine27.LineWidth = 0.5F;
-            this.xrLine27.LocationFloat = new DevExpress.Utils.PointFloat(0F, 740.4434F);
-            this.xrLine27.Name = "xrLine27";
-            this.xrLine27.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
-            this.xrLine27.StylePriority.UseBorderColor = false;
-            this.xrLine27.StylePriority.UseBorders = false;
-            this.xrLine27.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine28
-            // 
-            this.xrLine28.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine28.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine28.BorderWidth = 1F;
-            this.xrLine28.LineWidth = 0.5F;
-            this.xrLine28.LocationFloat = new DevExpress.Utils.PointFloat(172.2076F, 740.4433F);
-            this.xrLine28.Name = "xrLine28";
-            this.xrLine28.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
-            this.xrLine28.StylePriority.UseBorderColor = false;
-            this.xrLine28.StylePriority.UseBorders = false;
-            this.xrLine28.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine29
-            // 
-            this.xrLine29.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine29.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine29.BorderWidth = 1F;
-            this.xrLine29.LineWidth = 0.5F;
-            this.xrLine29.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 740.4433F);
-            this.xrLine29.Name = "xrLine29";
-            this.xrLine29.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
-            this.xrLine29.StylePriority.UseBorderColor = false;
-            this.xrLine29.StylePriority.UseBorders = false;
-            this.xrLine29.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine30
-            // 
-            this.xrLine30.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine30.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine30.BorderWidth = 1F;
-            this.xrLine30.LineWidth = 0.5F;
-            this.xrLine30.LocationFloat = new DevExpress.Utils.PointFloat(483.1685F, 740.4434F);
-            this.xrLine30.Name = "xrLine30";
-            this.xrLine30.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
-            this.xrLine30.StylePriority.UseBorderColor = false;
-            this.xrLine30.StylePriority.UseBorders = false;
-            this.xrLine30.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine31
-            // 
-            this.xrLine31.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine31.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine31.BorderWidth = 1F;
-            this.xrLine31.LineWidth = 0.5F;
-            this.xrLine31.LocationFloat = new DevExpress.Utils.PointFloat(0F, 832.4012F);
-            this.xrLine31.Name = "xrLine31";
-            this.xrLine31.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
-            this.xrLine31.StylePriority.UseBorderColor = false;
-            this.xrLine31.StylePriority.UseBorders = false;
-            this.xrLine31.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine32
-            // 
-            this.xrLine32.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine32.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine32.BorderWidth = 1F;
-            this.xrLine32.LineWidth = 0.5F;
-            this.xrLine32.LocationFloat = new DevExpress.Utils.PointFloat(172.2083F, 832.4011F);
-            this.xrLine32.Name = "xrLine32";
-            this.xrLine32.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
-            this.xrLine32.StylePriority.UseBorderColor = false;
-            this.xrLine32.StylePriority.UseBorders = false;
-            this.xrLine32.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine33
-            // 
-            this.xrLine33.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine33.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine33.BorderWidth = 1F;
-            this.xrLine33.LineWidth = 0.5F;
-            this.xrLine33.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 832.4011F);
-            this.xrLine33.Name = "xrLine33";
-            this.xrLine33.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
-            this.xrLine33.StylePriority.UseBorderColor = false;
-            this.xrLine33.StylePriority.UseBorders = false;
-            this.xrLine33.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine34
-            // 
-            this.xrLine34.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine34.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine34.BorderWidth = 1F;
-            this.xrLine34.LineWidth = 0.5F;
-            this.xrLine34.LocationFloat = new DevExpress.Utils.PointFloat(483.1674F, 832.401F);
-            this.xrLine34.Name = "xrLine34";
-            this.xrLine34.SizeF = new System.Drawing.SizeF(169.8317F, 2F);
-            this.xrLine34.StylePriority.UseBorderColor = false;
-            this.xrLine34.StylePriority.UseBorders = false;
-            this.xrLine34.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine35
-            // 
-            this.xrLine35.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine35.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine35.BorderWidth = 1F;
-            this.xrLine35.LineWidth = 0.5F;
-            this.xrLine35.LocationFloat = new DevExpress.Utils.PointFloat(0.0003532127F, 922.7476F);
-            this.xrLine35.Name = "xrLine35";
-            this.xrLine35.SizeF = new System.Drawing.SizeF(162.4999F, 2F);
-            this.xrLine35.StylePriority.UseBorderColor = false;
-            this.xrLine35.StylePriority.UseBorders = false;
-            this.xrLine35.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine36
-            // 
-            this.xrLine36.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine36.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine36.BorderWidth = 1F;
-            this.xrLine36.LineWidth = 0.5F;
-            this.xrLine36.LocationFloat = new DevExpress.Utils.PointFloat(172.2084F, 923.7472F);
-            this.xrLine36.Name = "xrLine36";
-            this.xrLine36.SizeF = new System.Drawing.SizeF(147.2089F, 2F);
-            this.xrLine36.StylePriority.UseBorderColor = false;
-            this.xrLine36.StylePriority.UseBorders = false;
-            this.xrLine36.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine37
-            // 
-            this.xrLine37.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine37.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine37.BorderWidth = 1F;
-            this.xrLine37.LineWidth = 0.5F;
-            this.xrLine37.LocationFloat = new DevExpress.Utils.PointFloat(328.1252F, 922.7476F);
-            this.xrLine37.Name = "xrLine37";
-            this.xrLine37.SizeF = new System.Drawing.SizeF(147.4996F, 2F);
-            this.xrLine37.StylePriority.UseBorderColor = false;
-            this.xrLine37.StylePriority.UseBorders = false;
-            this.xrLine37.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine38
-            // 
-            this.xrLine38.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine38.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine38.BorderWidth = 1F;
-            this.xrLine38.LineWidth = 0.5F;
-            this.xrLine38.LocationFloat = new DevExpress.Utils.PointFloat(1.99989F, 1106.292F);
-            this.xrLine38.Name = "xrLine38";
-            this.xrLine38.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine38.StylePriority.UseBorderColor = false;
-            this.xrLine38.StylePriority.UseBorders = false;
-            this.xrLine38.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine39
-            // 
-            this.xrLine39.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine39.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine39.BorderWidth = 1F;
-            this.xrLine39.LineWidth = 0.5F;
-            this.xrLine39.LocationFloat = new DevExpress.Utils.PointFloat(121.541F, 1106.292F);
-            this.xrLine39.Name = "xrLine39";
-            this.xrLine39.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine39.StylePriority.UseBorderColor = false;
-            this.xrLine39.StylePriority.UseBorders = false;
-            this.xrLine39.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine40
-            // 
-            this.xrLine40.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine40.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine40.BorderWidth = 1F;
-            this.xrLine40.LineWidth = 0.5F;
-            this.xrLine40.LocationFloat = new DevExpress.Utils.PointFloat(243.2331F, 1106.292F);
-            this.xrLine40.Name = "xrLine40";
-            this.xrLine40.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
-            this.xrLine40.StylePriority.UseBorderColor = false;
-            this.xrLine40.StylePriority.UseBorders = false;
-            this.xrLine40.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine41
-            // 
-            this.xrLine41.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine41.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine41.BorderWidth = 1F;
-            this.xrLine41.LineWidth = 0.5F;
-            this.xrLine41.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1106.29F);
-            this.xrLine41.Name = "xrLine41";
-            this.xrLine41.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine41.StylePriority.UseBorderColor = false;
-            this.xrLine41.StylePriority.UseBorders = false;
-            this.xrLine41.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine42
-            // 
-            this.xrLine42.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine42.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine42.BorderWidth = 1F;
-            this.xrLine42.LineWidth = 0.5F;
-            this.xrLine42.LocationFloat = new DevExpress.Utils.PointFloat(498.9585F, 1106.292F);
-            this.xrLine42.Name = "xrLine42";
-            this.xrLine42.SizeF = new System.Drawing.SizeF(130F, 2F);
-            this.xrLine42.StylePriority.UseBorderColor = false;
-            this.xrLine42.StylePriority.UseBorders = false;
-            this.xrLine42.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine43
-            // 
-            this.xrLine43.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine43.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine43.BorderWidth = 1F;
-            this.xrLine43.LineWidth = 0.5F;
-            this.xrLine43.LocationFloat = new DevExpress.Utils.PointFloat(638.667F, 1106.29F);
-            this.xrLine43.Name = "xrLine43";
-            this.xrLine43.SizeF = new System.Drawing.SizeF(169.9999F, 2F);
-            this.xrLine43.StylePriority.UseBorderColor = false;
-            this.xrLine43.StylePriority.UseBorders = false;
-            this.xrLine43.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine44
-            // 
-            this.xrLine44.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine44.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine44.BorderWidth = 1F;
-            this.xrLine44.LineWidth = 0.5F;
-            this.xrLine44.LocationFloat = new DevExpress.Utils.PointFloat(2.083107F, 1200.709F);
-            this.xrLine44.Name = "xrLine44";
-            this.xrLine44.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine44.StylePriority.UseBorderColor = false;
-            this.xrLine44.StylePriority.UseBorders = false;
-            this.xrLine44.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine45
-            // 
-            this.xrLine45.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine45.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine45.BorderWidth = 1F;
-            this.xrLine45.LineWidth = 0.5F;
-            this.xrLine45.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1200.708F);
-            this.xrLine45.Name = "xrLine45";
-            this.xrLine45.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine45.StylePriority.UseBorderColor = false;
-            this.xrLine45.StylePriority.UseBorders = false;
-            this.xrLine45.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine46
-            // 
-            this.xrLine46.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine46.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine46.BorderWidth = 1F;
-            this.xrLine46.LineWidth = 0.5F;
-            this.xrLine46.LocationFloat = new DevExpress.Utils.PointFloat(243.233F, 1200.708F);
-            this.xrLine46.Name = "xrLine46";
-            this.xrLine46.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
-            this.xrLine46.StylePriority.UseBorderColor = false;
-            this.xrLine46.StylePriority.UseBorders = false;
-            this.xrLine46.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine47
-            // 
-            this.xrLine47.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine47.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine47.BorderWidth = 1F;
-            this.xrLine47.LineWidth = 0.5F;
-            this.xrLine47.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1200.708F);
-            this.xrLine47.Name = "xrLine47";
-            this.xrLine47.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine47.StylePriority.UseBorderColor = false;
-            this.xrLine47.StylePriority.UseBorders = false;
-            this.xrLine47.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine48
-            // 
-            this.xrLine48.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine48.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine48.BorderWidth = 1F;
-            this.xrLine48.LineWidth = 0.5F;
-            this.xrLine48.LocationFloat = new DevExpress.Utils.PointFloat(498.9584F, 1200.708F);
-            this.xrLine48.Name = "xrLine48";
-            this.xrLine48.SizeF = new System.Drawing.SizeF(130F, 2F);
-            this.xrLine48.StylePriority.UseBorderColor = false;
-            this.xrLine48.StylePriority.UseBorders = false;
-            this.xrLine48.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine49
-            // 
-            this.xrLine49.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine49.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine49.BorderWidth = 1F;
-            this.xrLine49.LineWidth = 0.5F;
-            this.xrLine49.LocationFloat = new DevExpress.Utils.PointFloat(639.4178F, 1200.708F);
-            this.xrLine49.Name = "xrLine49";
-            this.xrLine49.SizeF = new System.Drawing.SizeF(169.7095F, 2F);
-            this.xrLine49.StylePriority.UseBorderColor = false;
-            this.xrLine49.StylePriority.UseBorders = false;
-            this.xrLine49.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine50
-            // 
-            this.xrLine50.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine50.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine50.BorderWidth = 1F;
-            this.xrLine50.LineWidth = 0.5F;
-            this.xrLine50.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1296.5F);
-            this.xrLine50.Name = "xrLine50";
-            this.xrLine50.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine50.StylePriority.UseBorderColor = false;
-            this.xrLine50.StylePriority.UseBorders = false;
-            this.xrLine50.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine51
-            // 
-            this.xrLine51.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine51.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine51.BorderWidth = 1F;
-            this.xrLine51.LineWidth = 0.5F;
-            this.xrLine51.LocationFloat = new DevExpress.Utils.PointFloat(121.5413F, 1296.5F);
-            this.xrLine51.Name = "xrLine51";
-            this.xrLine51.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine51.StylePriority.UseBorderColor = false;
-            this.xrLine51.StylePriority.UseBorders = false;
-            this.xrLine51.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine52
-            // 
-            this.xrLine52.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine52.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine52.BorderWidth = 1F;
-            this.xrLine52.LineWidth = 0.5F;
-            this.xrLine52.LocationFloat = new DevExpress.Utils.PointFloat(243.233F, 1296.5F);
-            this.xrLine52.Name = "xrLine52";
-            this.xrLine52.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
-            this.xrLine52.StylePriority.UseBorderColor = false;
-            this.xrLine52.StylePriority.UseBorders = false;
-            this.xrLine52.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine53
-            // 
-            this.xrLine53.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine53.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine53.BorderWidth = 1F;
-            this.xrLine53.LineWidth = 0.5F;
-            this.xrLine53.LocationFloat = new DevExpress.Utils.PointFloat(378.1792F, 1296.5F);
-            this.xrLine53.Name = "xrLine53";
-            this.xrLine53.SizeF = new System.Drawing.SizeF(110.0002F, 2F);
-            this.xrLine53.StylePriority.UseBorderColor = false;
-            this.xrLine53.StylePriority.UseBorders = false;
-            this.xrLine53.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine54
-            // 
-            this.xrLine54.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine54.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine54.BorderWidth = 1F;
-            this.xrLine54.LineWidth = 0.5F;
-            this.xrLine54.LocationFloat = new DevExpress.Utils.PointFloat(498.9585F, 1297.5F);
-            this.xrLine54.Name = "xrLine54";
-            this.xrLine54.SizeF = new System.Drawing.SizeF(130F, 2F);
-            this.xrLine54.StylePriority.UseBorderColor = false;
-            this.xrLine54.StylePriority.UseBorders = false;
-            this.xrLine54.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine55
-            // 
-            this.xrLine55.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine55.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine55.BorderWidth = 1F;
-            this.xrLine55.LineWidth = 0.5F;
-            this.xrLine55.LocationFloat = new DevExpress.Utils.PointFloat(638.6674F, 1296.5F);
-            this.xrLine55.Name = "xrLine55";
-            this.xrLine55.SizeF = new System.Drawing.SizeF(169.9999F, 2F);
-            this.xrLine55.StylePriority.UseBorderColor = false;
-            this.xrLine55.StylePriority.UseBorders = false;
-            this.xrLine55.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine56
-            // 
-            this.xrLine56.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine56.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine56.BorderWidth = 1F;
-            this.xrLine56.LineWidth = 0.5F;
-            this.xrLine56.LocationFloat = new DevExpress.Utils.PointFloat(2.083107F, 1390.25F);
-            this.xrLine56.Name = "xrLine56";
-            this.xrLine56.SizeF = new System.Drawing.SizeF(107.9171F, 2F);
-            this.xrLine56.StylePriority.UseBorderColor = false;
-            this.xrLine56.StylePriority.UseBorders = false;
-            this.xrLine56.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine57
-            // 
-            this.xrLine57.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine57.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine57.BorderWidth = 1F;
-            this.xrLine57.LineWidth = 0.5F;
-            this.xrLine57.LocationFloat = new DevExpress.Utils.PointFloat(121.6674F, 1390.25F);
-            this.xrLine57.Name = "xrLine57";
-            this.xrLine57.SizeF = new System.Drawing.SizeF(109.8739F, 2F);
-            this.xrLine57.StylePriority.UseBorderColor = false;
-            this.xrLine57.StylePriority.UseBorders = false;
-            this.xrLine57.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine58
-            // 
-            this.xrLine58.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine58.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine58.BorderWidth = 1F;
-            this.xrLine58.LineWidth = 0.5F;
-            this.xrLine58.LocationFloat = new DevExpress.Utils.PointFloat(243.7149F, 1390.25F);
-            this.xrLine58.Name = "xrLine58";
-            this.xrLine58.SizeF = new System.Drawing.SizeF(125.0001F, 2F);
-            this.xrLine58.StylePriority.UseBorderColor = false;
-            this.xrLine58.StylePriority.UseBorders = false;
-            this.xrLine58.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine59
-            // 
-            this.xrLine59.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine59.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine59.BorderWidth = 1F;
-            this.xrLine59.LineWidth = 0.5F;
-            this.xrLine59.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1390.25F);
-            this.xrLine59.Name = "xrLine59";
-            this.xrLine59.SizeF = new System.Drawing.SizeF(168F, 2.000122F);
-            this.xrLine59.StylePriority.UseBorderColor = false;
-            this.xrLine59.StylePriority.UseBorders = false;
-            this.xrLine59.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine60
-            // 
-            this.xrLine60.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine60.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine60.BorderWidth = 1F;
-            this.xrLine60.LineWidth = 0.5F;
-            this.xrLine60.LocationFloat = new DevExpress.Utils.PointFloat(638.6674F, 1390.25F);
-            this.xrLine60.Name = "xrLine60";
-            this.xrLine60.SizeF = new System.Drawing.SizeF(170.4597F, 2.000122F);
-            this.xrLine60.StylePriority.UseBorderColor = false;
-            this.xrLine60.StylePriority.UseBorders = false;
-            this.xrLine60.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine61
-            // 
-            this.xrLine61.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine61.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine61.BorderWidth = 1F;
-            this.xrLine61.LineWidth = 0.5F;
-            this.xrLine61.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1517.679F);
-            this.xrLine61.Name = "xrLine61";
-            this.xrLine61.SizeF = new System.Drawing.SizeF(151.0416F, 2F);
-            this.xrLine61.StylePriority.UseBorderColor = false;
-            this.xrLine61.StylePriority.UseBorders = false;
-            this.xrLine61.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine62
-            // 
-            this.xrLine62.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine62.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine62.BorderWidth = 1F;
-            this.xrLine62.LineWidth = 0.5F;
-            this.xrLine62.LocationFloat = new DevExpress.Utils.PointFloat(161.0417F, 1517.679F);
-            this.xrLine62.Name = "xrLine62";
-            this.xrLine62.SizeF = new System.Drawing.SizeF(89.99991F, 2F);
-            this.xrLine62.StylePriority.UseBorderColor = false;
-            this.xrLine62.StylePriority.UseBorders = false;
-            this.xrLine62.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine63
-            // 
-            this.xrLine63.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine63.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine63.BorderWidth = 1F;
-            this.xrLine63.LineWidth = 0.5F;
-            this.xrLine63.LocationFloat = new DevExpress.Utils.PointFloat(259.7332F, 1517.679F);
-            this.xrLine63.Name = "xrLine63";
-            this.xrLine63.SizeF = new System.Drawing.SizeF(85.15256F, 2F);
-            this.xrLine63.StylePriority.UseBorderColor = false;
-            this.xrLine63.StylePriority.UseBorders = false;
-            this.xrLine63.StylePriority.UseBorderWidth = false;
-            // 
-            // xrLine64
-            // 
-            this.xrLine64.BorderColor = System.Drawing.Color.IndianRed;
-            this.xrLine64.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
-            | DevExpress.XtraPrinting.BorderSide.Right) 
-            | DevExpress.XtraPrinting.BorderSide.Bottom)));
-            this.xrLine64.BorderWidth = 1F;
-            this.xrLine64.LineWidth = 0.5F;
-            this.xrLine64.LocationFloat = new DevExpress.Utils.PointFloat(353.538F, 1517.679F);
-            this.xrLine64.Name = "xrLine64";
-            this.xrLine64.SizeF = new System.Drawing.SizeF(147.243F, 2F);
-            this.xrLine64.StylePriority.UseBorderColor = false;
-            this.xrLine64.StylePriority.UseBorders = false;
-            this.xrLine64.StylePriority.UseBorderWidth = false;
+            this.xrSubreport1.SizeF = new System.Drawing.SizeF(809.1273F, 22.99998F);
             // 
             // rptDailyEnergyPowerFuel
             // 
@@ -4917,5 +4943,7 @@
         private DevExpress.XtraReports.UI.XRLine xrLine61;
         private DevExpress.XtraReports.UI.XRLine xrLine60;
         private DevExpress.XtraReports.UI.XRLine xrLine64;
+        private DevExpress.XtraReports.UI.XRLabel xrLabel157;
+        private DevExpress.XtraReports.UI.XRSubreport xrSubreport10;
     }
 }

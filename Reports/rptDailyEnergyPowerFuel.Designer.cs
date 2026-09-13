@@ -2100,7 +2100,7 @@
             this.xrLabel132.StylePriority.UseForeColor = false;
             this.xrLabel132.StylePriority.UsePadding = false;
             this.xrLabel132.StylePriority.UseTextAlignment = false;
-            this.xrLabel132.Text = "Total(Ltr)";
+            this.xrLabel132.Text = "Total(Kg)";
             this.xrLabel132.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel133
@@ -2635,27 +2635,27 @@
             // 
             this.xrLabel93.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
             this.xrLabel93.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel93.LocationFloat = new DevExpress.Utils.PointFloat(1.99989F, 1127.375F);
+            this.xrLabel93.LocationFloat = new DevExpress.Utils.PointFloat(1.999919F, 1127.375F);
             this.xrLabel93.Multiline = true;
             this.xrLabel93.Name = "xrLabel93";
             this.xrLabel93.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel93.SizeF = new System.Drawing.SizeF(87.26857F, 23F);
+            this.xrLabel93.SizeF = new System.Drawing.SizeF(108.0002F, 23F);
             this.xrLabel93.StylePriority.UseFont = false;
             this.xrLabel93.StylePriority.UseForeColor = false;
-            this.xrLabel93.Text = "CNG Used m³";
+            this.xrLabel93.Text = "CNG Used (m³)";
             // 
             // xrLabel110
             // 
             this.xrLabel110.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
             this.xrLabel110.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel110.LocationFloat = new DevExpress.Utils.PointFloat(0.0002119276F, 1223.166F);
+            this.xrLabel110.LocationFloat = new DevExpress.Utils.PointFloat(0.0002543131F, 1223.166F);
             this.xrLabel110.Multiline = true;
             this.xrLabel110.Name = "xrLabel110";
             this.xrLabel110.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel110.SizeF = new System.Drawing.SizeF(110.0001F, 23F);
+            this.xrLabel110.SizeF = new System.Drawing.SizeF(112.0829F, 23F);
             this.xrLabel110.StylePriority.UseFont = false;
             this.xrLabel110.StylePriority.UseForeColor = false;
-            this.xrLabel110.Text = "Diesel Used Ltr";
+            this.xrLabel110.Text = "Diesel Used (Ltr)";
             // 
             // xrLabel109
             // 
@@ -2818,7 +2818,7 @@
             this.xrLabel117.StylePriority.UseForeColor = false;
             this.xrLabel117.StylePriority.UsePadding = false;
             this.xrLabel117.StylePriority.UseTextAlignment = false;
-            this.xrLabel117.Text = "Boiler(Ltr)";
+            this.xrLabel117.Text = "Boiler(Kg)";
             this.xrLabel117.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel116
@@ -2851,7 +2851,7 @@
             this.xrLabel111.SizeF = new System.Drawing.SizeF(87.26825F, 23.00012F);
             this.xrLabel111.StylePriority.UseFont = false;
             this.xrLabel111.StylePriority.UseForeColor = false;
-            this.xrLabel111.Text = "LPG Used Ltr";
+            this.xrLabel111.Text = "LPG Used (Kg)";
             // 
             // xrLabel113
             // 
@@ -2998,7 +2998,7 @@
             this.xrLabel120.StylePriority.UseForeColor = false;
             this.xrLabel120.StylePriority.UsePadding = false;
             this.xrLabel120.StylePriority.UseTextAlignment = false;
-            this.xrLabel120.Text = "Therm. Boiler(Ltr)";
+            this.xrLabel120.Text = "Therm. Boiler(Kg)";
             this.xrLabel120.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel127
@@ -3915,7 +3915,7 @@
             this.xrLabel49.StylePriority.UseForeColor = false;
             this.xrLabel49.StylePriority.UsePadding = false;
             this.xrLabel49.StylePriority.UseTextAlignment = false;
-            this.xrLabel49.Text = "Share of Day";
+            this.xrLabel49.Text = "Load Shedding %";
             this.xrLabel49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel48
@@ -3990,7 +3990,7 @@
             this.xrLabel39.StylePriority.UseForeColor = false;
             this.xrLabel39.StylePriority.UsePadding = false;
             this.xrLabel39.StylePriority.UseTextAlignment = false;
-            this.xrLabel39.Text = "Today Total load Shedding(Hr)";
+            this.xrLabel39.Text = "Total load Shedding(Hr)";
             this.xrLabel39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.TopCenter;
             // 
             // xrLabel55
@@ -4164,14 +4164,14 @@
             // 
             this.xrLabel64.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
             this.xrLabel64.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel64.LocationFloat = new DevExpress.Utils.PointFloat(0.7747367F, 577.0269F);
+            this.xrLabel64.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 577.0269F);
             this.xrLabel64.Multiline = true;
             this.xrLabel64.Name = "xrLabel64";
             this.xrLabel64.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel64.SizeF = new System.Drawing.SizeF(174.6528F, 23.00006F);
+            this.xrLabel64.SizeF = new System.Drawing.SizeF(199.2251F, 23.00006F);
             this.xrLabel64.StylePriority.UseFont = false;
             this.xrLabel64.StylePriority.UseForeColor = false;
-            this.xrLabel64.Text = "Diesel Stock & Consumption";
+            this.xrLabel64.Text = "Diesel Stock & Consumption(Ltr)";
             // 
             // xrLabel73
             // 
@@ -4329,23 +4329,23 @@
             this.xrLabel65.Multiline = true;
             this.xrLabel65.Name = "xrLabel65";
             this.xrLabel65.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel65.SizeF = new System.Drawing.SizeF(161.7255F, 23F);
+            this.xrLabel65.SizeF = new System.Drawing.SizeF(187.0238F, 23F);
             this.xrLabel65.StylePriority.UseFont = false;
             this.xrLabel65.StylePriority.UseForeColor = false;
-            this.xrLabel65.Text = "LPG Stock & Consumption";
+            this.xrLabel65.Text = "LPG Stock & Consumption(Kg)";
             // 
             // xrLabel82
             // 
             this.xrLabel82.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, ((DevExpress.Drawing.DXFontStyle)((DevExpress.Drawing.DXFontStyle.Bold | DevExpress.Drawing.DXFontStyle.Underline))));
             this.xrLabel82.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel82.LocationFloat = new DevExpress.Utils.PointFloat(0.774666F, 754.2354F);
+            this.xrLabel82.LocationFloat = new DevExpress.Utils.PointFloat(0.7746379F, 754.2354F);
             this.xrLabel82.Multiline = true;
             this.xrLabel82.Name = "xrLabel82";
             this.xrLabel82.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel82.SizeF = new System.Drawing.SizeF(161.7252F, 23F);
+            this.xrLabel82.SizeF = new System.Drawing.SizeF(187.0235F, 23F);
             this.xrLabel82.StylePriority.UseFont = false;
             this.xrLabel82.StylePriority.UseForeColor = false;
-            this.xrLabel82.Text = "CNG Stock & Consumption";
+            this.xrLabel82.Text = "CNG Stock & Consumption(m³)";
             // 
             // xrLabel81
             // 

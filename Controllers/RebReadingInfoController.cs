@@ -187,22 +187,36 @@ public class RebReadingInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblRebReadingInfo
-        {
-            Trdate = DateTime.Today
-        };
-
         var userId = _userManager.GetUserId(User);
+
         var currentLocation = _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        var lastTrDate = _context.TblRebReadingInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+
+        var model = new TblRebReadingInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%REB%"));
-            if (!string.IsNullOrEmpty(currentLocation))
-            {
-                query = query.Where(x => x.CurrentLocation == currentLocation);
-            }
+
+        if (!string.IsNullOrEmpty(currentLocation))
+        {
+            query = query.Where(x => x.CurrentLocation == currentLocation);
+        }
 
         ViewBag.EquipmentList = query
             .Select(x => new SelectListItem
@@ -214,6 +228,38 @@ public class RebReadingInfoController : Controller
 
         return View(model);
     }
+
+
+    //[HttpGet]
+    //public IActionResult Create()
+    //{
+    //    var model = new TblRebReadingInfo
+    //    {
+    //        Trdate = DateTime.Today
+    //    };
+
+    //    var userId = _userManager.GetUserId(User);
+    //    var currentLocation = _context.Users
+    //        .Where(x => x.Id == userId)
+    //        .Select(x => x.Company)
+    //        .FirstOrDefault();
+    //    var query = _context.TblEquipmentDetails
+    //        .Where(x => EF.Functions.Like(x.EquipmentName, "%REB%"));
+    //        if (!string.IsNullOrEmpty(currentLocation))
+    //        {
+    //            query = query.Where(x => x.CurrentLocation == currentLocation);
+    //        }
+
+    //    ViewBag.EquipmentList = query
+    //        .Select(x => new SelectListItem
+    //        {
+    //            Value = x.Eqid.ToString(),
+    //            Text = $"{x.EquipmentName} - {x.CurrentLocation}"
+    //        })
+    //        .ToList();
+
+    //    return View(model);
+    //}
 
     [HttpPost]
     [ValidateAntiForgeryToken]

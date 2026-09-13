@@ -189,15 +189,32 @@ public class NgGeneratorReadingInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblNgGeneratorReadingInfo
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblNgGeneratorReadingInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
+
         var userId = _userManager.GetUserId(User);
         var currentLocation = _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        var lastTrDate = _context.TblNgGeneratorReadingInfos
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+
+        var model = new TblNgGeneratorReadingInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%GAS%"));
         if (!string.IsNullOrEmpty(currentLocation))

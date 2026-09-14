@@ -190,10 +190,10 @@ public class BoilerRmsRoomInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblBoilerRmsRoom
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblBoilerRmsRoom
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
         var ngRate = _context.TblFncItems
             .Where(i => i.Fncid == 11)//NG
@@ -212,6 +212,21 @@ public class BoilerRmsRoomInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        var lastTrDate = _context.TblBoilerRmsRoom
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblBoilerRmsRoom
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%BOILER RMS%"));
         if (!string.IsNullOrEmpty(currentLocation))

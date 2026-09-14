@@ -190,10 +190,10 @@ public class GenRmsRoomInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblGenRmsRoom
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblGenRmsRoom
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
         var ngRate = _context.TblFncItems
             .Where(i => i.Fncid == 11)//NG
@@ -213,6 +213,21 @@ public class GenRmsRoomInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        var lastTrDate = _context.TblGenRmsRoom
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblGenRmsRoom
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%GENERATOR RMS%"));
         if (!string.IsNullOrEmpty(currentLocation))

@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
+using System.Drawing;
 using System.Globalization;
 using UtilityManagement.Data;
 using UtilityManagement.Models;
@@ -190,10 +191,10 @@ public class BoilerReadingInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblBoilerReadingInfo
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblBoilerReadingInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
         var ngRate = _context.TblFncItems
             .Where(i => i.Fncid == 11)//NG
@@ -244,6 +245,22 @@ public class BoilerReadingInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+        //Company Wise Last Data Entry Date Start
+        var lastTrDate = _context.TblBoilerReadingInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblBoilerReadingInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+        //Company Wise Last Data Entry Date End
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%BOILER%"));
         if (!string.IsNullOrEmpty(currentLocation))

@@ -189,10 +189,10 @@ public class RoPlantCostInfoController : Controller
     public IActionResult Create()
     {
         LoadCompanyList();
-        var model = new TblRoPlantCostInfo
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblRoPlantCostInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
 
         var userId = _userManager.GetUserId(User);
@@ -200,6 +200,21 @@ public class RoPlantCostInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        var lastTrDate = _context.TblRoPlantCostInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblRoPlantCostInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+
         //var query = _context.TblEquipmentDetails
         //    .Where(x => EF.Functions.Like(x.EquipmentName, "%RO%"));
         var query = _context.TblEquipmentDetails.Where(x => x.EquipmentName == "RO");

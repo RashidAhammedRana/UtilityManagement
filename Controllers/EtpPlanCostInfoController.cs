@@ -193,11 +193,31 @@ public class EtpPlanCostInfoController : Controller
         LoadEquipmentList();
         LoadCompanyList();
 
+        //var model = new TblEtpPlanCostInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
+
+        //Company Wise Last Data Entry Date Start
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+        var lastTrDate = _context.TblEtpPlanCostInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
         var model = new TblEtpPlanCostInfo
         {
-            Trdate = DateTime.Today
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
         };
-
+        //Company Wise Last Data Entry Date End
         return View(model);
     }
 

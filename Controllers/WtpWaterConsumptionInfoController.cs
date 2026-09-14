@@ -187,16 +187,33 @@ public class WtpWaterConsumptionInfoController : Controller
     [HttpGet]
     public IActionResult Create()
     {
-        var model = new TblWtpWaterConsumptionInfo
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblWtpWaterConsumptionInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
         var userId = _userManager.GetUserId(User);
         var currentLocation = _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        //Company Wise Last Data Entry Date Start
+        var lastTrDate = _context.TblWtpWaterConsumptionInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblWtpWaterConsumptionInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+        //Company Wise Last Data Entry Date End
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%WTP%"));
         if (!string.IsNullOrEmpty(currentLocation))

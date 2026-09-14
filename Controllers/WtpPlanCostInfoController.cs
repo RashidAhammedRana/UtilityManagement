@@ -192,10 +192,10 @@ public class WtpPlanCostInfoController : Controller
     public IActionResult Create()
     {
         LoadCompanyList();
-        var model = new TblWtpPlanCostInfo
-        {
-            Trdate = DateTime.Today
-        };
+        //var model = new TblWtpPlanCostInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
 
         var naclRate = _context.TblFncItems
             .Where(i => i.Fncid == 16)//NACL
@@ -214,6 +214,23 @@ public class WtpPlanCostInfoController : Controller
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
             .FirstOrDefault();
+
+        //Company Wise Last Data Entry Date Start
+        var lastTrDate = _context.TblWtpPlanCostInfo
+            .Include(x => x.Eq)
+            .Where(x => x.Eq.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
+        var model = new TblWtpPlanCostInfo
+        {
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
+        };
+        //Company Wise Last Data Entry Date End
+
         var query = _context.TblEquipmentDetails
             .Where(x => EF.Functions.Like(x.EquipmentName, "%WTP%"));
         if (!string.IsNullOrEmpty(currentLocation))

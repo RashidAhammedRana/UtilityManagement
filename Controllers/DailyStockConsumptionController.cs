@@ -259,12 +259,36 @@ public class DailyStockConsumptionController : Controller
             .Select(x => x.Trdate)
             .FirstOrDefault();
 
+        var DieselOpeningStock = _context.TblDailyStockConsumptions
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.CsDiesel)
+            .FirstOrDefault();
+
+        var CngOpeningStock = _context.TblDailyStockConsumptions
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.CsCng)
+            .FirstOrDefault();
+        var LpgOpeningStock = _context.TblDailyStockConsumptions
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.CsLpg)
+            .FirstOrDefault();
+
         var model = new TblDailyStockConsumption
         {
             Trdate = lastTrDate.HasValue
                 ? lastTrDate.Value.AddDays(1)
-                : DateOnly.FromDateTime(DateTime.Today)
+                : DateOnly.FromDateTime(DateTime.Today),
+            OsDiesel= DieselOpeningStock,
+            OsCng= CngOpeningStock,
+            OsLps= LpgOpeningStock,
+
+
+
         };
+
 
         return View(model);
     }

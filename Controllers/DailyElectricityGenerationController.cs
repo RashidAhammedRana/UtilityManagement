@@ -243,9 +243,29 @@ public class DailyElectricityGenerationController : Controller
     public IActionResult Create()
     {
         LoadCompanyList();
+        //var model = new TblDailyElectricityGeneration
+        //{
+        //    Trdate = DateOnly.FromDateTime(DateTime.Today)
+        //};
+
+        //Company Wise Last Entry Date 
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var lastTrDate = _context.TblDailyElectricityGenerations
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
         var model = new TblDailyElectricityGeneration
         {
-            Trdate = DateOnly.FromDateTime(DateTime.Today)
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.AddDays(1)
+                : DateOnly.FromDateTime(DateTime.Today)
         };
 
         return View(model);

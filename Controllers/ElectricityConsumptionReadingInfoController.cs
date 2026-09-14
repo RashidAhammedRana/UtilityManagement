@@ -176,9 +176,28 @@ public class ElectricityConsumptionReadingInfoController : Controller
     public IActionResult Create()
     {
         LoadCompanyList();
+        //var model = new TblElectricityConsumptionReadingInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
+
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var lastTrDate = _context.TblElectricityConsumptionReadingInfo
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
         var model = new TblElectricityConsumptionReadingInfo
         {
-            Trdate = DateTime.Today
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
         };
         return View(model);
     }

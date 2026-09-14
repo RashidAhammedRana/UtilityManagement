@@ -188,9 +188,28 @@ public class ChillerReadingInfoController : Controller
     {
         LoadRates();
         LoadEquipmentList();
+        //var model = new TblChillerReadingInfo
+        //{
+        //    Trdate = DateTime.Today
+        //};
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var lastTrDate = _context.TblChillerReadingInfo
+            .Include(x => x.Equipments)
+            .Where(x => x.Equipments.CurrentLocation == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
         var model = new TblChillerReadingInfo
         {
-            Trdate = DateTime.Today
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.Date.AddDays(1)
+                : DateTime.Today
         };
 
         return View(model);

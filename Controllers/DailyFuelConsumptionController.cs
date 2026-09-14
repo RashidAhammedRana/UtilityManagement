@@ -243,9 +243,27 @@ public class DailyFuelConsumptionController : Controller
     public IActionResult Create()
     {
         LoadCompanyList();
+        //var model = new TblDailyFuelConsumption
+        //{
+        //    Trdate = DateOnly.FromDateTime(DateTime.Today)
+        //};
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var lastTrDate = _context.TblDailyFuelConsumption
+            .Where(x => x.Company == currentLocation)
+            .OrderByDescending(x => x.Trdate)
+            .Select(x => x.Trdate)
+            .FirstOrDefault();
+
         var model = new TblDailyFuelConsumption
         {
-            Trdate = DateOnly.FromDateTime(DateTime.Today)
+            Trdate = lastTrDate.HasValue
+                ? lastTrDate.Value.AddDays(1)
+                : DateOnly.FromDateTime(DateTime.Today)
         };
 
         return View(model);

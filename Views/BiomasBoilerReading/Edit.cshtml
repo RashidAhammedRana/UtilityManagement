@@ -1,0 +1,493 @@
+﻿@model UtilityManagement.ViewModels.BiomasBoilerReadingViewModel
+
+@{
+    ViewData["Title"] = "Edit Biomass Boiler Reading";
+}
+
+<div class="container-fluid mt-4">
+
+    <div class="row">
+        <div class="col-md-12">
+
+            <div class="card shadow-lg border-0">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">Edit Biomass Boiler Reading</h5>
+                </div>
+
+                <div class="card-body px-4 py-2">
+
+                    <form asp-action="Edit" method="post">
+                        <input type="hidden" asp-for="BiomasBoilerReading.Trid" />
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <div class="row g-3">
+
+                            <!-- Trdate -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.Trdate" class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="BiomasBoilerReading.Trdate" type="date" class="form-control" />
+
+                                <span asp-validation-for="BiomasBoilerReading.Trdate" class="text-danger"></span>
+                            </div>
+                            <!-- COMPANY -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label class="form-label">
+                                    Company
+                                    <span class="text-danger">*</span>
+                                </label>
+
+                                <input type="text"
+                                       class="form-control"
+                                       value="@Model.BiomasBoilerReading.Company"
+                                       readonly />
+
+                                <input asp-for="BiomasBoilerReading.Company" type="hidden" />
+
+                                <span asp-validation-for="BiomasBoilerReading.Company"
+                                      class="text-danger"></span>
+                            </div>
+
+
+                            <!-- Equipment -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.Eqid" class="form-label">
+                                    Equipment <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="BiomasBoilerReading.Eqid"
+                                        asp-items="Model.EquipmentList"
+                                        class="form-select">
+                                    <option value="">-- Select Equipment --</option>
+                                </select>
+
+                                <span asp-validation-for="BiomasBoilerReading.Eqid"
+                                      class="text-danger"></span>
+                            </div>
+
+
+                            <!-- JuteCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.JuteCons" class="form-label">
+                                    Biomass Consumption(Kg)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.JuteCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.JuteCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- JuteCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.JuteCost" class="form-label">
+                                    Biomass Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.JuteCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.JuteCost" class="text-danger"></span>
+                            </div>
+
+                            <!-- RhCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.RhCons" class="form-label">
+                                    Rice Husk Cons.(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="BiomasBoilerReading.RhCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.RhCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- RhCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.RhCost" class="form-label">
+                                    Rice Husk Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.RhCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.RhCost" class="text-danger"></span>
+                            </div>
+                            <!-- DoScale65Cons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.WwCons" class="form-label">
+                                    Waste Wood Cons.(Kg)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.WwCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.WwCons" class="text-danger"></span>
+                            </div>
+
+                            <!-- WwCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.WwCost" class="form-label">
+                                    Waste Wood Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.WwCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.WwCost" class="text-danger"></span>
+                            </div>
+                            <!-- CartonCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.CartonCons" class="form-label">
+                                    Carton Cons.(Kg)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="BiomasBoilerReading.CartonCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.CartonCons" class="text-danger"></span>
+                            </div>
+                            <!-- CartonCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.CartonCost" class="form-label">
+                                    Carton Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.CartonCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.CartonCost" class="text-danger"></span>
+                            </div>
+                            <!-- CcCons -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.CcCons" class="form-label">
+                                    Charcoil Cons.(Kg)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.CcCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.CcCons" class="text-danger"></span>
+                            </div>
+                            <!-- DispergoCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.CcCost" class="form-label">
+                                    Charcoil Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.CcCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.CcCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalBioCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.TotalBioCost" class="form-label">
+                                    Total Biomass Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="BiomasBoilerReading.TotalBioCost" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.TotalBioCost" class="text-danger"></span>
+                            </div>
+                            <!-- LabourCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.LabourCost" class="form-label">
+                                    LabourCost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.LabourCost" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.LabourCost" class="text-danger"></span>
+                            </div>
+                            <!-- ElectricityCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.ElectricityCost" class="form-label">
+                                    Electricity Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.ElectricityCost" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.ElectricityCost" class="text-danger"></span>
+                            </div>
+                            <!-- MaintenanceCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.MaintenanceCost" class="form-label">
+                                    Maintenance Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.MaintenanceCost" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.MaintenanceCost" class="text-danger"></span>
+                            </div>
+                            <!-- OtherCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.OtherCost" class="form-label">
+                                    Other Cost(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.OtherCost" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.OtherCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.TotalCost" class="form-label">
+                                    Total Cost(Tk)<span class="text-danger">*</span>
+                                </label>
+                                <input asp-for="BiomasBoilerReading.TotalCost" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.TotalCost" class="text-danger"></span>
+                            </div>
+                            <!-- TotalChemicalCost -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.WaterCons" class="form-label">
+                                    Water Consumption(Ltr)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.WaterCons" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.WaterCons" class="text-danger"></span>
+                            </div>
+                            <!-- SteamGeneration -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.SteamGeneration" class="form-label">
+                                    Steam Generation(Kg)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.SteamGeneration" class="form-control" />
+                                <span asp-validation-for="BiomasBoilerReading.SteamGeneration" class="text-danger"></span>
+                            </div>
+                            <!-- CostPerKgSteam -->
+                            <div class="col-lg-3 col-md-4 col-sm-6">
+                                <label asp-for="BiomasBoilerReading.CostPerKgSteam" class="form-label">
+                                    Cost Per Kg Steam(Tk)
+                                </label>
+                                <input asp-for="BiomasBoilerReading.CostPerKgSteam" class="form-control" readonly />
+                                <span asp-validation-for="BiomasBoilerReading.CostPerKgSteam" class="text-danger"></span>
+                            </div>
+
+                        </div>
+
+                        <div class="d-flex justify-content-between mt-4">
+
+                            <a asp-action="BiomasBoilerReadingList"
+                               class="btn btn-outline-secondary">
+                                ← Back
+                            </a>
+
+                            <button type="submit"
+                                    class="btn btn-success px-4">
+                                Update
+                            </button>
+
+                        </div>
+
+                    </form>
+
+                </div>
+
+            </div>
+
+        </div>
+    </div>
+
+</div>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+
+        // =====================================================
+        // CONSUMPTION
+        // =====================================================
+
+        const juteCons = document.getElementById("BiomasBoilerReading_JuteCons");
+        const rhCons = document.getElementById("BiomasBoilerReading_RhCons");
+        const wwCons = document.getElementById("BiomasBoilerReading_WwCons");
+        const cartonCons = document.getElementById("BiomasBoilerReading_CartonCons");
+        const ccCons = document.getElementById("BiomasBoilerReading_CcCons");
+
+
+        // =====================================================
+        // COST
+        // =====================================================
+
+        const juteCost = document.getElementById("BiomasBoilerReading_JuteCost");
+        const rhCost = document.getElementById("BiomasBoilerReading_RhCost");
+        const wwCost = document.getElementById("BiomasBoilerReading_WwCost");
+        const cartonCost = document.getElementById("BiomasBoilerReading_CartonCost");
+        const ccCost = document.getElementById("BiomasBoilerReading_CcCost");
+
+
+        // =====================================================
+        // RATES FROM VIEWMODEL
+        // =====================================================
+
+        const juteRate = parseFloat('@Model.JuteRate') || 0;
+        const riceHuskRate = parseFloat('@Model.RiceHuskRate') || 0;
+        const wasteWoodRate = parseFloat('@Model.WasteWoodRate') || 0;
+        const cartonRate = parseFloat('@Model.CartonRate') || 0;
+        const charcoilRate = parseFloat('@Model.CharcoilRate') || 0;
+
+
+        // =====================================================
+        // SUMMARY
+        // =====================================================
+
+        const totalBioCost =
+            document.getElementById("BiomasBoilerReading_TotalBioCost");
+
+        const labourCost =
+            document.getElementById("BiomasBoilerReading_LabourCost");
+
+        const electricityCost =
+            document.getElementById("BiomasBoilerReading_ElectricityCost");
+
+        const maintenanceCost =
+            document.getElementById("BiomasBoilerReading_MaintenanceCost");
+
+        const otherCost =
+            document.getElementById("BiomasBoilerReading_OtherCost");
+
+        const totalCost =
+            document.getElementById("BiomasBoilerReading_TotalCost");
+
+        const steamGeneration =
+            document.getElementById("BiomasBoilerReading_SteamGeneration");
+
+        const costPerKgSteam =
+            document.getElementById("BiomasBoilerReading_CostPerKgSteam");
+
+
+        // =====================================================
+        // CALCULATE ALL
+        // =====================================================
+
+        function calculateAll() {
+
+            // -------------------------------------------------
+            // Consumption
+            // -------------------------------------------------
+
+            const jute =
+                parseFloat(juteCons?.value) || 0;
+
+            const riceHusk =
+                parseFloat(rhCons?.value) || 0;
+
+            const wasteWood =
+                parseFloat(wwCons?.value) || 0;
+
+            const carton =
+                parseFloat(cartonCons?.value) || 0;
+
+            const charcoil =
+                parseFloat(ccCons?.value) || 0;
+
+
+            // -------------------------------------------------
+            // Consumption × Rate
+            // -------------------------------------------------
+
+            const juteTotal =
+                jute * juteRate;
+
+            const riceHuskTotal =
+                riceHusk * riceHuskRate;
+
+            const wasteWoodTotal =
+                wasteWood * wasteWoodRate;
+
+            const cartonTotal =
+                carton * cartonRate;
+
+            const charcoilTotal =
+                charcoil * charcoilRate;
+
+
+            // -------------------------------------------------
+            // Individual Cost
+            // -------------------------------------------------
+
+            if (juteCost)
+                juteCost.value = juteTotal.toFixed(2);
+
+            if (rhCost)
+                rhCost.value = riceHuskTotal.toFixed(2);
+
+            if (wwCost)
+                wwCost.value = wasteWoodTotal.toFixed(2);
+
+            if (cartonCost)
+                cartonCost.value = cartonTotal.toFixed(2);
+
+            if (ccCost)
+                ccCost.value = charcoilTotal.toFixed(2);
+
+
+            // =================================================
+            // TOTAL BIOMASS COST
+            // =================================================
+
+            const biomassTotal =
+                juteTotal +
+                riceHuskTotal +
+                wasteWoodTotal +
+                cartonTotal +
+                charcoilTotal;
+
+            if (totalBioCost)
+                totalBioCost.value = biomassTotal.toFixed(2);
+
+
+            // =================================================
+            // OTHER COSTS
+            // =================================================
+
+            const labour =
+                parseFloat(labourCost?.value) || 0;
+
+            const electricity =
+                parseFloat(electricityCost?.value) || 0;
+
+            const maintenance =
+                parseFloat(maintenanceCost?.value) || 0;
+
+            const other =
+                parseFloat(otherCost?.value) || 0;
+
+
+            // =================================================
+            // TOTAL COST
+            // =================================================
+
+            const grandTotal =
+                biomassTotal +
+                labour +
+                electricity +
+                maintenance +
+                other;
+
+            if (totalCost)
+                totalCost.value = grandTotal.toFixed(2);
+
+
+            // =================================================
+            // COST PER KG STEAM
+            // =================================================
+
+            const steam =
+                parseFloat(steamGeneration?.value) || 0;
+
+            if (costPerKgSteam) {
+
+                costPerKgSteam.value =
+                    steam > 0
+                        ? (grandTotal / steam).toFixed(2)
+                        : "0.00";
+            }
+        }
+
+
+        // =====================================================
+        // INPUT EVENTS
+        // =====================================================
+
+        [
+            juteCons,
+            rhCons,
+            wwCons,
+            cartonCons,
+            ccCons,
+
+            labourCost,
+            electricityCost,
+            maintenanceCost,
+            otherCost,
+
+            steamGeneration
+
+        ].forEach(element => {
+
+            if (element) {
+                element.addEventListener("input", calculateAll);
+            }
+
+        });
+
+
+        // =====================================================
+        // INITIAL CALCULATION
+        // =====================================================
+
+        calculateAll();
+
+    });
+</script>
+
+
+@section Scripts {
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+}

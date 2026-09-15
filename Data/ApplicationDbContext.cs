@@ -59,6 +59,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDailyFuelConsumption> TblDailyFuelConsumption { get; set; }
         public virtual DbSet<TblBoilerSteamGenerationInfo> TblBoilerSteamGenerationInfo { get; set; }
         public virtual DbSet<TblDailyGasPressureRecord> TblDailyGasPressureRecord { get; set; }
+        public virtual DbSet<TblBiomasBoilerReading> TblBiomasBoilerReading { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1134,6 +1135,43 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });
+
+            //TblBiomasBoilerReading
+            modelBuilder.Entity<TblBiomasBoilerReading>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_BIOMAS_BOILER_READING");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.CartonCons).HasColumnName("CARTON_CONS");
+                entity.Property(e => e.CartonCost).HasColumnName("CARTON_COST");
+                entity.Property(e => e.CcCons).HasColumnName("CC_CONS");
+                entity.Property(e => e.CcCost).HasColumnName("CC_COST");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
+                entity.Property(e => e.CostPerKgSteam).HasColumnName("COST_PER_KG_STEAM");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.ElectricityCost).HasColumnName("ELECTRICITY_COST");
+                entity.Property(e => e.Eqid).HasColumnName("EQID");
+                entity.Property(e => e.JuteCons).HasColumnName("JUTE_CONS");
+                entity.Property(e => e.JuteCost).HasColumnName("JUTE_COST");
+                entity.Property(e => e.LabourCost).HasColumnName("LABOUR_COST");
+                entity.Property(e => e.MaintenanceCost).HasColumnName("MAINTENANCE_COST");
+                entity.Property(e => e.OtherCost).HasColumnName("OTHER_COST");
+                entity.Property(e => e.RhCons).HasColumnName("RH_CONS");
+                entity.Property(e => e.RhCost).HasColumnName("RH_COST");
+                entity.Property(e => e.SteamGeneration).HasColumnName("STEAM_GENERATION");
+                entity.Property(e => e.TotalBioCost).HasColumnName("TOTAL_BIO_COST");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.Property(e => e.WaterCons).HasColumnName("WATER_CONS");
+                entity.Property(e => e.WwCons).HasColumnName("WW_CONS");
+                entity.Property(e => e.WwCost).HasColumnName("WW_COST");
+                entity.HasOne(d => d.Eq).WithMany(p => p.TblBiomasBoilerReadings).HasForeignKey(d => d.Eqid)
+                    .HasConstraintName("FK_TBL_BIOMAS_BOILER_READING_TBL_EQUIPMENT_DETAILS");
+            });
+
             OnModelCreatingPartial(modelBuilder);
         }
 

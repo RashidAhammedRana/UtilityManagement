@@ -49,6 +49,7 @@ public partial class TblBiomasBoilerReading
     public double? WaterCons { get; set; }
 
     public double? SteamGeneration { get; set; }
+    public double? RunningHour { get; set; }
 
     public double? CostPerKgSteam { get; set; }
 

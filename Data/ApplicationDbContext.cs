@@ -1160,6 +1160,7 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.RhCons).HasColumnName("RH_CONS");
                 entity.Property(e => e.RhCost).HasColumnName("RH_COST");
                 entity.Property(e => e.SteamGeneration).HasColumnName("STEAM_GENERATION");
+                entity.Property(e => e.RunningHour).HasColumnName("RUNNING_HOUR");
                 entity.Property(e => e.TotalBioCost).HasColumnName("TOTAL_BIO_COST");
                 entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");

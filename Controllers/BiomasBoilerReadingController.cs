@@ -587,6 +587,7 @@ public class BiomasBoilerReadingController : Controller
             // Production / Consumption
             existingReading.WaterCons = input.WaterCons;
             existingReading.SteamGeneration = input.SteamGeneration;
+            existingReading.RunningHour = input.RunningHour;
             existingReading.CostPerKgSteam = input.CostPerKgSteam;
 
             // Audit Information

@@ -49,8 +49,7 @@
     <link href="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.css"
           rel="stylesheet" />
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js">
-    </script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
     <style>
@@ -59,14 +58,22 @@
                    GLOBAL
                 ====================================================== */
 
+        *,
+        *::before,
+        *::after {
+            box-sizing: border-box;
+        }
+
+
         html,
         body {
+            width: 100%;
+            min-width: 0;
             margin: 0;
             padding: 0;
-            width: 100%;
-            min-height: 100%;
             overflow-x: hidden;
         }
+
 
         body {
             background: #f4f6f9;
@@ -74,7 +81,7 @@
 
 
         /* =====================================================
-                   SIDEBAR WRAPPER
+                   SIDEBAR
                 ====================================================== */
 
         .sidebar-wrapper {
@@ -91,10 +98,6 @@
         }
 
 
-            /* =====================================================
-                   SIDEBAR HIDDEN
-                ====================================================== */
-
             .sidebar-wrapper.hidden {
                 transform: translateX(-250px) !important;
             }
@@ -105,9 +108,9 @@
                 ====================================================== */
 
         .main-content {
-            margin-left: 250px;
             width: calc(100% - 250px);
             min-height: 100vh;
+            margin-left: 250px;
             padding: 20px;
             box-sizing: border-box;
             transition: margin-left 0.3s ease, width 0.3s ease;
@@ -115,15 +118,13 @@
 
 
             .main-content.full {
-                margin-left: 0 !important;
                 width: 100% !important;
+                margin-left: 0 !important;
             }
 
 
         /* =====================================================
                    TOGGLE BUTTON
-
-                   Small + Left aligned
                 ====================================================== */
 
         .toggle-btn {
@@ -132,8 +133,8 @@
             left: 0;
             width: 30px;
             height: 30px;
-            padding: 0;
             margin: 0;
+            padding: 0;
             display: flex;
             justify-content: center;
             align-items: center;
@@ -179,79 +180,62 @@
 
 
             input[readonly]:focus {
-                box-shadow: none !important;
                 outline: none !important;
+                box-shadow: none !important;
             }
 
 
         /* =====================================================
                    MOBILE
-
-                   Portrait + Landscape
-
-                   Sidebar ALWAYS hidden initially.
+                   Portrait
                 ====================================================== */
 
         @@media screen and (max-width: 768px), screen and (pointer: coarse) and (hover: none) {
-            /* =================================================
-                       SIDEBAR
-                    ================================================== */
 
             .sidebar-wrapper {
                 width: 250px;
                 height: 100vh;
                 height: 100dvh;
-                position: fixed;
                 top: 0;
                 left: 0;
                 transform: translateX(-250px) !important;
                 z-index: 1050;
-                transition: transform 0.3s ease;
             }
-                /* =================================================
-                       MOBILE SIDEBAR OPEN
-                    ================================================== */
+
 
                 .sidebar-wrapper.mobile-open {
                     transform: translateX(0) !important;
                 }
-            /* =================================================
-                       MAIN CONTENT
+            /* -----------------------------------------------
+                       MOBILE MAIN CONTENT
 
-                       Top padding বাড়ানো হয়েছে যাতে
-                       toggle button input-এর উপর না পড়ে।
-                    ================================================== */
+                       Very small top gap
+                    ------------------------------------------------ */
 
             .main-content {
-                margin-left: 0 !important;
                 width: 100% !important;
                 min-height: 100vh;
-                /*
-                           Toggle button থেকে content দূরে থাকবে
-                        */
-                padding: 45px 15px 15px 15px !important;
+                margin-left: 0 !important;
+                padding: 15px 10px 10px 10px !important;
                 box-sizing: border-box;
                 transition: none;
             }
 
 
                 .main-content.full {
-                    margin-left: 0 !important;
                     width: 100% !important;
+                    margin-left: 0 !important;
                 }
-            /* =================================================
-                       TOGGLE BUTTON
-                    ================================================== */
+            /* -----------------------------------------------
+                       TOGGLE
+                    ------------------------------------------------ */
 
             .toggle-btn {
-                top: 3px;
+                top: 2px;
                 left: 0;
-                width: 28px;
-                height: 28px;
-                padding: 0;
-                margin: 0;
-                font-size: 18px;
-                z-index: 11000;
+                width: 27px;
+                height: 27px;
+                font-size: 17px;
             }
         }
 
@@ -274,22 +258,33 @@
 
 
             .main-content {
-                padding: 43px 12px 12px 12px !important;
+                padding: 13px 7px 7px 7px !important;
             }
 
 
             .toggle-btn {
-                top: 2px;
+                top: 1px;
                 left: 0;
-                width: 26px;
-                height: 26px;
-                font-size: 17px;
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
             }
         }
 
 
         /* =====================================================
                    MOBILE LANDSCAPE
+
+                   IMPORTANT:
+                   Toggle button height ≈ 25px
+
+                   Main content starts with ONLY 10px
+                   top padding.
+
+                   Delete page will therefore appear
+                   very close to toggle button.
+
+                   No negative top required.
                 ====================================================== */
 
         @@media screen and (max-width: 768px) and (orientation: landscape) {
@@ -301,12 +296,8 @@
                 position: fixed;
                 top: 0;
                 left: 0;
-                /*
-                           Landscape-এও DEFAULT HIDDEN
-                        */
                 transform: translateX(-240px) !important;
                 z-index: 1050;
-                transition: transform 0.3s ease;
             }
 
 
@@ -314,35 +305,49 @@
                     transform: translateX(0) !important;
                 }
             /* =================================================
-                       LANDSCAPE MAIN CONTENT
+                       MAIN CONTENT
+
+                       BEFORE:
+                       padding-top: 22px
+
+                       NOW:
+                       padding-top: 10px
+
+                       This is the main gap reduction.
                     ================================================== */
 
             .main-content {
-                margin-left: 0 !important;
                 width: 100% !important;
                 min-height: 100vh;
-                /*
-                           Button overlap prevent
-                        */
-                padding: 38px 12px 12px 12px !important;
+                margin-left: 0 !important;
+                padding: 10px 8px 4px 8px !important;
                 box-sizing: border-box;
+                transition: none;
             }
+
+
+                .main-content.full {
+                    width: 100% !important;
+                    margin-left: 0 !important;
+                }
             /* =================================================
-                       LANDSCAPE TOGGLE
+                       TOGGLE BUTTON
                     ================================================== */
 
             .toggle-btn {
-                top: 2px;
+                top: 0;
                 left: 0;
-                width: 27px;
-                height: 27px;
-                font-size: 17px;
+                width: 25px;
+                height: 25px;
+                font-size: 16px;
             }
         }
 
 
         /* =====================================================
-                   VERY SHORT MOBILE LANDSCAPE
+                   SHORT LANDSCAPE
+
+                   max-height: 380px
                 ====================================================== */
 
         @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 380px) {
@@ -361,16 +366,68 @@
 
 
             .main-content {
-                padding: 34px 10px 10px 10px !important;
+                width: 100% !important;
+                min-height: 100vh;
+                margin-left: 0 !important;
+                /*
+                           ONLY 10px TOP SPACE
+                        */
+
+                padding: 10px 6px 3px 6px !important;
+                box-sizing: border-box;
             }
 
 
             .toggle-btn {
-                top: 1px;
+                top: 0;
                 left: 0;
-                width: 25px;
-                height: 25px;
-                font-size: 16px;
+                width: 24px;
+                height: 24px;
+                font-size: 15px;
+            }
+        }
+
+
+        /* =====================================================
+                   EXTREMELY SHORT LANDSCAPE
+
+                   max-height: 320px
+                ====================================================== */
+
+        @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 320px) {
+
+            .sidebar-wrapper {
+                width: 230px;
+                height: 100vh;
+                height: 100dvh;
+                transform: translateX(-230px) !important;
+            }
+
+
+                .sidebar-wrapper.mobile-open {
+                    transform: translateX(0) !important;
+                }
+
+
+            .main-content {
+                width: 100% !important;
+                min-height: 100vh;
+                margin-left: 0 !important;
+                /*
+                           STILL 10px
+                        */
+
+                padding: 10px 5px 2px 5px !important;
+                box-sizing: border-box;
+            }
+
+
+            .toggle-btn {
+                top: 0;
+                left: 0;
+                width: 23px;
+                height: 23px;
+                font-size: 14px;
             }
         }
 
@@ -397,8 +454,26 @@
                 touch-action: manipulation;
             }
 
+
             .main-content {
                 box-sizing: border-box;
+            }
+        }
+
+
+        /* =====================================================
+                   MOBILE BODY SAFETY
+                ====================================================== */
+
+        @@media screen and (max-width: 768px) {
+
+            html,
+            body {
+                width: 100%;
+                max-width: 100%;
+                margin: 0 !important;
+                padding: 0 !important;
+                overflow-x: hidden !important;
             }
         }
 
@@ -411,10 +486,7 @@
 
 
     <!-- =====================================================
-         SIDEBAR TOGGLE BUTTON
-
-         Small 3-line icon
-         Left aligned
+         TOGGLE BUTTON
     ====================================================== -->
 
     <button id="sidebarToggle"
@@ -629,38 +701,19 @@
 
                     if (isMobileDevice()) {
 
-                        /*
-                           MOBILE
-
-                           Portrait:
-                           Hidden
-
-                           Landscape:
-                           Hidden
-
-                           Touch device:
-                           Hidden
-                        */
-
                         closeMobileSidebar();
 
                     }
                     else {
 
-                        /*
-                           DESKTOP
-
-                           Sidebar visible
-                        */
-
                         setDesktopState();
-                    }
 
+                    }
                 }
 
 
                 /* =================================================
-                   TOGGLE BUTTON
+                   TOGGLE
                 ================================================== */
 
                 toggleButton.addEventListener(
@@ -668,10 +721,6 @@
                     function () {
 
                         if (isMobileDevice()) {
-
-                            /*
-                               MOBILE
-                            */
 
                             const isOpen =
                                 sidebar.classList.contains(
@@ -693,10 +742,6 @@
                         }
                         else {
 
-                            /*
-                               DESKTOP
-                            */
-
                             const isHidden =
                                 sidebar.classList.contains(
                                     "hidden"
@@ -709,12 +754,14 @@
                                     "hidden"
                                 );
 
+
                                 if (mainContent) {
 
                                     mainContent.classList.remove(
                                         "full"
                                     );
                                 }
+
 
                                 toggleButton.setAttribute(
                                     "aria-expanded",
@@ -728,6 +775,7 @@
                                     "hidden"
                                 );
 
+
                                 if (mainContent) {
 
                                     mainContent.classList.add(
@@ -735,21 +783,19 @@
                                     );
                                 }
 
+
                                 toggleButton.setAttribute(
                                     "aria-expanded",
                                     "false"
                                 );
-
                             }
-
                         }
-
                     }
                 );
 
 
                 /* =================================================
-                   RESIZE HANDLING
+                   RESIZE
                 ================================================== */
 
                 let previousMobileState =
@@ -776,10 +822,6 @@
                                         isMobileDevice();
 
 
-                                    /*
-                                       DESKTOP -> MOBILE
-                                    */
-
                                     if (
                                         currentMobileState !==
                                         previousMobileState
@@ -789,24 +831,13 @@
                                             currentMobileState
                                         ) {
 
-                                            /*
-                                               Enter mobile
-
-                                               ALWAYS HIDDEN
-                                            */
-
                                             closeMobileSidebar();
 
                                         }
                                         else {
 
-                                            /*
-                                               Enter desktop
-
-                                               ALWAYS VISIBLE
-                                            */
-
                                             setDesktopState();
+
                                         }
 
 
@@ -814,29 +845,17 @@
                                             currentMobileState;
 
                                     }
-                                    else {
+                                    else if (
+                                        currentMobileState
+                                    ) {
 
-                                        /*
-                                           Orientation change
-                                           within mobile
-
-                                           Sidebar stays closed.
-                                        */
-
-                                        if (
-                                            currentMobileState
-                                        ) {
-
-                                            closeMobileSidebar();
-
-                                        }
+                                        closeMobileSidebar();
 
                                     }
 
                                 },
                                 100
                             );
-
                     }
                 );
 
@@ -861,7 +880,7 @@
                                 }
 
                             },
-                            150
+                            100
                         );
 
                     }
@@ -869,7 +888,7 @@
 
 
                 /* =================================================
-                   INITIALIZE ON PAGE LOAD
+                   INITIALIZE ON LOAD
                 ================================================== */
 
                 initializeSidebar();
@@ -914,7 +933,6 @@
                     successMessage,
                     "Success"
                 );
-
             }
 
 
@@ -926,7 +944,6 @@
                     errorMessage,
                     "Error"
                 );
-
             }
 
         });

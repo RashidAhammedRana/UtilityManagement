@@ -34,6 +34,7 @@
         width: 100%;
         max-width: 100%;
         padding: 25px 20px 40px 20px;
+        box-sizing: border-box;
     }
 
 
@@ -62,8 +63,11 @@
 
 
             .reb-create-card .card-header h5 {
+                margin: 0;
+                padding: 0;
                 font-size: 20px;
                 font-weight: 600;
+                line-height: 1.3;
             }
 
 
@@ -76,23 +80,99 @@
            FORM
         ========================================================== */
 
-    .reb-create-form .form-label {
-        font-weight: 500;
-        margin-bottom: 6px;
-        font-size: 14px;
-    }
-
-
-    .reb-create-form .form-control,
-    .reb-create-form .form-select {
+    .reb-create-form {
         width: 100%;
-        min-height: 42px;
-        font-size: 14px;
+        margin: 0;
+        padding: 0;
     }
 
 
-    .reb-create-form .text-danger {
-        font-size: 12px;
+        .reb-create-form .row {
+            width: 100%;
+        }
+
+
+        /* =========================================================
+           LABEL
+           REQUIRED * STAYS BESIDE TEXT
+        ========================================================== */
+
+        .reb-create-form .form-label {
+            display: inline-flex !important;
+            align-items: baseline !important;
+            width: auto !important;
+            max-width: 100%;
+            margin: 0 0 6px 0 !important;
+            padding: 0;
+            color: #343a40;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
+        }
+
+
+            /* =========================================================
+           REQUIRED STAR
+           TEXT + * SAME LINE
+        ========================================================== */
+
+            .reb-create-form .form-label .required,
+            .reb-create-form .form-label .required-star,
+            .reb-create-form .form-label .text-danger,
+            .reb-create-form .form-label span {
+                display: inline !important;
+                width: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                white-space: nowrap !important;
+                word-break: normal !important;
+                overflow-wrap: normal !important;
+                vertical-align: baseline;
+            }
+
+
+        /* =========================================================
+           INPUT / SELECT
+        ========================================================== */
+
+        .reb-create-form .form-control,
+        .reb-create-form .form-select {
+            width: 100%;
+            min-height: 42px;
+            height: auto;
+            font-size: 14px;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+
+            .reb-create-form .form-control:focus,
+            .reb-create-form .form-select:focus {
+                border-color: #198754;
+                box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+            }
+
+
+        /* =========================================================
+           VALIDATION
+        ========================================================== */
+
+        .reb-create-form .text-danger {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+
+    .validation-summary-errors {
+        font-size: 13px;
+        margin-bottom: 15px;
     }
 
 
@@ -107,11 +187,15 @@
         align-items: center;
         gap: 15px;
         margin-top: 25px;
+        padding: 0;
     }
 
 
         .reb-form-buttons .btn {
             min-height: 42px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
         }
 
 
@@ -265,7 +349,7 @@
 
     /* =========================================================
            MOBILE
-           767px and below
+           767px AND BELOW
         ========================================================== */
 
     @@media screen and (max-width: 767px) {
@@ -284,6 +368,7 @@
 
 
         .reb-create-card {
+            width: 100%;
             border-radius: 12px;
         }
 
@@ -305,22 +390,42 @@
         /* =====================================================
                FORM GRID
             ====================================================== */
-        /*
-             * Bootstrap col-md-6 automatically becomes
-             * full width on mobile.
-             */
 
         .reb-create-form .row {
             --bs-gutter-x: 0.8rem;
             --bs-gutter-y: 0.8rem;
         }
-
+        /* =====================================================
+               LABEL
+            ====================================================== */
 
         .reb-create-form .form-label {
+            display: inline-flex !important;
+            align-items: baseline !important;
+            width: auto !important;
             font-size: 13px;
             line-height: 1.35;
+            margin-bottom: 6px !important;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
         }
 
+
+            .reb-create-form .form-label .required,
+            .reb-create-form .form-label .required-star,
+            .reb-create-form .form-label .text-danger,
+            .reb-create-form .form-label span {
+                display: inline !important;
+                white-space: nowrap !important;
+                width: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        /* =====================================================
+               INPUT
+            ====================================================== */
 
         .reb-create-form .form-control,
         .reb-create-form .form-select {
@@ -354,7 +459,7 @@
 
     /* =========================================================
            SMALL MOBILE
-           400px and below
+           400px AND BELOW
         ========================================================== */
 
     @@media screen and (max-width: 400px) {
@@ -388,13 +493,31 @@
             --bs-gutter-x: 0.65rem;
             --bs-gutter-y: 0.7rem;
         }
-
+        /* LABEL */
 
         .reb-create-form .form-label {
+            display: inline-flex !important;
+            align-items: baseline !important;
             font-size: 12px;
-            margin-bottom: 4px;
+            margin-bottom: 4px !important;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
         }
 
+
+            .reb-create-form .form-label .required,
+            .reb-create-form .form-label .required-star,
+            .reb-create-form .form-label .text-danger,
+            .reb-create-form .form-label span {
+                display: inline !important;
+                white-space: nowrap !important;
+                width: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        /* INPUT */
 
         .reb-create-form .form-control,
         .reb-create-form .form-select {
@@ -407,7 +530,7 @@
         .reb-create-form .text-danger {
             font-size: 10px;
         }
-
+        /* BUTTON */
 
         .reb-form-buttons {
             margin-top: 18px;
@@ -425,9 +548,7 @@
 
     /* =========================================================
            MOBILE LANDSCAPE
-           Example:
-           812x375
-           896x414
+           SAME COMPACT STYLE
         ========================================================== */
 
     @@media screen and (max-width: 767px) and (orientation: landscape) {
@@ -461,22 +582,45 @@
             .reb-create-card .card-body {
                 padding: 13px 14px !important;
             }
-        /*
-             * IMPORTANT:
-             * Landscape mobile still keeps 2 columns.
-             */
+        /* =====================================================
+               LANDSCAPE GRID
+            ====================================================== */
 
         .reb-create-form .row {
             --bs-gutter-x: 0.65rem;
             --bs-gutter-y: 0.55rem;
         }
-
+        /* =====================================================
+               LABEL
+            ====================================================== */
 
         .reb-create-form .form-label {
+            display: inline-flex !important;
+            align-items: baseline !important;
+            width: auto !important;
             font-size: 11px;
-            margin-bottom: 3px;
+            margin-bottom: 3px !important;
+            line-height: 1.2;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
         }
 
+
+            .reb-create-form .form-label .required,
+            .reb-create-form .form-label .required-star,
+            .reb-create-form .form-label .text-danger,
+            .reb-create-form .form-label span {
+                display: inline !important;
+                white-space: nowrap !important;
+                width: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        /* =====================================================
+               INPUT
+            ====================================================== */
 
         .reb-create-form .form-control,
         .reb-create-form .form-select {
@@ -490,7 +634,9 @@
         .reb-create-form .text-danger {
             font-size: 9px;
         }
-
+        /* =====================================================
+               BUTTONS
+            ====================================================== */
 
         .reb-form-buttons {
             margin-top: 12px;
@@ -508,9 +654,7 @@
 
     /* =========================================================
            VERY SHORT LANDSCAPE
-           Example:
-           667x320
-           740x320
+           max-height: 380px
         ========================================================== */
 
     @@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
@@ -539,18 +683,38 @@
             --bs-gutter-x: 0.5rem;
             --bs-gutter-y: 0.4rem;
         }
-
+        /* LABEL */
 
         .reb-create-form .form-label {
+            display: inline-flex !important;
+            align-items: baseline !important;
+            width: auto !important;
             font-size: 10px;
-            margin-bottom: 2px;
+            margin-bottom: 2px !important;
+            line-height: 1.1;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
         }
 
 
+            .reb-create-form .form-label .required,
+            .reb-create-form .form-label .required-star,
+            .reb-create-form .form-label .text-danger,
+            .reb-create-form .form-label span {
+                display: inline !important;
+                white-space: nowrap !important;
+                width: auto !important;
+                max-width: none !important;
+                margin: 0 !important;
+                padding: 0 !important;
+            }
+        /* INPUT */
+
         .reb-create-form .form-control,
         .reb-create-form .form-select {
-            min-height: 30px;
             height: 30px;
+            min-height: 30px;
             font-size: 11px;
             padding: 3px 7px;
         }
@@ -559,7 +723,7 @@
         .reb-create-form .text-danger {
             font-size: 8px;
         }
-
+        /* BUTTON */
 
         .reb-form-buttons {
             margin-top: 8px;
@@ -573,7 +737,78 @@
             }
     }
 
+
+    /* =========================================================
+           TOUCH DEVICE
+        ========================================================== */
+
+    @@media screen and (pointer: coarse) and (hover: none) {
+
+        .reb-create-form .form-control,
+        .reb-create-form .form-select {
+            -webkit-appearance: none;
+        }
+
+
+        .reb-form-buttons .btn {
+            touch-action: manipulation;
+        }
+    }
+
+
+    /* =========================================================
+           SAFE AREA
+        ========================================================== */
+
+    @@media screen and (max-width: 768px) {
+
+        .reb-create-page {
+            padding-top: max(12px, env(safe-area-inset-top));
+        }
+    }
+
+
+    /* =========================================================
+           PREVENT HORIZONTAL OVERFLOW
+        ========================================================== */
+
+    .reb-create-page,
+    .reb-create-wrapper,
+    .reb-create-card,
+    .reb-create-card .card-body,
+    .reb-create-form {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+           FINAL REQUIRED STAR FIX
+           MUST BE LAST
+        ========================================================== */
+
+    label.form-label {
+        white-space: nowrap !important;
+    }
+
+
+        label.form-label > span,
+        label.form-label > .text-danger,
+        label.form-label > .required,
+        label.form-label > .required-star {
+            display: inline !important;
+            width: auto !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            white-space: nowrap !important;
+            vertical-align: baseline;
+        }
+
 </style>
+
+
+
 
 
 <div class="reb-create-page">

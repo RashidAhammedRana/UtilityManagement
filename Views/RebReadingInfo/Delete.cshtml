@@ -16,10 +16,23 @@
         box-sizing: border-box;
     }
 
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
+
     .reb-delete-page,
     .reb-delete-wrapper,
-    .reb-delete-card {
+    .reb-delete-card,
+    .reb-delete-card .card-body,
+    .reb-delete-card form,
+    .reb-delete-actions {
         box-sizing: border-box;
+        max-width: 100%;
     }
 
 
@@ -80,6 +93,7 @@
         ========================================================== */
 
         .reb-delete-card .card-body {
+            width: 100%;
             margin: 0 !important;
             padding: 20px !important;
         }
@@ -120,6 +134,7 @@
 
     .reb-delete-card form {
         width: 100%;
+        max-width: 100%;
         margin: 0 !important;
         padding: 0 !important;
     }
@@ -127,13 +142,16 @@
 
     /* =========================================================
            BUTTON AREA
+           ALWAYS LEFT / RIGHT
         ========================================================== */
 
     .reb-delete-actions {
         width: 100%;
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        max-width: 100%;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
         gap: 10px;
         margin: 14px 0 0 0;
         padding: 0;
@@ -157,252 +175,266 @@
             font-size: 13px;
             font-weight: 500;
             line-height: 1;
+            flex: 0 0 auto;
         }
 
-    .reb-delete-no-btn,
+    .reb-delete-no-btn {
+        min-width: 90px;
+        margin-right: auto !important;
+    }
+
     .reb-delete-yes-btn {
         min-width: 90px;
+        margin-left: auto !important;
+    }
+
+
+    /* =========================================================
+           LARGE DESKTOP
+           1600px+
+        ========================================================== */
+
+    @@media screen and (min-width: 1600px) {
+
+        .reb-delete-page {
+            padding: 35px 30px 50px 30px;
+        }
+
+        .reb-delete-wrapper {
+            max-width: 1000px;
+        }
+
+        .reb-delete-card {
+            max-width: 700px;
+        }
+
+            .reb-delete-card .card-header {
+                padding: 16px 22px;
+            }
+
+                .reb-delete-card .card-header h5 {
+                    font-size: 20px;
+                }
+
+            .reb-delete-card .card-body {
+                padding: 30px !important;
+            }
+
+        .reb-delete-warning .warning-icon {
+            font-size: 2.8rem;
+        }
+
+        .reb-delete-warning h5 {
+            font-size: 18px;
+        }
+
+        .reb-delete-actions .btn {
+            min-height: 42px;
+            min-width: 100px;
+            font-size: 14px;
+        }
+
+        .reb-delete-no-btn,
+        .reb-delete-yes-btn {
+            min-width: 100px;
+        }
+    }
+
+
+    /* =========================================================
+           LAPTOP
+           1200px - 1599px
+        ========================================================== */
+
+    @@media screen and (min-width: 1200px) and (max-width: 1599px) {
+
+        .reb-delete-page {
+            padding: 25px 25px 40px 25px;
+        }
+
+        .reb-delete-wrapper {
+            max-width: 950px;
+        }
+
+        .reb-delete-card {
+            max-width: 680px;
+        }
+
+            .reb-delete-card .card-body {
+                padding: 28px !important;
+            }
+    }
+
+
+    /* =========================================================
+           SMALL LAPTOP / TABLET LANDSCAPE
+           992px - 1199px
+        ========================================================== */
+
+    @@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+        .reb-delete-page {
+            padding: 20px 18px 35px 18px;
+        }
+
+        .reb-delete-wrapper {
+            max-width: 900px;
+        }
+
+        .reb-delete-card {
+            max-width: 650px;
+        }
+
+            .reb-delete-card .card-body {
+                padding: 25px !important;
+            }
+
+        .reb-delete-warning .warning-icon {
+            font-size: 2.3rem;
+        }
+
+        .reb-delete-warning h5 {
+            font-size: 15px;
+        }
+    }
+
+
+    /* =========================================================
+           TABLET
+           768px - 991px
+        ========================================================== */
+
+    @@media screen and (min-width: 768px) and (max-width: 991px) {
+
+        .reb-delete-page {
+            padding: 18px 15px 30px 15px;
+        }
+
+        .reb-delete-wrapper {
+            max-width: 750px;
+        }
+
+        .reb-delete-card {
+            max-width: 600px;
+        }
+
+            .reb-delete-card .card-header {
+                padding: 12px 16px;
+            }
+
+                .reb-delete-card .card-header h5 {
+                    font-size: 17px;
+                }
+
+            .reb-delete-card .card-body {
+                padding: 22px !important;
+            }
+
+        .reb-delete-warning .warning-icon {
+            font-size: 2.1rem;
+        }
+
+        .reb-delete-warning h5 {
+            font-size: 14px;
+        }
+
+        .reb-delete-actions {
+            gap: 10px;
+        }
+
+            .reb-delete-actions .btn {
+                min-height: 38px;
+                font-size: 13px;
+            }
     }
 
 
     /* =========================================================
            MOBILE PORTRAIT
+           767px AND BELOW
 
-           TOP GAP = 25px
-           Hide/Show button থেকে Delete form/card
-           25px নিচে থাকবে।
+           IMPORTANT:
+           NO / YES ALWAYS LEFT + RIGHT
+           NEVER COLUMN
         ========================================================== */
 
-    @@media screen and (max-width: 767px) {
+    @@media screen and (max-width: 767px) and (orientation: portrait) {
 
         .reb-delete-page {
             width: 100%;
             max-width: 100%;
             margin: 0;
-            padding: 25px 7px 15px 7px;
+            padding: 20px 18px 25px 18px !important;
         }
 
         .reb-delete-wrapper {
             width: 100%;
             max-width: 100%;
-            margin: 0;
+            margin: 0 auto;
             padding: 0;
         }
 
         .reb-delete-card {
             width: 100%;
             max-width: 100%;
-            margin: 0;
-            border-radius: 8px;
-        }
-
-            .reb-delete-card .card-header {
-                padding: 8px 11px;
-            }
-
-                .reb-delete-card .card-header h5 {
-                    font-size: 14px;
-                }
-
-            .reb-delete-card .card-body {
-                padding: 11px 9px !important;
-            }
-
-        .reb-delete-warning {
-            padding: 4px 2px;
-        }
-
-            .reb-delete-warning .warning-icon {
-                font-size: 1.9rem;
-            }
-
-            .reb-delete-warning h5 {
-                margin-top: 6px;
-                font-size: 12px;
-            }
-
-        .reb-delete-actions {
-            flex-direction: column;
-            align-items: stretch;
-            gap: 6px;
-            margin-top: 10px;
-        }
-
-            .reb-delete-actions .btn {
-                width: 100%;
-                min-width: 0;
-                min-height: 35px;
-                padding: 6px 8px;
-                font-size: 11px;
-            }
-    }
-
-
-    /* =========================================================
-           SMALL MOBILE
-        ========================================================== */
-
-    @@media screen and (max-width: 400px) {
-
-        .reb-delete-page {
-            padding: 25px 5px 15px 5px;
-        }
-
-        .reb-delete-card {
-            border-radius: 7px;
-        }
-
-            .reb-delete-card .card-header {
-                padding: 7px 9px;
-            }
-
-                .reb-delete-card .card-header h5 {
-                    font-size: 13px;
-                }
-
-            .reb-delete-card .card-body {
-                padding: 9px 7px !important;
-            }
-
-        .reb-delete-warning {
-            padding: 3px 2px;
-        }
-
-            .reb-delete-warning .warning-icon {
-                font-size: 1.7rem;
-            }
-
-            .reb-delete-warning h5 {
-                margin-top: 5px;
-                font-size: 11px;
-            }
-
-        .reb-delete-actions {
-            margin-top: 8px;
-            gap: 5px;
-        }
-
-            .reb-delete-actions .btn {
-                min-height: 33px;
-                font-size: 10px;
-            }
-    }
-
-
-    /* =========================================================
-           MOBILE LANDSCAPE
-
-           এখানে top padding 0 থাকবে।
-           Landscape-এ main layout-এর 10px/22px space
-           ব্যবহার হবে।
-
-           NO negative top
-           NO translate
-           NO artificial margin
-        ========================================================== */
-
-    @@media screen and (max-width: 768px) and (orientation: landscape) {
-
-        .reb-delete-page {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            position: static !important;
-            top: auto !important;
-            transform: none !important;
-        }
-
-        .reb-delete-wrapper {
-            width: 100% !important;
-            max-width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-        }
-
-        .reb-delete-card {
-            width: 100% !important;
-            max-width: 400px !important;
-            margin: 0 auto !important;
-            padding: 0 !important;
-            border-radius: 4px !important;
-            min-height: 0 !important;
+            margin: 0 auto;
+            border-radius: 9px;
         }
             /* -----------------------------------------------------
                HEADER
             ------------------------------------------------------ */
 
             .reb-delete-card .card-header {
-                margin: 0 !important;
-                padding: 2px 6px !important;
-                height: 17px !important;
-                min-height: 17px !important;
+                padding: 10px 13px;
             }
 
                 .reb-delete-card .card-header h5 {
-                    margin: 0 !important;
-                    padding: 0 !important;
-                    font-size: 8px !important;
-                    line-height: 1 !important;
+                    font-size: 15px;
+                    line-height: 1.25;
                 }
             /* -----------------------------------------------------
                BODY
             ------------------------------------------------------ */
 
             .reb-delete-card .card-body {
-                margin: 0 !important;
-                padding: 2px 6px !important;
-                min-height: 0 !important;
+                width: 100%;
+                max-width: 100%;
+                padding: 18px 16px !important;
             }
         /* -----------------------------------------------------
                WARNING
             ------------------------------------------------------ */
 
         .reb-delete-warning {
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            text-align: center !important;
-            line-height: 1 !important;
+            width: 100%;
+            padding: 5px 2px;
         }
 
             .reb-delete-warning .warning-icon {
-                display: block !important;
-                width: fit-content !important;
-                margin: 0 auto !important;
-                padding: 0 !important;
-                font-size: 0.7rem !important;
-                line-height: 1 !important;
+                font-size: 2rem;
             }
 
             .reb-delete-warning h5 {
-                margin: 1px 0 0 0 !important;
-                padding: 0 !important;
-                font-size: 6px !important;
-                line-height: 1 !important;
+                margin-top: 7px;
+                font-size: 13px;
+                line-height: 1.3;
             }
         /* -----------------------------------------------------
-               FORM
-            ------------------------------------------------------ */
-
-        .reb-delete-card form {
-            width: 100% !important;
-            margin: 0 !important;
-            padding: 0 !important;
-            min-height: 0 !important;
-        }
-        /* -----------------------------------------------------
                ACTIONS
+
+               LEFT = NO
+               RIGHT = YES
             ------------------------------------------------------ */
 
         .reb-delete-actions {
             width: 100% !important;
+            max-width: 100% !important;
             display: flex !important;
             flex-direction: row !important;
             justify-content: space-between !important;
             align-items: center !important;
-            gap: 2px !important;
-            margin: 1px 0 0 0 !important;
+            gap: 10px !important;
+            margin: 14px 0 0 0 !important;
             padding: 0 !important;
         }
             /* -----------------------------------------------------
@@ -411,33 +443,232 @@
 
             .reb-delete-actions .btn {
                 display: inline-flex !important;
+                flex: 0 0 auto !important;
                 justify-content: center !important;
                 align-items: center !important;
-                text-align: center !important;
-                width: 48px !important;
-                min-width: 48px !important;
-                max-width: 48px !important;
-                height: 17px !important;
-                min-height: 17px !important;
-                max-height: 17px !important;
+                width: auto !important;
+                min-width: 90px !important;
+                max-width: 48% !important;
+                min-height: 38px !important;
+                height: auto !important;
+                margin: 0 !important;
+                padding: 7px 15px !important;
+                font-size: 12px !important;
+                line-height: 1 !important;
+                border-radius: 5px !important;
+            }
+        /* NO stays LEFT */
+
+        .reb-delete-no-btn {
+            margin-right: auto !important;
+            margin-left: 0 !important;
+            order: 1 !important;
+        }
+        /* YES stays RIGHT */
+
+        .reb-delete-yes-btn {
+            margin-left: auto !important;
+            margin-right: 0 !important;
+            order: 2 !important;
+        }
+    }
+
+
+    /* =========================================================
+           SMALL MOBILE PORTRAIT
+           400px AND BELOW
+
+           STILL LEFT / RIGHT
+        ========================================================== */
+
+    @@media screen and (max-width: 400px) and (orientation: portrait) {
+
+        .reb-delete-page {
+            width: 100%;
+            max-width: 100%;
+            padding: 16px 14px 20px 14px !important;
+        }
+
+        .reb-delete-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        .reb-delete-card {
+            width: 100%;
+            max-width: 100%;
+            border-radius: 8px;
+        }
+            /* HEADER */
+
+            .reb-delete-card .card-header {
+                padding: 8px 11px;
+            }
+
+                .reb-delete-card .card-header h5 {
+                    font-size: 14px;
+                }
+            /* BODY */
+
+            .reb-delete-card .card-body {
+                padding: 15px 13px !important;
+            }
+        /* WARNING */
+
+        .reb-delete-warning {
+            padding: 4px 2px;
+        }
+
+            .reb-delete-warning .warning-icon {
+                font-size: 1.8rem;
+            }
+
+            .reb-delete-warning h5 {
+                margin-top: 6px;
+                font-size: 12px;
+                line-height: 1.25;
+            }
+        /* ACTIONS */
+
+        .reb-delete-actions {
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            width: 100% !important;
+            gap: 8px !important;
+            margin-top: 12px !important;
+        }
+            /* BUTTONS */
+
+            .reb-delete-actions .btn {
+                flex: 0 0 auto !important;
+                width: auto !important;
+                min-width: 78px !important;
+                max-width: 45% !important;
+                min-height: 35px !important;
+                padding: 6px 12px !important;
+                font-size: 11px !important;
+            }
+
+        .reb-delete-no-btn {
+            order: 1 !important;
+            margin-left: 0 !important;
+            margin-right: auto !important;
+        }
+
+        .reb-delete-yes-btn {
+            order: 2 !important;
+            margin-left: auto !important;
+            margin-right: 0 !important;
+        }
+    }
+
+
+    /* =========================================================
+           MOBILE LANDSCAPE
+           LEFT / RIGHT
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) and (orientation: landscape) {
+
+        .reb-delete-page {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 !important;
+            padding: 8px 12px 15px 12px !important;
+            position: static !important;
+            top: auto !important;
+            transform: none !important;
+        }
+
+        .reb-delete-wrapper {
+            width: 100% !important;
+            max-width: 100% !important;
+            margin: 0 auto !important;
+            padding: 0 !important;
+        }
+
+        .reb-delete-card {
+            width: 100% !important;
+            max-width: 400px !important;
+            margin: 0 auto !important;
+            border-radius: 5px !important;
+        }
+            /* HEADER */
+
+            .reb-delete-card .card-header {
+                padding: 4px 7px !important;
+                min-height: 20px !important;
+            }
+
+                .reb-delete-card .card-header h5 {
+                    font-size: 9px !important;
+                    line-height: 1 !important;
+                }
+            /* BODY */
+
+            .reb-delete-card .card-body {
+                padding: 5px 7px !important;
+            }
+        /* WARNING */
+
+        .reb-delete-warning {
+            padding: 1px 2px !important;
+            line-height: 1 !important;
+        }
+
+            .reb-delete-warning .warning-icon {
+                font-size: 0.85rem !important;
+            }
+
+            .reb-delete-warning h5 {
+                margin: 2px 0 0 0 !important;
+                font-size: 7px !important;
+                line-height: 1 !important;
+            }
+        /* ACTIONS */
+
+        .reb-delete-actions {
+            width: 100% !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
+            gap: 3px !important;
+            margin: 3px 0 0 0 !important;
+            padding: 0 !important;
+        }
+            /* BUTTONS */
+
+            .reb-delete-actions .btn {
+                display: inline-flex !important;
+                flex: 0 0 auto !important;
+                justify-content: center !important;
+                align-items: center !important;
+                width: 50px !important;
+                min-width: 50px !important;
+                max-width: 50px !important;
+                height: 18px !important;
+                min-height: 18px !important;
+                max-height: 18px !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 font-size: 6px !important;
-                font-weight: 500 !important;
                 line-height: 1 !important;
                 border-radius: 3px !important;
             }
 
-        .reb-delete-no-btn,
+        .reb-delete-no-btn {
+            order: 1 !important;
+            margin-right: auto !important;
+            margin-left: 0 !important;
+        }
+
         .reb-delete-yes-btn {
-            width: 48px !important;
-            min-width: 48px !important;
-            max-width: 48px !important;
-            height: 17px !important;
-            min-height: 17px !important;
-            max-height: 17px !important;
-            margin: 0 !important;
-            padding: 0 !important;
+            order: 2 !important;
+            margin-left: auto !important;
+            margin-right: 0 !important;
         }
     }
 
@@ -447,14 +678,10 @@
            <= 380px HEIGHT
         ========================================================== */
 
-    @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 380px) {
+    @@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
 
         .reb-delete-page {
-            padding: 0 !important;
-            margin: 0 !important;
-            position: static !important;
-            top: auto !important;
-            transform: none !important;
+            padding: 4px 9px 10px 9px !important;
         }
 
         .reb-delete-card {
@@ -463,9 +690,9 @@
         }
 
             .reb-delete-card .card-header {
-                padding: 1px 5px !important;
-                height: 15px !important;
-                min-height: 15px !important;
+                padding: 2px 5px !important;
+                height: 16px !important;
+                min-height: 16px !important;
             }
 
                 .reb-delete-card .card-header h5 {
@@ -473,28 +700,32 @@
                 }
 
             .reb-delete-card .card-body {
-                padding: 1px 5px !important;
+                padding: 2px 5px !important;
             }
 
         .reb-delete-warning .warning-icon {
-            font-size: 0.6rem !important;
+            font-size: 0.65rem !important;
         }
 
         .reb-delete-warning h5 {
-            margin: 0 !important;
-            font-size: 5px !important;
+            margin: 1px 0 0 0 !important;
+            font-size: 5.5px !important;
             line-height: 1 !important;
         }
 
         .reb-delete-actions {
-            margin: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
             gap: 2px !important;
+            margin: 1px 0 0 0 !important;
         }
 
             .reb-delete-actions .btn {
-                width: 44px !important;
-                min-width: 44px !important;
-                max-width: 44px !important;
+                width: 45px !important;
+                min-width: 45px !important;
+                max-width: 45px !important;
                 height: 15px !important;
                 min-height: 15px !important;
                 max-height: 15px !important;
@@ -502,14 +733,14 @@
                 font-size: 5.5px !important;
             }
 
-        .reb-delete-no-btn,
+        .reb-delete-no-btn {
+            order: 1 !important;
+            margin-right: auto !important;
+        }
+
         .reb-delete-yes-btn {
-            width: 44px !important;
-            min-width: 44px !important;
-            max-width: 44px !important;
-            height: 15px !important;
-            min-height: 15px !important;
-            max-height: 15px !important;
+            order: 2 !important;
+            margin-left: auto !important;
         }
     }
 
@@ -519,14 +750,10 @@
            <= 320px HEIGHT
         ========================================================== */
 
-    @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 320px) {
+    @@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 320px) {
 
         .reb-delete-page {
-            padding: 0 !important;
-            margin: 0 !important;
-            position: static !important;
-            top: auto !important;
-            transform: none !important;
+            padding: 2px 7px 6px 7px !important;
         }
 
         .reb-delete-card {
@@ -559,8 +786,12 @@
         }
 
         .reb-delete-actions {
-            margin: 0 !important;
+            display: flex !important;
+            flex-direction: row !important;
+            justify-content: space-between !important;
+            align-items: center !important;
             gap: 1px !important;
+            margin: 0 !important;
         }
 
             .reb-delete-actions .btn {
@@ -576,14 +807,14 @@
                 border-radius: 2px !important;
             }
 
-        .reb-delete-no-btn,
+        .reb-delete-no-btn {
+            order: 1 !important;
+            margin-right: auto !important;
+        }
+
         .reb-delete-yes-btn {
-            width: 40px !important;
-            min-width: 40px !important;
-            max-width: 40px !important;
-            height: 13px !important;
-            min-height: 13px !important;
-            max-height: 13px !important;
+            order: 2 !important;
+            margin-left: auto !important;
         }
     }
 
@@ -601,18 +832,32 @@
 
 
     /* =========================================================
-           FINAL
+           FINAL FORCE
+           NO / YES MUST NEVER BECOME COLUMN
         ========================================================== */
 
-    .reb-delete-page,
-    .reb-delete-wrapper,
-    .reb-delete-card,
-    .reb-delete-card .card-body,
-    .reb-delete-card form {
-        box-sizing: border-box;
+    .reb-delete-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+    .reb-delete-no-btn {
+        order: 1 !important;
+        margin-right: auto !important;
+        margin-left: 0 !important;
+    }
+
+    .reb-delete-yes-btn {
+        order: 2 !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
     }
 
 </style>
+
 
 
 <!-- =========================================================

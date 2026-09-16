@@ -167,6 +167,10 @@
 
     /* =========================================================
            MOBILE PORTRAIT
+
+           TOP GAP = 25px
+           Hide/Show button থেকে Delete form/card
+           25px নিচে থাকবে।
         ========================================================== */
 
     @@media screen and (max-width: 767px) {
@@ -175,7 +179,7 @@
             width: 100%;
             max-width: 100%;
             margin: 0;
-            padding: 8px 7px 15px 7px;
+            padding: 25px 7px 15px 7px;
         }
 
         .reb-delete-wrapper {
@@ -241,7 +245,7 @@
     @@media screen and (max-width: 400px) {
 
         .reb-delete-page {
-            padding: 5px;
+            padding: 25px 5px 15px 5px;
         }
 
         .reb-delete-card {
@@ -288,13 +292,13 @@
     /* =========================================================
            MOBILE LANDSCAPE
 
-           IMPORTANT:
-           NO negative top.
-           NO translate.
-           NO artificial margin.
+           এখানে top padding 0 থাকবে।
+           Landscape-এ main layout-এর 10px/22px space
+           ব্যবহার হবে।
 
-           Layout already gives 22px top space.
-           Delete page starts immediately there.
+           NO negative top
+           NO translate
+           NO artificial margin
         ========================================================== */
 
     @@media screen and (max-width: 768px) and (orientation: landscape) {
@@ -309,14 +313,12 @@
             transform: none !important;
         }
 
-
         .reb-delete-wrapper {
             width: 100% !important;
             max-width: 100% !important;
             margin: 0 !important;
             padding: 0 !important;
         }
-
 
         .reb-delete-card {
             width: 100% !important;
@@ -676,14 +678,11 @@
 
                     <div class="reb-delete-actions">
 
-
                         <!-- NO -->
 
                         <a asp-action="RebReadingInfoList"
                            class="btn btn-secondary reb-delete-no-btn">
-
                             No
-
                         </a>
 
 
@@ -691,11 +690,8 @@
 
                         <button type="submit"
                                 class="btn btn-danger reb-delete-yes-btn">
-
                             Yes
-
                         </button>
-
 
                     </div>
 

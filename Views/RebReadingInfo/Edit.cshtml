@@ -4,223 +4,1350 @@
     ViewData["Title"] = "Edit REB Reading";
 }
 
-<div class="container mt-4">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-lg border-0">
+<style>
 
-                <div class="card-header bg-success text-dark">
-                    <h5 class="mb-0">Edit REB Reading</h5>
-                </div>
+    /* =========================================================
+           GLOBAL
+        ========================================================== */
 
-                <div class="card-body p-4">
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-                    <form asp-action="Edit" method="post">
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
 
-                        <input type="hidden" asp-for="Trid" />
 
-                        <div asp-validation-summary="ModelOnly"
-                             class="text-danger mb-3">
-                        </div>
+    /* =========================================================
+           MAIN CONTAINER
+           Same spacing as REB CREATE PAGE
+        ========================================================== */
 
-                        <div class="row g-3">
+    .reb-edit-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 25px 20px 40px 20px;
+        box-sizing: border-box;
+    }
 
-                            <!-- Trdate -->
-                            <div class="col-md-6">
-                                <label asp-for="Trdate" class="form-label">
-                                    Date <span class="text-danger">*</span>
-                                </label>
 
-                                <input asp-for="Trdate"
-                                       type="date"
-                                       class="form-control" />
+    .reb-edit-wrapper {
+        width: 100%;
+        max-width: 1000px;
+        margin: 0 auto;
+    }
 
-                                <span asp-validation-for="Trdate" class="text-danger"></span>
-                            </div>
 
-                            <!-- Equipment -->
-                            <div class="col-md-6">
-                                <label asp-for="Eqid" class="form-label">
-                                    Equipment <span class="text-danger">*</span>
-                                </label>
+    /* =========================================================
+           CARD
+        ========================================================== */
 
-                                <select asp-for="Eqid"
-                                        asp-items="ViewBag.EquipmentList"
-                                        class="form-select">
-                                    <option value="">-- Select Equipment --</option>
-                                </select>
+    .reb-edit-card {
+        width: 100%;
+        border: none;
+        border-radius: 14px;
+        overflow: hidden;
+    }
 
-                                <span asp-validation-for="Eqid" class="text-danger"></span>
-                            </div>
 
-                            <!-- ElecGen -->
-                            <div class="col-md-6">
-                                <label asp-for="ElecGen" class="form-label">
-                                    Electricity Generation(Kwh)
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ElecGen" class="form-control" />
-                                <span asp-validation-for="ElecGen" class="text-danger"></span>
-                            </div>
-
-                            <!-- RunHr -->
-                            <div class="col-md-6">
-                                <label asp-for="RunHr" class="form-label">
-                                    Running Hr
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="RunHr" class="form-control" />
-                                <span asp-validation-for="RunHr" class="text-danger"></span>
-                            </div>
-
-                            <!-- BdtKwh -->
-                            <div class="col-md-6">
-                                <label asp-for="BdtKwh" class="form-label">
-                                    BDT(tk/kwh)
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="BdtKwh" class="form-control" />
-                                <span asp-validation-for="BdtKwh" class="text-danger"></span>
-                            </div>
-
-                            <!-- OtConsumable -->
-                            <div class="col-md-6">
-                                <label asp-for="OtConsumable" class="form-label">
-                                    Others Consumable(TK)
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="OtConsumable" class="form-control" />
-                                <span asp-validation-for="OtConsumable" class="text-danger"></span>
-                            </div>
-
-                            <!-- Troubleshoot -->
-                            <div class="col-md-6">
-                                <label asp-for="Troubleshoot" class="form-label">
-                                    Troubleshooting(Tk)
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="Troubleshoot" class="form-control" />
-                                <span asp-validation-for="Troubleshoot" class="text-danger"></span>
-                            </div>
-
-                            <!-- ServiceCharge -->
-                            <div class="col-md-6">
-                                <label asp-for="ServiceCharge" class="form-label">
-                                    Service Charge
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="ServiceCharge" class="form-control" />
-                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
-                            </div>
-
-                            <!-- RepairCharge -->
-                            <div class="col-md-6">
-                                <label asp-for="RepairCharge" class="form-label">
-                                    Repair Charge
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="RepairCharge" class="form-control" />
-                                <span asp-validation-for="RepairCharge" class="text-danger"></span>
-                            </div>
-
-                            <!-- Total -->
-                            <div class="col-md-6">
-                                <label asp-for="Total" class="form-label">
-                                    Total
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="Total"
-                                       class="form-control"
-                                       readonly />
-                                <span asp-validation-for="Total" class="text-danger"></span>
-                            </div>
-
-                            <!-- TkKwh -->
-                            <div class="col-md-6">
-                                <label asp-for="TkKwh" class="form-label">
-                                    Tk/Kwh
-                                    <span class="text-danger">*</span>
-                                </label>
-                                <input asp-for="TkKwh"
-                                       class="form-control"
-                                       readonly />
-                                <span asp-validation-for="TkKwh" class="text-danger"></span>
-                            </div>
-
-                        </div>
-
-                        <div class="d-flex justify-content-between mt-4">
-
-                            <a asp-action="RebReadingInfoList"
-                               class="btn btn-outline-secondary">
-                                ← Back
-                            </a>
-
-                            <button type="submit"
-                                    class="btn btn-success px-4">
-                                Update Reading
-                            </button>
-
-                        </div>
-
-                    </form>
-
-                </div>
-
-            </div>
-
-        </div>
-    </div>
-</div>
-
-<script>
-    document.addEventListener("DOMContentLoaded", function () {
-
-        const elecGen = document.getElementById("ElecGen");
-        const bdtKwh = document.getElementById("BdtKwh");
-        const otConsumable = document.getElementById("OtConsumable");
-        const troubleshoot = document.getElementById("Troubleshoot");
-        const serviceCharge = document.getElementById("ServiceCharge");
-        const repairCharge = document.getElementById("RepairCharge");
-
-        const total = document.getElementById("Total");
-        const tkKwh = document.getElementById("TkKwh");
-
-        function calculateValues() {
-
-            let totalValue =
-                (parseFloat(bdtKwh.value) || 0) +
-                (parseFloat(otConsumable.value) || 0) +
-                (parseFloat(troubleshoot.value) || 0) +
-                (parseFloat(serviceCharge.value) || 0) +
-                (parseFloat(repairCharge.value) || 0);
-
-            total.value = totalValue.toFixed(2);
-
-            let generation = parseFloat(elecGen.value) || 0;
-
-            tkKwh.value = generation > 0
-                ? (totalValue / generation).toFixed(2)
-                : "0.00";
+        .reb-edit-card .card-header,
+        .reb-edit-header {
+            padding: 16px 20px;
         }
 
-        [
-            elecGen,
-            bdtKwh,
-            otConsumable,
-            troubleshoot,
-            serviceCharge,
-            repairCharge
-        ].forEach(x => {
-            x.addEventListener("input", calculateValues);
+
+            .reb-edit-card .card-header h5,
+            .reb-edit-header h5 {
+                margin: 0;
+                font-size: 20px;
+                font-weight: 600;
+            }
+
+
+        .reb-edit-card .card-body,
+        .reb-edit-body {
+            padding: 30px !important;
+        }
+
+
+    /* =========================================================
+           HEADER
+        ========================================================== */
+
+    .reb-edit-header {
+        background: #198754;
+        color: #212529;
+    }
+
+
+    /* =========================================================
+           FORM
+        ========================================================== */
+
+    .reb-edit-body form {
+        width: 100%;
+    }
+
+
+    .reb-edit-body .row {
+        width: 100%;
+    }
+
+
+    .reb-field {
+        width: 100%;
+    }
+
+
+        .reb-field .form-label {
+            display: block;
+            width: 100%;
+            margin-bottom: 6px;
+            color: #343a40;
+            font-size: 14px;
+            font-weight: 500;
+            line-height: 1.4;
+        }
+
+
+        /* =========================================================
+           INPUT / SELECT
+           Same size as CREATE FORM
+        ========================================================== */
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            width: 100%;
+            min-height: 42px;
+            height: auto;
+            font-size: 14px;
+            border-radius: 6px;
+            box-sizing: border-box;
+        }
+
+
+            .reb-field .form-control:focus,
+            .reb-field .form-select:focus {
+                border-color: #198754;
+                box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+            }
+
+
+            /* =========================================================
+           READONLY
+        ========================================================== */
+
+            .reb-field .form-control[readonly] {
+                background-color: #e9ecef !important;
+                color: #495057 !important;
+                border-color: #ced4da !important;
+                cursor: not-allowed;
+            }
+
+
+        /* =========================================================
+           VALIDATION
+        ========================================================== */
+
+        .reb-field .text-danger {
+            display: block;
+            margin-top: 4px;
+            font-size: 12px;
+            line-height: 1.3;
+            word-break: break-word;
+        }
+
+
+    .validation-summary-errors {
+        font-size: 13px;
+        margin-bottom: 15px;
+    }
+
+
+    /* =========================================================
+           BUTTON AREA
+           Same spacing as CREATE FORM
+        ========================================================== */
+
+    .reb-form-actions {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-top: 25px;
+    }
+
+
+        .reb-form-actions .btn {
+            min-height: 42px;
+            border-radius: 6px;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+
+    .reb-back-btn {
+        min-width: 100px;
+    }
+
+
+    .reb-update-btn {
+        min-width: 150px;
+    }
+
+
+    /* =========================================================
+           LARGE DESKTOP
+           1600px+
+           Same spacing as CREATE
+        ========================================================== */
+
+    @@media screen and (min-width: 1600px) {
+
+        .reb-edit-page {
+            padding: 35px 30px 50px 30px;
+        }
+
+
+        .reb-edit-wrapper {
+            max-width: 1050px;
+        }
+
+
+        .reb-edit-header {
+            padding: 18px 25px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 21px;
+            }
+
+
+        .reb-edit-body {
+            padding: 35px !important;
+        }
+
+
+        .reb-field .form-label {
+            font-size: 15px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 44px;
+            font-size: 15px;
+        }
+    }
+
+
+    /* =========================================================
+           LAPTOP
+           1200px - 1599px
+        ========================================================== */
+
+    @@media screen and (min-width: 1200px) and (max-width: 1599px) {
+
+        .reb-edit-page {
+            padding: 25px 25px 40px 25px;
+        }
+
+
+        .reb-edit-wrapper {
+            max-width: 1000px;
+        }
+
+
+        .reb-edit-body {
+            padding: 28px !important;
+        }
+    }
+
+
+    /* =========================================================
+           SMALL LAPTOP / TABLET LANDSCAPE
+           992px - 1199px
+        ========================================================== */
+
+    @@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+        .reb-edit-page {
+            padding: 20px 18px 35px 18px;
+        }
+
+
+        .reb-edit-wrapper {
+            max-width: 900px;
+        }
+
+
+        .reb-edit-body {
+            padding: 25px !important;
+        }
+
+
+        .reb-field .form-label {
+            font-size: 13px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 40px;
+            font-size: 13px;
+        }
+    }
+
+
+    /* =========================================================
+           TABLET
+           768px - 991px
+        ========================================================== */
+
+    @@media screen and (min-width: 768px) and (max-width: 991px) {
+
+        .reb-edit-page {
+            padding: 18px 15px 30px 15px;
+        }
+
+
+        .reb-edit-wrapper {
+            max-width: 750px;
+        }
+
+
+        .reb-edit-header {
+            padding: 14px 18px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 18px;
+            }
+
+
+        .reb-edit-body {
+            padding: 22px !important;
+        }
+
+
+        .reb-field .form-label {
+            font-size: 13px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 40px;
+            font-size: 13px;
+        }
+    }
+
+
+    /* =========================================================
+           MOBILE
+           767px and below
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) {
+
+        .reb-edit-page {
+            width: 100%;
+            max-width: 100%;
+            padding: 12px 10px 25px 10px;
+        }
+
+
+        .reb-edit-wrapper {
+            width: 100%;
+            max-width: 100%;
+        }
+
+
+        .reb-edit-card {
+            width: 100%;
+            border-radius: 12px;
+        }
+
+
+        .reb-edit-header {
+            padding: 13px 15px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 17px;
+                line-height: 1.3;
+            }
+
+
+        .reb-edit-body {
+            padding: 18px 15px !important;
+        }
+            /* =====================================================
+               FORM GRID
+               Same as CREATE
+            ====================================================== */
+
+            .reb-edit-body .row {
+                --bs-gutter-x: 0.8rem;
+                --bs-gutter-y: 0.8rem;
+            }
+
+
+        .reb-field-col {
+            width: 100%;
+            flex: 0 0 100%;
+            max-width: 100%;
+        }
+
+
+        .reb-field .form-label {
+            font-size: 13px;
+            line-height: 1.35;
+            margin-bottom: 6px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 42px;
+            height: auto;
+            font-size: 14px;
+            padding: 8px 10px;
+        }
+
+
+        .reb-field .text-danger {
+            font-size: 11px;
+        }
+        /* =====================================================
+               BUTTONS
+            ====================================================== */
+
+        .reb-form-actions {
+            width: 100%;
+            margin-top: 20px;
+            gap: 10px;
+        }
+
+
+            .reb-form-actions .btn {
+                min-height: 42px;
+                font-size: 13px;
+                padding: 8px 14px;
+            }
+    }
+
+
+    /* =========================================================
+           SMALL MOBILE
+           400px and below
+        ========================================================== */
+
+    @@media screen and (max-width: 400px) {
+
+        .reb-edit-page {
+            padding: 8px 7px 20px 7px;
+        }
+
+
+        .reb-edit-card {
+            border-radius: 10px;
+        }
+
+
+        .reb-edit-header {
+            padding: 11px 13px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 16px;
+            }
+
+
+        .reb-edit-body {
+            padding: 15px 12px !important;
+        }
+
+
+            .reb-edit-body .row {
+                --bs-gutter-x: 0.65rem;
+                --bs-gutter-y: 0.7rem;
+            }
+
+
+        .reb-field .form-label {
+            font-size: 12px;
+            margin-bottom: 4px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 40px;
+            font-size: 13px;
+            padding: 7px 9px;
+        }
+
+
+        .reb-field .text-danger {
+            font-size: 10px;
+        }
+
+
+        .reb-form-actions {
+            margin-top: 18px;
+            gap: 8px;
+        }
+
+
+            .reb-form-actions .btn {
+                min-height: 40px;
+                font-size: 12px;
+                padding: 7px 10px;
+            }
+    }
+
+
+    /* =========================================================
+           MOBILE LANDSCAPE
+           Same as CREATE
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) and (orientation: landscape) {
+
+        .reb-edit-page {
+            padding: 10px 12px 20px 12px;
+        }
+
+
+        .reb-edit-wrapper {
+            max-width: 100%;
+        }
+
+
+        .reb-edit-card {
+            border-radius: 10px;
+        }
+
+
+        .reb-edit-header {
+            padding: 9px 14px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 15px;
+                line-height: 1.2;
+            }
+
+
+        .reb-edit-body {
+            padding: 13px 14px !important;
+        }
+            /* =====================================================
+               LANDSCAPE GRID
+               Two columns
+            ====================================================== */
+
+            .reb-edit-body .row {
+                --bs-gutter-x: 0.65rem;
+                --bs-gutter-y: 0.55rem;
+            }
+
+
+        .reb-field-col {
+            width: 50%;
+            flex: 0 0 50%;
+            max-width: 50%;
+        }
+
+
+        .reb-field .form-label {
+            font-size: 11px;
+            margin-bottom: 3px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            min-height: 34px;
+            height: 34px;
+            font-size: 12px;
+            padding: 5px 8px;
+        }
+
+
+        .reb-field .text-danger {
+            font-size: 9px;
+        }
+        /* =====================================================
+               LANDSCAPE BUTTON
+            ====================================================== */
+
+        .reb-form-actions {
+            flex-direction: row;
+            align-items: center;
+            margin-top: 12px;
+            gap: 8px;
+        }
+
+
+            .reb-form-actions .btn {
+                width: auto;
+                min-height: 34px;
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+
+
+        .reb-back-btn {
+            min-width: 90px;
+        }
+
+
+        .reb-update-btn {
+            min-width: 135px;
+        }
+    }
+
+
+    /* =========================================================
+           VERY SHORT LANDSCAPE
+           max-height: 380px
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+
+        .reb-edit-page {
+            padding: 5px 9px 12px 9px;
+        }
+
+
+        .reb-edit-header {
+            padding: 7px 12px;
+        }
+
+
+            .reb-edit-header h5 {
+                font-size: 13px;
+            }
+
+
+        .reb-edit-body {
+            padding: 10px 12px !important;
+        }
+
+
+            .reb-edit-body .row {
+                --bs-gutter-x: 0.5rem;
+                --bs-gutter-y: 0.4rem;
+            }
+
+
+        .reb-field .form-label {
+            font-size: 10px;
+            margin-bottom: 2px;
+        }
+
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            height: 30px;
+            min-height: 30px;
+            font-size: 11px;
+            padding: 3px 7px;
+        }
+
+
+        .reb-field .text-danger {
+            font-size: 8px;
+        }
+
+
+        .reb-form-actions {
+            margin-top: 8px;
+        }
+
+
+            .reb-form-actions .btn {
+                min-height: 30px;
+                font-size: 10px;
+                padding: 4px 10px;
+            }
+    }
+
+
+    /* =========================================================
+           TOUCH DEVICE
+        ========================================================== */
+
+    @@media screen and (pointer: coarse) and (hover: none) {
+
+        .reb-field .form-control,
+        .reb-field .form-select {
+            -webkit-appearance: none;
+        }
+
+
+        .reb-form-actions .btn {
+            touch-action: manipulation;
+        }
+    }
+
+
+    /* =========================================================
+           SAFE AREA
+        ========================================================== */
+
+    @@media screen and (max-width: 768px) {
+
+        .reb-edit-page {
+            padding-top: max(12px, env(safe-area-inset-top));
+        }
+    }
+
+
+    /* =========================================================
+           PREVENT HORIZONTAL OVERFLOW
+        ========================================================== */
+
+    .reb-edit-page,
+    .reb-edit-wrapper,
+    .reb-edit-card,
+    .reb-edit-body,
+    .reb-edit-body form {
+        max-width: 100%;
+        box-sizing: border-box;
+    }
+
+</style>
+
+
+
+<!-- =========================================================
+     REB EDIT PAGE
+========================================================== -->
+
+<div class="reb-edit-page">
+
+    <div class="card shadow-lg border-0 reb-edit-card">
+
+
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
+
+        <div class="card-header reb-edit-header">
+
+            <h5>
+                Edit REB Reading
+            </h5>
+
+        </div>
+
+
+        <!-- =====================================================
+             BODY
+        ====================================================== -->
+
+        <div class="card-body reb-edit-body">
+
+            <form asp-action="Edit"
+                  method="post">
+
+
+                <!-- =================================================
+                     HIDDEN ID
+                ================================================== -->
+
+                <input type="hidden"
+                       asp-for="Trid" />
+
+
+                <!-- =================================================
+                     VALIDATION SUMMARY
+                ================================================== -->
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-3">
+                </div>
+
+
+                <!-- =================================================
+                     FORM FIELDS
+                ================================================== -->
+
+                <div class="row g-3">
+
+
+                    <!-- =================================================
+                         DATE
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="Trdate"
+                                   class="form-label">
+
+                                Date
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="Trdate"
+                                   type="date"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="Trdate"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         EQUIPMENT
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="Eqid"
+                                   class="form-label">
+
+                                Equipment
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <select asp-for="Eqid"
+                                    asp-items="ViewBag.EquipmentList"
+                                    class="form-select">
+
+                                <option value="">
+                                    -- Select Equipment --
+                                </option>
+
+                            </select>
+
+
+                            <span asp-validation-for="Eqid"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ELECTRICITY GENERATION
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="ElecGen"
+                                   class="form-label">
+
+                                Electricity Generation (Kwh)
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="ElecGen"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="ElecGen"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         RUNNING HOUR
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="RunHr"
+                                   class="form-label">
+
+                                Running Hr
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="RunHr"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="RunHr"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         BDT/KWH
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="BdtKwh"
+                                   class="form-label">
+
+                                BDT (tk/kwh)
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="BdtKwh"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="BdtKwh"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         OTHER CONSUMABLE
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="OtConsumable"
+                                   class="form-label">
+
+                                Others Consumable (TK)
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="OtConsumable"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="OtConsumable"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TROUBLESHOOTING
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="Troubleshoot"
+                                   class="form-label">
+
+                                Troubleshooting (Tk)
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="Troubleshoot"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="Troubleshoot"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         SERVICE CHARGE
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="ServiceCharge"
+                                   class="form-label">
+
+                                Service Charge
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="ServiceCharge"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="ServiceCharge"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REPAIR CHARGE
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="RepairCharge"
+                                   class="form-label">
+
+                                Repair Charge
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="RepairCharge"
+                                   class="form-control" />
+
+
+                            <span asp-validation-for="RepairCharge"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TOTAL
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="Total"
+                                   class="form-label">
+
+                                Total
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="Total"
+                                   class="form-control"
+                                   readonly />
+
+
+                            <span asp-validation-for="Total"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TK/KWH
+                    ================================================== -->
+
+                    <div class="col-12 col-md-6 reb-field-col">
+
+                        <div class="reb-field">
+
+                            <label asp-for="TkKwh"
+                                   class="form-label">
+
+                                Tk/Kwh
+                                <span class="text-danger">*</span>
+
+                            </label>
+
+
+                            <input asp-for="TkKwh"
+                                   class="form-control"
+                                   readonly />
+
+
+                            <span asp-validation-for="TkKwh"
+                                  class="text-danger">
+                            </span>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+
+                <!-- =================================================
+                     ACTION BUTTONS
+                ================================================== -->
+
+                <div class="reb-form-actions">
+
+
+                    <!-- BACK -->
+
+                    <a asp-action="RebReadingInfoList"
+                       class="btn btn-outline-secondary reb-back-btn">
+
+                        <i class="bi bi-arrow-left"></i>
+
+                        Back
+
+                    </a>
+
+
+                    <!-- UPDATE -->
+
+                    <button type="submit"
+                            class="btn btn-success reb-update-btn">
+
+                        <i class="bi bi-check-circle"></i>
+
+                        Update Reading
+
+                    </button>
+
+                </div>
+
+            </form>
+
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- =========================================================
+     CALCULATION SCRIPT
+========================================================== -->
+
+<script>
+
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
+
+            const elecGen =
+                document.getElementById("ElecGen");
+
+            const bdtKwh =
+                document.getElementById("BdtKwh");
+
+            const otConsumable =
+                document.getElementById("OtConsumable");
+
+            const troubleshoot =
+                document.getElementById("Troubleshoot");
+
+            const serviceCharge =
+                document.getElementById("ServiceCharge");
+
+            const repairCharge =
+                document.getElementById("RepairCharge");
+
+
+            const total =
+                document.getElementById("Total");
+
+            const tkKwh =
+                document.getElementById("TkKwh");
+
+
+            /* =====================================================
+               CALCULATE VALUES
+            ====================================================== */
+
+            function calculateValues() {
+
+                let totalValue =
+
+                    (parseFloat(
+                        bdtKwh?.value
+                    ) || 0)
+
+                    +
+
+                    (parseFloat(
+                        otConsumable?.value
+                    ) || 0)
+
+                    +
+
+                    (parseFloat(
+                        troubleshoot?.value
+                    ) || 0)
+
+                    +
+
+                    (parseFloat(
+                        serviceCharge?.value
+                    ) || 0)
+
+                    +
+
+                    (parseFloat(
+                        repairCharge?.value
+                    ) || 0);
+
+
+                /* =================================================
+                   TOTAL
+                ================================================== */
+
+                if (total) {
+
+                    total.value =
+                        totalValue.toFixed(2);
+
+                }
+
+
+                /* =================================================
+                   GENERATION
+                ================================================== */
+
+                let generation =
+                    parseFloat(
+                        elecGen?.value
+                    ) || 0;
+
+
+                /* =================================================
+                   TK/KWH
+                ================================================== */
+
+                if (tkKwh) {
+
+                    tkKwh.value =
+                        generation > 0
+
+                            ? (
+                                totalValue /
+                                generation
+                            ).toFixed(2)
+
+                            : "0.00";
+
+                }
+
+            }
+
+
+            /* =====================================================
+               INPUT EVENTS
+            ====================================================== */
+
+            [
+
+                elecGen,
+
+                bdtKwh,
+
+                otConsumable,
+
+                troubleshoot,
+
+                serviceCharge,
+
+                repairCharge
+
+            ].forEach(function (element) {
+
+                if (!element) {
+                    return;
+                }
+
+
+                element.addEventListener(
+                    "input",
+                    calculateValues
+                );
+
+
+                element.addEventListener(
+                    "change",
+                    calculateValues
+                );
+
+            });
+
+
+            /* =====================================================
+               INITIAL CALCULATION
+            ====================================================== */
+
+            calculateValues();
+
         });
 
-        calculateValues();
-    });
 </script>
 
+
 @section Scripts {
+
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial"
+        );
     }
+
 }

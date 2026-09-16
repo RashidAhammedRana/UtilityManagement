@@ -19,185 +19,1157 @@
     string search = ViewBag.SearchString ?? "";
 }
 
-<h2 class="text-center">REB Reading Info List</h2>
+<style>
 
-<p class="text-muted text-center">
-    Total Readings: <strong>@ViewBag.totalRebReadings</strong>
-</p>
+    /* =========================================================
+           GLOBAL RESPONSIVE FIX
+        ========================================================== */
 
-<div class="d-flex justify-content-between mb-3 align-items-center">
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
 
-    <!-- LEFT: SEARCH + RESET -->
-    <form method="get" asp-action="RebReadingInfoList"
-          class="d-flex gap-2 align-items-center"
-          id="searchForm">
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+        padding: 0;
+        overflow-x: hidden;
+    }
 
-        <input type="text"
-               name="searchString"
-               id="searchBox"
-               value="@ViewBag.SearchString"
-               class="form-control"
-               placeholder="Search by Equipment / Company/Date"
-               style="width: 300px;" />
 
-@*         <button type="submit" class="btn btn-primary btn-sm">
-            Search
-        </button>
+    /* =========================================================
+           PAGE HEADER
+        ========================================================== */
 
-        <a asp-action="RebReadingInfoList"
-           class="btn btn-outline-secondary btn-sm">
-            Reset
-        </a> *@
+    .reb-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 20px 30px 20px;
+    }
 
-    </form>
 
-    <!-- RIGHT: ACTION BUTTONS -->
-    <div class="d-flex gap-2">
+    .reb-page-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-align: center;
+        font-size: 28px;
+    }
 
-        @if (canCreate)
-        {
-            <a asp-action="Create" class="btn btn-primary">
-                + Create
-            </a>
+
+    .reb-total {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #6c757d;
+        font-size: 15px;
+    }
+
+
+    /* =========================================================
+           TOOLBAR
+        ========================================================== */
+
+    .reb-toolbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    /* SEARCH */
+
+    .reb-search-form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+
+    .reb-search-box {
+        width: 300px;
+        max-width: 100%;
+        min-height: 38px;
+    }
+
+
+    /* ACTION BUTTONS */
+
+    .reb-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+
+        .reb-actions .btn {
+            white-space: nowrap;
         }
 
-        <button type="button"
-                class="btn btn-secondary"
-                onclick="window.history.back();">
-            Back
-        </button>
+
+    /* =========================================================
+           TABLE WRAPPER
+        ========================================================== */
+
+    .reb-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        /*
+             * Smooth scrolling on mobile
+             */
+        -webkit-overflow-scrolling: touch;
+        /*
+             * Prevent table from breaking page width
+             */
+        border-radius: 6px;
+    }
+
+
+    /* =========================================================
+           TABLE
+        ========================================================== */
+
+    #rebTable {
+        width: 100%;
+        min-width: 1450px;
+        margin-bottom: 0;
+        /*
+             * Prevent text from destroying table layout
+             */
+        table-layout: auto;
+    }
+
+
+        #rebTable th,
+        #rebTable td {
+            vertical-align: middle;
+            white-space: nowrap;
+            padding: 10px 8px;
+            font-size: 14px;
+        }
+
+
+        #rebTable thead th {
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+
+        #rebTable tbody td {
+            vertical-align: middle;
+        }
+
+
+    /* =========================================================
+           ACTION BUTTONS INSIDE TABLE
+        ========================================================== */
+
+    .reb-table-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+
+        .reb-table-actions .btn {
+            min-width: 55px;
+        }
+
+
+    /* =========================================================
+           PAGINATION
+        ========================================================== */
+
+    .reb-pagination-wrapper {
+        width: 100%;
+        margin-top: 25px;
+        padding-bottom: 20px;
+    }
+
+
+    .reb-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 0;
+    }
+
+
+        .reb-pagination .page-link {
+            min-width: 40px;
+            text-align: center;
+        }
+
+
+    /* =========================================================
+           LARGE DESKTOP
+           1600px+
+        ========================================================== */
+
+    @@media screen and (min-width: 1600px) {
+
+        .reb-page {
+            padding: 25px 35px 40px 35px;
+        }
+
+
+        .reb-page-title {
+            font-size: 30px;
+        }
+
+
+        .reb-total {
+            font-size: 16px;
+        }
+
+
+        #rebTable {
+            min-width: 1500px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 11px 10px;
+                font-size: 14px;
+            }
+    }
+
+
+    /* =========================================================
+           LAPTOP
+           1200px - 1599px
+        ========================================================== */
+
+    @@media screen and (min-width: 1200px) and (max-width: 1599px) {
+
+        .reb-page {
+            padding: 20px 25px 30px 25px;
+        }
+
+
+        .reb-page-title {
+            font-size: 27px;
+        }
+
+
+        #rebTable {
+            min-width: 1400px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 9px 7px;
+                font-size: 13px;
+            }
+    }
+
+
+    /* =========================================================
+           SMALL LAPTOP / TABLET LANDSCAPE
+           992px - 1199px
+        ========================================================== */
+
+    @@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+        .reb-page {
+            padding: 18px 18px 30px 18px;
+        }
+
+
+        .reb-page-title {
+            font-size: 25px;
+        }
+
+
+        .reb-toolbar {
+            gap: 12px;
+        }
+
+
+        .reb-search-box {
+            width: 260px;
+        }
+
+
+        #rebTable {
+            min-width: 1350px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+
+        .reb-actions .btn {
+            font-size: 13px;
+        }
+    }
+
+
+    /* =========================================================
+           TABLET
+           768px - 991px
+        ========================================================== */
+
+    @@media screen and (min-width: 768px) and (max-width: 991px) {
+
+        .reb-page {
+            padding: 18px 15px 30px 15px;
+        }
+
+
+        .reb-page-title {
+            font-size: 24px;
+        }
+
+
+        .reb-total {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+
+        .reb-toolbar {
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+
+        .reb-search-form {
+            flex: 1 1 100%;
+        }
+
+
+        .reb-search-box {
+            width: 100%;
+        }
+
+
+        .reb-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+
+        #rebTable {
+            min-width: 1300px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+
+        .reb-table-actions .btn {
+            font-size: 12px;
+            padding: 5px 8px;
+        }
+    }
+
+
+    /* =========================================================
+           MOBILE
+           767px and below
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) {
+
+        .reb-page {
+            width: 100%;
+            max-width: 100%;
+            padding: 15px 10px 25px 10px;
+        }
+
+
+        .reb-page-title {
+            font-size: 21px;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+
+        .reb-total {
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+        /* =====================================================
+               MOBILE TOOLBAR
+            ====================================================== */
+
+        .reb-toolbar {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .reb-search-form {
+            width: 100%;
+            display: block;
+        }
+
+
+        .reb-search-box {
+            width: 100%;
+            max-width: 100%;
+            min-height: 40px;
+            font-size: 14px;
+        }
+
+
+        .reb-actions {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 7px;
+        }
+
+
+            .reb-actions .btn {
+                font-size: 13px;
+                padding: 7px 12px;
+            }
+        /* =====================================================
+               MOBILE TABLE
+            ====================================================== */
+
+        .reb-table-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+        }
+
+
+        #rebTable {
+            /*
+                 * IMPORTANT:
+                 * Table intentionally remains wide.
+                 * User can horizontally scroll table.
+                 */
+            min-width: 1250px;
+            width: max-content;
+            margin: 0;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 7px 6px;
+                font-size: 12px;
+                white-space: nowrap;
+            }
+
+
+            #rebTable thead th {
+                font-size: 12px;
+            }
+
+
+        .reb-table-actions {
+            gap: 5px;
+        }
+
+
+            .reb-table-actions .btn {
+                font-size: 11px;
+                padding: 5px 8px;
+                min-width: 52px;
+            }
+        /* =====================================================
+               MOBILE PAGINATION
+            ====================================================== */
+
+        .reb-pagination-wrapper {
+            margin-top: 20px;
+            padding-bottom: 15px;
+            overflow: hidden;
+        }
+
+
+        .reb-pagination {
+            gap: 3px;
+            padding: 0 5px;
+        }
+
+
+            .reb-pagination .page-link {
+                min-width: 34px;
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+    }
+
+
+    /* =========================================================
+           SMALL MOBILE
+           400px and below
+        ========================================================== */
+
+    @@media screen and (max-width: 400px) {
+
+        .reb-page {
+            padding: 12px 8px 20px 8px;
+        }
+
+
+        .reb-page-title {
+            font-size: 19px;
+        }
+
+
+        .reb-total {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+
+        .reb-actions {
+            justify-content: stretch;
+        }
+
+
+            .reb-actions .btn {
+                flex: 1;
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+
+        #rebTable {
+            min-width: 1200px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 6px 5px;
+                font-size: 11px;
+            }
+
+
+            #rebTable thead th {
+                font-size: 11px;
+            }
+
+
+        .reb-table-actions .btn {
+            font-size: 10px;
+            padding: 4px 7px;
+            min-width: 48px;
+        }
+
+
+        .reb-pagination .page-link {
+            min-width: 31px;
+            padding: 5px 6px;
+            font-size: 11px;
+        }
+    }
+
+
+    /* =========================================================
+           MOBILE LANDSCAPE
+           Example: 812x375 / 896x414
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) and (orientation: landscape) {
+
+        .reb-page {
+            padding: 12px 12px 20px 12px;
+        }
+
+
+        .reb-page-title {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+
+        .reb-total {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        /*
+             * Landscape has more horizontal space,
+             * so toolbar remains horizontal.
+             */
+        .reb-toolbar {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+
+        .reb-search-form {
+            flex: 1;
+        }
+
+
+        .reb-search-box {
+            width: 100%;
+            min-height: 36px;
+            font-size: 12px;
+        }
+
+
+        .reb-actions {
+            width: auto;
+            flex-shrink: 0;
+        }
+
+
+            .reb-actions .btn {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+
+
+        #rebTable {
+            min-width: 1200px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 6px 5px;
+                font-size: 11px;
+            }
+
+
+            #rebTable thead th {
+                font-size: 11px;
+            }
+
+
+        .reb-table-actions .btn {
+            font-size: 10px;
+            padding: 4px 7px;
+        }
+
+
+        .reb-pagination-wrapper {
+            margin-top: 15px;
+        }
+
+
+        .reb-pagination .page-link {
+            min-width: 30px;
+            padding: 4px 6px;
+            font-size: 11px;
+        }
+    }
+
+
+    /* =========================================================
+           VERY SHORT MOBILE LANDSCAPE
+           Example: 667x320
+        ========================================================== */
+
+    @@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+
+        .reb-page {
+            padding: 8px 10px 15px 10px;
+        }
+
+
+        .reb-page-title {
+            font-size: 17px;
+        }
+
+
+        .reb-total {
+            font-size: 10px;
+            margin-bottom: 8px;
+        }
+
+
+        .reb-toolbar {
+            margin-bottom: 8px;
+        }
+
+
+        .reb-search-box {
+            min-height: 32px;
+            font-size: 11px;
+        }
+
+
+        .reb-actions .btn {
+            font-size: 10px;
+            padding: 5px 8px;
+        }
+
+
+        #rebTable {
+            min-width: 1150px;
+        }
+
+
+            #rebTable th,
+            #rebTable td {
+                padding: 5px 4px;
+                font-size: 10px;
+            }
+
+
+            #rebTable thead th {
+                font-size: 10px;
+            }
+
+
+        .reb-table-actions .btn {
+            font-size: 9px;
+            padding: 3px 6px;
+            min-width: 45px;
+        }
+
+
+        .reb-pagination-wrapper {
+            margin-top: 10px;
+        }
+
+
+        .reb-pagination .page-link {
+            min-width: 27px;
+            padding: 3px 5px;
+            font-size: 10px;
+        }
+    }
+
+</style>
+
+
+<div class="reb-page">
+
+    <!-- =====================================================
+         PAGE TITLE
+    ====================================================== -->
+
+    <h2 class="reb-page-title">
+        REB Reading Info List
+    </h2>
+
+
+    <!-- =====================================================
+         TOTAL READINGS
+    ====================================================== -->
+
+    <p class="reb-total">
+        Total Readings:
+        <strong>
+            @ViewBag.totalRebReadings
+        </strong>
+    </p>
+
+
+    <!-- =====================================================
+         TOOLBAR
+    ====================================================== -->
+
+    <div class="reb-toolbar">
+
+
+        <!-- SEARCH -->
+
+        <form method="get"
+              asp-action="RebReadingInfoList"
+              class="reb-search-form"
+              id="searchForm">
+
+            <input type="text"
+                   name="searchString"
+                   id="searchBox"
+                   value="@ViewBag.SearchString"
+                   class="form-control reb-search-box"
+                   placeholder="Search by Equipment / Company / Date"
+                   autocomplete="off" />
+
+        </form>
+
+
+        <!-- ACTION BUTTONS -->
+
+        <div class="reb-actions">
+
+            @if (canCreate)
+            {
+                <a asp-action="Create"
+                   class="btn btn-primary">
+
+                    + Create
+
+                </a>
+            }
+
+
+            <button type="button"
+                    class="btn btn-secondary"
+                    onclick="window.history.back();">
+
+                Back
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- =====================================================
+         TABLE
+    ====================================================== -->
+
+    <div class="reb-table-wrapper">
+
+        <table class="table table-bordered table-hover"
+               id="rebTable">
+
+            <thead class="table-dark">
+
+                <tr class="text-center">
+
+                    <th>
+                        SL
+                    </th>
+
+                    <th style="width: 10%;">
+                        Date
+                    </th>
+
+                    <th>
+                        Equipment
+                    </th>
+
+                    <th>
+                        Company
+                    </th>
+
+                    <th>
+                        Elec Gen (Kwh)
+                    </th>
+
+                    <th>
+                        Running Hr
+                    </th>
+
+                    <th>
+                        BDT(Tk/Kwh)
+                    </th>
+
+                    <th>
+                        Others
+                    </th>
+
+                    <th>
+                        Troubleshooting(Tk)
+                    </th>
+
+                    <th>
+                        Service Charge(Tk)
+                    </th>
+
+                    <th>
+                        Repair Charge(Tk)
+                    </th>
+
+                    <th>
+                        Total(Tk)
+                    </th>
+
+                    <th>
+                        Tk/Kwh
+                    </th>
+
+                    <th>
+                        Actions
+                    </th>
+
+                </tr>
+
+            </thead>
+
+
+            <tbody>
+
+                @foreach (var item in Model)
+                {
+                    sl++;
+
+                    <tr>
+
+                        <td class="text-center">
+                            @sl
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.Trdate?.ToString("dd-MM-yyyy")
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.Eq?.EquipmentName
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.Eq?.CurrentLocation
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.ElecGen
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.RunHr
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.BdtKwh
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.OtConsumable
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.Troubleshoot
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.ServiceCharge
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.RepairCharge
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.Total
+                        </td>
+
+
+                        <td class="text-center">
+                            @item.TkKwh
+                        </td>
+
+
+                        <!-- ACTIONS -->
+
+                        <td class="text-center">
+
+                            <div class="reb-table-actions">
+
+                                @if (canEdit)
+                                {
+                                    <a asp-action="Edit"
+                                       asp-route-id="@item.Trid"
+                                       class="btn btn-success btn-sm">
+
+                                        Edit
+
+                                    </a>
+                                }
+
+
+                                @if (canDelete)
+                                {
+                                    <a asp-action="Delete"
+                                       asp-route-id="@item.Trid"
+                                       class="btn btn-danger btn-sm">
+
+                                        Delete
+
+                                    </a>
+                                }
+
+                            </div>
+
+                        </td>
+
+                    </tr>
+                }
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+
+    <!-- =====================================================
+         PAGINATION
+    ====================================================== -->
+
+    <div class="reb-pagination-wrapper">
+
+        <nav aria-label="REB Reading pagination">
+
+            <ul class="pagination reb-pagination">
+
+
+                <!-- PREVIOUS -->
+
+                <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+
+                    <a class="page-link"
+                       href="@Url.Action("RebReadingInfoList", new
+                       {
+                           page = currentPage - 1,
+                           searchString = search
+                       })">
+
+                        Prev
+
+                    </a>
+
+                </li>
+
+
+                <!-- PAGE NUMBERS -->
+                @for (int i = startPage; i <= endPage; i++)
+                {
+                    <li class="page-item @(i == currentPage ? "active" : "")">
+
+                        <a class="page-link"
+                           href="@Url.Action("RebReadingInfoList", new
+                           {
+                               page = i,
+                               searchString = search
+                           })">
+
+                        @i
+
+                        </a>
+
+                    </li>
+                                }
+
+
+                <!-- NEXT -->
+
+                <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+
+                    <a class="page-link"
+                       href="@Url.Action("RebReadingInfoList", new
+                       {
+                           page = currentPage + 1,
+                           searchString = search
+                       })">
+
+                        Next
+
+                    </a>
+
+                </li>
+
+            </ul>
+
+        </nav>
 
     </div>
 
 </div>
 
-<!-- TABLE -->
-<div class="table-responsive">
-    <table class="table table-bordered table-hover" id="rebTable">
 
-        <thead class="table-dark">
-            <tr class="text-center">
-                <th>SL</th>
-                <th style="width: 10%;">Date</th>
-                <th>Equipment</th>
-                <th>Company</th>
-                <th>Elec Gen (Kwh)</th>
-                <th>Running Hr</th>
-                <th>BDT(Tk/Kwh)</th>
-                <th>Others</th>
-                <th>Troubleshooting(Tk)</th>
-                <th>Service Charge(Tk)</th>
-                <th>Repair Charge(Tk)</th>
-                <th>Total(Tk)</th>
-                <th>Tk/Kwh</th>
-                <th>Actions</th>
-            </tr>
-        </thead>
+<!-- =========================================================
+     SEARCH SCRIPT
+========================================================== -->
 
-        <tbody>
-            @foreach (var item in Model)
-            {
-                sl++;
+<script>
 
-                <tr>
-                    <td class="text-center">@sl</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Eq?.EquipmentName</td>
-                    <td class="text-center">@item.Eq?.CurrentLocation</td>
-                    <td class="text-center">@item.ElecGen</td>
-                    <td class="text-center">@item.RunHr</td>
-                    <td class="text-center">@item.BdtKwh</td>
-                    <td class="text-center">@item.OtConsumable</td>
-                    <td class="text-center">@item.Troubleshoot</td>
-                    <td class="text-center">@item.ServiceCharge</td>
-                    <td class="text-center">@item.RepairCharge</td>
-                    <td class="text-center">@item.Total</td>
-                    <td class="text-center">@item.TkKwh</td>
+    document.addEventListener("DOMContentLoaded", function () {
 
-                    <td class="text-center">
-                        <div class="d-flex justify-content-center gap-2">
+        const searchBox =
+            document.getElementById("searchBox");
 
-                            @if (canEdit)
-                            {
-                                <a asp-action="Edit"
-                                   asp-route-id="@item.Trid"
-                                   class="btn btn-success btn-sm">
-                                    Edit
-                                </a>
-                            }
+        const searchForm =
+            document.getElementById("searchForm");
 
-                            @if (canDelete)
-                            {
-                                <a asp-action="Delete"
-                                   asp-route-id="@item.Trid"
-                                   class="btn btn-danger btn-sm">
-                                    Delete
-                                </a>
-                            }
 
-                        </div>
-                    </td>
-                </tr>
-            }
-        </tbody>
-
-    </table>
-</div>
-
-<!-- PAGINATION -->
-<nav>
-    <ul class="pagination justify-content-center flex-wrap">
-
-        <li class="page-item @(currentPage == 1 ? "disabled" : "")">
-            <a class="page-link"
-               href="@Url.Action("RebReadingInfoList", new { page = currentPage - 1, searchString = search })">
-                Prev
-            </a>
-        </li>
-
-        @for (int i = startPage; i <= endPage; i++)
-        {
-            <li class="page-item @(i == currentPage ? "active" : "")">
-                <a class="page-link"
-                   href="@Url.Action("RebReadingInfoList", new { page = i, searchString = search })">
-                    @i
-                </a>
-            </li>
+        if (!searchBox || !searchForm) {
+            return;
         }
 
-        <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
-            <a class="page-link"
-               href="@Url.Action("RebReadingInfoList", new { page = currentPage + 1, searchString = search })">
-                Next
-            </a>
-        </li>
 
-    </ul>
-</nav>
+        /* =====================================================
+           AUTO SEARCH WITH DEBOUNCE
+        ====================================================== */
 
-<!-- OPTIONAL: AUTO SUBMIT ON TYPING (NO BUTTON) -->
-<script>
-    document.querySelector("input[name='searchString']")
-        .addEventListener("input", function () {
+        let searchDelay;
 
-            clearTimeout(this.delay);
 
-            this.delay = setTimeout(() => {
-                this.form.submit();
-            }, 1000); // debounce 0.10 sec
+        searchBox.addEventListener("input", function () {
+
+            clearTimeout(searchDelay);
+
+
+            searchDelay = setTimeout(function () {
+
+                searchForm.submit();
+
+            }, 1000);
+
         });
 
-         window.onload = function () {
-        let searchBox = document.getElementById("searchBox");
 
-        // cursor always in search box
-        if (searchBox) {
-            searchBox.focus();
+        /* =====================================================
+           KEEP SEARCH BOX FOCUSED
+        ====================================================== */
 
-            // move cursor to end
-            let val = searchBox.value;
-            searchBox.value = "";
-            searchBox.value = val;
-        }
-    };
+        searchBox.focus();
+
+
+        /*
+         * Move cursor to the end
+         */
+
+        const value =
+            searchBox.value;
+
+        searchBox.value = "";
+
+        searchBox.value = value;
+
+    });
+
 </script>

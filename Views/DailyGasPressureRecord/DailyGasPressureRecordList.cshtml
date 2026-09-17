@@ -25,41 +25,26 @@
     Total Records: <strong>@ViewBag.totalReadings</strong>
 </p>
 
-<div class="d-flex justify-content-between mb-3 align-items-center">
 
-    <!-- LEFT: SEARCH + RESET -->
-    <form method="get" asp-action="DailyGasPressureRecordList"
-          class="d-flex gap-2 align-items-center"
-          id="searchForm">
-
-        <input type="text"
-               name="searchString"
-               id="searchBox"
-               value="@ViewBag.SearchString"
-               class="form-control"
-               placeholder="Search here..."
+@* Responsive Design *@
+<div class="d-flex justify-content-between mb-3 align-items-center daily-list-toolbar">
+    <!-- LEFT: SEARCH -->
+    <form method="get" asp-action="DailyEnergyFuelConsumptionList" class="d-flex gap-2 align-items-center daily-list-search-form" id="searchForm">
+        <input type="text" name="searchString" id="searchBox" value="@ViewBag.SearchString" class="form-control daily-list-search-box" placeholder="Search here..."
                style="width: 300px;" />
-
     </form>
-
     <!-- RIGHT: ACTION BUTTONS -->
-    <div class="d-flex gap-2">
-
+    <div class="d-flex gap-2 daily-list-actions">
         @if (canCreate)
         {
-            <a asp-action="Create" class="btn btn-primary">
-                + Create
+            <a asp-action="Create" class="btn btn-primary daily-create-btn"> 
+                + Create 
             </a>
         }
-
-        <button type="button"
-                class="btn btn-secondary"
-                onclick="window.history.back();">
+        <button type="button" class="btn btn-secondary daily-back-btn" onclick="window.history.back();">
             Back
         </button>
-
     </div>
-
 </div>
 
 <!-- TABLE -->

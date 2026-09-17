@@ -3,22 +3,21 @@
 @{
     ViewData["Title"] = "Create Solar Reading";
 }
+<link rel="stylesheet" href="~/css/create-responsive.css" />
 
-<div class="container mt-4">
+<div class="container create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Add New Solar Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
-
-                    <form asp-action="Create" method="post">
-
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
@@ -26,7 +25,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -36,7 +35,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -49,7 +48,7 @@
                             </div>
 
                             <!-- ServiceChargeCost -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="ServiceChargeCost" class="form-label">
                                     Service Charge Cost<span class="text-danger">*</span>
                                 </label>
@@ -58,7 +57,7 @@
                             </div>
 
                             <!-- SparePartsCost -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="SparePartsCost" class="form-label">
                                     Spare Parts Cost <span class="text-danger">*</span>
                                 </label>
@@ -67,7 +66,7 @@
                             </div>
 
                             <!-- TotalCost -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="TotalCost" class="form-label">
                                     Total Cost<span class="text-danger">*</span>
                                 </label>
@@ -76,7 +75,7 @@
                             </div>
 
                             <!-- GenerationKwh -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="GenerationKwh" class="form-label">
                                     Generation Kwh<span class="text-danger">*</span>
                                 </label>
@@ -84,7 +83,7 @@
                                 <span asp-validation-for="GenerationKwh" class="text-danger"></span>
                             </div>
                             <!-- PerUnitGenCost -->
-                            <div class="col-md-6">
+                            <div class="col-md-6 create-field">
                                 <label asp-for="PerUnitGenCost" class="form-label">
                                     Per Unit Gen. Cost<span class="text-danger">*</span>
                                 </label>
@@ -93,8 +92,7 @@
                             </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
-
+                        @* <div class="create-form-buttons">
                             <a asp-action="SolarReadingInfoList"
                                class="btn btn-outline-secondary">
                                 ← Back
@@ -105,6 +103,16 @@
                                 Save Reading
                             </button>
 
+                        </div> *@
+
+                        <div class="create-form-buttons">
+                            <a asp-action="SolarReadingInfoList" class="btn btn-back">
+                                <i class="bi bi-arrow-left"></i> Back
+                            </a>
+
+                            <button type="submit" class="btn btn-create">
+                                <i class="bi bi-check-circle"></i> Save
+                            </button>
                         </div>
 
                     </form>

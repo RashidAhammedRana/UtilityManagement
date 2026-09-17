@@ -25,35 +25,50 @@
     Total Records: <strong>@ViewBag.totalReadings</strong>
 </p>
 
-<div class="d-flex justify-content-between mb-3 align-items-center">
 
-    <!-- LEFT: SEARCH + RESET -->
-    <form method="get" asp-action="DailyEnergyFuelConsumptionList"
-          class="d-flex gap-2 align-items-center"
+<!-- =====================================================
+     TOOLBAR
+     Desktop:
+     Search                  Create | Back
+
+     Mobile Portrait:
+     Search
+     Create
+     Back
+====================================================== -->
+
+<div class="d-flex justify-content-between mb-3 align-items-center daily-list-toolbar">
+
+    <!-- LEFT: SEARCH -->
+    <form method="get"
+          asp-action="DailyEnergyFuelConsumptionList"
+          class="d-flex gap-2 align-items-center daily-list-search-form"
           id="searchForm">
 
         <input type="text"
                name="searchString"
                id="searchBox"
                value="@ViewBag.SearchString"
-               class="form-control"
+               class="form-control daily-list-search-box"
                placeholder="Search here..."
                style="width: 300px;" />
 
     </form>
 
+
     <!-- RIGHT: ACTION BUTTONS -->
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 daily-list-actions">
 
         @if (canCreate)
         {
-            <a asp-action="Create" class="btn btn-primary">
+            <a asp-action="Create"
+               class="btn btn-primary daily-create-btn">
                 + Create
             </a>
         }
 
         <button type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary daily-back-btn"
                 onclick="window.history.back();">
             Back
         </button>
@@ -62,11 +77,14 @@
 
 </div>
 
+
 <!-- TABLE -->
 <div class="table-responsive">
+
     <table class="table table-bordered table-hover">
 
         <thead class="table-dark">
+
             <tr class="text-center">
                 <th>SL</th>
                 <th>Company</th>
@@ -87,32 +105,88 @@
                 <th>Ind.Boiler</th>
                 <th>Actions</th>
             </tr>
+
         </thead>
 
+
         <tbody>
+
             @foreach (var item in Model)
             {
                 sl++;
 
                 <tr>
-                    <td class="text-center">@sl</td>
-                    <td class="text-center">@item.Company</td>
-                    <td class="text-center">@item.Trdate?.ToString("dd-MM-yyyy")</td>
-                    <td class="text-center">@item.Time</td>
-                    <td class="text-center">@item.Reb</td>
-                    <td class="text-center">@item.Gg1</td>
-                    <td class="text-center">@item.Gg2</td>
-                    <td class="text-center">@item.Gg3</td>
-                    <td class="text-center">@item.Gg4</td>
-                    <td class="text-center">@item.Dg1</td>
-                    <td class="text-center">@item.Dg2</td>
-                    <td class="text-center">@item.Dg3</td>
-                    <td class="text-center">@item.Dg4</td>
-                    <td class="text-center">@item.Solar</td>
-                    <td class="text-center">@item.Total</td>
-                    <td class="text-center">@item.CaptiveGenerator</td>
-                    <td class="text-center">@item.IndustrialBoiler</td>
+
                     <td class="text-center">
+                        @sl
+                    </td>
+
+                    <td class="text-center">
+                        @item.Company
+                    </td>
+
+                    <td class="text-center">
+                        @item.Trdate?.ToString("dd-MM-yyyy")
+                    </td>
+
+                    <td class="text-center">
+                        @item.Time
+                    </td>
+
+                    <td class="text-center">
+                        @item.Reb
+                    </td>
+
+                    <td class="text-center">
+                        @item.Gg1
+                    </td>
+
+                    <td class="text-center">
+                        @item.Gg2
+                    </td>
+
+                    <td class="text-center">
+                        @item.Gg3
+                    </td>
+
+                    <td class="text-center">
+                        @item.Gg4
+                    </td>
+
+                    <td class="text-center">
+                        @item.Dg1
+                    </td>
+
+                    <td class="text-center">
+                        @item.Dg2
+                    </td>
+
+                    <td class="text-center">
+                        @item.Dg3
+                    </td>
+
+                    <td class="text-center">
+                        @item.Dg4
+                    </td>
+
+                    <td class="text-center">
+                        @item.Solar
+                    </td>
+
+                    <td class="text-center">
+                        @item.Total
+                    </td>
+
+                    <td class="text-center">
+                        @item.CaptiveGenerator
+                    </td>
+
+                    <td class="text-center">
+                        @item.IndustrialBoiler
+                    </td>
+
+                    <td class="text-center">
+
                         <div class="d-flex justify-content-center gap-2">
 
                             @if (canEdit)
@@ -134,68 +208,115 @@
                             }
 
                         </div>
+
                     </td>
+
                 </tr>
             }
+
         </tbody>
 
     </table>
+
 </div>
 
+
 <!-- PAGINATION -->
+
 <nav>
+
     <ul class="pagination justify-content-center flex-wrap">
 
         <li class="page-item @(currentPage == 1 ? "disabled" : "")">
+
             <a class="page-link"
-               href="@Url.Action("DailyEnergyFuelConsumptionList", new { page = currentPage - 1, searchString = search })">
+               href="@Url.Action("DailyEnergyFuelConsumptionList",
+               new
+               {
+                   page = currentPage - 1,
+                   searchString = search
+               })">
                 Prev
             </a>
+
         </li>
+
 
         @for (int i = startPage; i <= endPage; i++)
         {
             <li class="page-item @(i == currentPage ? "active" : "")">
+
                 <a class="page-link"
-                   href="@Url.Action("DailyEnergyFuelConsumptionList", new { page = i, searchString = search })">
-                    @i
-                </a>
+                   href="@Url.Action("DailyEnergyFuelConsumptionList",
+                 new
+                 {
+                     page = i,
+                     searchString = search
+                 })">
+                @i
+            </a>
+
             </li>
-        }
+                }
+
 
         <li class="page-item @(currentPage == totalPages ? "disabled" : "")">
+
             <a class="page-link"
-               href="@Url.Action("DailyEnergyFuelConsumptionList", new { page = currentPage + 1, searchString = search })">
+               href="@Url.Action("DailyEnergyFuelConsumptionList",
+               new
+               {
+                   page = currentPage + 1,
+                   searchString = search
+               })">
                 Next
             </a>
+
         </li>
 
     </ul>
+
 </nav>
 
-<!-- OPTIONAL: AUTO SUBMIT ON TYPING (NO BUTTON) -->
 <script>
-    document.querySelector("input[name='searchString']")
-        .addEventListener("input", function () {
+
+    document
+        .querySelector("input[name='searchString']")
+        ?.addEventListener("input", function () {
 
             clearTimeout(this.delay);
 
             this.delay = setTimeout(() => {
+
                 this.form.submit();
-            }, 1000); // debounce 0.10 sec
+
+            }, 1000);
+
         });
 
-         window.onload = function () {
-        let searchBox = document.getElementById("searchBox");
 
-        // cursor always in search box
+    window.onload = function () {
+
+        let searchBox =
+            document.getElementById("searchBox");
+
+
         if (searchBox) {
+
             searchBox.focus();
 
-            // move cursor to end
-            let val = searchBox.value;
+
+            let val =
+                searchBox.value;
+
+
             searchBox.value = "";
+
+
             searchBox.value = val;
+
         }
+
     };
+
 </script>

@@ -1,0 +1,748 @@
+﻿/* =========================================================
+   LIST / TABLE - COMMON
+========================================================= */
+
+.app-list-page,
+.app-list-page *,
+.app-list-page *::before,
+.app-list-page *::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LIST PAGE CONTAINER
+========================================================= */
+
+.app-list-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 20px 20px 30px 20px;
+}
+
+
+    /* =========================================================
+   PAGE TITLE
+========================================================= */
+
+    .app-list-page .list-page-title {
+        font-weight: 600;
+        margin-bottom: 5px;
+        text-align: center;
+        font-size: 28px;
+        line-height: 1.3;
+    }
+
+
+    /* =========================================================
+   TOTAL / SUBTITLE
+========================================================= */
+
+    .app-list-page .list-total {
+        text-align: center;
+        margin-bottom: 25px;
+        color: #6c757d;
+        font-size: 15px;
+    }
+
+
+    /* =========================================================
+   TOOLBAR
+========================================================= */
+
+    .app-list-page .list-toolbar {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+
+
+    /* =========================================================
+   SEARCH
+========================================================= */
+
+    .app-list-page .list-search-form {
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        flex: 1 1 auto;
+        min-width: 0;
+    }
+
+
+    .app-list-page .list-search-box {
+        width: 300px;
+        max-width: 100%;
+        min-height: 38px;
+    }
+
+
+    /* =========================================================
+   ACTION BUTTONS
+========================================================= */
+
+    .app-list-page .list-actions {
+        display: flex;
+        align-items: center;
+        justify-content: flex-end;
+        gap: 8px;
+        flex-shrink: 0;
+    }
+
+
+        .app-list-page .list-actions .btn {
+            white-space: nowrap;
+        }
+
+
+    /* =========================================================
+   TABLE WRAPPER
+========================================================= */
+
+    .app-list-page .list-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        border-radius: 6px;
+    }
+
+
+    /* =========================================================
+   TABLE
+========================================================= */
+
+    .app-list-page .list-table {
+        width: 100%;
+        min-width: 1200px;
+        margin-bottom: 0;
+        table-layout: auto;
+    }
+
+
+        .app-list-page .list-table th,
+        .app-list-page .list-table td {
+            vertical-align: middle;
+            white-space: nowrap;
+            padding: 10px 8px;
+            font-size: 14px;
+        }
+
+
+        .app-list-page .list-table thead th {
+            font-weight: 600;
+            vertical-align: middle;
+        }
+
+
+        .app-list-page .list-table tbody td {
+            vertical-align: middle;
+        }
+
+
+    /* =========================================================
+   TABLE ACTIONS
+========================================================= */
+
+    .app-list-page .list-table-actions {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        gap: 6px;
+        white-space: nowrap;
+    }
+
+
+        .app-list-page .list-table-actions .btn {
+            min-width: 55px;
+        }
+
+
+    /* =========================================================
+   PAGINATION
+========================================================= */
+
+    .app-list-page .list-pagination-wrapper {
+        width: 100%;
+        margin-top: 25px;
+        padding-bottom: 20px;
+    }
+
+
+    .app-list-page .list-pagination {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 4px;
+        margin-bottom: 0;
+    }
+
+
+        .app-list-page .list-pagination .page-link {
+            min-width: 40px;
+            text-align: center;
+        }
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1600px+
+========================================================= */
+
+@@media screen and (min-width: 1600px) {
+
+    .app-list-page {
+        padding: 25px 35px 40px 35px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 30px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 16px;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1500px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 11px 10px;
+                font-size: 14px;
+            }
+}
+
+
+/* =========================================================
+   LAPTOP
+   1200px - 1599px
+========================================================= */
+
+@@media screen and (min-width: 1200px) and (max-width: 1599px) {
+
+    .app-list-page {
+        padding: 20px 25px 30px 25px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 27px;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1400px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 9px 7px;
+                font-size: 13px;
+            }
+}
+
+
+/* =========================================================
+   SMALL LAPTOP / TABLET LANDSCAPE
+   992px - 1199px
+========================================================= */
+
+@@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .app-list-page {
+        padding: 18px 18px 30px 18px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 25px;
+        }
+
+
+        .app-list-page .list-toolbar {
+            gap: 12px;
+        }
+
+
+        .app-list-page .list-search-box {
+            width: 260px;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1350px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+
+        .app-list-page .list-actions .btn {
+            font-size: 13px;
+        }
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 991px
+========================================================= */
+
+@@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .app-list-page {
+        padding: 18px 15px 30px 15px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 24px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+
+
+        .app-list-page .list-toolbar {
+            flex-wrap: wrap;
+            align-items: stretch;
+        }
+
+
+        .app-list-page .list-search-form {
+            flex: 1 1 100%;
+        }
+
+
+        .app-list-page .list-search-box {
+            width: 100%;
+        }
+
+
+        .app-list-page .list-actions {
+            width: 100%;
+            justify-content: flex-end;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1300px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 8px 6px;
+                font-size: 12px;
+            }
+
+
+        .app-list-page .list-table-actions .btn {
+            font-size: 12px;
+            padding: 5px 8px;
+        }
+}
+
+
+/* =========================================================
+   MOBILE
+   767px and below
+========================================================= */
+
+@@media screen and (max-width: 767px) {
+
+    .app-list-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 15px 10px 25px 10px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 21px;
+            line-height: 1.3;
+            margin-bottom: 5px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 13px;
+            margin-bottom: 18px;
+        }
+        /* =====================================================
+       MOBILE TOOLBAR
+    ====================================================== */
+
+        .app-list-page .list-toolbar {
+            width: 100%;
+            display: flex;
+            flex-direction: column;
+            align-items: stretch;
+            gap: 10px;
+            margin-bottom: 15px;
+        }
+
+
+        .app-list-page .list-search-form {
+            width: 100%;
+            display: block;
+        }
+
+
+        .app-list-page .list-search-box {
+            width: 100%;
+            max-width: 100%;
+            min-height: 40px;
+            font-size: 14px;
+        }
+
+
+        .app-list-page .list-actions {
+            width: 100%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: center;
+            gap: 7px;
+        }
+
+
+            .app-list-page .list-actions .btn {
+                font-size: 13px;
+                padding: 7px 12px;
+            }
+        /* =====================================================
+       MOBILE TABLE
+    ====================================================== */
+
+        .app-list-page .list-table-wrapper {
+            width: 100%;
+            max-width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+            border: 1px solid #dee2e6;
+            border-radius: 6px;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1200px;
+            width: max-content;
+            margin: 0;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 7px 6px;
+                font-size: 12px;
+                white-space: nowrap;
+            }
+
+
+            .app-list-page .list-table thead th {
+                font-size: 12px;
+            }
+
+
+        .app-list-page .list-table-actions {
+            gap: 5px;
+        }
+
+
+            .app-list-page .list-table-actions .btn {
+                font-size: 11px;
+                padding: 5px 8px;
+                min-width: 52px;
+            }
+        /* =====================================================
+       MOBILE PAGINATION
+    ====================================================== */
+
+        .app-list-page .list-pagination-wrapper {
+            margin-top: 20px;
+            padding-bottom: 15px;
+            overflow: hidden;
+        }
+
+
+        .app-list-page .list-pagination {
+            gap: 3px;
+            padding: 0 5px;
+        }
+
+
+            .app-list-page .list-pagination .page-link {
+                min-width: 34px;
+                padding: 6px 8px;
+                font-size: 12px;
+            }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   400px and below
+========================================================= */
+
+@@media screen and (max-width: 400px) {
+
+    .app-list-page {
+        padding: 12px 8px 20px 8px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 19px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 12px;
+            margin-bottom: 15px;
+        }
+
+
+        .app-list-page .list-actions {
+            justify-content: stretch;
+        }
+
+
+            .app-list-page .list-actions .btn {
+                flex: 1;
+                font-size: 12px;
+                padding: 7px 8px;
+            }
+
+
+        .app-list-page .list-table {
+            min-width: 1150px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 6px 5px;
+                font-size: 11px;
+            }
+
+
+            .app-list-page .list-table thead th {
+                font-size: 11px;
+            }
+
+
+        .app-list-page .list-table-actions .btn {
+            font-size: 10px;
+            padding: 4px 7px;
+            min-width: 48px;
+        }
+
+
+        .app-list-page .list-pagination .page-link {
+            min-width: 31px;
+            padding: 5px 6px;
+            font-size: 11px;
+        }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+========================================================= */
+
+@@media screen and (max-width: 767px) and (orientation: landscape) {
+
+    .app-list-page {
+        padding: 12px 12px 20px 12px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 20px;
+            margin-bottom: 3px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 12px;
+            margin-bottom: 12px;
+        }
+        /* Landscape toolbar stays horizontal */
+
+        .app-list-page .list-toolbar {
+            flex-direction: row;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 12px;
+        }
+
+
+        .app-list-page .list-search-form {
+            flex: 1;
+        }
+
+
+        .app-list-page .list-search-box {
+            width: 100%;
+            min-height: 36px;
+            font-size: 12px;
+        }
+
+
+        .app-list-page .list-actions {
+            width: auto;
+            flex-shrink: 0;
+        }
+
+
+            .app-list-page .list-actions .btn {
+                font-size: 11px;
+                padding: 6px 10px;
+            }
+
+
+        .app-list-page .list-table {
+            min-width: 1150px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 6px 5px;
+                font-size: 11px;
+            }
+
+
+            .app-list-page .list-table thead th {
+                font-size: 11px;
+            }
+
+
+        .app-list-page .list-table-actions .btn {
+            font-size: 10px;
+            padding: 4px 7px;
+        }
+
+
+        .app-list-page .list-pagination-wrapper {
+            margin-top: 15px;
+        }
+
+
+        .app-list-page .list-pagination .page-link {
+            min-width: 30px;
+            padding: 4px 6px;
+            font-size: 11px;
+        }
+}
+
+
+/* =========================================================
+   VERY SHORT MOBILE LANDSCAPE
+   max-height: 380px
+========================================================= */
+
+@@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+
+    .app-list-page {
+        padding: 8px 10px 15px 10px;
+    }
+
+
+        .app-list-page .list-page-title {
+            font-size: 17px;
+        }
+
+
+        .app-list-page .list-total {
+            font-size: 10px;
+            margin-bottom: 8px;
+        }
+
+
+        .app-list-page .list-toolbar {
+            margin-bottom: 8px;
+        }
+
+
+        .app-list-page .list-search-box {
+            min-height: 32px;
+            font-size: 11px;
+        }
+
+
+        .app-list-page .list-actions .btn {
+            font-size: 10px;
+            padding: 5px 8px;
+        }
+
+
+        .app-list-page .list-table {
+            min-width: 1100px;
+        }
+
+
+            .app-list-page .list-table th,
+            .app-list-page .list-table td {
+                padding: 5px 4px;
+                font-size: 10px;
+            }
+
+
+            .app-list-page .list-table thead th {
+                font-size: 10px;
+            }
+
+
+        .app-list-page .list-table-actions .btn {
+            font-size: 9px;
+            padding: 3px 6px;
+            min-width: 45px;
+        }
+
+
+        .app-list-page .list-pagination-wrapper {
+            margin-top: 10px;
+        }
+
+
+        .app-list-page .list-pagination .page-link {
+            min-width: 27px;
+            padding: 3px 5px;
+            font-size: 10px;
+        }
+}
+
+
+/* =========================================================
+   TOUCH
+========================================================= */
+
+@@media screen and (pointer: coarse) and (hover: none) {
+
+    .app-list-page .list-actions .btn,
+    .app-list-page .list-table-actions .btn,
+    .app-list-page .list-pagination .page-link {
+        touch-action: manipulation;
+    }
+}

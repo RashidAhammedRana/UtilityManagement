@@ -160,6 +160,9 @@
             this.xrTableCell39 = new DevExpress.XtraReports.UI.XRTableCell();
             this.FromDate = new DevExpress.XtraReports.Parameters.Parameter();
             this.ToDate = new DevExpress.XtraReports.Parameters.Parameter();
+            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell3 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
@@ -343,7 +346,8 @@
             this.xrTableCell66,
             this.xrTableCell67,
             this.xrTableCell68,
-            this.xrTableCell70});
+            this.xrTableCell70,
+            this.xrTableCell3});
             this.tableRow3.Name = "tableRow3";
             this.tableRow3.Weight = 11.5D;
             // 
@@ -362,7 +366,7 @@
             this.tableCell14.StylePriority.UseTextAlignment = false;
             this.tableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell14.TextFormatString = "{0:dd-MMM-yy}";
-            this.tableCell14.Weight = 0.069776519519350655D;
+            this.tableCell14.Weight = 0.066815501461012825D;
             // 
             // tableCell15
             // 
@@ -377,7 +381,7 @@
             this.tableCell15.StylePriority.UseTextAlignment = false;
             this.tableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell15.TextFormatString = "{0:#,#}";
-            this.tableCell15.Weight = 0.12881796119913042D;
+            this.tableCell15.Weight = 0.12335152302151252D;
             // 
             // tableCell17
             // 
@@ -392,7 +396,7 @@
             this.tableCell17.StylePriority.UseTextAlignment = false;
             this.tableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell17.TextFormatString = "{0:#,#}";
-            this.tableCell17.Weight = 0.066220912248399377D;
+            this.tableCell17.Weight = 0.063410668802092771D;
             // 
             // tableCell18
             // 
@@ -407,7 +411,7 @@
             this.tableCell18.StylePriority.UseTextAlignment = false;
             this.tableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell18.TextFormatString = "{0:#,#}";
-            this.tableCell18.Weight = 0.075143754053372119D;
+            this.tableCell18.Weight = 0.07195508604411216D;
             // 
             // tableCell19
             // 
@@ -422,7 +426,7 @@
             this.tableCell19.StylePriority.UseTextAlignment = false;
             this.tableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell19.TextFormatString = "{0:#,#}";
-            this.tableCell19.Weight = 0.075143956292011233D;
+            this.tableCell19.Weight = 0.071955085048876058D;
             // 
             // tableCell22
             // 
@@ -437,7 +441,7 @@
             this.tableCell22.StylePriority.UseTextAlignment = false;
             this.tableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.tableCell22.TextFormatString = "{0:#,#}";
-            this.tableCell22.Weight = 0.075143927364216961D;
+            this.tableCell22.Weight = 0.071955085090575868D;
             // 
             // xrTableCell25
             // 
@@ -454,7 +458,7 @@
             this.xrTableCell25.Text = "xrTableCell25";
             this.xrTableCell25.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell25.TextFormatString = "{0:#,#}";
-            this.xrTableCell25.Weight = 0.069776382138550752D;
+            this.xrTableCell25.Weight = 0.076332781518618512D;
             // 
             // xrTableCell26
             // 
@@ -471,7 +475,7 @@
             this.xrTableCell26.Text = "xrTableCell26";
             this.xrTableCell26.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell26.TextFormatString = "{0:#,#}";
-            this.xrTableCell26.Weight = 0.069776730034632847D;
+            this.xrTableCell26.Weight = 0.0763329226155657D;
             // 
             // xrTableCell27
             // 
@@ -488,7 +492,7 @@
             this.xrTableCell27.Text = "xrTableCell27";
             this.xrTableCell27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell27.TextFormatString = "{0:#,#}";
-            this.xrTableCell27.Weight = 0.069776210038421035D;
+            this.xrTableCell27.Weight = 0.05724944493102492D;
             // 
             // xrTableCell28
             // 
@@ -505,7 +509,7 @@
             this.xrTableCell28.Text = "xrTableCell28";
             this.xrTableCell28.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell28.TextFormatString = "{0:#,#}";
-            this.xrTableCell28.Weight = 0.06977655694740445D;
+            this.xrTableCell28.Weight = 0.057346760018014586D;
             // 
             // xrTableCell29
             // 
@@ -522,7 +526,7 @@
             this.xrTableCell29.Text = "xrTableCell29";
             this.xrTableCell29.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell29.TextFormatString = "{0:#,#}";
-            this.xrTableCell29.Weight = 0.091246157433420211D;
+            this.xrTableCell29.Weight = 0.0873740680527782D;
             // 
             // xrTableCell33
             // 
@@ -539,7 +543,7 @@
             this.xrTableCell33.Text = "xrTableCell33";
             this.xrTableCell33.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell33.TextFormatString = "{0:#,#}";
-            this.xrTableCell33.Weight = 0.08051141619460471D;
+            this.xrTableCell33.Weight = 0.077094553117603312D;
             // 
             // xrTableCell34
             // 
@@ -556,12 +560,12 @@
             this.xrTableCell34.Text = "xrTableCell34";
             this.xrTableCell34.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell34.TextFormatString = "{0:#,#}";
-            this.xrTableCell34.Weight = 0.080511303095950629D;
+            this.xrTableCell34.Weight = 0.077094781417192074D;
             // 
             // xrTableCell35
             // 
             this.xrTableCell35.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[ELECTRICITY_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LABOUR_COST]")});
             this.xrTableCell35.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell35.Multiline = true;
             this.xrTableCell35.Name = "xrTableCell35";
@@ -573,12 +577,12 @@
             this.xrTableCell35.Text = "xrTableCell35";
             this.xrTableCell35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell35.TextFormatString = "{0:#,#}";
-            this.xrTableCell35.Weight = 0.0858787591439819D;
+            this.xrTableCell35.Weight = 0.077095077730057637D;
             // 
             // xrTableCell50
             // 
             this.xrTableCell50.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[MAINTENANCE_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ELECTRICITY_COST]")});
             this.xrTableCell50.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell50.Multiline = true;
             this.xrTableCell50.Name = "xrTableCell50";
@@ -590,12 +594,12 @@
             this.xrTableCell50.Text = "xrTableCell50";
             this.xrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell50.TextFormatString = "{0:#,#}";
-            this.xrTableCell50.Weight = 0.085878642947139636D;
+            this.xrTableCell50.Weight = 0.0822341665225732D;
             // 
             // xrTableCell51
             // 
             this.xrTableCell51.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[OTHER_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MAINTENANCE_COST]")});
             this.xrTableCell51.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell51.Multiline = true;
             this.xrTableCell51.Name = "xrTableCell51";
@@ -607,12 +611,12 @@
             this.xrTableCell51.Text = "xrTableCell51";
             this.xrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell51.TextFormatString = "{0:#,#}";
-            this.xrTableCell51.Weight = 0.085878761357520109D;
+            this.xrTableCell51.Weight = 0.081103548852670362D;
             // 
             // xrTableCell65
             // 
             this.xrTableCell65.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[TOTAL_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OTHER_COST]")});
             this.xrTableCell65.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell65.Multiline = true;
             this.xrTableCell65.Name = "xrTableCell65";
@@ -624,12 +628,12 @@
             this.xrTableCell65.Text = "xrTableCell65";
             this.xrTableCell65.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell65.TextFormatString = "{0:#,#}";
-            this.xrTableCell65.Weight = 0.091246337379922174D;
+            this.xrTableCell65.Weight = 0.083365246817606084D;
             // 
             // xrTableCell66
             // 
             this.xrTableCell66.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[WATER_CONS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TOTAL_COST]")});
             this.xrTableCell66.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell66.Multiline = true;
             this.xrTableCell66.Name = "xrTableCell66";
@@ -641,12 +645,12 @@
             this.xrTableCell66.Text = "xrTableCell66";
             this.xrTableCell66.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell66.TextFormatString = "{0:#,#}";
-            this.xrTableCell66.Weight = 0.080511182266322492D;
+            this.xrTableCell66.Weight = 0.085874339648599779D;
             // 
             // xrTableCell67
             // 
             this.xrTableCell67.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[STEAM_GENERATION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WATER_CONS]")});
             this.xrTableCell67.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell67.Multiline = true;
             this.xrTableCell67.Name = "xrTableCell67";
@@ -658,12 +662,12 @@
             this.xrTableCell67.Text = "xrTableCell67";
             this.xrTableCell67.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell67.TextFormatString = "{0:#,#}";
-            this.xrTableCell67.Weight = 0.08587875564696866D;
+            this.xrTableCell67.Weight = 0.095415817810547324D;
             // 
             // xrTableCell68
             // 
             this.xrTableCell68.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[RUNNING_HOUR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[STEAM_GENERATION]")});
             this.xrTableCell68.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell68.Multiline = true;
             this.xrTableCell68.Name = "xrTableCell68";
@@ -675,12 +679,12 @@
             this.xrTableCell68.Text = "xrTableCell68";
             this.xrTableCell68.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell68.TextFormatString = "{0:#,#}";
-            this.xrTableCell68.Weight = 0.085878872995029054D;
+            this.xrTableCell68.Weight = 0.085874346189827644D;
             // 
             // xrTableCell70
             // 
             this.xrTableCell70.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[COST_PER_KG_STEAM]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[RUNNING_HOUR]")});
             this.xrTableCell70.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
             this.xrTableCell70.Multiline = true;
             this.xrTableCell70.Name = "xrTableCell70";
@@ -692,7 +696,7 @@
             this.xrTableCell70.Text = "xrTableCell70";
             this.xrTableCell70.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell70.TextFormatString = "{0:#,#}";
-            this.xrTableCell70.Weight = 0.0903154738269875D;
+            this.xrTableCell70.Weight = 0.076332746428432185D;
             // 
             // Title
             // 
@@ -842,6 +846,7 @@
             this.xrTableCell31,
             this.xrTableCell32,
             this.xrTableCell52,
+            this.xrTableCell2,
             this.xrTableCell53,
             this.xrTableCell54,
             this.xrTableCell55,
@@ -992,7 +997,7 @@
             this.xrTableCell21.StylePriority.UseTextAlignment = false;
             this.xrTableCell21.Text = "Waste Wood Cons.(Kg)";
             this.xrTableCell21.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell21.Weight = 0.058945558369764547D;
+            this.xrTableCell21.Weight = 0.067341860051058272D;
             // 
             // xrTableCell22
             // 
@@ -1012,7 +1017,7 @@
             this.xrTableCell22.StylePriority.UseTextAlignment = false;
             this.xrTableCell22.Text = "Waste Wood Cost(Tk)";
             this.xrTableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell22.Weight = 0.058945558369764547D;
+            this.xrTableCell22.Weight = 0.067341860051058272D;
             // 
             // xrTableCell23
             // 
@@ -1032,7 +1037,7 @@
             this.xrTableCell23.StylePriority.UseTextAlignment = false;
             this.xrTableCell23.Text = "Carton Cons.(Kg)";
             this.xrTableCell23.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell23.Weight = 0.058945558369764547D;
+            this.xrTableCell23.Weight = 0.050506394789990465D;
             // 
             // xrTableCell24
             // 
@@ -1052,7 +1057,7 @@
             this.xrTableCell24.StylePriority.UseTextAlignment = false;
             this.xrTableCell24.Text = "Carton Cost(Tk)";
             this.xrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell24.Weight = 0.058945558369764547D;
+            this.xrTableCell24.Weight = 0.050592118586951194D;
             // 
             // xrTableCell31
             // 
@@ -1150,7 +1155,7 @@
             this.xrTableCell54.StylePriority.UseTextAlignment = false;
             this.xrTableCell54.Text = "Maintenance Cost(Tk)";
             this.xrTableCell54.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell54.Weight = 0.072548379345515182D;
+            this.xrTableCell54.Weight = 0.071550725950619509D;
             // 
             // xrTableCell55
             // 
@@ -1170,7 +1175,7 @@
             this.xrTableCell55.StylePriority.UseTextAlignment = false;
             this.xrTableCell55.Text = "Other Cost(Tk)";
             this.xrTableCell55.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell55.Weight = 0.072548379345515182D;
+            this.xrTableCell55.Weight = 0.073546032740410855D;
             // 
             // xrTableCell56
             // 
@@ -1190,7 +1195,7 @@
             this.xrTableCell56.StylePriority.UseTextAlignment = false;
             this.xrTableCell56.Text = "Total Cost(Tk)";
             this.xrTableCell56.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell56.Weight = 0.0770826530248483D;
+            this.xrTableCell56.Weight = 0.075759592148067462D;
             // 
             // xrTableCell57
             // 
@@ -1210,7 +1215,7 @@
             this.xrTableCell57.StylePriority.UseTextAlignment = false;
             this.xrTableCell57.Text = "Water Consumption(Ltr)";
             this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell57.Weight = 0.068014105662955585D;
+            this.xrTableCell57.Weight = 0.084177325011012882D;
             // 
             // xrTableCell58
             // 
@@ -1230,7 +1235,7 @@
             this.xrTableCell58.StylePriority.UseTextAlignment = false;
             this.xrTableCell58.Text = "Steam Generation(Kg)";
             this.xrTableCell58.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell58.Weight = 0.072548379345358141D;
+            this.xrTableCell58.Weight = 0.075759592265729411D;
             // 
             // xrTableCell59
             // 
@@ -1250,7 +1255,7 @@
             this.xrTableCell59.StylePriority.UseTextAlignment = false;
             this.xrTableCell59.Text = "Total Running Hour";
             this.xrTableCell59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell59.Weight = 0.072548490045399247D;
+            this.xrTableCell59.Weight = 0.067341861157491023D;
             // 
             // xrTableCell60
             // 
@@ -1272,7 +1277,7 @@
             this.xrTableCell60.StylePriority.UseTextAlignment = false;
             this.xrTableCell60.Text = "Cost Per Kg Steam(Tk)";
             this.xrTableCell60.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell60.Weight = 0.076296461337192728D;
+            this.xrTableCell60.Weight = 0.063451718833453213D;
             // 
             // ReportFooter
             // 
@@ -1312,7 +1317,8 @@
             this.xrTableCell36,
             this.xrTableCell37,
             this.xrTableCell38,
-            this.xrTableCell39});
+            this.xrTableCell39,
+            this.xrTableCell19});
             this.xrTableRow1.Name = "xrTableRow1";
             this.xrTableRow1.Weight = 11.5D;
             // 
@@ -1334,7 +1340,7 @@
             this.xrTableCell1.Text = "Total:";
             this.xrTableCell1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
             this.xrTableCell1.TextFormatString = "{0:dd-MMM-yy}";
-            this.xrTableCell1.Weight = 0.17915089004909551D;
+            this.xrTableCell1.Weight = 0.17132318949398267D;
             // 
             // xrTableCell4
             // 
@@ -1357,7 +1363,7 @@
             this.xrTableCell4.Summary = xrSummary1;
             this.xrTableCell4.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell4.TextFormatString = "{0:#,#}";
-            this.xrTableCell4.Weight = 0.059737456423215873D;
+            this.xrTableCell4.Weight = 0.057127238168236387D;
             // 
             // xrTableCell5
             // 
@@ -1380,7 +1386,7 @@
             this.xrTableCell5.Summary = xrSummary2;
             this.xrTableCell5.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell5.TextFormatString = "{0:#,#}";
-            this.xrTableCell5.Weight = 0.0677867520267851D;
+            this.xrTableCell5.Weight = 0.064824974729468771D;
             // 
             // xrTableCell6
             // 
@@ -1403,7 +1409,7 @@
             this.xrTableCell6.Summary = xrSummary3;
             this.xrTableCell6.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell6.TextFormatString = "{0:#,#}";
-            this.xrTableCell6.Weight = 0.067786882848865762D;
+            this.xrTableCell6.Weight = 0.064824974712990355D;
             // 
             // xrTableCell7
             // 
@@ -1426,7 +1432,7 @@
             this.xrTableCell7.Summary = xrSummary4;
             this.xrTableCell7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell7.TextFormatString = "{0:#,#}";
-            this.xrTableCell7.Weight = 0.0677868897150054D;
+            this.xrTableCell7.Weight = 0.0648248175640817D;
             // 
             // xrTableCell8
             // 
@@ -1451,7 +1457,7 @@
             this.xrTableCell8.Text = "xrTableCell25";
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell8.TextFormatString = "{0:#,#}";
-            this.xrTableCell8.Weight = 0.06294497117270835D;
+            this.xrTableCell8.Weight = 0.0687688738185862D;
             // 
             // xrTableCell9
             // 
@@ -1476,7 +1482,7 @@
             this.xrTableCell9.Text = "xrTableCell26";
             this.xrTableCell9.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell9.TextFormatString = "{0:#,#}";
-            this.xrTableCell9.Weight = 0.062945273928028761D;
+            this.xrTableCell9.Weight = 0.068769009615508D;
             // 
             // xrTableCell10
             // 
@@ -1501,7 +1507,7 @@
             this.xrTableCell10.Text = "xrTableCell27";
             this.xrTableCell10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell10.TextFormatString = "{0:#,#}";
-            this.xrTableCell10.Weight = 0.062944697590942247D;
+            this.xrTableCell10.Weight = 0.051576533415682309D;
             // 
             // xrTableCell11
             // 
@@ -1526,7 +1532,7 @@
             this.xrTableCell11.Text = "xrTableCell28";
             this.xrTableCell11.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell11.TextFormatString = "{0:#,#}";
-            this.xrTableCell11.Weight = 0.062944696429222777D;
+            this.xrTableCell11.Weight = 0.05166436010892423D;
             // 
             // xrTableCell12
             // 
@@ -1551,7 +1557,7 @@
             this.xrTableCell12.Text = "xrTableCell29";
             this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell12.TextFormatString = "{0:#,#}";
-            this.xrTableCell12.Weight = 0.082312875656940107D;
+            this.xrTableCell12.Weight = 0.078715915685757309D;
             // 
             // xrTableCell13
             // 
@@ -1576,7 +1582,7 @@
             this.xrTableCell13.Text = "xrTableCell33";
             this.xrTableCell13.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell13.TextFormatString = "{0:#,#}";
-            this.xrTableCell13.Weight = 0.072628758025752749D;
+            this.xrTableCell13.Weight = 0.069455478074256422D;
             // 
             // xrTableCell14
             // 
@@ -1601,7 +1607,7 @@
             this.xrTableCell14.Text = "xrTableCell34";
             this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell14.TextFormatString = "{0:#,#}";
-            this.xrTableCell14.Weight = 0.07262855002882429D;
+            this.xrTableCell14.Weight = 0.069455165078867023D;
             // 
             // xrTableCell15
             // 
@@ -1609,7 +1615,7 @@
             this.xrTableCell15.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell15.BorderWidth = 1F;
             this.xrTableCell15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[ELECTRICITY_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[LABOUR_COST]")});
             this.xrTableCell15.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell15.Multiline = true;
             this.xrTableCell15.Name = "xrTableCell15";
@@ -1626,7 +1632,7 @@
             this.xrTableCell15.Text = "xrTableCell35";
             this.xrTableCell15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell15.TextFormatString = "{0:#,#}";
-            this.xrTableCell15.Weight = 0.077470920126287313D;
+            this.xrTableCell15.Weight = 0.069455636117822378D;
             // 
             // xrTableCell16
             // 
@@ -1634,7 +1640,7 @@
             this.xrTableCell16.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell16.BorderWidth = 1F;
             this.xrTableCell16.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[MAINTENANCE_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[ELECTRICITY_COST]")});
             this.xrTableCell16.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell16.Multiline = true;
             this.xrTableCell16.Name = "xrTableCell16";
@@ -1651,7 +1657,7 @@
             this.xrTableCell16.Text = "xrTableCell50";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell16.TextFormatString = "{0:#,#}";
-            this.xrTableCell16.Weight = 0.077470604135514654D;
+            this.xrTableCell16.Weight = 0.074085592480456541D;
             // 
             // xrTableCell17
             // 
@@ -1659,7 +1665,7 @@
             this.xrTableCell17.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell17.BorderWidth = 1F;
             this.xrTableCell17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[OTHER_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[MAINTENANCE_COST]")});
             this.xrTableCell17.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell17.Multiline = true;
             this.xrTableCell17.Name = "xrTableCell17";
@@ -1676,7 +1682,7 @@
             this.xrTableCell17.Text = "xrTableCell51";
             this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell17.TextFormatString = "{0:#,#}";
-            this.xrTableCell17.Weight = 0.077470712487447774D;
+            this.xrTableCell17.Weight = 0.0730670051876439D;
             // 
             // xrTableCell18
             // 
@@ -1684,7 +1690,7 @@
             this.xrTableCell18.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell18.BorderWidth = 1F;
             this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[TOTAL_COST]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[OTHER_COST]")});
             this.xrTableCell18.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell18.Multiline = true;
             this.xrTableCell18.Name = "xrTableCell18";
@@ -1701,7 +1707,7 @@
             this.xrTableCell18.Text = "xrTableCell65";
             this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell18.TextFormatString = "{0:#,#}";
-            this.xrTableCell18.Weight = 0.082312767300863107D;
+            this.xrTableCell18.Weight = 0.075104387439747136D;
             // 
             // xrTableCell36
             // 
@@ -1709,7 +1715,7 @@
             this.xrTableCell36.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell36.BorderWidth = 1F;
             this.xrTableCell36.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[WATER_CONS]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TOTAL_COST]")});
             this.xrTableCell36.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell36.Multiline = true;
             this.xrTableCell36.Name = "xrTableCell36";
@@ -1726,7 +1732,7 @@
             this.xrTableCell36.Text = "xrTableCell66";
             this.xrTableCell36.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell36.TextFormatString = "{0:#,#}";
-            this.xrTableCell36.Weight = 0.072628655068881054D;
+            this.xrTableCell36.Weight = 0.077364956664494458D;
             // 
             // xrTableCell37
             // 
@@ -1734,7 +1740,7 @@
             this.xrTableCell37.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell37.BorderWidth = 1F;
             this.xrTableCell37.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[STEAM_GENERATION]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[WATER_CONS]")});
             this.xrTableCell37.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell37.Multiline = true;
             this.xrTableCell37.Name = "xrTableCell37";
@@ -1751,7 +1757,7 @@
             this.xrTableCell37.Text = "xrTableCell67";
             this.xrTableCell37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell37.TextFormatString = "{0:#,#}";
-            this.xrTableCell37.Weight = 0.077470710108670154D;
+            this.xrTableCell37.Weight = 0.085960956726889012D;
             // 
             // xrTableCell38
             // 
@@ -1759,7 +1765,7 @@
             this.xrTableCell38.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell38.BorderWidth = 1F;
             this.xrTableCell38.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[RUNNING_HOUR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[STEAM_GENERATION]")});
             this.xrTableCell38.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell38.Multiline = true;
             this.xrTableCell38.Name = "xrTableCell38";
@@ -1776,7 +1782,7 @@
             this.xrTableCell38.Text = "xrTableCell68";
             this.xrTableCell38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell38.TextFormatString = "{0:#,#}";
-            this.xrTableCell38.Weight = 0.07747081971413744D;
+            this.xrTableCell38.Weight = 0.077365169326114966D;
             // 
             // xrTableCell39
             // 
@@ -1784,7 +1790,7 @@
             this.xrTableCell39.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell39.BorderWidth = 1F;
             this.xrTableCell39.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[BiomassBoilerData].[COST_PER_KG_STEAM]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[RUNNING_HOUR]")});
             this.xrTableCell39.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell39.Multiline = true;
             this.xrTableCell39.Name = "xrTableCell39";
@@ -1801,7 +1807,7 @@
             this.xrTableCell39.Text = "xrTableCell70";
             this.xrTableCell39.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell39.TextFormatString = "{0:#,#}";
-            this.xrTableCell39.Weight = 0.081472906509149012D;
+            this.xrTableCell39.Weight = 0.068768639850226035D;
             // 
             // FromDate
             // 
@@ -1820,6 +1826,66 @@
             this.ToDate.Name = "ToDate";
             this.ToDate.Type = typeof(global::System.DateTime);
             this.ToDate.ValueInfo = "2026-09-15";
+            // 
+            // xrTableCell2
+            // 
+            this.xrTableCell2.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.xrTableCell2.BorderColor = System.Drawing.Color.WhiteSmoke;
+            this.xrTableCell2.BorderWidth = 0.5F;
+            this.xrTableCell2.Font = new DevExpress.Drawing.DXFont("Calibri", 8.25F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell2.ForeColor = System.Drawing.Color.White;
+            this.xrTableCell2.Multiline = true;
+            this.xrTableCell2.Name = "xrTableCell2";
+            this.xrTableCell2.StyleName = "DetailCaption1";
+            this.xrTableCell2.StylePriority.UseBackColor = false;
+            this.xrTableCell2.StylePriority.UseBorderColor = false;
+            this.xrTableCell2.StylePriority.UseBorderWidth = false;
+            this.xrTableCell2.StylePriority.UseFont = false;
+            this.xrTableCell2.StylePriority.UseForeColor = false;
+            this.xrTableCell2.StylePriority.UseTextAlignment = false;
+            this.xrTableCell2.Text = "Labour Cost (Tk)";
+            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell2.Weight = 0.068014105672415573D;
+            // 
+            // xrTableCell3
+            // 
+            this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[COST_PER_KG_STEAM]")});
+            this.xrTableCell3.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
+            this.xrTableCell3.Multiline = true;
+            this.xrTableCell3.Name = "xrTableCell3";
+            this.xrTableCell3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell3.StyleName = "DetailData1";
+            this.xrTableCell3.StylePriority.UseFont = false;
+            this.xrTableCell3.StylePriority.UsePadding = false;
+            this.xrTableCell3.StylePriority.UseTextAlignment = false;
+            this.xrTableCell3.Text = "xrTableCell3";
+            this.xrTableCell3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell3.TextFormatString = "{0:#.00}";
+            this.xrTableCell3.Weight = 0.071923304562204429D;
+            // 
+            // xrTableCell19
+            // 
+            this.xrTableCell19.BorderColor = System.Drawing.Color.DarkGray;
+            this.xrTableCell19.Borders = DevExpress.XtraPrinting.BorderSide.Top;
+            this.xrTableCell19.BorderWidth = 1F;
+            this.xrTableCell19.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[COST_PER_KG_STEAM]")});
+            this.xrTableCell19.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell19.Multiline = true;
+            this.xrTableCell19.Name = "xrTableCell19";
+            this.xrTableCell19.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrTableCell19.StyleName = "DetailData1";
+            this.xrTableCell19.StylePriority.UseBorderColor = false;
+            this.xrTableCell19.StylePriority.UseBorders = false;
+            this.xrTableCell19.StylePriority.UseBorderWidth = false;
+            this.xrTableCell19.StylePriority.UseFont = false;
+            this.xrTableCell19.StylePriority.UsePadding = false;
+            this.xrTableCell19.StylePriority.UseTextAlignment = false;
+            this.xrTableCell19.Text = "xrTableCell19";
+            this.xrTableCell19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell19.TextFormatString = "{0:#.00}";
+            this.xrTableCell19.Weight = 0.064796259192055047D;
             // 
             // rptBiomassBoiler
             // 
@@ -1966,5 +2032,8 @@
         private DevExpress.XtraReports.Parameters.Parameter FromDate;
         private DevExpress.XtraReports.Parameters.Parameter ToDate;
         private DevExpress.XtraReports.UI.XRRichText xrRichText2;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell2;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell3;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell19;
     }
 }

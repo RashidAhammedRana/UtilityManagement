@@ -489,7 +489,7 @@ public class BiomasBoilerReadingController : Controller
 
         // Equipment List
         var query = _context.TblEquipmentDetails
-            .Where(x => EF.Functions.Like(x.EquipmentName, "%BOILER%"));
+            .Where(x => EF.Functions.Like(x.EquipmentName, "%BIOMASS%"));
 
         if (!string.IsNullOrEmpty(currentLocation))
         {
@@ -511,6 +511,7 @@ public class BiomasBoilerReadingController : Controller
         biomasBoilerReadingViewModel.RiceHuskRate = fuelRates.RiceHuskRate;
         biomasBoilerReadingViewModel.WasteWoodRate = fuelRates.WasteWoodRate;
         biomasBoilerReadingViewModel.CartonRate = fuelRates.CartonRate;
+        biomasBoilerReadingViewModel.CharcoilRate = fuelRates.CharcoilRate;
     }
 
 

@@ -52,6 +52,37 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/toastr.js/latest/toastr.min.js"></script>
 
 
+    <!-- =====================================================
+         SITE CSS
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="~/css/site.css"
+          asp-append-version="true" />
+
+
+    <!-- =====================================================
+         COMMON FORM RESPONSIVE CSS
+         সব Create / Edit / Delete form-এর common responsive
+    ====================================================== -->
+
+    <link rel="stylesheet"
+          href="~/css/form-responsive.css"
+          asp-append-version="true" />
+
+
+    <!-- =====================================================
+         PAGE-SPECIFIC CSS
+         Create / Edit / Delete page চাইলে নিচের section
+         দিয়ে নিজের CSS load করবে
+    ====================================================== -->
+    @RenderSection("Styles", required: false)
+
+
+    <!-- =====================================================
+         LAYOUT-SPECIFIC CSS
+    ====================================================== -->
+
     <style>
 
         /* =====================================================
@@ -104,7 +135,7 @@
 
 
         /* =====================================================
-                   MAIN CONTENT - DESKTOP
+                   MAIN CONTENT
                 ====================================================== */
 
         .main-content {
@@ -168,7 +199,7 @@
 
 
         /* =====================================================
-                   READONLY INPUT
+                   READONLY
                 ====================================================== */
 
         input[readonly] {
@@ -183,299 +214,6 @@
                 outline: none !important;
                 box-shadow: none !important;
             }
-
-
-        /* =====================================================
-                   MOBILE
-                   Portrait
-                ====================================================== */
-
-        @@media screen and (max-width: 768px), screen and (pointer: coarse) and (hover: none) {
-
-            .sidebar-wrapper {
-                width: 250px;
-                height: 100vh;
-                height: 100dvh;
-                top: 0;
-                left: 0;
-                transform: translateX(-250px) !important;
-                z-index: 1050;
-            }
-
-
-                .sidebar-wrapper.mobile-open {
-                    transform: translateX(0) !important;
-                }
-            /* -----------------------------------------------
-                       MOBILE MAIN CONTENT
-
-                       Very small top gap
-                    ------------------------------------------------ */
-
-            .main-content {
-                width: 100% !important;
-                min-height: 100vh;
-                margin-left: 0 !important;
-                padding: 15px 10px 10px 10px !important;
-                box-sizing: border-box;
-                transition: none;
-            }
-
-
-                .main-content.full {
-                    width: 100% !important;
-                    margin-left: 0 !important;
-                }
-            /* -----------------------------------------------
-                       TOGGLE
-                    ------------------------------------------------ */
-
-            .toggle-btn {
-                top: 2px;
-                left: 0;
-                width: 27px;
-                height: 27px;
-                font-size: 17px;
-            }
-        }
-
-
-        /* =====================================================
-                   SMALL MOBILE
-                ====================================================== */
-
-        @@media screen and (max-width: 400px) {
-
-            .sidebar-wrapper {
-                width: 240px;
-                transform: translateX(-240px) !important;
-            }
-
-
-                .sidebar-wrapper.mobile-open {
-                    transform: translateX(0) !important;
-                }
-
-
-            .main-content {
-                padding: 13px 7px 7px 7px !important;
-            }
-
-
-            .toggle-btn {
-                top: 1px;
-                left: 0;
-                width: 25px;
-                height: 25px;
-                font-size: 16px;
-            }
-        }
-
-
-        /* =====================================================
-                   MOBILE LANDSCAPE
-
-                   IMPORTANT:
-                   Toggle button height ≈ 25px
-
-                   Main content starts with ONLY 10px
-                   top padding.
-
-                   Delete page will therefore appear
-                   very close to toggle button.
-
-                   No negative top required.
-                ====================================================== */
-
-        @@media screen and (max-width: 768px) and (orientation: landscape) {
-
-            .sidebar-wrapper {
-                width: 240px;
-                height: 100vh;
-                height: 100dvh;
-                position: fixed;
-                top: 0;
-                left: 0;
-                transform: translateX(-240px) !important;
-                z-index: 1050;
-            }
-
-
-                .sidebar-wrapper.mobile-open {
-                    transform: translateX(0) !important;
-                }
-            /* =================================================
-                       MAIN CONTENT
-
-                       BEFORE:
-                       padding-top: 22px
-
-                       NOW:
-                       padding-top: 10px
-
-                       This is the main gap reduction.
-                    ================================================== */
-
-            .main-content {
-                width: 100% !important;
-                min-height: 100vh;
-                margin-left: 0 !important;
-                padding: 10px 8px 4px 8px !important;
-                box-sizing: border-box;
-                transition: none;
-            }
-
-
-                .main-content.full {
-                    width: 100% !important;
-                    margin-left: 0 !important;
-                }
-            /* =================================================
-                       TOGGLE BUTTON
-                    ================================================== */
-
-            .toggle-btn {
-                top: 0;
-                left: 0;
-                width: 25px;
-                height: 25px;
-                font-size: 16px;
-            }
-        }
-
-
-        /* =====================================================
-                   SHORT LANDSCAPE
-
-                   max-height: 380px
-                ====================================================== */
-
-        @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 380px) {
-
-            .sidebar-wrapper {
-                width: 235px;
-                height: 100vh;
-                height: 100dvh;
-                transform: translateX(-235px) !important;
-            }
-
-
-                .sidebar-wrapper.mobile-open {
-                    transform: translateX(0) !important;
-                }
-
-
-            .main-content {
-                width: 100% !important;
-                min-height: 100vh;
-                margin-left: 0 !important;
-                /*
-                           ONLY 10px TOP SPACE
-                        */
-
-                padding: 10px 6px 3px 6px !important;
-                box-sizing: border-box;
-            }
-
-
-            .toggle-btn {
-                top: 0;
-                left: 0;
-                width: 24px;
-                height: 24px;
-                font-size: 15px;
-            }
-        }
-
-
-        /* =====================================================
-                   EXTREMELY SHORT LANDSCAPE
-
-                   max-height: 320px
-                ====================================================== */
-
-        @@media screen and (max-width: 768px) and (orientation: landscape) and (max-height: 320px) {
-
-            .sidebar-wrapper {
-                width: 230px;
-                height: 100vh;
-                height: 100dvh;
-                transform: translateX(-230px) !important;
-            }
-
-
-                .sidebar-wrapper.mobile-open {
-                    transform: translateX(0) !important;
-                }
-
-
-            .main-content {
-                width: 100% !important;
-                min-height: 100vh;
-                margin-left: 0 !important;
-                /*
-                           STILL 10px
-                        */
-
-                padding: 10px 5px 2px 5px !important;
-                box-sizing: border-box;
-            }
-
-
-            .toggle-btn {
-                top: 0;
-                left: 0;
-                width: 23px;
-                height: 23px;
-                font-size: 14px;
-            }
-        }
-
-
-        /* =====================================================
-                   TABLET
-                ====================================================== */
-
-        @@media screen and (min-width: 769px) and (max-width: 1199px) {
-
-            .main-content {
-                padding: 18px;
-            }
-        }
-
-
-        /* =====================================================
-                   TOUCH DEVICE
-                ====================================================== */
-
-        @@media screen and (pointer: coarse) and (hover: none) {
-
-            .toggle-btn {
-                touch-action: manipulation;
-            }
-
-
-            .main-content {
-                box-sizing: border-box;
-            }
-        }
-
-
-        /* =====================================================
-                   MOBILE BODY SAFETY
-                ====================================================== */
-
-        @@media screen and (max-width: 768px) {
-
-            html,
-            body {
-                width: 100%;
-                max-width: 100%;
-                margin: 0 !important;
-                padding: 0 !important;
-                overflow-x: hidden !important;
-            }
-        }
 
     </style>
 

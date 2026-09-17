@@ -1,0 +1,42 @@
+﻿/* =========================================================
+   EDIT FORM - SPECIFIC
+========================================================= */
+
+.reb-edit-page {
+    /* Edit-specific customization */
+}
+
+.reb-edit-wrapper {
+    max-width: 1000px;
+}
+
+.reb-edit-card {
+    width: 100%;
+}
+
+.reb-edit-body {
+    width: 100%;
+}
+
+.reb-edit-form {
+    width: 100%;
+}
+
+
+/* Edit button area */
+
+.reb-edit-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.reb-back-btn {
+    min-width: 100px;
+}
+
+.reb-update-btn {
+    min-width: 150px;
+}

@@ -1,0 +1,38 @@
+﻿/* =========================================================
+   CREATE FORM - SPECIFIC
+========================================================= */
+
+.reb-create-page {
+    /* Create-specific customization */
+}
+
+.reb-create-wrapper {
+    max-width: 1000px;
+}
+
+.reb-create-card {
+    width: 100%;
+}
+
+.reb-create-form {
+    width: 100%;
+}
+
+
+/* Create button area */
+
+.reb-create-actions {
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+}
+
+.reb-create-back-btn {
+    min-width: 100px;
+}
+
+.reb-create-btn {
+    min-width: 150px;
+}

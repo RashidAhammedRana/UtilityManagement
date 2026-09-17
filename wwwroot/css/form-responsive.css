@@ -1,0 +1,712 @@
+﻿/* =========================================================
+   FORM RESPONSIVE - COMMON
+   Applies to Create / Edit / Delete
+========================================================= */
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   GLOBAL OVERFLOW PROTECTION
+========================================================= */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+
+/* =========================================================
+   COMMON FORM PAGE
+========================================================= */
+
+.form-page {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 25px 20px 40px;
+}
+
+.form-wrapper {
+    width: 100%;
+    max-width: 1000px;
+    margin: 0 auto;
+}
+
+
+/* =========================================================
+   COMMON CARD
+========================================================= */
+
+.form-card {
+    width: 100%;
+    max-width: 100%;
+    margin: 0 auto;
+    border: none;
+    border-radius: 14px;
+    overflow: hidden;
+}
+
+    .form-card .card-header {
+        padding: 16px 20px;
+    }
+
+        .form-card .card-header h5 {
+            margin: 0;
+            padding: 0;
+            font-size: 20px;
+            font-weight: 600;
+            line-height: 1.3;
+        }
+
+    .form-card .card-body {
+        width: 100%;
+        max-width: 100%;
+        padding: 30px !important;
+    }
+
+
+/* =========================================================
+   COMMON FORM
+========================================================= */
+
+.responsive-form {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+    .responsive-form .row {
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+/* =========================================================
+   COMMON FIELD
+========================================================= */
+
+.form-field {
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
+}
+
+
+    /* =========================================================
+   LABEL
+   Text + Required Star SAME LINE
+========================================================= */
+
+    .form-field .form-label {
+        display: inline-flex !important;
+        align-items: baseline !important;
+        width: auto !important;
+        max-width: 100% !important;
+        margin: 0 0 6px 0 !important;
+        padding: 0 !important;
+        color: #343a40;
+        font-size: 14px;
+        font-weight: 500;
+        line-height: 1.4;
+        white-space: nowrap !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+    }
+
+
+        /* =========================================================
+   REQUIRED STAR
+========================================================= */
+
+        .form-field .form-label span,
+        .form-field .form-label .required,
+        .form-field .form-label .required-star,
+        .form-field .form-label .text-danger {
+            display: inline !important;
+            width: auto !important;
+            max-width: none !important;
+            margin: 0 !important;
+            padding: 0 !important;
+            white-space: nowrap !important;
+            word-break: normal !important;
+            overflow-wrap: normal !important;
+            vertical-align: baseline !important;
+        }
+
+
+    /* =========================================================
+   INPUT / SELECT / TEXTAREA
+========================================================= */
+
+    .form-field .form-control,
+    .form-field .form-select,
+    .form-field textarea.form-control {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        min-height: 42px;
+        font-size: 14px;
+        border-radius: 6px;
+        box-sizing: border-box;
+    }
+
+        .form-field .form-control:focus,
+        .form-field .form-select:focus {
+            border-color: #198754;
+            box-shadow: 0 0 0 0.2rem rgba(25, 135, 84, 0.15);
+        }
+
+
+        /* =========================================================
+   READONLY
+========================================================= */
+
+        .form-field .form-control[readonly] {
+            background-color: #e9ecef !important;
+            color: #495057 !important;
+            border-color: #ced4da !important;
+            cursor: not-allowed;
+        }
+
+            .form-field .form-control[readonly]:focus {
+                box-shadow: none !important;
+                outline: none !important;
+            }
+
+
+    /* =========================================================
+   VALIDATION
+========================================================= */
+
+    .form-field .text-danger {
+        display: block;
+        width: 100%;
+        max-width: 100%;
+        margin-top: 4px;
+        font-size: 12px;
+        line-height: 1.3;
+        word-break: break-word;
+        overflow-wrap: break-word;
+    }
+
+.validation-summary-errors {
+    width: 100%;
+    max-width: 100%;
+    font-size: 13px;
+    margin-bottom: 15px;
+}
+
+
+/* =========================================================
+   COMMON BUTTON AREA
+========================================================= */
+
+.form-actions {
+    width: 100%;
+    max-width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 15px;
+    margin-top: 25px;
+    padding: 0;
+}
+
+    .form-actions .btn {
+        display: inline-flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 42px;
+        border-radius: 6px;
+        font-size: 14px;
+        font-weight: 500;
+        text-align: center;
+    }
+
+
+/* =========================================================
+   LARGE DESKTOP
+   1600px+
+========================================================= */
+
+@media screen and (min-width: 1600px) {
+
+    .form-page {
+        padding: 35px 30px 50px;
+    }
+
+    .form-wrapper {
+        max-width: 1050px;
+    }
+
+    .form-card .card-header {
+        padding: 18px 25px;
+    }
+
+        .form-card .card-header h5 {
+            font-size: 21px;
+        }
+
+    .form-card .card-body {
+        padding: 35px !important;
+    }
+
+    .form-field .form-label {
+        font-size: 15px;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 44px;
+        font-size: 15px;
+    }
+}
+
+
+/* =========================================================
+   LAPTOP
+   1200px - 1599px
+========================================================= */
+
+@media screen and (min-width: 1200px) and (max-width: 1599px) {
+
+    .form-page {
+        padding: 25px;
+    }
+
+    .form-wrapper {
+        max-width: 1000px;
+    }
+
+    .form-card .card-body {
+        padding: 28px !important;
+    }
+}
+
+
+/* =========================================================
+   SMALL LAPTOP / TABLET LANDSCAPE
+   992px - 1199px
+========================================================= */
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+
+    .form-page {
+        padding: 20px 18px 35px;
+    }
+
+    .form-wrapper {
+        max-width: 900px;
+    }
+
+    .form-card .card-body {
+        padding: 25px !important;
+    }
+
+    .form-field .form-label {
+        font-size: 13px;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 40px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   TABLET
+   768px - 991px
+========================================================= */
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+
+    .form-page {
+        padding: 18px 15px 30px;
+    }
+
+    .form-wrapper {
+        max-width: 750px;
+    }
+
+    .form-card .card-header {
+        padding: 14px 18px;
+    }
+
+        .form-card .card-header h5 {
+            font-size: 18px;
+        }
+
+    .form-card .card-body {
+        padding: 22px !important;
+    }
+
+    .form-field .form-label {
+        font-size: 13px;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 40px;
+        font-size: 13px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE PORTRAIT
+   <= 767px
+========================================================= */
+
+@media screen and (max-width: 767px) and (orientation: portrait) {
+
+    .form-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 20px 18px 25px !important;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 12px;
+    }
+
+        .form-card .card-header {
+            padding: 13px 15px;
+        }
+
+            .form-card .card-header h5 {
+                font-size: 17px;
+            }
+
+        .form-card .card-body {
+            padding: 20px 18px !important;
+        }
+
+    .responsive-form .row {
+        width: 100%;
+        max-width: 100%;
+        margin-left: 0;
+        margin-right: 0;
+        --bs-gutter-x: 0.8rem;
+        --bs-gutter-y: 0.8rem;
+    }
+
+    .form-field .form-label {
+        font-size: 13px;
+        margin-bottom: 6px !important;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 42px;
+        font-size: 14px;
+        padding: 8px 10px;
+    }
+
+    .form-field .text-danger {
+        font-size: 11px;
+    }
+
+    .form-actions {
+        width: 100%;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 10px;
+        margin-top: 20px;
+    }
+
+        .form-actions .btn {
+            width: auto;
+            min-height: 42px;
+            font-size: 13px;
+            padding: 8px 14px;
+        }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   <= 400px
+========================================================= */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+
+    .form-page {
+        padding: 16px 14px 20px !important;
+    }
+
+    .form-card {
+        border-radius: 10px;
+    }
+
+        .form-card .card-header {
+            padding: 11px 13px;
+        }
+
+            .form-card .card-header h5 {
+                font-size: 16px;
+            }
+
+        .form-card .card-body {
+            padding: 18px 15px !important;
+        }
+
+    .responsive-form .row {
+        --bs-gutter-x: 0.65rem;
+        --bs-gutter-y: 0.7rem;
+    }
+
+    .form-field .form-label {
+        font-size: 12px;
+        margin-bottom: 5px !important;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 40px;
+        font-size: 13px;
+        padding: 7px 9px;
+    }
+
+    .form-field .text-danger {
+        font-size: 10px;
+    }
+
+    .form-actions {
+        flex-direction: row;
+        gap: 8px;
+        margin-top: 18px;
+    }
+
+        .form-actions .btn {
+            min-height: 40px;
+            font-size: 12px;
+            padding: 7px 10px;
+        }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+========================================================= */
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+
+    .form-page {
+        width: 100%;
+        max-width: 100%;
+        padding: 10px 12px 20px !important;
+    }
+
+    .form-wrapper {
+        width: 100%;
+        max-width: 100%;
+    }
+
+    .form-card {
+        width: 100%;
+        max-width: 100%;
+        border-radius: 10px;
+    }
+
+        .form-card .card-header {
+            padding: 9px 14px;
+        }
+
+            .form-card .card-header h5 {
+                font-size: 15px;
+                line-height: 1.2;
+            }
+
+        .form-card .card-body {
+            padding: 13px 14px !important;
+        }
+
+    .responsive-form .row {
+        --bs-gutter-x: 0.65rem;
+        --bs-gutter-y: 0.55rem;
+    }
+
+    .form-field .form-label {
+        font-size: 11px;
+        margin-bottom: 3px !important;
+        line-height: 1.2;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        min-height: 34px;
+        height: 34px;
+        font-size: 12px;
+        padding: 5px 8px;
+    }
+
+    .form-field .text-danger {
+        font-size: 9px;
+    }
+
+    .form-actions {
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+        gap: 8px;
+        margin-top: 12px;
+    }
+
+        .form-actions .btn {
+            width: auto;
+            min-height: 34px;
+            font-size: 11px;
+            padding: 5px 12px;
+        }
+}
+
+
+/* =========================================================
+   VERY SHORT LANDSCAPE
+   <= 380px HEIGHT
+========================================================= */
+
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+
+    .form-page {
+        padding: 5px 9px 12px !important;
+    }
+
+    .form-card .card-header {
+        padding: 7px 12px;
+    }
+
+        .form-card .card-header h5 {
+            font-size: 13px;
+        }
+
+    .form-card .card-body {
+        padding: 10px 12px !important;
+    }
+
+    .responsive-form .row {
+        --bs-gutter-x: 0.5rem;
+        --bs-gutter-y: 0.4rem;
+    }
+
+    .form-field .form-label {
+        font-size: 10px;
+        margin-bottom: 2px !important;
+        line-height: 1.1;
+    }
+
+    .form-field .form-control,
+    .form-field .form-select {
+        height: 30px;
+        min-height: 30px;
+        font-size: 11px;
+        padding: 3px 7px;
+    }
+
+    .form-field .text-danger {
+        font-size: 8px;
+    }
+
+    .form-actions {
+        margin-top: 8px;
+    }
+
+        .form-actions .btn {
+            min-height: 30px;
+            font-size: 10px;
+            padding: 4px 10px;
+        }
+}
+
+
+/* =========================================================
+   TOUCH DEVICE
+========================================================= */
+
+@media screen and (pointer: coarse) and (hover: none) {
+
+    .form-field .form-control,
+    .form-field .form-select {
+        -webkit-appearance: none;
+    }
+
+    .form-actions .btn {
+        touch-action: manipulation;
+    }
+}
+
+
+/* =========================================================
+   SAFE AREA
+========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    .form-page {
+        padding-top: max(12px, env(safe-area-inset-top));
+    }
+}
+
+
+/* =========================================================
+   FINAL OVERFLOW PROTECTION
+========================================================= */
+
+.form-page,
+.form-wrapper,
+.form-card,
+.form-card .card-body,
+.responsive-form,
+.responsive-form .row,
+.form-field,
+.form-field .form-control,
+.form-field .form-select {
+    max-width: 100%;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   FINAL LABEL FIX
+========================================================= */
+
+label.form-label {
+    white-space: nowrap !important;
+    word-break: normal !important;
+    overflow-wrap: normal !important;
+}
+
+    label.form-label > span,
+    label.form-label > .text-danger,
+    label.form-label > .required,
+    label.form-label > .required-star {
+        display: inline !important;
+        width: auto !important;
+        max-width: none !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        white-space: nowrap !important;
+        word-break: normal !important;
+        overflow-wrap: normal !important;
+        vertical-align: baseline !important;
+    }

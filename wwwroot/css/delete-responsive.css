@@ -1,6 +1,6 @@
 ﻿/* =========================================================
    DELETE READING - RESPONSIVE CSS
-   Portrait + Landscape
+   CENTERED PORTRAIT + RESPONSIVE LANDSCAPE
    ========================================================== */
 
 
@@ -42,19 +42,25 @@ body {
     width: 100%;
     max-width: 100%;
     margin: 0;
-    padding: 25px 20px 40px 20px;
+    padding: 30px 20px 40px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .delete-wrapper {
     width: 100%;
-    max-width: 1000px;
+    max-width: 900px;
     margin: 0 auto;
     padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
 }
 
 .delete-card {
     width: 100%;
-    max-width: 600px;
+    max-width: 650px;
     margin: 0 auto;
     padding: 0;
     border: none;
@@ -73,7 +79,7 @@ body {
     }
 
         .delete-card .card-header h5 {
-            margin: 0 !important;
+            margin: 0;
             padding: 0;
             font-size: 18px;
             font-weight: 600;
@@ -99,8 +105,9 @@ body {
 
 .delete-warning {
     width: 100%;
+    max-width: 100%;
     margin: 0;
-    padding: 5px 2px;
+    padding: 5px;
     text-align: center;
 }
 
@@ -114,11 +121,12 @@ body {
     }
 
     .delete-warning h5 {
-        margin: 9px 0 0 0 !important;
+        margin: 9px 0 0 0;
         padding: 0;
         font-size: 16px;
-        font-weight: 500;
-        line-height: 1.3;
+        font-weight: 600;
+        line-height: 1.25;
+        text-align: center;
     }
 
 
@@ -129,7 +137,7 @@ body {
 .delete-card form {
     width: 100%;
     max-width: 100%;
-    margin: 0 !important;
+    margin: 0 auto !important;
     padding: 0 !important;
 }
 
@@ -148,7 +156,7 @@ body {
     justify-content: space-between !important;
     align-items: center !important;
     gap: 10px;
-    margin: 18px 0 0 0 !important;
+    margin: 16px 0 0 0 !important;
     padding: 0 !important;
 }
 
@@ -161,7 +169,6 @@ body {
         display: inline-flex !important;
         justify-content: center !important;
         align-items: center !important;
-        text-align: center !important;
         flex: 0 0 auto !important;
         width: 90px;
         min-width: 90px;
@@ -170,11 +177,12 @@ body {
         min-height: 38px;
         max-height: 38px;
         margin: 0 !important;
-        padding: 6px 15px !important;
-        border-radius: 5px !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        line-height: 1 !important;
+        padding: 6px 15px;
+        text-align: center;
+        font-size: 13px;
+        font-weight: 500;
+        line-height: 1;
+        border-radius: 5px;
     }
 
 
@@ -204,20 +212,19 @@ body {
 @media screen and (min-width: 1600px) {
 
     .delete-page {
-        padding: 35px 30px 50px 30px;
+        padding: 40px 30px 50px 30px;
     }
 
     .delete-wrapper {
-        max-width: 1100px;
+        max-width: 1000px;
     }
 
     .delete-card {
-        max-width: 650px;
-        border-radius: 11px;
+        max-width: 700px;
     }
 
         .delete-card .card-header {
-            padding: 15px 20px;
+            padding: 16px 22px;
         }
 
             .delete-card .card-header h5 {
@@ -236,19 +243,14 @@ body {
         font-size: 18px;
     }
 
-    .delete-actions {
-        margin-top: 20px !important;
+    .delete-actions .btn {
+        width: 100px;
+        min-width: 100px;
+        max-width: 100px;
+        height: 42px;
+        min-height: 42px;
+        font-size: 14px;
     }
-
-        .delete-actions .btn {
-            width: 100px;
-            min-width: 100px;
-            max-width: 100px;
-            height: 42px;
-            min-height: 42px;
-            max-height: 42px;
-            font-size: 14px !important;
-        }
 }
 
 
@@ -260,36 +262,32 @@ body {
 @media screen and (min-width: 1200px) and (max-width: 1599px) {
 
     .delete-page {
-        padding: 28px 25px 40px 25px;
+        padding: 30px 25px 40px 25px;
     }
 
     .delete-wrapper {
-        max-width: 1000px;
+        max-width: 950px;
     }
 
     .delete-card {
-        max-width: 620px;
+        max-width: 680px;
     }
 
-        .delete-card .card-header {
-            padding: 13px 18px;
-        }
-
         .delete-card .card-body {
-            padding: 27px !important;
+            padding: 28px !important;
         }
 }
 
 
 /* =========================================================
-   TABLET LANDSCAPE
+   SMALL LAPTOP
    992px - 1199px
    ========================================================== */
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
 
     .delete-page {
-        padding: 22px 18px 35px 18px;
+        padding: 25px 18px 35px 18px;
     }
 
     .delete-wrapper {
@@ -297,7 +295,7 @@ body {
     }
 
     .delete-card {
-        max-width: 600px;
+        max-width: 650px;
     }
 
         .delete-card .card-body {
@@ -322,19 +320,30 @@ body {
 @media screen and (min-width: 768px) and (max-width: 991px) {
 
     .delete-page {
-        padding: 20px 15px 30px 15px;
+        width: 100%;
+        padding: 22px 15px 30px 15px;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     .delete-wrapper {
+        width: 100%;
         max-width: 750px;
+        margin: 0 auto;
+        display: flex;
+        justify-content: center;
+        align-items: flex-start;
     }
 
     .delete-card {
-        max-width: 560px;
+        width: 100%;
+        max-width: 600px;
+        margin: 0 auto;
     }
 
         .delete-card .card-header {
-            padding: 11px 15px;
+            padding: 12px 16px;
         }
 
             .delete-card .card-header h5 {
@@ -352,284 +361,56 @@ body {
     .delete-warning h5 {
         font-size: 14px;
     }
-
-    .delete-actions {
-        margin-top: 15px !important;
-    }
-
-        .delete-actions .btn {
-            width: 85px;
-            min-width: 85px;
-            max-width: 85px;
-            height: 36px;
-            min-height: 36px;
-            max-height: 36px;
-            font-size: 12px !important;
-        }
 }
 
 
 /* =========================================================
    MOBILE PORTRAIT
-   <= 767px
+   767px AND BELOW
+
+   IMPORTANT:
+   CARD = HORIZONTAL + VERTICAL CENTER
    ========================================================== */
 
 @media screen and (max-width: 767px) and (orientation: portrait) {
 
     .delete-page {
-        width: 100%;
-        max-width: 100%;
-        margin: 0;
-        padding: 20px 18px 25px 18px !important;
-    }
-
-    .delete-wrapper {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        padding: 0;
-    }
-
-    .delete-card {
-        width: 100%;
-        max-width: 100%;
-        margin: 0 auto;
-        border-radius: 9px;
-    }
-
-
-        /* HEADER */
-
-        .delete-card .card-header {
-            padding: 10px 13px;
-        }
-
-            .delete-card .card-header h5 {
-                font-size: 15px;
-                line-height: 1.25;
-            }
-
-
-        /* BODY */
-
-        .delete-card .card-body {
-            width: 100%;
-            max-width: 100%;
-            padding: 18px 16px !important;
-        }
-
-
-    /* WARNING */
-
-    .delete-warning {
-        width: 100%;
-        padding: 5px 2px;
-    }
-
-        .delete-warning .warning-icon {
-            font-size: 2rem;
-        }
-
-        .delete-warning h5 {
-            margin-top: 7px !important;
-            font-size: 13px;
-            line-height: 1.3;
-        }
-
-
-    /* ACTIONS */
-
-    .delete-actions {
         width: 100% !important;
         max-width: 100% !important;
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        gap: 10px !important;
-        margin: 14px 0 0 0 !important;
-        padding: 0 !important;
-    }
-
-
-        /* BUTTONS */
-
-        .delete-actions .btn {
-            display: inline-flex !important;
-            flex: 0 0 auto !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: auto !important;
-            min-width: 90px !important;
-            max-width: 48% !important;
-            min-height: 38px !important;
-            height: auto !important;
-            margin: 0 !important;
-            padding: 7px 15px !important;
-            font-size: 12px !important;
-            line-height: 1 !important;
-            border-radius: 5px !important;
-        }
-
-
-    .delete-no-btn {
-        order: 1 !important;
-        margin-left: 0 !important;
-        margin-right: auto !important;
-    }
-
-    .delete-yes-btn {
-        order: 2 !important;
-        margin-left: auto !important;
-        margin-right: 0 !important;
-    }
-}
-
-
-/* =========================================================
-   SMALL MOBILE PORTRAIT
-   <= 400px
-   ========================================================== */
-
-@media screen and (max-width: 400px) and (orientation: portrait) {
-
-    .delete-page {
-        width: 100%;
-        max-width: 100%;
-        padding: 16px 14px 20px 14px !important;
-    }
-
-    .delete-wrapper {
-        width: 100%;
-        max-width: 100%;
-    }
-
-    .delete-card {
-        width: 100%;
-        max-width: 100%;
-        border-radius: 8px;
-    }
-
-
-        /* HEADER */
-
-        .delete-card .card-header {
-            padding: 8px 11px;
-        }
-
-            .delete-card .card-header h5 {
-                font-size: 14px;
-            }
-
-
-        /* BODY */
-
-        .delete-card .card-body {
-            padding: 15px 13px !important;
-        }
-
-
-    /* WARNING */
-
-    .delete-warning {
-        padding: 4px 2px;
-    }
-
-        .delete-warning .warning-icon {
-            font-size: 1.8rem;
-        }
-
-        .delete-warning h5 {
-            margin-top: 6px !important;
-            font-size: 12px;
-            line-height: 1.25;
-        }
-
-
-    /* ACTIONS */
-
-    .delete-actions {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: center !important;
-        width: 100% !important;
-        gap: 8px !important;
-        margin-top: 12px !important;
-    }
-
-
-        /* BUTTONS */
-
-        .delete-actions .btn {
-            flex: 0 0 auto !important;
-            width: auto !important;
-            min-width: 78px !important;
-            max-width: 45% !important;
-            min-height: 35px !important;
-            padding: 6px 12px !important;
-            font-size: 11px !important;
-        }
-
-
-    .delete-no-btn {
-        order: 1 !important;
-        margin-left: 0 !important;
-        margin-right: auto !important;
-    }
-
-    .delete-yes-btn {
-        order: 2 !important;
-        margin-left: auto !important;
-        margin-right: 0 !important;
-    }
-}
-
-
-/* =========================================================
-   MOBILE LANDSCAPE
-   <= 767px
-   SCREENSHOT STYLE
-   ========================================================== */
-
-@media screen and (max-width: 767px) and (orientation: landscape) {
-
-    .delete-page {
-        width: 100% !important;
-        max-width: 100% !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
         margin: 0 !important;
-        /*
-           Screenshot-er moto top gap
-        */
-        padding: 38px 12px 20px 12px !important;
-        position: static !important;
-        top: auto !important;
-        transform: none !important;
-    }
-
-
-    .delete-wrapper {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 auto !important;
-        padding: 0 !important;
+        padding: 20px 15px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
 
     /* =====================================================
-       CARD
+       CENTER WRAPPER
+       ===================================================== */
+
+    .delete-wrapper {
+        width: 100% !important;
+        max-width: 520px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+
+    /* =====================================================
+       CENTER CARD
        ===================================================== */
 
     .delete-card {
         width: 100% !important;
-        /*
-           Screenshot-er card-er moto
-           medium width
-        */
-        max-width: 600px !important;
+        max-width: 520px !important;
         margin: 0 auto !important;
-        border-radius: 10px !important;
-        overflow: hidden !important;
+        border-radius: 9px !important;
     }
 
 
@@ -638,15 +419,14 @@ body {
        ===================================================== */
 
         .delete-card .card-header {
-            padding: 10px 16px !important;
-            min-height: 44px !important;
+            padding: 10px 13px !important;
+            text-align: left !important;
         }
 
             .delete-card .card-header h5 {
                 margin: 0 !important;
-                font-size: 16px !important;
-                font-weight: 600 !important;
-                line-height: 1.2 !important;
+                font-size: 15px !important;
+                line-height: 1.25 !important;
             }
 
 
@@ -657,7 +437,8 @@ body {
         .delete-card .card-body {
             width: 100% !important;
             max-width: 100% !important;
-            padding: 25px 22px 22px 22px !important;
+            margin: 0 auto !important;
+            padding: 20px 16px !important;
         }
 
 
@@ -667,32 +448,42 @@ body {
 
     .delete-warning {
         width: 100% !important;
-        padding: 3px 2px !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 5px 2px !important;
         text-align: center !important;
     }
-
 
         .delete-warning .warning-icon {
             display: block !important;
             width: fit-content !important;
             margin: 0 auto !important;
-            font-size: 1.8rem !important;
+            font-size: 2rem !important;
             line-height: 1 !important;
         }
 
-
         .delete-warning h5 {
-            margin: 10px 0 0 0 !important;
+            margin: 7px 0 0 0 !important;
             font-size: 13px !important;
-            font-weight: 500 !important;
-            line-height: 1.25 !important;
+            line-height: 1.3 !important;
+            text-align: center !important;
         }
 
 
     /* =====================================================
+       FORM
+       ===================================================== */
+
+    .delete-card form {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+
+    /* =====================================================
        ACTIONS
-       NO = LEFT
-       YES = RIGHT
        ===================================================== */
 
     .delete-actions {
@@ -703,7 +494,7 @@ body {
         justify-content: space-between !important;
         align-items: center !important;
         gap: 10px !important;
-        margin: 18px 0 0 0 !important;
+        margin: 14px 0 0 0 !important;
         padding: 0 !important;
     }
 
@@ -724,9 +515,8 @@ body {
             min-height: 38px !important;
             max-height: 38px !important;
             margin: 0 !important;
-            padding: 6px 15px !important;
+            padding: 7px 15px !important;
             font-size: 12px !important;
-            font-weight: 500 !important;
             line-height: 1 !important;
             border-radius: 5px !important;
         }
@@ -752,19 +542,38 @@ body {
 
 
 /* =========================================================
-   SHORT MOBILE LANDSCAPE
-   HEIGHT <= 380px
+   SMALL MOBILE PORTRAIT
+   400px AND BELOW
    ========================================================== */
 
-@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+@media screen and (max-width: 400px) and (orientation: portrait) {
 
     .delete-page {
-        padding: 28px 10px 15px 10px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        padding: 16px 12px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+    }
+
+
+    .delete-wrapper {
+        width: 100% !important;
+        max-width: 380px !important;
+        margin: 0 auto !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
     }
 
 
     .delete-card {
-        max-width: 520px !important;
+        width: 100% !important;
+        max-width: 380px !important;
+        margin: 0 auto !important;
         border-radius: 8px !important;
     }
 
@@ -772,60 +581,62 @@ body {
         /* HEADER */
 
         .delete-card .card-header {
-            padding: 8px 13px !important;
-            min-height: 38px !important;
+            padding: 8px 11px !important;
         }
 
             .delete-card .card-header h5 {
                 font-size: 14px !important;
-                line-height: 1.1 !important;
             }
 
 
         /* BODY */
 
         .delete-card .card-body {
-            padding: 18px 18px 17px 18px !important;
+            padding: 16px 13px !important;
         }
 
 
     /* WARNING */
 
     .delete-warning {
-        padding: 2px !important;
+        padding: 4px 2px !important;
     }
 
         .delete-warning .warning-icon {
-            font-size: 1.5rem !important;
+            font-size: 1.8rem !important;
         }
 
         .delete-warning h5 {
-            margin: 7px 0 0 0 !important;
-            font-size: 11px !important;
-            line-height: 1.15 !important;
+            margin-top: 6px !important;
+            font-size: 12px !important;
+            line-height: 1.25 !important;
         }
 
 
     /* ACTIONS */
 
     .delete-actions {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
         gap: 8px !important;
-        margin: 13px 0 0 0 !important;
+        margin-top: 12px !important;
     }
 
 
         /* BUTTONS */
 
         .delete-actions .btn {
-            width: 75px !important;
-            min-width: 75px !important;
-            max-width: 75px !important;
-            height: 32px !important;
-            min-height: 32px !important;
-            max-height: 32px !important;
-            padding: 5px 10px !important;
+            width: 78px !important;
+            min-width: 78px !important;
+            max-width: 78px !important;
+            height: 35px !important;
+            min-height: 35px !important;
+            max-height: 35px !important;
+            padding: 6px 12px !important;
             font-size: 11px !important;
-            border-radius: 4px !important;
         }
 
 
@@ -844,40 +655,190 @@ body {
 
 
 /* =========================================================
-   VERY SHORT MOBILE LANDSCAPE
-   HEIGHT <= 320px
+   MOBILE LANDSCAPE
+   767px AND BELOW
    ========================================================== */
 
-@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 320px) {
+@media screen and (max-width: 767px) and (orientation: landscape) {
 
     .delete-page {
-        padding: 20px 8px 10px 8px !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-height: 100vh !important;
+        min-height: 100dvh !important;
+        margin: 0 !important;
+        padding: 20px 12px 15px 12px !important;
+        display: flex !important;
+        justify-content: center !important;
+        align-items: flex-start !important;
     }
 
 
+    .delete-wrapper {
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+        display: flex !important;
+        justify-content: center !important;
+    }
+
+
+    /* CARD */
+
     .delete-card {
-        max-width: 450px !important;
-        border-radius: 6px !important;
+        width: 100% !important;
+        max-width: 600px !important;
+        margin: 0 auto !important;
+        border-radius: 9px !important;
+        overflow: hidden !important;
     }
 
 
         /* HEADER */
 
         .delete-card .card-header {
-            padding: 6px 10px !important;
-            min-height: 30px !important;
+            padding: 9px 15px !important;
+            min-height: 40px !important;
         }
 
             .delete-card .card-header h5 {
-                font-size: 11px !important;
-                line-height: 1 !important;
+                margin: 0 !important;
+                font-size: 15px !important;
+                font-weight: 600 !important;
+                line-height: 1.2 !important;
             }
 
 
         /* BODY */
 
         .delete-card .card-body {
-            padding: 12px 12px 11px 12px !important;
+            width: 100% !important;
+            padding: 18px 20px !important;
+        }
+
+
+    /* WARNING */
+
+    .delete-warning {
+        width: 100% !important;
+        padding: 2px !important;
+        text-align: center !important;
+    }
+
+        .delete-warning .warning-icon {
+            display: block !important;
+            width: fit-content !important;
+            margin: 0 auto !important;
+            font-size: 1.6rem !important;
+            line-height: 1 !important;
+        }
+
+        .delete-warning h5 {
+            margin: 7px 0 0 0 !important;
+            font-size: 12px !important;
+            font-weight: 500 !important;
+            line-height: 1.2 !important;
+        }
+
+
+    /* FORM */
+
+    .delete-card form {
+        width: 100% !important;
+        margin: 0 auto !important;
+        padding: 0 !important;
+    }
+
+
+    /* ACTIONS */
+
+    .delete-actions {
+        width: 100% !important;
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        gap: 8px !important;
+        margin: 14px 0 0 0 !important;
+        padding: 0 !important;
+    }
+
+
+        /* BUTTONS */
+
+        .delete-actions .btn {
+            display: inline-flex !important;
+            flex: 0 0 auto !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 85px !important;
+            min-width: 85px !important;
+            max-width: 85px !important;
+            height: 35px !important;
+            min-height: 35px !important;
+            max-height: 35px !important;
+            margin: 0 !important;
+            padding: 5px 12px !important;
+            font-size: 11px !important;
+            line-height: 1 !important;
+            border-radius: 4px !important;
+        }
+
+
+    /* NO LEFT */
+
+    .delete-no-btn {
+        order: 1 !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+
+    /* YES RIGHT */
+
+    .delete-yes-btn {
+        order: 2 !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+
+/* =========================================================
+   SHORT LANDSCAPE
+   HEIGHT <= 380px
+   ========================================================== */
+
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
+
+    .delete-page {
+        padding: 14px 10px 10px 10px !important;
+    }
+
+    .delete-card {
+        max-width: 520px !important;
+        border-radius: 7px !important;
+    }
+
+
+        /* HEADER */
+
+        .delete-card .card-header {
+            padding: 7px 12px !important;
+            min-height: 34px !important;
+        }
+
+            .delete-card .card-header h5 {
+                font-size: 13px !important;
+                line-height: 1.1 !important;
+            }
+
+
+        /* BODY */
+
+        .delete-card .card-body {
+            padding: 14px 16px !important;
         }
 
 
@@ -888,12 +849,12 @@ body {
     }
 
         .delete-warning .warning-icon {
-            font-size: 1.15rem !important;
+            font-size: 1.35rem !important;
         }
 
         .delete-warning h5 {
             margin: 5px 0 0 0 !important;
-            font-size: 9px !important;
+            font-size: 10px !important;
             line-height: 1.1 !important;
         }
 
@@ -902,36 +863,101 @@ body {
 
     .delete-actions {
         gap: 6px !important;
-        margin: 9px 0 0 0 !important;
+        margin: 10px 0 0 0 !important;
     }
 
 
         /* BUTTONS */
 
         .delete-actions .btn {
-            width: 62px !important;
-            min-width: 62px !important;
-            max-width: 62px !important;
-            height: 27px !important;
-            min-height: 27px !important;
-            max-height: 27px !important;
+            width: 70px !important;
+            min-width: 70px !important;
+            max-width: 70px !important;
+            height: 29px !important;
+            min-height: 29px !important;
+            max-height: 29px !important;
             padding: 4px 8px !important;
-            font-size: 9px !important;
-            border-radius: 3px !important;
+            font-size: 10px !important;
+            border-radius: 4px !important;
+        }
+}
+
+
+/* =========================================================
+   VERY SHORT LANDSCAPE
+   HEIGHT <= 320px
+   ========================================================== */
+
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 320px) {
+
+    .delete-page {
+        padding: 8px 8px 6px 8px !important;
+    }
+
+    .delete-card {
+        max-width: 450px !important;
+        border-radius: 5px !important;
+    }
+
+
+        /* HEADER */
+
+        .delete-card .card-header {
+            padding: 5px 9px !important;
+            min-height: 27px !important;
+        }
+
+            .delete-card .card-header h5 {
+                font-size: 10px !important;
+                line-height: 1 !important;
+            }
+
+
+        /* BODY */
+
+        .delete-card .card-body {
+            padding: 10px 11px !important;
         }
 
 
-    .delete-no-btn {
-        order: 1 !important;
-        margin-left: 0 !important;
-        margin-right: auto !important;
+    /* WARNING */
+
+    .delete-warning {
+        padding: 1px !important;
     }
 
-    .delete-yes-btn {
-        order: 2 !important;
-        margin-left: auto !important;
-        margin-right: 0 !important;
+        .delete-warning .warning-icon {
+            font-size: 1rem !important;
+        }
+
+        .delete-warning h5 {
+            margin: 4px 0 0 0 !important;
+            font-size: 8px !important;
+            line-height: 1.05 !important;
+        }
+
+
+    /* ACTIONS */
+
+    .delete-actions {
+        gap: 5px !important;
+        margin: 7px 0 0 0 !important;
     }
+
+
+        /* BUTTONS */
+
+        .delete-actions .btn {
+            width: 58px !important;
+            min-width: 58px !important;
+            max-width: 58px !important;
+            height: 25px !important;
+            min-height: 25px !important;
+            max-height: 25px !important;
+            padding: 3px 6px !important;
+            font-size: 8px !important;
+            border-radius: 3px !important;
+        }
 }
 
 

@@ -812,6 +812,7 @@
             this.xrLabel156.StylePriority.UseTextAlignment = false;
             this.xrLabel156.Text = "[SteamGenerationData.PER_UNIT_COST!#.00]";
             this.xrLabel156.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLabel156.TextFormatString = "{0:#.00}";
             // 
             // xrLabel158
             // 

@@ -13,405 +13,372 @@
     var nextAvailableTime = ViewBag.NextAvailableTime as string ?? "";
 }
 
-<link href="~/css/dailygaspressure.css" rel="stylesheet" />
-<div class="row justify-content-center">
 
-    <div class="col-md-12">
+<!-- =============================================================
+     DAILY GAS PRESSURE CREATE PAGE
+============================================================== -->
 
-        <div class="card shadow-lg border-0 energy-card">
+<div class="daily-gas-page">
 
-            <!-- ===================================================== -->
-            <!-- HEADER                                                -->
-            <!-- ===================================================== -->
+    <div class="gas-card">
 
-            <div class="card-header bg-primary text-white">
+        <!-- =====================================================
+             HEADER
+        ====================================================== -->
 
-                <h5 class="mb-0">
+        <div class="gas-card-header">
 
-                    <i class="bi bi-speedometer2 me-1"></i>
+            <div class="gas-header-title">
 
-                    Add Daily Gas Pressure Record
+                <i class="bi bi-speedometer2"></i>
 
-                </h5>
+                <span>Add Daily Gas Pressure Record</span>
 
             </div>
 
-
-            <!-- ===================================================== -->
-            <!-- CARD BODY                                              -->
-            <!-- ===================================================== -->
-
-            <div class="card-body p-5">
+        </div>
 
 
-                <!-- ================================================= -->
-                <!-- MESSAGES                                          -->
-                <!-- ================================================= -->
-                @if (TempData["ErrorMessage"] != null)
-                {
-                    <div class="alert alert-danger alert-dismissible fade show"
-                         role="alert">
+        <!-- =====================================================
+             BODY
+        ====================================================== -->
 
-                        <i class="bi bi-exclamation-triangle me-1"></i>
+        <div class="gas-card-body">
 
-                        @TempData["ErrorMessage"]
+
+            <!-- =================================================
+                 MESSAGES
+            ================================================== -->
+            @if (TempData["ErrorMessage"] != null)
+            {
+                <div class="alert alert-danger alert-dismissible fade show gas-alert"
+                     role="alert">
+
+                    <i class="bi bi-exclamation-triangle me-1"></i>
+
+                    @TempData["ErrorMessage"]
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+            }
+
+
+            @if (TempData["SuccessMessage"] != null)
+            {
+                <div class="alert alert-success alert-dismissible fade show gas-alert"
+                     role="alert">
+
+                    <i class="bi bi-check-circle me-1"></i>
+
+                    @TempData["SuccessMessage"]
+
+                    <button type="button"
+                            class="btn-close"
+                            data-bs-dismiss="alert">
+                    </button>
+
+                </div>
+            }
+
+
+            <!-- =================================================
+                 FORM
+            ================================================== -->
+
+            <form asp-action="Create"
+                  method="post"
+                  id="gasPressureForm">
+
+                @Html.AntiForgeryToken()
+
+
+                <!-- =================================================
+                     VALIDATION
+                ================================================== -->
+
+                <div asp-validation-summary="ModelOnly"
+                     class="text-danger mb-2">
+                </div>
+
+
+                <!-- =================================================
+                     INPUT GRID
+                ================================================== -->
+
+                <div class="gas-input-grid">
+
+
+                    <!-- =================================================
+                         COMPANY
+                    ================================================== -->
+
+                    <div class="gas-field company-field">
+
+                        <label for="inputCompany">
+                            Company
+                        </label>
+
+                        <input type="text"
+                               id="inputCompany"
+                               class="form-control"
+                               value="@currentCompany"
+                               readonly />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         DATE
+                    ================================================== -->
+
+                    <div class="gas-field date-field">
+
+                        <label for="inputDate">
+                            Date
+                        </label>
+
+                        <input type="date"
+                               id="inputDate"
+                               class="form-control"
+                               value="@DateTime.Today.ToString("yyyy-MM-dd")"
+                               required />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         TIME
+                    ================================================== -->
+
+                    <div class="gas-field time-field">
+
+                        <label for="inputTimeDisplay">
+                            Time
+                        </label>
+
+                        <input type="text"
+                               id="inputTimeDisplay"
+                               class="form-control"
+                               value=""
+                               readonly />
+
+                        <input type="hidden"
+                               id="inputTime"
+                               value="@nextAvailableTime" />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         GP BEFORE
+                    ================================================== -->
+
+                    <div class="gas-field pressure-field">
+
+                        <label for="inputGpBefore">
+                            RMS Before Regulator
+                            <span class="psi">(PSI)</span>
+                        </label>
+
+                        <input type="number"
+                               id="inputGpBefore"
+                               step="any"
+                               class="form-control pressure-input"
+                               autocomplete="off" />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         GP INDUSTRIAL RUN
+                    ================================================== -->
+
+                    <div class="gas-field pressure-field">
+
+                        <label for="inputGpIr">
+                            Industrial Run
+                            <span class="psi">(PSI)</span>
+                        </label>
+
+                        <input type="number"
+                               id="inputGpIr"
+                               step="any"
+                               class="form-control pressure-input"
+                               autocomplete="off" />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         GP CAPTIVE RUN
+                    ================================================== -->
+
+                    <div class="gas-field pressure-field">
+
+                        <label for="inputGpCr">
+                            Captive Run
+                            <span class="psi">(PSI)</span>
+                        </label>
+
+                        <input type="number"
+                               id="inputGpCr"
+                               step="any"
+                               class="form-control pressure-input"
+                               autocomplete="off" />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         REMARKS
+                    ================================================== -->
+
+                    <div class="gas-field remarks-field">
+
+                        <label for="inputRemarks">
+                            Remarks
+                        </label>
+
+                        <input type="text"
+                               id="inputRemarks"
+                               class="form-control"
+                               autocomplete="off" />
+
+                    </div>
+
+
+                    <!-- =================================================
+                         ADD BUTTON
+                    ================================================== -->
+
+                    <div class="gas-field add-field">
+
+                        <label class="add-label">
+                            &nbsp;
+                        </label>
 
                         <button type="button"
-                                class="btn-close"
-                                data-bs-dismiss="alert">
+                                id="addRow"
+                                class="btn btn-primary gas-add-button"
+                                title="Add Gas Pressure Reading">
+
+                            <i class="bi bi-plus-lg"></i>
+
                         </button>
 
                     </div>
-                }
+
+                </div>
 
 
-                @if (TempData["SuccessMessage"] != null)
-                {
-                    <div class="alert alert-success alert-dismissible fade show"
-                         role="alert">
+                <!-- =================================================
+                     TIME FULL MESSAGE
+                ================================================== -->
 
-                        <i class="bi bi-check-circle me-1"></i>
+                <div id="timeFullMessage"
+                     class="time-full-message mt-2 d-none">
 
-                        @TempData["SuccessMessage"]
+                    <i class="bi bi-exclamation-circle me-1"></i>
 
-                        <button type="button"
-                                class="btn-close"
-                                data-bs-dismiss="alert">
-                        </button>
+                    All 24 hourly slots for this date have already
+                    been entered.
 
-                    </div>
-                }
+                </div>
 
 
-                <!-- ================================================= -->
-                <!-- FORM                                               -->
-                <!-- ================================================= -->
+                <!-- =================================================
+                     GAS PRESSURE LIST
+                ================================================== -->
 
-                <form asp-action="Create"
-                      method="post"
-                      id="gasPressureForm">
+                <div class="gas-list-section">
 
-                    @Html.AntiForgeryToken()
+                    <h6 class="gas-list-title">
 
+                        <i class="bi bi-list-ul"></i>
 
-                    <!-- ================================================= -->
-                    <!-- MODEL VALIDATION                                  -->
-                    <!-- ================================================= -->
+                        Gas Pressure List
 
-                    <div asp-validation-summary="ModelOnly"
-                         class="text-danger mb-3">
-                    </div>
+                    </h6>
 
 
-                    <!-- ================================================= -->
-                    <!-- INPUT TABLE                                       -->
-                    <!-- ================================================= -->
+                    <div class="gas-list-wrapper">
 
-                    <div class="input-table-wrapper">
+                        <table class="table table-bordered align-middle mb-0"
+                               id="temporaryTable">
 
-                        <table class="table table-bordered table-sm align-middle mb-0 energy-table">
-
-                            <thead class="table-dark">
+                            <thead>
 
                                 <tr>
 
-                                    <th>
-                                        Company
-                                    </th>
+                                    <th>Company</th>
 
-                                    <th>
-                                        Date
-                                    </th>
+                                    <th>Date</th>
 
-                                    <th>
-                                        Time
-                                    </th>
+                                    <th>Time</th>
 
-                                    <th>
-                                        Gas Pressure RMS Room Before Gas Regulator(PSI)
-                                    </th>
+                                    <th>Gas Pressure RMS Room Before Gas Regulator</th>
 
-                                    <th>
-                                        Gas Pressure Industrial Run(PSI)
-                                    </th>
+                                    <th>Industrial Run</th>
 
-                                    <th>
-                                        Gas Pressure Captive Run(PSI)
-                                    </th>
+                                    <th>Captive Run</th>
 
-                                    <th>
-                                        Remarks
-                                    </th>
-
-                                    <th>
-                                        Add
-                                    </th>
+                                    <th>Remarks</th>
 
                                 </tr>
 
                             </thead>
 
-
-                            <tbody>
-
-                                <tr id="inputRow">
-
-
-                                    <!-- ================================================= -->
-                                    <!-- COMPANY                                         -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="text"
-                                               id="inputCompany"
-                                               class="form-control form-control-sm"
-                                               value="@currentCompany"
-                                               readonly />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- DATE                                            -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="date"
-                                               id="inputDate"
-                                               class="form-control form-control-sm"
-                                               value="@DateTime.Today.ToString("yyyy-MM-dd")"
-                                               required />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- TIME                                            -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="text"
-                                               id="inputTimeDisplay"
-                                               class="form-control form-control-sm time-display"
-                                               value=""
-                                               readonly />
-
-                                        <input type="hidden"
-                                               id="inputTime"
-                                               value="@nextAvailableTime" />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- GP BEFORE                                       -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="number"
-                                               id="inputGpBefore"
-                                               step="any"
-                                               class="form-control form-control-sm pressure-input"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- GP IR                                            -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="number"
-                                               id="inputGpIr"
-                                               step="any"
-                                               class="form-control form-control-sm pressure-input"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- GP CR                                            -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="number"
-                                               id="inputGpCr"
-                                               step="any"
-                                               class="form-control form-control-sm pressure-input"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- REMARKS                                         -->
-                                    <!-- ================================================= -->
-
-                                    <td>
-
-                                        <input type="text"
-                                               id="inputRemarks"
-                                               class="form-control form-control-sm"
-                                               autocomplete="off" />
-
-                                    </td>
-
-
-                                    <!-- ================================================= -->
-                                    <!-- ADD BUTTON                                      -->
-                                    <!-- ================================================= -->
-
-                                    <td class="text-center">
-
-                                        <button type="button"
-                                                id="addRow"
-                                                class="btn btn-primary btn-sm"
-                                                title="Add Gas Pressure Reading">
-
-                                            <i class="bi bi-plus-lg"></i>
-
-                                        </button>
-
-                                    </td>
-
-                                </tr>
-
+                            <tbody id="temporaryBody">
                             </tbody>
 
                         </table>
 
                     </div>
 
-
-                    <!-- ================================================= -->
-                    <!-- TIME FULL MESSAGE                                 -->
-                    <!-- ================================================= -->
-
-                    <div id="timeFullMessage"
-                         class="time-full-message mt-2 d-none">
-
-                        <i class="bi bi-exclamation-circle me-1"></i>
-
-                        All 24 hourly slots for this date have already
-                        been entered.
-
-                    </div>
+                </div>
 
 
-                    <!-- ================================================= -->
-                    <!-- GAS PRESSURE LIST                                 -->
-                    <!-- ================================================= -->
+                <!-- =================================================
+                     HIDDEN POST DATA
+                ================================================== -->
 
-                    <div class="mt-4">
-
-                        <h6 class="fw-bold text-primary mb-2">
-
-                            <i class="bi bi-list-ul me-1"></i>
-
-                            Gas Pressure List
-
-                        </h6>
+                <div id="hiddenItemsContainer">
+                </div>
 
 
-                        <div class="table-responsive">
+                <!-- =================================================
+                     BUTTONS
+                ================================================== -->
 
-                            <table class="table table-bordered table-sm align-middle"
-                                   id="temporaryTable">
+                <div class="gas-form-buttons">
 
-                                <thead class="table-secondary">
+                    <a asp-action="DailyGasPressureRecordList"
+                       class="btn btn-secondary">
 
-                                    <tr>
+                        <i class="bi bi-arrow-left me-1"></i>
 
-                                        <th>
-                                            Company
-                                        </th>
+                        Back
 
-                                        <th>
-                                            Date
-                                        </th>
-
-                                        <th>
-                                            Time
-                                        </th>
-
-                                        <th>
-                                            Gas Pressure RMS Room Before Gas Regulator(PSI)
-                                        </th>
-
-                                        <th>
-                                            Gas Pressure Industrial Run(PSI)
-                                        </th>
-
-                                        <th>
-                                            Gas Pressure Captive Run(PSI)
-                                        </th>
-
-                                        <th>
-                                            Remarks
-                                        </th>
-
-                                    </tr>
-
-                                </thead>
+                    </a>
 
 
-                                <tbody id="temporaryBody">
-                                </tbody>
+                    <button type="submit"
+                            id="saveAllButton"
+                            class="btn btn-primary">
 
-                            </table>
+                        <i class="bi bi-save me-1"></i>
 
-                        </div>
+                        Save All
 
-                    </div>
+                    </button>
 
+                </div>
 
-                    <!-- ================================================= -->
-                    <!-- HIDDEN POST DATA                                  -->
-                    <!-- ================================================= -->
-
-                    <div id="hiddenItemsContainer">
-                    </div>
-
-
-                    <!-- ================================================= -->
-                    <!-- BUTTONS                                           -->
-                    <!-- ================================================= -->
-
-                    <div class="d-flex justify-content-between mt-4">
-
-                        <a asp-action="DailyGasPressureRecordList"
-                           class="btn btn-outline-secondary">
-
-                            <i class="bi bi-arrow-left me-1"></i>
-
-                            Back
-
-                        </a>
-
-
-                        <button type="submit"
-                                id="saveAllButton"
-                                class="btn btn-primary px-4">
-
-                            <i class="bi bi-save me-1"></i>
-
-                            Save All
-
-                        </button>
-
-                    </div>
-
-                </form>
-
-            </div>
+            </form>
 
         </div>
 
@@ -420,11 +387,9 @@
 </div>
 
 
-<!-- ============================================================= -->
-<!-- SAVING OVERLAY                                                -->
-<!-- ============================================================= -->
-
-
+<!-- =============================================================
+     SAVING OVERLAY
+============================================================== -->
 
 <div id="savingOverlay">
 
@@ -445,15 +410,1387 @@
 </div>
 
 
+<!-- =============================================================
+     COMPLETE RESPONSIVE STYLE
+============================================================== -->
+
+<style>
+
+    /* =========================================================
+           GLOBAL
+        ========================================================== */
+
+    .daily-gas-page {
+        width: 100%;
+        max-width: 100%;
+        padding-top: 50px;
+        padding-bottom: 20px;
+    }
+
+
+    /* =========================================================
+           CARD
+        ========================================================== */
+
+    .gas-card {
+        width: 100%;
+        max-width: 100%;
+        background: #ffffff;
+        border: 1px solid #e5e7eb;
+        border-radius: 15px;
+        overflow: hidden;
+        box-shadow: 0 4px 18px rgba(0, 0, 0, .10);
+    }
+
+
+    /* =========================================================
+           HEADER
+        ========================================================== */
+
+    .gas-card-header {
+        min-height: 52px;
+        display: flex;
+        align-items: center;
+        padding: 10px 18px;
+        color: #ffffff;
+        background: linear-gradient(135deg, #0d6efd, #0b5ed7);
+        border-radius: 15px 15px 0 0;
+    }
+
+
+    .gas-header-title {
+        display: flex;
+        align-items: center;
+        gap: 7px;
+        font-size: 17px;
+        font-weight: 600;
+    }
+
+
+        .gas-header-title i {
+            font-size: 17px;
+        }
+
+
+    /* =========================================================
+           BODY
+        ========================================================== */
+
+    .gas-card-body {
+        padding: 20px;
+    }
+
+
+    /* =========================================================
+           ALERT
+        ========================================================== */
+
+    .gas-alert {
+        font-size: 13px;
+    }
+
+
+    /* =========================================================
+           MAIN INPUT GRID
+        ========================================================== */
+
+    .gas-input-grid {
+        display: grid;
+        grid-template-columns: 1.20fr 1.10fr 0.90fr 0.78fr 0.78fr 0.78fr 1.00fr 45px;
+        gap: 8px;
+        width: 100%;
+        align-items: start;
+    }
+
+
+    /* =========================================================
+           FIELD
+        ========================================================== */
+
+    .gas-field {
+        min-width: 0;
+        position: relative;
+        align-self: start;
+    }
+
+
+        /* =========================================================
+           LABEL
+        ========================================================== */
+
+        .gas-field label {
+            display: block;
+            width: 100%;
+            margin-bottom: 4px;
+            font-size: 12px;
+            font-weight: 600;
+            color: #374151;
+            line-height: 1.15;
+            white-space: normal;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+
+
+    /* =========================================================
+           PRESSURE LABEL
+        ========================================================== */
+
+    .pressure-field label {
+        min-height: 28px;
+        font-size: 11px;
+        line-height: 1.12;
+        white-space: normal;
+        overflow: hidden;
+    }
+
+
+    .pressure-field .psi {
+        display: inline;
+        margin-left: 2px;
+        font-size: 9px;
+        font-weight: 700;
+        color: #6b7280;
+        white-space: nowrap;
+    }
+
+
+    /* =========================================================
+           INPUT
+        ========================================================== */
+
+    .gas-field .form-control {
+        width: 100%;
+        min-width: 0;
+        height: 36px;
+        padding: 5px 7px;
+        font-size: 12px;
+        border-radius: 5px;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+           COMPANY
+        ========================================================== */
+
+    .company-field .form-control {
+        font-size: 11px;
+        font-weight: 500;
+    }
+
+
+    .company-field input[readonly] {
+        background-color: #edf0f3 !important;
+        color: #495057 !important;
+        border-color: #ced4da !important;
+        cursor: not-allowed;
+    }
+
+
+    /* =========================================================
+           DATE
+        ========================================================== */
+
+    .date-field .form-control {
+        font-size: 11px;
+    }
+
+
+    /* =========================================================
+           TIME
+        ========================================================== */
+
+    .time-field .form-control {
+        font-size: 11px;
+        min-width: 0;
+    }
+
+
+    .time-field input[readonly] {
+        background-color: #edf0f3 !important;
+        color: #495057 !important;
+    }
+
+
+    /* =========================================================
+           PRESSURE INPUT
+        ========================================================== */
+
+    .pressure-input {
+        width: 100%;
+        text-align: center;
+        font-size: 11px !important;
+        padding-left: 4px !important;
+        padding-right: 4px !important;
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+           REMOVE NUMBER SPINNER
+        ========================================================== */
+
+    input[type="number"]::-webkit-inner-spin-button,
+    input[type="number"]::-webkit-outer-spin-button {
+        -webkit-appearance: none;
+        margin: 0;
+    }
+
+
+    input[type="number"] {
+        -moz-appearance: textfield;
+        appearance: textfield;
+    }
+
+
+    /* =========================================================
+           REMARKS
+        ========================================================== */
+
+    .remarks-field .form-control {
+        font-size: 11px;
+    }
+
+
+    /* =========================================================
+           ADD BUTTON
+        ========================================================== */
+
+    .add-field {
+        min-width: 45px;
+    }
+
+
+    .add-label {
+        min-height: 28px;
+    }
+
+
+    .gas-add-button {
+        width: 36px;
+        height: 36px;
+        padding: 0;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border-radius: 5px;
+    }
+
+
+    /* =========================================================
+           TIME FULL MESSAGE
+        ========================================================== */
+
+    .time-full-message {
+        font-size: 12px;
+        padding: 7px 10px;
+        border-radius: 5px;
+        background: #fff3cd;
+        color: #856404;
+        border: 1px solid #ffe69c;
+    }
+
+
+    /* =========================================================
+           GAS PRESSURE LIST
+        ========================================================== */
+
+    .gas-list-section {
+        margin-top: 20px;
+        width: 100%;
+        max-width: 100%;
+    }
+
+
+    .gas-list-title {
+        display: flex;
+        align-items: center;
+        gap: 5px;
+        margin-bottom: 8px;
+        color: #0d6efd;
+        font-size: 14px;
+        font-weight: 700;
+    }
+
+
+    .gas-list-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+    }
+
+
+    /* =========================================================
+           TABLE
+        ========================================================== */
+
+    #temporaryTable {
+        width: 100%;
+        min-width: 650px;
+        table-layout: fixed;
+        font-size: 10px;
+    }
+
+
+        #temporaryTable th,
+        #temporaryTable td {
+            padding: 4px 3px;
+            word-break: break-word;
+            overflow-wrap: anywhere;
+            vertical-align: middle;
+            line-height: 1.05;
+            box-sizing: border-box;
+        }
+
+
+        /* =========================================================
+           IMPORTANT:
+           INPUTS INSIDE GAS PRESSURE LIST
+
+           এগুলোই table-এর ভিতরের editable/input field.
+           Table text-এর চেয়ে ছোট রাখা হয়েছে।
+        ========================================================== */
+
+        #temporaryTable input,
+        #temporaryTable input.form-control,
+        #temporaryTable textarea,
+        #temporaryTable select,
+        #temporaryTable .form-control {
+            width: 100% !important;
+            font-size: 8px !important;
+            line-height: 1 !important;
+            padding: 2px 3px !important;
+            min-height: 0 !important;
+            box-sizing: border-box !important;
+        }
+
+
+            /* Number input specifically */
+
+            #temporaryTable input[type="number"] {
+                font-size: 8px !important;
+                text-align: center;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+
+
+            /* Date input */
+
+            #temporaryTable input[type="date"] {
+                font-size: 8px !important;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
+
+
+            /* Time input */
+
+            #temporaryTable input[type="time"],
+            #temporaryTable input[type="text"] {
+                font-size: 8px !important;
+            }
+
+
+    /* =========================================================
+           BUTTONS
+        ========================================================== */
+
+    .gas-form-buttons {
+        margin-top: 18px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+
+        .gas-form-buttons .btn {
+            min-height: 36px;
+            border-radius: 5px;
+        }
+
+
+    /* =========================================================
+           FOCUS
+        ========================================================== */
+
+    .gas-field .form-control:focus {
+        border-color: #0d6efd;
+        box-shadow: 0 0 0 .15rem rgba(13, 110, 253, .12);
+    }
+
+
+    /* =========================================================
+           MOBILE PORTRAIT
+           <= 768px
+        ========================================================== */
+
+    @@media (max-width: 768px) {
+
+        .daily-gas-page {
+            padding-top: 48px;
+            padding-left: 2px;
+            padding-right: 2px;
+            padding-bottom: 8px;
+        }
+
+
+        .gas-card {
+            border-radius: 11px;
+        }
+        /* HEADER */
+
+        .gas-card-header {
+            min-height: 42px;
+            padding: 6px 9px;
+            border-radius: 11px 11px 0 0;
+        }
+
+
+        .gas-header-title {
+            font-size: 12px;
+            gap: 4px;
+        }
+
+
+            .gas-header-title i {
+                font-size: 12px;
+            }
+        /* BODY */
+
+        .gas-card-body {
+            padding: 7px 3px;
+        }
+        /* =====================================================
+               INPUT GRID
+            ====================================================== */
+
+        .gas-input-grid {
+            display: grid;
+            grid-template-columns: 1.28fr 1.12fr 0.90fr 0.64fr 0.64fr 0.64fr 0.88fr 30px;
+            gap: 2px;
+            width: 100%;
+            align-items: start;
+        }
+        /* FIELD */
+
+        .gas-field {
+            min-width: 0;
+            align-self: start;
+        }
+            /* =====================================================
+               LABEL
+
+               সব label same height
+               তাই 2-line label হলেও input নিচে যাবে না
+            ====================================================== */
+
+            .gas-field label {
+                display: flex;
+                align-items: flex-end;
+                width: 100%;
+                height: 25px;
+                min-height: 25px;
+                margin-bottom: 2px;
+                font-size: 7px;
+                line-height: 1.02;
+                white-space: normal;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+        /* =====================================================
+               PRESSURE LABEL
+            ====================================================== */
+
+        .pressure-field label {
+            display: block;
+            width: 100%;
+            height: 25px;
+            min-height: 25px;
+            margin-bottom: 2px;
+            font-size: 6.3px;
+            line-height: 1.01;
+            white-space: normal;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        /* PSI */
+
+        .pressure-field .psi {
+            display: inline;
+            margin-left: 1px;
+            font-size: 5.7px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        /* =====================================================
+               INPUT
+            ====================================================== */
+
+        .gas-field .form-control {
+            width: 100%;
+            height: 27px;
+            padding: 2px;
+            font-size: 8px;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        /* COMPANY */
+
+        .company-field .form-control {
+            font-size: 7px;
+            padding-left: 2px;
+            padding-right: 2px;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+        /* DATE */
+
+        .date-field .form-control {
+            font-size: 7.2px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+        /* TIME */
+
+        .time-field .form-control {
+            font-size: 7.8px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        /* PRESSURE */
+
+        .pressure-input {
+            width: 100%;
+            height: 27px !important;
+            font-size: 7.3px !important;
+            padding-left: 1px !important;
+            padding-right: 1px !important;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        /* REMARKS */
+
+        .remarks-field .form-control {
+            font-size: 7.5px;
+            padding-left: 2px;
+            padding-right: 2px;
+        }
+        /* ADD */
+
+        .add-field {
+            min-width: 30px;
+        }
+
+
+        .add-label {
+            height: 25px;
+            min-height: 25px;
+            margin-bottom: 2px;
+        }
+
+
+        .gas-add-button {
+            width: 28px;
+            height: 27px;
+            font-size: 9px;
+            border-radius: 3px;
+        }
+        /* =====================================================
+               GAS PRESSURE LIST
+
+               Portrait:
+               No horizontal scrolling
+            ====================================================== */
+
+        .gas-list-section {
+            margin-top: 10px;
+            width: 100%;
+        }
+
+
+        .gas-list-title {
+            font-size: 10px;
+            margin-bottom: 4px;
+            gap: 4px;
+        }
+
+
+        .gas-list-wrapper {
+            width: 100%;
+            overflow-x: hidden;
+            overflow-y: hidden;
+        }
+
+
+        #temporaryTable {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            table-layout: fixed;
+            font-size: 6px;
+        }
+
+
+            #temporaryTable th,
+            #temporaryTable td {
+                padding: 2px 1px;
+                line-height: 1;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                white-space: normal;
+                vertical-align: middle;
+            }
+            /* =====================================================
+               IMPORTANT:
+               PORTRAIT TABLE INPUT TEXT
+
+               খুব ছোট করা হয়েছে।
+               এই rule existing CSS override করবে।
+            ====================================================== */
+
+            #temporaryTable input,
+            #temporaryTable input.form-control,
+            #temporaryTable textarea,
+            #temporaryTable select,
+            #temporaryTable .form-control {
+                width: 100% !important;
+                font-size: 5px !important;
+                line-height: 1 !important;
+                padding: 1px !important;
+                height: auto !important;
+                min-height: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+
+                #temporaryTable input[type="number"] {
+                    font-size: 5px !important;
+                    text-align: center;
+                    padding-left: 1px !important;
+                    padding-right: 1px !important;
+                }
+
+
+                #temporaryTable input[type="date"] {
+                    font-size: 5px !important;
+                }
+
+
+                #temporaryTable input[type="time"],
+                #temporaryTable input[type="text"] {
+                    font-size: 5px !important;
+                }
+            /* =====================================================
+               TABLE COLUMN WIDTH
+            ====================================================== */
+
+            #temporaryTable th:nth-child(1),
+            #temporaryTable td:nth-child(1) {
+                width: 13%;
+            }
+
+
+            #temporaryTable th:nth-child(2),
+            #temporaryTable td:nth-child(2) {
+                width: 12%;
+            }
+
+
+            #temporaryTable th:nth-child(3),
+            #temporaryTable td:nth-child(3) {
+                width: 10%;
+            }
+
+
+            #temporaryTable th:nth-child(4),
+            #temporaryTable td:nth-child(4) {
+                width: 17%;
+            }
+
+
+            #temporaryTable th:nth-child(5),
+            #temporaryTable td:nth-child(5) {
+                width: 14%;
+            }
+
+
+            #temporaryTable th:nth-child(6),
+            #temporaryTable td:nth-child(6) {
+                width: 14%;
+            }
+
+
+            #temporaryTable th:nth-child(7),
+            #temporaryTable td:nth-child(7) {
+                width: 20%;
+            }
+        /* BUTTONS */
+
+        .gas-form-buttons {
+            margin-top: 8px;
+        }
+
+
+            .gas-form-buttons .btn {
+                font-size: 9px;
+                padding: 3px 7px;
+                min-height: 26px;
+            }
+    }
+
+
+    /* =========================================================
+           SMALL PORTRAIT
+           <= 420px
+        ========================================================== */
+
+    @@media (max-width: 420px) {
+
+        .daily-gas-page {
+            padding-top: 44px;
+            padding-left: 1px;
+            padding-right: 1px;
+            padding-bottom: 6px;
+        }
+
+
+        .gas-card {
+            border-radius: 10px;
+        }
+
+
+        .gas-card-body {
+            padding: 6px 2px;
+        }
+        /* GRID */
+
+        .gas-input-grid {
+            grid-template-columns: 1.27fr 1.12fr 0.91fr 0.63fr 0.63fr 0.63fr 0.82fr 27px;
+            gap: 1.5px;
+        }
+        /* LABEL */
+
+        .gas-field label {
+            height: 25px;
+            min-height: 25px;
+            font-size: 6.5px;
+            line-height: 1.01;
+        }
+        /* PRESSURE LABEL */
+
+        .pressure-field label {
+            height: 25px;
+            min-height: 25px;
+            font-size: 6px;
+            line-height: 1;
+        }
+        /* PSI */
+
+        .pressure-field .psi {
+            font-size: 5.4px;
+        }
+        /* INPUT */
+
+        .gas-field .form-control {
+            height: 26px;
+            font-size: 7.5px;
+            padding: 2px 1px;
+            border-radius: 2px;
+        }
+        /* COMPANY */
+
+        .company-field .form-control {
+            font-size: 6.5px;
+        }
+        /* DATE */
+
+        .date-field .form-control {
+            font-size: 6.7px;
+        }
+        /* TIME */
+
+        .time-field .form-control {
+            font-size: 7px;
+        }
+        /* PRESSURE */
+
+        .pressure-input {
+            height: 26px !important;
+            font-size: 7px !important;
+            padding-left: 1px !important;
+            padding-right: 1px !important;
+        }
+        /* REMARKS */
+
+        .remarks-field .form-control {
+            font-size: 6.9px;
+        }
+        /* ADD */
+
+        .gas-add-button {
+            width: 25px;
+            height: 26px;
+            font-size: 8px;
+        }
+        /* =====================================================
+               LIST
+            ====================================================== */
+
+        .gas-list-section {
+            margin-top: 9px;
+        }
+
+
+        .gas-list-title {
+            font-size: 9px;
+            margin-bottom: 3px;
+        }
+
+
+        .gas-list-wrapper {
+            overflow-x: hidden;
+        }
+
+
+        #temporaryTable {
+            width: 100%;
+            min-width: 0;
+            font-size: 5.4px;
+        }
+
+
+            #temporaryTable th,
+            #temporaryTable td {
+                padding: 1.5px 1px;
+                line-height: .98;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+            /* =====================================================
+               SMALL TABLE INPUT
+
+               এখানে সবচেয়ে ছোট text
+            ====================================================== */
+
+            #temporaryTable input,
+            #temporaryTable input.form-control,
+            #temporaryTable textarea,
+            #temporaryTable select,
+            #temporaryTable .form-control {
+                font-size: 4.5px !important;
+                line-height: .95 !important;
+                padding: 1px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+
+                #temporaryTable input[type="number"] {
+                    font-size: 4.5px !important;
+                }
+
+
+                #temporaryTable input[type="date"],
+                #temporaryTable input[type="time"],
+                #temporaryTable input[type="text"] {
+                    font-size: 4.5px !important;
+                }
+        /* BUTTONS */
+
+        .gas-form-buttons {
+            margin-top: 7px;
+        }
+
+
+            .gas-form-buttons .btn {
+                font-size: 8px;
+                padding: 3px 5px;
+                min-height: 24px;
+            }
+    }
+
+
+    /* =========================================================
+           VERY SMALL PORTRAIT
+           <= 350px
+        ========================================================== */
+
+    @@media (max-width: 350px) {
+
+        .daily-gas-page {
+            padding-top: 42px;
+            padding-left: 1px;
+            padding-right: 1px;
+        }
+
+
+        .gas-card-body {
+            padding: 5px 1px;
+        }
+        /* GRID */
+
+        .gas-input-grid {
+            grid-template-columns: 1.25fr 1.08fr 0.88fr 0.61fr 0.61fr 0.61fr 0.76fr 25px;
+            gap: 1px;
+        }
+        /* LABEL */
+
+        .gas-field label {
+            height: 25px;
+            min-height: 25px;
+            font-size: 6px;
+            line-height: 1;
+        }
+        /* PRESSURE LABEL */
+
+        .pressure-field label {
+            height: 25px;
+            min-height: 25px;
+            font-size: 5.6px;
+            line-height: .98;
+        }
+        /* PSI */
+
+        .pressure-field .psi {
+            font-size: 5px;
+        }
+        /* INPUT */
+
+        .gas-field .form-control {
+            height: 25px;
+            font-size: 7px;
+            padding: 1px;
+            border-radius: 2px;
+        }
+        /* COMPANY */
+
+        .company-field .form-control {
+            font-size: 5.8px;
+        }
+        /* DATE */
+
+        .date-field .form-control {
+            font-size: 6px;
+        }
+        /* TIME */
+
+        .time-field .form-control {
+            font-size: 6.4px;
+        }
+        /* PRESSURE */
+
+        .pressure-input {
+            height: 25px !important;
+            font-size: 6.6px !important;
+        }
+        /* REMARKS */
+
+        .remarks-field .form-control {
+            font-size: 6.3px;
+        }
+        /* ADD */
+
+        .gas-add-button {
+            width: 24px;
+            height: 25px;
+            font-size: 7px;
+        }
+        /* =====================================================
+               TABLE
+            ====================================================== */
+
+        .gas-list-section {
+            margin-top: 7px;
+        }
+
+
+        .gas-list-title {
+            font-size: 8px;
+            margin-bottom: 2px;
+        }
+
+
+        .gas-list-wrapper {
+            width: 100%;
+            overflow-x: hidden;
+        }
+
+
+        #temporaryTable {
+            width: 100%;
+            min-width: 0;
+            max-width: 100%;
+            table-layout: fixed;
+            font-size: 4.8px;
+        }
+
+
+            #temporaryTable th,
+            #temporaryTable td {
+                padding: 1px;
+                line-height: .95;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+                white-space: normal;
+            }
+            /* =====================================================
+               VERY SMALL TABLE INPUT
+            ====================================================== */
+
+            #temporaryTable input,
+            #temporaryTable input.form-control,
+            #temporaryTable textarea,
+            #temporaryTable select,
+            #temporaryTable .form-control {
+                font-size: 4px !important;
+                line-height: .9 !important;
+                padding: 1px !important;
+                height: auto !important;
+                min-height: 0 !important;
+            }
+
+
+                #temporaryTable input[type="number"] {
+                    font-size: 4px !important;
+                }
+
+
+                #temporaryTable input[type="date"],
+                #temporaryTable input[type="time"],
+                #temporaryTable input[type="text"] {
+                    font-size: 4px !important;
+                }
+        /* BUTTONS */
+
+        .gas-form-buttons {
+            margin-top: 6px;
+        }
+
+
+            .gas-form-buttons .btn {
+                font-size: 7.5px;
+                padding: 2px 4px;
+                min-height: 22px;
+            }
+    }
+
+
+    /* =========================================================
+           MOBILE LANDSCAPE
+           <= 900px
+
+           IMPORTANT:
+           Label-এর height fixed,
+           তাই 2-line label হলেও সব input একই baseline-এ থাকবে।
+        ========================================================== */
+
+    @@media (max-width: 900px) and (orientation: landscape) {
+
+        .daily-gas-page {
+            padding-top: 28px;
+            padding-left: 5px;
+            padding-right: 5px;
+            padding-bottom: 10px;
+        }
+
+
+        .gas-card-body {
+            padding: 10px;
+        }
+        /* =====================================================
+               GRID
+            ====================================================== */
+
+        .gas-input-grid {
+            display: grid;
+            grid-template-columns: 1.25fr 1.10fr 0.92fr 0.76fr 0.76fr 0.76fr 0.95fr 35px;
+            gap: 5px;
+            width: 100%;
+            align-items: start;
+        }
+        /* FIELD */
+
+        .gas-field {
+            min-width: 0;
+            align-self: start;
+        }
+            /* =====================================================
+               LABEL
+
+               সব label exact same height
+            ====================================================== */
+
+            .gas-field label {
+                display: flex;
+                align-items: flex-end;
+                width: 100%;
+                height: 27px;
+                min-height: 27px;
+                margin-bottom: 3px;
+                font-size: 8px;
+                line-height: 1.05;
+                white-space: normal;
+                overflow: hidden;
+                box-sizing: border-box;
+            }
+        /* =====================================================
+               PRESSURE LABEL
+            ====================================================== */
+
+        .pressure-field label {
+            display: block;
+            width: 100%;
+            height: 27px;
+            min-height: 27px;
+            margin-bottom: 3px;
+            font-size: 7.2px;
+            line-height: 1.02;
+            white-space: normal;
+            overflow: hidden;
+            box-sizing: border-box;
+        }
+        /* PSI */
+
+        .pressure-field .psi {
+            display: inline;
+            margin-left: 1px;
+            font-size: 6.4px;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        /* =====================================================
+               ALL INPUT SAME HEIGHT
+            ====================================================== */
+
+        .gas-field .form-control {
+            width: 100%;
+            height: 29px;
+            padding: 3px 4px;
+            font-size: 9px;
+            border-radius: 3px;
+            box-sizing: border-box;
+        }
+        /* COMPANY */
+
+        .company-field .form-control {
+            font-size: 8px;
+        }
+        /* DATE */
+
+        .date-field .form-control {
+            font-size: 8px;
+        }
+        /* TIME */
+
+        .time-field .form-control {
+            font-size: 8.5px;
+        }
+        /* PRESSURE */
+
+        .pressure-input {
+            width: 100%;
+            height: 28px !important;
+            font-size: 8px !important;
+            padding-left: 2px !important;
+            padding-right: 2px !important;
+            text-align: center;
+            box-sizing: border-box;
+        }
+        /* REMARKS */
+
+        .remarks-field .form-control {
+            font-size: 8px;
+        }
+        /* =====================================================
+               ADD FIELD
+            ====================================================== */
+
+        .add-field {
+            min-width: 35px;
+            align-self: start;
+        }
+
+
+        .add-label {
+            display: block;
+            width: 100%;
+            height: 27px;
+            min-height: 27px;
+            margin-bottom: 3px;
+        }
+
+
+        .gas-add-button {
+            width: 32px;
+            height: 28px;
+            padding: 0;
+            font-size: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        /* =====================================================
+               LIST
+
+               Landscape-এ table scroll allowed
+            ====================================================== */
+
+        .gas-list-section {
+            margin-top: 12px;
+        }
+
+
+        .gas-list-title {
+            font-size: 10px;
+            margin-bottom: 4px;
+        }
+
+
+        .gas-list-wrapper {
+            width: 100%;
+            overflow-x: auto;
+            overflow-y: hidden;
+        }
+
+
+        #temporaryTable {
+            min-width: 650px;
+            font-size: 7px;
+        }
+
+
+            #temporaryTable th,
+            #temporaryTable td {
+                padding: 2px 1.5px;
+                line-height: 1;
+                word-break: break-word;
+                overflow-wrap: anywhere;
+            }
+            /* =====================================================
+               LANDSCAPE TABLE INPUT
+
+               Table-এর ভিতরের input text ছোট থাকবে
+            ====================================================== */
+
+            #temporaryTable input,
+            #temporaryTable input.form-control,
+            #temporaryTable textarea,
+            #temporaryTable select,
+            #temporaryTable .form-control {
+                font-size: 6px !important;
+                line-height: .95 !important;
+                padding: 1px 2px !important;
+                height: auto !important;
+                min-height: 0 !important;
+                box-sizing: border-box !important;
+            }
+
+
+                #temporaryTable input[type="number"] {
+                    font-size: 6px !important;
+                    text-align: center;
+                }
+
+
+                #temporaryTable input[type="date"],
+                #temporaryTable input[type="time"],
+                #temporaryTable input[type="text"] {
+                    font-size: 6px !important;
+                }
+        /* BUTTONS */
+
+        .gas-form-buttons {
+            margin-top: 10px;
+        }
+    }
+
+
+    /* =========================================================
+           SAVING OVERLAY
+        ========================================================== */
+
+    #savingOverlay {
+        display: none;
+        position: fixed;
+        inset: 0;
+        z-index: 99999;
+        background: rgba(0, 0, 0, .55);
+        align-items: center;
+        justify-content: center;
+    }
+
+
+    .saving-card {
+        width: min(90%, 350px);
+        background: #ffffff;
+        border-radius: 10px;
+        padding: 25px;
+        text-align: center;
+        box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
+    }
+
+
+    .saving-spinner {
+        width: 38px;
+        height: 38px;
+        margin: 0 auto 12px;
+        border: 4px solid #e9ecef;
+        border-top-color: #0d6efd;
+        border-radius: 50%;
+        animation: gasSpinner .8s linear infinite;
+    }
+
+
+    .saving-title {
+        font-weight: 700;
+        font-size: 17px;
+        margin-bottom: 5px;
+    }
+
+
+    .saving-message {
+        font-size: 13px;
+        color: #6c757d;
+    }
+
+
+    /* =========================================================
+           SPINNER
+        ========================================================== */
+
+    @@keyframes gasSpinner {
+
+        from {
+            transform: rotate(0deg);
+        }
+
+        to {
+            transform: rotate(360deg);
+        }
+    }
+
+</style>
+
+
 
 @section Scripts {
 
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial"
+        );
     }
 
+
     <script>
+
         window.gasPressureConfig = {
+
             currentCompany:
                 @Html.Raw(
                     JsonSerializer.Serialize(currentCompany)
@@ -461,8 +1798,14 @@
 
         getAvailableTimesUrl:
             '@Url.Action("GetAvailableTimes")'
+
     };
+
 </script>
 
-<script src="~/js/dailygaspressure.js" asp-append-version="true"></script>
+
+<script src="~/js/dailygaspressure.js"
+        asp-append-version="true">
+</script>
+
 }

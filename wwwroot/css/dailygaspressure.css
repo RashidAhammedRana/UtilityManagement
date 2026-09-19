@@ -1,134 +1,891 @@
-﻿/* =========================================================
-   SAVING OVERLAY
-   Transparent background
-   No blur
-   ========================================================= */
+﻿<style >
+/* =========================================================
+           GLOBAL
+        ========================================================== */
+.daily-gas-page {
+    width: 100%;
+    max-width: 100%;
+    padding-top: 50px;
+    padding-bottom: 20px;
+}
+
+
+/* =========================================================
+           CARD
+        ========================================================== */
+
+.gas-card {
+    width: 100%;
+    max-width: 100%;
+    background: #ffffff;
+    border: 1px solid #e5e7eb;
+    border-radius: 15px;
+    overflow: hidden;
+    box-shadow: 0 4px 18px rgba(0, 0, 0, .10);
+}
+
+
+/* =========================================================
+           HEADER
+        ========================================================== */
+
+.gas-card-header {
+    min-height: 52px;
+    display: flex;
+    align-items: center;
+    padding: 10px 18px;
+    color: #ffffff;
+    background: linear-gradient( 135deg, #0d6efd, #0b5ed7 );
+    border-radius: 15px 15px 0 0;
+}
+
+
+.gas-header-title {
+    display: flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 17px;
+    font-weight: 600;
+}
+
+
+    .gas-header-title i {
+        font-size: 17px;
+    }
+
+
+/* =========================================================
+           BODY
+        ========================================================== */
+
+.gas-card-body {
+    padding: 20px;
+}
+
+
+/* =========================================================
+           ALERT
+        ========================================================== */
+
+.gas-alert {
+    font-size: 13px;
+}
+
+
+/* =========================================================
+           MAIN INPUT GRID
+
+           Company  = large
+           Date     = large
+           Time     = medium-large
+           Pressure = smaller
+           Remarks  = medium
+           Add      = fixed
+        ========================================================== */
+
+.gas-input-grid {
+    display: grid;
+    grid-template-columns: 1.20fr 1.05fr 0.90fr 0.82fr 0.82fr 0.82fr 1.00fr 45px;
+    gap: 8px;
+    width: 100%;
+    align-items: start;
+}
+
+
+/* =========================================================
+           FIELD
+        ========================================================== */
+
+.gas-field {
+    min-width: 0;
+    position: relative;
+}
+
+
+    /* =========================================================
+           LABEL
+        ========================================================== */
+
+    .gas-field label {
+        display: block;
+        margin-bottom: 4px;
+        font-size: 12px;
+        font-weight: 600;
+        color: #374151;
+        line-height: 1.15;
+        white-space: normal;
+    }
+
+
+/* =========================================================
+           PRESSURE LABEL
+
+           PSI remains beside the label
+        ========================================================== */
+
+.pressure-field label {
+    min-height: 28px;
+    font-size: 11px;
+    line-height: 1.12;
+    white-space: normal;
+}
+
+
+/* =========================================================
+           PSI
+
+           NOT INSIDE INPUT
+        ========================================================== */
+
+.pressure-field .psi {
+    display: inline;
+    margin-left: 2px;
+    font-size: 9px;
+    font-weight: 700;
+    color: #6b7280;
+    white-space: nowrap;
+}
+
+
+/* =========================================================
+           INPUT
+        ========================================================== */
+
+.gas-field .form-control {
+    width: 100%;
+    height: 36px;
+    min-width: 0;
+    padding: 5px 7px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+           COMPANY
+        ========================================================== */
+
+.company-field .form-control {
+    font-size: 11px;
+    font-weight: 500;
+}
+
+
+.company-field input[readonly] {
+    background-color: #edf0f3 !important;
+    color: #495057 !important;
+    border-color: #ced4da !important;
+    cursor: not-allowed;
+}
+
+
+/* =========================================================
+           DATE
+        ========================================================== */
+
+.date-field .form-control {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+           TIME
+        ========================================================== */
+
+.time-field .form-control {
+    font-size: 11px;
+    min-width: 0;
+}
+
+
+.time-field input[readonly] {
+    background-color: #edf0f3 !important;
+    color: #495057 !important;
+}
+
+
+/* =========================================================
+           PRESSURE INPUT
+
+           NO PSI INSIDE
+        ========================================================== */
+
+.pressure-input {
+    width: 100%;
+    text-align: center;
+    font-size: 11px !important;
+    padding-left: 4px !important;
+    padding-right: 4px !important;
+}
+
+
+/* =========================================================
+           REMOVE NUMBER SPINNER
+        ========================================================== */
+
+input[type="number"]::-webkit-inner-spin-button,
+input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+}
+
+
+input[type="number"] {
+    -moz-appearance: textfield;
+    appearance: textfield;
+}
+
+
+/* =========================================================
+           REMARKS
+        ========================================================== */
+
+.remarks-field .form-control {
+    font-size: 11px;
+}
+
+
+/* =========================================================
+           ADD BUTTON
+        ========================================================== */
+
+.add-field {
+    min-width: 45px;
+}
+
+
+.add-label {
+    min-height: 28px;
+}
+
+
+.gas-add-button {
+    width: 36px;
+    height: 36px;
+    padding: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 5px;
+}
+
+
+/* =========================================================
+           TIME FULL MESSAGE
+        ========================================================== */
+
+.time-full-message {
+    font-size: 12px;
+    padding: 7px 10px;
+    border-radius: 5px;
+    background: #fff3cd;
+    color: #856404;
+    border: 1px solid #ffe69c;
+}
+
+
+/* =========================================================
+           LIST
+        ========================================================== */
+
+.gas-list-section {
+    margin-top: 20px;
+}
+
+
+.gas-list-title {
+    display: flex;
+    align-items: center;
+    gap: 5px;
+    margin-bottom: 8px;
+    color: #0d6efd;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+
+.gas-list-wrapper {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: auto;
+    overflow-y: hidden;
+    -webkit-overflow-scrolling: touch;
+}
+
+
+#temporaryTable {
+    width: 100%;
+    min-width: 650px;
+    table-layout: fixed;
+    font-size: 12px;
+}
+
+
+    #temporaryTable th,
+    #temporaryTable td {
+        padding: 6px;
+        word-break: break-word;
+        overflow-wrap: anywhere;
+        vertical-align: middle;
+    }
+
+
+/* =========================================================
+           BUTTONS
+        ========================================================== */
+
+.gas-form-buttons {
+    margin-top: 18px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+
+    .gas-form-buttons .btn {
+        min-height: 36px;
+        border-radius: 5px;
+    }
+
+
+/* =========================================================
+           FOCUS
+        ========================================================== */
+
+.gas-field .form-control:focus {
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 .15rem rgba(13, 110, 253, .12);
+}
+
+
+/* =========================================================
+           MOBILE PORTRAIT
+           <= 768px
+
+           IMPORTANT:
+           Everything stays in ONE ROW.
+        ========================================================== */
+
+@@media (max-width: 768px) {
+
+    .daily-gas-page {
+        padding-top: 48px;
+        padding-left: 3px;
+        padding-right: 3px;
+        padding-bottom: 10px;
+    }
+
+
+    .gas-card {
+        border-radius: 12px;
+    }
+    /* HEADER */
+
+    .gas-card-header {
+        min-height: 44px;
+        padding: 7px 10px;
+        border-radius: 12px 12px 0 0;
+    }
+
+
+    .gas-header-title {
+        font-size: 13px;
+        gap: 5px;
+    }
+
+
+        .gas-header-title i {
+            font-size: 13px;
+        }
+    /* BODY */
+
+    .gas-card-body {
+        padding: 9px 4px;
+    }
+    /* =====================================================
+               ONE ROW
+
+               Company = bigger
+               Date    = bigger
+               Time    = slightly bigger
+               Pressure = smaller
+            ====================================================== */
+
+    .gas-input-grid {
+        display: grid;
+        grid-template-columns: 1.28fr 1.08fr 0.90fr 0.68fr 0.68fr 0.68fr 0.88fr 32px;
+        gap: 3px;
+        width: 100%;
+    }
+    /* LABEL */
+
+    .gas-field label {
+        font-size: 7.5px;
+        line-height: 1.05;
+        margin-bottom: 3px;
+        min-height: 23px;
+        height: 23px;
+        display: flex;
+        align-items: flex-end;
+        white-space: normal;
+        overflow: hidden;
+    }
+    /* PRESSURE LABEL */
+
+    .pressure-field label {
+        font-size: 6.8px;
+        line-height: 1.03;
+        min-height: 25px;
+        height: 25px;
+        display: block;
+    }
+    /* PSI */
+
+    .pressure-field .psi {
+        font-size: 6px;
+        margin-left: 1px;
+        font-weight: 700;
+        white-space: nowrap;
+    }
+    /* INPUT */
+
+    .gas-field .form-control {
+        height: 29px;
+        padding: 2px 3px;
+        font-size: 9px;
+        border-radius: 3px;
+    }
+    /* COMPANY */
+
+    .company-field .form-control {
+        font-size: 7.5px;
+        padding-left: 2px;
+        padding-right: 2px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+    }
+    /* DATE */
+
+    .date-field .form-control {
+        font-size: 7.5px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    /* TIME */
+
+    .time-field .form-control {
+        font-size: 8px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    /* PRESSURE */
+
+    .pressure-input {
+        height: 28px !important;
+        font-size: 8px !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+        text-align: center;
+    }
+    /* REMARKS */
+
+    .remarks-field .form-control {
+        font-size: 8px;
+        padding-left: 3px;
+        padding-right: 3px;
+    }
+    /* ADD */
+
+    .add-field {
+        min-width: 32px;
+    }
+
+
+    .add-label {
+        min-height: 25px;
+        height: 25px;
+    }
+
+
+    .gas-add-button {
+        width: 30px;
+        height: 28px;
+        font-size: 10px;
+        border-radius: 3px;
+    }
+    /* LIST */
+
+    .gas-list-section {
+        margin-top: 13px;
+    }
+
+
+    .gas-list-title {
+        font-size: 11px;
+        margin-bottom: 5px;
+    }
+
+
+    #temporaryTable {
+        min-width: 620px;
+        font-size: 8px;
+    }
+
+
+        #temporaryTable th,
+        #temporaryTable td {
+            padding: 3px 2px;
+            line-height: 1.1;
+        }
+    /* BUTTONS */
+
+    .gas-form-buttons {
+        margin-top: 10px;
+    }
+
+
+        .gas-form-buttons .btn {
+            font-size: 10px;
+            padding: 4px 8px;
+            min-height: 28px;
+        }
+}
+
+
+/* =========================================================
+           SMALL PORTRAIT
+           <= 420px
+        ========================================================== */
+
+@@media (max-width: 420px) {
+
+    .daily-gas-page {
+        padding-top: 45px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+
+
+    .gas-card-body {
+        padding: 7px 2px;
+    }
+    /* ONE ROW */
+
+    .gas-input-grid {
+        grid-template-columns: 1.30fr 1.10fr 0.92fr 0.66fr 0.66fr 0.66fr 0.84fr 29px;
+        gap: 2px;
+    }
+    /* LABEL */
+
+    .gas-field label {
+        font-size: 6.8px;
+        line-height: 1.02;
+        height: 24px;
+        min-height: 24px;
+        margin-bottom: 2px;
+    }
+    /* PRESSURE LABEL */
+
+    .pressure-field label {
+        font-size: 6.2px;
+        line-height: 1.01;
+        height: 25px;
+        min-height: 25px;
+    }
+    /* PSI */
+
+    .pressure-field .psi {
+        font-size: 5.7px;
+        margin-left: 1px;
+    }
+    /* INPUT */
+
+    .gas-field .form-control {
+        height: 27px;
+        font-size: 8px;
+        padding: 2px;
+    }
+    /* COMPANY */
+
+    .company-field .form-control {
+        font-size: 6.7px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    /* DATE */
+
+    .date-field .form-control {
+        font-size: 6.8px;
+        padding-left: 1px;
+        padding-right: 1px;
+    }
+    /* TIME */
+
+    .time-field .form-control {
+        font-size: 7.3px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    /* PRESSURE */
+
+    .pressure-input {
+        height: 27px !important;
+        font-size: 7.5px !important;
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+        text-align: center;
+    }
+    /* REMARKS */
+
+    .remarks-field .form-control {
+        font-size: 7.2px;
+        padding-left: 2px;
+        padding-right: 2px;
+    }
+    /* ADD */
+
+    .gas-add-button {
+        width: 27px;
+        height: 26px;
+        font-size: 9px;
+    }
+    /* BUTTONS */
+
+    .gas-form-buttons .btn {
+        font-size: 9px;
+        padding: 3px 6px;
+        min-height: 25px;
+    }
+}
+
+
+/* =========================================================
+           VERY SMALL PORTRAIT
+           <= 350px
+        ========================================================== */
+
+@@media (max-width: 350px) {
+
+    .gas-input-grid {
+        grid-template-columns: 1.28fr 1.06fr 0.88fr 0.63fr 0.63fr 0.63fr 0.76fr 27px;
+        gap: 1.5px;
+    }
+
+
+    .gas-field label {
+        font-size: 6.2px;
+        height: 25px;
+        min-height: 25px;
+    }
+
+
+    .pressure-field label {
+        font-size: 5.9px;
+        height: 26px;
+        min-height: 26px;
+    }
+
+
+    .pressure-field .psi {
+        font-size: 5.4px;
+    }
+
+
+    .gas-field .form-control {
+        height: 26px;
+        font-size: 7.5px;
+        padding: 2px;
+    }
+
+
+    .company-field .form-control {
+        font-size: 6px;
+    }
+
+
+    .date-field .form-control {
+        font-size: 6.1px;
+    }
+
+
+    .time-field .form-control {
+        font-size: 6.6px;
+    }
+
+
+    .pressure-input {
+        height: 26px !important;
+        font-size: 7px !important;
+    }
+
+
+    .remarks-field .form-control {
+        font-size: 6.6px;
+    }
+
+
+    .gas-add-button {
+        width: 25px;
+        height: 25px;
+        font-size: 8px;
+    }
+}
+
+
+/* =========================================================
+           MOBILE LANDSCAPE
+           <= 900px
+        ========================================================== */
+
+@@media (max-width: 900px) and (orientation: landscape) {
+
+    .daily-gas-page {
+        padding-top: 28px;
+        padding-left: 5px;
+        padding-right: 5px;
+        padding-bottom: 10px;
+    }
+
+
+    .gas-card-body {
+        padding: 10px;
+    }
+    /* ONE ROW */
+
+    .gas-input-grid {
+        grid-template-columns: 1.25fr 1.08fr 0.92fr 0.78fr 0.78fr 0.78fr 0.95fr 35px;
+        gap: 5px;
+    }
+    /* LABEL */
+
+    .gas-field label {
+        font-size: 8px;
+        line-height: 1.05;
+        height: 21px;
+        min-height: 21px;
+        margin-bottom: 3px;
+    }
+    /* PRESSURE LABEL */
+
+    .pressure-field label {
+        font-size: 7.3px;
+        line-height: 1.04;
+        height: 22px;
+        min-height: 22px;
+    }
+    /* PSI */
+
+    .pressure-field .psi {
+        font-size: 6.5px;
+    }
+    /* INPUT */
+
+    .gas-field .form-control {
+        height: 29px;
+        font-size: 9px;
+        padding: 3px 4px;
+    }
+    /* COMPANY */
+
+    .company-field .form-control {
+        font-size: 8px;
+    }
+    /* DATE */
+
+    .date-field .form-control {
+        font-size: 8px;
+    }
+    /* TIME */
+
+    .time-field .form-control {
+        font-size: 8.5px;
+    }
+    /* PRESSURE */
+
+    .pressure-input {
+        height: 28px !important;
+        font-size: 8px !important;
+        padding-left: 2px !important;
+        padding-right: 2px !important;
+    }
+    /* REMARKS */
+
+    .remarks-field .form-control {
+        font-size: 8px;
+    }
+    /* ADD */
+
+    .gas-add-button {
+        width: 32px;
+        height: 28px;
+    }
+    /* BUTTONS */
+
+    .gas-form-buttons {
+        margin-top: 12px;
+    }
+}
+
+
+/* =========================================================
+           SAVING OVERLAY
+        ========================================================== */
 
 #savingOverlay {
     display: none;
     position: fixed;
     inset: 0;
-    width: 100vw;
-    height: 100vh;
+    z-index: 99999;
+    background: rgba(0, 0, 0, .55);
     align-items: center;
     justify-content: center;
-    /* No background color */
-    background: transparent;
-    /* No blur */
-    backdrop-filter: none;
-    -webkit-backdrop-filter: none;
-    z-index: 99999;
-    pointer-events: all;
 }
 
 
-    /* =========================================================
-   SAVING CARD
-   ========================================================= */
+.saving-card {
+    width: min(90%, 350px);
+    background: #ffffff;
+    border-radius: 10px;
+    padding: 25px;
+    text-align: center;
+    box-shadow: 0 10px 35px rgba(0, 0, 0, .25);
+}
 
-    #savingOverlay .saving-card {
-        width: min(350px, calc(100vw - 40px));
-        padding: 24px 28px;
-        /* Different background color */
-        background: #eff6ff;
-        border: 1px solid #bfdbfe;
-        border-radius: 16px;
-        text-align: center;
-        box-shadow: 0 10px 30px rgba(37, 99, 235, 0.18), 0 4px 12px rgba(0, 0, 0, 0.10);
-        animation: savingCardIn 0.25s ease-out;
+
+.saving-spinner {
+    width: 38px;
+    height: 38px;
+    margin: 0 auto 12px;
+    border: 4px solid #e9ecef;
+    border-top-color: #0d6efd;
+    border-radius: 50%;
+    animation: gasSpinner .8s linear infinite;
+}
+
+
+.saving-title {
+    font-weight: 700;
+    font-size: 17px;
+    margin-bottom: 5px;
+}
+
+
+.saving-message {
+    font-size: 13px;
+    color: #6c757d;
+}
+
+
+@@keyframes gasSpinner {
+
+    from {
+        transform: rotate(0deg);
     }
-
-
-    /* =========================================================
-   LOADING SPINNER
-   ========================================================= */
-
-    #savingOverlay .saving-spinner {
-        width: 48px;
-        height: 48px;
-        margin: 0 auto 15px;
-        border: 5px solid #dbeafe;
-        /* Different spinner color */
-        border-top-color: #7c3aed;
-        border-right-color: #9333ea;
-        border-radius: 50%;
-        animation: savingSpin 0.75s linear infinite;
-    }
-
-
-    /* =========================================================
-   SAVING TITLE
-   ========================================================= */
-
-    #savingOverlay .saving-title {
-        color: #1e3a8a;
-        font-size: 19px;
-        font-weight: 700;
-        margin-bottom: 5px;
-    }
-
-
-    /* =========================================================
-   SAVING MESSAGE
-   ========================================================= */
-
-    #savingOverlay .saving-message {
-        color: #475569;
-        font-size: 13px;
-        line-height: 1.5;
-    }
-
-
-/* =========================================================
-   SPINNER ANIMATION
-   ========================================================= */
-
-@keyframes savingSpin {
 
     to {
         transform: rotate(360deg);
     }
 }
 
-
-/* =========================================================
-   CARD ANIMATION
-   ========================================================= */
-
-@keyframes savingCardIn {
-
-    from {
-        opacity: 0;
-        transform: scale(0.94) translateY(8px);
-    }
-
-    to {
-        opacity: 1;
-        transform: scale(1) translateY(0);
-    }
-}
-
-
-/* =========================================================
-   24 SLOT WARNING
-   ========================================================= */
-
-#timeFullMessage.time-full-warning {
-    display: inline-block !important;
-    color: #dc2626 !important;
-    background: #fef2f2;
-    border: 1px solid #fca5a5;
-    border-radius: 8px;
-    padding: 10px 14px;
-    margin-top: 8px;
-    font-size: 14px;
-    font-weight: 700;
-    line-height: 1.4;
-    box-shadow: 0 2px 8px rgba(220, 38, 38, 0.10);
-}
-
-.time-full-message {
-    color: #dc3545;
-    font-weight: 600;
-    font-size: 13px;
-}
+</style >

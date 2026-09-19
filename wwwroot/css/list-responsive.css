@@ -1,262 +1,586 @@
-﻿
-
-/*line by Line*/
-/* =====================================================
-           MOBILE PORTRAIT ONLY
-
-           Search
-           ↓
-           Create
-           ↓
-           Back
-        ====================================================== */
-/*@media screen and (max-width: 767px) and (orientation: portrait) {*/
-    /* -------------------------------
-               TOOLBAR
-            -------------------------------- */
-
-    /*.daily-list-toolbar
-
-{
-    width: 100% !important;
-    display: block !important;
-    margin-bottom: 15px !important;
-}*/
+﻿/* =========================================================
+   DAILY LIST RESPONSIVE CSS
+   FULL REWRITE
+   ========================================================= */
 
 
-/* -------------------------------
-               SEARCH
-               ROW 1
-            -------------------------------- */
+/* =========================================================
+   GLOBAL RESET
+   ========================================================= */
 
-/*.daily-list-search-form {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: block !important;
-    margin: 0 0 10px 0 !important;
-    padding: 0 !important;
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+}
+
+body {
+    margin: 0;
+    overflow-x: hidden !important;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 
-.daily-list-search-box {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    min-width: 0 !important;
-    margin: 0 !important;
-    font-size: 14px !important;
-}*/
+/* =========================================================
+   MOBILE
+   MAX WIDTH: 767px
+   ========================================================= */
 
+@media screen and (max-width: 767px) {
 
-/* -------------------------------
-               ACTION AREA
-            -------------------------------- */
+    /* =====================================================
+       MAIN CONTENT
+       ===================================================== */
 
-/*.daily-list-actions {
-    width: 100% !important;
-    max-width: 100% !important;
-    display: block !important;
-    margin: 0 !important;
-    padding: 0 !important;
-}*/
-
-
-/* -------------------------------
-               CREATE
-               ROW 2
-            -------------------------------- */
-
-/*.daily-create-btn {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 0 10px 0 !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-}*/
-
-
-/* -------------------------------
-               BACK
-               ROW 3
-            -------------------------------- */
-
-/*.daily-back-btn {
-    display: block !important;
-    width: 100% !important;
-    max-width: 100% !important;
-    margin: 0 !important;
-    text-align: center !important;
-    box-sizing: border-box !important;
-}*/
-
-
-/* -------------------------------
-               Remove Bootstrap flex effect
-            -------------------------------- */
-
-/*.daily-list-toolbar,
-.daily-list-search-form,
-.daily-list-actions {
-    flex-direction: unset !important;
-    justify-content: unset !important;
-    align-items: unset !important;
-    flex-wrap: unset !important;
-}*/
-
-
-/* -------------------------------
-               TABLE
-            -------------------------------- */
-
-/*.table-responsive {
-    width: 100% !important;
-    max-width: 100% !important;
-    overflow-x: auto !important;
-    overflow-y: hidden !important;
-    -webkit-overflow-scrolling: touch;
-}
-
-
-    .table-responsive > table {
-        min-width: 1200px !important;
-        width: max-content !important;
+    main,
+    .main-content,
+    .content,
+    .container-fluid {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 65px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
     }
 
-}*/
 
+    /* =====================================================
+       PAGE TITLE
+       ===================================================== */
 
-/* =====================================================
-           VERY SMALL MOBILE
-           400px AND BELOW
-        ====================================================== */
-
-/*@media screen and (max-width: 400px) and (orientation: portrait) {
-    .daily-list-toolbar {
+    .daily-list-title {
+        display: block !important;
+        width: calc(100% - 30px) !important;
+        max-width: calc(100% - 30px) !important;
+        margin-top: 0 !important;
+        margin-left: 15px !important;
+        margin-right: 15px !important;
         margin-bottom: 12px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 20 !important;
+        box-sizing: border-box !important;
     }
 
 
-    .daily-list-search-box {
-        min-height: 38px !important;
-        font-size: 13px !important;
+    /* =====================================================
+       TITLE FALLBACK
+       ===================================================== */
+
+    main h1,
+    main h2,
+    main h3,
+    .main-content h1,
+    .main-content h2,
+    .main-content h3,
+    .content h1,
+    .content h2,
+    .content h3,
+    .container-fluid h1,
+    .container-fluid h2,
+    .container-fluid h3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        position: relative !important;
+        z-index: 20 !important;
     }
 
 
-    .daily-create-btn,
-    .daily-back-btn {
-        width: 100% !important;
-        max-width: 100% !important;
-        font-size: 12px !important;
-        padding: 7px 8px !important;
-    }
-
-
-    .daily-create-btn {
-        margin-bottom: 7px !important;
-    }
-
-
-    .daily-back-btn {
-        margin-bottom: 0 !important;
-    }
-}*/
-
-
-
-/*Same Line*/
-/* =====================================================
-   MOBILE PORTRAIT ONLY
-
-   Search
-   ↓
-   Create        Back
-   ====================================================== */
-@media screen and (max-width: 767px) and (orientation: portrait) {
-
-    /* -------------------------------
+    /* =====================================================
        TOOLBAR
-    -------------------------------- */
+       ===================================================== */
+
     .daily-list-toolbar {
-        width: 100% !important;
         display: block !important;
+        width: calc(100% - 30px) !important;
+        max-width: calc(100% - 30px) !important;
+        margin-top: 15px !important;
+        margin-left: 15px !important;
+        margin-right: 15px !important;
         margin-bottom: 15px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 30 !important;
+        clear: both !important;
+        box-sizing: border-box !important;
     }
 
-    /* -------------------------------
-       SEARCH
-       ROW 1
-    -------------------------------- */
+
+    /* =====================================================
+       SEARCH FORM
+       ===================================================== */
+
     .daily-list-search-form {
+        display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        display: block !important;
         margin: 0 0 10px 0 !important;
         padding: 0 !important;
+        position: relative !important;
+        z-index: 30 !important;
+        box-sizing: border-box !important;
     }
+
+
+    /* =====================================================
+       SEARCH BOX
+       ===================================================== */
 
     .daily-list-search-box {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
+        min-height: 38px !important;
         margin: 0 !important;
+        padding-left: 12px !important;
+        padding-right: 12px !important;
         font-size: 14px !important;
+        position: relative !important;
+        z-index: 30 !important;
         box-sizing: border-box !important;
     }
 
-    /* -------------------------------
+
+    /* =====================================================
        ACTION AREA
-       CREATE + BACK SAME LINE
-    -------------------------------- */
+       ===================================================== */
+
     .daily-list-actions {
+        display: flex !important;
         width: 100% !important;
         max-width: 100% !important;
-        display: flex !important;
         flex-direction: row !important;
         justify-content: space-between !important;
         align-items: stretch !important;
         gap: 10px !important;
         margin: 0 !important;
         padding: 0 !important;
-    }
-
-    /* -------------------------------
-       CREATE BUTTON - LEFT
-    -------------------------------- */
-    .daily-create-btn {
-        display: block !important;
-        width: calc(50% - 5px) !important;
-        max-width: calc(50% - 5px) !important;
-        margin: 0 !important;
-        text-align: center !important;
+        position: relative !important;
+        z-index: 30 !important;
         box-sizing: border-box !important;
-        white-space: nowrap !important;
     }
 
-    /* -------------------------------
-       BACK BUTTON - RIGHT
-    -------------------------------- */
+
+    /* =====================================================
+       CREATE + BACK BUTTON
+       ===================================================== */
+
+    .daily-create-btn,
     .daily-back-btn {
         display: block !important;
-        width: calc(50% - 5px) !important;
-        max-width: calc(50% - 5px) !important;
+        flex: 1 1 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
         margin: 0 !important;
+        padding: 7px 8px !important;
         text-align: center !important;
-        box-sizing: border-box !important;
         white-space: nowrap !important;
+        box-sizing: border-box !important;
     }
 
-    /* -------------------------------
-       TABLE
-    -------------------------------- */
+
+    /* =====================================================
+       TABLE RESPONSIVE
+       ===================================================== */
+
     .table-responsive {
-        width: 100% !important;
-        max-width: 100% !important;
+        display: block !important;
+        width: calc(100% - 30px) !important;
+        max-width: calc(100% - 30px) !important;
+        margin-left: 15px !important;
+        margin-right: 15px !important;
+        padding: 0 !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
         -webkit-overflow-scrolling: touch;
+        position: relative !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
     }
+
+
+        /* =====================================================
+       TABLE
+       ===================================================== */
+
+        .table-responsive > table {
+            min-width: 1200px !important;
+            width: max-content !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+        }
+}
+
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   MAX WIDTH: 767px
+
+   IMPORTANT:
+   LEFT / RIGHT GAP = 50px
+   TOP CLEARANCE = 125px
+   ========================================================= */
+
+@media screen and (max-width: 767px) and (orientation: landscape) {
+
+    /* =====================================================
+       BODY
+       ===================================================== */
+
+    html,
+    body {
+        width: 100% !important;
+        max-width: 100% !important;
+        overflow-x: hidden !important;
+        overflow-y: auto !important;
+    }
+
+
+    /* =====================================================
+       MAIN CONTENT
+       
+       Show/Hide button-এর নিচে বড় clearance
+       ===================================================== */
+
+    main,
+    .main-content,
+    .content,
+    .container-fluid {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 125px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        margin-top: 0 !important;
+        position: relative !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       PAGE TITLE
+
+       LEFT = 50px
+       RIGHT = 50px
+       ===================================================== */
+
+    .daily-list-title {
+        display: block !important;
+        width: calc(100% - 100px) !important;
+        max-width: calc(100% - 100px) !important;
+        margin-top: 0 !important;
+        margin-left: 50px !important;
+        margin-right: 50px !important;
+        margin-bottom: 15px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 50 !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       TITLE FALLBACK
+       ===================================================== */
+
+    main h1,
+    main h2,
+    main h3,
+    .main-content h1,
+    .main-content h2,
+    .main-content h3,
+    .content h1,
+    .content h2,
+    .content h3,
+    .container-fluid h1,
+    .container-fluid h2,
+    .container-fluid h3 {
+        margin-top: 0 !important;
+        padding-top: 0 !important;
+        position: relative !important;
+        z-index: 50 !important;
+    }
+
+
+    /* =====================================================
+       TOOLBAR
+
+       LEFT = 50px
+       RIGHT = 50px
+
+       This is the main landscape fix.
+       ===================================================== */
+
+    .daily-list-toolbar {
+        display: block !important;
+        width: calc(100% - 100px) !important;
+        max-width: calc(100% - 100px) !important;
+        margin-top: 25px !important;
+        margin-left: 50px !important;
+        margin-right: 50px !important;
+        margin-bottom: 20px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+        clear: both !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       SEARCH FORM
+
+       Extra top space
+       ===================================================== */
+
+    .daily-list-search-form {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 25px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 15px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+        clear: both !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       SEARCH BOX
+       ===================================================== */
+
+    .daily-list-search-box {
+        display: block !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 40px !important;
+        margin: 0 !important;
+        padding: 8px 12px !important;
+        font-size: 14px !important;
+        position: relative !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       ACTION AREA
+       ===================================================== */
+
+    .daily-list-actions {
+        display: flex !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: stretch !important;
+        gap: 12px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       CREATE + BACK
+       ===================================================== */
+
+    .daily-create-btn,
+    .daily-back-btn {
+        display: block !important;
+        flex: 1 1 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        margin: 0 !important;
+        padding: 8px 10px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       TABLE CONTAINER
+
+       LEFT = 50px
+       RIGHT = 50px
+       ===================================================== */
+
+    .table-responsive {
+        display: block !important;
+        width: calc(100% - 100px) !important;
+        max-width: calc(100% - 100px) !important;
+        margin-left: 50px !important;
+        margin-right: 50px !important;
+        margin-top: 10px !important;
+        padding: 0 !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        position: relative !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
+    }
+
+
+        /* =====================================================
+       TABLE
+       ===================================================== */
+
+        .table-responsive > table {
+            min-width: 1200px !important;
+            width: max-content !important;
+            margin: 0 !important;
+            box-sizing: border-box !important;
+        }
+}
+
+
+
+/* =========================================================
+   VERY SMALL MOBILE
+   PORTRAIT
+   MAX WIDTH: 400px
+   ========================================================= */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    main,
+    .main-content,
+    .content,
+    .container-fluid {
+        width: 100% !important;
+        padding-top: 60px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       TITLE
+       ===================================================== */
+
+    .daily-list-title {
+        width: calc(100% - 20px) !important;
+        max-width: calc(100% - 20px) !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        margin-top: 0 !important;
+        margin-bottom: 8px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 20 !important;
+    }
+
+
+    /* =====================================================
+       TOOLBAR
+       ===================================================== */
+
+    .daily-list-toolbar {
+        width: calc(100% - 20px) !important;
+        max-width: calc(100% - 20px) !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        margin-top: 15px !important;
+        margin-bottom: 12px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 30 !important;
+    }
+
+
+    /* =====================================================
+       SEARCH FORM
+       ===================================================== */
+
+    .daily-list-search-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+    }
+
+
+    /* =====================================================
+       SEARCH BOX
+       ===================================================== */
+
+    .daily-list-search-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
+        min-height: 38px !important;
+        font-size: 13px !important;
+        padding: 7px 10px !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =====================================================
+       ACTIONS
+       ===================================================== */
+
+    .daily-list-actions {
+        display: flex !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    .daily-create-btn,
+    .daily-back-btn {
+        flex: 1 1 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        font-size: 12px !important;
+        padding: 7px 8px !important;
+        margin: 0 !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* =====================================================
+       TABLE
+       ===================================================== */
+
+    .table-responsive {
+        width: calc(100% - 20px) !important;
+        max-width: calc(100% - 20px) !important;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        box-sizing: border-box !important;
+    }
+
 
         .table-responsive > table {
             min-width: 1200px !important;
@@ -265,37 +589,157 @@
 }
 
 
-/* =====================================================
-   VERY SMALL MOBILE
-   400px AND BELOW
-   ====================================================== */
 
-@media screen and (max-width: 400px) and (orientation: portrait) {
+/* =========================================================
+   VERY SMALL MOBILE
+   LANDSCAPE
+   MAX WIDTH: 400px
+
+   LEFT / RIGHT = 30px
+   TOP = 120px
+   ========================================================= */
+
+@media screen and (max-width: 400px) and (orientation: landscape) {
+
+    /* =====================================================
+       MAIN
+       ===================================================== */
+
+    main,
+    .main-content,
+    .content,
+    .container-fluid {
+        width: 100% !important;
+        max-width: 100% !important;
+        padding-top: 120px !important;
+        padding-left: 0 !important;
+        padding-right: 0 !important;
+        box-sizing: border-box !important;
+        position: relative !important;
+    }
+
+
+    /* =====================================================
+       TITLE
+       ===================================================== */
+
+    .daily-list-title {
+        width: calc(100% - 60px) !important;
+        max-width: calc(100% - 60px) !important;
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+        margin-top: 0 !important;
+        margin-bottom: 12px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 50 !important;
+    }
+
+
+    /* =====================================================
+       TOOLBAR
+       ===================================================== */
 
     .daily-list-toolbar {
-        margin-bottom: 12px !important;
+        width: calc(100% - 60px) !important;
+        max-width: calc(100% - 60px) !important;
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+        margin-top: 20px !important;
+        margin-bottom: 15px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+        clear: both !important;
     }
+
+
+    /* =====================================================
+       SEARCH FORM
+       ===================================================== */
+
+    .daily-list-search-form {
+        width: 100% !important;
+        max-width: 100% !important;
+        margin-top: 20px !important;
+        margin-left: 0 !important;
+        margin-right: 0 !important;
+        margin-bottom: 12px !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+
+
+    /* =====================================================
+       SEARCH BOX
+       ===================================================== */
 
     .daily-list-search-box {
+        width: 100% !important;
+        max-width: 100% !important;
+        min-width: 0 !important;
         min-height: 38px !important;
         font-size: 13px !important;
+        padding: 7px 10px !important;
+        margin: 0 !important;
+        box-sizing: border-box !important;
     }
 
-    /* -------------------------------
-       CREATE + BACK SAME LINE
-    -------------------------------- */
+
+    /* =====================================================
+       ACTIONS
+       ===================================================== */
+
+    .daily-list-actions {
+        display: flex !important;
+        width: 100% !important;
+        flex-direction: row !important;
+        gap: 8px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        position: relative !important;
+        z-index: 100 !important;
+    }
+
+
     .daily-create-btn,
     .daily-back-btn {
-        width: calc(50% - 4px) !important;
-        max-width: calc(50% - 4px) !important;
+        flex: 1 1 0 !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
         font-size: 12px !important;
         padding: 7px 8px !important;
         margin: 0 !important;
-        box-sizing: border-box !important;
+        text-align: center !important;
         white-space: nowrap !important;
+        box-sizing: border-box !important;
     }
 
-    .daily-list-actions {
-        gap: 8px !important;
+
+    /* =====================================================
+       TABLE
+       ===================================================== */
+
+    .table-responsive {
+        width: calc(100% - 60px) !important;
+        max-width: calc(100% - 60px) !important;
+        margin-left: 30px !important;
+        margin-right: 30px !important;
+        margin-top: 8px !important;
+        overflow-x: auto !important;
+        overflow-y: hidden !important;
+        -webkit-overflow-scrolling: touch;
+        position: relative !important;
+        z-index: 1 !important;
+        box-sizing: border-box !important;
     }
+
+
+        .table-responsive > table {
+            min-width: 1200px !important;
+            width: max-content !important;
+            margin: 0 !important;
+        }
 }

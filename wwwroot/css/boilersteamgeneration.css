@@ -191,3 +191,1519 @@
 #temporaryTable tbody td {
     vertical-align: middle;
 }
+
+
+/* =========================================================
+   MOBILE RESPONSIVE
+   ONLY ADDITIONAL CODE
+   EXISTING CODE ABOVE IS UNCHANGED
+   ========================================================= */
+
+
+/* =========================================================
+   MOBILE PORTRAIT
+   ========================================================= */
+
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
+
+    /* ---------------------------------------------------------
+       PAGE / CARD
+       --------------------------------------------------------- */
+
+    .boiler-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+        .boiler-card .card-body {
+            padding: 10px !important;
+        }
+
+        .boiler-card .card-header {
+            padding: 10px 12px;
+        }
+
+            .boiler-card .card-header h5 {
+                font-size: 15px;
+            }
+
+
+    /* ---------------------------------------------------------
+       MAIN INPUT TABLE
+       --------------------------------------------------------- */
+
+    .input-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+
+        /*
+     * Keep table readable.
+     * User can swipe left/right.
+     */
+
+        .input-table-wrapper .boiler-table {
+            min-width: 1400px;
+            width: 1400px;
+            table-layout: fixed;
+        }
+
+
+    /* ---------------------------------------------------------
+       MAIN TABLE FONT
+       --------------------------------------------------------- */
+
+    .boiler-table thead th {
+        font-size: 11px;
+        line-height: 1.2;
+    }
+
+    .boiler-table th,
+    .boiler-table td {
+        padding: 4px;
+    }
+
+
+    /* ---------------------------------------------------------
+       INPUT CONTROLS
+       --------------------------------------------------------- */
+
+    .boiler-table .form-control,
+    .boiler-table .form-select {
+        font-size: 12px;
+        min-height: 34px;
+        padding: 4px 6px;
+    }
+
+
+    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+    .boiler-table td:nth-child(14) .btn {
+        min-width: 36px;
+        min-height: 34px;
+        padding: 4px 8px;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME FULL MESSAGE
+       --------------------------------------------------------- */
+
+    .time-full-message {
+        font-size: 12px;
+        line-height: 1.4;
+    }
+
+
+    /* ---------------------------------------------------------
+       TEMPORARY TABLE
+       --------------------------------------------------------- */
+
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    #temporaryTable {
+        min-width: 1400px;
+        width: 1400px;
+    }
+
+        #temporaryTable thead th {
+            font-size: 11px;
+            line-height: 1.2;
+        }
+
+        #temporaryTable th,
+        #temporaryTable td {
+            padding: 4px;
+            font-size: 11px;
+            white-space: nowrap;
+        }
+
+
+    /* ---------------------------------------------------------
+       LIST TITLE
+       --------------------------------------------------------- */
+
+    .boiler-card h6 {
+        font-size: 14px;
+    }
+
+
+    /* ---------------------------------------------------------
+       BACK / SAVE BUTTONS
+       --------------------------------------------------------- */
+
+    #boilerForm > .d-flex {
+        gap: 8px;
+    }
+
+        #boilerForm > .d-flex .btn {
+            font-size: 13px;
+            padding: 7px 12px;
+        }
+
+
+    /* ---------------------------------------------------------
+       SAVING OVERLAY
+       --------------------------------------------------------- */
+
+    .saving-box {
+        width: calc(100% - 40px);
+        max-width: 320px;
+        padding: 25px 20px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) and (orientation: landscape) {
+
+    /* ---------------------------------------------------------
+       PAGE / CARD
+       --------------------------------------------------------- */
+
+    .boiler-card {
+        width: 100%;
+        max-width: 100%;
+        margin: 0;
+    }
+
+        .boiler-card .card-body {
+            padding: 8px 10px !important;
+        }
+
+        .boiler-card .card-header {
+            padding: 7px 12px;
+        }
+
+            .boiler-card .card-header h5 {
+                font-size: 14px;
+            }
+
+
+    /* ---------------------------------------------------------
+       MAIN INPUT TABLE
+       --------------------------------------------------------- */
+
+    .input-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+
+        /*
+     * Landscape has more horizontal space,
+     * so slightly smaller table width.
+     */
+
+        .input-table-wrapper .boiler-table {
+            min-width: 1250px;
+            width: 1250px;
+            table-layout: fixed;
+        }
+
+
+    /* ---------------------------------------------------------
+       TABLE HEADER
+       --------------------------------------------------------- */
+
+    .boiler-table thead th {
+        font-size: 10px;
+        line-height: 1.15;
+    }
+
+
+    /* ---------------------------------------------------------
+       TABLE CELL
+       --------------------------------------------------------- */
+
+    .boiler-table th,
+    .boiler-table td {
+        padding: 3px 4px;
+    }
+
+
+    /* ---------------------------------------------------------
+       INPUT CONTROLS
+       --------------------------------------------------------- */
+
+    .boiler-table .form-control,
+    .boiler-table .form-select {
+        font-size: 11px;
+        min-height: 31px;
+        padding: 3px 5px;
+    }
+
+
+    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+    .boiler-table td:nth-child(14) .btn {
+        min-width: 34px;
+        min-height: 31px;
+        padding: 3px 7px;
+    }
+
+
+    /* ---------------------------------------------------------
+       TEMPORARY TABLE
+       --------------------------------------------------------- */
+
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+        -webkit-overflow-scrolling: touch;
+        scrollbar-width: thin;
+    }
+
+    #temporaryTable {
+        min-width: 1250px;
+        width: 1250px;
+    }
+
+        #temporaryTable thead th {
+            font-size: 10px;
+            line-height: 1.15;
+        }
+
+        #temporaryTable th,
+        #temporaryTable td {
+            padding: 3px 4px;
+            font-size: 10px;
+            white-space: nowrap;
+        }
+
+
+    /* ---------------------------------------------------------
+       LIST TITLE
+       --------------------------------------------------------- */
+
+    .boiler-card h6 {
+        font-size: 13px;
+        margin-bottom: 6px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME MESSAGE
+       --------------------------------------------------------- */
+
+    .time-full-message {
+        font-size: 11px;
+    }
+
+
+    /* ---------------------------------------------------------
+       BACK / SAVE BUTTONS
+       --------------------------------------------------------- */
+
+    #boilerForm > .d-flex {
+        margin-top: 10px !important;
+        gap: 8px;
+    }
+
+        #boilerForm > .d-flex .btn {
+            font-size: 12px;
+            padding: 5px 12px;
+        }
+
+
+    /* ---------------------------------------------------------
+       SAVING OVERLAY
+       --------------------------------------------------------- */
+
+    .saving-box {
+        width: 280px;
+        padding: 20px;
+    }
+}
+
+
+/* =========================================================
+   VERY SMALL PORTRAIT DEVICES
+   ========================================================= */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+
+    .boiler-card .card-body {
+        padding: 7px !important;
+    }
+
+    .boiler-card .card-header h5 {
+        font-size: 14px;
+    }
+
+    .input-table-wrapper .boiler-table {
+        min-width: 1400px;
+        width: 1400px;
+    }
+
+    #temporaryTable {
+        min-width: 1400px;
+        width: 1400px;
+    }
+
+        .boiler-table thead th,
+        #temporaryTable thead th {
+            font-size: 10px;
+        }
+
+    .boiler-table .form-control,
+    .boiler-table .form-select {
+        font-size: 11px;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICE IMPROVEMENT
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .input-table-wrapper,
+    .table-responsive {
+        -webkit-overflow-scrolling: touch;
+    }
+
+    .boiler-table .form-control,
+    .boiler-table .form-select {
+        min-height: 34px;
+    }
+
+    .boiler-table .btn {
+        touch-action: manipulation;
+    }
+}
+
+/* =========================================================
+   MOBILE FORM LEFT / RIGHT SAFE PADDING
+   Prevent overlap with Show/Hide buttons
+   ========================================================= */
+
+/* ---------------------------------------------------------
+   MOBILE PORTRAIT
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
+
+    .boiler-card {
+        margin-left: 12px;
+        margin-right: 12px;
+        width: calc(100% - 24px);
+        max-width: none;
+    }
+
+        .boiler-card .card-body {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+    .input-table-wrapper,
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   MOBILE LANDSCAPE
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 991.98px) and (orientation: landscape) {
+
+    .boiler-card {
+        margin-left: 12px;
+        margin-right: 12px;
+        width: calc(100% - 24px);
+        max-width: none;
+    }
+
+        .boiler-card .card-body {
+            padding-left: 10px !important;
+            padding-right: 10px !important;
+        }
+
+    .input-table-wrapper,
+    .table-responsive {
+        width: 100%;
+        max-width: 100%;
+    }
+}
+
+
+/* ---------------------------------------------------------
+   VERY SMALL PORTRAIT
+   --------------------------------------------------------- */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+
+    .boiler-card {
+        margin-left: 10px;
+        margin-right: 10px;
+        width: calc(100% - 20px);
+    }
+}
+
+
+/* =========================================================
+   MOBILE INPUT FORM - 2 ROW LAYOUT
+   CLEAN LABEL + EQUAL HEIGHT INPUTS
+   LIST REMAINS UNCHANGED
+   ========================================================= */
+
+
+/* =========================================================
+   MOBILE PORTRAIT
+   ========================================================= */
+
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
+
+    /* ---------------------------------------------------------
+       INPUT AREA
+       --------------------------------------------------------- */
+
+    .input-table-wrapper {
+        overflow: visible !important;
+        width: 100%;
+    }
+
+        .input-table-wrapper .boiler-table {
+            width: 100% !important;
+            min-width: 0 !important;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 5px 4px;
+        }
+
+
+            /* Hide original table header */
+            .input-table-wrapper .boiler-table thead {
+                display: none;
+            }
+
+
+            /* ---------------------------------------------------------
+       INPUT ROW
+       7 COLUMNS × 2 ROWS
+       --------------------------------------------------------- */
+
+            .input-table-wrapper .boiler-table tbody {
+                display: block;
+                width: 100%;
+            }
+
+                .input-table-wrapper
+                .boiler-table
+                tbody
+                tr#inputRow {
+                    display: grid;
+                    grid-template-columns: repeat(7, minmax(0, 1fr));
+                    grid-template-rows: 64px 64px;
+                    gap: 5px;
+                    width: 100%;
+                }
+
+
+                    /* ---------------------------------------------------------
+       CELL
+       NO BOX / NO EXTRA BORDER
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow > td {
+                        display: flex;
+                        flex-direction: column;
+                        justify-content: flex-start;
+                        width: 100% !important;
+                        min-width: 0 !important;
+                        height: 64px;
+                        padding: 0 !important;
+                        border: 0 !important;
+                        background: transparent !important;
+                        box-sizing: border-box;
+                    }
+
+
+                        /* ---------------------------------------------------------
+       LABEL
+       SMALL + FIXED HEIGHT
+       --------------------------------------------------------- */
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td::before {
+                            display: flex;
+                            align-items: flex-start;
+                            justify-content: flex-start;
+                            width: 100%;
+                            height: 25px;
+                            min-height: 25px;
+                            margin: 0 0 3px 0;
+                            padding: 0 2px;
+                            font-size: 10px;
+                            line-height: 11px;
+                            font-weight: 600;
+                            color: #495057;
+                            text-align: left;
+                            white-space: normal;
+                            overflow: hidden;
+                            box-sizing: border-box;
+                        }
+
+
+                        /* ---------------------------------------------------------
+       LABELS
+       --------------------------------------------------------- */
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(1)::before {
+                            content: "Company";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(2)::before {
+                            content: "Date";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(3)::before {
+                            content: "Time";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(4)::before {
+                            content: "Gas Pressure";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(5)::before {
+                            content: "Header Steam Pressure";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(6)::before {
+                            content: "Boiler-1 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(7)::before {
+                            content: "B1 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(8)::before {
+                            content: "Boiler-2 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(9)::before {
+                            content: "B2 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(10)::before {
+                            content: "Boiler-3 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(11)::before {
+                            content: "B3 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(12)::before {
+                            content: "EGB Boiler Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(13)::before {
+                            content: "Total Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(14)::before {
+                            content: "Add";
+                            justify-content: center;
+                            text-align: center;
+                        }
+
+
+                    /* ---------------------------------------------------------
+       INPUT / SELECT
+       SAME HEIGHT
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow
+                    .form-control,
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow
+                    .form-select {
+                        display: block;
+                        width: 100% !important;
+                        min-width: 0 !important;
+                        height: 34px;
+                        min-height: 34px;
+                        max-height: 34px;
+                        padding: 4px 5px;
+                        margin: 0;
+                        font-size: 11px;
+                        line-height: 1.2;
+                        box-sizing: border-box;
+                    }
+
+
+                    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow > td:nth-child(14)
+                    .btn {
+                        width: 100%;
+                        height: 34px;
+                        min-height: 34px;
+                        padding: 4px;
+                        margin: 0;
+                        font-size: 12px;
+                    }
+
+
+    /* ---------------------------------------------------------
+       CARD BODY
+       --------------------------------------------------------- */
+
+    .boiler-card .card-body {
+        padding: 8px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME MESSAGE
+       --------------------------------------------------------- */
+
+    .time-full-message {
+        margin-top: 5px !important;
+        font-size: 11px;
+        line-height: 1.3;
+    }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) and (orientation: landscape) {
+
+    /* ---------------------------------------------------------
+       INPUT AREA
+       --------------------------------------------------------- */
+
+    .input-table-wrapper {
+        overflow: visible !important;
+        width: 100%;
+    }
+
+        .input-table-wrapper .boiler-table {
+            width: 100% !important;
+            min-width: 0 !important;
+            table-layout: fixed;
+            border-collapse: separate;
+            border-spacing: 5px 3px;
+        }
+
+
+            /* Hide original header */
+            .input-table-wrapper .boiler-table thead {
+                display: none;
+            }
+
+
+            /* ---------------------------------------------------------
+       7 COLUMNS × 2 ROWS
+       --------------------------------------------------------- */
+
+            .input-table-wrapper .boiler-table tbody {
+                display: block;
+                width: 100%;
+            }
+
+                .input-table-wrapper
+                .boiler-table
+                tbody
+                tr#inputRow {
+                    display: grid;
+                    grid-template-columns: repeat(7, minmax(0, 1fr));
+                    grid-template-rows: 52px 52px;
+                    gap: 5px;
+                    width: 100%;
+                }
+
+
+                    /* ---------------------------------------------------------
+       CELL
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow > td {
+                        display: flex;
+                        flex-direction: column;
+                        width: 100% !important;
+                        min-width: 0 !important;
+                        height: 52px;
+                        padding: 0 !important;
+                        border: 0 !important;
+                        background: transparent !important;
+                        box-sizing: border-box;
+                    }
+
+
+                        /* ---------------------------------------------------------
+       LABEL
+       FIXED HEIGHT
+       --------------------------------------------------------- */
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td::before {
+                            display: flex;
+                            align-items: flex-start;
+                            width: 100%;
+                            height: 18px;
+                            min-height: 18px;
+                            margin: 0 0 2px 0;
+                            padding: 0 2px;
+                            font-size: 8px;
+                            line-height: 9px;
+                            font-weight: 600;
+                            color: #495057;
+                            white-space: normal;
+                            overflow: hidden;
+                            box-sizing: border-box;
+                        }
+
+
+                        /* ---------------------------------------------------------
+       LABELS
+       --------------------------------------------------------- */
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(1)::before {
+                            content: "Company";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(2)::before {
+                            content: "Date";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(3)::before {
+                            content: "Time";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(4)::before {
+                            content: "Gas Pressure";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(5)::before {
+                            content: "Header Steam Pressure";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(6)::before {
+                            content: "Boiler-1 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(7)::before {
+                            content: "B1 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(8)::before {
+                            content: "Boiler-2 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(9)::before {
+                            content: "B2 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(10)::before {
+                            content: "Boiler-3 Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(11)::before {
+                            content: "B3 Usage Fuel";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(12)::before {
+                            content: "EGB Boiler Steam Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(13)::before {
+                            content: "Total Generation";
+                        }
+
+                        .input-table-wrapper
+                        .boiler-table
+                        tbody
+                        tr#inputRow > td:nth-child(14)::before {
+                            content: "Add";
+                            justify-content: center;
+                        }
+
+
+                    /* ---------------------------------------------------------
+       INPUT / SELECT
+       SAME HEIGHT
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow
+                    .form-control,
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow
+                    .form-select {
+                        width: 100% !important;
+                        min-width: 0 !important;
+                        height: 30px;
+                        min-height: 30px;
+                        max-height: 30px;
+                        padding: 3px 4px;
+                        margin: 0;
+                        font-size: 10px;
+                        line-height: 1.1;
+                        box-sizing: border-box;
+                    }
+
+
+                    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+                    .input-table-wrapper
+                    .boiler-table
+                    tbody
+                    tr#inputRow > td:nth-child(14)
+                    .btn {
+                        width: 100%;
+                        height: 30px;
+                        min-height: 30px;
+                        padding: 3px;
+                        margin: 0;
+                        font-size: 11px;
+                    }
+
+
+    /* ---------------------------------------------------------
+       CARD BODY
+       --------------------------------------------------------- */
+
+    .boiler-card .card-body {
+        padding: 7px 10px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME MESSAGE
+       --------------------------------------------------------- */
+
+    .time-full-message {
+        margin-top: 4px !important;
+        font-size: 10px;
+        line-height: 1.2;
+    }
+}
+
+
+/* =========================================================
+   REMOVE MOBILE INPUT TOP/BOTTOM LINES
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) {
+
+    .input-table-wrapper .boiler-table,
+    .input-table-wrapper .boiler-table tbody,
+    .input-table-wrapper .boiler-table tbody tr,
+    .input-table-wrapper .boiler-table tbody td {
+        border: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+        box-shadow: none !important;
+    }
+
+        .input-table-wrapper .boiler-table tbody td {
+            background: transparent !important;
+        }
+}
+
+/* =========================================================
+   EDIT BOILER STEAM GENERATION
+   MOBILE - 2 ROW INPUT LAYOUT
+   ========================================================= */
+
+
+/* =========================================================
+   MOBILE PORTRAIT
+   ========================================================= */
+
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
+
+    /* ---------------------------------------------------------
+       CARD
+       --------------------------------------------------------- */
+
+    .energy-card {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        width: calc(100% - 20px);
+    }
+
+        .energy-card .card-body {
+            padding: 8px !important;
+        }
+
+
+        /* ---------------------------------------------------------
+       FORM TABLE
+       --------------------------------------------------------- */
+
+        .energy-card .table-responsive {
+            overflow: visible !important;
+            width: 100%;
+        }
+
+            .energy-card .table-responsive > table {
+                width: 100% !important;
+                min-width: 0 !important;
+                table-layout: fixed;
+                border-collapse: separate;
+                border-spacing: 5px 4px;
+            }
+
+
+                /* Hide desktop header */
+                .energy-card .table-responsive > table thead {
+                    display: none;
+                }
+
+
+                /* ---------------------------------------------------------
+       TABLE BODY
+       --------------------------------------------------------- */
+
+                .energy-card .table-responsive > table tbody {
+                    display: block;
+                    width: 100%;
+                }
+
+
+                    /* ---------------------------------------------------------
+       14 FIELDS = 7 + 7
+       --------------------------------------------------------- */
+
+                    .energy-card .table-responsive > table tbody tr {
+                        display: grid;
+                        grid-template-columns: repeat(7, minmax(0, 1fr));
+                        grid-template-rows: 64px 64px;
+                        gap: 5px;
+                        width: 100%;
+                    }
+
+
+                        /* ---------------------------------------------------------
+       CELL
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr > td {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100% !important;
+                            min-width: 0 !important;
+                            height: 64px;
+                            padding: 0 !important;
+                            border: 0 !important;
+                            background: transparent !important;
+                            box-shadow: none !important;
+                            box-sizing: border-box;
+                        }
+
+
+                            /* ---------------------------------------------------------
+       LABEL
+       Fixed height prevents alignment problem
+       --------------------------------------------------------- */
+
+                            .energy-card .table-responsive > table tbody tr > td::before {
+                                display: flex;
+                                align-items: flex-start;
+                                width: 100%;
+                                height: 25px;
+                                min-height: 25px;
+                                margin: 0 0 3px 0;
+                                padding: 0 2px;
+                                font-size: 10px;
+                                line-height: 11px;
+                                font-weight: 600;
+                                color: #495057;
+                                white-space: normal;
+                                overflow: hidden;
+                                box-sizing: border-box;
+                            }
+
+
+                            /* ---------------------------------------------------------
+       LABELS
+       --------------------------------------------------------- */
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(1)::before {
+                                content: "Company";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(2)::before {
+                                content: "Date";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(3)::before {
+                                content: "Time";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(4)::before {
+                                content: "Gas Pressure";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(5)::before {
+                                content: "Header Steam Pressure";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(6)::before {
+                                content: "Boiler-1 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(7)::before {
+                                content: "B1 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(8)::before {
+                                content: "Boiler-2 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(9)::before {
+                                content: "B2 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(10)::before {
+                                content: "Boiler-3 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(11)::before {
+                                content: "B3 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(12)::before {
+                                content: "EGB Boiler Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(13)::before {
+                                content: "Total Generation";
+                            }
+
+
+                        /* ---------------------------------------------------------
+       INPUT / SELECT
+       Same height
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr
+                        .form-control,
+                        .energy-card .table-responsive > table tbody tr
+                        .form-select {
+                            display: block;
+                            width: 100% !important;
+                            min-width: 0 !important;
+                            height: 34px;
+                            min-height: 34px;
+                            max-height: 34px;
+                            margin: 0;
+                            padding: 4px 5px;
+                            font-size: 11px;
+                            line-height: 1.2;
+                            box-sizing: border-box;
+                        }
+
+
+                        /* ---------------------------------------------------------
+       VALIDATION MESSAGE
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr
+                        .text-danger {
+                            display: none;
+                        }
+
+
+        /* ---------------------------------------------------------
+       BUTTONS
+       --------------------------------------------------------- */
+
+        .energy-card form > .d-flex {
+            margin-top: 12px !important;
+            gap: 8px;
+        }
+
+            .energy-card form > .d-flex .btn {
+                font-size: 12px;
+                padding: 6px 12px;
+            }
+
+
+        /* ---------------------------------------------------------
+       REMOVE TABLE OUTER LINES
+       --------------------------------------------------------- */
+
+        .energy-card .table-responsive > table,
+        .energy-card .table-responsive > table tbody,
+        .energy-card .table-responsive > table tbody tr,
+        .energy-card .table-responsive > table tbody td {
+            border: 0 !important;
+            border-top: 0 !important;
+            border-bottom: 0 !important;
+            box-shadow: none !important;
+        }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) and (orientation: landscape) {
+
+    /* ---------------------------------------------------------
+       CARD
+       --------------------------------------------------------- */
+
+    .energy-card {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        width: calc(100% - 20px);
+    }
+
+        .energy-card .card-body {
+            padding: 7px 10px !important;
+        }
+
+
+        /* ---------------------------------------------------------
+       FORM TABLE
+       --------------------------------------------------------- */
+
+        .energy-card .table-responsive {
+            overflow: visible !important;
+            width: 100%;
+        }
+
+            .energy-card .table-responsive > table {
+                width: 100% !important;
+                min-width: 0 !important;
+                table-layout: fixed;
+                border-collapse: separate;
+                border-spacing: 5px 3px;
+            }
+
+
+                /* Hide desktop header */
+                .energy-card .table-responsive > table thead {
+                    display: none;
+                }
+
+
+                /* ---------------------------------------------------------
+       BODY
+       --------------------------------------------------------- */
+
+                .energy-card .table-responsive > table tbody {
+                    display: block;
+                    width: 100%;
+                }
+
+
+                    /* ---------------------------------------------------------
+       7 + 7
+       --------------------------------------------------------- */
+
+                    .energy-card .table-responsive > table tbody tr {
+                        display: grid;
+                        grid-template-columns: repeat(7, minmax(0, 1fr));
+                        grid-template-rows: 52px 52px;
+                        gap: 5px;
+                        width: 100%;
+                    }
+
+
+                        /* ---------------------------------------------------------
+       CELL
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr > td {
+                            display: flex;
+                            flex-direction: column;
+                            width: 100% !important;
+                            min-width: 0 !important;
+                            height: 52px;
+                            padding: 0 !important;
+                            border: 0 !important;
+                            background: transparent !important;
+                            box-shadow: none !important;
+                            box-sizing: border-box;
+                        }
+
+
+                            /* ---------------------------------------------------------
+       LABEL
+       --------------------------------------------------------- */
+
+                            .energy-card .table-responsive > table tbody tr > td::before {
+                                display: flex;
+                                align-items: flex-start;
+                                width: 100%;
+                                height: 18px;
+                                min-height: 18px;
+                                margin: 0 0 2px 0;
+                                padding: 0 2px;
+                                font-size: 8px;
+                                line-height: 9px;
+                                font-weight: 600;
+                                color: #495057;
+                                white-space: normal;
+                                overflow: hidden;
+                                box-sizing: border-box;
+                            }
+
+
+                            /* ---------------------------------------------------------
+       LABELS
+       --------------------------------------------------------- */
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(1)::before {
+                                content: "Company";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(2)::before {
+                                content: "Date";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(3)::before {
+                                content: "Time";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(4)::before {
+                                content: "Gas Pressure";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(5)::before {
+                                content: "Header Steam Pressure";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(6)::before {
+                                content: "Boiler-1 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(7)::before {
+                                content: "B1 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(8)::before {
+                                content: "Boiler-2 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(9)::before {
+                                content: "B2 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(10)::before {
+                                content: "Boiler-3 Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(11)::before {
+                                content: "B3 Usage Fuel";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(12)::before {
+                                content: "EGB Boiler Steam Generation";
+                            }
+
+                            .energy-card .table-responsive > table tbody tr > td:nth-child(13)::before {
+                                content: "Total Generation";
+                            }
+
+
+                        /* ---------------------------------------------------------
+       INPUT / SELECT
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr
+                        .form-control,
+                        .energy-card .table-responsive > table tbody tr
+                        .form-select {
+                            width: 100% !important;
+                            min-width: 0 !important;
+                            height: 30px;
+                            min-height: 30px;
+                            max-height: 30px;
+                            margin: 0;
+                            padding: 3px 4px;
+                            font-size: 10px;
+                            line-height: 1.1;
+                            box-sizing: border-box;
+                        }
+
+
+                        /* ---------------------------------------------------------
+       VALIDATION MESSAGE
+       --------------------------------------------------------- */
+
+                        .energy-card .table-responsive > table tbody tr
+                        .text-danger {
+                            display: none;
+                        }
+
+
+        /* ---------------------------------------------------------
+       BUTTONS
+       --------------------------------------------------------- */
+
+        .energy-card form > .d-flex {
+            margin-top: 10px !important;
+            gap: 8px;
+        }
+
+            .energy-card form > .d-flex .btn {
+                font-size: 11px;
+                padding: 5px 12px;
+            }
+
+
+        /* ---------------------------------------------------------
+       REMOVE TABLE LINES
+       --------------------------------------------------------- */
+
+        .energy-card .table-responsive > table,
+        .energy-card .table-responsive > table tbody,
+        .energy-card .table-responsive > table tbody tr,
+        .energy-card .table-responsive > table tbody td {
+            border: 0 !important;
+            border-top: 0 !important;
+            border-bottom: 0 !important;
+            box-shadow: none !important;
+        }
+}
+
+
+
+

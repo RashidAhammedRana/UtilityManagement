@@ -2005,7 +2005,7 @@
             this.xrTable1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
             this.xrTable1.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
             this.xrTableRow1});
-            this.xrTable1.SizeF = new System.Drawing.SizeF(377.1184F, 36.12496F);
+            this.xrTable1.SizeF = new System.Drawing.SizeF(810.1275F, 36.12496F);
             this.xrTable1.StylePriority.UseBorders = false;
             // 
             // xrTableRow1
@@ -3058,7 +3058,7 @@
             this.xrLabel115.StylePriority.UseForeColor = false;
             this.xrLabel115.StylePriority.UsePadding = false;
             this.xrLabel115.StylePriority.UseTextAlignment = false;
-            this.xrLabel115.Text = "[FuelConsumption.CNG_TOTAL_TK]";
+            this.xrLabel115.Text = "[FuelConsumption.CNG_TOTAL_TK!#.00]";
             this.xrLabel115.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             // 
             // xrLabel114
@@ -3963,6 +3963,7 @@
             this.xrLabel47.StylePriority.UsePadding = false;
             this.xrLabel47.StylePriority.UseTextAlignment = false;
             this.xrLabel47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrLabel47.TextFormatString = "{0:#.00}";
             // 
             // xrLabel46
             // 
@@ -4579,7 +4580,7 @@
             // xrRichText3
             // 
             this.xrRichText3.Font = new DevExpress.Drawing.DXFont("Calibri", 16F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrRichText3.LocationFloat = new DevExpress.Utils.PointFloat(699.8232F, 68.37498F);
+            this.xrRichText3.LocationFloat = new DevExpress.Utils.PointFloat(699.8232F, 69.37498F);
             this.xrRichText3.Name = "xrRichText3";
             this.xrRichText3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrRichText3.SerializableRtfString = resources.GetString("xrRichText3.SerializableRtfString");

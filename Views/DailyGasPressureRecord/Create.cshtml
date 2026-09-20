@@ -427,6 +427,12 @@
         padding-bottom: 20px;
     }
 
+    *,
+    *::before,
+    *::after {
+        box-sizing: border-box;
+    }
+
 
     /* =========================================================
            CARD
@@ -457,7 +463,6 @@
         border-radius: 15px 15px 0 0;
     }
 
-
     .gas-header-title {
         display: flex;
         align-items: center;
@@ -465,7 +470,6 @@
         font-size: 17px;
         font-weight: 600;
     }
-
 
         .gas-header-title i {
             font-size: 17px;
@@ -492,6 +496,9 @@
 
     /* =========================================================
            MAIN INPUT GRID
+
+           IMPORTANT:
+           সব field একই row-তে থাকবে।
         ========================================================== */
 
     .gas-input-grid {
@@ -499,6 +506,7 @@
         grid-template-columns: 1.20fr 1.10fr 0.90fr 0.78fr 0.78fr 0.78fr 1.00fr 45px;
         gap: 8px;
         width: 100%;
+        max-width: 100%;
         align-items: start;
     }
 
@@ -509,23 +517,34 @@
 
     .gas-field {
         min-width: 0;
+        width: 100%;
         position: relative;
         align-self: start;
+        display: flex;
+        flex-direction: column;
     }
 
 
         /* =========================================================
            LABEL
+
+           IMPORTANT FIX:
+           Large screen-এ সব label-এর height SAME.
+           তাই PSI label 2 line হলেও input নিচে নামবে না।
         ========================================================== */
 
         .gas-field label {
-            display: block;
+            display: flex;
+            align-items: flex-end;
             width: 100%;
-            margin-bottom: 4px;
+            height: 32px;
+            min-height: 32px;
+            margin: 0 0 4px 0;
+            padding: 0;
             font-size: 12px;
             font-weight: 600;
             color: #374151;
-            line-height: 1.15;
+            line-height: 1.12;
             white-space: normal;
             overflow: hidden;
             box-sizing: border-box;
@@ -534,16 +553,27 @@
 
     /* =========================================================
            PRESSURE LABEL
+
+           PSI fields-এর label fixed height.
+           Input-এর position সব field-এর সাথে same থাকবে।
         ========================================================== */
 
     .pressure-field label {
-        min-height: 28px;
+        display: flex;
+        align-items: flex-end;
+        height: 32px;
+        min-height: 32px;
+        margin: 0 0 4px 0;
         font-size: 11px;
-        line-height: 1.12;
+        line-height: 1.08;
         white-space: normal;
         overflow: hidden;
     }
 
+
+    /* =========================================================
+           PSI
+        ========================================================== */
 
     .pressure-field .psi {
         display: inline;
@@ -556,13 +586,19 @@
 
 
     /* =========================================================
-           INPUT
+           ALL INPUT
+
+           FULL WIDTH
         ========================================================== */
 
     .gas-field .form-control {
-        width: 100%;
+        display: block;
+        width: 100% !important;
+        max-width: 100%;
         min-width: 0;
         height: 36px;
+        min-height: 36px;
+        margin: 0;
         padding: 5px 7px;
         font-size: 12px;
         border-radius: 5px;
@@ -578,7 +614,6 @@
         font-size: 11px;
         font-weight: 500;
     }
-
 
     .company-field input[readonly] {
         background-color: #edf0f3 !important;
@@ -606,7 +641,6 @@
         min-width: 0;
     }
 
-
     .time-field input[readonly] {
         background-color: #edf0f3 !important;
         color: #495057 !important;
@@ -618,7 +652,12 @@
         ========================================================== */
 
     .pressure-input {
-        width: 100%;
+        display: block;
+        width: 100% !important;
+        max-width: 100%;
+        height: 36px !important;
+        min-height: 36px !important;
+        margin: 0 !important;
         text-align: center;
         font-size: 11px !important;
         padding-left: 4px !important;
@@ -637,7 +676,6 @@
         margin: 0;
     }
 
-
     input[type="number"] {
         -moz-appearance: textfield;
         appearance: textfield;
@@ -654,18 +692,22 @@
 
 
     /* =========================================================
-           ADD BUTTON
+           ADD FIELD
         ========================================================== */
 
     .add-field {
         min-width: 45px;
+        width: 45px;
     }
-
 
     .add-label {
-        min-height: 28px;
+        display: flex !important;
+        align-items: flex-end;
+        width: 100%;
+        height: 32px;
+        min-height: 32px;
+        margin: 0 0 4px 0;
     }
-
 
     .gas-add-button {
         width: 36px;
@@ -702,7 +744,6 @@
         max-width: 100%;
     }
 
-
     .gas-list-title {
         display: flex;
         align-items: center;
@@ -712,7 +753,6 @@
         font-size: 14px;
         font-weight: 700;
     }
-
 
     .gas-list-wrapper {
         width: 100%;
@@ -734,24 +774,19 @@
         font-size: 10px;
     }
 
-
         #temporaryTable th,
         #temporaryTable td {
             padding: 4px 3px;
             word-break: break-word;
             overflow-wrap: anywhere;
             vertical-align: middle;
-            line-height: 1.05;
+            line-height: 1;
             box-sizing: border-box;
         }
 
 
         /* =========================================================
-           IMPORTANT:
-           INPUTS INSIDE GAS PRESSURE LIST
-
-           এগুলোই table-এর ভিতরের editable/input field.
-           Table text-এর চেয়ে ছোট রাখা হয়েছে।
+           TABLE INPUT
         ========================================================== */
 
         #temporaryTable input,
@@ -760,15 +795,13 @@
         #temporaryTable select,
         #temporaryTable .form-control {
             width: 100% !important;
+            max-width: 100% !important;
             font-size: 8px !important;
             line-height: 1 !important;
             padding: 2px 3px !important;
             min-height: 0 !important;
             box-sizing: border-box !important;
         }
-
-
-            /* Number input specifically */
 
             #temporaryTable input[type="number"] {
                 font-size: 8px !important;
@@ -777,17 +810,11 @@
                 padding-right: 2px !important;
             }
 
-
-            /* Date input */
-
             #temporaryTable input[type="date"] {
                 font-size: 8px !important;
                 padding-left: 2px !important;
                 padding-right: 2px !important;
             }
-
-
-            /* Time input */
 
             #temporaryTable input[type="time"],
             #temporaryTable input[type="text"] {
@@ -805,7 +832,6 @@
         justify-content: space-between;
         align-items: center;
     }
-
 
         .gas-form-buttons .btn {
             min-height: 36px;
@@ -837,7 +863,6 @@
             padding-bottom: 8px;
         }
 
-
         .gas-card {
             border-radius: 11px;
         }
@@ -849,12 +874,10 @@
             border-radius: 11px 11px 0 0;
         }
 
-
         .gas-header-title {
             font-size: 12px;
             gap: 4px;
         }
-
 
             .gas-header-title i {
                 font-size: 12px;
@@ -864,9 +887,7 @@
         .gas-card-body {
             padding: 7px 3px;
         }
-        /* =====================================================
-               INPUT GRID
-            ====================================================== */
+        /* GRID */
 
         .gas-input-grid {
             display: grid;
@@ -879,14 +900,10 @@
 
         .gas-field {
             min-width: 0;
+            width: 100%;
             align-self: start;
         }
-            /* =====================================================
-               LABEL
-
-               সব label same height
-               তাই 2-line label হলেও input নিচে যাবে না
-            ====================================================== */
+            /* LABEL */
 
             .gas-field label {
                 display: flex;
@@ -901,9 +918,7 @@
                 overflow: hidden;
                 box-sizing: border-box;
             }
-        /* =====================================================
-               PRESSURE LABEL
-            ====================================================== */
+        /* PRESSURE LABEL */
 
         .pressure-field label {
             display: block;
@@ -926,13 +941,13 @@
             font-weight: 700;
             white-space: nowrap;
         }
-        /* =====================================================
-               INPUT
-            ====================================================== */
+        /* INPUT */
 
         .gas-field .form-control {
-            width: 100%;
+            width: 100% !important;
+            max-width: 100%;
             height: 27px;
+            min-height: 27px;
             padding: 2px;
             font-size: 8px;
             border-radius: 3px;
@@ -965,8 +980,9 @@
         /* PRESSURE */
 
         .pressure-input {
-            width: 100%;
+            width: 100% !important;
             height: 27px !important;
+            min-height: 27px !important;
             font-size: 7.3px !important;
             padding-left: 1px !important;
             padding-right: 1px !important;
@@ -986,13 +1002,11 @@
             min-width: 30px;
         }
 
-
         .add-label {
             height: 25px;
             min-height: 25px;
             margin-bottom: 2px;
         }
-
 
         .gas-add-button {
             width: 28px;
@@ -1000,25 +1014,18 @@
             font-size: 9px;
             border-radius: 3px;
         }
-        /* =====================================================
-               GAS PRESSURE LIST
-
-               Portrait:
-               No horizontal scrolling
-            ====================================================== */
+        /* LIST */
 
         .gas-list-section {
             margin-top: 10px;
             width: 100%;
         }
 
-
         .gas-list-title {
             font-size: 10px;
             margin-bottom: 4px;
             gap: 4px;
         }
-
 
         .gas-list-wrapper {
             width: 100%;
@@ -1035,7 +1042,6 @@
             font-size: 6px;
         }
 
-
             #temporaryTable th,
             #temporaryTable td {
                 padding: 2px 1px;
@@ -1045,13 +1051,6 @@
                 white-space: normal;
                 vertical-align: middle;
             }
-            /* =====================================================
-               IMPORTANT:
-               PORTRAIT TABLE INPUT TEXT
-
-               খুব ছোট করা হয়েছে।
-               এই rule existing CSS override করবে।
-            ====================================================== */
 
             #temporaryTable input,
             #temporaryTable input.form-control,
@@ -1067,7 +1066,6 @@
                 box-sizing: border-box !important;
             }
 
-
                 #temporaryTable input[type="number"] {
                     font-size: 5px !important;
                     text-align: center;
@@ -1075,55 +1073,45 @@
                     padding-right: 1px !important;
                 }
 
-
                 #temporaryTable input[type="date"] {
                     font-size: 5px !important;
                 }
-
 
                 #temporaryTable input[type="time"],
                 #temporaryTable input[type="text"] {
                     font-size: 5px !important;
                 }
-            /* =====================================================
-               TABLE COLUMN WIDTH
-            ====================================================== */
+            /* TABLE COLUMN WIDTH */
 
             #temporaryTable th:nth-child(1),
             #temporaryTable td:nth-child(1) {
                 width: 13%;
             }
 
-
             #temporaryTable th:nth-child(2),
             #temporaryTable td:nth-child(2) {
                 width: 12%;
             }
-
 
             #temporaryTable th:nth-child(3),
             #temporaryTable td:nth-child(3) {
                 width: 10%;
             }
 
-
             #temporaryTable th:nth-child(4),
             #temporaryTable td:nth-child(4) {
                 width: 17%;
             }
-
 
             #temporaryTable th:nth-child(5),
             #temporaryTable td:nth-child(5) {
                 width: 14%;
             }
 
-
             #temporaryTable th:nth-child(6),
             #temporaryTable td:nth-child(6) {
                 width: 14%;
             }
-
 
             #temporaryTable th:nth-child(7),
             #temporaryTable td:nth-child(7) {
@@ -1134,7 +1122,6 @@
         .gas-form-buttons {
             margin-top: 8px;
         }
-
 
             .gas-form-buttons .btn {
                 font-size: 9px;
@@ -1158,22 +1145,20 @@
             padding-bottom: 6px;
         }
 
-
         .gas-card {
             border-radius: 10px;
         }
 
-
         .gas-card-body {
             padding: 6px 2px;
         }
-        /* GRID */
+
 
         .gas-input-grid {
             grid-template-columns: 1.27fr 1.12fr 0.91fr 0.63fr 0.63fr 0.63fr 0.82fr 27px;
             gap: 1.5px;
         }
-        /* LABEL */
+
 
         .gas-field label {
             height: 25px;
@@ -1181,7 +1166,7 @@
             font-size: 6.5px;
             line-height: 1.01;
         }
-        /* PRESSURE LABEL */
+
 
         .pressure-field label {
             height: 25px;
@@ -1189,57 +1174,57 @@
             font-size: 6px;
             line-height: 1;
         }
-        /* PSI */
+
 
         .pressure-field .psi {
             font-size: 5.4px;
         }
-        /* INPUT */
+
 
         .gas-field .form-control {
             height: 26px;
+            min-height: 26px;
             font-size: 7.5px;
             padding: 2px 1px;
             border-radius: 2px;
         }
-        /* COMPANY */
+
 
         .company-field .form-control {
             font-size: 6.5px;
         }
-        /* DATE */
+
 
         .date-field .form-control {
             font-size: 6.7px;
         }
-        /* TIME */
+
 
         .time-field .form-control {
             font-size: 7px;
         }
-        /* PRESSURE */
+
 
         .pressure-input {
             height: 26px !important;
+            min-height: 26px !important;
             font-size: 7px !important;
             padding-left: 1px !important;
             padding-right: 1px !important;
         }
-        /* REMARKS */
+
 
         .remarks-field .form-control {
             font-size: 6.9px;
         }
-        /* ADD */
+
 
         .gas-add-button {
             width: 25px;
             height: 26px;
             font-size: 8px;
         }
-        /* =====================================================
-               LIST
-            ====================================================== */
+
 
         .gas-list-section {
             margin-top: 9px;
@@ -1271,11 +1256,7 @@
                 word-break: break-word;
                 overflow-wrap: anywhere;
             }
-            /* =====================================================
-               SMALL TABLE INPUT
 
-               এখানে সবচেয়ে ছোট text
-            ====================================================== */
 
             #temporaryTable input,
             #temporaryTable input.form-control,
@@ -1300,7 +1281,7 @@
                 #temporaryTable input[type="text"] {
                     font-size: 4.5px !important;
                 }
-        /* BUTTONS */
+
 
         .gas-form-buttons {
             margin-top: 7px;
@@ -1332,13 +1313,13 @@
         .gas-card-body {
             padding: 5px 1px;
         }
-        /* GRID */
+
 
         .gas-input-grid {
             grid-template-columns: 1.25fr 1.08fr 0.88fr 0.61fr 0.61fr 0.61fr 0.76fr 25px;
             gap: 1px;
         }
-        /* LABEL */
+
 
         .gas-field label {
             height: 25px;
@@ -1346,7 +1327,7 @@
             font-size: 6px;
             line-height: 1;
         }
-        /* PRESSURE LABEL */
+
 
         .pressure-field label {
             height: 25px;
@@ -1354,55 +1335,55 @@
             font-size: 5.6px;
             line-height: .98;
         }
-        /* PSI */
+
 
         .pressure-field .psi {
             font-size: 5px;
         }
-        /* INPUT */
+
 
         .gas-field .form-control {
             height: 25px;
+            min-height: 25px;
             font-size: 7px;
             padding: 1px;
             border-radius: 2px;
         }
-        /* COMPANY */
+
 
         .company-field .form-control {
             font-size: 5.8px;
         }
-        /* DATE */
+
 
         .date-field .form-control {
             font-size: 6px;
         }
-        /* TIME */
+
 
         .time-field .form-control {
             font-size: 6.4px;
         }
-        /* PRESSURE */
+
 
         .pressure-input {
             height: 25px !important;
+            min-height: 25px !important;
             font-size: 6.6px !important;
         }
-        /* REMARKS */
+
 
         .remarks-field .form-control {
             font-size: 6.3px;
         }
-        /* ADD */
+
 
         .gas-add-button {
             width: 24px;
             height: 25px;
             font-size: 7px;
         }
-        /* =====================================================
-               TABLE
-            ====================================================== */
+
 
         .gas-list-section {
             margin-top: 7px;
@@ -1438,9 +1419,7 @@
                 overflow-wrap: anywhere;
                 white-space: normal;
             }
-            /* =====================================================
-               VERY SMALL TABLE INPUT
-            ====================================================== */
+
 
             #temporaryTable input,
             #temporaryTable input.form-control,
@@ -1465,7 +1444,7 @@
                 #temporaryTable input[type="text"] {
                     font-size: 4px !important;
                 }
-        /* BUTTONS */
+
 
         .gas-form-buttons {
             margin-top: 6px;
@@ -1483,10 +1462,6 @@
     /* =========================================================
            MOBILE LANDSCAPE
            <= 900px
-
-           IMPORTANT:
-           Label-এর height fixed,
-           তাই 2-line label হলেও সব input একই baseline-এ থাকবে।
         ========================================================== */
 
     @@media (max-width: 900px) and (orientation: landscape) {
@@ -1502,9 +1477,7 @@
         .gas-card-body {
             padding: 10px;
         }
-        /* =====================================================
-               GRID
-            ====================================================== */
+
 
         .gas-input-grid {
             display: grid;
@@ -1513,17 +1486,14 @@
             width: 100%;
             align-items: start;
         }
-        /* FIELD */
+
 
         .gas-field {
             min-width: 0;
+            width: 100%;
             align-self: start;
         }
-            /* =====================================================
-               LABEL
-
-               সব label exact same height
-            ====================================================== */
+            /* SAME LABEL HEIGHT */
 
             .gas-field label {
                 display: flex;
@@ -1536,11 +1506,8 @@
                 line-height: 1.05;
                 white-space: normal;
                 overflow: hidden;
-                box-sizing: border-box;
             }
-        /* =====================================================
-               PRESSURE LABEL
-            ====================================================== */
+
 
         .pressure-field label {
             display: block;
@@ -1552,9 +1519,8 @@
             line-height: 1.02;
             white-space: normal;
             overflow: hidden;
-            box-sizing: border-box;
         }
-        /* PSI */
+
 
         .pressure-field .psi {
             display: inline;
@@ -1563,52 +1529,48 @@
             font-weight: 700;
             white-space: nowrap;
         }
-        /* =====================================================
-               ALL INPUT SAME HEIGHT
-            ====================================================== */
+
 
         .gas-field .form-control {
-            width: 100%;
+            width: 100% !important;
             height: 29px;
+            min-height: 29px;
             padding: 3px 4px;
             font-size: 9px;
             border-radius: 3px;
-            box-sizing: border-box;
         }
-        /* COMPANY */
+
 
         .company-field .form-control {
             font-size: 8px;
         }
-        /* DATE */
+
 
         .date-field .form-control {
             font-size: 8px;
         }
-        /* TIME */
+
 
         .time-field .form-control {
             font-size: 8.5px;
         }
-        /* PRESSURE */
+
 
         .pressure-input {
-            width: 100%;
+            width: 100% !important;
             height: 28px !important;
+            min-height: 28px !important;
             font-size: 8px !important;
             padding-left: 2px !important;
             padding-right: 2px !important;
             text-align: center;
-            box-sizing: border-box;
         }
-        /* REMARKS */
+
 
         .remarks-field .form-control {
             font-size: 8px;
         }
-        /* =====================================================
-               ADD FIELD
-            ====================================================== */
+
 
         .add-field {
             min-width: 35px;
@@ -1634,11 +1596,7 @@
             align-items: center;
             justify-content: center;
         }
-        /* =====================================================
-               LIST
 
-               Landscape-এ table scroll allowed
-            ====================================================== */
 
         .gas-list-section {
             margin-top: 12px;
@@ -1671,11 +1629,7 @@
                 word-break: break-word;
                 overflow-wrap: anywhere;
             }
-            /* =====================================================
-               LANDSCAPE TABLE INPUT
 
-               Table-এর ভিতরের input text ছোট থাকবে
-            ====================================================== */
 
             #temporaryTable input,
             #temporaryTable input.form-control,
@@ -1687,7 +1641,6 @@
                 padding: 1px 2px !important;
                 height: auto !important;
                 min-height: 0 !important;
-                box-sizing: border-box !important;
             }
 
 
@@ -1702,7 +1655,7 @@
                 #temporaryTable input[type="text"] {
                     font-size: 6px !important;
                 }
-        /* BUTTONS */
+
 
         .gas-form-buttons {
             margin-top: 10px;
@@ -1775,6 +1728,7 @@
     }
 
 </style>
+
 
 
 

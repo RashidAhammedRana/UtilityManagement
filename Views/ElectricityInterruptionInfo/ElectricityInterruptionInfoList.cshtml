@@ -17,42 +17,45 @@
     bool canDelete = ViewBag.CanDelete ?? false;
 }
 
-<h2 class="text-center">Utility Interruption Reading List</h2>
+<h2 class="text-center p-4">Utility Interruption Reading List</h2>
 
 <p class="text-muted text-center">
     Total Records: <strong>@ViewBag.totalElectricityInterruptions</strong>
 </p>
 
 <!-- ================= HEADER ================= -->
-<div class="d-flex justify-content-between align-items-center mb-3">
+<div class="d-flex justify-content-between mb-3 align-items-center daily-list-toolbar">
 
-    <!-- SEARCH -->
+    <!-- LEFT: SEARCH -->
     <form method="get"
           asp-action="ElectricityInterruptionInfoList"
-          class="d-flex gap-2 align-items-center flex-grow-1">
+          class="d-flex gap-2 align-items-center daily-list-search-form"
+          id="searchForm">
 
         <input type="text"
                name="searchString"
                id="searchBox"
                value="@ViewBag.SearchString"
-               class="form-control"
+               class="form-control daily-list-search-box"
                placeholder="Search here..."
-               style="max-width: 350px;" />
+               style="width: 300px;" />
 
     </form>
 
-    <!-- ACTION BUTTONS -->
-    <div class="d-flex gap-2">
+
+    <!-- RIGHT: ACTION BUTTONS -->
+    <div class="d-flex gap-2 daily-list-actions">
 
         @if (canCreate)
         {
-            <a asp-action="Create" class="btn btn-primary">
+            <a asp-action="Create"
+               class="btn btn-primary daily-create-btn">
                 + Create
             </a>
         }
 
         <button type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary daily-back-btn"
                 onclick="window.history.back();">
             Back
         </button>

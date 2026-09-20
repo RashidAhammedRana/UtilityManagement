@@ -1,7 +1,13 @@
-﻿
+﻿/* =========================================================
+   ENERGY / CONSUMPTION TABLE
+   DESKTOP + MOBILE RESPONSIVE CSS
+   ========================================================= */
+
+
 /* =========================================================
-                       MAIN CARD
-                       ========================================================= */
+   MAIN CARD
+   ========================================================= */
+
 .energy-card {
     margin-left: 20px;
     width: calc(100% - 20px);
@@ -13,8 +19,8 @@
 
 
 /* =========================================================
-                       MAIN INPUT TABLE
-                       ========================================================= */
+   MAIN INPUT TABLE
+   ========================================================= */
 
 .energy-table {
     width: 100%;
@@ -23,153 +29,139 @@
     border-collapse: collapse;
 }
 
-    .energy-table th,
-    .energy-table td {
-        padding: 3px 2px !important;
-        vertical-align: middle;
-        text-align: center;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-
-    /* =========================================================
-                       INPUT TABLE HEADER
-                       ========================================================= */
-
-    .energy-table thead th {
-        text-align: center !important;
-        vertical-align: middle !important;
-        /*
-                           Same header size for all input table columns
-                        */
-        font-size: 13px !important;
-        font-weight: 600 !important;
-    }
-
-
-    /* =========================================================
-                       INPUT TABLE COLUMN WIDTHS
-                       ========================================================= */
-
-    /* Company */
-    .energy-table th:nth-child(1),
-    .energy-table td:nth-child(1) {
-        width: 10%;
-    }
-
-    /* Date */
-    .energy-table th:nth-child(2),
-    .energy-table td:nth-child(2) {
-        width: 7%;
-    }
-
-    /* Time */
-    .energy-table th:nth-child(3),
-    .energy-table td:nth-child(3) {
-        width: 5.5%;
-    }
-
-    /* Numeric value fields */
-    .energy-table th:nth-child(4),
-    .energy-table td:nth-child(4),
-    .energy-table th:nth-child(5),
-    .energy-table td:nth-child(5),
-    .energy-table th:nth-child(6),
-    .energy-table td:nth-child(6),
-    .energy-table th:nth-child(7),
-    .energy-table td:nth-child(7),
-    .energy-table th:nth-child(8),
-    .energy-table td:nth-child(8),
-    .energy-table th:nth-child(9),
-    .energy-table td:nth-child(9),
-    .energy-table th:nth-child(10),
-    .energy-table td:nth-child(10),
-    .energy-table th:nth-child(11),
-    .energy-table td:nth-child(11),
-    .energy-table th:nth-child(12),
-    .energy-table td:nth-child(12),
-    .energy-table th:nth-child(13),
-    .energy-table td:nth-child(13) {
-        width: 3.7%;
-    }
-
-    /* Total */
-    .energy-table th:nth-child(14),
-    .energy-table td:nth-child(14) {
-        width: 5%;
-    }
-
-    /* Captive Generator */
-    .energy-table th:nth-child(15),
-    .energy-table td:nth-child(15) {
-        width: 6%;
-    }
-
-    /* Industrial Boiler */
-    .energy-table th:nth-child(16),
-    .energy-table td:nth-child(16) {
-        width: 6%;
-    }
-
-    /* Add */
-    .energy-table th:nth-child(17),
-    .energy-table td:nth-child(17) {
-        width: 4%;
-    }
-
-
-    /* =========================================================
-                       INPUT TABLE ALL FORM CONTROLS
-
-                       Company / Date / Time / Number
-                       ALL SAME SIZE
-                       ========================================================= */
-
-    .energy-table .form-control {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        padding: 2px 3px !important;
-        margin: 0 !important;
-        /*
-                           Same readable size for ALL input fields
-                        */
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        line-height: 1.1;
-        height: 28px;
-        box-sizing: border-box;
-    }
-
-
-    /* =========================================================
-                       INPUT TABLE NUMBER INPUT
-                       ========================================================= */
-
-    .energy-table input[type="number"] {
-        width: 100% !important;
-        padding-left: 1px !important;
-        padding-right: 1px !important;
-        /*
-                           Same font size as Company / Date / Time
-                        */
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        text-align: center;
-        letter-spacing: 0;
-    }
+.energy-table th,
+.energy-table td {
+    padding: 3px 2px !important;
+    vertical-align: middle;
+    text-align: center;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 
 /* =========================================================
-                       INPUT TABLE COMPANY
-                       ========================================================= */
+   INPUT TABLE HEADER
+   ========================================================= */
+
+.energy-table thead th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   INPUT TABLE COLUMN WIDTHS
+   ========================================================= */
+
+/* Company */
+.energy-table th:nth-child(1),
+.energy-table td:nth-child(1) {
+    width: 10%;
+}
+
+/* Date */
+.energy-table th:nth-child(2),
+.energy-table td:nth-child(2) {
+    width: 7%;
+}
+
+/* Time */
+.energy-table th:nth-child(3),
+.energy-table td:nth-child(3) {
+    width: 5.5%;
+}
+
+/* Numeric fields */
+.energy-table th:nth-child(4),
+.energy-table td:nth-child(4),
+.energy-table th:nth-child(5),
+.energy-table td:nth-child(5),
+.energy-table th:nth-child(6),
+.energy-table td:nth-child(6),
+.energy-table th:nth-child(7),
+.energy-table td:nth-child(7),
+.energy-table th:nth-child(8),
+.energy-table td:nth-child(8),
+.energy-table th:nth-child(9),
+.energy-table td:nth-child(9),
+.energy-table th:nth-child(10),
+.energy-table td:nth-child(10),
+.energy-table th:nth-child(11),
+.energy-table td:nth-child(11),
+.energy-table th:nth-child(12),
+.energy-table td:nth-child(12),
+.energy-table th:nth-child(13),
+.energy-table td:nth-child(13) {
+    width: 3.7%;
+}
+
+/* Total */
+.energy-table th:nth-child(14),
+.energy-table td:nth-child(14) {
+    width: 5%;
+}
+
+/* Captive Generator */
+.energy-table th:nth-child(15),
+.energy-table td:nth-child(15) {
+    width: 6%;
+}
+
+/* Industrial Boiler */
+.energy-table th:nth-child(16),
+.energy-table td:nth-child(16) {
+    width: 6%;
+}
+
+/* Add */
+.energy-table th:nth-child(17),
+.energy-table td:nth-child(17) {
+    width: 4%;
+}
+
+
+/* =========================================================
+   INPUT TABLE FORM CONTROLS
+   ========================================================= */
+
+.energy-table .form-control,
+.energy-table .form-select {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 2px 3px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.1;
+    height: 28px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   NUMBER INPUT
+   ========================================================= */
+
+.energy-table input[type="number"] {
+    width: 100% !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-align: center;
+    letter-spacing: 0;
+}
+
+
+/* =========================================================
+   COMPANY
+   ========================================================= */
 
 #inputCompany {
     width: 100% !important;
-    /*
-                           Same size as Date / Time / Number fields
-                        */
     font-size: 13px !important;
     font-weight: 600 !important;
     text-align: left;
@@ -179,11 +171,8 @@
 
 
 /* =========================================================
-                       INPUT TABLE DATE
-
-                       IMPORTANT:
-                       Date is now SAME SIZE as Company
-                       ========================================================= */
+   DATE
+   ========================================================= */
 
 #inputDate {
     width: 100% !important;
@@ -193,26 +182,20 @@
     padding-right: 2px !important;
 }
 
-
-    /*
-                       Browser date text can sometimes appear smaller.
-                       Force the date parts to inherit the same size.
-                    */
-
-    #inputDate::-webkit-datetime-edit,
-    #inputDate::-webkit-datetime-edit-fields-wrapper,
-    #inputDate::-webkit-datetime-edit-text,
-    #inputDate::-webkit-datetime-edit-month-field,
-    #inputDate::-webkit-datetime-edit-day-field,
-    #inputDate::-webkit-datetime-edit-year-field {
-        font-size: 13px !important;
-        font-weight: 500 !important;
-    }
+#inputDate::-webkit-datetime-edit,
+#inputDate::-webkit-datetime-edit-fields-wrapper,
+#inputDate::-webkit-datetime-edit-text,
+#inputDate::-webkit-datetime-edit-month-field,
+#inputDate::-webkit-datetime-edit-day-field,
+#inputDate::-webkit-datetime-edit-year-field {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
 
 
 /* =========================================================
-                       INPUT TABLE TIME
-                       ========================================================= */
+   TIME
+   ========================================================= */
 
 .time-display {
     width: 100% !important;
@@ -226,8 +209,8 @@
 
 
 /* =========================================================
-                       INPUT TOTAL
-                       ========================================================= */
+   TOTAL DISPLAY
+   ========================================================= */
 
 .total-display {
     background-color: #e9f7ef;
@@ -238,8 +221,8 @@
 
 
 /* =========================================================
-                       INPUT WIDTH CONTROL
-                       ========================================================= */
+   INPUT WIDTH CONTROL
+   ========================================================= */
 
 .energy-input,
 .required-consumption-field,
@@ -251,8 +234,8 @@
 
 
 /* =========================================================
-                       ADD BUTTON
-                       ========================================================= */
+   ADD BUTTON
+   ========================================================= */
 
 #addRow {
     width: 30px !important;
@@ -261,25 +244,29 @@
     height: 30px !important;
     min-height: 30px !important;
     padding: 0 !important;
+
     display: inline-flex !important;
     align-items: center;
     justify-content: center;
+
     font-size: 14px !important;
     line-height: 1;
+
     flex-shrink: 0;
+
     position: relative;
     z-index: 5;
 }
 
-    #addRow i {
-        font-size: 14px !important;
-        line-height: 1;
-    }
+#addRow i {
+    font-size: 14px !important;
+    line-height: 1;
+}
 
 
 /* =========================================================
-                       ADD BUTTON CELL
-                       ========================================================= */
+   ADD BUTTON CELL
+   ========================================================= */
 
 .energy-table th:last-child,
 .energy-table td:last-child {
@@ -289,8 +276,8 @@
 
 
 /* =========================================================
-                       TABLE CONTAINER
-                       ========================================================= */
+   TABLE CONTAINER
+   ========================================================= */
 
 .energy-table-container {
     width: 100%;
@@ -304,8 +291,8 @@
 
 
 /* =========================================================
-                       CONSUMPTION LIST
-                       ========================================================= */
+   CONSUMPTION LIST
+   ========================================================= */
 
 #temporaryTable {
     width: 100%;
@@ -314,304 +301,247 @@
 }
 
 
-    /* =========================================================
-                       CONSUMPTION LIST HEADER
-
-                       SAME SIZE AS INPUT TABLE HEADER
-                       ========================================================= */
-
-    #temporaryTable thead th {
-        text-align: center !important;
-        vertical-align: middle !important;
-        /*
-                           Same size as .energy-table header
-                        */
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        padding: 3px 2px !important;
-        white-space: nowrap;
-        overflow: hidden;
-    }
-
-
-    /* =========================================================
-                       CONSUMPTION LIST BODY
-                       ========================================================= */
-
-    #temporaryTable th,
-    #temporaryTable td {
-        padding: 3px 2px !important;
-        white-space: nowrap;
-        vertical-align: middle;
-        overflow: hidden;
-    }
-
-    #temporaryTable tbody td {
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
-                       CONSUMPTION LIST COLUMN WIDTHS
-
-                       COMPANY BIGGER
-                       NUMERIC FIELDS SMALLER
-                       ========================================================= */
-
-    /* ---------------------------------------------------------
-                       Company
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(1),
-    #temporaryTable td:nth-child(1) {
-        width: 13%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Date
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(2),
-    #temporaryTable td:nth-child(2) {
-        width: 8%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Time
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(3),
-    #temporaryTable td:nth-child(3) {
-        width: 6%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Numeric fields
-
-                       REB
-                       GG-1
-                       GG-2
-                       GG-3
-                       GG-4
-                       DG-1
-                       DG-2
-                       DG-3
-                       DG-4
-                       Solar
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(4),
-    #temporaryTable td:nth-child(4),
-    #temporaryTable th:nth-child(5),
-    #temporaryTable td:nth-child(5),
-    #temporaryTable th:nth-child(6),
-    #temporaryTable td:nth-child(6),
-    #temporaryTable th:nth-child(7),
-    #temporaryTable td:nth-child(7),
-    #temporaryTable th:nth-child(8),
-    #temporaryTable td:nth-child(8),
-    #temporaryTable th:nth-child(9),
-    #temporaryTable td:nth-child(9),
-    #temporaryTable th:nth-child(10),
-    #temporaryTable td:nth-child(10),
-    #temporaryTable th:nth-child(11),
-    #temporaryTable td:nth-child(11),
-    #temporaryTable th:nth-child(12),
-    #temporaryTable td:nth-child(12),
-    #temporaryTable th:nth-child(13),
-    #temporaryTable td:nth-child(13) {
-        width: 3.7%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Total
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(14),
-    #temporaryTable td:nth-child(14) {
-        width: 5%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Captive Generator
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(15),
-    #temporaryTable td:nth-child(15) {
-        width: 6%;
-    }
-
-
-    /* ---------------------------------------------------------
-                       Industrial Boiler
-                       --------------------------------------------------------- */
-
-    #temporaryTable th:nth-child(16),
-    #temporaryTable td:nth-child(16) {
-        width: 6%;
-    }
-
-
-    /* =========================================================
-                       LIST INPUT FIELDS
-                       ========================================================= */
-
-    #temporaryTable .form-control {
-        width: 100% !important;
-        min-width: 0 !important;
-        max-width: 100% !important;
-        padding: 3px 3px !important;
-        margin: 0 !important;
-        /*
-                           Same readable size
-                           as input table fields
-                        */
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        line-height: 1.2;
-        height: 28px;
-        text-align: center;
-        box-sizing: border-box;
-    }
-
-
-    /* =========================================================
-                       LIST COMPANY VALUE
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(1) .form-control {
-        width: 100% !important;
-        text-align: left !important;
-        padding-left: 5px !important;
-        padding-right: 3px !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-    }
-
-
-    /* =========================================================
-                       LIST DATE VALUE
-
-                       Same size as Company
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(2) .form-control {
-        width: 100% !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        padding-left: 2px !important;
-        padding-right: 2px !important;
-    }
-
-
-    /* Date browser internal text */
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit,
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-fields-wrapper,
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-text,
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-month-field,
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-day-field,
-    #temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-year-field {
-        font-size: 13px !important;
-        font-weight: 500 !important;
-    }
-
-
-    /* =========================================================
-                       LIST TIME VALUE
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(3) .form-control {
-        width: 100% !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        text-align: center !important;
-        padding-left: 1px !important;
-        padding-right: 1px !important;
-    }
-
-
-    /* =========================================================
-                       LIST NUMERIC VALUES
-
-                       Font stays readable.
-                       Width is controlled by table columns.
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(n+4):nth-child(-n+13) .form-control {
-        width: 100% !important;
-        min-width: 0 !important;
-        padding-left: 1px !important;
-        padding-right: 1px !important;
-        font-size: 13px !important;
-        font-weight: 600 !important;
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
-                       LIST TOTAL
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(14) .form-control {
-        width: 100% !important;
-        font-size: 13px !important;
-        font-weight: 700 !important;
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
-                       LIST CAPTIVE GENERATOR
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(15) .form-control {
-        width: 100% !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
-                       LIST INDUSTRIAL BOILER
-                       ========================================================= */
-
-    #temporaryTable td:nth-child(16) .form-control {
-        width: 100% !important;
-        font-size: 13px !important;
-        font-weight: 500 !important;
-        text-align: center !important;
-    }
-
-
-    /* =========================================================
-                       READONLY LIST FIELDS
-                       ========================================================= */
-
-    #temporaryTable .form-control[readonly] {
-        font-size: 13px !important;
-        font-weight: 500 !important;
-    }
-
-
-    /* =========================================================
-                       LIST TOTAL DISPLAY
-                       ========================================================= */
-
-    #temporaryTable .row-total {
-        font-size: 13px !important;
-        font-weight: 600 !important;
-    }
+/* =========================================================
+   CONSUMPTION LIST HEADER
+   ========================================================= */
+
+#temporaryTable thead th {
+    text-align: center !important;
+    vertical-align: middle !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    padding: 3px 2px !important;
+    white-space: nowrap;
+    overflow: hidden;
+}
 
 
 /* =========================================================
-                       NUMBER SPINNER
-                       ========================================================= */
+   CONSUMPTION LIST BODY
+   ========================================================= */
+
+#temporaryTable th,
+#temporaryTable td {
+    padding: 3px 2px !important;
+    white-space: nowrap;
+    vertical-align: middle;
+    overflow: hidden;
+}
+
+#temporaryTable tbody td {
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   CONSUMPTION LIST COLUMN WIDTHS
+   ========================================================= */
+
+/* Company */
+#temporaryTable th:nth-child(1),
+#temporaryTable td:nth-child(1) {
+    width: 13%;
+}
+
+/* Date */
+#temporaryTable th:nth-child(2),
+#temporaryTable td:nth-child(2) {
+    width: 8%;
+}
+
+/* Time */
+#temporaryTable th:nth-child(3),
+#temporaryTable td:nth-child(3) {
+    width: 6%;
+}
+
+/* Numeric fields */
+#temporaryTable th:nth-child(4),
+#temporaryTable td:nth-child(4),
+#temporaryTable th:nth-child(5),
+#temporaryTable td:nth-child(5),
+#temporaryTable th:nth-child(6),
+#temporaryTable td:nth-child(6),
+#temporaryTable th:nth-child(7),
+#temporaryTable td:nth-child(7),
+#temporaryTable th:nth-child(8),
+#temporaryTable td:nth-child(8),
+#temporaryTable th:nth-child(9),
+#temporaryTable td:nth-child(9),
+#temporaryTable th:nth-child(10),
+#temporaryTable td:nth-child(10),
+#temporaryTable th:nth-child(11),
+#temporaryTable td:nth-child(11),
+#temporaryTable th:nth-child(12),
+#temporaryTable td:nth-child(12),
+#temporaryTable th:nth-child(13),
+#temporaryTable td:nth-child(13) {
+    width: 3.7%;
+}
+
+/* Total */
+#temporaryTable th:nth-child(14),
+#temporaryTable td:nth-child(14) {
+    width: 5%;
+}
+
+/* Captive Generator */
+#temporaryTable th:nth-child(15),
+#temporaryTable td:nth-child(15) {
+    width: 6%;
+}
+
+/* Industrial Boiler */
+#temporaryTable th:nth-child(16),
+#temporaryTable td:nth-child(16) {
+    width: 6%;
+}
+
+
+/* =========================================================
+   LIST INPUT FIELDS
+   ========================================================= */
+
+#temporaryTable .form-control {
+    width: 100% !important;
+    min-width: 0 !important;
+    max-width: 100% !important;
+    padding: 3px 3px !important;
+    margin: 0 !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    line-height: 1.2;
+    height: 28px;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   LIST COMPANY
+   ========================================================= */
+
+#temporaryTable td:nth-child(1) .form-control {
+    width: 100% !important;
+    text-align: left !important;
+    padding-left: 5px !important;
+    padding-right: 3px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   LIST DATE
+   ========================================================= */
+
+#temporaryTable td:nth-child(2) .form-control {
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    padding-left: 2px !important;
+    padding-right: 2px !important;
+}
+
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit,
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-fields-wrapper,
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-text,
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-month-field,
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-day-field,
+#temporaryTable td:nth-child(2) input[type="date"]::-webkit-datetime-edit-year-field {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   LIST TIME
+   ========================================================= */
+
+#temporaryTable td:nth-child(3) .form-control {
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+}
+
+
+/* =========================================================
+   LIST NUMERIC VALUES
+   ========================================================= */
+
+#temporaryTable td:nth-child(n+4):nth-child(-n+13) .form-control {
+    width: 100% !important;
+    min-width: 0 !important;
+    padding-left: 1px !important;
+    padding-right: 1px !important;
+    font-size: 13px !important;
+    font-weight: 600 !important;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   LIST TOTAL
+   ========================================================= */
+
+#temporaryTable td:nth-child(14) .form-control {
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 700 !important;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   LIST CAPTIVE GENERATOR
+   ========================================================= */
+
+#temporaryTable td:nth-child(15) .form-control {
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   LIST INDUSTRIAL BOILER
+   ========================================================= */
+
+#temporaryTable td:nth-child(16) .form-control {
+    width: 100% !important;
+    font-size: 13px !important;
+    font-weight: 500 !important;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   READONLY LIST FIELDS
+   ========================================================= */
+
+#temporaryTable .form-control[readonly] {
+    font-size: 13px !important;
+    font-weight: 500 !important;
+}
+
+
+/* =========================================================
+   LIST TOTAL DISPLAY
+   ========================================================= */
+
+#temporaryTable .row-total {
+    font-size: 13px !important;
+    font-weight: 600 !important;
+}
+
+
+/* =========================================================
+   NUMBER SPINNER
+   ========================================================= */
 
 input[type="number"]::-webkit-inner-spin-button,
 input[type="number"]::-webkit-outer-spin-button {
@@ -626,8 +556,8 @@ input[type="number"] {
 
 
 /* =========================================================
-                       REQUIRED
-                       ========================================================= */
+   REQUIRED
+   ========================================================= */
 
 .required-label::after {
     content: " *";
@@ -636,8 +566,8 @@ input[type="number"] {
 
 
 /* =========================================================
-                       TIME MESSAGE
-                       ========================================================= */
+   TIME MESSAGE
+   ========================================================= */
 
 .time-full-message {
     color: #dc3545;
@@ -647,8 +577,8 @@ input[type="number"] {
 
 
 /* =========================================================
-                       GRAND TOTAL
-                       ========================================================= */
+   GRAND TOTAL
+   ========================================================= */
 
 #grandTotal {
     font-weight: 700;
@@ -657,8 +587,8 @@ input[type="number"] {
 
 
 /* =========================================================
-                       SAVING OVERLAY
-                       ========================================================= */
+   SAVING OVERLAY
+   ========================================================= */
 
 .saving-overlay {
     display: none;
@@ -670,9 +600,9 @@ input[type="number"] {
     justify-content: center;
 }
 
-    .saving-overlay.show {
-        display: flex;
-    }
+.saving-overlay.show {
+    display: flex;
+}
 
 .saving-box {
     background: #fff;
@@ -684,8 +614,8 @@ input[type="number"] {
 
 
 /* =========================================================
-                       SIDEBAR COLLAPSE / EXPAND SUPPORT
-                       ========================================================= */
+   SIDEBAR COLLAPSE / EXPAND SUPPORT
+   ========================================================= */
 
 .energy-card,
 .energy-card .card-body,
@@ -694,96 +624,988 @@ input[type="number"] {
     min-width: 0;
 }
 
-    .energy-table td:last-child {
-        position: relative;
-        z-index: 2;
-    }
+.energy-table td:last-child {
+    position: relative;
+    z-index: 2;
+}
 
 
 /* =========================================================
-                       MOBILE
-                       ========================================================= */
+   =========================================================
+   MOBILE PORTRAIT
+   17 FIELDS → 9 + 8
+   =========================================================
+   ========================================================= */
 
-@@media (max-width: 768px) {
+@media screen and (max-width: 767.98px) and (orientation: portrait) {
+
+    /* ---------------------------------------------------------
+       CARD
+       --------------------------------------------------------- */
+
     .energy-card {
-        margin-left: 0;
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+        width: calc(100% - 20px) !important;
+        max-width: none;
+    }
+
+    .energy-card .card-body {
+        padding: 8px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       INPUT TABLE WRAPPER
+       --------------------------------------------------------- */
+
+    .energy-card .input-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TABLE
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        table-layout: fixed;
+
+        border-collapse: separate;
+        border-spacing: 5px 4px;
+    }
+
+
+    /* ---------------------------------------------------------
+       HIDE DESKTOP HEADER
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table thead {
+        display: none !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TABLE BODY
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody {
+        display: block;
         width: 100%;
     }
 
-        .energy-card .card-body {
-            padding: 0.5rem !important;
-        }
-    /* Main input table */
 
-    .energy-table th,
-    .energy-table td {
-        padding: 2px 1px !important;
+    /* ---------------------------------------------------------
+       INPUT ROW
+       
+       EXACTLY 2 ROWS
+
+       Row 1 = 9 fields
+       Row 2 = 8 fields
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr {
+        display: grid;
+
+        grid-template-columns:
+            repeat(9, minmax(0, 1fr));
+
+        /*
+         * Two rows only.
+         */
+        grid-template-rows:
+            66px 66px;
+
+        gap: 5px;
+
+        width: 100%;
     }
 
-    .energy-table .form-control {
-        font-size: 11px !important;
-        height: 25px;
+
+    /* ---------------------------------------------------------
+       CELL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 66px;
+
+        padding: 0 !important;
+
+        border: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+
+        background: transparent !important;
+        box-shadow: none !important;
+
+        box-sizing: border-box;
+
+        overflow: visible;
+    }
+
+
+    /* ---------------------------------------------------------
+       LABEL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td::before {
+        display: flex;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        width: 100%;
+
+        height: 26px;
+        min-height: 26px;
+
+        margin: 0 0 3px 0;
+        padding: 0 2px;
+
+        font-size: 9px;
+        line-height: 10px;
+
+        font-weight: 600;
+
+        color: #495057;
+
+        text-align: left;
+
+        white-space: normal;
+        overflow: hidden;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+       LABELS
+       ========================================================= */
+
+    .energy-card .energy-table tbody tr > td:nth-child(1)::before {
+        content: "Company";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(2)::before {
+        content: "Date";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(3)::before {
+        content: "Time";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(4)::before {
+        content: "REB";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(5)::before {
+        content: "GG-1";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(6)::before {
+        content: "GG-2";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(7)::before {
+        content: "GG-3";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(8)::before {
+        content: "GG-4";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(9)::before {
+        content: "DG-1";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(10)::before {
+        content: "DG-2";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(11)::before {
+        content: "DG-3";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(12)::before {
+        content: "DG-4";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(13)::before {
+        content: "Solar";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(14)::before {
+        content: "Total";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(15)::before {
+        content: "Captive Generator";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(16)::before {
+        content: "Industrial Boiler";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(17)::before {
+        content: "Add";
+        justify-content: center;
+        text-align: center;
+    }
+
+
+    /* ---------------------------------------------------------
+       ALL INPUTS
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr .form-control,
+    .energy-card .energy-table tbody tr .form-select {
+        display: block;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 34px;
+        min-height: 34px;
+        max-height: 34px;
+
+        margin: 0 !important;
+
+        padding: 4px 4px !important;
+
+        font-size: 10px !important;
+        line-height: 1.2;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ---------------------------------------------------------
+       COMPANY
+       --------------------------------------------------------- */
+
+    .energy-card #inputCompany {
+        width: 100% !important;
+
+        font-size: 10px !important;
+        font-weight: 600 !important;
+
+        text-align: left;
+
+        padding-left: 4px !important;
+        padding-right: 2px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       DATE
+       --------------------------------------------------------- */
+
+    .energy-card #inputDate {
+        width: 100% !important;
+
+        font-size: 10px !important;
+        font-weight: 500 !important;
+
         padding-left: 1px !important;
         padding-right: 1px !important;
     }
 
-    .energy-table input[type="number"] {
+    .energy-card #inputDate::-webkit-datetime-edit,
+    .energy-card #inputDate::-webkit-datetime-edit-fields-wrapper,
+    .energy-card #inputDate::-webkit-datetime-edit-text,
+    .energy-card #inputDate::-webkit-datetime-edit-month-field,
+    .energy-card #inputDate::-webkit-datetime-edit-day-field,
+    .energy-card #inputDate::-webkit-datetime-edit-year-field {
+        font-size: 10px !important;
+        font-weight: 500 !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME
+       --------------------------------------------------------- */
+
+    .energy-card .time-display {
+        width: 100% !important;
+
+        font-size: 10px !important;
+        font-weight: 600 !important;
+
+        text-align: center !important;
+
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       NUMBER INPUTS
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table input[type="number"] {
+        width: 100% !important;
+        min-width: 0 !important;
+
+        font-size: 10px !important;
+        font-weight: 600 !important;
+
+        text-align: center;
+
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TOTAL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table .total-display,
+    .energy-card .energy-table .row-total {
+        width: 100% !important;
+
+        font-size: 10px !important;
+        font-weight: 700 !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td:nth-child(17) .btn,
+    .energy-card #addRow {
+        width: 100% !important;
+
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 34px !important;
+        min-height: 34px !important;
+
+        padding: 4px !important;
+
+        margin: 0 !important;
+
+        font-size: 12px !important;
+
+        display: inline-flex !important;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .energy-card #addRow i {
         font-size: 12px !important;
     }
-    /* Input date */
 
-    #inputDate,
-    #inputDate::-webkit-datetime-edit,
-    #inputDate::-webkit-datetime-edit-fields-wrapper,
-    #inputDate::-webkit-datetime-edit-text,
-    #inputDate::-webkit-datetime-edit-month-field,
-    #inputDate::-webkit-datetime-edit-day-field,
-    #inputDate::-webkit-datetime-edit-year-field {
+
+    /* ---------------------------------------------------------
+       REMOVE TABLE LINES
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table,
+    .energy-card .energy-table tbody,
+    .energy-card .energy-table tbody tr,
+    .energy-card .energy-table tbody td {
+        border: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME MESSAGE
+       --------------------------------------------------------- */
+
+    .energy-card .time-full-message {
+        margin-top: 5px !important;
+
         font-size: 11px !important;
-    }
-    /* Add button */
-
-    #addRow {
-        width: 26px !important;
-        min-width: 26px !important;
-        max-width: 26px !important;
-        height: 26px !important;
-        min-height: 26px !important;
-        font-size: 12px !important;
+        line-height: 1.3;
     }
 
-        #addRow i {
-            font-size: 12px !important;
-        }
-    /* Consumption list */
 
-    #temporaryTable th,
-    #temporaryTable td {
-        padding: 2px 1px !important;
+    /* ---------------------------------------------------------
+       BUTTONS
+       --------------------------------------------------------- */
+
+    .energy-card form > .d-flex {
+        margin-top: 12px !important;
+        gap: 8px;
     }
-    /* List header stays same relative style */
+
+    .energy-card form > .d-flex .btn {
+        font-size: 12px;
+        padding: 6px 12px;
+    }
+
+
+    /* ---------------------------------------------------------
+       TEMPORARY TABLE
+       KEEP LIST AS NORMAL RESPONSIVE TABLE
+       --------------------------------------------------------- */
+
+    .energy-card .table-responsive {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #temporaryTable {
+        min-width: 1100px;
+        width: 1100px;
+    }
 
     #temporaryTable thead th {
         font-size: 11px !important;
-        font-weight: 600 !important;
+        line-height: 1.2;
     }
 
+    #temporaryTable th,
+    #temporaryTable td {
+        padding: 3px 2px !important;
+        font-size: 11px !important;
+        white-space: nowrap;
+    }
 
     #temporaryTable .form-control {
         font-size: 11px !important;
-        height: 25px;
+        height: 28px;
+    }
+}
+
+
+/* =========================================================
+   MOBILE LANDSCAPE
+   17 FIELDS → 9 + 8
+   ========================================================= */
+
+@media screen and (max-width: 991.98px) and (orientation: landscape) {
+
+    /* ---------------------------------------------------------
+       CARD
+       --------------------------------------------------------- */
+
+    .energy-card {
+        margin-left: 10px !important;
+        margin-right: 10px !important;
+
+        width: calc(100% - 20px) !important;
+        max-width: none;
+    }
+
+    .energy-card .card-body {
+        padding: 7px 10px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TABLE WRAPPER
+       --------------------------------------------------------- */
+
+    .energy-card .input-table-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: visible !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TABLE
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table {
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        table-layout: fixed;
+
+        border-collapse: separate;
+        border-spacing: 5px 3px;
+    }
+
+
+    /* Hide desktop header */
+
+    .energy-card .energy-table thead {
+        display: none !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       BODY
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody {
+        display: block;
+        width: 100%;
+    }
+
+
+    /* ---------------------------------------------------------
+       EXACTLY 2 ROWS
+       9 + 8
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr {
+        display: grid;
+
+        grid-template-columns:
+            repeat(9, minmax(0, 1fr));
+
+        grid-template-rows:
+            54px 54px;
+
+        gap: 5px;
+
+        width: 100%;
+    }
+
+
+    /* ---------------------------------------------------------
+       CELL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+
+        width: 100% !important;
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 54px;
+
+        padding: 0 !important;
+
+        border: 0 !important;
+
+        background: transparent !important;
+        box-shadow: none !important;
+
+        box-sizing: border-box;
+
+        overflow: visible;
+    }
+
+
+    /* ---------------------------------------------------------
+       LABEL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td::before {
+        display: flex;
+
+        align-items: flex-start;
+        justify-content: flex-start;
+
+        width: 100%;
+
+        height: 19px;
+        min-height: 19px;
+
+        margin: 0 0 2px 0;
+        padding: 0 2px;
+
+        font-size: 8px;
+        line-height: 9px;
+
+        font-weight: 600;
+
+        color: #495057;
+
+        white-space: normal;
+        overflow: hidden;
+
+        box-sizing: border-box;
+    }
+
+
+    /* =========================================================
+       LABELS
+       ========================================================= */
+
+    .energy-card .energy-table tbody tr > td:nth-child(1)::before {
+        content: "Company";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(2)::before {
+        content: "Date";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(3)::before {
+        content: "Time";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(4)::before {
+        content: "REB";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(5)::before {
+        content: "GG-1";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(6)::before {
+        content: "GG-2";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(7)::before {
+        content: "GG-3";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(8)::before {
+        content: "GG-4";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(9)::before {
+        content: "DG-1";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(10)::before {
+        content: "DG-2";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(11)::before {
+        content: "DG-3";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(12)::before {
+        content: "DG-4";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(13)::before {
+        content: "Solar";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(14)::before {
+        content: "Total";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(15)::before {
+        content: "Captive Generator";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(16)::before {
+        content: "Industrial Boiler";
+    }
+
+    .energy-card .energy-table tbody tr > td:nth-child(17)::before {
+        content: "Add";
+        justify-content: center;
+    }
+
+
+    /* ---------------------------------------------------------
+       INPUTS
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr .form-control,
+    .energy-card .energy-table tbody tr .form-select {
+        width: 100% !important;
+
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 31px;
+        min-height: 31px;
+        max-height: 31px;
+
+        margin: 0 !important;
+
+        padding: 3px 3px !important;
+
+        font-size: 9px !important;
+
+        line-height: 1.1;
+
+        box-sizing: border-box;
+    }
+
+
+    /* ---------------------------------------------------------
+       COMPANY
+       --------------------------------------------------------- */
+
+    .energy-card #inputCompany {
+        font-size: 9px !important;
+        font-weight: 600 !important;
+
+        text-align: left;
+
+        padding-left: 3px !important;
+        padding-right: 2px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       DATE
+       --------------------------------------------------------- */
+
+    .energy-card #inputDate {
+        font-size: 9px !important;
         padding-left: 1px !important;
         padding-right: 1px !important;
     }
 
-    #temporaryTable td:nth-child(1) .form-control,
-    #temporaryTable td:nth-child(2) .form-control,
-    #temporaryTable td:nth-child(3) .form-control {
-        font-size: 11px !important;
+    .energy-card #inputDate::-webkit-datetime-edit,
+    .energy-card #inputDate::-webkit-datetime-edit-fields-wrapper,
+    .energy-card #inputDate::-webkit-datetime-edit-text,
+    .energy-card #inputDate::-webkit-datetime-edit-month-field,
+    .energy-card #inputDate::-webkit-datetime-edit-day-field,
+    .energy-card #inputDate::-webkit-datetime-edit-year-field {
+        font-size: 9px !important;
     }
 
-    #temporaryTable td:nth-child(n+4):nth-child(-n+13) .form-control {
-        font-size: 11px !important;
+
+    /* ---------------------------------------------------------
+       TIME
+       --------------------------------------------------------- */
+
+    .energy-card .time-display {
+        font-size: 9px !important;
+        font-weight: 600 !important;
+        text-align: center !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       NUMBER
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table input[type="number"] {
+        width: 100% !important;
+        min-width: 0 !important;
+
+        font-size: 9px !important;
+        font-weight: 600 !important;
+
+        text-align: center;
+
+        padding-left: 1px !important;
+        padding-right: 1px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TOTAL
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table .total-display,
+    .energy-card .energy-table .row-total {
+        font-size: 9px !important;
+        font-weight: 700 !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       ADD BUTTON
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table tbody tr > td:nth-child(17) .btn,
+    .energy-card #addRow {
+        width: 100% !important;
+
+        min-width: 0 !important;
+        max-width: 100% !important;
+
+        height: 31px !important;
+        min-height: 31px !important;
+
+        padding: 3px !important;
+
+        font-size: 10px !important;
+
+        display: inline-flex !important;
+
+        align-items: center;
+        justify-content: center;
+    }
+
+    .energy-card #addRow i {
+        font-size: 10px !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       REMOVE TABLE LINES
+       --------------------------------------------------------- */
+
+    .energy-card .energy-table,
+    .energy-card .energy-table tbody,
+    .energy-card .energy-table tbody tr,
+    .energy-card .energy-table tbody td {
+        border: 0 !important;
+        border-top: 0 !important;
+        border-bottom: 0 !important;
+
+        box-shadow: none !important;
+    }
+
+
+    /* ---------------------------------------------------------
+       TIME MESSAGE
+       --------------------------------------------------------- */
+
+    .energy-card .time-full-message {
+        margin-top: 4px !important;
+
+        font-size: 10px !important;
+        line-height: 1.2;
+    }
+
+
+    /* ---------------------------------------------------------
+       BUTTONS
+       --------------------------------------------------------- */
+
+    .energy-card form > .d-flex {
+        margin-top: 10px !important;
+        gap: 8px;
+    }
+
+    .energy-card form > .d-flex .btn {
+        font-size: 11px;
+        padding: 5px 12px;
+    }
+
+
+    /* ---------------------------------------------------------
+       TEMPORARY TABLE
+       --------------------------------------------------------- */
+
+    .energy-card .table-responsive {
+        width: 100%;
+        max-width: 100%;
+
+        overflow-x: auto;
+        overflow-y: hidden;
+
+        -webkit-overflow-scrolling: touch;
+    }
+
+    #temporaryTable {
+        min-width: 1100px;
+        width: 1100px;
+    }
+
+    #temporaryTable thead th {
+        font-size: 10px !important;
+        line-height: 1.15;
+    }
+
+    #temporaryTable th,
+    #temporaryTable td {
+        padding: 3px 2px !important;
+        font-size: 10px !important;
+        white-space: nowrap;
+    }
+
+    #temporaryTable .form-control {
+        font-size: 10px !important;
+        height: 27px;
     }
 }
 
+
+/* =========================================================
+   VERY SMALL PORTRAIT DEVICES
+   ========================================================= */
+
+@media screen and (max-width: 400px) and (orientation: portrait) {
+
+    .energy-card {
+        margin-left: 7px !important;
+        margin-right: 7px !important;
+        width: calc(100% - 14px) !important;
+    }
+
+    .energy-card .card-body {
+        padding: 6px !important;
+    }
+
+    .energy-card .energy-table {
+        border-spacing: 3px 4px;
+    }
+
+    .energy-card .energy-table tbody tr {
+        /*
+         * Still exactly 2 rows:
+         * 9 fields + 8 fields
+         */
+        grid-template-columns:
+            repeat(9, minmax(0, 1fr));
+
+        grid-template-rows:
+            62px 62px;
+
+        gap: 3px;
+    }
+
+    .energy-card .energy-table tbody tr > td {
+        height: 62px;
+    }
+
+    .energy-card .energy-table tbody tr > td::before {
+        font-size: 8px;
+        line-height: 9px;
+
+        height: 23px;
+        min-height: 23px;
+    }
+
+    .energy-card .energy-table tbody tr .form-control,
+    .energy-card .energy-table tbody tr .form-select {
+        height: 32px;
+        min-height: 32px;
+        max-height: 32px;
+
+        font-size: 9px !important;
+
+        padding: 3px !important;
+    }
+
+    .energy-card #addRow {
+        height: 32px !important;
+        min-height: 32px !important;
+    }
+}
+
+
+/* =========================================================
+   TOUCH DEVICE
+   ========================================================= */
+
+@media (hover: none) and (pointer: coarse) {
+
+    .energy-card .energy-table .form-control,
+    .energy-card .energy-table .form-select {
+        min-height: 34px;
+    }
+
+    .energy-card #addRow {
+        touch-action: manipulation;
+    }
+}

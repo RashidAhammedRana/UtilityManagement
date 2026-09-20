@@ -4,6 +4,24 @@
     ViewData["Title"] = "Create Utility Interruption Reading";
 }
 
+<style>
+    /* =========================================================
+       CARD HEADER - ROUNDED / CURVED
+       ========================================================= */
+
+    .card .card-header {
+        border-radius: 10px 10px 0 0 !important;
+        overflow: hidden;
+    }
+
+    /* Optional: slightly more rounded */
+    .card {
+        border-radius: 10px !important;
+        overflow: hidden;
+    }
+
+</style>
+
 <div class="container-fluid mt-4 px-4">
 
     <div class="card shadow-lg border-0">
@@ -463,7 +481,7 @@
                         mt-4">
 
                 <a asp-action="ElectricityInterruptionInfoList"
-                   class="btn btn-outline-secondary">
+                   class="btn btn-secondary">
 
                     ← Back
 

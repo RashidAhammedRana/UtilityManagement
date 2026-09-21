@@ -2281,7 +2281,7 @@
             // 
             this.xrLabel123.Borders = ((DevExpress.XtraPrinting.BorderSide)((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Right)));
             this.xrLabel123.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[FuelConsumption].[AVG_LPG_TOTAL_TK]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "ISNULL([FuelConsumption].[AVG_LPG_TOTAL_TK], 0)\n")});
             this.xrLabel123.Font = new DevExpress.Drawing.DXFont("Cambria", 16F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel123.ForeColor = System.Drawing.Color.Black;
             this.xrLabel123.LocationFloat = new DevExpress.Utils.PointFloat(378.1793F, 1368.251F);

@@ -83,6 +83,10 @@
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
+            this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
+            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.xrLine66 = new DevExpress.XtraReports.UI.XRLine();
             this.xrLabel160 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel161 = new DevExpress.XtraReports.UI.XRLabel();
@@ -343,14 +347,10 @@
             this.xrLabel142 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrLabel134 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport1 = new DevExpress.XtraReports.UI.XRSubreport();
-            this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
-            this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
-            this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
-            this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
             // sqlDataSource1
@@ -779,6 +779,50 @@
             this.label1});
             this.ReportHeader.HeightF = 1550.696F;
             this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrTable3
+            // 
+            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(519.2909F, 0F);
+            this.xrTable3.Name = "xrTable3";
+            this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
+            this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
+            this.xrTableRow3});
+            this.xrTable3.SizeF = new System.Drawing.SizeF(100F, 20F);
+            // 
+            // xrTableRow3
+            // 
+            this.xrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
+            this.xrTableCell2});
+            this.xrTableRow3.Name = "xrTableRow3";
+            this.xrTableRow3.Weight = 1D;
+            // 
+            // xrTableCell2
+            // 
+            this.xrTableCell2.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
+            this.xrTableCell2.Multiline = true;
+            this.xrTableCell2.Name = "xrTableCell2";
+            this.xrTableCell2.StylePriority.UseFont = false;
+            this.xrTableCell2.StylePriority.UseForeColor = false;
+            this.xrTableCell2.StylePriority.UseTextAlignment = false;
+            this.xrTableCell2.Text = "Print Date & Time :";
+            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell2.Weight = 1.1162793866617993D;
+            // 
+            // pageInfo1
+            // 
+            this.pageInfo1.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
+            this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(619.2492F, 0F);
+            this.pageInfo1.Name = "pageInfo1";
+            this.pageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
+            this.pageInfo1.SizeF = new System.Drawing.SizeF(189.4175F, 20F);
+            this.pageInfo1.StyleName = "PageInfo";
+            this.pageInfo1.StylePriority.UseFont = false;
+            this.pageInfo1.StylePriority.UsePadding = false;
+            this.pageInfo1.StylePriority.UseTextAlignment = false;
+            this.pageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.pageInfo1.TextFormatString = "{0:dddd, MMMM d, yyyy h:mm tt}";
             // 
             // xrLine66
             // 
@@ -2051,7 +2095,7 @@
             this.xrLabel38.StylePriority.UsePadding = false;
             this.xrLabel38.StylePriority.UseTextAlignment = false;
             this.xrLabel38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel38.TextFormatString = "{0:#,#}";
+            this.xrLabel38.TextFormatString = "{0:N0}";
             // 
             // xrTable1
             // 
@@ -2296,7 +2340,7 @@
             this.xrLabel123.StylePriority.UseTextAlignment = false;
             this.xrLabel123.Text = "[FuelConsumption.LPG_TOTAL_TK!#.00]";
             this.xrLabel123.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel123.TextFormatString = "{0:#,#}";
+            this.xrLabel123.TextFormatString = "{0:N0}";
             // 
             // xrLabel132
             // 
@@ -2336,7 +2380,7 @@
             this.xrLabel133.StylePriority.UseTextAlignment = false;
             this.xrLabel133.Text = "[FuelConsumption.LPG_TOTAL]";
             this.xrLabel133.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel133.TextFormatString = "{0:#,#}";
+            this.xrLabel133.TextFormatString = "{0:N0}";
             // 
             // xrLabel130
             // 
@@ -2375,7 +2419,7 @@
             this.xrLabel131.StylePriority.UseTextAlignment = false;
             this.xrLabel131.Text = "[FuelConsumption.DIESEL_FL]";
             this.xrLabel131.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel131.TextFormatString = "{0:#,#}";
+            this.xrLabel131.TextFormatString = "{0:N0}";
             // 
             // xrLabel128
             // 
@@ -2415,7 +2459,7 @@
             this.xrLabel129.StylePriority.UseTextAlignment = false;
             this.xrLabel129.Text = "[FuelConsumption.CNG_THERMAL_HEATER]";
             this.xrLabel129.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel129.TextFormatString = "{0:#,#}";
+            this.xrLabel129.TextFormatString = "{0:N0}";
             // 
             // xrLabel51
             // 
@@ -2455,7 +2499,7 @@
             this.xrLabel52.StylePriority.UseTextAlignment = false;
             this.xrLabel52.Text = "[FuelConsumption.NG_THERMAL_HEATER]";
             this.xrLabel52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel52.TextFormatString = "{0:#,#}";
+            this.xrLabel52.TextFormatString = "{0:N0}";
             // 
             // xrLabel80
             // 
@@ -2474,7 +2518,7 @@
             this.xrLabel80.StylePriority.UseForeColor = false;
             this.xrLabel80.StylePriority.UseTextAlignment = false;
             this.xrLabel80.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel80.TextFormatString = "{0:#,#}";
+            this.xrLabel80.TextFormatString = "{0:N0}";
             // 
             // xrLabel78
             // 
@@ -2493,7 +2537,7 @@
             this.xrLabel78.StylePriority.UseForeColor = false;
             this.xrLabel78.StylePriority.UseTextAlignment = false;
             this.xrLabel78.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel78.TextFormatString = "{0:#,#}";
+            this.xrLabel78.TextFormatString = "{0:N0}";
             // 
             // xrLabel76
             // 
@@ -2512,7 +2556,7 @@
             this.xrLabel76.StylePriority.UseForeColor = false;
             this.xrLabel76.StylePriority.UseTextAlignment = false;
             this.xrLabel76.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel76.TextFormatString = "{0:#,#}";
+            this.xrLabel76.TextFormatString = "{0:N0}";
             // 
             // xrLabel74
             // 
@@ -2531,7 +2575,7 @@
             this.xrLabel74.StylePriority.UseForeColor = false;
             this.xrLabel74.StylePriority.UseTextAlignment = false;
             this.xrLabel74.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel74.TextFormatString = "{0:#,#}";
+            this.xrLabel74.TextFormatString = "{0:N0}";
             // 
             // xrLabel83
             // 
@@ -2584,7 +2628,7 @@
             this.xrLabel90.StylePriority.UseTextAlignment = false;
             this.xrLabel90.Text = "[FuelConsumption.NG_DFMA]";
             this.xrLabel90.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel90.TextFormatString = "{0:#,#}";
+            this.xrLabel90.TextFormatString = "{0:N0}";
             // 
             // xrLabel89
             // 
@@ -2624,7 +2668,7 @@
             this.xrLabel88.StylePriority.UseTextAlignment = false;
             this.xrLabel88.Text = "[FuelConsumption.NG_BOILER]";
             this.xrLabel88.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel88.TextFormatString = "{0:#,#}";
+            this.xrLabel88.TextFormatString = "{0:N0}";
             // 
             // xrLabel87
             // 
@@ -2664,7 +2708,7 @@
             this.xrLabel86.StylePriority.UseTextAlignment = false;
             this.xrLabel86.Text = "[FuelConsumption.NG_GENERATOR]";
             this.xrLabel86.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel86.TextFormatString = "{0:#,#}";
+            this.xrLabel86.TextFormatString = "{0:N0}";
             // 
             // xrLabel85
             // 
@@ -2704,7 +2748,7 @@
             this.xrLabel92.StylePriority.UseTextAlignment = false;
             this.xrLabel92.Text = "[FuelConsumption.NG_TOTAL]";
             this.xrLabel92.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel92.TextFormatString = "{0:#,#}";
+            this.xrLabel92.TextFormatString = "{0:N0}";
             // 
             // xrLabel91
             // 
@@ -2763,7 +2807,7 @@
             this.xrLabel100.StylePriority.UseTextAlignment = false;
             this.xrLabel100.Text = "[FuelConsumption.CNG_TOTAL]";
             this.xrLabel100.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel100.TextFormatString = "{0:#,#}";
+            this.xrLabel100.TextFormatString = "{0:N0}";
             // 
             // xrLabel99
             // 
@@ -2803,7 +2847,7 @@
             this.xrLabel98.StylePriority.UseTextAlignment = false;
             this.xrLabel98.Text = "[FuelConsumption.CNG_GENERATOR]";
             this.xrLabel98.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel98.TextFormatString = "{0:#,#}";
+            this.xrLabel98.TextFormatString = "{0:N0}";
             // 
             // xrLabel97
             // 
@@ -2843,7 +2887,7 @@
             this.xrLabel96.StylePriority.UseTextAlignment = false;
             this.xrLabel96.Text = "[FuelConsumption.CNG_BOILER]";
             this.xrLabel96.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel96.TextFormatString = "{0:#,#}";
+            this.xrLabel96.TextFormatString = "{0:N0}";
             // 
             // xrLabel95
             // 
@@ -2883,7 +2927,7 @@
             this.xrLabel94.StylePriority.UseTextAlignment = false;
             this.xrLabel94.Text = "[FuelConsumption.CNG_DFMA]";
             this.xrLabel94.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel94.TextFormatString = "{0:#,#}";
+            this.xrLabel94.TextFormatString = "{0:N0}";
             // 
             // xrLabel93
             // 
@@ -2929,7 +2973,7 @@
             this.xrLabel109.StylePriority.UseTextAlignment = false;
             this.xrLabel109.Text = "[FuelConsumption.DIESEL_THERMAL_HEATER]";
             this.xrLabel109.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel109.TextFormatString = "{0:#,#}";
+            this.xrLabel109.TextFormatString = "{0:N0}";
             // 
             // xrLabel108
             // 
@@ -2968,7 +3012,7 @@
             this.xrLabel107.StylePriority.UseTextAlignment = false;
             this.xrLabel107.Text = "[FuelConsumption.DIESEL_BOILER]";
             this.xrLabel107.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel107.TextFormatString = "{0:#,#}";
+            this.xrLabel107.TextFormatString = "{0:N0}";
             // 
             // xrLabel106
             // 
@@ -3006,7 +3050,7 @@
             this.xrLabel105.StylePriority.UseForeColor = false;
             this.xrLabel105.StylePriority.UseTextAlignment = false;
             this.xrLabel105.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel105.TextFormatString = "{0:#,#}";
+            this.xrLabel105.TextFormatString = "{0:N0}";
             // 
             // xrLabel104
             // 
@@ -3045,7 +3089,7 @@
             this.xrLabel103.StylePriority.UseTextAlignment = false;
             this.xrLabel103.Text = "[FuelConsumption.DIESEL_TOTAL]";
             this.xrLabel103.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel103.TextFormatString = "{0:#,#}";
+            this.xrLabel103.TextFormatString = "{0:N0}";
             // 
             // xrLabel102
             // 
@@ -3103,7 +3147,7 @@
             this.xrLabel116.StylePriority.UsePadding = false;
             this.xrLabel116.StylePriority.UseTextAlignment = false;
             this.xrLabel116.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel116.TextFormatString = "{0:#,#}";
+            this.xrLabel116.TextFormatString = "{0:N0}";
             // 
             // xrLabel111
             // 
@@ -3137,7 +3181,7 @@
             this.xrLabel113.StylePriority.UseTextAlignment = false;
             this.xrLabel113.Text = "[FuelConsumption.NG_TOTAL_TK]";
             this.xrLabel113.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel113.TextFormatString = "{0:#,#}";
+            this.xrLabel113.TextFormatString = "{0:N0}";
             // 
             // xrLabel112
             // 
@@ -3177,7 +3221,7 @@
             this.xrLabel115.StylePriority.UseTextAlignment = false;
             this.xrLabel115.Text = "[FuelConsumption.CNG_TOTAL_TK]";
             this.xrLabel115.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel115.TextFormatString = "{0:#,#}";
+            this.xrLabel115.TextFormatString = "{0:N0}";
             // 
             // xrLabel114
             // 
@@ -3216,7 +3260,7 @@
             this.xrLabel119.StylePriority.UseTextAlignment = false;
             this.xrLabel119.Text = "[FuelConsumption.DIESEL_TOTAL_TK]";
             this.xrLabel119.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel119.TextFormatString = "{0:#,#}";
+            this.xrLabel119.TextFormatString = "{0:N0}";
             // 
             // xrLabel118
             // 
@@ -3255,7 +3299,7 @@
             this.xrLabel121.StylePriority.UsePadding = false;
             this.xrLabel121.StylePriority.UseTextAlignment = false;
             this.xrLabel121.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel121.TextFormatString = "{0:#,#}";
+            this.xrLabel121.TextFormatString = "{0:N0}";
             // 
             // xrLabel120
             // 
@@ -3317,7 +3361,7 @@
             this.xrLabel126.StylePriority.UsePadding = false;
             this.xrLabel126.StylePriority.UseTextAlignment = false;
             this.xrLabel126.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel126.TextFormatString = "{0:#,#}";
+            this.xrLabel126.TextFormatString = "{0:N0}";
             // 
             // xrLabel125
             // 
@@ -3384,7 +3428,7 @@
             this.xrLabel3.StylePriority.UsePadding = false;
             this.xrLabel3.StylePriority.UseTextAlignment = false;
             this.xrLabel3.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel3.TextFormatString = "{0:#,#}";
+            this.xrLabel3.TextFormatString = "{0:N0}";
             // 
             // xrLabel4
             // 
@@ -3433,7 +3477,7 @@
             this.xrLabel7.StylePriority.UseTextAlignment = false;
             this.xrLabel7.Text = "[Query.DIESEL_GENERATOR]";
             this.xrLabel7.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel7.TextFormatString = "{0:#,#}";
+            this.xrLabel7.TextFormatString = "{0:N0}";
             // 
             // xrLabel6
             // 
@@ -3494,7 +3538,7 @@
             this.xrLabel10.StylePriority.UseTextAlignment = false;
             this.xrLabel10.Text = "[Query.REB]";
             this.xrLabel10.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel10.TextFormatString = "{0:#,#}";
+            this.xrLabel10.TextFormatString = "{0:N0}";
             // 
             // xrLabel9
             // 
@@ -3576,7 +3620,7 @@
             this.xrLabel12.StylePriority.UseTextAlignment = false;
             this.xrLabel12.Text = "[Query.SOLAR_GENERATION]";
             this.xrLabel12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel12.TextFormatString = "{0:#,#}";
+            this.xrLabel12.TextFormatString = "{0:N0}";
             // 
             // xrLabel11
             // 
@@ -3631,7 +3675,7 @@
             this.xrLabel15.StylePriority.UseTextAlignment = false;
             this.xrLabel15.Text = "[Query.TOTAL_POWER_GENERATION]";
             this.xrLabel15.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel15.TextFormatString = "{0:#,#}";
+            this.xrLabel15.TextFormatString = "{0:N0}";
             // 
             // xrLabel14
             // 
@@ -3696,7 +3740,7 @@
             this.xrLabel30.StylePriority.UseForeColor = false;
             this.xrLabel30.StylePriority.UseTextAlignment = false;
             this.xrLabel30.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel30.TextFormatString = "{0:#,#}";
+            this.xrLabel30.TextFormatString = "{0:N0}";
             // 
             // xrLabel29
             // 
@@ -3757,7 +3801,7 @@
             this.xrLabel27.StylePriority.UseTextAlignment = false;
             this.xrLabel27.Text = "[Query_2.EGB_Boiler]";
             this.xrLabel27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel27.TextFormatString = "{0:#,#}";
+            this.xrLabel27.TextFormatString = "{0:N0}";
             // 
             // xrLabel26
             // 
@@ -3856,7 +3900,7 @@
             this.xrLabel22.StylePriority.UseTextAlignment = false;
             this.xrLabel22.Text = "[Query_2.Boiler_2]";
             this.xrLabel22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel22.TextFormatString = "{0:#,#}";
+            this.xrLabel22.TextFormatString = "{0:N0}";
             // 
             // xrLabel21
             // 
@@ -3918,7 +3962,7 @@
             this.xrLabel19.StylePriority.UseTextAlignment = false;
             this.xrLabel19.Text = "[Query_2.Steam_Boiler_1]";
             this.xrLabel19.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel19.TextFormatString = "{0:#,#}";
+            this.xrLabel19.TextFormatString = "{0:N0}";
             // 
             // xrLabel18
             // 
@@ -3957,7 +4001,7 @@
             this.xrLabel32.StylePriority.UsePadding = false;
             this.xrLabel32.StylePriority.UseTextAlignment = false;
             this.xrLabel32.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel32.TextFormatString = "{0:#,#}";
+            this.xrLabel32.TextFormatString = "{0:N0}";
             // 
             // xrLabel33
             // 
@@ -3990,7 +4034,7 @@
             this.xrLabel44.StylePriority.UsePadding = false;
             this.xrLabel44.StylePriority.UseTextAlignment = false;
             this.xrLabel44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel44.TextFormatString = "{0:#,#}";
+            this.xrLabel44.TextFormatString = "{0:N0}";
             // 
             // xrLabel43
             // 
@@ -4029,7 +4073,7 @@
             this.xrLabel41.StylePriority.UsePadding = false;
             this.xrLabel41.StylePriority.UseTextAlignment = false;
             this.xrLabel41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel41.TextFormatString = "{0:#,#}";
+            this.xrLabel41.TextFormatString = "{0:N0}";
             // 
             // xrLabel40
             // 
@@ -4068,7 +4112,7 @@
             this.xrLabel35.StylePriority.UsePadding = false;
             this.xrLabel35.StylePriority.UseTextAlignment = false;
             this.xrLabel35.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel35.TextFormatString = "{0:#,#}";
+            this.xrLabel35.TextFormatString = "{0:N0}";
             // 
             // xrLabel34
             // 
@@ -4107,7 +4151,7 @@
             this.xrLabel47.StylePriority.UsePadding = false;
             this.xrLabel47.StylePriority.UseTextAlignment = false;
             this.xrLabel47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel47.TextFormatString = "{0:#,#}";
+            this.xrLabel47.TextFormatString = "{0:N0}";
             // 
             // xrLabel46
             // 
@@ -4325,7 +4369,7 @@
             this.xrLabel63.StylePriority.UseForeColor = false;
             this.xrLabel63.StylePriority.UseTextAlignment = false;
             this.xrLabel63.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel63.TextFormatString = "{0:#,#}";
+            this.xrLabel63.TextFormatString = "{0:N0}";
             // 
             // xrLabel62
             // 
@@ -4363,7 +4407,7 @@
             this.xrLabel61.StylePriority.UseForeColor = false;
             this.xrLabel61.StylePriority.UseTextAlignment = false;
             this.xrLabel61.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel61.TextFormatString = "{0:#,#}";
+            this.xrLabel61.TextFormatString = "{0:N0}";
             // 
             // xrLabel60
             // 
@@ -4401,7 +4445,7 @@
             this.xrLabel59.StylePriority.UseForeColor = false;
             this.xrLabel59.StylePriority.UseTextAlignment = false;
             this.xrLabel59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel59.TextFormatString = "{0:#,#}";
+            this.xrLabel59.TextFormatString = "{0:N0}";
             // 
             // xrLabel58
             // 
@@ -4439,7 +4483,7 @@
             this.xrLabel57.StylePriority.UseForeColor = false;
             this.xrLabel57.StylePriority.UseTextAlignment = false;
             this.xrLabel57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel57.TextFormatString = "{0:#,#}";
+            this.xrLabel57.TextFormatString = "{0:N0}";
             // 
             // xrLabel56
             // 
@@ -4496,7 +4540,7 @@
             this.xrLabel73.StylePriority.UseForeColor = false;
             this.xrLabel73.StylePriority.UseTextAlignment = false;
             this.xrLabel73.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel73.TextFormatString = "{0:#,#}";
+            this.xrLabel73.TextFormatString = "{0:N0}";
             // 
             // xrLabel72
             // 
@@ -4534,7 +4578,7 @@
             this.xrLabel71.StylePriority.UseForeColor = false;
             this.xrLabel71.StylePriority.UseTextAlignment = false;
             this.xrLabel71.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel71.TextFormatString = "{0:#,#}";
+            this.xrLabel71.TextFormatString = "{0:N0}";
             // 
             // xrLabel70
             // 
@@ -4572,7 +4616,7 @@
             this.xrLabel69.StylePriority.UseForeColor = false;
             this.xrLabel69.StylePriority.UseTextAlignment = false;
             this.xrLabel69.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel69.TextFormatString = "{0:#,#}";
+            this.xrLabel69.TextFormatString = "{0:N0}";
             // 
             // xrLabel68
             // 
@@ -4610,7 +4654,7 @@
             this.xrLabel67.StylePriority.UseForeColor = false;
             this.xrLabel67.StylePriority.UseTextAlignment = false;
             this.xrLabel67.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrLabel67.TextFormatString = "{0:#,#}";
+            this.xrLabel67.TextFormatString = "{0:N0}";
             // 
             // xrLabel66
             // 
@@ -5078,50 +5122,6 @@
             this.xrSubreport1.ReportSource = new UtilityManagement.Reports.rpt24HourLoadAndGenerationLog();
             this.xrSubreport1.SizeF = new System.Drawing.SizeF(809.044F, 22.99999F);
             // 
-            // pageInfo1
-            // 
-            this.pageInfo1.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
-            this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(619.2492F, 0F);
-            this.pageInfo1.Name = "pageInfo1";
-            this.pageInfo1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.pageInfo1.SizeF = new System.Drawing.SizeF(189.4175F, 20F);
-            this.pageInfo1.StyleName = "PageInfo";
-            this.pageInfo1.StylePriority.UseFont = false;
-            this.pageInfo1.StylePriority.UsePadding = false;
-            this.pageInfo1.StylePriority.UseTextAlignment = false;
-            this.pageInfo1.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.pageInfo1.TextFormatString = "{0:dddd, MMMM d, yyyy h:mm tt}";
-            // 
-            // xrTable3
-            // 
-            this.xrTable3.LocationFloat = new DevExpress.Utils.PointFloat(519.2909F, 0F);
-            this.xrTable3.Name = "xrTable3";
-            this.xrTable3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 96F);
-            this.xrTable3.Rows.AddRange(new DevExpress.XtraReports.UI.XRTableRow[] {
-            this.xrTableRow3});
-            this.xrTable3.SizeF = new System.Drawing.SizeF(100F, 20F);
-            // 
-            // xrTableRow3
-            // 
-            this.xrTableRow3.Cells.AddRange(new DevExpress.XtraReports.UI.XRTableCell[] {
-            this.xrTableCell2});
-            this.xrTableRow3.Name = "xrTableRow3";
-            this.xrTableRow3.Weight = 1D;
-            // 
-            // xrTableCell2
-            // 
-            this.xrTableCell2.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrTableCell2.ForeColor = System.Drawing.Color.FromArgb(((int)(((byte)(75)))), ((int)(((byte)(75)))), ((int)(((byte)(75)))));
-            this.xrTableCell2.Multiline = true;
-            this.xrTableCell2.Name = "xrTableCell2";
-            this.xrTableCell2.StylePriority.UseFont = false;
-            this.xrTableCell2.StylePriority.UseForeColor = false;
-            this.xrTableCell2.StylePriority.UseTextAlignment = false;
-            this.xrTableCell2.Text = "Print Date & Time :";
-            this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell2.Weight = 1.1162793866617993D;
-            // 
             // rptDailyEnergyPowerFuelAvg
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -5154,10 +5154,10 @@
             this.DetailData3_Odd,
             this.PageInfo});
             this.Version = "23.2";
+            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).EndInit();
-            ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this)).EndInit();
 
         }

@@ -1041,7 +1041,7 @@
                          DATE
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1072,7 +1072,7 @@
                          EQUIPMENT
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1109,7 +1109,7 @@
                          ELECTRICITY GENERATION
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1139,7 +1139,7 @@
                          RUNNING HOUR
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1169,7 +1169,7 @@
                          BDT/KWH
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1199,7 +1199,7 @@
                          OTHER CONSUMABLE
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1229,7 +1229,7 @@
                          TROUBLESHOOTING
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1259,7 +1259,7 @@
                          SERVICE CHARGE
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1289,7 +1289,7 @@
                          REPAIR CHARGE
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1319,7 +1319,7 @@
                          TOTAL
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1350,7 +1350,7 @@
                          TK/KWH
                     ================================================== -->
 
-                    <div class="col-12 col-md-6 reb-field-col">
+                    <div class="col-lg-3 col-md-6 col-sm-12">
 
                         <div class="reb-field">
 
@@ -1426,164 +1426,93 @@
 
 <script>
 
-    document.addEventListener(
-        "DOMContentLoaded",
-        function () {
+    document.addEventListener("DOMContentLoaded", function () {
 
-            const elecGen =
-                document.getElementById("ElecGen");
+        const elecGen = document.getElementById("ElecGen");
+        const bdtKwh = document.getElementById("BdtKwh");
+        const otConsumable = document.getElementById("OtConsumable");
+        const troubleshoot = document.getElementById("Troubleshoot");
+        const serviceCharge = document.getElementById("ServiceCharge");
+        const repairCharge = document.getElementById("RepairCharge");
 
-            const bdtKwh =
-                document.getElementById("BdtKwh");
-
-            const otConsumable =
-                document.getElementById("OtConsumable");
-
-            const troubleshoot =
-                document.getElementById("Troubleshoot");
-
-            const serviceCharge =
-                document.getElementById("ServiceCharge");
-
-            const repairCharge =
-                document.getElementById("RepairCharge");
+        const total = document.getElementById("Total");
+        const tkKwh = document.getElementById("TkKwh");
 
 
-            const total =
-                document.getElementById("Total");
+        /* =====================================================
+           CALCULATE VALUES
+        ====================================================== */
 
-            const tkKwh =
-                document.getElementById("TkKwh");
+        function calculateValues() {
 
-
-            /* =====================================================
-               CALCULATE VALUES
-            ====================================================== */
-
-            function calculateValues() {
-
-                let totalValue =
-
-                    (parseFloat(
-                        bdtKwh?.value
-                    ) || 0)
-
-                    +
-
-                    (parseFloat(
-                        otConsumable?.value
-                    ) || 0)
-
-                    +
-
-                    (parseFloat(
-                        troubleshoot?.value
-                    ) || 0)
-
-                    +
-
-                    (parseFloat(
-                        serviceCharge?.value
-                    ) || 0)
-
-                    +
-
-                    (parseFloat(
-                        repairCharge?.value
-                    ) || 0);
+            let totalValue =
+                (parseFloat(bdtKwh?.value) || 0) +
+                (parseFloat(otConsumable?.value) || 0) +
+                (parseFloat(troubleshoot?.value) || 0) +
+                (parseFloat(serviceCharge?.value) || 0) +
+                (parseFloat(repairCharge?.value) || 0);
 
 
-                /* =================================================
-                   TOTAL
-                ================================================== */
+            /* =================================================
+               TOTAL
+            ================================================== */
 
-                if (total) {
-
-                    total.value =
-                        totalValue.toFixed(2);
-
-                }
-
-
-                /* =================================================
-                   GENERATION
-                ================================================== */
-
-                let generation =
-                    parseFloat(
-                        elecGen?.value
-                    ) || 0;
-
-
-                /* =================================================
-                   TK/KWH
-                ================================================== */
-
-                if (tkKwh) {
-
-                    tkKwh.value =
-                        generation > 0
-
-                            ? (
-                                totalValue /
-                                generation
-                            ).toFixed(2)
-
-                            : "0.00";
-
-                }
-
+            if (total) {
+                total.value = totalValue.toFixed(2);
             }
 
 
-            /* =====================================================
-               INPUT EVENTS
-            ====================================================== */
+            /* =================================================
+               GENERATION
+            ================================================== */
 
-            [
-
-                elecGen,
-
-                bdtKwh,
-
-                otConsumable,
-
-                troubleshoot,
-
-                serviceCharge,
-
-                repairCharge
-
-            ].forEach(function (element) {
-
-                if (!element) {
-                    return;
-                }
+            let generation =
+                parseFloat(elecGen?.value) || 0;
 
 
-                element.addEventListener(
-                    "input",
-                    calculateValues
-                );
+            /* =================================================
+               TK/KWH
+            ================================================== */
+
+            if (tkKwh) {
+
+                tkKwh.value =
+                    generation > 0
+                        ? (totalValue / generation).toFixed(2)
+                        : "0.00";
+
+            }
+        }
 
 
-                element.addEventListener(
-                    "change",
-                    calculateValues
-                );
+        /* =====================================================
+           CHANGE EVENTS ONLY
+        ====================================================== */
 
-            });
+        [
+            elecGen,
+            bdtKwh,
+            otConsumable,
+            troubleshoot,
+            serviceCharge,
+            repairCharge
+        ].forEach(function (element) {
 
+            if (!element) {
+                return;
+            }
 
-            /* =====================================================
-               INITIAL CALCULATION
-            ====================================================== */
-
-            calculateValues();
+            element.addEventListener("change", calculateValues);
 
         });
 
+        // NO INITIAL CALCULATION
+        // calculateValues();
+
+    });
+
 </script>
+
 
 
 @section Scripts {

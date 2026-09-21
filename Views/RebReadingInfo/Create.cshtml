@@ -993,7 +993,7 @@
                              DATE
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="Trdate"
                                    class="form-label">
@@ -1020,7 +1020,7 @@
                              EQUIPMENT
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="Eqid"
                                    class="form-label">
@@ -1053,7 +1053,7 @@
                              ELECTRICITY GENERATION
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="ElecGen"
                                    class="form-label">
@@ -1079,7 +1079,7 @@
                              RUNNING HR
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="RunHr"
                                    class="form-label">
@@ -1105,7 +1105,7 @@
                              BDT/KWH
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="BdtKwh"
                                    class="form-label">
@@ -1131,7 +1131,7 @@
                              OTHER CONSUMABLE
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="OtConsumable"
                                    class="form-label">
@@ -1157,7 +1157,7 @@
                              TROUBLESHOOTING
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="Troubleshoot"
                                    class="form-label">
@@ -1183,7 +1183,7 @@
                              SERVICE CHARGE
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="ServiceCharge"
                                    class="form-label">
@@ -1209,7 +1209,7 @@
                              REPAIR CHARGE
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="RepairCharge"
                                    class="form-label">
@@ -1235,7 +1235,7 @@
                              TOTAL
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="Total"
                                    class="form-label">
@@ -1262,7 +1262,7 @@
                              TK/KWH
                         ================================================== -->
 
-                        <div class="col-md-6">
+                        <div class="col-lg-3 col-md-6 col-sm-12">
 
                             <label asp-for="TkKwh"
                                    class="form-label">
@@ -1349,7 +1349,6 @@
         const repairCharge =
             document.getElementById("RepairCharge");
 
-
         const total =
             document.getElementById("Total");
 
@@ -1367,27 +1366,33 @@
                 (parseFloat(repairCharge?.value) || 0);
 
 
+            // TOTAL
             if (total) {
-
-                total.value =
-                    totalValue.toFixed(2);
+                total.value = totalValue.toFixed(2);
             }
 
 
+            // GENERATION
             let generation =
                 parseFloat(elecGen?.value) || 0;
 
 
+            // TK/KWH
             if (tkKwh) {
 
                 tkKwh.value =
                     generation > 0
                         ? (totalValue / generation).toFixed(2)
                         : "0.00";
+
             }
 
         }
 
+
+        // ==========================================
+        // CHANGE EVENT ONLY
+        // ==========================================
 
         [
             elecGen,
@@ -1401,18 +1406,20 @@
         .forEach(function (input) {
 
             input.addEventListener(
-                "input",
+                "change",
                 calculateValues
             );
 
         });
 
 
-        calculateValues();
+        // ❌ NO INITIAL CALCULATION
+        // calculateValues();
 
     });
 
 </script>
+
 
 
 @section Scripts {

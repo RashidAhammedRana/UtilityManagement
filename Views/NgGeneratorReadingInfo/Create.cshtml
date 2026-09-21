@@ -3,32 +3,20 @@
 @{
     ViewData["Title"] = "Create NG Generator Reading";
 }
-<style>
-    input[readonly] {
-        background-color: #e9ecef !important; /* standard bootstrap grey */
-        color: #495057 !important; /* normal readable text */
-        border: 1px solid #ced4da !important;
-        cursor: not-allowed;
-    }
+<link href="~/css/create-responsive.css" rel="stylesheet" />
 
-        input[readonly]:focus {
-            box-shadow: none !important;
-            outline: none !important;
-        }
-</style>
-
-<div class="container mt-4">
+<div class="container create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Add New NG Generator Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-4 create-body">
 
                     <form asp-action="Create" method="post">
 
@@ -39,7 +27,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-md-3">
+                            <div class="col-lg-2 col-md-4 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -49,7 +37,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-md-6">
+                            <div class="col-lg-4 col-md-8 col-sm-12">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -62,7 +50,7 @@
                             </div>
 
                             <!-- NgConsumptionM -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="NgConsumptionM" class="form-label">
                                     NG Cons.(m3)<span class="text-danger">*</span>
                                 </label>
@@ -71,7 +59,7 @@
                             </div>
 
                             <!-- CngConsumption -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="CngConsumption" class="form-label">
                                     CNG Cons.(m3) <span class="text-danger">*</span>
                                 </label>
@@ -80,7 +68,7 @@
                             </div>
 
                             <!-- EGeneration -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="EGeneration" class="form-label">
                                     E. Gen.(Kwh)<span class="text-danger">*</span>
                                 </label>
@@ -89,7 +77,7 @@
                             </div>
 
                             <!-- RunningHr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="RunningHr" class="form-label">
                                     Running Hr<span class="text-danger">*</span>
                                 </label>
@@ -97,7 +85,7 @@
                                 <span asp-validation-for="RunningHr" class="text-danger"></span>
                             </div>
                             <!-- NgConsumptionHr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="NgConsumptionHr" class="form-label">
                                     NG Cons./Hr<span class="text-danger">*</span>
                                 </label>
@@ -106,7 +94,7 @@
                             </div>
                             <!-- NgConsumptionKwh -->
                             <!-- NgConsumptionKwh=NgConsumptionM+CngConsumption/ EGeneration-->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="NgConsumptionKwh" class="form-label">
                                     NG Cons./Kwh(m3/Kwh)<span class="text-danger">*</span>
                                 </label>
@@ -115,7 +103,7 @@
                             </div>
                             <!-- KwhUnitNgConsumption -->
                             <!-- KwhUnitNgConsumption=EGeneration/NgConsumptionM+CngConsumption -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="KwhUnitNgConsumption" class="form-label">
                                     Kwh/Per Unit NG Cons.(Kwh/m3)<span class="text-danger">*</span>
                                 </label>
@@ -123,7 +111,7 @@
                                 <span asp-validation-for="KwhUnitNgConsumption" class="text-danger"></span>
                             </div>
                             <!-- LubOilConsumption -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="LubOilConsumption" class="form-label">
                                     Lub Oil Cons<span class="text-danger">*</span>
                                 </label>
@@ -131,7 +119,7 @@
                                 <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
                             </div>
                             <!-- NgTkM -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="NgTkM" class="form-label">
                                     NG (Tk/m3)<span class="text-danger">*</span>
                                 </label>
@@ -139,7 +127,7 @@
                                 <span asp-validation-for="NgTkM" class="text-danger"></span>
                             </div>
                             <!-- ChemicalCost -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="ChemicalCost" class="form-label">
                                     Chemical Cost<span class="text-danger">*</span>
                                 </label>
@@ -147,7 +135,7 @@
                                 <span asp-validation-for="ChemicalCost" class="text-danger"></span>
                             </div>
                             <!-- LubOilCost -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="LubOilCost" class="form-label">
                                     Lub Oil (Tk/Ltr)<span class="text-danger">*</span>
                                 </label>
@@ -155,7 +143,7 @@
                                 <span asp-validation-for="LubOilCost" class="text-danger"></span>
                             </div>
                             <!-- CngCost -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="CngCost" class="form-label">
                                     CNG(Tk/m3)<span class="text-danger">*</span>
                                 </label>
@@ -163,7 +151,7 @@
                                 <span asp-validation-for="CngCost" class="text-danger"></span>
                             </div>
                             <!-- Troubleshooting -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="Troubleshooting" class="form-label">
                                     Troubleshooting<span class="text-danger">*</span>
                                 </label>
@@ -171,7 +159,7 @@
                                 <span asp-validation-for="Troubleshooting" class="text-danger"></span>
                             </div>
                             <!-- ServiceCharge -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="ServiceCharge" class="form-label">
                                     Service Charge <span class="text-danger">*</span>
                                 </label>
@@ -179,7 +167,7 @@
                                 <span asp-validation-for="ServiceCharge" class="text-danger"></span>
                             </div>
                             <!-- RepairCharge -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="RepairCharge" class="form-label">
                                     Repair Charge <span class="text-danger">*</span>
                                 </label>
@@ -187,7 +175,7 @@
                                 <span asp-validation-for="RepairCharge" class="text-danger"></span>
                             </div>
                             <!-- Total -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-3 col-sm-12">
                                 <label asp-for="Total" class="form-label">
                                     Total <span class="text-danger">*</span>
                                 </label>
@@ -195,7 +183,7 @@
                                 <span asp-validation-for="Total" class="text-danger"></span>
                             </div>
                             <!-- TkKwh -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TkKwh" class="form-label">
                                     Tk/Kwh <span class="text-danger">*</span>
                                 </label>

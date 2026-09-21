@@ -1,16 +1,20 @@
-﻿using DevExpress.XtraReports.UI;
+﻿using DevExpress.XtraReports.Parameters;
+using DevExpress.XtraReports.UI;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using UtilityManagement.Data;
+using UtilityManagement.Models;
 
 public class ReportCallingController : Controller
 {
     private readonly ApplicationDbContext _context;
-
-    public ReportCallingController(ApplicationDbContext context)
+    private readonly UserManager<ApplicationUser> _userManager;
+    public ReportCallingController(ApplicationDbContext context, UserManager<ApplicationUser> userManager)
     {
         _context = context;
+        _userManager = userManager;
     }
 
     [HttpGet]
@@ -42,6 +46,20 @@ public class ReportCallingController : Controller
 
         try
         {
+            // Logged-in user
+            var userId = _userManager.GetUserId(User);
+
+            // User-Company
+            var currentCompany = await _context.Users
+                .Where(x => x.Id == userId)
+                .Select(x => x.Company)
+                .FirstOrDefaultAsync();
+
+            if (string.IsNullOrEmpty(currentCompany))
+            {
+                return BadRequest("User company not found.");
+            }
+
             var rptPath = $"UtilityManagement.Reports.{reportName}";
 
             var reportType = Type.GetType(rptPath);
@@ -53,6 +71,26 @@ public class ReportCallingController : Controller
 
             var report = (XtraReport)Activator.CreateInstance(reportType);
 
+            // Company parameter
+            var companyParameter = report.Parameters["Company"];
+
+            if (companyParameter != null)
+            {
+                var lookupSettings = new StaticListLookUpSettings();
+
+                lookupSettings.LookUpValues.Add(
+                    new LookUpValue(currentCompany, currentCompany)
+                );
+
+                companyParameter.ValueSourceSettings = lookupSettings;
+
+                companyParameter.Value = currentCompany;
+                companyParameter.MultiValue = false;
+
+                // If you don't want Company dropdown then set "false"
+                companyParameter.Visible = true;
+            }
+
             return View(report);
         }
         catch (Exception ex)
@@ -60,6 +98,9 @@ public class ReportCallingController : Controller
             return Content(ex.InnerException?.Message ?? ex.Message);
         }
     }
+
+
+
     [HttpGet]
     public async Task<IActionResult> NgGeneratorCostReport(
     int menuId,

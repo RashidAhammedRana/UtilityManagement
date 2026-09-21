@@ -518,6 +518,7 @@
             this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
             this.pageInfo1.SizeF = new System.Drawing.SizeF(559.5F, 23F);
             this.pageInfo1.StyleName = "PageInfo";
+            this.pageInfo1.TextFormatString = "{0:dddd, MMMM d, yyyy h:mm tt}";
             // 
             // pageInfo2
             // 

@@ -4,20 +4,24 @@
     ViewData["Title"] = "Create Boiler RMS Room Reading";
 }
 
-<div class="container mt-4">
+@section Styles {
+    <link rel="stylesheet" href="~/css/create-responsive.css" asp-append-version="true" />
+}
+
+<div class="create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add New Boiler RMS Room Reading</h5>
+                    <h5>Add Diesel Generator Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-4 create-body">
 
-                    <form asp-action="Create" method="post">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -96,7 +100,7 @@
                         <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="BoilerRmsRoomInfoList"
-                               class="btn btn-outline-secondary">
+                               class="btn btn-secondary">
                                 ← Back
                             </a>
 

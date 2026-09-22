@@ -1,6 +1,14 @@
 ﻿/* =========================================================
    DAILY LIST - CLEAN RESPONSIVE CSS
    Bootstrap 5.3 Compatible
+
+   DESKTOP/LARGE SCREEN:
+   ORIGINAL DESIGN PRESERVED
+
+   MOBILE:
+   Create = LEFT
+   Back   = RIGHT
+   Same Row
    ========================================================= */
 
 
@@ -15,7 +23,7 @@ body {
     margin: 0;
     padding: 0;
     overflow-x: hidden !important;
-    overflow-y: hidden !important;
+    overflow-y: auto !important;
 }
 
 *,
@@ -51,6 +59,10 @@ body {
 }
 
 
+/* =========================================================
+   SEARCH
+   ========================================================= */
+
 .daily-list-search-form {
     margin: 0;
     padding: 0;
@@ -67,7 +79,8 @@ body {
 
 /* =========================================================
    CREATE / BACK ACTIONS
-   CREATE = BACK-এর ঠিক বাম পাশে
+   DESKTOP ORIGINAL
+   DO NOT CHANGE
    ========================================================= */
 
 .daily-list-actions {
@@ -80,6 +93,11 @@ body {
     padding: 0 !important;
 }
 
+
+/* =========================================================
+   CREATE / BACK BUTTON
+   DESKTOP ORIGINAL
+   ========================================================= */
 
 .daily-create-btn,
 .daily-back-btn {
@@ -94,7 +112,6 @@ body {
 
 /* =========================================================
    TABLE CONTAINER
-   ONLY HORIZONTAL SCROLL
    ========================================================= */
 
 .table-responsive {
@@ -106,7 +123,7 @@ body {
     margin-top: 0 !important;
     padding: 0 !important;
     overflow-x: auto !important;
-    overflow-y: auto !important;
+    overflow-y: hidden !important;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box !important;
 }
@@ -127,7 +144,6 @@ body {
 
     /* =========================================================
    TABLE HEADER
-   একটু বড়
    ========================================================= */
 
     .table-responsive thead th {
@@ -141,13 +157,16 @@ body {
 
     /* =========================================================
    DATA ROW
-   EXTRA COMPACT
    ========================================================= */
 
     .table-responsive tbody tr {
         height: auto !important;
     }
 
+
+    /* =========================================================
+   DATA CELL
+   ========================================================= */
 
     .table-responsive tbody td {
         padding: 0px 5px !important;
@@ -187,7 +206,7 @@ body {
                 display: flex !important;
                 justify-content: center !important;
                 align-items: center !important;
-                gap: 2px !important;
+                gap: 3px !important;
                 margin: 0 !important;
                 padding: 0 !important;
                 white-space: nowrap !important;
@@ -196,17 +215,34 @@ body {
 
     /* =========================================================
    EDIT / DELETE BUTTON
-   EXTRA COMPACT
    ========================================================= */
 
     .table-responsive tbody td:last-child .btn {
-        height: 18px !important;
-        min-height: 18px !important;
-        padding: 0px 4px !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        vertical-align: middle !important;
+        padding: 0 6px !important;
+        height: 20px !important;
+        min-height: 20px !important;
         margin: 0 !important;
         line-height: 1 !important;
-        font-size: 9px !important;
+        font-size: 10px !important;
     }
+
+
+        /* =========================================================
+   ICON
+   ========================================================= */
+
+        .table-responsive tbody td:last-child .btn i {
+            display: inline-flex !important;
+            align-items: center !important;
+            justify-content: center !important;
+            line-height: 1 !important;
+            vertical-align: middle !important;
+        }
 
 
 /* =========================================================
@@ -235,7 +271,6 @@ nav {
    ========================================================= */
 
 @media screen and (max-width: 767px) {
-
 
     /* =====================================================
        MAIN CONTENT
@@ -333,14 +368,20 @@ nav {
 
 
     /* =====================================================
-       CREATE / BACK
-       পাশাপাশি
+       MOBILE CREATE / BACK
+       
+       SAME ROW
+       
+       CREATE = LEFT
+       BACK   = RIGHT
+       
+       THIS IS THE ONLY CHANGE FROM DESKTOP
        ===================================================== */
 
     .daily-list-actions {
         display: flex !important;
         flex-direction: row !important;
-        justify-content: flex-end !important;
+        justify-content: space-between !important;
         align-items: center !important;
         width: 100% !important;
         max-width: 100% !important;
@@ -350,7 +391,34 @@ nav {
     }
 
 
-    .daily-create-btn,
+    /* =====================================================
+       MOBILE CREATE BUTTON
+       LEFT
+       ===================================================== */
+
+    .daily-create-btn {
+        flex: 0 0 auto !important;
+        width: auto !important;
+        max-width: none !important;
+        min-width: 0 !important;
+        min-height: 36px !important;
+        margin: 0 !important;
+        padding: 6px 9px !important;
+        font-size: 12px !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-right: auto !important;
+    }
+
+
+    /* =====================================================
+       MOBILE BACK BUTTON
+       RIGHT
+       ===================================================== */
+
     .daily-back-btn {
         flex: 0 0 auto !important;
         width: auto !important;
@@ -362,11 +430,15 @@ nav {
         font-size: 12px !important;
         text-align: center !important;
         white-space: nowrap !important;
+        display: inline-flex !important;
+        align-items: center !important;
+        justify-content: center !important;
+        margin-left: auto !important;
     }
 
 
     /* =====================================================
-       TABLE
+       MOBILE TABLE
        ===================================================== */
 
     .table-responsive {
@@ -391,7 +463,7 @@ nav {
 
 
         /* =====================================================
-       MOBILE HEADER
+       MOBILE TABLE HEADER
        ===================================================== */
 
         .table-responsive thead th {
@@ -403,8 +475,7 @@ nav {
 
 
         /* =====================================================
-       MOBILE DATA ROW
-       EXTRA SMALL
+       MOBILE DATA
        ===================================================== */
 
         .table-responsive tbody td {
@@ -443,7 +514,7 @@ nav {
 
 
     /* =====================================================
-       PAGINATION
+       MOBILE PAGINATION
        ===================================================== */
 
     nav {
@@ -489,25 +560,64 @@ nav {
     }
 
 
+    /* =====================================================
+       SMALL MOBILE ACTIONS
+       SAME ROW
+       CREATE LEFT | BACK RIGHT
+       ===================================================== */
+
     .daily-list-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
         gap: 4px !important;
     }
 
 
-    .daily-create-btn,
-    .daily-back-btn {
+    .daily-create-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
         min-height: 34px !important;
+        margin: 0 !important;
+        margin-right: auto !important;
         padding: 5px 7px !important;
         font-size: 11px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        white-space: nowrap !important;
+    }
+
+
+    .daily-back-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-width: 0 !important;
+        min-height: 34px !important;
+        margin: 0 !important;
+        margin-left: auto !important;
+        padding: 5px 7px !important;
+        font-size: 11px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        text-align: center !important;
+        white-space: nowrap !important;
     }
 
 
     /* =====================================================
-       TABLE
+       SMALL MOBILE TABLE
        ===================================================== */
 
     .table-responsive {
         width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
         margin-left: 25px !important;
         margin-right: 25px !important;
         margin-top: 4px !important;
@@ -519,20 +629,12 @@ nav {
         }
 
 
-        /* =====================================================
-       HEADER
-       ===================================================== */
-
         .table-responsive thead th {
             padding: 3px 5px !important;
             height: 24px !important;
             font-size: 10px !important;
         }
 
-
-        /* =====================================================
-       DATA ROW
-       ===================================================== */
 
         .table-responsive tbody td {
             padding: 0px 3px !important;
@@ -541,10 +643,6 @@ nav {
             line-height: 0.9 !important;
         }
 
-
-        /* =====================================================
-       ACTION
-       ===================================================== */
 
         .table-responsive td:last-child {
             min-width: 95px !important;
@@ -564,10 +662,6 @@ nav {
             font-size: 8px !important;
         }
 
-
-    /* =====================================================
-       PAGINATION
-       ===================================================== */
 
     .pagination .page-link {
         font-size: 11px;
@@ -653,24 +747,55 @@ nav {
 
 
     /* =====================================================
-       ACTIONS
+       LANDSCAPE ACTIONS
+       SAME ROW
+       CREATE LEFT | BACK RIGHT
        ===================================================== */
 
     .daily-list-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
         gap: 4px !important;
+        margin: 0 !important;
+        padding: 0 !important;
     }
 
 
-    .daily-create-btn,
-    .daily-back-btn {
+    .daily-create-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
         min-height: 32px !important;
+        margin: 0 !important;
+        margin-right: auto !important;
         padding: 4px 7px !important;
         font-size: 10px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
+    }
+
+
+    .daily-back-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        width: auto !important;
+        min-height: 32px !important;
+        margin: 0 !important;
+        margin-left: auto !important;
+        padding: 4px 7px !important;
+        font-size: 10px !important;
+        align-items: center !important;
+        justify-content: center !important;
+        white-space: nowrap !important;
     }
 
 
     /* =====================================================
-       TABLE
+       LANDSCAPE TABLE
        ===================================================== */
 
     .table-responsive {
@@ -689,20 +814,12 @@ nav {
         }
 
 
-        /* =====================================================
-       HEADER
-       ===================================================== */
-
         .table-responsive thead th {
             padding: 2px 4px !important;
             height: 23px !important;
             font-size: 9px !important;
         }
 
-
-        /* =====================================================
-       DATA
-       ===================================================== */
 
         .table-responsive tbody td {
             padding: 0px 3px !important;
@@ -711,10 +828,6 @@ nav {
             line-height: 0.9 !important;
         }
 
-
-        /* =====================================================
-       EDIT / DELETE
-       ===================================================== */
 
         .table-responsive td:last-child .d-flex {
             gap: 1px !important;
@@ -762,13 +875,52 @@ nav {
     }
 
 
-    .daily-create-btn,
-    .daily-back-btn {
-        min-height: 29px !important;
-        padding: 3px 6px !important;
-        font-size: 9px !important;
+    /* =====================================================
+       VERY SHORT LANDSCAPE ACTIONS
+       SAME ROW
+       ===================================================== */
+
+    .daily-list-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        gap: 3px !important;
     }
 
+
+    .daily-create-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        min-height: 29px !important;
+        width: auto !important;
+        margin: 0 !important;
+        margin-right: auto !important;
+        padding: 3px 6px !important;
+        font-size: 9px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    .daily-back-btn {
+        display: inline-flex !important;
+        flex: 0 0 auto !important;
+        min-height: 29px !important;
+        width: auto !important;
+        margin: 0 !important;
+        margin-left: auto !important;
+        padding: 3px 6px !important;
+        font-size: 9px !important;
+        align-items: center !important;
+        justify-content: center !important;
+    }
+
+
+    /* =====================================================
+       VERY SHORT TABLE
+       ===================================================== */
 
     .table-responsive {
         margin-top: 2px !important;
@@ -847,7 +999,6 @@ nav {
 
 /* =========================================================
    FINAL PAGE OVERFLOW
-   RIGHT-SIDE PAGE SCROLLBAR OFF
    ========================================================= */
 
 html,
@@ -859,10 +1010,8 @@ body {
 }
 
 
-
 /* =========================================================
    FINAL TABLE SCROLL
-   ONLY TABLE HORIZONTAL SCROLLBAR
    ========================================================= */
 
 .table-responsive {
@@ -872,9 +1021,8 @@ body {
 }
 
 
-
 /* =========================================================
-   FINAL TABLE SIDE GAP
+   FINAL MOBILE TABLE SIDE GAP
    ========================================================= */
 
 @media screen and (max-width: 767px) {
@@ -887,9 +1035,9 @@ body {
     }
 }
 
+
 /* =========================================================
-   EDIT / DELETE BUTTON
-   TEXT PERFECT CENTER
+   FINAL EDIT / DELETE BUTTON
    ========================================================= */
 
 .table-responsive tbody td:last-child .btn {
@@ -907,7 +1055,10 @@ body {
 }
 
 
-/* Edit & Delete button-এর মাঝের gap কম */
+/* =========================================================
+   FINAL EDIT / DELETE GAP
+   ========================================================= */
+
 .table-responsive tbody td:last-child .d-flex {
     display: flex !important;
     align-items: center !important;
@@ -916,11 +1067,100 @@ body {
 }
 
 
-/* Icon থাকলে icon-ও vertically center */
+/* =========================================================
+   FINAL ICON CENTER
+   ========================================================= */
+
 .table-responsive tbody td:last-child .btn i {
     display: inline-flex !important;
     align-items: center !important;
     justify-content: center !important;
     line-height: 1 !important;
     vertical-align: middle !important;
+}
+
+
+/* =========================================================
+   IMPORTANT
+   FINAL MOBILE ACTION POSITION
+
+   LARGE SCREEN IS NOT TOUCHED HERE.
+   ONLY <= 767px.
+
+   CREATE = LEFT
+   BACK   = RIGHT
+   SAME LINE
+   ========================================================= */
+
+@media screen and (max-width: 767px) {
+
+    .daily-list-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+        max-width: 100% !important;
+        gap: 5px !important;
+        margin: 0 !important;
+        padding: 0 !important;
+    }
+
+
+    .daily-create-btn {
+        order: 1 !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+
+    .daily-back-btn {
+        order: 2 !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
+}
+
+
+/* =========================================================
+   BACK BUTTON ARROW ICON
+   For Bootstrap Icons / icon element
+   ========================================================= */
+
+.daily-back-btn i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    margin-right: 4px !important;
+}
+
+
+/* =========================================================
+   SMALL MOBILE FINAL POSITION
+   ========================================================= */
+
+@media screen and (max-width: 400px) {
+
+    .daily-list-actions {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: space-between !important;
+        align-items: center !important;
+        width: 100% !important;
+    }
+
+
+    .daily-create-btn {
+        order: 1 !important;
+        margin-left: 0 !important;
+        margin-right: auto !important;
+    }
+
+
+    .daily-back-btn {
+        order: 2 !important;
+        margin-left: auto !important;
+        margin-right: 0 !important;
+    }
 }

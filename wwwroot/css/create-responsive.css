@@ -261,33 +261,11 @@
         font-size: 13px !important;
     }
 }
-/* =========================================================
-   CREATE PAGE - SAVE / BACK BUTTON
-   SAME STYLE AS EDIT PAGE BUTTON
-   ========================================================= */
-
-.daily-back-btn,
-.daily-save-btn {
-    display: inline-flex !important;
+/* =========================================================*/
+.create-form-buttons {
+    width: 100%;
+    margin-top: 25px !important;
+    display: flex !important;
+    justify-content: space-between !important;
     align-items: center !important;
-    justify-content: center !important;
-    height: 35px !important;
-    min-height: 20px !important;
-    padding-top: 0 !important;
-    padding-bottom: 0 !important;
-    line-height: 1 !important;
-    vertical-align: middle !important;
-    margin: 0 !important;
-}
-
-
-    /* Icon perfectly centered */
-
-    .daily-back-btn i,
-    .daily-save-btn i {
-        display: inline-flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        line-height: 1 !important;
-        vertical-align: middle !important;
-    }
+    gap: 10px;

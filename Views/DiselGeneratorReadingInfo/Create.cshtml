@@ -3,21 +3,26 @@
 @{
     ViewData["Title"] = "Create Diesel Generator Reading";
 }
+@section Styles {
+    <link rel="stylesheet"
+          href="~/css/create-responsive.css"
+          asp-append-version="true" />
+}
 
-<div class="container mt-4">
+<div class="create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add New Diesel Generator Reading</h5>
+                    <h5>Add Diesel Generator Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
+                <div class="card-body p-4 create-body">
 
-                    <form asp-action="Create" method="post">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -26,7 +31,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -36,7 +41,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -49,7 +54,7 @@
                             </div>
 
                             <!-- DieselConsumptionLtr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DieselConsumptionLtr" class="form-label">
                                     Diesel Cons.(Ltr)<span class="text-danger">*</span>
                                 </label>
@@ -58,7 +63,7 @@
                             </div>
 
                             <!-- ElectricityGenerationKwh -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ElectricityGenerationKwh" class="form-label">
                                     E.Gen.(Kwh)<span class="text-danger">*</span>
                                 </label>
@@ -67,7 +72,7 @@
                             </div>
 
                             <!-- RunningHr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="RunningHr" class="form-label">
                                     Running Hr<span class="text-danger">*</span>
                                 </label>
@@ -75,7 +80,7 @@
                                 <span asp-validation-for="RunningHr" class="text-danger"></span>
                             </div>
                             <!-- DieselConsumptionHr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DieselConsumptionHr" class="form-label">
                                     Diesel Cons./Hr<span class="text-danger">*</span>
                                 </label>
@@ -83,7 +88,7 @@
                                 <span asp-validation-for="DieselConsumptionHr" class="text-danger"></span>
                             </div>
                             <!-- DieselConsumptionKwh -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DieselConsumptionKwh" class="form-label">
                                     Diesel Cons./Kwh<span class="text-danger">*</span>
                                 </label>
@@ -91,7 +96,7 @@
                                 <span asp-validation-for="DieselConsumptionKwh" class="text-danger"></span>
                             </div>
                             <!-- LubOilConsumption -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="LubOilConsumption" class="form-label">
                                     Lub Oil Cons.<span class="text-danger">*</span>
                                 </label>
@@ -99,7 +104,7 @@
                                 <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
                             </div>
                             <!-- DieselTkLtr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DieselTkLtr" class="form-label">
                                     Diesel (Tk/Ltr)<span class="text-danger">*</span>
                                 </label>
@@ -107,7 +112,7 @@
                                 <span asp-validation-for="DieselTkLtr" class="text-danger"></span>
                             </div>
                             <!-- ChemicalCost -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Chemical" class="form-label">
                                     Chemical<span class="text-danger">*</span>
                                 </label>
@@ -115,7 +120,7 @@
                                 <span asp-validation-for="Chemical" class="text-danger"></span>
                             </div>
                             <!-- LubOilTkLtr -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="LubOilTkLtr" class="form-label">
                                     Lub Oil (Tk/Ltr)<span class="text-danger">*</span>
                                 </label>
@@ -123,7 +128,7 @@
                                 <span asp-validation-for="LubOilTkLtr" class="text-danger"></span>
                             </div>
                             <!-- OthersConsumableOthersConsumable -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="OthersConsumable" class="form-label">
                                     Others Consumable<span class="text-danger">*</span>
                                 </label>
@@ -131,7 +136,7 @@
                                 <span asp-validation-for="OthersConsumable" class="text-danger"></span>
                             </div>
                             <!-- Troubleshooting -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Troubleshooting" class="form-label">
                                     Troubleshooting<span class="text-danger">*</span>
                                 </label>
@@ -139,7 +144,7 @@
                                 <span asp-validation-for="Troubleshooting" class="text-danger"></span>
                             </div>
                             <!-- ServiceCharge -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ServiceCharge" class="form-label">
                                     Service Charge <span class="text-danger">*</span>
                                 </label>
@@ -147,7 +152,7 @@
                                 <span asp-validation-for="ServiceCharge" class="text-danger"></span>
                             </div>
                             <!-- RepairCharge -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="RepairCharge" class="form-label">
                                     Repair Charge <span class="text-danger">*</span>
                                 </label>
@@ -155,7 +160,7 @@
                                 <span asp-validation-for="RepairCharge" class="text-danger"></span>
                             </div>
                             <!-- Total -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Total" class="form-label">
                                     Total <span class="text-danger">*</span>
                                 </label>
@@ -163,7 +168,7 @@
                                 <span asp-validation-for="Total" class="text-danger"></span>
                             </div>
                             <!-- TkKwh -->
-                            <div class="col-md-3">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TkKwh" class="form-label">
                                     Tk/Kwh <span class="text-danger">*</span>
                                 </label>
@@ -176,7 +181,7 @@
                         <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="DiselGeneratorReadingInfoList"
-                               class="btn btn-outline-secondary">
+                               class="btn btn-secondary">
                                 ← Back
                             </a>
 

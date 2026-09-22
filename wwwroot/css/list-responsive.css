@@ -1,35 +1,241 @@
 ﻿/* =========================================================
-   DAILY LIST RESPONSIVE CSS
-   FULL REWRITE
+   DAILY LIST - CLEAN RESPONSIVE CSS
+   Bootstrap 5.3 Compatible
    ========================================================= */
 
 
 /* =========================================================
-   GLOBAL RESET
+   GLOBAL
    ========================================================= */
 
 html,
 body {
     width: 100%;
     max-width: 100%;
-}
-
-body {
     margin: 0;
+    padding: 0;
     overflow-x: hidden !important;
+    overflow-y: hidden !important;
 }
 
-* {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
 }
 
 
 /* =========================================================
+   TITLE
+   ========================================================= */
+
+.daily-list-title {
+    width: 100%;
+    max-width: 100%;
+    margin: 0;
+    padding: 5px 25px 3px 25px;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   TOOLBAR
+   ========================================================= */
+
+.daily-list-toolbar {
+    width: calc(100% - 50px);
+    max-width: calc(100% - 50px);
+    margin: 12px 25px 15px 25px !important;
+    padding: 0 !important;
+    box-sizing: border-box;
+}
+
+
+.daily-list-search-form {
+    margin: 0;
+    padding: 0;
+}
+
+
+.daily-list-search-box {
+    width: 300px;
+    max-width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+}
+
+
+/* =========================================================
+   CREATE / BACK ACTIONS
+   CREATE = BACK-এর ঠিক বাম পাশে
+   ========================================================= */
+
+.daily-list-actions {
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: flex-end !important;
+    align-items: center !important;
+    gap: 6px !important;
+    margin: 0 !important;
+    padding: 0 !important;
+}
+
+
+.daily-create-btn,
+.daily-back-btn {
+    flex: 0 0 auto !important;
+    width: auto !important;
+    max-width: none !important;
+    margin: 0 !important;
+    white-space: nowrap !important;
+    text-align: center !important;
+}
+
+
+/* =========================================================
+   TABLE CONTAINER
+   ONLY HORIZONTAL SCROLL
+   ========================================================= */
+
+.table-responsive {
+    display: block !important;
+    width: calc(100% - 50px) !important;
+    max-width: calc(100% - 50px) !important;
+    margin-left: 25px !important;
+    margin-right: 25px !important;
+    margin-top: 0 !important;
+    padding: 0 !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    box-sizing: border-box !important;
+}
+
+
+    /* =========================================================
+   TABLE
+   ========================================================= */
+
+    .table-responsive > table {
+        width: 100%;
+        min-width: 100%;
+        margin: 0 !important;
+        border-collapse: collapse !important;
+        box-sizing: border-box !important;
+    }
+
+
+    /* =========================================================
+   TABLE HEADER
+   একটু বড়
+   ========================================================= */
+
+    .table-responsive thead th {
+        padding: 5px 7px !important;
+        height: 28px !important;
+        line-height: 1.05 !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* =========================================================
+   DATA ROW
+   EXTRA COMPACT
+   ========================================================= */
+
+    .table-responsive tbody tr {
+        height: auto !important;
+    }
+
+
+    .table-responsive tbody td {
+        padding: 0px 5px !important;
+        height: 18px !important;
+        line-height: 0.9 !important;
+        vertical-align: middle !important;
+        white-space: nowrap !important;
+    }
+
+
+    /* =========================================================
+   GENERAL TABLE CELL
+   ========================================================= */
+
+    .table-responsive th,
+    .table-responsive td {
+        white-space: nowrap;
+        vertical-align: middle;
+    }
+
+
+        /* =========================================================
+   ACTION COLUMN
+   ========================================================= */
+
+        .table-responsive td:last-child {
+            min-width: 110px !important;
+            width: 110px !important;
+        }
+
+
+            /* =========================================================
+   EDIT / DELETE CONTAINER
+   ========================================================= */
+
+            .table-responsive td:last-child .d-flex {
+                display: flex !important;
+                justify-content: center !important;
+                align-items: center !important;
+                gap: 2px !important;
+                margin: 0 !important;
+                padding: 0 !important;
+                white-space: nowrap !important;
+            }
+
+
+    /* =========================================================
+   EDIT / DELETE BUTTON
+   EXTRA COMPACT
+   ========================================================= */
+
+    .table-responsive tbody td:last-child .btn {
+        height: 18px !important;
+        min-height: 18px !important;
+        padding: 0px 4px !important;
+        margin: 0 !important;
+        line-height: 1 !important;
+        font-size: 9px !important;
+    }
+
+
+/* =========================================================
+   PAGINATION
+   ========================================================= */
+
+.daily-list-pagination,
+nav {
+    width: calc(100% - 50px);
+    max-width: calc(100% - 50px);
+    margin-left: 25px;
+    margin-right: 25px;
+    box-sizing: border-box;
+}
+
+
+.pagination {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+
+/* =========================================================
    MOBILE
-   MAX WIDTH: 767px
+   MAX WIDTH 767px
    ========================================================= */
 
 @media screen and (max-width: 767px) {
+
 
     /* =====================================================
        MAIN CONTENT
@@ -41,7 +247,6 @@ body {
     .container-fluid {
         width: 100% !important;
         max-width: 100% !important;
-        padding-top: 65px !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
         box-sizing: border-box !important;
@@ -49,21 +254,18 @@ body {
 
 
     /* =====================================================
-       PAGE TITLE
+       TITLE
        ===================================================== */
 
     .daily-list-title {
         display: block !important;
-        width: calc(100% - 30px) !important;
-        max-width: calc(100% - 30px) !important;
+        width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
         margin-top: 0 !important;
-        margin-left: 15px !important;
-        margin-right: 15px !important;
-        margin-bottom: 12px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 20 !important;
-        box-sizing: border-box !important;
+        margin-bottom: 7px !important;
+        padding: 5px 0 0 0 !important;
     }
 
 
@@ -85,8 +287,6 @@ body {
     .container-fluid h3 {
         margin-top: 0 !important;
         padding-top: 0 !important;
-        position: relative !important;
-        z-index: 20 !important;
     }
 
 
@@ -96,157 +296,304 @@ body {
 
     .daily-list-toolbar {
         display: block !important;
-        width: calc(100% - 30px) !important;
-        max-width: calc(100% - 30px) !important;
-        margin-top: 15px !important;
-        margin-left: 15px !important;
-        margin-right: 15px !important;
-        margin-bottom: 15px !important;
+        width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+        margin-top: 8px !important;
+        margin-bottom: 10px !important;
         padding: 0 !important;
-        position: relative !important;
-        z-index: 30 !important;
-        clear: both !important;
-        box-sizing: border-box !important;
     }
 
 
     /* =====================================================
-       SEARCH FORM
+       SEARCH
        ===================================================== */
 
     .daily-list-search-form {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        margin: 0 0 10px 0 !important;
+        margin: 0 0 8px 0 !important;
         padding: 0 !important;
-        position: relative !important;
-        z-index: 30 !important;
-        box-sizing: border-box !important;
     }
 
-
-    /* =====================================================
-       SEARCH BOX
-       ===================================================== */
 
     .daily-list-search-box {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
         min-width: 0 !important;
+        height: 38px !important;
         min-height: 38px !important;
-        margin: 0 !important;
-        padding-left: 12px !important;
-        padding-right: 12px !important;
-        font-size: 14px !important;
-        position: relative !important;
-        z-index: 30 !important;
+        padding: 7px 10px !important;
+        font-size: 13px !important;
         box-sizing: border-box !important;
     }
 
 
     /* =====================================================
-       ACTION AREA
+       CREATE / BACK
+       পাশাপাশি
        ===================================================== */
 
     .daily-list-actions {
         display: flex !important;
+        flex-direction: row !important;
+        justify-content: flex-end !important;
+        align-items: center !important;
         width: 100% !important;
         max-width: 100% !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: stretch !important;
-        gap: 10px !important;
+        gap: 5px !important;
         margin: 0 !important;
         padding: 0 !important;
-        position: relative !important;
-        z-index: 30 !important;
-        box-sizing: border-box !important;
     }
 
-
-    /* =====================================================
-       CREATE + BACK BUTTON
-       ===================================================== */
 
     .daily-create-btn,
     .daily-back-btn {
-        display: block !important;
-        flex: 1 1 0 !important;
+        flex: 0 0 auto !important;
         width: auto !important;
         max-width: none !important;
         min-width: 0 !important;
+        min-height: 36px !important;
         margin: 0 !important;
-        padding: 7px 8px !important;
+        padding: 6px 9px !important;
+        font-size: 12px !important;
         text-align: center !important;
         white-space: nowrap !important;
-        box-sizing: border-box !important;
     }
 
 
     /* =====================================================
-       TABLE RESPONSIVE
+       TABLE
        ===================================================== */
 
     .table-responsive {
         display: block !important;
-        width: calc(100% - 30px) !important;
-        max-width: calc(100% - 30px) !important;
-        margin-left: 15px !important;
-        margin-right: 15px !important;
+        width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+        margin-top: 5px !important;
         padding: 0 !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        position: relative !important;
-        z-index: 1 !important;
         box-sizing: border-box !important;
     }
 
 
+        .table-responsive > table {
+            width: max-content !important;
+            min-width: 1200px !important;
+            margin: 0 !important;
+        }
+
+
         /* =====================================================
+       MOBILE HEADER
+       ===================================================== */
+
+        .table-responsive thead th {
+            padding: 4px 6px !important;
+            height: 26px !important;
+            font-size: 11px !important;
+            line-height: 1 !important;
+        }
+
+
+        /* =====================================================
+       MOBILE DATA ROW
+       EXTRA SMALL
+       ===================================================== */
+
+        .table-responsive tbody td {
+            padding: 0px 4px !important;
+            height: 17px !important;
+            font-size: 10px !important;
+            line-height: 0.9 !important;
+        }
+
+
+        /* =====================================================
+       MOBILE ACTION COLUMN
+       ===================================================== */
+
+        .table-responsive td:last-child {
+            min-width: 100px !important;
+            width: 100px !important;
+        }
+
+
+            /* =====================================================
+       MOBILE EDIT / DELETE
+       ===================================================== */
+
+            .table-responsive td:last-child .d-flex {
+                gap: 1px !important;
+            }
+
+
+        .table-responsive tbody td:last-child .btn {
+            height: 17px !important;
+            min-height: 17px !important;
+            padding: 0px 3px !important;
+            font-size: 8px !important;
+        }
+
+
+    /* =====================================================
+       PAGINATION
+       ===================================================== */
+
+    nav {
+        width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+    }
+
+
+    .pagination {
+        margin-top: 10px;
+        margin-bottom: 10px;
+    }
+}
+
+
+/* =========================================================
+   SMALL MOBILE
+   MAX WIDTH 400px
+   ========================================================= */
+
+@media screen and (max-width: 400px) {
+
+
+    .daily-list-title {
+        margin-bottom: 5px !important;
+        padding-top: 3px !important;
+    }
+
+
+    .daily-list-toolbar {
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
+    }
+
+
+    .daily-list-search-box {
+        height: 35px !important;
+        min-height: 35px !important;
+        padding: 6px 9px !important;
+        font-size: 12px !important;
+    }
+
+
+    .daily-list-actions {
+        gap: 4px !important;
+    }
+
+
+    .daily-create-btn,
+    .daily-back-btn {
+        min-height: 34px !important;
+        padding: 5px 7px !important;
+        font-size: 11px !important;
+    }
+
+
+    /* =====================================================
        TABLE
        ===================================================== */
 
+    .table-responsive {
+        width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+        margin-top: 4px !important;
+    }
+
+
         .table-responsive > table {
             min-width: 1200px !important;
-            width: max-content !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
         }
-}
 
+
+        /* =====================================================
+       HEADER
+       ===================================================== */
+
+        .table-responsive thead th {
+            padding: 3px 5px !important;
+            height: 24px !important;
+            font-size: 10px !important;
+        }
+
+
+        /* =====================================================
+       DATA ROW
+       ===================================================== */
+
+        .table-responsive tbody td {
+            padding: 0px 3px !important;
+            height: 16px !important;
+            font-size: 9px !important;
+            line-height: 0.9 !important;
+        }
+
+
+        /* =====================================================
+       ACTION
+       ===================================================== */
+
+        .table-responsive td:last-child {
+            min-width: 95px !important;
+            width: 95px !important;
+        }
+
+
+            .table-responsive td:last-child .d-flex {
+                gap: 1px !important;
+            }
+
+
+        .table-responsive tbody td:last-child .btn {
+            height: 16px !important;
+            min-height: 16px !important;
+            padding: 0px 3px !important;
+            font-size: 8px !important;
+        }
+
+
+    /* =====================================================
+       PAGINATION
+       ===================================================== */
+
+    .pagination .page-link {
+        font-size: 11px;
+        padding: 5px 8px;
+    }
+}
 
 
 /* =========================================================
    MOBILE LANDSCAPE
-   MAX WIDTH: 767px
-
-   IMPORTANT:
-   LEFT / RIGHT GAP = 50px
-   TOP CLEARANCE = 125px
    ========================================================= */
 
 @media screen and (max-width: 767px) and (orientation: landscape) {
 
-    /* =====================================================
-       BODY
-       ===================================================== */
 
     html,
     body {
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
-        overflow-y: auto !important;
+        overflow-y: hidden !important;
     }
 
 
     /* =====================================================
-       MAIN CONTENT
-       
-       Show/Hide button-এর নিচে বড় clearance
+       MAIN
        ===================================================== */
 
     main,
@@ -256,490 +603,320 @@ body {
         display: block !important;
         width: 100% !important;
         max-width: 100% !important;
-        padding-top: 125px !important;
         padding-left: 0 !important;
         padding-right: 0 !important;
-        margin-top: 0 !important;
-        position: relative !important;
-        box-sizing: border-box !important;
     }
 
 
     /* =====================================================
-       PAGE TITLE
-
-       LEFT = 50px
-       RIGHT = 50px
+       TITLE
        ===================================================== */
 
     .daily-list-title {
-        display: block !important;
-        width: calc(100% - 100px) !important;
-        max-width: calc(100% - 100px) !important;
+        width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
         margin-top: 0 !important;
-        margin-left: 50px !important;
-        margin-right: 50px !important;
-        margin-bottom: 15px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 50 !important;
-        box-sizing: border-box !important;
-    }
-
-
-    /* =====================================================
-       TITLE FALLBACK
-       ===================================================== */
-
-    main h1,
-    main h2,
-    main h3,
-    .main-content h1,
-    .main-content h2,
-    .main-content h3,
-    .content h1,
-    .content h2,
-    .content h3,
-    .container-fluid h1,
-    .container-fluid h2,
-    .container-fluid h3 {
-        margin-top: 0 !important;
-        padding-top: 0 !important;
-        position: relative !important;
-        z-index: 50 !important;
+        margin-bottom: 7px !important;
+        padding: 2px 0 0 0 !important;
     }
 
 
     /* =====================================================
        TOOLBAR
-
-       LEFT = 50px
-       RIGHT = 50px
-
-       This is the main landscape fix.
        ===================================================== */
 
     .daily-list-toolbar {
-        display: block !important;
-        width: calc(100% - 100px) !important;
-        max-width: calc(100% - 100px) !important;
-        margin-top: 25px !important;
-        margin-left: 50px !important;
-        margin-right: 50px !important;
-        margin-bottom: 20px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
-        clear: both !important;
-        box-sizing: border-box !important;
+        width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+        margin-top: 6px !important;
+        margin-bottom: 8px !important;
     }
 
 
     /* =====================================================
-       SEARCH FORM
-
-       Extra top space
+       SEARCH
        ===================================================== */
 
     .daily-list-search-form {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: 25px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 15px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
-        clear: both !important;
-        box-sizing: border-box !important;
+        margin-bottom: 6px !important;
     }
 
-
-    /* =====================================================
-       SEARCH BOX
-       ===================================================== */
 
     .daily-list-search-box {
-        display: block !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        min-height: 40px !important;
-        margin: 0 !important;
-        padding: 8px 12px !important;
-        font-size: 14px !important;
-        position: relative !important;
-        z-index: 100 !important;
-        box-sizing: border-box !important;
+        height: 33px !important;
+        min-height: 33px !important;
+        padding: 5px 8px !important;
+        font-size: 11px !important;
     }
 
 
     /* =====================================================
-       ACTION AREA
+       ACTIONS
        ===================================================== */
 
     .daily-list-actions {
-        display: flex !important;
-        width: 100% !important;
-        max-width: 100% !important;
-        flex-direction: row !important;
-        justify-content: space-between !important;
-        align-items: stretch !important;
-        gap: 12px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
-        box-sizing: border-box !important;
+        gap: 4px !important;
     }
 
-
-    /* =====================================================
-       CREATE + BACK
-       ===================================================== */
 
     .daily-create-btn,
     .daily-back-btn {
-        display: block !important;
-        flex: 1 1 0 !important;
-        width: auto !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        margin: 0 !important;
-        padding: 8px 10px !important;
-        text-align: center !important;
-        white-space: nowrap !important;
-        box-sizing: border-box !important;
+        min-height: 32px !important;
+        padding: 4px 7px !important;
+        font-size: 10px !important;
     }
 
 
     /* =====================================================
-       TABLE CONTAINER
-
-       LEFT = 50px
-       RIGHT = 50px
+       TABLE
        ===================================================== */
 
     .table-responsive {
-        display: block !important;
-        width: calc(100% - 100px) !important;
-        max-width: calc(100% - 100px) !important;
-        margin-left: 50px !important;
-        margin-right: 50px !important;
-        margin-top: 10px !important;
-        padding: 0 !important;
+        width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
+        margin-top: 3px !important;
         overflow-x: auto !important;
         overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        position: relative !important;
-        z-index: 1 !important;
-        box-sizing: border-box !important;
     }
+
+
+        .table-responsive > table {
+            min-width: 1200px !important;
+            width: max-content !important;
+        }
 
 
         /* =====================================================
-       TABLE
+       HEADER
        ===================================================== */
 
-        .table-responsive > table {
-            min-width: 1200px !important;
-            width: max-content !important;
-            margin: 0 !important;
-            box-sizing: border-box !important;
+        .table-responsive thead th {
+            padding: 2px 4px !important;
+            height: 23px !important;
+            font-size: 9px !important;
+        }
+
+
+        /* =====================================================
+       DATA
+       ===================================================== */
+
+        .table-responsive tbody td {
+            padding: 0px 3px !important;
+            height: 15px !important;
+            font-size: 9px !important;
+            line-height: 0.9 !important;
+        }
+
+
+        /* =====================================================
+       EDIT / DELETE
+       ===================================================== */
+
+        .table-responsive td:last-child .d-flex {
+            gap: 1px !important;
+        }
+
+
+        .table-responsive tbody td:last-child .btn {
+            height: 15px !important;
+            min-height: 15px !important;
+            padding: 0px 3px !important;
+            font-size: 8px !important;
         }
 }
 
 
-
 /* =========================================================
-   VERY SMALL MOBILE
-   PORTRAIT
-   MAX WIDTH: 400px
+   VERY SHORT LANDSCAPE
    ========================================================= */
 
-@media screen and (max-width: 400px) and (orientation: portrait) {
+@media screen and (max-width: 767px) and (orientation: landscape) and (max-height: 380px) {
 
-    /* =====================================================
-       MAIN
-       ===================================================== */
-
-    main,
-    .main-content,
-    .content,
-    .container-fluid {
-        width: 100% !important;
-        padding-top: 60px !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-
-    /* =====================================================
-       TITLE
-       ===================================================== */
 
     .daily-list-title {
-        width: calc(100% - 20px) !important;
-        max-width: calc(100% - 20px) !important;
-        margin-left: 10px !important;
-        margin-right: 10px !important;
-        margin-top: 0 !important;
-        margin-bottom: 8px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 20 !important;
+        padding-top: 1px !important;
+        margin-bottom: 4px !important;
     }
 
-
-    /* =====================================================
-       TOOLBAR
-       ===================================================== */
 
     .daily-list-toolbar {
-        width: calc(100% - 20px) !important;
-        max-width: calc(100% - 20px) !important;
-        margin-left: 10px !important;
-        margin-right: 10px !important;
-        margin-top: 15px !important;
-        margin-bottom: 12px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 30 !important;
+        margin-top: 4px !important;
+        margin-bottom: 5px !important;
     }
 
-
-    /* =====================================================
-       SEARCH FORM
-       ===================================================== */
 
     .daily-list-search-form {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin: 0 0 10px 0 !important;
-        padding: 0 !important;
+        margin-bottom: 4px !important;
     }
 
-
-    /* =====================================================
-       SEARCH BOX
-       ===================================================== */
 
     .daily-list-search-box {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        min-height: 38px !important;
-        font-size: 13px !important;
-        padding: 7px 10px !important;
-        box-sizing: border-box !important;
-    }
-
-
-    /* =====================================================
-       ACTIONS
-       ===================================================== */
-
-    .daily-list-actions {
-        display: flex !important;
-        width: 100% !important;
-        flex-direction: row !important;
-        gap: 8px !important;
-        margin: 0 !important;
-        padding: 0 !important;
+        height: 30px !important;
+        min-height: 30px !important;
+        padding: 4px 7px !important;
+        font-size: 10px !important;
     }
 
 
     .daily-create-btn,
     .daily-back-btn {
-        flex: 1 1 0 !important;
-        width: auto !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        font-size: 12px !important;
-        padding: 7px 8px !important;
-        margin: 0 !important;
-        text-align: center !important;
-        white-space: nowrap !important;
+        min-height: 29px !important;
+        padding: 3px 6px !important;
+        font-size: 9px !important;
     }
 
-
-    /* =====================================================
-       TABLE
-       ===================================================== */
 
     .table-responsive {
-        width: calc(100% - 20px) !important;
-        max-width: calc(100% - 20px) !important;
-        margin-left: 10px !important;
-        margin-right: 10px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        box-sizing: border-box !important;
+        margin-top: 2px !important;
     }
 
 
-        .table-responsive > table {
-            min-width: 1200px !important;
-            width: max-content !important;
+        .table-responsive thead th {
+            height: 21px !important;
+            padding: 2px 3px !important;
+            font-size: 9px !important;
         }
+
+
+        .table-responsive tbody td {
+            height: 14px !important;
+            padding: 0px 2px !important;
+            font-size: 8px !important;
+        }
+
+
+            .table-responsive tbody td:last-child .btn {
+                height: 14px !important;
+                min-height: 14px !important;
+                padding: 0px 2px !important;
+                font-size: 7px !important;
+            }
 }
 
 
-
 /* =========================================================
-   VERY SMALL MOBILE
-   LANDSCAPE
-   MAX WIDTH: 400px
-
-   LEFT / RIGHT = 30px
-   TOP = 120px
+   TOUCH DEVICE
    ========================================================= */
 
-@media screen and (max-width: 400px) and (orientation: landscape) {
-
-    /* =====================================================
-       MAIN
-       ===================================================== */
-
-    main,
-    .main-content,
-    .content,
-    .container-fluid {
-        width: 100% !important;
-        max-width: 100% !important;
-        padding-top: 120px !important;
-        padding-left: 0 !important;
-        padding-right: 0 !important;
-        box-sizing: border-box !important;
-        position: relative !important;
-    }
-
-
-    /* =====================================================
-       TITLE
-       ===================================================== */
-
-    .daily-list-title {
-        width: calc(100% - 60px) !important;
-        max-width: calc(100% - 60px) !important;
-        margin-left: 30px !important;
-        margin-right: 30px !important;
-        margin-top: 0 !important;
-        margin-bottom: 12px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 50 !important;
-    }
-
-
-    /* =====================================================
-       TOOLBAR
-       ===================================================== */
-
-    .daily-list-toolbar {
-        width: calc(100% - 60px) !important;
-        max-width: calc(100% - 60px) !important;
-        margin-left: 30px !important;
-        margin-right: 30px !important;
-        margin-top: 20px !important;
-        margin-bottom: 15px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
-        clear: both !important;
-    }
-
-
-    /* =====================================================
-       SEARCH FORM
-       ===================================================== */
-
-    .daily-list-search-form {
-        width: 100% !important;
-        max-width: 100% !important;
-        margin-top: 20px !important;
-        margin-left: 0 !important;
-        margin-right: 0 !important;
-        margin-bottom: 12px !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
-    }
-
-
-    /* =====================================================
-       SEARCH BOX
-       ===================================================== */
+@media screen and (pointer: coarse) and (hover: none) {
 
     .daily-list-search-box {
-        width: 100% !important;
-        max-width: 100% !important;
-        min-width: 0 !important;
-        min-height: 38px !important;
-        font-size: 13px !important;
-        padding: 7px 10px !important;
-        margin: 0 !important;
-        box-sizing: border-box !important;
-    }
-
-
-    /* =====================================================
-       ACTIONS
-       ===================================================== */
-
-    .daily-list-actions {
-        display: flex !important;
-        width: 100% !important;
-        flex-direction: row !important;
-        gap: 8px !important;
-        margin: 0 !important;
-        padding: 0 !important;
-        position: relative !important;
-        z-index: 100 !important;
+        -webkit-appearance: none;
     }
 
 
     .daily-create-btn,
-    .daily-back-btn {
-        flex: 1 1 0 !important;
-        width: auto !important;
-        max-width: none !important;
-        min-width: 0 !important;
-        font-size: 12px !important;
-        padding: 7px 8px !important;
-        margin: 0 !important;
-        text-align: center !important;
-        white-space: nowrap !important;
-        box-sizing: border-box !important;
+    .daily-back-btn,
+    .table-responsive .btn {
+        touch-action: manipulation;
     }
+}
 
 
-    /* =====================================================
-       TABLE
-       ===================================================== */
+/* =========================================================
+   SAFE AREA
+   ========================================================= */
+
+@media screen and (max-width: 768px) {
+
+    .daily-list-title {
+        padding-top: max( 3px, env(safe-area-inset-top) );
+    }
+}
+
+
+/* =========================================================
+   FINAL BOX SIZING
+   ========================================================= */
+
+.daily-list-title,
+.daily-list-toolbar,
+.daily-list-search-form,
+.daily-list-search-box,
+.daily-list-actions,
+.table-responsive,
+.table-responsive > table,
+nav {
+    box-sizing: border-box !important;
+}
+
+
+/* =========================================================
+   FINAL PAGE OVERFLOW
+   RIGHT-SIDE PAGE SCROLLBAR OFF
+   ========================================================= */
+
+html,
+body {
+    overflow-x: hidden !important;
+    overflow-y: hidden !important;
+}
+
+
+/* =========================================================
+   FINAL TABLE SCROLL
+   ONLY TABLE HORIZONTAL SCROLLBAR
+   ========================================================= */
+
+.table-responsive {
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    scrollbar-width: auto;
+}
+
+
+/* =========================================================
+   FINAL TABLE SIDE GAP
+   ========================================================= */
+
+@media screen and (max-width: 767px) {
 
     .table-responsive {
-        width: calc(100% - 60px) !important;
-        max-width: calc(100% - 60px) !important;
-        margin-left: 30px !important;
-        margin-right: 30px !important;
-        margin-top: 8px !important;
-        overflow-x: auto !important;
-        overflow-y: hidden !important;
-        -webkit-overflow-scrolling: touch;
-        position: relative !important;
-        z-index: 1 !important;
-        box-sizing: border-box !important;
+        width: calc(100% - 50px) !important;
+        max-width: calc(100% - 50px) !important;
+        margin-left: 25px !important;
+        margin-right: 25px !important;
     }
+}
+
+/* =========================================================
+   EDIT / DELETE BUTTON
+   TEXT PERFECT CENTER
+   ========================================================= */
+
+.table-responsive tbody td:last-child .btn {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-align: center !important;
+    vertical-align: middle !important;
+    padding: 0 6px !important;
+    height: 20px !important;
+    min-height: 20px !important;
+    line-height: 1 !important;
+    font-size: 10px !important;
+    margin: 0 !important;
+}
 
 
-        .table-responsive > table {
-            min-width: 1200px !important;
-            width: max-content !important;
-            margin: 0 !important;
-        }
+/* Edit & Delete button-এর মাঝের gap কম */
+.table-responsive tbody td:last-child .d-flex {
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    gap: 3px !important;
+}
+
+
+/* Icon থাকলে icon-ও vertically center */
+.table-responsive tbody td:last-child .btn i {
+    display: inline-flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    line-height: 1 !important;
+    vertical-align: middle !important;
 }

@@ -4,186 +4,487 @@
     ViewData["Title"] = "Edit Diesel Generator Reading";
 }
 
-<div class="container mt-4">
+<link rel="stylesheet"
+      href="~/css/edit-responsive.css"
+      asp-append-version="true" />
+
+<div class="container-fluid edit-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
 
-            <div class="card shadow-lg border-0">
+        <div class="col-12 col-xl-10 edit-wrapper">
+
+            <div class="card shadow-lg border-0 edit-card">
+
+                <!-- =====================================================
+                     HEADER
+                ====================================================== -->
 
                 <div class="card-header bg-success text-dark">
-                    <h5 class="mb-0">Edit Diesel Generator Reading</h5>
+
+                    <h5 class="mb-0">
+                        Edit Diesel Generator Reading
+                    </h5>
+
                 </div>
 
-                <div class="card-body p-4">
 
-                    <form asp-action="Edit" method="post">
+                <!-- =====================================================
+                     BODY
+                ====================================================== -->
+
+                <div class="card-body edit-body">
+
+                    <form asp-action="Edit"
+                          method="post"
+                          class="edit-form">
 
                         <!-- Hidden ID -->
-                        <input type="hidden" asp-for="Trid" />
+                        <input type="hidden"
+                               asp-for="Trid" />
+
+
+                        <!-- Validation Summary -->
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
 
+
+                        <!-- =================================================
+                             FORM FIELDS
+                        ================================================== -->
+
                         <div class="row g-3">
 
-                            <!-- Date -->
-                            <div class="col-md-3">
-                                <label asp-for="Trdate" class="form-label">Date<span class="text-danger">*</span></label>
-                                <input asp-for="Trdate" type="date" class="form-control" />
-                                <span asp-validation-for="Trdate" class="text-danger"></span>
+
+                            <!-- =================================================
+                                 DATE
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="Trdate"
+                                       class="form-label">
+
+                                    Date<span class="text-danger">*</span>
+
+                                </label>
+
+                                <input asp-for="Trdate"
+                                       type="date"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Trdate"
+                                      class="text-danger">
+                                </span>
+
                             </div>
 
-                            <!-- Equipment -->
-                            <div class="col-md-6">
-                                <label asp-for="Eqid" class="form-label">Equipment<span class="text-danger">*</span></label>
+
+                            <!-- =================================================
+                                 EQUIPMENT
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="Eqid"
+                                       class="form-label">
+
+                                    Equipment<span class="text-danger">*</span>
+
+                                </label>
 
                                 <select asp-for="Eqid"
                                         asp-items="ViewBag.EquipmentList"
                                         class="form-select">
-                                    <option value="">-- Select Equipment --</option>
+
+                                    <option value="">
+                                        -- Select Equipment --
+                                    </option>
+
                                 </select>
-                                <span asp-validation-for="Eqid" class="text-danger"></span>
+
+                                <span asp-validation-for="Eqid"
+                                      class="text-danger">
+                                </span>
+
                             </div>
 
-                            <!-- DieselConsumptionLtr -->
-                            <div class="col-md-3">
-                                <label asp-for="DieselConsumptionLtr" class="form-label">
+
+                            <!-- =================================================
+                                 DIESEL CONSUMPTION LTR
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="DieselConsumptionLtr"
+                                       class="form-label">
+
                                     Diesel Cons.(Ltr)<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="DieselConsumptionLtr" class="form-control" />
-                                <span asp-validation-for="DieselConsumptionLtr" class="text-danger"></span>
+
+                                <input asp-for="DieselConsumptionLtr"
+                                       class="form-control" />
+
+                                <span asp-validation-for="DieselConsumptionLtr"
+                                      class="text-danger">
+                                </span>
+
                             </div>
 
-                            <!-- ElectricityGenerationKwh -->
-                            <div class="col-md-3">
-                                <label asp-for="ElectricityGenerationKwh" class="form-label">
+
+                            <!-- =================================================
+                                 ELECTRICITY GENERATION KWH
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="ElectricityGenerationKwh"
+                                       class="form-label">
+
                                     E.Gen.(Kwh)<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="ElectricityGenerationKwh" class="form-control" />
-                                <span asp-validation-for="ElectricityGenerationKwh" class="text-danger"></span>
+
+                                <input asp-for="ElectricityGenerationKwh"
+                                       class="form-control" />
+
+                                <span asp-validation-for="ElectricityGenerationKwh"
+                                      class="text-danger">
+                                </span>
+
                             </div>
 
-                            <!-- RunningHr -->
-                            <div class="col-md-3">
-                                <label asp-for="RunningHr" class="form-label">
+
+                            <!-- =================================================
+                                 RUNNING HR
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="RunningHr"
+                                       class="form-label">
+
                                     Running Hr<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="RunningHr" class="form-control" />
-                                <span asp-validation-for="RunningHr" class="text-danger"></span>
+
+                                <input asp-for="RunningHr"
+                                       class="form-control" />
+
+                                <span asp-validation-for="RunningHr"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- DieselConsumptionHr -->
-                            <div class="col-md-3">
-                                <label asp-for="DieselConsumptionHr" class="form-label">
+
+
+                            <!-- =================================================
+                                 DIESEL CONSUMPTION / HR
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="DieselConsumptionHr"
+                                       class="form-label">
+
                                     Diesel Cons./Hr<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="DieselConsumptionHr" class="form-control" readonly />
-                                <span asp-validation-for="DieselConsumptionHr" class="text-danger"></span>
+
+                                <input asp-for="DieselConsumptionHr"
+                                       class="form-control"
+                                       readonly />
+
+                                <span asp-validation-for="DieselConsumptionHr"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- DieselConsumptionKwh -->
-                            <div class="col-md-3">
-                                <label asp-for="DieselConsumptionKwh" class="form-label">
+
+
+                            <!-- =================================================
+                                 DIESEL CONSUMPTION / KWH
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="DieselConsumptionKwh"
+                                       class="form-label">
+
                                     Diesel Cons./Kwh<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="DieselConsumptionKwh" class="form-control" />
-                                <span asp-validation-for="DieselConsumptionKwh" class="text-danger"></span>
+
+                                <input asp-for="DieselConsumptionKwh"
+                                       class="form-control" />
+
+                                <span asp-validation-for="DieselConsumptionKwh"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- LubOilConsumption -->
-                            <div class="col-md-3">
-                                <label asp-for="LubOilConsumption" class="form-label">
+
+
+                            <!-- =================================================
+                                 LUB OIL CONSUMPTION
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="LubOilConsumption"
+                                       class="form-label">
+
                                     Lub Oil Cons.<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="LubOilConsumption" class="form-control" />
-                                <span asp-validation-for="LubOilConsumption" class="text-danger"></span>
+
+                                <input asp-for="LubOilConsumption"
+                                       class="form-control" />
+
+                                <span asp-validation-for="LubOilConsumption"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- DieselTkLtr -->
-                            <div class="col-md-3">
-                                <label asp-for="DieselTkLtr" class="form-label">
+
+
+                            <!-- =================================================
+                                 DIESEL TK/LTR
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="DieselTkLtr"
+                                       class="form-label">
+
                                     Diesel (Tk/Ltr)<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="DieselTkLtr" class="form-control" />
-                                <span asp-validation-for="DieselTkLtr" class="text-danger"></span>
+
+                                <input asp-for="DieselTkLtr"
+                                       class="form-control"
+                                       readonly />
+
+                                <span asp-validation-for="DieselTkLtr"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- ChemicalCost -->
-                            <div class="col-md-3">
-                                <label asp-for="Chemical" class="form-label">
+
+
+                            <!-- =================================================
+                                 CHEMICAL
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="Chemical"
+                                       class="form-label">
+
                                     Chemical<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="Chemical" class="form-control" />
-                                <span asp-validation-for="Chemical" class="text-danger"></span>
+
+                                <input asp-for="Chemical"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Chemical"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- LubOilTkLtr -->
-                            <div class="col-md-3">
-                                <label asp-for="LubOilTkLtr" class="form-label">
+
+
+                            <!-- =================================================
+                                 LUB OIL TK/LTR
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="LubOilTkLtr"
+                                       class="form-label">
+
                                     Lub Oil (Tk/Ltr)<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="LubOilTkLtr" class="form-control" />
-                                <span asp-validation-for="LubOilTkLtr" class="text-danger"></span>
+
+                                <input asp-for="LubOilTkLtr"
+                                       class="form-control"
+                                       readonly />
+
+                                <span asp-validation-for="LubOilTkLtr"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- OthersConsumableOthersConsumable -->
-                            <div class="col-md-3">
-                                <label asp-for="OthersConsumable" class="form-label">
+
+
+                            <!-- =================================================
+                                 OTHERS CONSUMABLE
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="OthersConsumable"
+                                       class="form-label">
+
                                     Others Consumable<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="OthersConsumable" class="form-control" />
-                                <span asp-validation-for="OthersConsumable" class="text-danger"></span>
+
+                                <input asp-for="OthersConsumable"
+                                       class="form-control" />
+
+                                <span asp-validation-for="OthersConsumable"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- Troubleshooting -->
-                            <div class="col-md-3">
-                                <label asp-for="Troubleshooting" class="form-label">
+
+
+                            <!-- =================================================
+                                 TROUBLESHOOTING
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="Troubleshooting"
+                                       class="form-label">
+
                                     Troubleshooting<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="Troubleshooting" class="form-control" />
-                                <span asp-validation-for="Troubleshooting" class="text-danger"></span>
+
+                                <input asp-for="Troubleshooting"
+                                       class="form-control" />
+
+                                <span asp-validation-for="Troubleshooting"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- ServiceCharge -->
-                            <div class="col-md-3">
-                                <label asp-for="ServiceCharge" class="form-label">
-                                    Service Charge <span class="text-danger">*</span>
+
+
+                            <!-- =================================================
+                                 SERVICE CHARGE
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="ServiceCharge"
+                                       class="form-label">
+
+                                    Service Charge<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="ServiceCharge" class="form-control" />
-                                <span asp-validation-for="ServiceCharge" class="text-danger"></span>
+
+                                <input asp-for="ServiceCharge"
+                                       class="form-control" />
+
+                                <span asp-validation-for="ServiceCharge"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- RepairCharge -->
-                            <div class="col-md-3">
-                                <label asp-for="RepairCharge" class="form-label">
-                                    Repair Charge <span class="text-danger">*</span>
+
+
+                            <!-- =================================================
+                                 REPAIR CHARGE
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="RepairCharge"
+                                       class="form-label">
+
+                                    Repair Charge<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="RepairCharge" class="form-control" />
-                                <span asp-validation-for="RepairCharge" class="text-danger"></span>
+
+                                <input asp-for="RepairCharge"
+                                       class="form-control" />
+
+                                <span asp-validation-for="RepairCharge"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- Total -->
-                            <div class="col-md-3">
-                                <label asp-for="Total" class="form-label">
-                                    Total <span class="text-danger">*</span>
+
+
+                            <!-- =================================================
+                                 TOTAL
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="Total"
+                                       class="form-label">
+
+                                    Total<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="Total" class="form-control" readonly />
-                                <span asp-validation-for="Total" class="text-danger"></span>
+
+                                <input asp-for="Total"
+                                       class="form-control"
+                                       readonly />
+
+                                <span asp-validation-for="Total"
+                                      class="text-danger">
+                                </span>
+
                             </div>
-                            <!-- TkKwh -->
-                            <div class="col-md-3">
-                                <label asp-for="TkKwh" class="form-label">
-                                    Tk/Kwh <span class="text-danger">*</span>
+
+
+                            <!-- =================================================
+                                 TK/KWH
+                            ================================================== -->
+
+                            <div class="col-lg-3 col-md-6 col-sm-12 edit-field">
+
+                                <label asp-for="TkKwh"
+                                       class="form-label">
+
+                                    Tk/Kwh<span class="text-danger">*</span>
+
                                 </label>
-                                <input asp-for="TkKwh" class="form-control" readonly />
-                                <span asp-validation-for="TkKwh" class="text-danger"></span>
+
+                                <input asp-for="TkKwh"
+                                       class="form-control"
+                                       readonly />
+
+                                <span asp-validation-for="TkKwh"
+                                      class="text-danger">
+                                </span>
+
                             </div>
+
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+
+                        <!-- =================================================
+                             BUTTONS
+                        ================================================== -->
+
+                        <div class="d-flex justify-content-between align-items-center w-100 pt-4">
 
                             <a asp-action="DiselGeneratorReadingInfoList"
-                               class="btn btn-outline-secondary">
-                                ← Back
+                               class="btn btn-secondary">
+                                <i class="bi bi-arrow-left"></i>&nbsp;
+                                Back
                             </a>
 
                             <button type="submit"
                                     class="btn btn-success px-4">
-                                Update Reading
+                                <i class="bi bi-check-circle"></i>&nbsp;
+                                Update
                             </button>
 
                         </div>
+
+
 
                     </form>
 
@@ -192,137 +493,355 @@
             </div>
 
         </div>
+
     </div>
 
 </div>
 
-<!-- ================= CALCULATION SCRIPT ================= -->
+
+<!-- =========================================================
+     CALCULATION SCRIPT
+========================================================= -->
+
 <script>
 
-    document.addEventListener("DOMContentLoaded", function () {
+    document.addEventListener(
+        "DOMContentLoaded",
+        function () {
 
-        // ================= INPUT FIELDS =================
+            // =================================================
+            // INPUT FIELDS
+            // =================================================
 
-        const dieselConsumption = document.getElementById("DieselConsumptionLtr");
-        const lubOilConsumption = document.getElementById("LubOilConsumption");
-        const generation = document.getElementById("ElectricityGenerationKwh");
-        const runningHr = document.getElementById("RunningHr");
+            const dieselConsumption =
+                document.getElementById(
+                    "DieselConsumptionLtr"
+                );
 
-        const dieselConsumptionHr = document.getElementById("DieselConsumptionHr");
-        const dieselConsumptionKwh = document.getElementById("DieselConsumptionKwh");
+            const lubOilConsumption =
+                document.getElementById(
+                    "LubOilConsumption"
+                );
 
-        const dieselTkLtr = document.getElementById("DieselTkLtr");
-        const lubOilTkLtr = document.getElementById("LubOilTkLtr");
+            const generation =
+                document.getElementById(
+                    "ElectricityGenerationKwh"
+                );
 
-        const chemical = document.getElementById("Chemical");
-        const othersConsumable = document.getElementById("OthersConsumable");
+            const runningHr =
+                document.getElementById(
+                    "RunningHr"
+                );
 
-        const troubleshooting = document.getElementById("Troubleshooting");
-        const serviceCharge = document.getElementById("ServiceCharge");
-        const repairCharge = document.getElementById("RepairCharge");
+            const dieselConsumptionHr =
+                document.getElementById(
+                    "DieselConsumptionHr"
+                );
 
-        const total = document.getElementById("Total");
-        const tkKwh = document.getElementById("TkKwh");
+            const dieselConsumptionKwh =
+                document.getElementById(
+                    "DieselConsumptionKwh"
+                );
 
-        // ================= RATE VARIABLES =================
+            const dieselTkLtr =
+                document.getElementById(
+                    "DieselTkLtr"
+                );
 
-        let dieselRate = 0;
-        let lubOilRate = 0;
+            const lubOilTkLtr =
+                document.getElementById(
+                    "LubOilTkLtr"
+                );
 
-        // ================= HELPER =================
+            const chemical =
+                document.getElementById(
+                    "Chemical"
+                );
 
-        function num(el) {
-            return parseFloat(el?.value) || 0;
-        }
+            const othersConsumable =
+                document.getElementById(
+                    "OthersConsumable"
+                );
 
-        // ================= CALCULATION =================
+            const troubleshooting =
+                document.getElementById(
+                    "Troubleshooting"
+                );
 
-        function calculateValues() {
+            const serviceCharge =
+                document.getElementById(
+                    "ServiceCharge"
+                );
 
-            const dieselQty = num(dieselConsumption);
-            const lubOilQty = num(lubOilConsumption);
-            const genKwh = num(generation);
-            const runHr = num(runningHr);
+            const repairCharge =
+                document.getElementById(
+                    "RepairCharge"
+                );
 
-            // ===== Diesel per hour =====
-            dieselConsumptionHr.value =
-                runHr > 0 ? (dieselQty / runHr).toFixed(2) : "0.00";
+            const total =
+                document.getElementById(
+                    "Total"
+                );
 
-            // ===== Diesel per Kwh =====
-            dieselConsumptionKwh.value =
-                genKwh > 0 ? (dieselQty / genKwh).toFixed(4) : "0.0000";
+            const tkKwh =
+                document.getElementById(
+                    "TkKwh"
+                );
 
-            // ===== Diesel cost =====
-            dieselTkLtr.value =
-                (dieselQty * dieselRate).toFixed(2);
 
-            // ===== Lub Oil cost =====
-            lubOilTkLtr.value =
-                (lubOilQty * lubOilRate).toFixed(2);
+            // =================================================
+            // RATE VARIABLES
+            // =================================================
 
-            // ===== TOTAL COST =====
-            const totalValue =
-                num(dieselTkLtr) +
-                num(lubOilTkLtr) +
-                num(chemical) +
-                num(othersConsumable) +
-                num(troubleshooting) +
-                num(serviceCharge) +
-                num(repairCharge);
+            let dieselRate = 0;
+            let lubOilRate = 0;
 
-            total.value = totalValue.toFixed(2);
 
-            // ===== TK PER KWH =====
-            tkKwh.value =
-                genKwh > 0 ? (totalValue / genKwh).toFixed(2) : "0.00";
-        }
+            // =================================================
+            // NUMBER HELPER
+            // =================================================
 
-        // ================= LOAD DIESEL RATE =================
+            function num(el) {
 
-        fetch('/DiselGeneratorReadingInfo/GetLatestDieselRate')
-            .then(res => res.json())
-            .then(rate => {
-                dieselRate = parseFloat(rate) || 0;
-                calculateValues();
-            })
-            .catch(err => console.error("Diesel Rate Error:", err));
+                if (!el) {
+                    return 0;
+                }
 
-        // ================= LOAD LUB OIL RATE =================
+                const value =
+                    parseFloat(el.value);
 
-        fetch('/DiselGeneratorReadingInfo/GetLatestLubOilRate')
-            .then(res => res.json())
-            .then(rate => {
-                lubOilRate = parseFloat(rate) || 0;
-                calculateValues();
-            })
-            .catch(err => console.error("Lub Oil Rate Error:", err));
+                return isNaN(value)
+                    ? 0
+                    : value;
+            }
 
-        // ================= EVENTS =================
 
-        [
-            dieselConsumption,
-            lubOilConsumption,
-            generation,
-            runningHr,
-            chemical,
-            othersConsumable,
-            troubleshooting,
-            serviceCharge,
-            repairCharge
-        ].forEach(el => {
-            el?.addEventListener("input", calculateValues);
+            // =================================================
+            // CALCULATE
+            // =================================================
+
+            function calculateValues() {
+
+                const dieselQty =
+                    num(dieselConsumption);
+
+                const lubOilQty =
+                    num(lubOilConsumption);
+
+                const genKwh =
+                    num(generation);
+
+                const runHr =
+                    num(runningHr);
+
+
+                // =============================================
+                // DIESEL PER HOUR
+                // =============================================
+
+                if (dieselConsumptionHr) {
+
+                    dieselConsumptionHr.value =
+                        runHr > 0
+                            ? (dieselQty / runHr).toFixed(2)
+                            : "0.00";
+                }
+
+
+                // =============================================
+                // DIESEL PER KWH
+                // =============================================
+
+                if (dieselConsumptionKwh) {
+
+                    dieselConsumptionKwh.value =
+                        genKwh > 0
+                            ? (dieselQty / genKwh).toFixed(4)
+                            : "0.0000";
+                }
+
+
+                // =============================================
+                // DIESEL COST
+                // =============================================
+
+                if (dieselTkLtr) {
+
+                    dieselTkLtr.value =
+                        (dieselQty * dieselRate).toFixed(2);
+                }
+
+
+                // =============================================
+                // LUB OIL COST
+                // =============================================
+
+                if (lubOilTkLtr) {
+
+                    lubOilTkLtr.value =
+                        (lubOilQty * lubOilRate).toFixed(2);
+                }
+
+
+                // =============================================
+                // TOTAL COST
+                // =============================================
+
+                const totalValue =
+                    num(dieselTkLtr) +
+                    num(lubOilTkLtr) +
+                    num(chemical) +
+                    num(othersConsumable) +
+                    num(troubleshooting) +
+                    num(serviceCharge) +
+                    num(repairCharge);
+
+
+                if (total) {
+
+                    total.value =
+                        totalValue.toFixed(2);
+                }
+
+
+                // =============================================
+                // TK / KWH
+                // =============================================
+
+                if (tkKwh) {
+
+                    tkKwh.value =
+                        genKwh > 0
+                            ? (totalValue / genKwh).toFixed(2)
+                            : "0.00";
+                }
+
+            }
+
+
+            // =================================================
+            // LOAD DIESEL RATE
+            // =================================================
+
+            fetch(
+                '/DiselGeneratorReadingInfo/GetLatestDieselRate'
+            )
+                .then(function (res) {
+
+                    if (!res.ok) {
+                        throw new Error(
+                            "Failed to load diesel rate"
+                        );
+                    }
+
+                    return res.json();
+
+                })
+                .then(function (rate) {
+
+                    dieselRate =
+                        parseFloat(rate) || 0;
+
+                    calculateValues();
+
+                })
+                .catch(function (err) {
+
+                    console.error(
+                        "Diesel Rate Error:",
+                        err
+                    );
+
+                });
+
+
+            // =================================================
+            // LOAD LUB OIL RATE
+            // =================================================
+
+            fetch(
+                '/DiselGeneratorReadingInfo/GetLatestLubOilRate'
+            )
+                .then(function (res) {
+
+                    if (!res.ok) {
+                        throw new Error(
+                            "Failed to load lub oil rate"
+                        );
+                    }
+
+                    return res.json();
+
+                })
+                .then(function (rate) {
+
+                    lubOilRate =
+                        parseFloat(rate) || 0;
+
+                    calculateValues();
+
+                })
+                .catch(function (err) {
+
+                    console.error(
+                        "Lub Oil Rate Error:",
+                        err
+                    );
+
+                });
+
+
+            // =================================================
+            // INPUT EVENTS
+            // =================================================
+
+            [
+                dieselConsumption,
+                lubOilConsumption,
+                generation,
+                runningHr,
+                chemical,
+                othersConsumable,
+                troubleshooting,
+                serviceCharge,
+                repairCharge
+            ]
+                .forEach(function (el) {
+
+                    if (!el) {
+                        return;
+                    }
+
+                    el.addEventListener(
+                        "input",
+                        calculateValues
+                    );
+
+                    el.addEventListener(
+                        "change",
+                        calculateValues
+                    );
+
+                });
+
+
+            // =================================================
+            // INITIAL CALCULATION
+            // =================================================
+
+            calculateValues();
+
         });
-
-        // ================= INIT =================
-
-        calculateValues();
-
-    });
 
 </script>
 
+
 @section Scripts {
+
     @{
-        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+        await Html.RenderPartialAsync(
+            "_ValidationScriptsPartial"
+        );
     }
+
 }

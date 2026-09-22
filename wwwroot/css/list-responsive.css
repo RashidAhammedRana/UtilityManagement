@@ -106,7 +106,7 @@ body {
     margin-top: 0 !important;
     padding: 0 !important;
     overflow-x: auto !important;
-    overflow-y: hidden !important;
+    overflow-y: auto !important;
     -webkit-overflow-scrolling: touch;
     box-sizing: border-box !important;
 }
@@ -588,7 +588,7 @@ nav {
         width: 100% !important;
         max-width: 100% !important;
         overflow-x: hidden !important;
-        overflow-y: hidden !important;
+        overflow-y: auto !important;
     }
 
 
@@ -852,9 +852,12 @@ nav {
 
 html,
 body {
+    width: 100%;
+    max-width: 100%;
     overflow-x: hidden !important;
-    overflow-y: hidden !important;
+    overflow-y: auto !important;
 }
+
 
 
 /* =========================================================
@@ -865,8 +868,9 @@ body {
 .table-responsive {
     overflow-x: auto !important;
     overflow-y: hidden !important;
-    scrollbar-width: auto;
+    -webkit-overflow-scrolling: touch;
 }
+
 
 
 /* =========================================================

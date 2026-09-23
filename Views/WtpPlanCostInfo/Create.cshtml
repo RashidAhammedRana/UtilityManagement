@@ -4,20 +4,21 @@
     ViewData["Title"] = "Create WTP Plan Cost Info";
 }
 
-<div class="container mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<div class="container create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Add New WTP Plan Cost Info</h5>
                 </div>
 
-                <div class="card-body p-4">
-
-                    <form asp-action="Create" method="post">
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -210,10 +211,25 @@
 
                                 <span asp-validation-for="TkMcSoftWater" class="text-danger"></span>
                             </div>
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="create-form-buttons">
+                                        <a asp-action="WtpPlanCostInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary">
+                                            <i class="bi bi-save me-1"></i>&nbsp; Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
 
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="WtpPlanCostInfoList"
                                class="btn btn-outline-secondary">
@@ -225,7 +241,7 @@
                                 Save
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

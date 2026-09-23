@@ -4,20 +4,22 @@
     ViewData["Title"] = "Edit Generator RMS Room Reading";
 }
 
-<div class="container mt-4">
+<link href="~/css/edit-responsive.css" rel="stylesheet" />
+
+<div class="container edit-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 edit-card">
 
-                <div class="card-header bg-success text-white">
-                    <h5 class="mb-0">Edit Generator RMS Room Reading</h5>
+
+                <div class="card-header bg-success text-dark">
+                    <h5 class="mb-0">Edit Solar Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
-
-                    <form asp-action="Edit" method="post"> 
+                <div class="card-body p-4 edit-body">
+                    <form asp-action="Edit" method="post" class="edit-form">
                         <input type="hidden" asp-for="Trid" />
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -26,7 +28,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -36,7 +38,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -49,7 +51,7 @@
                             </div>
 
                             <!-- NgConsumption -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="NgConsumption" class="form-label">
                                     NG Consumption(m3)<span class="text-danger">*</span>
                                 </label>
@@ -58,7 +60,7 @@
                             </div>
 
                             <!-- NG(Tk/m3) -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="NgTk" class="form-label">
                                     NG(Tk/m3) <span class="text-danger">*</span>
                                 </label>
@@ -67,7 +69,7 @@
                             </div>
 
                             <!-- ToalRh -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ToalRh" class="form-label">
                                     Total RH<span class="text-danger">*</span>
                                 </label>
@@ -76,7 +78,7 @@
                             </div>
 
                             <!-- GenerationKwh -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TkHr" class="form-label">
                                     TK/Hr<span class="text-danger">*</span>
                                 </label>
@@ -84,16 +86,31 @@
                                 <span asp-validation-for="TkHr" class="text-danger"></span>
                             </div>
                             <!-- NG Consumtion/Hr -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="NgConsumptionHr" class="form-label">
                                     NG Consumtion/Hr<span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="NgConsumptionHr" class="form-control" readonly />
                                 <span asp-validation-for="NgConsumptionHr" class="text-danger"></span>
                             </div>
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="edit-form-buttons">
+                                        <a asp-action="GenRmsRoomInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            <i class="bi bi-check-circle me-1"></i>&nbsp; Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="GenRmsRoomInfoList"
                                class="btn btn-outline-secondary">
@@ -105,7 +122,7 @@
                                 Update Reading
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

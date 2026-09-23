@@ -1,17 +1,4 @@
-﻿/* =========================================================
-   DAILY LIST - CLEAN RESPONSIVE CSS
-   Bootstrap 5.3 Compatible
-
-   DESKTOP/LARGE SCREEN:
-   ORIGINAL DESIGN PRESERVED
-
-   MOBILE:
-   Create = LEFT
-   Back   = RIGHT
-   Same Row
-   ========================================================= */
-
-
+﻿
 /* =========================================================
    GLOBAL
    ========================================================= */
@@ -922,31 +909,33 @@ nav {
        VERY SHORT TABLE
        ===================================================== */
 
-    .table-responsive {
-        margin-top: 2px !important;
-    }
+.table-responsive {
+    margin-top: 2px !important;
+}
 
+/* Common Table Header Color */
+.table-responsive thead th {
+    height: 21px !important;
+    padding: 2px 3px !important;
+    font-size: 9px !important;
 
-        .table-responsive thead th {
-            height: 21px !important;
-            padding: 2px 3px !important;
-            font-size: 9px !important;
-        }
+    background-color: #cfe2ff !important;
+    color: #084298 !important;
+}
 
+.table-responsive tbody td {
+    height: 14px !important;
+    padding: 0px 2px !important;
+    font-size: 8px !important;
+}
 
-        .table-responsive tbody td {
-            height: 14px !important;
-            padding: 0px 2px !important;
-            font-size: 8px !important;
-        }
+.table-responsive tbody td:last-child .btn {
+    height: 14px !important;
+    min-height: 14px !important;
+    padding: 0px 2px !important;
+    font-size: 7px !important;
+}
 
-
-            .table-responsive tbody td:last-child .btn {
-                height: 14px !important;
-                min-height: 14px !important;
-                padding: 0px 2px !important;
-                font-size: 7px !important;
-            }
 }
 
 

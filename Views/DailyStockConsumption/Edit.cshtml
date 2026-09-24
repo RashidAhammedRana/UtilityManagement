@@ -4,36 +4,22 @@
     ViewData["Title"] = "Edit Daily Fuel Stock & Consumption Info.";
 }
 
-<div class="container mt-4">
+<link href="~/css/edit-responsive.css" rel="stylesheet" />
+
+<div class="container edit-page">
 
     <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
 
-        <div class="col-lg-10">
+            <div class="card shadow-lg border-0 edit-card">
 
-            <div class="card shadow-lg border-0">
 
-                <!-- =====================================================
-                     HEADER
-                ====================================================== -->
-
-                <div class="card-header bg-success text-white">
-
-                    <h5 class="mb-0">
-                        Edit Daily Fuel Stock & Consumption Info.
-                    </h5>
-
+                <div class="card-header bg-success text-dark">
+                    <h5 class="mb-0">Edit Fuel Stock & Consumption Info.</h5>
                 </div>
 
-
-                <!-- =====================================================
-                     BODY
-                ====================================================== -->
-
-                <div class="card-body p-4">
-
-                    <form asp-action="Edit"
-                          method="post"
-                          id="stockForm">
+                <div class="card-body p-4 edit-body">
+                    <form asp-action="Edit" method="post" class="edit-form">
 
                         <!-- =================================================
                              PRIMARY KEY
@@ -344,14 +330,20 @@
                                  STEP 1 BUTTON
                             ================================================== -->
 
-                            <div class="d-flex justify-content-end mt-4">
+                            <div class="d-flex justify-content-between align-items-center mt-4">
 
+                                <!-- BACK -->
+                                <a asp-action="DailyStockConsumptionList"
+                                   class="btn btn-outline-secondary px-4">
+                                    ← Back
+                                </a>
+
+
+                                <!-- NEXT -->
                                 <button type="button"
                                         class="btn btn-success next-btn"
                                         data-next="2">
-
                                     Next →
-
                                 </button>
 
                             </div>
@@ -692,7 +684,6 @@
 
                             <div class="d-flex justify-content-between mt-4">
 
-
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
                                         data-prev="2">
@@ -710,7 +701,6 @@
                                         ← Back
 
                                     </a>
-
 
                                     <button type="submit"
                                             class="btn btn-success px-4">

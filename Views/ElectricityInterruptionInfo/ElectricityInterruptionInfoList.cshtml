@@ -6,7 +6,7 @@
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
 
-    int pageSize = 15;
+    int pageSize = 30;
     int sl = (currentPage - 1) * pageSize;
 
     int startPage = Math.Max(1, currentPage - 2);
@@ -68,7 +68,7 @@
 <div class="table-responsive">
     <table class="table table-bordered table-hover align-middle">
 
-        <thead class="table-dark text-center">
+        <thead class="table-primary text-center">
             <tr>
                 <th style="width: 40px;">SL</th>
                 <th style="width: 110px;">Date</th>

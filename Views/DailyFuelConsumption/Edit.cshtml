@@ -4,34 +4,22 @@
     ViewData["Title"] = "Edit Daily Fuel Consumption";
 }
 
-<div class="row justify-content-center">
+<link href="~/css/edit-responsive.css" rel="stylesheet" />
 
-    <div class="col-lg-10">
+<div class="container edit-page">
 
-        <div class="card shadow-lg border-0">
+    <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
 
-            <!-- =====================================================
-                 HEADER
-            ====================================================== -->
-
-            <div class="card-header bg-success text-white">
-
-                <h5 class="mb-0">
-                    Edit Daily Fuel Consumption
-                </h5>
-
-            </div>
+            <div class="card shadow-lg border-0 edit-card">
 
 
-            <!-- =====================================================
-                 BODY
-            ====================================================== -->
+                <div class="card-header bg-success text-dark">
+                    <h5 class="mb-0">Edit Fuel Consumption Info.</h5>
+                </div>
 
-            <div class="card-body p-4">
-
-                <form asp-action="Edit"
-                      method="post"
-                      id="fuelForm">
+                <div class="card-body p-4 edit-body">
+                    <form asp-action="Edit" method="post" class="edit-form">
 
                     <!-- =================================================
                          PRIMARY KEY
@@ -880,37 +868,36 @@
 
                         <!-- FINAL BUTTONS -->
 
-                        <div class="d-flex justify-content-between mt-4">
+                            <div class="d-flex justify-content-between mt-4">
 
-                            <button type="button"
-                                    class="btn btn-outline-secondary prev-btn"
-                                    data-prev="3">
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="3">
 
-                                ← Previous
-
-                            </button>
-
-
-                            <div>
-
-                                <a asp-action="DailyFuelConsumptionList"
-                                   class="btn btn-outline-secondary me-2">
-
-                                    ← Back
-
-                                </a>
-
-
-                                <button type="submit"
-                                        class="btn btn-success px-4">
-
-                                    Update
+                                    ← Previous
 
                                 </button>
 
-                            </div>
 
-                        </div>
+                                <div>
+
+                                    @* <a asp-action="DailyFuelConsumptionList"
+                                       class="btn btn-outline-secondary me-2">
+
+                                        ← Back
+
+                                    </a> *@
+
+                                    <button type="submit"
+                                            class="btn btn-success px-4">
+                                        <i class="bi bi-check-circle me-1"></i>&nbsp;
+                                        Update
+
+                                    </button>
+
+                                </div>
+
+                            </div>
 
                     </div>
 

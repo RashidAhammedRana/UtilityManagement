@@ -4,21 +4,27 @@
     ViewData["Title"] = "Electricity Consumption Reading Info";
 }
 
-<div class="container mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<div class="container create-page">
+
     <div class="row justify-content-center">
-        <div class="col-md-10">
-            <div class="card shadow-lg border-0">
+        <div class="col-md-10 create-wrapper">
+
+            <div class="card shadow-lg border-0 create-card">
+
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add New Electricity Consumption Reading Info</h5>
+                    <h5 class="mb-0">Add New Electricity Consumption Reading</h5>
                 </div>
-                <div class="card-body p-4">
-                    <form asp-action="Create" method="post">
+
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
                         </div>
                         <div class="row g-3">
                             <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -27,7 +33,7 @@
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
                             <!-- COMPANY -->
-                            <div class="col-lg-6 col-md- col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label class="form-label">
                                     Company
                                     <span class="text-danger">*</span>
@@ -45,7 +51,7 @@
                                 </select>
                             </div>
                             <!-- DyeingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DyeingCons" class="form-label">
                                     Dyeing Consumption<span class="text-danger">*</span>
                                 </label>
@@ -53,7 +59,7 @@
                                 <span asp-validation-for="DyeingCons" class="text-danger"></span>
                             </div>
                             <!-- DyeingFinCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DyeingFinCons" class="form-label">
                                     Dyeing Fin. Cons.<span class="text-danger">*</span>
                                 </label>
@@ -61,7 +67,7 @@
                                 <span asp-validation-for="DyeingFinCons" class="text-danger"></span>
                             </div>
                             <!-- TestingLabCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TestingLabCons" class="form-label">
                                     Testing Lab Cons.<span class="text-danger">*</span>
                                 </label>
@@ -69,7 +75,7 @@
                                 <span asp-validation-for="TestingLabCons" class="text-danger"></span>
                             </div>
                             <!-- WashingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="WashingCons" class="form-label">
                                     Washing Consumption<span class="text-danger">*</span>
                                 </label>
@@ -77,7 +83,7 @@
                                 <span asp-validation-for="WashingCons" class="text-danger"></span>
                             </div>
                             <!-- GmntsFinCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="GmntsFinCons" class="form-label">
                                     Gmnts & Fin. Cons.<span class="text-danger">*</span>
                                 </label>
@@ -85,7 +91,7 @@
                                 <span asp-validation-for="GmntsFinCons" class="text-danger"></span>
                             </div>
                             <!-- CuttingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="CuttingCons" class="form-label">
                                     Cutting Consumption<span class="text-danger">*</span>
                                 </label>
@@ -93,7 +99,7 @@
                                 <span asp-validation-for="CuttingCons" class="text-danger"></span>
                             </div>
                             <!-- AllUtilityCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AllUtilityCons" class="form-label">
                                     All Utility Cons.<span class="text-danger">*</span>
                                 </label>
@@ -101,7 +107,7 @@
                                 <span asp-validation-for="AllUtilityCons" class="text-danger"></span>
                             </div>
                             <!-- PrintingHeatsealCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="PrintingHeatsealCons" class="form-label">
                                     Printing & Heatseal Cons.<span class="text-danger">*</span>
                                 </label>
@@ -109,7 +115,7 @@
                                 <span asp-validation-for="PrintingHeatsealCons" class="text-danger"></span>
                             </div>
                             <!-- EmbroideryCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="EmbroideryCons" class="form-label">
                                     Embroidery Consumption<span class="text-danger">*</span>
                                 </label>
@@ -117,7 +123,7 @@
                                 <span asp-validation-for="EmbroideryCons" class="text-danger"></span>
                             </div>
                             <!-- KnittingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="KnittingCons" class="form-label">
                                     Knitting Consumption<span class="text-danger">*</span>
                                 </label>
@@ -125,7 +131,7 @@
                                 <span asp-validation-for="KnittingCons" class="text-danger"></span>
                             </div>
                             <!-- SeamlessKnitCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="SeamlessKnitCons" class="form-label">
                                     Seamless Knit. Cons.<span class="text-danger">*</span>
                                 </label>
@@ -133,7 +139,7 @@
                                 <span asp-validation-for="SeamlessKnitCons" class="text-danger"></span>
                             </div>
                             <!-- SeamlessDyeCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="SeamlessDyeCons" class="form-label">
                                     Seamless Dye.Cons.<span class="text-danger">*</span>
                                 </label>
@@ -141,7 +147,7 @@
                                 <span asp-validation-for="SeamlessDyeCons" class="text-danger"></span>
                             </div>
                             <!-- SeamlessGmntCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="SeamlessGmntCons" class="form-label">
                                     Seamless Gmnts Cons.<span class="text-danger">*</span>
                                 </label>
@@ -149,7 +155,7 @@
                                 <span asp-validation-for="SeamlessGmntCons" class="text-danger"></span>
                             </div>
                             <!-- AllOfficeCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AllOfficeCons" class="form-label">
                                     All Office Cons.<span class="text-danger">*</span>
                                 </label>
@@ -157,7 +163,7 @@
                                 <span asp-validation-for="AllOfficeCons" class="text-danger"></span>
                             </div>
                             <!-- OthersAreaCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="OthersAreaCons" class="form-label">
                                     Others Area Cons.<span class="text-danger">*</span>
                                 </label>
@@ -165,15 +171,30 @@
                                 <span asp-validation-for="OthersAreaCons" class="text-danger"></span>
                             </div>
                             <!-- TotalCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TotalCons" class="form-label">
                                     Total Consumption<span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="TotalCons" class="form-control" readonly />
                                 <span asp-validation-for="TotalCons" class="text-danger"></span>
                             </div>
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="create-form-buttons">
+                                        <a asp-action="ElectricityConsumptionReadingInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary">
+                                            <i class="bi bi-save me-1"></i>&nbsp; Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="ElectricityConsumptionReadingInfoList"
                                class="btn btn-outline-secondary">
@@ -185,7 +206,7 @@
                                 Save
                             </button>
 
-                        </div>
+                        </div> *@
                     </form>
                 </div>
             </div>

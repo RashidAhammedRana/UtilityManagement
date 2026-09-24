@@ -11,7 +11,7 @@ public class DailyGasPressureRecordController : Controller
     private readonly ApplicationDbContext _context;
     private readonly UserManager<ApplicationUser> _userManager;
 
-    private const int PageSize = 15;
+    private const int PageSize = 30;
     private const int StartHour = 6;
 
     public DailyGasPressureRecordController(ApplicationDbContext context,UserManager<ApplicationUser> userManager)

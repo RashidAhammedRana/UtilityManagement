@@ -4,20 +4,22 @@
     ViewData["Title"] = "Edit RO Plant Cost Info";
 }
 
-<div class="container-fluid mt-4">
+<link href="~/css/edit-responsive.css" rel="stylesheet" />
 
-    <div class="row">
-        <div class="col-md-12">
+<div class="container edit-page">
 
-            <div class="card shadow-lg border-0">
+    <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
 
-                <div class="card-header bg-success text-white">
+            <div class="card shadow-lg border-0 edit-card">
+
+
+                <div class="card-header bg-success text-dark">
                     <h5 class="mb-0">Edit RO Plant Cost Info</h5>
                 </div>
 
-                <div class="card-body px-4 py-2">
-
-                    <form asp-action="Edit" method="post">
+                <div class="card-body p-4 edit-body">
+                    <form asp-action="Edit" method="post" class="edit-form">
                         <input asp-for="Trid" hidden/>
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -26,7 +28,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -35,7 +37,7 @@
                                 <span asp-validation-for="Trdate" class="text-danger"></span>
                             </div>
                             <!-- COMPANY -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label class="form-label">
                                     Company
                                     <span class="text-danger">*</span>
@@ -54,7 +56,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -67,7 +69,7 @@
                             </div>
 
                             <!-- Doshion51Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Doshion51Cons" class="form-label">
                                     Doshion-51 Consumption(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -76,7 +78,7 @@
                             </div>
 
                             <!-- Doshion51Cost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Doshion51Cost" class="form-label">
                                     Doshion-51 Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -85,7 +87,7 @@
                             </div>
 
                             <!-- Doshion52Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Doshion52Cons" class="form-label">
                                     Doshion-52 Consumption(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -94,7 +96,7 @@
                             </div>
 
                             <!-- Doshion52Cost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Doshion52Cost" class="form-label">
                                     Doshion-52 Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -102,7 +104,7 @@
                                 <span asp-validation-for="Doshion52Cost" class="text-danger"></span>
                             </div>
                             <!-- DoScale65Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DoScale65Cons" class="form-label">
                                     DoScale-65 Consumption(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -111,7 +113,7 @@
                             </div>
 
                             <!-- Doshion52Cost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DoScale65Cost" class="form-label">
                                     DoScale-65 Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -119,7 +121,7 @@
                                 <span asp-validation-for="DoScale65Cost" class="text-danger"></span>
                             </div>
                             <!-- H2so4Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="H2so4Cons" class="form-label">
                                     H₂SO₄ Consumption(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -127,7 +129,7 @@
                                 <span asp-validation-for="H2so4Cons" class="text-danger"></span>
                             </div>
                             <!-- H2so4Cost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="H2so4Cost" class="form-label">
                                     H₂SO₄ Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -135,7 +137,7 @@
                                 <span asp-validation-for="H2so4Cost" class="text-danger"></span>
                             </div>
                             <!-- DispergoCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DispergoCons" class="form-label">
                                     Dispergo Consumption(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -143,7 +145,7 @@
                                 <span asp-validation-for="DispergoCons" class="text-danger"></span>
                             </div>
                             <!-- DispergoCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DispergoCost" class="form-label">
                                     Dispergo Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -151,7 +153,7 @@
                                 <span asp-validation-for="DispergoCost" class="text-danger"></span>
                             </div>
                             <!-- Na2s2o5Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Na2s2o5Cons" class="form-label">
                                     SMBS-Na₂S₂O₅ Cons.(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -159,7 +161,7 @@
                                 <span asp-validation-for="Na2s2o5Cons" class="text-danger"></span>
                             </div>
                             <!-- Na2s2o5Cost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Na2s2o5Cost" class="form-label">
                                     SMBS-Na₂S₂O₅ Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -167,7 +169,7 @@
                                 <span asp-validation-for="Na2s2o5Cost" class="text-danger"></span>
                             </div>
                             <!-- AcidCleanerCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AcidCleanerCons" class="form-label">
                                     Acid Cleaner Cons.(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -175,7 +177,7 @@
                                 <span asp-validation-for="AcidCleanerCons" class="text-danger"></span>
                             </div>
                             <!-- AcidCleanerCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AcidCleanerCost" class="form-label">
                                     Acid Cleaner Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -183,7 +185,7 @@
                                 <span asp-validation-for="AcidCleanerCost" class="text-danger"></span>
                             </div>
                             <!-- AcidCleanerCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AlkalineCleanerCons" class="form-label">
                                     Alkaline Cleaner Cons.(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -191,7 +193,7 @@
                                 <span asp-validation-for="AlkalineCleanerCons" class="text-danger"></span>
                             </div>
                             <!-- AlkalineCleanerCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AlkalineCleanerCost" class="form-label">
                                     Alkaline Cleaner Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -199,7 +201,7 @@
                                 <span asp-validation-for="AlkalineCleanerCost" class="text-danger"></span>
                             </div>
                             <!-- DailyRunningHour -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DailyRunningHour" class="form-label">
                                     Daily Running Hour<span class="text-danger">*</span>
                                 </label>
@@ -207,7 +209,7 @@
                                 <span asp-validation-for="DailyRunningHour" class="text-danger"></span>
                             </div>
                             <!-- TotalChemicalCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TotalChemicalCost" class="form-label">
                                     Total Chemical Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -215,7 +217,7 @@
                                 <span asp-validation-for="TotalChemicalCost" class="text-danger"></span>
                             </div>
                             <!-- ServiceCharge -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ServiceCharge" class="form-label">
                                     Service Charge(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -223,7 +225,7 @@
                                 <span asp-validation-for="ServiceCharge" class="text-danger"></span>
                             </div>
                             <!-- MaintenanceCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="MaintenanceCost" class="form-label">
                                     Maintenance Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -231,7 +233,7 @@
                                 <span asp-validation-for="MaintenanceCost" class="text-danger"></span>
                             </div>
                             <!-- ManpowerSalary -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ManpowerSalary" class="form-label">
                                     Manpower Salary(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -239,7 +241,7 @@
                                 <span asp-validation-for="ManpowerSalary" class="text-danger"></span>
                             </div>
                             <!-- GrandTotalCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="GrandTotalCost" class="form-label">
                                     Grand Total Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -247,7 +249,7 @@
                                 <span asp-validation-for="GrandTotalCost" class="text-danger"></span>
                             </div>
                             <!-- EffFlowRoPlant -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="EffFlowRoPlant" class="form-label">
                                     Eff.Flow RO Plant<span class="text-danger">*</span>
                                 </label>
@@ -255,7 +257,7 @@
                                 <span asp-validation-for="EffFlowRoPlant" class="text-danger"></span>
                             </div>
                             <!-- EffFlowRoSoft -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="EffFlowRoSoft" class="form-label">
                                     Eff.Flow RO Soft<span class="text-danger">*</span>
                                 </label>
@@ -263,7 +265,7 @@
                                 <span asp-validation-for="EffFlowRoSoft" class="text-danger"></span>
                             </div>
                             <!-- RoSoftWaterFlow -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="RoSoftWaterFlow" class="form-label">
                                     RO Softwater Folow <span class="text-danger">*</span>
                                 </label>
@@ -272,7 +274,7 @@
                             </div>
 
                             <!-- EffFlowRoRejection -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="EffFlowRoRejection" class="form-label">
                                     Eff.Flow RO Rejection
                                 </label>
@@ -281,7 +283,7 @@
                             </div>
 
                             <!-- ChemCostEffTreatment -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ChemCostEffTreatment" class="form-label">
                                     Chem. Cost Eff. Treatment
                                 </label>
@@ -289,17 +291,31 @@
                                 <span asp-validation-for="ChemCostEffTreatment" class="text-danger"></span>
                             </div>
                             <!--DailyRoCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DailyRoCost" class="form-label">
                                     Daily RO Cost(Tk)
                                 </label>
                                 <input asp-for="DailyRoCost" class="form-control" readonly />
                                 <span asp-validation-for="DailyRoCost" class="text-danger"></span>
                             </div>
-
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="edit-form-buttons">
+                                        <a asp-action="RoPlantCostInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            <i class="bi bi-check-circle me-1"></i>&nbsp; Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="RoPlantCostInfoList"
                                class="btn btn-outline-secondary">
@@ -311,7 +327,7 @@
                                 Update
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

@@ -4,20 +4,21 @@
     ViewData["Title"] = "Steam Consumption Reading Info";
 }
 
-<div class="container mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<div class="container create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add New Steam Consumption Reading Info</h5>
+                    <h5 class="mb-0">Add New Steam Consumption Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
-
-                    <form asp-action="Create" method="post">
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -26,7 +27,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -36,7 +37,7 @@
                             </div>
                             <!-- COMPANY -->
 
-                            <div class="col-lg-6 col-md-6 col-sm-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
 
                                 <label class="form-label">
 
@@ -68,7 +69,7 @@
                             </div>
 
                             <!-- DyeingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DyeingCons" class="form-label">
                                     Dyeing Consumption<span class="text-danger">*</span>
                                 </label>
@@ -77,7 +78,7 @@
                             </div>
 
                             <!-- DyeingFinCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="DyeingFinCons" class="form-label">
                                     Dyeing Fin.Cons.<span class="text-danger">*</span>
                                 </label>
@@ -86,7 +87,7 @@
                             </div>
 
                             <!-- WashingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="WashingCons" class="form-label">
                                     Washing Consumption<span class="text-danger">*</span>
                                 </label>
@@ -95,7 +96,7 @@
                             </div>
 
                             <!-- GarmentsCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="GarmentsCons" class="form-label">
                                     Garments Consumption<span class="text-danger">*</span>
                                 </label>
@@ -103,7 +104,7 @@
                                 <span asp-validation-for="GarmentsCons" class="text-danger"></span>
                             </div>
                             <!-- ChillerCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ChillerCons" class="form-label">
                                     Chiller Consumption<span class="text-danger">*</span>
                                 </label>
@@ -111,7 +112,7 @@
                                 <span asp-validation-for="ChillerCons" class="text-danger"></span>
                             </div>
                             <!-- SeamlessDyeingCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="SeamlessDyeingCons" class="form-label">
                                     Seamless Dyeing Cons.<span class="text-danger">*</span>
                                 </label>
@@ -119,7 +120,7 @@
                                 <span asp-validation-for="SeamlessDyeingCons" class="text-danger"></span>
                             </div>
                             <!-- SeamlessGarmentsCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="SeamlessGarmentsCons" class="form-label">
                                     Seamless Garments Cons.<span class="text-danger">*</span>
                                 </label>
@@ -127,7 +128,7 @@
                                 <span asp-validation-for="SeamlessGarmentsCons" class="text-danger"></span>
                             </div>
                             <!-- LabCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="LabCons" class="form-label">
                                     Lab Consumption<span class="text-danger">*</span>
                                 </label>
@@ -135,16 +136,31 @@
                                 <span asp-validation-for="LabCons" class="text-danger"></span>
                             </div>
                             <!-- TotalCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TotalCons" class="form-label">
                                     Total Consumption<span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="TotalCons" class="form-control" readonly />
                                 <span asp-validation-for="TotalCons" class="text-danger"></span>
                             </div>
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="create-form-buttons">
+                                        <a asp-action="SteamConsumptionReadingInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary">
+                                            <i class="bi bi-save me-1"></i>&nbsp; Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="SteamConsumptionReadingInfoList"
                                class="btn btn-outline-secondary">
@@ -156,7 +172,7 @@
                                 Save
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

@@ -397,7 +397,21 @@
 
                             </div>
 
-
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="edit-form-buttons">
+                                        <a asp-action="DailyEnergyFuelConsumptionList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-success">
+                                            <i class="bi bi-check-circle me-1"></i>&nbsp; Update
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
 
@@ -405,7 +419,7 @@
                              BUTTONS
                              ================================================= -->
 
-                        <div class="edit-form-buttons">
+                        @* <div class="edit-form-buttons">
 
                             <a asp-action="DailyEnergyFuelConsumptionList"
                                class="btn btn-back">
@@ -424,7 +438,7 @@
 
                             </button>
 
-                        </div>
+                        </div> *@
 
 
                     </form>

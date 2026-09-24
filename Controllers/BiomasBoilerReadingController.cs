@@ -27,7 +27,7 @@ public class BiomasBoilerReadingController : Controller
         int page = 1,
         string searchString = "")
     {
-        const int pageSize = 15;
+        const int pageSize = 30;
 
         if (page < 1)
             page = 1;

@@ -3,20 +3,21 @@
 @{
     ViewData["Title"] = "Create Air Compressor Reading";
 }
-<div class="container mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<div class="container create-page">
 
     <div class="row justify-content-center">
-        <div class="col-md-10">
+        <div class="col-md-10 create-wrapper">
 
-            <div class="card shadow-lg border-0">
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
                     <h5 class="mb-0">Add New Air Compressor Reading</h5>
                 </div>
 
-                <div class="card-body p-4">
-
-                    <form asp-action="Create" method="post">
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -25,7 +26,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -35,7 +36,7 @@
                             </div>
 
                             <!-- Equipment -->
-                            <div class="col-md-6">
+                            <div class="col-lg-6 col-md-6 col-sm-12">
                                 <label asp-for="Eqid" class="form-label">Equipment <span class="text-danger">*</span></label>
                                 <select asp-for="Eqid" class="form-select" id="Eqid">
                                     <option value="">-- Select Equipment --</option>
@@ -49,7 +50,7 @@
                                 <span asp-validation-for="Eqid" class="text-danger"></span>
                             </div>
                             <!-- Capacity -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label class="form-label">Capacity</label>
                                 <span id="CapacityDisplay" class="form-control bg-light">
                                     -
@@ -57,7 +58,7 @@
                             </div>
 
                             <!-- RunningHour -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="RunningHour" class="form-label">
                                     Running Hours <span class="text-danger">*</span>
                                 </label>
@@ -66,7 +67,7 @@
                             </div>
 
                             <!-- PowerConsumption -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="PowerConsumption" class="form-label">
                                     Power Consumption(Kwh)<span class="text-danger">*</span>
                                 </label>
@@ -75,7 +76,7 @@
                             </div>
 
                             <!-- ElectricityRate -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ElectricityRate" class="form-label">
                                     Electricity Rate(Tk/kwh) <span class="text-danger">*</span>
                                 </label>
@@ -85,7 +86,7 @@
 
                             <!-- ElectricityCost -->
                             <!-- ElectricityCost=PowerConsumption*ElectricityRate -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ElectricityCost" class="form-label">
                                     Electricity Cost(TK)<span class="text-danger">*</span>
                                 </label>
@@ -93,7 +94,7 @@
                                 <span asp-validation-for="ElectricityCost" class="text-danger"></span>
                             </div>
                             <!-- ServiceMaintenanceCost -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="ServiceMaintenanceCost" class="form-label">
                                     Service & Maintenance Cost(Tk) <span class="text-danger">*</span>
                                 </label>
@@ -102,7 +103,7 @@
                             </div>
                             <!-- TotalCost -->
                             <!-- TotalCost =ElectricityCost+ServiceMaintenanceCost -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="TotalCost" class="form-label">
                                     Total Cost(Tk) <span class="text-danger">*</span>
                                 </label>
@@ -110,7 +111,7 @@
                                 <span asp-validation-for="TotalCost" class="text-danger"></span>
                             </div>
                             <!-- AirFlow -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AirFlow" class="form-label">
                                     Air Flow(m³/min) <span class="text-danger">*</span>
                                 </label>
@@ -118,7 +119,7 @@
                                 <span asp-validation-for="AirFlow" class="text-danger"></span>
                             </div>
                             <!-- AirProduced -->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="AirProduced" class="form-label">
                                     Air produced(m³) <span class="text-danger">*</span>
                                 </label>
@@ -128,17 +129,31 @@
                             
                             <!-- CostPerM3Air -->
                             <!-- CostPerM3Air =AirProduced/TotalCost-->
-                            <div class="col-md-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="CostPerM3Air" class="form-label">
                                     Cost/(m³ Air)<span class="text-danger">*</span>
                                 </label>
                                 <input asp-for="CostPerM3Air" class="form-control"readonly />
                                 <span asp-validation-for="CostPerM3Air" class="text-danger"></span>
                             </div>
-
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="create-form-buttons">
+                                        <a asp-action="AirCompressorReadingInfoList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary">
+                                            <i class="bi bi-save me-1"></i>&nbsp; Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="AirCompressorReadingInfoList"
                                class="btn btn-outline-secondary">
@@ -150,7 +165,7 @@
                                 Save Reading
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

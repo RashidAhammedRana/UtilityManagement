@@ -25,7 +25,7 @@ public class DailyFuelConsumptionController : Controller
     [HttpGet]
     public async Task<IActionResult> DailyFuelConsumptionList(int page = 1, string searchString = "")
     {
-        int pageSize = 15;
+        int pageSize = 30;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 

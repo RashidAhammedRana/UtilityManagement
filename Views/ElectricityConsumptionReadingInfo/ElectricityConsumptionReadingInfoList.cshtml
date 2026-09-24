@@ -6,7 +6,7 @@
     int currentPage = ViewBag.CurrentPage;
     int totalPages = ViewBag.TotalPages;
 
-    int pageSize = 15;
+    int pageSize = 30;
     int sl = (currentPage - 1) * pageSize;
 
     int startPage = Math.Max(1, currentPage - 2);
@@ -19,42 +19,46 @@
     string search = ViewBag.SearchString ?? "";
 }
 
-<h2 class="text-center">Electricity Consumption Reading Info List</h2>
+<h2 class="text-center daily-list-title">Electricity Consumption Reading Info List</h2>
 
-<p class="text-muted text-center">
+<p class="text-muted text-center daily-list-total">
     Total Readings: <strong>@ViewBag.totalConsData</strong>
 </p>
 
-<div class="d-flex justify-content-between mb-3 align-items-center">
+<div class="d-flex justify-content-between mb-3 align-items-center daily-list-toolbar">
 
-    <!-- LEFT: SEARCH + RESET -->
-    <form method="get" asp-action="WtpWaterConsumptionInfoList"
-          class="d-flex gap-2 align-items-center"
+    <!-- LEFT: SEARCH -->
+    <form method="get"
+          asp-action="ElectricityConsumptionReadingInfoList"
+          class="d-flex gap-2 align-items-center daily-list-search-form"
           id="searchForm">
 
         <input type="text"
                name="searchString"
                id="searchBox"
                value="@ViewBag.SearchString"
-               class="form-control"
+               class="form-control daily-list-search-box"
                placeholder="Search here..."
                style="width: 300px;" />
 
     </form>
 
+
     <!-- RIGHT: ACTION BUTTONS -->
-    <div class="d-flex gap-2">
+    <div class="d-flex gap-2 daily-list-actions">
 
         @if (canCreate)
         {
-            <a asp-action="Create" class="btn btn-primary">
+            <a asp-action="Create"
+               class="btn btn-primary daily-create-btn">
                 + Create
             </a>
         }
 
         <button type="button"
-                class="btn btn-secondary"
+                class="btn btn-secondary daily-back-btn"
                 onclick="window.history.back();">
+            <i class="bi bi-arrow-left"></i>
             Back
         </button>
 
@@ -66,7 +70,7 @@
 <div class="table-responsive">
     <table class="table table-bordered table-hover">
 
-        <thead class="table-dark">
+        <thead class="table-primary">
             <tr class="text-center">
                 <th>SL</th>
                 <th style="width: 10%;">Date</th>

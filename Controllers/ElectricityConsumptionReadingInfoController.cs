@@ -23,7 +23,7 @@ public class ElectricityConsumptionReadingInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> ElectricityConsumptionReadingInfoList(int page = 1, string searchString = "")
     {
-        int pageSize = 15;
+        int pageSize = 30;
 
         var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
 

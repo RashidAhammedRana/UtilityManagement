@@ -4,34 +4,21 @@
     ViewData["Title"] = "Create Daily Fuel Stock & Consumption Info.";
 }
 
-<div class="container mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<div class="container create-page">
 
     <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
 
-        <div class="col-lg-10">
-
-            <div class="card shadow-lg border-0">
-
-                <!-- =====================================================
-                     HEADER
-                ====================================================== -->
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">
-                        Create Daily Stock & Consumption Info.
-                    </h5>
+                    <h5 class="mb-0">Add New Fuel Stock & Consumption Info.</h5>
                 </div>
 
-
-                <!-- =====================================================
-                     BODY
-                ====================================================== -->
-
-                <div class="card-body p-4">
-
-                    <form asp-action="Create"
-                          method="post"
-                          id="stockForm">
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <!-- Validation Summary -->
                         <div asp-validation-summary="ModelOnly"

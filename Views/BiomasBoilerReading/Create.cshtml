@@ -4,20 +4,21 @@
     ViewData["Title"] = "Add Biomass Boiler Reading";
 }
 
-<div class="container-fluid mt-4">
+<link rel="stylesheet" href="~/css/create-responsive.css" />
 
-    <div class="row">
-        <div class="col-md-12">
+<div class="container create-page">
 
-            <div class="card shadow-lg border-0">
+    <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
+
+            <div class="card shadow-lg border-0 create-card">
 
                 <div class="card-header bg-primary text-white">
-                    <h5 class="mb-0">Add Biomass Boiler Reading</h5>
+                    <h5 class="mb-0">Add New Biomass Boiler Reading</h5>
                 </div>
 
-                <div class="card-body px-4 py-2">
-
-                    <form asp-action="Create" method="post">
+                <div class="card-body p-4 create-body">
+                    <form asp-action="Create" method="post" class="create-form">
 
                         <div asp-validation-summary="ModelOnly"
                              class="text-danger mb-3">
@@ -26,7 +27,7 @@
                         <div class="row g-3">
 
                             <!-- Trdate -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.Trdate" class="form-label">
                                     Date <span class="text-danger">*</span>
                                 </label>
@@ -35,7 +36,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.Trdate" class="text-danger"></span>
                             </div>
                             <!-- COMPANY -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label class="form-label">
                                     Company
                                     <span class="text-danger">*</span>
@@ -54,7 +55,7 @@
 
 
                             <!-- Equipment -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.Eqid" class="form-label">
                                     Equipment <span class="text-danger">*</span>
                                 </label>
@@ -71,7 +72,7 @@
 
 
                             <!-- JuteCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.JuteCons" class="form-label">
                                      Biomass Consumption(Kg)
                                 </label>
@@ -80,7 +81,7 @@
                             </div>
 
                             <!-- JuteCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.JuteCost" class="form-label">
                                     Biomass Cost(Tk)
                                 </label>
@@ -89,7 +90,7 @@
                             </div>
 
                             <!-- RhCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.RhCons" class="form-label">
                                     Rice Husk Cons.(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -98,7 +99,7 @@
                             </div>
 
                             <!-- RhCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.RhCost" class="form-label">
                                     Rice Husk Cost(Tk)
                                 </label>
@@ -106,7 +107,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.RhCost" class="text-danger"></span>
                             </div>
                             <!-- DoScale65Cons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.WwCons" class="form-label">
                                     Waste Wood Cons.(Kg)
                                 </label>
@@ -115,7 +116,7 @@
                             </div>
 
                             <!-- WwCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.WwCost" class="form-label">
                                     Waste Wood Cost(Tk)
                                 </label>
@@ -123,7 +124,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.WwCost" class="text-danger"></span>
                             </div>
                             <!-- CartonCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.CartonCons" class="form-label">
                                     Carton Cons.(Kg)<span class="text-danger">*</span>
                                 </label>
@@ -131,7 +132,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.CartonCons" class="text-danger"></span>
                             </div>
                             <!-- CartonCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.CartonCost" class="form-label">
                                     Carton Cost(Tk)
                                 </label>
@@ -139,7 +140,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.CartonCost" class="text-danger"></span>
                             </div>
                             <!-- CcCons -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.CcCons" class="form-label">
                                     Charcoil Cons.(Kg)
                                 </label>
@@ -147,7 +148,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.CcCons" class="text-danger"></span>
                             </div>
                             <!-- DispergoCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.CcCost" class="form-label">
                                     Charcoil Cost(Tk)
                                 </label>
@@ -155,7 +156,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.CcCost" class="text-danger"></span>
                             </div>
                             <!-- TotalBioCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.TotalBioCost" class="form-label">
                                     Total Biomass Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -163,7 +164,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.TotalBioCost" class="text-danger"></span>
                             </div>
                             <!-- LabourCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.LabourCost" class="form-label">
                                     LabourCost(Tk)
                                 </label>
@@ -171,7 +172,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.LabourCost" class="text-danger"></span>
                             </div>
                             <!-- ElectricityCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.ElectricityCost" class="form-label">
                                     Electricity Cost(Tk)
                                 </label>
@@ -179,7 +180,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.ElectricityCost" class="text-danger"></span>
                             </div>
                             <!-- MaintenanceCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.MaintenanceCost" class="form-label">
                                     Maintenance Cost(Tk)
                                 </label>
@@ -187,7 +188,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.MaintenanceCost" class="text-danger"></span>
                             </div>
                             <!-- OtherCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.OtherCost" class="form-label">
                                     Other Cost(Tk)
                                 </label>
@@ -195,7 +196,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.OtherCost" class="text-danger"></span>
                             </div>
                             <!-- TotalCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.TotalCost" class="form-label">
                                     Total Cost(Tk)<span class="text-danger">*</span>
                                 </label>
@@ -203,7 +204,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.TotalCost" class="text-danger"></span>
                             </div>
                             <!-- TotalChemicalCost -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.WaterCons" class="form-label">
                                     Water Consumption(Ltr)
                                 </label>
@@ -211,7 +212,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.WaterCons" class="text-danger"></span>
                             </div>
                             <!-- SteamGeneration -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.SteamGeneration" class="form-label">
                                     Steam Generation (Kg)
                                 </label>
@@ -219,7 +220,7 @@
                                 <span asp-validation-for="BiomasBoilerReading.SteamGeneration" class="text-danger"></span>
                             </div>
                             <!-- RunningHour -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.RunningHour" class="form-label">
                                     Total Running Hour
                                 </label>
@@ -227,17 +228,31 @@
                                 <span asp-validation-for="BiomasBoilerReading.RunningHour" class="text-danger"></span>
                             </div>
                             <!-- CostPerKgSteam -->
-                            <div class="col-lg-3 col-md-4 col-sm-6">
+                            <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.CostPerKgSteam" class="form-label">
                                     Cost Per Kg Steam(Tk)
                                 </label>
                                 <input asp-for="BiomasBoilerReading.CostPerKgSteam" class="form-control" readonly />
                                 <span asp-validation-for="BiomasBoilerReading.CostPerKgSteam" class="text-danger"></span>
                             </div>
-
+                            @* BUTTONS *@
+                            <div class="row g-3 mt-2">
+                                <div class="col-lg-3 col-md-6 col-sm-12">
+                                    <div class="create-form-buttons">
+                                        <a asp-action="BiomasBoilerReadingList"
+                                           class="btn btn-secondary">
+                                            <i class="bi bi-arrow-left"></i>&nbsp; Back
+                                        </a>
+                                        <button type="submit"
+                                                class="btn btn-primary">
+                                            <i class="bi bi-save me-1"></i>&nbsp; Save
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
 
-                        <div class="d-flex justify-content-between mt-4">
+                        @* <div class="d-flex justify-content-between mt-4">
 
                             <a asp-action="BiomasBoilerReadingList"
                                class="btn btn-outline-secondary">
@@ -249,7 +264,7 @@
                                 Save
                             </button>
 
-                        </div>
+                        </div> *@
 
                     </form>
 

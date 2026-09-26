@@ -535,6 +535,19 @@ public class ReportCallingController : Controller
 
         try
         {
+            // Logged-in user
+            var userId = _userManager.GetUserId(User);
+            // User-Company
+            var currentCompany = await _context.Users
+            .Where(r => r.Id == userId)
+            .Select(r => r.Company)
+            .FirstOrDefaultAsync();
+
+            if(string.IsNullOrEmpty(currentCompany))
+            {
+                return BadRequest("User company not found");
+            }
+
             var rptPath = $"UtilityManagement.Reports.{reportName}";
 
             var reportType = Type.GetType(rptPath);
@@ -545,6 +558,23 @@ public class ReportCallingController : Controller
             }
 
             var report = (XtraReport)Activator.CreateInstance(reportType);
+
+            //Company Parameter
+            var companyParameter = report.Parameters["Company"];
+            if (companyParameter != null) 
+            {
+                var lookUpSettings = new StaticListLookUpSettings();
+                lookUpSettings.LookUpValues.Add(
+                    new LookUpValue(currentCompany, currentCompany)
+                    );
+
+                companyParameter.ValueSourceSettings = lookUpSettings;
+                companyParameter.Value = currentCompany;
+                companyParameter.MultiValue = false;
+                // If you don't want Company dropdown then set "false"
+                companyParameter.Visible = true;
+
+            }
 
             return View(report);
         }
@@ -613,6 +643,7 @@ public class ReportCallingController : Controller
             return Content(ex.InnerException?.Message ?? ex.Message);
         }
     }
+
     [HttpGet]
     public async Task<IActionResult> DailyAverageEnergyPowerFuelReport(
     int menuId,
@@ -625,6 +656,18 @@ public class ReportCallingController : Controller
 
         try
         {
+            // Logged-in user
+            var userId = _userManager.GetUserId(User);
+            // User-Company
+            var currentCompany = await _context.Users
+                .Where(x => x.Id == userId)
+                .Select(x => x.Company)
+                .FirstOrDefaultAsync();
+            if (string.IsNullOrEmpty(currentCompany))
+            {
+                return BadRequest("User company not found.");
+            }
+
             var rptPath = $"UtilityManagement.Reports.{reportName}";
 
             var reportType = Type.GetType(rptPath);
@@ -635,7 +678,25 @@ public class ReportCallingController : Controller
             }
 
             var report = (XtraReport)Activator.CreateInstance(reportType);
+            // Company parameter
+            var companyParameter = report.Parameters["Company"];
 
+            if (companyParameter != null)
+            {
+                var lookupSettings = new StaticListLookUpSettings();
+
+                lookupSettings.LookUpValues.Add(
+                    new LookUpValue(currentCompany, currentCompany)
+                );
+
+                companyParameter.ValueSourceSettings = lookupSettings;
+
+                companyParameter.Value = currentCompany;
+                companyParameter.MultiValue = false;
+
+                // If you don't want Company dropdown then set "false"
+                companyParameter.Visible = true;
+            }
             return View(report);
         }
         catch (Exception ex)

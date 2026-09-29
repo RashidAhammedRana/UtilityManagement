@@ -30,9 +30,18 @@
         {
             this.components = new System.ComponentModel.Container();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
+            DevExpress.DataAccess.Sql.SelectQuery selectQuery1 = new DevExpress.DataAccess.Sql.SelectQuery();
+            DevExpress.DataAccess.Sql.Column column1 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression1 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Table table1 = new DevExpress.DataAccess.Sql.Table();
+            DevExpress.DataAccess.Sql.Column column2 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression2 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.Column column3 = new DevExpress.DataAccess.Sql.Column();
+            DevExpress.DataAccess.Sql.ColumnExpression columnExpression3 = new DevExpress.DataAccess.Sql.ColumnExpression();
+            DevExpress.DataAccess.Sql.MasterDetailInfo masterDetailInfo1 = new DevExpress.DataAccess.Sql.MasterDetailInfo();
+            DevExpress.DataAccess.Sql.RelationColumnInfo relationColumnInfo1 = new DevExpress.DataAccess.Sql.RelationColumnInfo();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptWtpWaterConsumption));
             DevExpress.XtraReports.Parameters.DynamicListLookUpSettings dynamicListLookUpSettings1 = new DevExpress.XtraReports.Parameters.DynamicListLookUpSettings();
-            DevExpress.XtraReports.Parameters.DynamicListLookUpSettings dynamicListLookUpSettings2 = new DevExpress.XtraReports.Parameters.DynamicListLookUpSettings();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
@@ -108,9 +117,11 @@
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
-            this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.pageInfo2 = new DevExpress.XtraReports.UI.XRPageInfo();
             this.ReportHeader = new DevExpress.XtraReports.UI.ReportHeaderBand();
+            this.xrRichText3 = new DevExpress.XtraReports.UI.XRRichText();
+            this.pageInfo1 = new DevExpress.XtraReports.UI.XRPageInfo();
+            this.xrRichText2 = new DevExpress.XtraReports.UI.XRRichText();
             this.xrRichText1 = new DevExpress.XtraReports.UI.XRRichText();
             this.label1 = new DevExpress.XtraReports.UI.XRLabel();
             this.GroupHeader1 = new DevExpress.XtraReports.UI.GroupHeaderBand();
@@ -165,7 +176,6 @@
             this.DetailData3_Odd = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.Company = new DevExpress.XtraReports.Parameters.Parameter();
-            this.Equipment = new DevExpress.XtraReports.Parameters.Parameter();
             this.DateRange_Start = new DevExpress.XtraReports.Parameters.RangeStartParameter();
             this.DateRange_End = new DevExpress.XtraReports.Parameters.RangeEndParameter();
             this.DateRange = new DevExpress.XtraReports.Parameters.Parameter();
@@ -298,6 +308,8 @@
             this.xrTableCell69 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell79 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell80 = new DevExpress.XtraReports.UI.XRTableCell();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).BeginInit();
@@ -310,10 +322,36 @@
             // 
             this.sqlDataSource1.ConnectionName = "DefaultConnection";
             this.sqlDataSource1.Name = "sqlDataSource1";
+            storedProcQuery1.MetaSerializable = "<Meta X=\"20\" Y=\"20\" Width=\"255\" Height=\"841\" />";
             storedProcQuery1.Name = "SP_WTP_WATER_CONSUMPTION_REPORT";
             storedProcQuery1.StoredProcName = "SP_WTP_WATER_CONSUMPTION_REPORT";
+            columnExpression1.ColumnName = "COMID";
+            table1.MetaSerializable = "<Meta X=\"30\" Y=\"30\" Width=\"125\" Height=\"203\" />";
+            table1.Name = "TBL_COMPANY_INFO";
+            columnExpression1.Table = table1;
+            column1.Expression = columnExpression1;
+            columnExpression2.ColumnName = "COM_NAME";
+            columnExpression2.Table = table1;
+            column2.Expression = columnExpression2;
+            columnExpression3.ColumnName = "COM_ADDRESS";
+            columnExpression3.Table = table1;
+            column3.Expression = columnExpression3;
+            selectQuery1.Columns.Add(column1);
+            selectQuery1.Columns.Add(column2);
+            selectQuery1.Columns.Add(column3);
+            selectQuery1.MetaSerializable = "<Meta X=\"295\" Y=\"20\" Width=\"107\" Height=\"101\" />";
+            selectQuery1.Name = "CompanyList";
+            selectQuery1.Tables.Add(table1);
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
-            storedProcQuery1});
+            storedProcQuery1,
+            selectQuery1});
+            masterDetailInfo1.DetailQueryName = "CompanyList";
+            relationColumnInfo1.NestedKeyColumn = "COM_NAME";
+            relationColumnInfo1.ParentKeyColumn = "CURRENT_LOCATION";
+            masterDetailInfo1.KeyColumns.Add(relationColumnInfo1);
+            masterDetailInfo1.MasterQueryName = "SP_WTP_WATER_CONSUMPTION_REPORT";
+            this.sqlDataSource1.Relations.AddRange(new DevExpress.DataAccess.Sql.MasterDetailInfo[] {
+            masterDetailInfo1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
             // 
             // TopMargin
@@ -324,18 +362,9 @@
             // BottomMargin
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
-            this.pageInfo1,
             this.pageInfo2});
             this.BottomMargin.HeightF = 23F;
             this.BottomMargin.Name = "BottomMargin";
-            // 
-            // pageInfo1
-            // 
-            this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
-            this.pageInfo1.Name = "pageInfo1";
-            this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
-            this.pageInfo1.SizeF = new System.Drawing.SizeF(559.5F, 23F);
-            this.pageInfo1.StyleName = "PageInfo";
             // 
             // pageInfo2
             // 
@@ -349,16 +378,52 @@
             // ReportHeader
             // 
             this.ReportHeader.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
+            this.xrRichText3,
+            this.pageInfo1,
+            this.xrRichText2,
             this.xrRichText1,
             this.label1});
-            this.ReportHeader.HeightF = 51.08333F;
+            this.ReportHeader.HeightF = 73.08332F;
             this.ReportHeader.Name = "ReportHeader";
+            // 
+            // xrRichText3
+            // 
+            this.xrRichText3.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrRichText3.LocationFloat = new DevExpress.Utils.PointFloat(2179.179F, 0F);
+            this.xrRichText3.Name = "xrRichText3";
+            this.xrRichText3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrRichText3.SerializableRtfString = resources.GetString("xrRichText3.SerializableRtfString");
+            this.xrRichText3.SizeF = new System.Drawing.SizeF(107.7078F, 23F);
+            this.xrRichText3.StylePriority.UseFont = false;
+            // 
+            // pageInfo1
+            // 
+            this.pageInfo1.Font = new DevExpress.Drawing.DXFont("Calibri", 8F);
+            this.pageInfo1.LocationFloat = new DevExpress.Utils.PointFloat(2287.265F, 0F);
+            this.pageInfo1.Name = "pageInfo1";
+            this.pageInfo1.PageInfo = DevExpress.XtraPrinting.PageInfo.DateTime;
+            this.pageInfo1.SizeF = new System.Drawing.SizeF(194.7336F, 23F);
+            this.pageInfo1.StyleName = "PageInfo";
+            this.pageInfo1.StylePriority.UseFont = false;
+            this.pageInfo1.TextFormatString = "{0:dddd, MMMM d, yyyy h:mm tt}";
+            // 
+            // xrRichText2
+            // 
+            this.xrRichText2.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Rtf", "[SP_WTP_WATER_CONSUMPTION_REPORTCompanyList].[COM_NAME]")});
+            this.xrRichText2.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrRichText2.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28.08332F);
+            this.xrRichText2.Name = "xrRichText2";
+            this.xrRichText2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrRichText2.SerializableRtfString = resources.GetString("xrRichText2.SerializableRtfString");
+            this.xrRichText2.SizeF = new System.Drawing.SizeF(395.0005F, 23F);
+            this.xrRichText2.StylePriority.UseFont = false;
             // 
             // xrRichText1
             // 
             this.xrRichText1.Font = new DevExpress.Drawing.DXFont("Calibri", 10F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrRichText1.ForeColor = System.Drawing.Color.Black;
-            this.xrRichText1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 28.08332F);
+            this.xrRichText1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 50.08332F);
             this.xrRichText1.Name = "xrRichText1";
             this.xrRichText1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.xrRichText1.SerializableRtfString = resources.GetString("xrRichText1.SerializableRtfString");
@@ -373,10 +438,12 @@
             this.label1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 0F);
             this.label1.Multiline = true;
             this.label1.Name = "label1";
+            this.label1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
             this.label1.SizeF = new System.Drawing.SizeF(2479F, 51.08332F);
             this.label1.StyleName = "Title";
             this.label1.StylePriority.UseFont = false;
             this.label1.StylePriority.UseForeColor = false;
+            this.label1.StylePriority.UsePadding = false;
             this.label1.Text = "Water Consumption Report\r\n";
             // 
             // GroupHeader1
@@ -1461,30 +1528,15 @@
             // Company
             // 
             this.Company.Description = "Select Company";
-            this.Company.MultiValue = true;
             this.Company.Name = "Company";
-            dynamicListLookUpSettings1.DataMember = "SP_WTP_WATER_CONSUMPTION_REPORT";
+            dynamicListLookUpSettings1.DataMember = "CompanyList";
             dynamicListLookUpSettings1.DataSource = this.sqlDataSource1;
-            dynamicListLookUpSettings1.DisplayMember = "CURRENT_LOCATION";
+            dynamicListLookUpSettings1.DisplayMember = "COM_NAME";
             dynamicListLookUpSettings1.FilterString = null;
-            dynamicListLookUpSettings1.SortMember = "CURRENT_LOCATION";
+            dynamicListLookUpSettings1.SortMember = "COM_NAME";
             dynamicListLookUpSettings1.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
-            dynamicListLookUpSettings1.ValueMember = "CURRENT_LOCATION";
+            dynamicListLookUpSettings1.ValueMember = "COM_NAME";
             this.Company.ValueSourceSettings = dynamicListLookUpSettings1;
-            // 
-            // Equipment
-            // 
-            this.Equipment.Description = "Select Equipment";
-            this.Equipment.MultiValue = true;
-            this.Equipment.Name = "Equipment";
-            dynamicListLookUpSettings2.DataMember = "SP_WTP_WATER_CONSUMPTION_REPORT";
-            dynamicListLookUpSettings2.DataSource = this.sqlDataSource1;
-            dynamicListLookUpSettings2.DisplayMember = "EQUIPMENT_NAME";
-            dynamicListLookUpSettings2.FilterString = "[CURRENT_LOCATION] In (?Company)";
-            dynamicListLookUpSettings2.SortMember = "EQUIPMENT_NAME";
-            dynamicListLookUpSettings2.SortOrder = DevExpress.Data.ColumnSortOrder.Ascending;
-            dynamicListLookUpSettings2.ValueMember = "EQUIPMENT_NAME";
-            this.Equipment.ValueSourceSettings = dynamicListLookUpSettings2;
             // 
             // DateRange_Start
             // 
@@ -2893,6 +2945,7 @@
             this.xrTableCell97.Summary = xrSummary16;
             this.xrTableCell97.Text = "xrTableCell35";
             this.xrTableCell97.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell97.TextFormatString = "{0:#,#}";
             this.xrTableCell97.Weight = 0.07379463227218605D;
             // 
             // xrTableCell98
@@ -3829,6 +3882,7 @@
             this.xrTableCell17.Summary = xrSummary51;
             this.xrTableCell17.Text = "xrTableCell34";
             this.xrTableCell17.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell17.TextFormatString = "{0:#,#}";
             this.xrTableCell17.Weight = 0.068523525927667417D;
             // 
             // xrTableCell18
@@ -3853,6 +3907,7 @@
             this.xrTableCell18.Summary = xrSummary52;
             this.xrTableCell18.Text = "xrTableCell35";
             this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleRight;
+            this.xrTableCell18.TextFormatString = "{0:#,#}";
             this.xrTableCell18.Weight = 0.073794374897161646D;
             // 
             // xrTableCell36
@@ -4373,8 +4428,8 @@
             this.sqlDataSource1});
             this.DataMember = "SP_WTP_WATER_CONSUMPTION_REPORT";
             this.DataSource = this.sqlDataSource1;
-            this.FilterString = "[CURRENT_LOCATION] In (?Company) And [EQUIPMENT_NAME] In (?Equipment) And [TRDATE" +
-    "] Between(?DateRange_Start, ?DateRange_End)";
+            this.FilterString = "[CURRENT_LOCATION] In (?Company) And [TRDATE] Between(?DateRange_Start, ?DateRang" +
+    "e_End)";
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
             this.ForeColor = System.Drawing.Color.Transparent;
             this.Landscape = true;
@@ -4385,11 +4440,9 @@
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
             this.ParameterPanelLayoutItems.AddRange(new DevExpress.XtraReports.Parameters.ParameterPanelLayoutItem[] {
             new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Company, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
-            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Equipment, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
             new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.DateRange, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
             this.Company,
-            this.Equipment,
             this.DateRange});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
@@ -4401,6 +4454,8 @@
             this.DetailData3_Odd,
             this.PageInfo});
             this.Version = "23.2";
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.xrRichText2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrRichText1)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.table2)).EndInit();
@@ -4415,7 +4470,6 @@
 
         private DevExpress.XtraReports.UI.TopMarginBand TopMargin;
         private DevExpress.XtraReports.UI.BottomMarginBand BottomMargin;
-        private DevExpress.XtraReports.UI.XRPageInfo pageInfo1;
         private DevExpress.XtraReports.UI.XRPageInfo pageInfo2;
         private DevExpress.XtraReports.UI.ReportHeaderBand ReportHeader;
         private DevExpress.XtraReports.UI.XRLabel label1;
@@ -4443,7 +4497,6 @@
         private DevExpress.XtraReports.UI.XRControlStyle DetailData3_Odd;
         private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
         private DevExpress.XtraReports.Parameters.Parameter Company;
-        private DevExpress.XtraReports.Parameters.Parameter Equipment;
         private DevExpress.XtraReports.Parameters.RangeStartParameter DateRange_Start;
         private DevExpress.XtraReports.Parameters.RangeEndParameter DateRange_End;
         private DevExpress.XtraReports.Parameters.Parameter DateRange;
@@ -4606,5 +4659,8 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell8;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell145;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell87;
+        private DevExpress.XtraReports.UI.XRRichText xrRichText2;
+        private DevExpress.XtraReports.UI.XRRichText xrRichText3;
+        private DevExpress.XtraReports.UI.XRPageInfo pageInfo1;
     }
 }

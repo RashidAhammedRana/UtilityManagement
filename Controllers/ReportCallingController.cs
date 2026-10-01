@@ -46,56 +46,88 @@ public class ReportCallingController : Controller
 
         try
         {
-            // Logged-in user
+            // LOGGED-IN USER
             var userId = _userManager.GetUserId(User);
 
-            // User-Company
+            // USER COMPANY
             var currentCompany = await _context.Users
                 .Where(x => x.Id == userId)
                 .Select(x => x.Company)
                 .FirstOrDefaultAsync();
 
-            if (string.IsNullOrEmpty(currentCompany))
-            {
-                return BadRequest("User company not found.");
-            }
-
+            // REPORT
             var rptPath = $"UtilityManagement.Reports.{reportName}";
-
             var reportType = Type.GetType(rptPath);
-
             if (reportType == null)
             {
-                return NotFound($"Report '{reportName}' not found.");
+                return NotFound(
+                    $"Report '{reportName}' not found."
+                );
             }
 
             var report = (XtraReport)Activator.CreateInstance(reportType);
 
-            // Company parameter
+            // COMPANY PARAMETER
             var companyParameter = report.Parameters["Company"];
-
             if (companyParameter != null)
             {
-                var lookupSettings = new StaticListLookUpSettings();
+                var lookupSettings =
+                    new StaticListLookUpSettings();
+                // USER COMPANY FOUND
+                if (!string.IsNullOrWhiteSpace(currentCompany))
+                {
+                    lookupSettings.LookUpValues.Add(
+                        new LookUpValue(
+                            currentCompany,
+                            currentCompany
+                        )
+                    );
 
-                lookupSettings.LookUpValues.Add(
-                    new LookUpValue(currentCompany, currentCompany)
-                );
+                    companyParameter.Value =
+                        currentCompany;
+                }
+                // USER COMPANY NULL
+                // SHOW ALL COMPANIES
+                else
+                {
+                    var companies = await _context.TblCompanyInfo
+                        .Where(x => x.ComName != null)
+                        .Select(x => x.ComName)
+                        .Distinct()
+                        .OrderBy(x => x)
+                        .ToListAsync();
 
-                companyParameter.ValueSourceSettings = lookupSettings;
 
-                companyParameter.Value = currentCompany;
+                    foreach (var company in companies)
+                    {
+                        lookupSettings.LookUpValues.Add(
+                            new LookUpValue(
+                                company,
+                                company
+                            )
+                        );
+                    }
+
+                    // No company selected initially
+                    companyParameter.Value = null;
+                }
+                // APPLY LOOKUP
+                companyParameter.ValueSourceSettings =
+                    lookupSettings;
+
                 companyParameter.MultiValue = false;
 
-                // If you don't want Company dropdown then set "false"
                 companyParameter.Visible = true;
             }
+
 
             return View(report);
         }
         catch (Exception ex)
         {
-            return Content(ex.InnerException?.Message ?? ex.Message);
+            return Content(
+                ex.InnerException?.Message ?? ex.Message
+            );
         }
     }
 

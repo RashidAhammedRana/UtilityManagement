@@ -60,6 +60,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblBoilerSteamGenerationInfo> TblBoilerSteamGenerationInfo { get; set; }
         public virtual DbSet<TblDailyGasPressureRecord> TblDailyGasPressureRecord { get; set; }
         public virtual DbSet<TblBiomasBoilerReading> TblBiomasBoilerReading { get; set; }
+        public virtual DbSet<TblMonthlyUtilityBillInfo> TblMonthlyUtilityBillInfo { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1124,14 +1125,14 @@ namespace UtilityManagement.Data
                 entity.ToTable("TBL_DAILY_GAS_PRESSURE_RECORD");
                 entity.Property(e => e.Trid).HasColumnName("TRID");
                 entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
-                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
-                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.GpBefore).HasColumnName("GP_BEFORE");
                 entity.Property(e => e.GpCr).HasColumnName("GP_CR");
                 entity.Property(e => e.GpIr).HasColumnName("GP_IR");
                 entity.Property(e => e.Remarks).HasMaxLength(50).HasColumnName("REMARKS");
                 entity.Property(e => e.Time).HasColumnName("TIME");
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });
@@ -1171,6 +1172,40 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.WwCost).HasColumnName("WW_COST");
                 entity.HasOne(d => d.Eq).WithMany(p => p.TblBiomasBoilerReadings).HasForeignKey(d => d.Eqid)
                     .HasConstraintName("FK_TBL_BIOMAS_BOILER_READING_TBL_EQUIPMENT_DETAILS");
+            });
+
+            //TblMonthlyUtilityBillInfo
+            modelBuilder.Entity<TblMonthlyUtilityBillInfo>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_MONTHLY_UTILITY_BILL_INFO");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.BiomassTotalBill).HasColumnName("BIOMASS_TOTAL_BILL");
+                entity.Property(e => e.BiomassTotalIssue).HasColumnName("BIOMASS_TOTAL_ISSUE");
+                entity.Property(e => e.CngTotalBill).HasColumnName("CNG_TOTAL_BILL");
+                entity.Property(e => e.CngTotalIssue).HasColumnName("CNG_TOTAL_ISSUE");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.DieselTotalBill).HasColumnName("DIESEL_TOTAL_BILL");
+                entity.Property(e => e.DieselTotalIssue).HasColumnName("DIESEL_TOTAL_ISSUE");
+                entity.Property(e => e.LpgTotalBill).HasColumnName("LPG_TOTAL_BILL");
+                entity.Property(e => e.LpgTotalIssue).HasColumnName("LPG_TOTAL_ISSUE");
+                entity.Property(e => e.Month).HasMaxLength(50).HasColumnName("MONTH");
+                entity.Property(e => e.RebBill).HasColumnName("REB_BILL");
+                entity.Property(e => e.RebTotalKwh).HasColumnName("REB_TOTAL_KWH");
+                entity.Property(e => e.TitasCaptiveBill).HasColumnName("TITAS_CAPTIVE_BILL");
+                entity.Property(e => e.TitasCaptiveUse).HasColumnName("TITAS_CAPTIVE_USE");
+                entity.Property(e => e.TitasIndustrialBill).HasColumnName("TITAS_INDUSTRIAL_BILL");
+                entity.Property(e => e.TitasIndustrialUse).HasColumnName("TITAS_INDUSTRIAL_USE");
+                entity.Property(e => e.TotalAmount).HasColumnName("TOTAL_AMOUNT");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.Year).HasColumnName("YEAR");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
+                entity.HasOne(d => d.Com).WithMany(p => p.TblMonthlyUtilityBillInfo)
+                    .HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_MONTHLY_UTILITY_BILL_INFO_TBL_COMPANY_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

@@ -1,0 +1,954 @@
+﻿@model UtilityManagement.Models.TblMonthlyUtilityBillInfo
+
+@{
+    ViewData["Title"] = "Create Monthly Utility Bill";
+}
+
+<div class="container-fluid px-2 px-sm-3 px-md-4">
+
+    <!-- =========================
+         PAGE HEADER
+    ========================== -->
+
+    <div class="d-flex flex-column flex-sm-row justify-content-between
+                align-items-start align-items-sm-center gap-2 mb-3">
+
+        <div>
+            <h4 class="fw-bold mb-1">
+                Monthly Utility Bill
+            </h4>
+
+            <small class="text-muted">
+                Create monthly utility consumption and billing information
+            </small>
+        </div>
+
+        <a asp-action="MonthlyUtilityBillInfoList"
+           class="btn btn-outline-secondary btn-sm flex-shrink-0">
+
+            <i class="bi bi-arrow-left me-1"></i>
+            Back
+
+        </a>
+
+    </div>
+
+
+    <form asp-action="Create" method="post">
+
+        @Html.AntiForgeryToken()
+
+        <div asp-validation-summary="ModelOnly"
+             class="alert alert-danger"></div>
+
+
+        <!-- =========================
+             BASIC INFORMATION
+        ========================== -->
+
+        <input asp-for="Trdate" type="hidden" />
+
+        <div class="card border-0 shadow-sm mb-3">
+
+            <div class="card-header bg-white py-2">
+
+                <h6 class="fw-bold mb-0">
+                    <i class="bi bi-info-circle text-primary me-2"></i>
+                    Basic Information
+                </h6>
+
+            </div>
+
+            <div class="card-body py-3">
+
+                <div class="row g-3">
+
+                    <!-- COMPANY -->
+
+                    <div class="col-12 col-md-5">
+
+                        <label class="form-label fw-semibold mb-1">
+                            Company
+                        </label>
+
+                        <input type="text"
+                               class="form-control form-control-sm bg-light"
+                               value="@ViewBag.CompanyName"
+                               readonly />
+
+                        <input type="hidden"
+                               asp-for="Comid" />
+
+                    </div>
+
+
+                    <!-- YEAR -->
+
+                    <div class="col-12 col-sm-6 col-md-3">
+
+                        <label asp-for="Year"
+                               class="form-label fw-semibold mb-1">
+                            Year
+                        </label>
+
+                        <select asp-for="Year"
+                                class="form-select form-select-sm">
+
+                            <option value="">-- Select Year --</option>
+
+                            <option value="2026">2026</option>
+                            <option value="2027">2027</option>
+                            <option value="2028">2028</option>
+                            <option value="2029">2029</option>
+                            <option value="2030">2030</option>
+                            <option value="2031">2031</option>
+                            <option value="2032">2032</option>
+                            <option value="2033">2033</option>
+                            <option value="2034">2034</option>
+                            <option value="2035">2035</option>
+
+                        </select>
+
+                        <span asp-validation-for="Year"
+                              class="text-danger small"></span>
+
+                    </div>
+
+
+                    <!-- MONTH -->
+
+                    <div class="col-12 col-sm-6 col-md-4">
+
+                        <label asp-for="Month"
+                               class="form-label fw-semibold mb-1">
+                            Month
+                        </label>
+
+                        <select asp-for="Month"
+                                class="form-select form-select-sm">
+
+                            <option value="">-- Select Month --</option>
+
+                            <option value="January">January</option>
+                            <option value="February">February</option>
+                            <option value="March">March</option>
+                            <option value="April">April</option>
+                            <option value="May">May</option>
+                            <option value="June">June</option>
+                            <option value="July">July</option>
+                            <option value="August">August</option>
+                            <option value="September">September</option>
+                            <option value="October">October</option>
+                            <option value="November">November</option>
+                            <option value="December">December</option>
+
+                        </select>
+
+                        <span asp-validation-for="Month"
+                              class="text-danger small"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             REB + TITAS
+        ========================== -->
+
+        <div class="row g-3 mb-3">
+
+
+            <!-- =========================
+                 REB
+            ========================== -->
+
+            <div class="col-12 col-lg-4">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-header bg-white py-2">
+
+                        <h6 class="fw-bold mb-0">
+                            <i class="bi bi-lightning-charge-fill text-warning me-2"></i>
+                            REB
+                        </h6>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <!-- REB CONSUMPTION -->
+
+                        <label asp-for="RebTotalKwh"
+                               class="form-label small fw-semibold">
+
+                            Total Consumption
+
+                        </label>
+
+                        <div class="input-group input-group-sm mb-1">
+
+                            <input asp-for="RebTotalKwh"
+                                   type="number"
+                                   step="0.01"
+                                   class="form-control"
+                                   placeholder="0.00" />
+
+                            <span class="input-group-text">
+                                KWh
+                            </span>
+
+                        </div>
+
+                        <span asp-validation-for="RebTotalKwh"
+                              class="text-danger small d-block mb-3"></span>
+
+
+                        <!-- REB BILL -->
+
+                        <label asp-for="RebBill"
+                               class="form-label small fw-semibold">
+
+                            Bill
+
+                        </label>
+
+                        <div class="input-group input-group-sm">
+
+                            <span class="input-group-text">
+                                ৳
+                            </span>
+
+                            <input asp-for="RebBill"
+                                   type="number"
+                                   step="0.01"
+                                   class="form-control bill-field"
+                                   placeholder="0.00" />
+
+                        </div>
+
+                        <span asp-validation-for="RebBill"
+                              class="text-danger small"></span>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- =========================
+                 TITAS
+            ========================== -->
+
+            <div class="col-12 col-lg-8">
+
+                <div class="card border-0 shadow-sm h-100">
+
+                    <div class="card-header bg-white py-2">
+
+                        <h6 class="fw-bold mb-0">
+                            <i class="bi bi-fire text-info me-2"></i>
+                            Titas Gas
+                        </h6>
+
+                    </div>
+
+                    <div class="card-body">
+
+                        <div class="table-responsive">
+
+                            <table class="table table-sm table-bordered align-middle mb-0">
+
+                                <thead class="table-light">
+
+                                    <tr>
+
+                                        <th style="width:25%; min-width:100px;">
+                                            Category
+                                        </th>
+
+                                        <th style="width:37.5%; min-width:170px;">
+                                            Consumption
+                                        </th>
+
+                                        <th style="width:37.5%; min-width:150px;">
+                                            Bill
+                                        </th>
+
+                                    </tr>
+
+                                </thead>
+
+                                <tbody>
+
+                                    <!-- CAPTIVE -->
+
+                                    <tr>
+
+                                        <td class="fw-semibold">
+                                            Captive
+                                        </td>
+
+                                        <td>
+
+                                            <div class="input-group input-group-sm">
+
+                                                <input asp-for="TitasCaptiveUse"
+                                                       type="number"
+                                                       step="0.01"
+                                                       class="form-control"
+                                                       placeholder="0.00" />
+
+                                                <span class="input-group-text">
+                                                    m³
+                                                </span>
+
+                                            </div>
+
+                                            <span asp-validation-for="TitasCaptiveUse"
+                                                  class="text-danger small"></span>
+
+                                        </td>
+
+                                        <td>
+
+                                            <div class="input-group input-group-sm">
+
+                                                <span class="input-group-text">
+                                                    ৳
+                                                </span>
+
+                                                <input asp-for="TitasCaptiveBill"
+                                                       type="number"
+                                                       step="0.01"
+                                                       class="form-control bill-field"
+                                                       placeholder="0.00" />
+
+                                            </div>
+
+                                            <span asp-validation-for="TitasCaptiveBill"
+                                                  class="text-danger small"></span>
+
+                                        </td>
+
+                                    </tr>
+
+
+                                    <!-- INDUSTRIAL -->
+
+                                    <tr>
+
+                                        <td class="fw-semibold">
+                                            Industrial
+                                        </td>
+
+                                        <td>
+
+                                            <div class="input-group input-group-sm">
+
+                                                <input asp-for="TitasIndustrialUse"
+                                                       type="number"
+                                                       step="0.01"
+                                                       class="form-control"
+                                                       placeholder="0.00" />
+
+                                                <span class="input-group-text">
+                                                    m³
+                                                </span>
+
+                                            </div>
+
+                                            <span asp-validation-for="TitasIndustrialUse"
+                                                  class="text-danger small"></span>
+
+                                        </td>
+
+                                        <td>
+
+                                            <div class="input-group input-group-sm">
+
+                                                <span class="input-group-text">
+                                                    ৳
+                                                </span>
+
+                                                <input asp-for="TitasIndustrialBill"
+                                                       type="number"
+                                                       step="0.01"
+                                                       class="form-control bill-field"
+                                                       placeholder="0.00" />
+
+                                            </div>
+
+                                            <span asp-validation-for="TitasIndustrialBill"
+                                                  class="text-danger small"></span>
+
+                                        </td>
+
+                                    </tr>
+
+                                </tbody>
+
+                            </table>
+
+                        </div>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             FUEL CONSUMPTION
+        ========================== -->
+
+        <div class="card border-0 shadow-sm mb-3">
+
+            <div class="card-header bg-white py-2">
+
+                <h6 class="fw-bold mb-0">
+                    <i class="bi bi-fuel-pump-fill text-success me-2"></i>
+                    Fuel Consumption
+                </h6>
+
+            </div>
+
+            <div class="card-body">
+
+                <div class="row g-2">
+
+
+                    <!-- =========================
+                         DIESEL
+                    ========================== -->
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+                        <div class="border rounded p-2 h-100">
+
+                            <div class="fw-semibold small mb-2">
+                                <i class="bi bi-droplet-fill text-danger me-1"></i>
+                                Diesel
+                            </div>
+
+                            <div class="row g-2">
+
+                                <div class="col-6">
+
+                                    <label asp-for="DieselTotalIssue"
+                                           class="form-label small mb-1">
+                                        Issue
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <input asp-for="DieselTotalIssue"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control"
+                                               placeholder="0.00" />
+
+                                        <span class="input-group-text">
+                                            Ltr
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="DieselTotalIssue"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+
+                                <div class="col-6">
+
+                                    <label asp-for="DieselTotalBill"
+                                           class="form-label small mb-1">
+                                        Bill
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <span class="input-group-text">
+                                            ৳
+                                        </span>
+
+                                        <input asp-for="DieselTotalBill"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control bill-field"
+                                               placeholder="0.00" />
+
+                                    </div>
+
+                                    <span asp-validation-for="DieselTotalBill"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         CNG
+                    ========================== -->
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+                        <div class="border rounded p-2 h-100">
+
+                            <div class="fw-semibold small mb-2">
+                                <i class="bi bi-wind text-primary me-1"></i>
+                                CNG
+                            </div>
+
+                            <div class="row g-2">
+
+                                <div class="col-6">
+
+                                    <label asp-for="CngTotalIssue"
+                                           class="form-label small mb-1">
+                                        Issue
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <input asp-for="CngTotalIssue"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control"
+                                               placeholder="0.00" />
+
+                                        <span class="input-group-text">
+                                            m³
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="CngTotalIssue"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+
+                                <div class="col-6">
+
+                                    <label asp-for="CngTotalBill"
+                                           class="form-label small mb-1">
+                                        Bill
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <span class="input-group-text">
+                                            ৳
+                                        </span>
+
+                                        <input asp-for="CngTotalBill"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control bill-field"
+                                               placeholder="0.00" />
+
+                                    </div>
+
+                                    <span asp-validation-for="CngTotalBill"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         LPG
+                    ========================== -->
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+                        <div class="border rounded p-2 h-100">
+
+                            <div class="fw-semibold small mb-2">
+                                <i class="bi bi-box-seam text-warning me-1"></i>
+                                LPG
+                            </div>
+
+                            <div class="row g-2">
+
+                                <div class="col-6">
+
+                                    <label asp-for="LpgTotalIssue"
+                                           class="form-label small mb-1">
+                                        Issue
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <input asp-for="LpgTotalIssue"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control"
+                                               placeholder="0.00" />
+
+                                        <span class="input-group-text">
+                                            Kg
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="LpgTotalIssue"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+
+                                <div class="col-6">
+
+                                    <label asp-for="LpgTotalBill"
+                                           class="form-label small mb-1">
+                                        Bill
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <span class="input-group-text">
+                                            ৳
+                                        </span>
+
+                                        <input asp-for="LpgTotalBill"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control bill-field"
+                                               placeholder="0.00" />
+
+                                    </div>
+
+                                    <span asp-validation-for="LpgTotalBill"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         BIOMASS - 4 COLUMNS
+                    ========================== -->
+
+                    <div class="col-12 col-sm-6 col-lg-4">
+
+                        <div class="border rounded p-2 h-100">
+
+                            <div class="fw-semibold small mb-2">
+                                <i class="bi bi-tree-fill text-success me-1"></i>
+                                Biomass
+                            </div>
+
+                            <div class="row g-2">
+
+                                <div class="col-6">
+
+                                    <label asp-for="BiomassTotalIssue"
+                                           class="form-label small mb-1">
+                                        Issue
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <input asp-for="BiomassTotalIssue"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control"
+                                               placeholder="0.00" />
+
+                                        <span class="input-group-text">
+                                            Kg
+                                        </span>
+
+                                    </div>
+
+                                    <span asp-validation-for="BiomassTotalIssue"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+
+                                <div class="col-6">
+
+                                    <label asp-for="BiomassTotalBill"
+                                           class="form-label small mb-1">
+                                        Bill
+                                    </label>
+
+                                    <div class="input-group input-group-sm">
+
+                                        <span class="input-group-text">
+                                            ৳
+                                        </span>
+
+                                        <input asp-for="BiomassTotalBill"
+                                               type="number"
+                                               step="0.01"
+                                               class="form-control bill-field"
+                                               placeholder="0.00" />
+
+                                    </div>
+
+                                    <span asp-validation-for="BiomassTotalBill"
+                                          class="text-danger small"></span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+                    <!-- =========================
+                         TOTAL AMOUNT - 8 COLUMNS
+                    ========================== -->
+
+                    <div class="col-12 col-lg-8">
+
+                        <div class="border border-primary rounded p-2 p-sm-3 h-100">
+
+                            <div class="d-flex flex-column flex-sm-row
+                    justify-content-between
+                    align-items-start align-items-sm-center
+                    gap-2 h-100">
+
+                                <!-- LEFT TEXT -->
+
+                                <div>
+
+                                    <div class="fw-bold text-primary">
+                                        <i class="bi bi-calculator-fill me-1"></i>
+                                        Total Amount
+                                    </div>
+
+                                    <small class="text-muted">
+                                        Total bill from REB, Titas and all fuel consumption.
+                                    </small>
+
+                                </div>
+
+
+                                <!-- RIGHT AMOUNT -->
+
+                                <div class="text-sm-end flex-shrink-0">
+
+                                    <small class="fw-semibold text-primary d-block">
+                                        TOTAL BILL
+                                    </small>
+
+                                    <span class="fw-bold text-primary fs-4">
+                                        ৳ <span id="totalAmountDisplay">0.00</span>
+                                    </span>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+
+
+                    <!-- Hidden TotalAmount -->
+
+                    <input asp-for="TotalAmount"
+                           type="hidden"
+                           id="TotalAmount" />
+
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <!-- =========================
+             ACTION BUTTONS
+        ========================== -->
+
+        <div class="mb-4">
+
+            <div class="d-flex flex-wrap
+                        justify-content-start
+                        align-items-center
+                        gap-2">
+
+                <!-- CANCEL -->
+
+                <a asp-action="MonthlyUtilityBillInfoList"
+                   class="btn btn-light border">
+
+                    <i class="bi bi-x-circle me-1"></i>
+                    Cancel
+
+                </a>
+
+
+                <!-- SAVE -->
+
+                <button type="submit"
+                        class="btn btn-primary">
+
+                    <i class="bi bi-check-circle me-1"></i>
+                    Save
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+</div>
+
+
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+
+    <script>
+
+        // ==========================================
+        // GET NUMERIC VALUE
+        // ==========================================
+
+        function getValue(id) {
+
+            const element = document.getElementById(id);
+
+            if (!element || element.value === "") {
+                return 0;
+            }
+
+            return parseFloat(element.value) || 0;
+        }
+
+
+        // ==========================================
+        // CALCULATE TOTAL BILL
+        // ==========================================
+
+        function calculateTotal() {
+
+            const total =
+                getValue("RebBill") +
+                getValue("TitasCaptiveBill") +
+                getValue("TitasIndustrialBill") +
+                getValue("DieselTotalBill") +
+                getValue("CngTotalBill") +
+                getValue("LpgTotalBill") +
+                getValue("BiomassTotalBill");
+
+
+            // Hidden field
+
+            const totalAmount =
+                document.getElementById("TotalAmount");
+
+            if (totalAmount) {
+
+                totalAmount.value =
+                    total.toFixed(2);
+
+            }
+
+
+            // Display
+
+            const display =
+                document.getElementById("totalAmountDisplay");
+
+            if (display) {
+
+                display.innerText =
+                    total.toLocaleString("en-BD", {
+
+                        minimumFractionDigits: 2,
+                        maximumFractionDigits: 2
+
+                    });
+
+            }
+
+        }
+
+
+        // ==========================================
+        // LIVE CALCULATION
+        // ==========================================
+
+        document.addEventListener("DOMContentLoaded", function () {
+
+            const billFields = [
+
+                "RebBill",
+
+                "TitasCaptiveBill",
+                "TitasIndustrialBill",
+
+                "DieselTotalBill",
+                "CngTotalBill",
+                "LpgTotalBill",
+                "BiomassTotalBill"
+
+            ];
+
+
+            billFields.forEach(function (id) {
+
+                const element =
+                    document.getElementById(id);
+
+                if (element) {
+
+                    element.addEventListener(
+                        "input",
+                        calculateTotal
+                    );
+
+                }
+
+            });
+
+
+            // Initial calculation
+
+            calculateTotal();
+
+        });
+
+    </script>
+}

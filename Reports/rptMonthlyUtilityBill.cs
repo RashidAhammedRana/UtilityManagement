@@ -6,9 +6,9 @@ using System.Drawing;
 
 namespace UtilityManagement.Reports
 {
-    public partial class rptMonthLyUtilityBill : DevExpress.XtraReports.UI.XtraReport
+    public partial class rptMonthlyUtilityBill : DevExpress.XtraReports.UI.XtraReport
     {
-        public rptMonthLyUtilityBill()
+        public rptMonthlyUtilityBill()
         {
             InitializeComponent();
         }

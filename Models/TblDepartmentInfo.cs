@@ -14,5 +14,7 @@ public partial class TblDepartmentInfo
 
     public string? Remarks { get; set; }
     public virtual ICollection<TblElectricityInterruptionInfo> TblElectricityInterruptionInfo { get; set; } = new List<TblElectricityInterruptionInfo>();
+    public virtual ICollection<TblSectionWiseMonthlyUtilityCost> TblSectionWiseMonthlyUtilityCost { get; set; } = new List<TblSectionWiseMonthlyUtilityCost>();
+
 
 }

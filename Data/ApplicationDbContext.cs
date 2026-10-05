@@ -61,6 +61,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblDailyGasPressureRecord> TblDailyGasPressureRecord { get; set; }
         public virtual DbSet<TblBiomasBoilerReading> TblBiomasBoilerReading { get; set; }
         public virtual DbSet<TblMonthlyUtilityBillInfo> TblMonthlyUtilityBillInfo { get; set; }
+        public virtual DbSet<TblSectionWiseMonthlyUtilityCost> TblSectionWiseMonthlyUtilityCost { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1206,6 +1207,49 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Com).WithMany(p => p.TblMonthlyUtilityBillInfo)
                     .HasForeignKey(d => d.Comid)
                     .HasConstraintName("FK_TBL_MONTHLY_UTILITY_BILL_INFO_TBL_COMPANY_INFO");
+            });
+
+            //TblSectionWiseMonthlyUtilityCost
+            modelBuilder.Entity<TblSectionWiseMonthlyUtilityCost>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+                entity.ToTable("TBL_SECTION_WISE_MONTHLY_UTILITY_COST");
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.AcCost).HasColumnName("AC_COST");
+                entity.Property(e => e.Comid).HasColumnName("COMID");
+                entity.Property(e => e.CreatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy)
+                    .HasMaxLength(50)
+                    .HasColumnName("CREATED_BY");
+                entity.Property(e => e.Depid).HasColumnName("DEPID");
+                entity.Property(e => e.ElectricityCost).HasColumnName("ELECTRICITY_COST");
+                entity.Property(e => e.EtpCost).HasColumnName("ETP_COST");
+                entity.Property(e => e.Month)
+                    .HasMaxLength(50)
+                    .HasColumnName("MONTH");
+                entity.Property(e => e.PerUnitProductionCost).HasColumnName("PER_UNIT_PRODUCTION_COST");
+                entity.Property(e => e.Production).HasColumnName("PRODUCTION");
+                entity.Property(e => e.SteamCost).HasColumnName("STEAM_COST");
+                entity.Property(e => e.TotalCost).HasColumnName("TOTAL_COST");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt)
+                    .HasColumnType("datetime")
+                    .HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy)
+                    .HasMaxLength(50)
+                    .HasColumnName("UPDATED_BY");
+                entity.Property(e => e.WtpCost).HasColumnName("WTP_COST");
+                entity.Property(e => e.Year).HasColumnName("YEAR");
+
+                entity.HasOne(d => d.Com).WithMany(p => p.TblSectionWiseMonthlyUtilityCost)
+                    .HasForeignKey(d => d.Comid)
+                    .HasConstraintName("FK_TBL_SECTION_WISE_MONTHLY_UTILITY_COST_TBL_SECTION_WISE_MONTHLY_UTILITY_COST");
+
+                entity.HasOne(d => d.Dep).WithMany(p => p.TblSectionWiseMonthlyUtilityCost)
+                    .HasForeignKey(d => d.Depid)
+                    .HasConstraintName("FK_TBL_SECTION_WISE_MONTHLY_UTILITY_COST_TBL_DEPARTMENT_INFO");
             });
 
             OnModelCreatingPartial(modelBuilder);

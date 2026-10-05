@@ -1,0 +1,66 @@
+﻿@model UtilityManagement.Models.TblSectionWiseMonthlyUtilityCost
+
+@{
+    ViewData["Title"] = "Delete Reading";
+}
+
+<link href="~/css/delete-responsive.css" rel="stylesheet" />
+
+<div class="delete-page">
+
+    <div class="delete-wrapper">
+
+        <div class="card shadow border-danger delete-card">
+
+            <!-- HEADER -->
+            <div class="card-header bg-danger text-white">
+                <h5 class="mb-0">
+                    Delete Confirmation
+                </h5>
+            </div>
+
+            <!-- BODY -->
+            <div class="card-body">
+
+                <!-- WARNING -->
+                <div class="delete-warning">
+
+                    <i class="bi bi-exclamation-triangle-fill text-danger warning-icon"></i>
+
+                    <h5 class="text-danger">
+                        Are you sure you want to delete this record?
+                    </h5>
+
+                </div>
+
+                <!-- FORM -->
+                <form asp-action="Delete" method="post">
+
+                    <input type="hidden" asp-for="Trid" />
+
+                    <!-- ACTION BUTTONS -->
+                    <div class="delete-actions">
+
+                        <!-- NO -->
+                        <a asp-action="SectionWiseMonthlyUtilityBillList"
+                           class="btn btn-secondary delete-no-btn">
+                            No
+                        </a>
+
+                        <!-- YES -->
+                        <button type="submit"
+                                class="btn btn-danger delete-yes-btn">
+                            Yes
+                        </button>
+
+                    </div>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>

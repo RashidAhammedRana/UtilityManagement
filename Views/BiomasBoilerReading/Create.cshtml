@@ -71,23 +71,37 @@
                             </div>
 
 
-                            <!-- JuteCons -->
+                            <!-- Jute Consumption -->
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.JuteCons" class="form-label">
-                                     Biomass Consumption(Kg)
+                                    Biomass Consumption (Kg)
                                 </label>
-                                <input asp-for="BiomasBoilerReading.JuteCons" class="form-control" />
-                                <span asp-validation-for="BiomasBoilerReading.JuteCons" class="text-danger"></span>
+
+                                <input asp-for="BiomasBoilerReading.JuteCons"
+                                       class="form-control" />
+
+                                <span asp-validation-for="BiomasBoilerReading.JuteCons"
+                                      class="text-danger"></span>
                             </div>
 
-                            <!-- JuteCost -->
+
+                            <!-- Jute Cost -->
                             <div class="col-lg-3 col-md-6 col-sm-12">
                                 <label asp-for="BiomasBoilerReading.JuteCost" class="form-label">
-                                    Biomass Cost(Tk)
+                                    Biomass Cost (Tk)
                                 </label>
-                                <input asp-for="BiomasBoilerReading.JuteCost" class="form-control" readonly />
-                                <span asp-validation-for="BiomasBoilerReading.JuteCost" class="text-danger"></span>
+
+                                <input asp-for="BiomasBoilerReading.JuteCost"
+                                       class="form-control"
+                                       type="number"
+                                       step="0.01"
+                                       min="0" />
+
+                                <span asp-validation-for="BiomasBoilerReading.JuteCost"
+                                      class="text-danger"></span>
                             </div>
+
+
 
                             <!-- RhCons -->
                             <div class="col-lg-3 col-md-6 col-sm-12">
@@ -284,33 +298,59 @@
         // CONSUMPTION
         // =====================================================
 
-        const juteCons = document.getElementById("BiomasBoilerReading_JuteCons");
-        const rhCons = document.getElementById("BiomasBoilerReading_RhCons");
-        const wwCons = document.getElementById("BiomasBoilerReading_WwCons");
-        const cartonCons = document.getElementById("BiomasBoilerReading_CartonCons");
-        const ccCons = document.getElementById("BiomasBoilerReading_CcCons");
+        const juteCons =
+            document.getElementById("BiomasBoilerReading_JuteCons");
+
+        const rhCons =
+            document.getElementById("BiomasBoilerReading_RhCons");
+
+        const wwCons =
+            document.getElementById("BiomasBoilerReading_WwCons");
+
+        const cartonCons =
+            document.getElementById("BiomasBoilerReading_CartonCons");
+
+        const ccCons =
+            document.getElementById("BiomasBoilerReading_CcCons");
 
 
         // =====================================================
-        // COST
+        // INDIVIDUAL COST
         // =====================================================
 
-        const juteCost = document.getElementById("BiomasBoilerReading_JuteCost");
-        const rhCost = document.getElementById("BiomasBoilerReading_RhCost");
-        const wwCost = document.getElementById("BiomasBoilerReading_WwCost");
-        const cartonCost = document.getElementById("BiomasBoilerReading_CartonCost");
-        const ccCost = document.getElementById("BiomasBoilerReading_CcCost");
+        const juteCost =
+            document.getElementById("BiomasBoilerReading_JuteCost");
+
+        const rhCost =
+            document.getElementById("BiomasBoilerReading_RhCost");
+
+        const wwCost =
+            document.getElementById("BiomasBoilerReading_WwCost");
+
+        const cartonCost =
+            document.getElementById("BiomasBoilerReading_CartonCost");
+
+        const ccCost =
+            document.getElementById("BiomasBoilerReading_CcCost");
 
 
         // =====================================================
         // RATES FROM VIEWMODEL
         // =====================================================
 
-        const juteRate = parseFloat('@Model.JuteRate') || 0;
-        const riceHuskRate = parseFloat('@Model.RiceHuskRate') || 0;
-        const wasteWoodRate = parseFloat('@Model.WasteWoodRate') || 0;
-        const cartonRate = parseFloat('@Model.CartonRate') || 0;
-        const charcoilRate = parseFloat('@Model.CharcoilRate') || 0;
+        // Jute Rate is NOT required anymore.
+
+        const riceHuskRate =
+            parseFloat('@Model.RiceHuskRate') || 0;
+
+        const wasteWoodRate =
+            parseFloat('@Model.WasteWoodRate') || 0;
+
+        const cartonRate =
+            parseFloat('@Model.CartonRate') || 0;
+
+        const charcoilRate =
+            parseFloat('@Model.CharcoilRate') || 0;
 
 
         // =====================================================
@@ -369,11 +409,19 @@
 
 
             // -------------------------------------------------
-            // Consumption × Rate
+            // JUTE COST
             // -------------------------------------------------
 
+            // User directly enters Jute Cost.
+            // No Jute Rate calculation.
+
             const juteTotal =
-                jute * juteRate;
+                parseFloat(juteCost?.value) || 0;
+
+
+            // -------------------------------------------------
+            // OTHER BIOMASS COST
+            // -------------------------------------------------
 
             const riceHuskTotal =
                 riceHusk * riceHuskRate;
@@ -389,11 +437,8 @@
 
 
             // -------------------------------------------------
-            // Individual Cost
+            // OTHER INDIVIDUAL COST
             // -------------------------------------------------
-
-            if (juteCost)
-                juteCost.value = juteTotal.toFixed(2);
 
             if (rhCost)
                 rhCost.value = riceHuskTotal.toFixed(2);
@@ -477,17 +522,23 @@
         // =====================================================
 
         [
+            // Consumption
             juteCons,
             rhCons,
             wwCons,
             cartonCons,
             ccCons,
 
+            // Jute Cost - User Input
+            juteCost,
+
+            // Other Costs
             labourCost,
             electricityCost,
             maintenanceCost,
             otherCost,
 
+            // Steam Generation
             steamGeneration
 
         ].forEach(element => {
@@ -507,6 +558,7 @@
 
     });
 </script>
+
 
 
 @section Scripts {

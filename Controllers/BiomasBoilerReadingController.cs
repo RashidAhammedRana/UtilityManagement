@@ -298,11 +298,12 @@ public class BiomasBoilerReadingController : Controller
     {
         return new BiomassFuelRateViewModel
         {
-            JuteRate = _context.TblFncItemRates //Biomas/Jute
-                .Where(x => x.Fncid == 32)
-                .OrderByDescending(x => x.Date)
-                .Select(x => x.Rate)
-                .FirstOrDefault(),
+            //Biomas/Jute
+            //JuteRate = _context.TblFncItemRates 
+            //    .Where(x => x.Fncid == 32)
+            //    .OrderByDescending(x => x.Date)
+            //    .Select(x => x.Rate)
+            //    .FirstOrDefault(),
 
             RiceHuskRate = _context.TblFncItemRates //Rice Husk
                 .Where(x => x.Fncid == 33)

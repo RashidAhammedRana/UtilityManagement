@@ -5076,7 +5076,7 @@
             this.xrLabel143.SizeF = new System.Drawing.SizeF(444.4587F, 23F);
             this.xrLabel143.StylePriority.UseFont = false;
             this.xrLabel143.StylePriority.UseForeColor = false;
-            this.xrLabel143.Text = "10. 24-Hour Boiler Steam Generation Log - kg/Hr";
+            this.xrLabel143.Text = "10. 24-Hour Boiler Steam Generation Log - kg";
             // 
             // xrSubreport2
             // 

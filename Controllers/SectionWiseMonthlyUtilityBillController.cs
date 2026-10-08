@@ -334,12 +334,15 @@ public class SectionWiseMonthlyUtilityBillController : Controller
             // CALCULATE TOTAL AMOUNT
             // ==========================================
 
-            sectionWiseMonthlyUtilityCost.TotalCost =
+            sectionWiseMonthlyUtilityCost.TotalCost = Math.Round(
                 (sectionWiseMonthlyUtilityCost.ElectricityCost ?? 0)
                 + (sectionWiseMonthlyUtilityCost.SteamCost ?? 0)
                 + (sectionWiseMonthlyUtilityCost.EtpCost ?? 0)
                 + (sectionWiseMonthlyUtilityCost.WtpCost ?? 0)
-                + (sectionWiseMonthlyUtilityCost.AcCost ?? 0);
+                + (sectionWiseMonthlyUtilityCost.AcCost ?? 0)
+                + (sectionWiseMonthlyUtilityCost.RwCost ?? 0),
+                2
+            );
 
             // ==========================================
             // CREATED INFORMATION
@@ -432,20 +435,18 @@ public class SectionWiseMonthlyUtilityBillController : Controller
             // UPDATE UTILITY COST
             // =====================================================
 
-            existing.ElectricityCost =
-                sectionWiseMonthlyUtilityCost.ElectricityCost;
-
-            existing.SteamCost =
-                sectionWiseMonthlyUtilityCost.SteamCost;
-
-            existing.EtpCost =
-                sectionWiseMonthlyUtilityCost.EtpCost;
-
-            existing.WtpCost =
-                sectionWiseMonthlyUtilityCost.WtpCost;
-
-            existing.AcCost =
-                sectionWiseMonthlyUtilityCost.AcCost;
+            existing.ElectricityConsumption = sectionWiseMonthlyUtilityCost.ElectricityConsumption;
+            existing.ElectricityCost = sectionWiseMonthlyUtilityCost.ElectricityCost;
+            existing.SteamConsumption = sectionWiseMonthlyUtilityCost.SteamConsumption;
+            existing.SteamCost = sectionWiseMonthlyUtilityCost.SteamCost;
+            existing.EtpConsumption = sectionWiseMonthlyUtilityCost.EtpConsumption;
+            existing.EtpCost = sectionWiseMonthlyUtilityCost.EtpCost;
+            existing.WtpConsumption = sectionWiseMonthlyUtilityCost.WtpConsumption;
+            existing.WtpCost = sectionWiseMonthlyUtilityCost.WtpCost;
+            existing.AcConsumption = sectionWiseMonthlyUtilityCost.AcConsumption;
+            existing.AcCost = sectionWiseMonthlyUtilityCost.AcCost;
+            existing.RwConsumption = sectionWiseMonthlyUtilityCost.RwConsumption;
+            existing.RwCost = sectionWiseMonthlyUtilityCost.RwCost;
 
 
             // =====================================================
@@ -460,12 +461,14 @@ public class SectionWiseMonthlyUtilityBillController : Controller
             // CALCULATE TOTAL COST
             // =====================================================
 
-            existing.TotalCost =
-                (existing.ElectricityCost ?? 0)
-                + (existing.SteamCost ?? 0)
-                + (existing.EtpCost ?? 0)
-                + (existing.WtpCost ?? 0)
-                + (existing.AcCost ?? 0);
+            existing.TotalCost = Math.Round(
+            (existing.ElectricityCost ?? 0)
+            + (existing.SteamCost ?? 0)
+            + (existing.EtpCost ?? 0)
+            + (existing.WtpCost ?? 0)
+            + (existing.AcCost ?? 0)
+            + (existing.RwCost ?? 0),2
+            );
 
 
             // =====================================================
@@ -476,8 +479,11 @@ public class SectionWiseMonthlyUtilityBillController : Controller
                 existing.Production.Value > 0)
             {
                 existing.PerUnitProductionCost =
-                    existing.TotalCost.Value /
-                    existing.Production.Value;
+                    Math.Round(
+                        existing.TotalCost.Value /
+                        existing.Production.Value,
+                        2
+                    );
             }
             else
             {

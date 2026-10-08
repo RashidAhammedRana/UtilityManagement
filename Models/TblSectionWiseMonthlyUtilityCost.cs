@@ -18,13 +18,27 @@ public partial class TblSectionWiseMonthlyUtilityCost
     [Required(ErrorMessage = "This field is required")]
     public string? Month { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public double? ElectricityConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? ElectricityCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? SteamConsumption { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? SteamCost { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public double? EtpConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? EtpCost { get; set; }
     [Required(ErrorMessage = "This field is required")]
+    public double? WtpConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
     public double? WtpCost { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? AcConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RwConsumption { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? RwCost { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? AcCost { get; set; }
     [Required(ErrorMessage = "This field is required")]

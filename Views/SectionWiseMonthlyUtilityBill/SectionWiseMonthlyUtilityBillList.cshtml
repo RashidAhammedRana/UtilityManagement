@@ -82,6 +82,7 @@
                 <th>ETP Cost(TK)</th>
                 <th>WTP Cost(Tk)</th>
                 <th>Air Com. Cost(Tk)</th>
+                <th>RO Water Cost(Tk)</th>
                 <th>Total Utility Cost(Tk)</th>
                 <th>Production</th>
                 <th>Per Unit Production Cost(Tk)</th>
@@ -105,9 +106,10 @@
                     <td class="text-center">@item.EtpCost</td>
                     <td class="text-center">@item.WtpCost</td>
                     <td class="text-center">@item.AcCost</td>
+                    <td class="text-center">@item.RwCost</td>
                     <td class="text-center">@item.TotalCost</td>
                     <td class="text-center">@item.Production</td>
-                    <td class="text-center">@item.PerUnitProductionCost</td>
+                    <td class="text-center">@item.PerUnitProductionCost?.ToString("F2")</td>
 
                     <td class="text-center">
                         <div class="d-flex justify-content-center gap-2">

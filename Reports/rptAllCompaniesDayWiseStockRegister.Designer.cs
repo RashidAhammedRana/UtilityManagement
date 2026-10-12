@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptAllCompaniesDayWiseStockRegister));
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
@@ -157,8 +160,9 @@
             this.DetailData3_Odd = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.Date = new DevExpress.XtraReports.Parameters.Parameter();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
+            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -168,11 +172,15 @@
             this.sqlDataSource1.ConnectionName = "DefaultConnection";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "DayWiseStockRegisterAvg";
-            queryParameter1.Name = "@TRDATE";
+            queryParameter1.Name = "@MONTH";
             queryParameter1.Type = typeof(global::DevExpress.DataAccess.Expression);
-            queryParameter1.Value = new DevExpress.DataAccess.Expression("?Date", typeof(System.DateTime));
+            queryParameter1.Value = new DevExpress.DataAccess.Expression("?Month", typeof(int));
+            queryParameter2.Name = "@YEAR";
+            queryParameter2.Type = typeof(global::DevExpress.DataAccess.Expression);
+            queryParameter2.Value = new DevExpress.DataAccess.Expression("?Year", typeof(int));
             storedProcQuery1.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
-            queryParameter1});
+            queryParameter1,
+            queryParameter2});
             storedProcQuery1.StoredProcName = "SP_DAY_WISE_STOCK_REGISTER_ALL_COMPANIES";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
@@ -2199,19 +2207,43 @@
             this.PageHeader.HeightF = 0F;
             this.PageHeader.Name = "PageHeader";
             // 
-            // Date
-            // 
-            this.Date.Description = "Select Date";
-            this.Date.ExpressionBindings.AddRange(new DevExpress.XtraReports.Expressions.BasicExpressionBinding[] {
-            new DevExpress.XtraReports.Expressions.BasicExpressionBinding("Value", "today()")});
-            this.Date.Name = "Date";
-            this.Date.Type = typeof(global::System.DateTime);
-            this.Date.ValueInfo = "2026-09-08";
-            // 
             // ReportFooter
             // 
             this.ReportFooter.HeightF = 0F;
             this.ReportFooter.Name = "ReportFooter";
+            // 
+            // Month
+            // 
+            this.Month.Description = "Select Month";
+            this.Month.Name = "Month";
+            this.Month.Type = typeof(int);
+            this.Month.ValueInfo = "1";
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
+            this.Month.ValueSourceSettings = staticListLookUpSettings1;
+            // 
+            // Year
+            // 
+            this.Year.Description = "Select Year";
+            this.Year.Name = "Year";
+            this.Year.Type = typeof(int);
+            this.Year.ValueInfo = "2026";
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
+            this.Year.ValueSourceSettings = staticListLookUpSettings2;
             // 
             // rptAllCompaniesDayWiseStockRegister
             // 
@@ -2233,9 +2265,11 @@
             this.PageWidth = 4050;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
             this.ParameterPanelLayoutItems.AddRange(new DevExpress.XtraReports.Parameters.ParameterPanelLayoutItem[] {
-            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Date, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
+            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Month, DevExpress.XtraReports.Parameters.Orientation.Horizontal),
+            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Year, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
-            this.Date});
+            this.Month,
+            this.Year});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.GroupCaption1,
@@ -2268,7 +2302,6 @@
         private DevExpress.XtraReports.UI.XRControlStyle DetailData3_Odd;
         private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
         private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
-        private DevExpress.XtraReports.Parameters.Parameter Date;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRTable xrTable2;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
@@ -2381,5 +2414,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell104;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell105;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell106;
+        private DevExpress.XtraReports.Parameters.Parameter Month;
+        private DevExpress.XtraReports.Parameters.Parameter Year;
     }
 }

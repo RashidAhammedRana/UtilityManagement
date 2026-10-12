@@ -31,7 +31,10 @@
             this.components = new System.ComponentModel.Container();
             DevExpress.DataAccess.Sql.StoredProcQuery storedProcQuery1 = new DevExpress.DataAccess.Sql.StoredProcQuery();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
+            DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptAllCompaniesDayWiseWaterGeneration));
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
@@ -59,6 +62,8 @@
             this.xrTableCell19 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell26 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell27 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell25 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell34 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell35 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -94,6 +99,9 @@
             this.xrTableCell77 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell78 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell33 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
             this.Title = new DevExpress.XtraReports.UI.XRControlStyle();
             this.GroupCaption1 = new DevExpress.XtraReports.UI.XRControlStyle();
             this.GroupData1 = new DevExpress.XtraReports.UI.XRControlStyle();
@@ -103,13 +111,9 @@
             this.DetailData3_Odd = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
-            this.Date = new DevExpress.XtraReports.Parameters.Parameter();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.xrTableCell8 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell12 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell14 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell18 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrTableCell20 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
@@ -119,11 +123,15 @@
             this.sqlDataSource1.ConnectionName = "DefaultConnection";
             this.sqlDataSource1.Name = "sqlDataSource1";
             storedProcQuery1.Name = "DayWiseWaterGenerationAllCompanies";
-            queryParameter1.Name = "@TRDATE";
+            queryParameter1.Name = "@MONTH";
             queryParameter1.Type = typeof(global::DevExpress.DataAccess.Expression);
-            queryParameter1.Value = new DevExpress.DataAccess.Expression("?Date", typeof(System.DateTime));
+            queryParameter1.Value = new DevExpress.DataAccess.Expression("?Month", typeof(int));
+            queryParameter2.Name = "@YEAR";
+            queryParameter2.Type = typeof(global::DevExpress.DataAccess.Expression);
+            queryParameter2.Value = new DevExpress.DataAccess.Expression("?Year", typeof(int));
             storedProcQuery1.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
-            queryParameter1});
+            queryParameter1,
+            queryParameter2});
             storedProcQuery1.StoredProcName = "SP_GET_DAILY_WATER_GEN_DATA_ALL_COMPANIES";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
@@ -503,6 +511,36 @@
             this.xrTableCell27.Text = "Soft Water Gen.(m³)";
             this.xrTableCell27.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell27.Weight = 0.8612464460176279D;
+            // 
+            // xrTableCell8
+            // 
+            this.xrTableCell8.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.xrTableCell8.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell8.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell8.Multiline = true;
+            this.xrTableCell8.Name = "xrTableCell8";
+            this.xrTableCell8.StylePriority.UseBackColor = false;
+            this.xrTableCell8.StylePriority.UseFont = false;
+            this.xrTableCell8.StylePriority.UseForeColor = false;
+            this.xrTableCell8.StylePriority.UseTextAlignment = false;
+            this.xrTableCell8.Text = "ETP Water Inlet(m³)";
+            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell8.Weight = 0.86124645338285588D;
+            // 
+            // xrTableCell12
+            // 
+            this.xrTableCell12.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.xrTableCell12.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell12.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell12.Multiline = true;
+            this.xrTableCell12.Name = "xrTableCell12";
+            this.xrTableCell12.StylePriority.UseBackColor = false;
+            this.xrTableCell12.StylePriority.UseFont = false;
+            this.xrTableCell12.StylePriority.UseForeColor = false;
+            this.xrTableCell12.StylePriority.UseTextAlignment = false;
+            this.xrTableCell12.Text = "ETP Water Outlet(m³)";
+            this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell12.Weight = 0.86124645338285566D;
             // 
             // xrTableCell25
             // 
@@ -1104,6 +1142,60 @@
             this.xrTableCell33.TextFormatString = "{0:N0}";
             this.xrTableCell33.Weight = 0.67187154351538847D;
             // 
+            // xrTableCell18
+            // 
+            this.xrTableCell18.BackColor = System.Drawing.Color.Transparent;
+            this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_RO_WATER_GEN]")});
+            this.xrTableCell18.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
+            this.xrTableCell18.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell18.Multiline = true;
+            this.xrTableCell18.Name = "xrTableCell18";
+            this.xrTableCell18.StylePriority.UseBackColor = false;
+            this.xrTableCell18.StylePriority.UseFont = false;
+            this.xrTableCell18.StylePriority.UseForeColor = false;
+            this.xrTableCell18.StylePriority.UseTextAlignment = false;
+            this.xrTableCell18.Text = "xrTableCell18";
+            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell18.TextFormatString = "{0:N0}";
+            this.xrTableCell18.Weight = 0.67187154351538858D;
+            // 
+            // xrTableCell14
+            // 
+            this.xrTableCell14.BackColor = System.Drawing.Color.Transparent;
+            this.xrTableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_ETP_WATER_INLET]")});
+            this.xrTableCell14.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
+            this.xrTableCell14.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell14.Multiline = true;
+            this.xrTableCell14.Name = "xrTableCell14";
+            this.xrTableCell14.StylePriority.UseBackColor = false;
+            this.xrTableCell14.StylePriority.UseFont = false;
+            this.xrTableCell14.StylePriority.UseForeColor = false;
+            this.xrTableCell14.StylePriority.UseTextAlignment = false;
+            this.xrTableCell14.Text = "xrTableCell14";
+            this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell14.TextFormatString = "{0:N0}";
+            this.xrTableCell14.Weight = 0.67187154351538836D;
+            // 
+            // xrTableCell20
+            // 
+            this.xrTableCell20.BackColor = System.Drawing.Color.Transparent;
+            this.xrTableCell20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_ETP_WATER_OUTLET]")});
+            this.xrTableCell20.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
+            this.xrTableCell20.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell20.Multiline = true;
+            this.xrTableCell20.Name = "xrTableCell20";
+            this.xrTableCell20.StylePriority.UseBackColor = false;
+            this.xrTableCell20.StylePriority.UseFont = false;
+            this.xrTableCell20.StylePriority.UseForeColor = false;
+            this.xrTableCell20.StylePriority.UseTextAlignment = false;
+            this.xrTableCell20.Text = "xrTableCell20";
+            this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell20.TextFormatString = "{0:N0}";
+            this.xrTableCell20.Weight = 0.67187154351538858D;
+            // 
             // Title
             // 
             this.Title.BackColor = System.Drawing.Color.Transparent;
@@ -1198,103 +1290,43 @@
             this.PageHeader.HeightF = 0F;
             this.PageHeader.Name = "PageHeader";
             // 
-            // Date
-            // 
-            this.Date.Description = "Select Date";
-            this.Date.ExpressionBindings.AddRange(new DevExpress.XtraReports.Expressions.BasicExpressionBinding[] {
-            new DevExpress.XtraReports.Expressions.BasicExpressionBinding("Value", "today()")});
-            this.Date.Name = "Date";
-            this.Date.Type = typeof(global::System.DateTime);
-            this.Date.ValueInfo = "2026-09-08";
-            // 
             // ReportFooter
             // 
             this.ReportFooter.HeightF = 0F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // xrTableCell8
+            // Month
             // 
-            this.xrTableCell8.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.xrTableCell8.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrTableCell8.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell8.Multiline = true;
-            this.xrTableCell8.Name = "xrTableCell8";
-            this.xrTableCell8.StylePriority.UseBackColor = false;
-            this.xrTableCell8.StylePriority.UseFont = false;
-            this.xrTableCell8.StylePriority.UseForeColor = false;
-            this.xrTableCell8.StylePriority.UseTextAlignment = false;
-            this.xrTableCell8.Text = "ETP Water Inlet(m³)";
-            this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell8.Weight = 0.86124645338285588D;
+            this.Month.Description = "Select Month";
+            this.Month.Name = "Month";
+            this.Month.Type = typeof(int);
+            this.Month.ValueInfo = "1";
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
+            this.Month.ValueSourceSettings = staticListLookUpSettings1;
             // 
-            // xrTableCell12
+            // Year
             // 
-            this.xrTableCell12.BackColor = System.Drawing.Color.WhiteSmoke;
-            this.xrTableCell12.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrTableCell12.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell12.Multiline = true;
-            this.xrTableCell12.Name = "xrTableCell12";
-            this.xrTableCell12.StylePriority.UseBackColor = false;
-            this.xrTableCell12.StylePriority.UseFont = false;
-            this.xrTableCell12.StylePriority.UseForeColor = false;
-            this.xrTableCell12.StylePriority.UseTextAlignment = false;
-            this.xrTableCell12.Text = "ETP Water Outlet(m³)";
-            this.xrTableCell12.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell12.Weight = 0.86124645338285566D;
-            // 
-            // xrTableCell14
-            // 
-            this.xrTableCell14.BackColor = System.Drawing.Color.Transparent;
-            this.xrTableCell14.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_ETP_WATER_INLET]")});
-            this.xrTableCell14.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
-            this.xrTableCell14.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell14.Multiline = true;
-            this.xrTableCell14.Name = "xrTableCell14";
-            this.xrTableCell14.StylePriority.UseBackColor = false;
-            this.xrTableCell14.StylePriority.UseFont = false;
-            this.xrTableCell14.StylePriority.UseForeColor = false;
-            this.xrTableCell14.StylePriority.UseTextAlignment = false;
-            this.xrTableCell14.Text = "xrTableCell14";
-            this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell14.TextFormatString = "{0:N0}";
-            this.xrTableCell14.Weight = 0.67187154351538836D;
-            // 
-            // xrTableCell18
-            // 
-            this.xrTableCell18.BackColor = System.Drawing.Color.Transparent;
-            this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_RO_WATER_GEN]")});
-            this.xrTableCell18.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
-            this.xrTableCell18.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell18.Multiline = true;
-            this.xrTableCell18.Name = "xrTableCell18";
-            this.xrTableCell18.StylePriority.UseBackColor = false;
-            this.xrTableCell18.StylePriority.UseFont = false;
-            this.xrTableCell18.StylePriority.UseForeColor = false;
-            this.xrTableCell18.StylePriority.UseTextAlignment = false;
-            this.xrTableCell18.Text = "xrTableCell18";
-            this.xrTableCell18.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell18.TextFormatString = "{0:N0}";
-            this.xrTableCell18.Weight = 0.67187154351538858D;
-            // 
-            // xrTableCell20
-            // 
-            this.xrTableCell20.BackColor = System.Drawing.Color.Transparent;
-            this.xrTableCell20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_ETP_WATER_OUTLET]")});
-            this.xrTableCell20.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
-            this.xrTableCell20.ForeColor = System.Drawing.Color.Black;
-            this.xrTableCell20.Multiline = true;
-            this.xrTableCell20.Name = "xrTableCell20";
-            this.xrTableCell20.StylePriority.UseBackColor = false;
-            this.xrTableCell20.StylePriority.UseFont = false;
-            this.xrTableCell20.StylePriority.UseForeColor = false;
-            this.xrTableCell20.StylePriority.UseTextAlignment = false;
-            this.xrTableCell20.Text = "xrTableCell20";
-            this.xrTableCell20.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell20.TextFormatString = "{0:N0}";
-            this.xrTableCell20.Weight = 0.67187154351538858D;
+            this.Year.Description = "Select Year";
+            this.Year.Name = "Year";
+            this.Year.Type = typeof(int);
+            this.Year.ValueInfo = "2026";
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
+            this.Year.ValueSourceSettings = staticListLookUpSettings2;
             // 
             // rptAllCompaniesDayWiseWaterGeneration
             // 
@@ -1315,10 +1347,9 @@
             this.Margins = new DevExpress.Drawing.DXMargins(14F, 16F, 20F, 23F);
             this.PageWidth = 3970;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
-            this.ParameterPanelLayoutItems.AddRange(new DevExpress.XtraReports.Parameters.ParameterPanelLayoutItem[] {
-            new DevExpress.XtraReports.Parameters.ParameterLayoutItem(this.Date, DevExpress.XtraReports.Parameters.Orientation.Horizontal)});
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {
-            this.Date});
+            this.Month,
+            this.Year});
             this.StyleSheet.AddRange(new DevExpress.XtraReports.UI.XRControlStyle[] {
             this.Title,
             this.GroupCaption1,
@@ -1352,7 +1383,6 @@
         private DevExpress.XtraReports.UI.XRControlStyle DetailData3_Odd;
         private DevExpress.XtraReports.UI.XRControlStyle PageInfo;
         private DevExpress.XtraReports.UI.PageHeaderBand PageHeader;
-        private DevExpress.XtraReports.Parameters.Parameter Date;
         private DevExpress.XtraReports.UI.ReportFooterBand ReportFooter;
         private DevExpress.XtraReports.UI.XRTable xrTable2;
         private DevExpress.XtraReports.UI.XRTableRow xrTableRow2;
@@ -1415,5 +1445,7 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell18;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell14;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell20;
+        private DevExpress.XtraReports.Parameters.Parameter Month;
+        private DevExpress.XtraReports.Parameters.Parameter Year;
     }
 }

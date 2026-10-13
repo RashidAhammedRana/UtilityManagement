@@ -91,9 +91,11 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.xrSubreport6 = new DevExpress.XtraReports.UI.XRSubreport();
+            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
+            this.xrSubreport7 = new DevExpress.XtraReports.UI.XRSubreport();
             this.Month = new DevExpress.XtraReports.Parameters.Parameter();
             this.Year = new DevExpress.XtraReports.Parameters.Parameter();
+            this.xrSubreport6 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel5 = new DevExpress.XtraReports.UI.XRLabel();
             this.xrSubreport5 = new DevExpress.XtraReports.UI.XRSubreport();
             this.xrLabel4 = new DevExpress.XtraReports.UI.XRLabel();
@@ -111,8 +113,6 @@
             this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow3 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell2 = new DevExpress.XtraReports.UI.XRTableCell();
-            this.xrLabel6 = new DevExpress.XtraReports.UI.XRLabel();
-            this.xrSubreport7 = new DevExpress.XtraReports.UI.XRSubreport();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this)).BeginInit();
             // 
@@ -422,17 +422,30 @@
             this.xrSubreport1,
             this.xrSubreport2,
             this.xrLabel142});
-            this.ReportFooter.HeightF = 563.9999F;
+            this.ReportFooter.HeightF = 1414F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // xrSubreport6
+            // xrLabel6
             // 
-            this.xrSubreport6.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 369.5836F);
-            this.xrSubreport6.Name = "xrSubreport6";
-            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
-            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
-            this.xrSubreport6.ReportSource = new UtilityManagement.Reports.rptAllCompaniesDayWiseCngStockAndConsumption();
-            this.xrSubreport6.SizeF = new System.Drawing.SizeF(5269.352F, 22.99994F);
+            this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrLabel6.ForeColor = System.Drawing.Color.IndianRed;
+            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(0F, 1364F);
+            this.xrLabel6.Multiline = true;
+            this.xrLabel6.Name = "xrLabel6";
+            this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
+            this.xrLabel6.SizeF = new System.Drawing.SizeF(300.2332F, 23F);
+            this.xrLabel6.StylePriority.UseFont = false;
+            this.xrLabel6.StylePriority.UseForeColor = false;
+            this.xrLabel6.Text = "7. Day-wise NG Consumption (m³)";
+            // 
+            // xrSubreport7
+            // 
+            this.xrSubreport7.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 1391F);
+            this.xrSubreport7.Name = "xrSubreport7";
+            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
+            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
+            this.xrSubreport7.ReportSource = new UtilityManagement.Reports.rptAllCompaniesDayWiseNgStockAndConsumption();
+            this.xrSubreport7.SizeF = new System.Drawing.SizeF(5269.352F, 22.99994F);
             // 
             // Month
             // 
@@ -467,11 +480,20 @@
             staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
             this.Year.ValueSourceSettings = staticListLookUpSettings2;
             // 
+            // xrSubreport6
+            // 
+            this.xrSubreport6.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 924.5836F);
+            this.xrSubreport6.Name = "xrSubreport6";
+            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
+            this.xrSubreport6.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
+            this.xrSubreport6.ReportSource = new UtilityManagement.Reports.rptAllCompaniesDayWiseCngStockAndConsumption();
+            this.xrSubreport6.SizeF = new System.Drawing.SizeF(5269.352F, 22.99994F);
+            // 
             // xrLabel5
             // 
             this.xrLabel5.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel5.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 342.5836F);
+            this.xrLabel5.LocationFloat = new DevExpress.Utils.PointFloat(0F, 897.5836F);
             this.xrLabel5.Multiline = true;
             this.xrLabel5.Name = "xrLabel5";
             this.xrLabel5.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -482,7 +504,7 @@
             // 
             // xrSubreport5
             // 
-            this.xrSubreport5.LocationFloat = new DevExpress.Utils.PointFloat(1.648203F, 451.5834F);
+            this.xrSubreport5.LocationFloat = new DevExpress.Utils.PointFloat(1.648203F, 1159.583F);
             this.xrSubreport5.Name = "xrSubreport5";
             this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
             this.xrSubreport5.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
@@ -493,7 +515,7 @@
             // 
             this.xrLabel4.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel4.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0.8733113F, 424.5835F);
+            this.xrLabel4.LocationFloat = new DevExpress.Utils.PointFloat(0.8733113F, 1132.583F);
             this.xrLabel4.Multiline = true;
             this.xrLabel4.Name = "xrLabel4";
             this.xrLabel4.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -506,7 +528,7 @@
             // 
             this.xrLabel3.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel3.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 259.3751F);
+            this.xrLabel3.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 659.3751F);
             this.xrLabel3.Multiline = true;
             this.xrLabel3.Name = "xrLabel3";
             this.xrLabel3.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -517,7 +539,7 @@
             // 
             // xrSubreport4
             // 
-            this.xrSubreport4.LocationFloat = new DevExpress.Utils.PointFloat(1.647949F, 286.3751F);
+            this.xrSubreport4.LocationFloat = new DevExpress.Utils.PointFloat(1.647949F, 686.3751F);
             this.xrSubreport4.Name = "xrSubreport4";
             this.xrSubreport4.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
             this.xrSubreport4.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
@@ -526,7 +548,7 @@
             // 
             // xrSubreport3
             // 
-            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 198.7083F);
+            this.xrSubreport3.LocationFloat = new DevExpress.Utils.PointFloat(0.8730571F, 430.7083F);
             this.xrSubreport3.Name = "xrSubreport3";
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
             this.xrSubreport3.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
@@ -537,7 +559,7 @@
             // 
             this.xrLabel2.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel2.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0.09816488F, 171.7084F);
+            this.xrLabel2.LocationFloat = new DevExpress.Utils.PointFloat(0.09816488F, 403.7084F);
             this.xrLabel2.Multiline = true;
             this.xrLabel2.Name = "xrLabel2";
             this.xrLabel2.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -550,7 +572,7 @@
             // 
             this.xrLabel1.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrLabel1.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 84.29171F);
+            this.xrLabel1.LocationFloat = new DevExpress.Utils.PointFloat(0F, 171.2917F);
             this.xrLabel1.Multiline = true;
             this.xrLabel1.Name = "xrLabel1";
             this.xrLabel1.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
@@ -561,7 +583,7 @@
             // 
             // xrSubreport1
             // 
-            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 111.2916F);
+            this.xrSubreport1.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 198.2916F);
             this.xrSubreport1.Name = "xrSubreport1";
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
             this.xrSubreport1.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
@@ -656,28 +678,6 @@
             this.xrTableCell2.Text = "Print Date & Time :";
             this.xrTableCell2.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell2.Weight = 1.1162793866617993D;
-            // 
-            // xrLabel6
-            // 
-            this.xrLabel6.Font = new DevExpress.Drawing.DXFont("Calibri", 14F, DevExpress.Drawing.DXFontStyle.Bold);
-            this.xrLabel6.ForeColor = System.Drawing.Color.IndianRed;
-            this.xrLabel6.LocationFloat = new DevExpress.Utils.PointFloat(0F, 514.0001F);
-            this.xrLabel6.Multiline = true;
-            this.xrLabel6.Name = "xrLabel6";
-            this.xrLabel6.Padding = new DevExpress.XtraPrinting.PaddingInfo(2, 2, 0, 0, 100F);
-            this.xrLabel6.SizeF = new System.Drawing.SizeF(300.2332F, 23F);
-            this.xrLabel6.StylePriority.UseFont = false;
-            this.xrLabel6.StylePriority.UseForeColor = false;
-            this.xrLabel6.Text = "7. Day-wise NG Consumption (m³)";
-            // 
-            // xrSubreport7
-            // 
-            this.xrSubreport7.LocationFloat = new DevExpress.Utils.PointFloat(0.7748922F, 541F);
-            this.xrSubreport7.Name = "xrSubreport7";
-            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Month", this.Month));
-            this.xrSubreport7.ParameterBindings.Add(new DevExpress.XtraReports.UI.ParameterBinding("Year", this.Year));
-            this.xrSubreport7.ReportSource = new UtilityManagement.Reports.rptAllCompaniesDayWiseNgStockAndConsumption();
-            this.xrSubreport7.SizeF = new System.Drawing.SizeF(5269.352F, 22.99994F);
             // 
             // rptAllCompanyOnePlatform
             // 

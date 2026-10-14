@@ -62,6 +62,7 @@ namespace UtilityManagement.Data
         public virtual DbSet<TblBiomasBoilerReading> TblBiomasBoilerReading { get; set; }
         public virtual DbSet<TblMonthlyUtilityBillInfo> TblMonthlyUtilityBillInfo { get; set; }
         public virtual DbSet<TblSectionWiseMonthlyUtilityCost> TblSectionWiseMonthlyUtilityCost { get; set; }
+        public virtual DbSet<TblBiomassStockConsumption> TblBiomassStockConsumptions { get; set; }
 
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
@@ -1247,6 +1248,56 @@ namespace UtilityManagement.Data
                 entity.HasOne(d => d.Dep).WithMany(p => p.TblSectionWiseMonthlyUtilityCost)
                     .HasForeignKey(d => d.Depid)
                     .HasConstraintName("FK_TBL_SECTION_WISE_MONTHLY_UTILITY_COST_TBL_DEPARTMENT_INFO");
+            });
+
+            modelBuilder.Entity<TblBiomassStockConsumption>(entity =>
+            {
+                entity.HasKey(e => e.Trid);
+
+                entity.ToTable("TBL_BIOMASS_STOCK_CONSUMPTION");
+
+                entity.Property(e => e.Trid).HasColumnName("TRID");
+                entity.Property(e => e.CartonB1Cons).HasColumnName("CARTON_B1_CONS");
+                entity.Property(e => e.CartonB2Cons).HasColumnName("CARTON_B2_CONS");
+                entity.Property(e => e.CartonClosing).HasColumnName("CARTON_CLOSING");
+                entity.Property(e => e.CartonOpening).HasColumnName("CARTON_OPENING");
+                entity.Property(e => e.CartonReceive).HasColumnName("CARTON_RECEIVE");
+                entity.Property(e => e.CartonTotalCons).HasColumnName("CARTON_TOTAL_CONS");
+                entity.Property(e => e.CartonTotalCost).HasColumnName("CARTON_TOTAL_COST");
+                entity.Property(e => e.CharcoalB1Cons).HasColumnName("CHARCOAL_B1_CONS");
+                entity.Property(e => e.CharcoalB2Cons).HasColumnName("CHARCOAL_B2_CONS");
+                entity.Property(e => e.CharcoalClosing).HasColumnName("CHARCOAL_CLOSING");
+                entity.Property(e => e.CharcoalOpening).HasColumnName("CHARCOAL_OPENING");
+                entity.Property(e => e.CharcoalReceive).HasColumnName("CHARCOAL_RECEIVE");
+                entity.Property(e => e.CharcoalTotalCons).HasColumnName("CHARCOAL_TOTAL_CONS");
+                entity.Property(e => e.CharcoalTotalCost).HasColumnName("CHARCOAL_TOTAL_COST");
+                entity.Property(e => e.Company).HasMaxLength(50).HasColumnName("COMPANY");
+                entity.Property(e => e.CreatedAt).HasColumnType("datetime").HasColumnName("CREATED_AT");
+                entity.Property(e => e.CreatedBy).HasMaxLength(50).HasColumnName("CREATED_BY");
+                entity.Property(e => e.DenimJhutB1Cons).HasColumnName("DENIM_JHUT_B1_CONS");
+                entity.Property(e => e.DenimJhutB2Cons).HasColumnName("DENIM_JHUT_B2_CONS");
+                entity.Property(e => e.DenimJhutClosing).HasColumnName("DENIM_JHUT_CLOSING");
+                entity.Property(e => e.DenimJhutOpening).HasColumnName("DENIM_JHUT_OPENING");
+                entity.Property(e => e.DenimJhutReceive).HasColumnName("DENIM_JHUT_RECEIVE");
+                entity.Property(e => e.DenimJhutTotalCons).HasColumnName("DENIM_JHUT_TOTAL_CONS");
+                entity.Property(e => e.DenimJhutTotalCost).HasColumnName("DENIM_JHUT_TOTAL_COST");
+                entity.Property(e => e.PpB1Cons).HasColumnName("PP_B1_CONS");
+                entity.Property(e => e.PpB2Cons).HasColumnName("PP_B2_CONS");
+                entity.Property(e => e.PpClosing).HasColumnName("PP_CLOSING");
+                entity.Property(e => e.PpOpening).HasColumnName("PP_OPENING");
+                entity.Property(e => e.PpReceive).HasColumnName("PP_RECEIVE");
+                entity.Property(e => e.PpTotalCons).HasColumnName("PP_TOTAL_CONS");
+                entity.Property(e => e.PpTotalCost).HasColumnName("PP_TOTAL_COST");
+                entity.Property(e => e.SewingJhutB1Cons).HasColumnName("SEWING_JHUT_B1_CONS");
+                entity.Property(e => e.SewingJhutB2Cons).HasColumnName("SEWING_JHUT_B2_CONS");
+                entity.Property(e => e.SewingJhutClosing).HasColumnName("SEWING_JHUT_CLOSING");
+                entity.Property(e => e.SewingJhutOpening).HasColumnName("SEWING_JHUT_OPENING");
+                entity.Property(e => e.SewingJhutReceive).HasColumnName("SEWING_JHUT_RECEIVE");
+                entity.Property(e => e.SewingJhutTotalCons).HasColumnName("SEWING_JHUT_TOTAL_CONS");
+                entity.Property(e => e.SewingJhutTotalCost).HasColumnName("SEWING_JHUT_TOTAL_COST");
+                entity.Property(e => e.Trdate).HasColumnName("TRDATE");
+                entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
+                entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");
             });
 
             OnModelCreatingPartial(modelBuilder);

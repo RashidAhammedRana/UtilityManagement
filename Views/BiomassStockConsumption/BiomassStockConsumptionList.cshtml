@@ -1,0 +1,362 @@
+﻿@model IEnumerable<UtilityManagement.Models.TblBiomassStockConsumption>
+
+@{
+    ViewData["Title"] = "Biomass Stock & Consumption List";
+
+    int currentPage = ViewBag.CurrentPage ?? 1;
+    int totalPages = ViewBag.TotalPages ?? 1;
+    int pageSize = 30;
+    int sl = (currentPage - 1) * pageSize;
+
+    int startPage = Math.Max(1, currentPage - 2);
+    int endPage = Math.Min(totalPages, currentPage + 2);
+
+    bool canCreate = ViewBag.CanCreate ?? false;
+    bool canEdit = ViewBag.CanEdit ?? false;
+    bool canDelete = ViewBag.CanDelete ?? false;
+
+    string search = ViewBag.SearchString ?? "";
+}
+
+<h2 class="text-center biomass-list-title">
+    Biomass Stock & Consumption List
+</h2>
+
+<p class="text-muted text-center">
+    Total Readings: <strong>@(ViewBag.totalReadings ?? 0)</strong>
+</p>
+
+<div class="d-flex justify-content-between align-items-center
+            flex-wrap gap-2 mb-3">
+
+    <form method="get"
+          asp-action="BiomassStockConsumptionList"
+          id="searchForm"
+          class="d-flex gap-2">
+
+        <input type="text"
+               name="searchString"
+               id="searchBox"
+               value="@search"
+               class="form-control"
+               placeholder="Search here..."
+               style="width:300px;"
+               autocomplete="off" />
+
+        <input type="hidden" name="page" value="1" />
+    </form>
+
+    <div class="d-flex gap-2">
+        @if (canCreate)
+        {
+            <a asp-action="Create"
+               class="btn btn-primary">
+                + Create
+            </a>
+        }
+
+        <button type="button"
+                class="btn btn-secondary"
+                onclick="window.history.back();">
+            <i class="bi bi-arrow-left"></i> Back
+        </button>
+    </div>
+</div>
+
+<div class="table-responsive">
+    <table class="table table-bordered table-hover biomass-table">
+
+        <thead>
+            <tr class="text-center align-middle">
+                <th rowspan="2" class="sl-header">SL</th>
+                <th rowspan="2" class="date-header">Date</th>
+                <th rowspan="2" class="date-header">Company</th>
+
+                <th colspan="7" class="sewing-header">Sewing Biomass</th>
+                <th colspan="7" class="denim-header">Denim Biomass</th>
+                <th colspan="7" class="charcoal-header">Charcoal</th>
+                <th colspan="7" class="carton-header">Carton</th>
+                <th colspan="7" class="pp-header">Plastic Poly</th>
+
+                <th rowspan="2" class="actions-header">Actions</th>
+            </tr>
+
+            <tr class="text-center align-middle">
+                @for (int group = 0; group < 5; group++)
+                {
+                    <th>Opening</th>
+                    <th>Receive</th>
+                    <th>B1 Cons.</th>
+                    <th>B2 Cons.</th>
+                    <th>Total Cons.</th>
+                    <th>Closing</th>
+                    <th>Total Cost</th>
+                }
+            </tr>
+        </thead>
+
+        <tbody>
+            @foreach (var item in Model)
+            {
+                sl++;
+
+                <tr class="text-center align-middle">
+                    <td class="sl-cell">@sl</td>
+
+                    <td class="date-cell">
+                        @(item.Trdate?.ToString("dd-MM-yyyy") ?? "")
+                    </td>
+
+                    <td class="company-cell">
+                        @item.Company
+                    </td>
+
+                    @* SEWING JHUT *@
+                    <td>@(item.SewingJhutOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.SewingJhutReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.SewingJhutB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.SewingJhutB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.SewingJhutTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.SewingJhutClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.SewingJhutTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    @* DENIM JHUT *@
+                    <td>@(item.DenimJhutOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.DenimJhutReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.DenimJhutB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.DenimJhutB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.DenimJhutTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.DenimJhutClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.DenimJhutTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    @* CHARCOAL *@
+                    <td>@(item.CharcoalOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CharcoalReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CharcoalB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CharcoalB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.CharcoalTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.CharcoalClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.CharcoalTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    @* CARTON *@
+                    <td>@(item.CartonOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CartonReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CartonB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.CartonB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.CartonTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.CartonClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.CartonTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    @* PP *@
+                    <td>@(item.PpOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.PpReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.PpB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.PpB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.PpTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.PpClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.PpTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    <td>
+                        <div class="d-flex justify-content-center gap-2">
+                            @if (canEdit)
+                            {
+                                <a asp-action="Edit"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-success btn-sm">
+                                    Edit
+                                </a>
+                            }
+
+                            @if (canDelete)
+                            {
+                                <a asp-action="Delete"
+                                   asp-route-id="@item.Trid"
+                                   class="btn btn-danger btn-sm">
+                                    Delete
+                                </a>
+                            }
+                        </div>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</div>
+
+<nav class="mt-4">
+    <ul class="pagination justify-content-center flex-wrap">
+
+        <li class="page-item @(currentPage <= 1 ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="BiomassStockConsumptionList"
+               asp-route-page="@(currentPage - 1)"
+               asp-route-searchString="@search">
+                Prev
+            </a>
+        </li>
+
+        @for (int i = startPage; i <= endPage; i++)
+        {
+            <li class="page-item @(i == currentPage ? "active" : "")">
+                <a class="page-link"
+                   asp-action="BiomassStockConsumptionList"
+                   asp-route-page="@i"
+                   asp-route-searchString="@search">
+                    @i
+                </a>
+            </li>
+        }
+
+        <li class="page-item @(currentPage >= totalPages ? "disabled" : "")">
+            <a class="page-link"
+               asp-action="BiomassStockConsumptionList"
+               asp-route-page="@(currentPage + 1)"
+               asp-route-searchString="@search">
+                Next
+            </a>
+        </li>
+    </ul>
+</nav>
+
+<style>
+    .biomass-table {
+        min-width: 2600px;
+        margin-bottom: 0;
+        font-size: 12px;
+        border-color: #dee2e6;
+    }
+
+        .biomass-table th,
+        .biomass-table td {
+            padding: 8px 7px;
+            text-align: center !important;
+            vertical-align: middle !important;
+            white-space: nowrap;
+        }
+
+        .biomass-table thead th {
+            font-weight: 700;
+        }
+
+    .sl-header {
+        background: #6f42c1 !important;
+        color: white !important;
+    }
+
+    .date-header {
+        background: #0f766e !important;
+        color: white !important;
+    }
+
+    .actions-header {
+        background: #4f46e5 !important;
+        color: white !important;
+    }
+
+    .sewing-header {
+        background: #0d6efd !important;
+        color: white !important;
+    }
+
+    .denim-header {
+        background: #198754 !important;
+        color: white !important;
+    }
+
+    .charcoal-header {
+        background: #495057 !important;
+        color: white !important;
+    }
+
+    .carton-header {
+        background: #fd7e14 !important;
+        color: white !important;
+    }
+
+    .pp-header {
+        background: #7c3aed !important;
+        color: white !important;
+    }
+
+    .biomass-table thead tr:nth-child(2) th {
+        background: #e9ecef;
+        color: #212529;
+        font-size: 11px;
+    }
+
+    .biomass-table tbody tr:nth-child(even) td {
+        background-color: #f8fafc;
+    }
+
+    .biomass-table tbody tr:hover td {
+        filter: brightness(0.96);
+    }
+
+    .sl-cell {
+        color: #5b21b6;
+        font-weight: 700;
+    }
+
+    .date-cell,
+    .company-cell {
+        background-color: #f0fdfa !important;
+        color: #115e59;
+        font-weight: 600;
+    }
+
+    .total-cell {
+        font-weight: 700;
+        background-color: #eef2ff !important;
+    }
+
+    .closing-cell {
+        font-weight: 700;
+        background-color: #e7f1ff !important;
+        color: #084298;
+    }
+
+    .cost-cell {
+        font-weight: 700;
+        background-color: #fff0df !important;
+        color: #9a3412;
+    }
+
+    .biomass-table .btn {
+        min-width: 48px;
+        font-size: 12px;
+    }
+
+    @@media (max-width: 768px) {
+        .biomass-table {
+            min-width: 2600px;
+        }
+
+        #searchBox {
+            max-width: 220px;
+        }
+    }
+</style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function () {
+        const searchBox = document.getElementById("searchBox");
+        const searchForm = document.getElementById("searchForm");
+        let searchTimer;
+
+        if (!searchBox || !searchForm) return;
+
+        searchBox.addEventListener("input", function () {
+            clearTimeout(searchTimer);
+
+            searchTimer = setTimeout(function () {
+                searchForm.submit();
+            }, 800);
+        });
+
+        // Keep cursor position at the end without clearing the field.
+        searchBox.focus();
+
+        const valueLength = searchBox.value.length;
+        searchBox.setSelectionRange(valueLength, valueLength);
+    });
+</script>

@@ -1,0 +1,1351 @@
+﻿@model UtilityManagement.Models.TblBiomassStockConsumption
+
+@{
+    ViewData["Title"] = "Edit Biomass Stock & Consumption Info.";
+}
+
+<link rel="stylesheet" href="~/css/create-responsive.css" />
+
+<style>
+    .step-content {
+        display: none !important;
+        width: 100%;
+    }
+
+        .step-content.active {
+            display: block !important;
+            animation: stepFadeIn 0.3s ease-in-out;
+        }
+
+    @@keyframes stepFadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+    /* =========================================
+                   STEPPER LAYOUT - FIVE STEPS
+                ========================================= */
+
+    .stepper-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+    }
+
+    .stepper-line {
+        position: absolute;
+        top: 20px;
+        left: 10%;
+        right: 10%;
+        height: 4px;
+        background-color: #dee2e6;
+        border-radius: 10px;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+    .stepper-line-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: #008000;
+        transition: width 0.4s ease;
+    }
+
+    .step {
+        position: relative;
+        z-index: 1;
+        width: 20%;
+        text-align: center;
+        cursor: pointer;
+    }
+
+    .step-circle {
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+        color: #495057;
+        margin: 0 auto 8px;
+        font-weight: 700;
+        position: relative;
+        z-index: 2;
+    }
+
+    .step-title {
+        font-size: 13px;
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+    .step.active .step-circle,
+    .step.completed .step-circle {
+        background-color: #008000;
+        color: #fff;
+    }
+
+    .step.active .step-title,
+    .step.completed .step-title {
+        color: #008000;
+    }
+
+    @@media (max-width: 576px) {
+        .step-circle {
+            width: 34px;
+            height: 34px;
+            line-height: 34px;
+            font-size: 13px;
+        }
+
+        .step-title {
+            font-size: 10px;
+        }
+
+        .stepper-line {
+            top: 16px;
+        }
+    }
+</style>
+
+<div class="container create-page">
+    <div class="row justify-content-center">
+        <div class="col-md-10 create-wrapper">
+
+            <div class="card shadow-lg border-0 create-card">
+
+                <div class="card-header bg-success text-white">
+                    <h5 class="mb-0">
+                        Edit Biomass Stock & Consumption Info.
+                    </h5>
+                </div>
+
+                <div class="card-body p-4 create-body">
+
+                    <form asp-action="Edit" method="post"class="create-form" id="biomassForm">
+                        @Html.AntiForgeryToken()
+                        <input type="hidden" asp-for="Trid" />
+
+                        <div asp-validation-summary="ModelOnly"
+                             class="text-danger mb-3">
+                        </div>
+
+                        <!-- STEPPER -->
+                        <div class="stepper-wrapper">
+
+                            <div class="stepper-line">
+                                <div class="stepper-line-progress"
+                                     id="stepperProgress">
+                                </div>
+                            </div>
+
+                            <div class="step active" data-step="1">
+                                <div class="step-circle">1</div>
+                                <div class="step-title">Sewing Biomass</div>
+                            </div>
+
+                            <div class="step" data-step="2">
+                                <div class="step-circle">2</div>
+                                <div class="step-title">Denim Biomass</div>
+                            </div>
+
+                            <div class="step" data-step="3">
+                                <div class="step-circle">3</div>
+                                <div class="step-title">Charcoal</div>
+                            </div>
+
+                            <div class="step" data-step="4">
+                                <div class="step-circle">4</div>
+                                <div class="step-title">Carton</div>
+                            </div>
+
+                            <div class="step" data-step="5">
+                                <div class="step-circle">5</div>
+                                <div class="step-title">Plastic Poly</div>
+                            </div>
+
+                        </div>
+
+                        <!-- COMMON DATE AND COMPANY -->
+                        <div class="row g-3 mb-5">
+
+                            <div class="col-md-6">
+                                <label asp-for="Trdate"
+                                       class="form-label">
+                                    Date <span class="text-danger">*</span>
+                                </label>
+
+                                <input asp-for="Trdate"
+                                       type="date"
+                                       class="form-control"
+                                       required />
+
+                                <span asp-validation-for="Trdate"
+                                      class="text-danger"></span>
+                            </div>
+
+                            <div class="col-md-6">
+                                <label asp-for="Company"
+                                       class="form-label">
+                                    Company <span class="text-danger">*</span>
+                                </label>
+
+                                <select asp-for="Company"
+                                        class="form-select"
+                                        required>
+
+                                    <option value="">
+                                        -- Select Company --
+                                    </option>
+
+                                    @if (!string.IsNullOrEmpty(
+                                                                        ViewBag.CurrentCompany as string))
+                                    {
+                                        <option value="@ViewBag.CurrentCompany">
+                                            @ViewBag.CurrentCompany
+                                        </option>
+                                    }
+                                </select>
+
+                                <span asp-validation-for="Company"
+                                      class="text-danger"></span>
+                            </div>
+                        </div>
+
+                        <!-- STEP 1: SEWING JHUT -->
+                        <div class="step-content active" id="step1">
+
+                            <div class="card border-0 shadow-sm">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        Sewing Biomass Stock & Consumption
+                                    </h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row g-3">
+
+                                        <!-- Opening Stock -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutOpening"
+                                                   class="form-label">
+                                                Opening Stock
+                                            </label>
+
+                                            <input asp-for="SewingJhutOpening"
+                                                   id="SewingJhutOpening"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="SewingJhutOpening"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Receive -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutReceive"
+                                                   class="form-label">
+                                                Receive
+                                            </label>
+
+                                            <input asp-for="SewingJhutReceive"
+                                                   id="SewingJhutReceive"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="SewingJhutReceive"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Boiler 1 Consumption -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutB1Cons"
+                                                   class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+
+                                            <input asp-for="SewingJhutB1Cons"
+                                                   id="SewingJhutB1Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="SewingJhutB1Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Boiler 2 Consumption -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutB2Cons"
+                                                   class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+
+                                            <input asp-for="SewingJhutB2Cons"
+                                                   id="SewingJhutB2Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="SewingJhutB2Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Total Consumption -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutTotalCons"
+                                                   class="form-label">
+                                                Total Consumption
+                                            </label>
+
+                                            <input asp-for="SewingJhutTotalCons"
+                                                   id="SewingJhutTotalCons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="SewingJhutTotalCons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Closing Stock -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutClosing"
+                                                   class="form-label">
+                                                Closing Stock
+                                            </label>
+
+                                            <input asp-for="SewingJhutClosing"
+                                                   id="SewingJhutClosing"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control closing-stock"
+                                                   readonly />
+
+                                            <span asp-validation-for="SewingJhutClosing"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <!-- Total Cost -->
+                                        <div class="col-md-6">
+                                            <label asp-for="SewingJhutTotalCost"
+                                                   class="form-label">
+                                                Total Cost
+                                            </label>
+
+                                            <input asp-for="SewingJhutTotalCost"
+                                                   id="SewingJhutTotalCost"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="SewingJhutTotalCost"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <!-- STEP 1 BUTTONS -->
+                            <div class="d-flex justify-content-between align-items-center mt-4">
+
+                                <a asp-action="BiomassStockConsumptionList"
+                                   class="btn btn-outline-secondary px-4">
+                                    ← Back
+                                </a>
+
+                                <button type="button"
+                                        class="btn btn-secondary next-btn"
+                                        data-next="2">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- =========================================
+                             STEP 2 - DENIM JHUT
+                        ========================================== -->
+
+                        <div class="step-content" id="step2">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Denim Biomass Stock & Consumption</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row g-3">
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutOpening" class="form-label">
+                                                Opening Stock
+                                            </label>
+                                            <input asp-for="DenimJhutOpening"
+                                                   id="DenimJhutOpening"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="DenimJhutOpening"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutReceive" class="form-label">
+                                                Receive
+                                            </label>
+                                            <input asp-for="DenimJhutReceive"
+                                                   id="DenimJhutReceive"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="DenimJhutReceive"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutB1Cons" class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+                                            <input asp-for="DenimJhutB1Cons"
+                                                   id="DenimJhutB1Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="DenimJhutB1Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutB2Cons" class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+                                            <input asp-for="DenimJhutB2Cons"
+                                                   id="DenimJhutB2Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="DenimJhutB2Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutTotalCons" class="form-label">
+                                                Total Consumption
+                                            </label>
+                                            <input asp-for="DenimJhutTotalCons"
+                                                   id="DenimJhutTotalCons"
+                                                   type="number" step="0.01"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="DenimJhutTotalCons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutClosing" class="form-label">
+                                                Closing Stock
+                                            </label>
+                                            <input asp-for="DenimJhutClosing"
+                                                   id="DenimJhutClosing"
+                                                   type="number" step="0.01"
+                                                   class="form-control closing-stock" readonly />
+                                            <span asp-validation-for="DenimJhutClosing"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="DenimJhutTotalCost" class="form-label">
+                                                Total Cost
+                                            </label>
+                                            <input asp-for="DenimJhutTotalCost"
+                                                   id="DenimJhutTotalCost"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="DenimJhutTotalCost"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="1">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-secondary next-btn"
+                                        data-next="3">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+
+                        <!-- =========================================
+                             STEP 3 - CHARCOAL
+                        ========================================== -->
+
+                        <div class="step-content" id="step3">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Charcoal Stock & Consumption</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row g-3">
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalOpening" class="form-label">
+                                                Opening Stock
+                                            </label>
+                                            <input asp-for="CharcoalOpening"
+                                                   id="CharcoalOpening"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="CharcoalOpening"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalReceive" class="form-label">
+                                                Receive
+                                            </label>
+                                            <input asp-for="CharcoalReceive"
+                                                   id="CharcoalReceive"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="CharcoalReceive"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalB1Cons" class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+                                            <input asp-for="CharcoalB1Cons"
+                                                   id="CharcoalB1Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="CharcoalB1Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalB2Cons" class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+                                            <input asp-for="CharcoalB2Cons"
+                                                   id="CharcoalB2Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="CharcoalB2Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalTotalCons" class="form-label">
+                                                Total Consumption
+                                            </label>
+                                            <input asp-for="CharcoalTotalCons"
+                                                   id="CharcoalTotalCons"
+                                                   type="number" step="0.01"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="CharcoalTotalCons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalClosing" class="form-label">
+                                                Closing Stock
+                                            </label>
+                                            <input asp-for="CharcoalClosing"
+                                                   id="CharcoalClosing"
+                                                   type="number" step="0.01"
+                                                   class="form-control closing-stock" readonly />
+                                            <span asp-validation-for="CharcoalClosing"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="CharcoalTotalCost" class="form-label">
+                                                Total Cost
+                                            </label>
+                                            <input asp-for="CharcoalTotalCost"
+                                                   id="CharcoalTotalCost"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" required />
+                                            <span asp-validation-for="CharcoalTotalCost"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="2">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-secondary next-btn"
+                                        data-next="4">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- =================================================
+                             STEP 4 - CARTON
+                        ================================================== -->
+
+                        <div class="step-content" id="step4">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        Carton Stock & Consumption
+                                    </h6>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+                                        <!-- OPENING STOCK -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonOpening"
+                                                   class="form-label">
+                                                Opening Stock
+                                            </label>
+
+                                            <input asp-for="CartonOpening"
+                                                   id="CartonOpening"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="CartonOpening"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- RECEIVE -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonReceive"
+                                                   class="form-label">
+                                                Receive
+                                            </label>
+
+                                            <input asp-for="CartonReceive"
+                                                   id="CartonReceive"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="CartonReceive"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- BOILER 1 CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonB1Cons"
+                                                   class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+
+                                            <input asp-for="CartonB1Cons"
+                                                   id="CartonB1Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="CartonB1Cons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- BOILER 2 CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonB2Cons"
+                                                   class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+
+                                            <input asp-for="CartonB2Cons"
+                                                   id="CartonB2Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="CartonB2Cons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- TOTAL CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonTotalCons"
+                                                   class="form-label">
+                                                Total Consumption
+                                            </label>
+
+                                            <input asp-for="CartonTotalCons"
+                                                   id="CartonTotalCons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="CartonTotalCons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- CLOSING STOCK -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonClosing"
+                                                   class="form-label">
+                                                Closing Stock
+                                            </label>
+
+                                            <input asp-for="CartonClosing"
+                                                   id="CartonClosing"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control closing-stock"
+                                                   readonly />
+
+                                            <span asp-validation-for="CartonClosing"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- TOTAL COST -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="CartonTotalCost"
+                                                   class="form-label">
+                                                Total Cost
+                                            </label>
+
+                                            <input asp-for="CartonTotalCost"
+                                                   id="CartonTotalCost"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="CartonTotalCost"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- NAVIGATION BUTTONS -->
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="3">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-secondarynext-btn"
+                                        data-next="5">
+                                    Next →
+                                </button>
+
+                            </div>
+
+                        </div>
+                        <!-- =================================================
+                             STEP 5 - PP
+                        ================================================== -->
+
+                        <div class="step-content" id="step5">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">
+                                        PP Stock & Consumption
+                                    </h6>
+                                </div>
+
+                                <div class="card-body">
+
+                                    <div class="row g-3">
+
+                                        <!-- OPENING STOCK -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpOpening"
+                                                   class="form-label">
+                                                Opening Stock
+                                            </label>
+
+                                            <input asp-for="PpOpening"
+                                                   id="PpOpening"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="PpOpening"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- RECEIVE -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpReceive"
+                                                   class="form-label">
+                                                Receive
+                                            </label>
+
+                                            <input asp-for="PpReceive"
+                                                   id="PpReceive"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="PpReceive"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- BOILER 1 CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpB1Cons"
+                                                   class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+
+                                            <input asp-for="PpB1Cons"
+                                                   id="PpB1Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="PpB1Cons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- BOILER 2 CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpB2Cons"
+                                                   class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+
+                                            <input asp-for="PpB2Cons"
+                                                   id="PpB2Cons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="PpB2Cons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- TOTAL CONSUMPTION -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpTotalCons"
+                                                   class="form-label">
+                                                Total Consumption
+                                            </label>
+
+                                            <input asp-for="PpTotalCons"
+                                                   id="PpTotalCons"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control"
+                                                   readonly />
+
+                                            <span asp-validation-for="PpTotalCons"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- CLOSING STOCK -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpClosing"
+                                                   class="form-label">
+                                                Closing Stock
+                                            </label>
+
+                                            <input asp-for="PpClosing"
+                                                   id="PpClosing"
+                                                   type="number"
+                                                   step="0.01"
+                                                   class="form-control closing-stock"
+                                                   readonly />
+
+                                            <span asp-validation-for="PpClosing"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                        <!-- TOTAL COST -->
+                                        <div class="col-md-6">
+
+                                            <label asp-for="PpTotalCost"
+                                                   class="form-label">
+                                                Total Cost
+                                            </label>
+
+                                            <input asp-for="PpTotalCost"
+                                                   id="PpTotalCost"
+                                                   type="number"
+                                                   step="0.01"
+                                                   min="0"
+                                                   class="form-control"
+                                                   required />
+
+                                            <span asp-validation-for="PpTotalCost"
+                                                  class="text-danger"></span>
+
+                                        </div>
+
+                                    </div>
+
+                                </div>
+                            </div>
+
+                            <!-- FINAL BUTTONS -->
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="4">
+                                    ← Previous
+                                </button>
+
+                                <div>
+
+                                    <a asp-action="BiomassStockConsumptionList"
+                                       class="btn btn-outline-secondary me-2">
+                                        ← Back
+                                    </a>
+
+                                    <button type="submit"
+                                            class="btn btn-success px-4">
+                                        Update
+                                    </button>
+
+                                </div>
+
+                            </div>
+
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@section Scripts {
+
+    @{
+        await Html.RenderPartialAsync("_ValidationScriptsPartial");
+    }
+
+    <script>
+        $(document).ready(function () {
+
+            // =========================================
+            // BIOMASS RATES FROM CONTROLLER
+            // =========================================
+
+            const biomassRates = {
+                SewingJhut: Number('@(ViewBag.SewingBiomassRate ?? 0)'),
+                DenimJhut: Number('@(ViewBag.DenimBiomassRate ?? 0)'),
+                Charcoal: Number('@(ViewBag.CharcoalRate ?? 0)'),
+                Carton: Number('@(ViewBag.CartonRate ?? 0)'),
+                Pp: Number('@(ViewBag.PpRate ?? 0)')
+            };
+
+
+            // =========================================
+            // STEP NAVIGATION
+            // =========================================
+
+            function showStep(stepNumber) {
+
+                $('.step-content').removeClass('active');
+
+                $('#step' + stepNumber).addClass('active');
+
+                $('.step').removeClass('active completed');
+
+                $('.step').each(function () {
+
+                    var currentStep = parseInt($(this).data('step'));
+
+                    if (currentStep < stepNumber) {
+                        $(this).addClass('completed');
+                    }
+                    else if (currentStep === stepNumber) {
+                        $(this).addClass('active');
+                    }
+
+                });
+
+                // Progress: 0%, 25%, 50%, 75%, 100%
+                var progress = ((stepNumber - 1) / 4) * 100;
+
+                $('#stepperProgress').css('width', progress + '%');
+
+            }
+
+
+            // =========================================
+            // NEXT BUTTON
+            // =========================================
+
+            $('.next-btn').on('click', function () {
+
+                var nextStep = parseInt($(this).data('next'));
+
+                var currentContent = $(this).closest('.step-content');
+
+                var valid = true;
+
+                currentContent.find(':input[required]:enabled').each(function () {
+
+                    if (!this.checkValidity()) {
+
+                        this.reportValidity();
+
+                        valid = false;
+
+                        return false;
+                    }
+
+                });
+
+                if (valid) {
+                    showStep(nextStep);
+                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                }
+
+            });
+
+
+            // =========================================
+            // PREVIOUS BUTTON
+            // =========================================
+
+            $('.prev-btn').on('click', function () {
+
+                var previousStep = parseInt($(this).data('prev'));
+
+                showStep(previousStep);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            });
+
+
+            // =========================================
+            // STEP INDICATOR CLICK
+            // =========================================
+
+            $('.step').on('click', function () {
+
+                var targetStep = parseInt($(this).data('step'));
+
+                var currentStep = parseInt(
+                    $('.step-content.active').attr('id').replace('step', '')
+                );
+
+                // Allow backward navigation
+                if (targetStep <= currentStep) {
+                    showStep(targetStep);
+                    return;
+                }
+
+                // Validate intermediate steps
+                for (var i = currentStep; i < targetStep; i++) {
+
+                    var valid = true;
+
+                    $('#step' + i)
+                        .find(':input[required]:enabled')
+                        .each(function () {
+
+                            if (!this.checkValidity()) {
+
+                                showStep(i);
+
+                                this.reportValidity();
+
+                                valid = false;
+
+                                return false;
+                            }
+
+                        });
+
+                    if (!valid) {
+                        return;
+                    }
+
+                }
+
+                showStep(targetStep);
+
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            });
+
+
+            // =========================================
+            // COMMON STOCK & COST CALCULATION
+            //
+            // Total Consumption = Boiler 1 + Boiler 2
+            // Closing Stock = Opening + Receive - Consumption
+            // Total Cost = Total Consumption * Rate
+            // =========================================
+
+            function calculateStock(prefix) {
+
+                var opening = parseFloat(
+                    $('#' + prefix + 'Opening').val()
+                ) || 0;
+
+                var receive = parseFloat(
+                    $('#' + prefix + 'Receive').val()
+                ) || 0;
+
+                var boiler1 = parseFloat(
+                    $('#' + prefix + 'B1Cons').val()
+                ) || 0;
+
+                var boiler2 = parseFloat(
+                    $('#' + prefix + 'B2Cons').val()
+                ) || 0;
+
+                // Total Consumption
+                var totalConsumption = boiler1 + boiler2;
+
+                // Closing Stock
+                var closingStock = opening + receive - totalConsumption;
+
+                // Rate loaded from Controller
+                var rate = biomassRates[prefix] || 0;
+
+                // Total Cost
+                var totalCost = totalConsumption * rate;
+
+                // Update Total Consumption
+                $('#' + prefix + 'TotalCons').val(
+                    totalConsumption.toFixed(2)
+                );
+
+                // Update Closing Stock
+                $('#' + prefix + 'Closing').val(
+                    closingStock.toFixed(2)
+                );
+
+                // Update Total Cost
+                $('#' + prefix + 'TotalCost').val(
+                    totalCost.toFixed(2)
+                );
+
+            }
+
+
+            // =========================================
+            // SEWING JHUT
+            // =========================================
+
+            $('#SewingJhutReceive, #SewingJhutB1Cons, #SewingJhutB2Cons')
+                .on('input change', function () {
+                    calculateStock('SewingJhut');
+                });
+
+
+            // =========================================
+            // DENIM JHUT
+            // =========================================
+
+            $('#DenimJhutReceive, #DenimJhutB1Cons, #DenimJhutB2Cons')
+                .on('input change', function () {
+                    calculateStock('DenimJhut');
+                });
+
+
+            // =========================================
+            // CHARCOAL
+            // =========================================
+
+            $('#CharcoalReceive, #CharcoalB1Cons, #CharcoalB2Cons')
+                .on('input change', function () {
+                    calculateStock('Charcoal');
+                });
+
+
+            // =========================================
+            // CARTON
+            // =========================================
+
+            $('#CartonReceive, #CartonB1Cons, #CartonB2Cons')
+                .on('input change', function () {
+                    calculateStock('Carton');
+                });
+
+
+            // =========================================
+            // PP
+            // =========================================
+
+            $('#PpReceive, #PpB1Cons, #PpB2Cons')
+                .on('input change', function () {
+                    calculateStock('Pp');
+                });
+
+
+            // =========================================
+            // INITIAL CALCULATION
+            // =========================================
+
+            calculateStock('SewingJhut');
+
+            calculateStock('DenimJhut');
+
+            calculateStock('Charcoal');
+
+            calculateStock('Carton');
+
+            calculateStock('Pp');
+
+
+            // =========================================
+            // FORM SUBMISSION VALIDATION
+            // =========================================
+
+            $('.create-form').on('submit', function (event) {
+
+                var form = this;
+
+                if (!form.checkValidity()) {
+
+                    event.preventDefault();
+
+                    var invalidField = form.querySelector(':invalid');
+
+                    if (invalidField) {
+
+                        var parentStep = $(invalidField)
+                            .closest('.step-content');
+
+                        if (parentStep.length) {
+
+                            var stepNumber = parseInt(
+                                parentStep.attr('id').replace('step', '')
+                            );
+
+                            showStep(stepNumber);
+
+                            invalidField.reportValidity();
+
+                        }
+
+                    }
+
+                    return false;
+                }
+
+                // Recalculate all values before submission
+                calculateStock('SewingJhut');
+                calculateStock('DenimJhut');
+                calculateStock('Charcoal');
+                calculateStock('Carton');
+                calculateStock('Pp');
+
+            });
+
+
+            // =========================================
+            // INITIAL STEP
+            // =========================================
+
+            showStep(1);
+
+        });
+    </script>
+}

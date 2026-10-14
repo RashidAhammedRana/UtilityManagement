@@ -261,6 +261,11 @@
             this.Month = new DevExpress.XtraReports.Parameters.Parameter();
             this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             this.PageFooter = new DevExpress.XtraReports.UI.PageFooterBand();
+            this.TKL_PU_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
+            this.CLUB_PU_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
+            this.EXT_PU_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
+            this.CLOTH_PU_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
+            this.NCSL_PU_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -1494,7 +1499,7 @@
             // 
             this.xrTableCell98.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell98.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Iif([TKL_TOTAL_GENERATION] = 0, 0, [TKL_TOTAL_COST] / [TKL_TOTAL_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_PU_GEN_COST]")});
             this.xrTableCell98.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell98.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell98.Multiline = true;
@@ -1676,8 +1681,7 @@
             // 
             this.xrTableCell100.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell100.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Iif([CCLUB_TOTAL_GENERATION] = 0, 0, [CCLUB_TOTAL_COST] / [CCLUB_TOTAL_GENERATION" +
-                    "])\n")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_PU_GEN_COST]")});
             this.xrTableCell100.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell100.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell100.Multiline = true;
@@ -1857,8 +1861,7 @@
             // 
             this.xrTableCell102.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell102.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Iif([CCLUBEXT_TOTAL_GENERATION] = 0, 0, [CCLUBEXT_TOTAL_COST] / [CCLUBEXT_TOTAL_G" +
-                    "ENERATION])\n")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[EXT_PU_GEN_COST]")});
             this.xrTableCell102.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell102.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell102.Multiline = true;
@@ -2020,8 +2023,7 @@
             // 
             this.xrTableCell104.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell104.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Iif([CCLOTH_TOTAL_GENERATION] = 0, 0, [CCLOTH_TOTAL_COST] / [CCLOTH_TOTAL_GENERAT" +
-                    "ION])\n")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTH_PU_GEN_COST]")});
             this.xrTableCell104.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell104.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell104.Multiline = true;
@@ -2201,8 +2203,7 @@
             // 
             this.xrTableCell106.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell106.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Iif([NCSL_TOTAL_GENERATION] = 0, 0, [NCSL_TOTAL_COST] / [NCSL_TOTAL_GENERATION])\n" +
-                    "")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NCSL_PU_GEN_COST]")});
             this.xrTableCell106.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell106.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell106.Multiline = true;
@@ -2596,7 +2597,8 @@
             // 
             this.xrTableCell117.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell117.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell117.ExpressionBindings"))});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_PU_GEN_COST] > 0, [TKL_PU_GEN_COST], 0)) / Sum(IIf([TKL_PU_GEN_COST]" +
+                    " > 0, 1, 0))\n\n")});
             this.xrTableCell117.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell117.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell117.Multiline = true;
@@ -2802,7 +2804,8 @@
             // 
             this.xrTableCell127.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell127.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell127.ExpressionBindings"))});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_PU_GEN_COST] > 0, [CLUB_PU_GEN_COST], 0)) / Sum(IIf([CLUB_PU_GEN_CO" +
+                    "ST] > 0, 1, 0))\n\n")});
             this.xrTableCell127.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell127.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell127.Multiline = true;
@@ -3008,7 +3011,8 @@
             // 
             this.xrTableCell137.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell137.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell137.ExpressionBindings"))});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([EXT_PU_GEN_COST] > 0, [EXT_PU_GEN_COST], 0)) / Sum(IIf([EXT_PU_GEN_COST]" +
+                    " > 0, 1, 0))\n\n")});
             this.xrTableCell137.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell137.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell137.Multiline = true;
@@ -3193,7 +3197,8 @@
             // 
             this.xrTableCell146.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell146.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell146.ExpressionBindings"))});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTH_PU_GEN_COST] > 0, [CLOTH_PU_GEN_COST], 0)) / Sum(IIf([CLOTH_PU_GEN" +
+                    "_COST] > 0, 1, 0))\n\n")});
             this.xrTableCell146.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell146.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell146.Multiline = true;
@@ -3399,7 +3404,8 @@
             // 
             this.xrTableCell156.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell156.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", resources.GetString("xrTableCell156.ExpressionBindings"))});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_PU_GEN_COST] > 0, [NCSL_PU_GEN_COST], 0)) / Sum(IIf([NCSL_PU_GEN_CO" +
+                    "ST] > 0, 1, 0))\n\n\n\n\n")});
             this.xrTableCell156.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell156.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell156.Multiline = true;
@@ -3453,6 +3459,40 @@
             this.PageFooter.HeightF = 0F;
             this.PageFooter.Name = "PageFooter";
             // 
+            // TKL_PU_GEN_COST
+            // 
+            this.TKL_PU_GEN_COST.DataMember = "DayWiseStockRegisterAvg";
+            this.TKL_PU_GEN_COST.Expression = "Iif([TKL_TOTAL_GENERATION] = 0, 0, [TKL_TOTAL_COST] / [TKL_TOTAL_GENERATION])\n";
+            this.TKL_PU_GEN_COST.Name = "TKL_PU_GEN_COST";
+            // 
+            // CLUB_PU_GEN_COST
+            // 
+            this.CLUB_PU_GEN_COST.DataMember = "DayWiseStockRegisterAvg";
+            this.CLUB_PU_GEN_COST.Expression = "Iif([CCLUB_TOTAL_GENERATION] = 0, 0, [CCLUB_TOTAL_COST] / [CCLUB_TOTAL_GENERATION" +
+    "])\n\n";
+            this.CLUB_PU_GEN_COST.Name = "CLUB_PU_GEN_COST";
+            // 
+            // EXT_PU_GEN_COST
+            // 
+            this.EXT_PU_GEN_COST.DataMember = "DayWiseStockRegisterAvg";
+            this.EXT_PU_GEN_COST.Expression = "Iif([CCLUBEXT_TOTAL_GENERATION] = 0, 0, [CCLUBEXT_TOTAL_COST] / [CCLUBEXT_TOTAL_G" +
+    "ENERATION])\n\n";
+            this.EXT_PU_GEN_COST.Name = "EXT_PU_GEN_COST";
+            // 
+            // CLOTH_PU_GEN_COST
+            // 
+            this.CLOTH_PU_GEN_COST.DataMember = "DayWiseStockRegisterAvg";
+            this.CLOTH_PU_GEN_COST.Expression = "Iif([CCLOTH_TOTAL_GENERATION] = 0, 0, [CCLOTH_TOTAL_COST] / [CCLOTH_TOTAL_GENERAT" +
+    "ION])\n\n";
+            this.CLOTH_PU_GEN_COST.Name = "CLOTH_PU_GEN_COST";
+            // 
+            // NCSL_PU_GEN_COST
+            // 
+            this.NCSL_PU_GEN_COST.DataMember = "DayWiseStockRegisterAvg";
+            this.NCSL_PU_GEN_COST.Expression = "Iif([NCSL_TOTAL_GENERATION] = 0, 0, [NCSL_TOTAL_COST] / [NCSL_TOTAL_GENERATION])\n" +
+    "\n";
+            this.NCSL_PU_GEN_COST.Name = "NCSL_PU_GEN_COST";
+            // 
             // rptAllCompaniesDayWiseStockRegister
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -3464,6 +3504,12 @@
             this.ReportFooter,
             this.PageFooter});
             this.BorderColor = System.Drawing.Color.DarkGray;
+            this.CalculatedFields.AddRange(new DevExpress.XtraReports.UI.CalculatedField[] {
+            this.TKL_PU_GEN_COST,
+            this.CLUB_PU_GEN_COST,
+            this.EXT_PU_GEN_COST,
+            this.CLOTH_PU_GEN_COST,
+            this.NCSL_PU_GEN_COST});
             this.ComponentStorage.AddRange(new System.ComponentModel.IComponent[] {
             this.sqlDataSource1});
             this.DataMember = "DayWiseStockRegisterAvg";
@@ -3679,5 +3725,10 @@
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell155;
         private DevExpress.XtraReports.UI.XRTableCell xrTableCell156;
         private DevExpress.XtraReports.UI.PageFooterBand PageFooter;
+        private DevExpress.XtraReports.UI.CalculatedField TKL_PU_GEN_COST;
+        private DevExpress.XtraReports.UI.CalculatedField CLUB_PU_GEN_COST;
+        private DevExpress.XtraReports.UI.CalculatedField EXT_PU_GEN_COST;
+        private DevExpress.XtraReports.UI.CalculatedField CLOTH_PU_GEN_COST;
+        private DevExpress.XtraReports.UI.CalculatedField NCSL_PU_GEN_COST;
     }
 }

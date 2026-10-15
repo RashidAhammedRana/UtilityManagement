@@ -33,8 +33,6 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptAllCompaniesDayWiseCngStockAndConsumption));
-            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
-            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
@@ -73,6 +71,8 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary36 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary37 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary38 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
@@ -179,8 +179,6 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
-            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell36 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -223,6 +221,8 @@
             this.xrTableCell124 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell125 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell126 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -254,7 +254,7 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 18.41666F;
+            this.BottomMargin.HeightF = 19.24998F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // ReportHeader
@@ -1122,7 +1122,7 @@
             // 
             this.xrTableCell3.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell3.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_OS_CNG]")});
             this.xrTableCell3.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell3.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell3.Multiline = true;
@@ -1140,7 +1140,7 @@
             // 
             this.xrTableCell17.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell17.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_RECEIVE_CNG]")});
             this.xrTableCell17.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell17.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell17.Multiline = true;
@@ -1158,7 +1158,7 @@
             // 
             this.xrTableCell18.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell18.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CNG_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CNG_GENERATOR]")});
             this.xrTableCell18.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell18.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell18.Multiline = true;
@@ -1176,7 +1176,7 @@
             // 
             this.xrTableCell20.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell20.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CNG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CNG_BOILER]")});
             this.xrTableCell20.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell20.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell20.Multiline = true;
@@ -1194,7 +1194,7 @@
             // 
             this.xrTableCell21.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell21.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CNG_DFMA]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CNG_DFMA]")});
             this.xrTableCell21.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell21.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell21.Multiline = true;
@@ -1212,7 +1212,7 @@
             // 
             this.xrTableCell7.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell7.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CNG_THERMAL_HEATER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CNG_THERMAL_HEATER]")});
             this.xrTableCell7.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell7.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell7.Multiline = true;
@@ -1230,7 +1230,7 @@
             // 
             this.xrTableCell15.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell15.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CNG_TOTAL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CNG_TOTAL]")});
             this.xrTableCell15.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell15.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell15.Multiline = true;
@@ -1248,7 +1248,7 @@
             // 
             this.xrTableCell23.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell23.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_CS_CNG]")});
             this.xrTableCell23.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell23.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell23.Multiline = true;
@@ -1266,7 +1266,7 @@
             // 
             this.xrTableCell51.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell51.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[TKL_TotalCost]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[TKL_TotalCost]")});
             this.xrTableCell51.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell51.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell51.Multiline = true;
@@ -1284,7 +1284,7 @@
             // 
             this.xrTableCell60.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell60.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_OS_CNG]")});
             this.xrTableCell60.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell60.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell60.Multiline = true;
@@ -1302,7 +1302,7 @@
             // 
             this.xrTableCell61.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell61.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_RECEIVE_CNG] ")});
             this.xrTableCell61.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell61.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell61.Multiline = true;
@@ -1320,7 +1320,7 @@
             // 
             this.xrTableCell62.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell62.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CNG_GENERATOR]")});
             this.xrTableCell62.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell62.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell62.Multiline = true;
@@ -1338,7 +1338,7 @@
             // 
             this.xrTableCell64.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell64.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CNG_BOILER]")});
             this.xrTableCell64.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell64.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell64.Multiline = true;
@@ -1356,7 +1356,7 @@
             // 
             this.xrTableCell22.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell22.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_DFMA]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CNG_DFMA]")});
             this.xrTableCell22.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell22.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell22.Multiline = true;
@@ -1367,14 +1367,14 @@
             this.xrTableCell22.StylePriority.UseTextAlignment = false;
             this.xrTableCell22.Text = "xrTableCell22";
             this.xrTableCell22.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell22.TextFormatString = "{0:n2}";
+            this.xrTableCell22.TextFormatString = "{0:N0}";
             this.xrTableCell22.Weight = 0.48290767190168526D;
             // 
             // xrTableCell65
             // 
             this.xrTableCell65.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell65.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_THERMAL_HEATER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CNG_THERMAL_HEATER]")});
             this.xrTableCell65.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell65.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell65.Multiline = true;
@@ -1392,7 +1392,7 @@
             // 
             this.xrTableCell66.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell66.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_TOTAL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CNG_TOTAL]")});
             this.xrTableCell66.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell66.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell66.Multiline = true;
@@ -1410,7 +1410,7 @@
             // 
             this.xrTableCell67.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell67.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_CS_CNG]")});
             this.xrTableCell67.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell67.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell67.Multiline = true;
@@ -1428,7 +1428,7 @@
             // 
             this.xrTableCell28.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell28.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_TotalCost]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_TotalCost]")});
             this.xrTableCell28.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell28.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell28.Multiline = true;
@@ -1446,7 +1446,7 @@
             // 
             this.xrTableCell68.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell68.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_OS_CNG]")});
             this.xrTableCell68.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell68.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell68.Multiline = true;
@@ -1464,7 +1464,7 @@
             // 
             this.xrTableCell70.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell70.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_RECEIVE_CNG]")});
             this.xrTableCell70.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell70.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell70.Multiline = true;
@@ -1482,7 +1482,7 @@
             // 
             this.xrTableCell31.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell31.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CNG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_CNG_BOILER]")});
             this.xrTableCell31.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell31.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell31.Multiline = true;
@@ -1500,7 +1500,7 @@
             // 
             this.xrTableCell77.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell77.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CNG_TOTAL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_CNG_TOTAL]")});
             this.xrTableCell77.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell77.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell77.Multiline = true;
@@ -1518,7 +1518,7 @@
             // 
             this.xrTableCell78.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell78.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_CS_CNG]")});
             this.xrTableCell78.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell78.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell78.Multiline = true;
@@ -1536,7 +1536,7 @@
             // 
             this.xrTableCell33.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell33.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUBEXT_TotalCost]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_TotalCost]")});
             this.xrTableCell33.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell33.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell33.Multiline = true;
@@ -1554,7 +1554,7 @@
             // 
             this.xrTableCell81.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell81.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_OS_CNG]")});
             this.xrTableCell81.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell81.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell81.Multiline = true;
@@ -1572,7 +1572,7 @@
             // 
             this.xrTableCell82.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell82.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_RECEIVE_CNG]")});
             this.xrTableCell82.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell82.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell82.Multiline = true;
@@ -1590,7 +1590,7 @@
             // 
             this.xrTableCell84.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell84.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_CNG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_CNG_BOILER]")});
             this.xrTableCell84.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell84.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell84.Multiline = true;
@@ -1608,7 +1608,7 @@
             // 
             this.xrTableCell87.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell87.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_CNG_TOTAL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_CNG_TOTAL]")});
             this.xrTableCell87.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell87.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell87.Multiline = true;
@@ -1626,7 +1626,7 @@
             // 
             this.xrTableCell88.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell88.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_CS_CNG]")});
             this.xrTableCell88.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell88.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell88.Multiline = true;
@@ -1644,7 +1644,7 @@
             // 
             this.xrTableCell89.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell89.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLOTHING_TotalCost]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLOTHING_TotalCost]")});
             this.xrTableCell89.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell89.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell89.Multiline = true;
@@ -1662,7 +1662,7 @@
             // 
             this.xrTableCell90.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell90.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_OS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_OS_CNG]")});
             this.xrTableCell90.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell90.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell90.Multiline = true;
@@ -1680,7 +1680,7 @@
             // 
             this.xrTableCell91.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell91.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_RECEIVE_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_RECEIVE_CNG]")});
             this.xrTableCell91.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell91.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell91.Multiline = true;
@@ -1698,7 +1698,7 @@
             // 
             this.xrTableCell92.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell92.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CNG_GENERATOR]")});
             this.xrTableCell92.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell92.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell92.Multiline = true;
@@ -1716,7 +1716,7 @@
             // 
             this.xrTableCell93.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell93.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_BOILER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CNG_BOILER]")});
             this.xrTableCell93.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell93.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell93.Multiline = true;
@@ -1734,7 +1734,7 @@
             // 
             this.xrTableCell94.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell94.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_DFMA]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CNG_DFMA]")});
             this.xrTableCell94.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell94.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell94.Multiline = true;
@@ -1752,7 +1752,7 @@
             // 
             this.xrTableCell95.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell95.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_THERMAL_HEATER]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CNG_THERMAL_HEATER]")});
             this.xrTableCell95.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell95.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell95.Multiline = true;
@@ -1770,7 +1770,7 @@
             // 
             this.xrTableCell96.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell96.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_TOTAL]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CNG_TOTAL]")});
             this.xrTableCell96.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell96.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell96.Multiline = true;
@@ -1788,7 +1788,7 @@
             // 
             this.xrTableCell97.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell97.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[NOOR_CS_CNG]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CS_CNG]")});
             this.xrTableCell97.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell97.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell97.Multiline = true;
@@ -1921,39 +1921,6 @@
             this.ReportFooter.HeightF = 25F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // Month
-            // 
-            this.Month.Description = "Select Month";
-            this.Month.Name = "Month";
-            this.Month.Type = typeof(int);
-            this.Month.ValueInfo = "1";
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
-            this.Month.ValueSourceSettings = staticListLookUpSettings1;
-            // 
-            // Year
-            // 
-            this.Year.Description = "Select Year";
-            this.Year.Name = "Year";
-            this.Year.Type = typeof(int);
-            this.Year.ValueInfo = "2026";
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
-            this.Year.ValueSourceSettings = staticListLookUpSettings2;
-            // 
             // xrTable3
             // 
             this.xrTable3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
@@ -2043,7 +2010,7 @@
             this.xrTableCell37.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell37.BorderWidth = 1F;
             this.xrTableCell37.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_OS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_OS_CNG] > 0, [TKL_OS_CNG], 0)) / Sum(IIf([TKL_OS_CNG] > 0, 1, 0))")});
             this.xrTableCell37.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell37.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell37.Multiline = true;
@@ -2058,7 +2025,7 @@
             this.xrTableCell37.Summary = xrSummary1;
             this.xrTableCell37.Text = "xrTableCell3";
             this.xrTableCell37.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell37.TextFormatString = "{0:n2}";
+            this.xrTableCell37.TextFormatString = "{0:N0}";
             this.xrTableCell37.Weight = 0.48290767190168538D;
             // 
             // xrTableCell38
@@ -2067,7 +2034,8 @@
             this.xrTableCell38.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell38.BorderWidth = 1F;
             this.xrTableCell38.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_RECEIVE_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_RECEIVE_CNG] > 0, [TKL_RECEIVE_CNG], 0)) / Sum(IIf([TKL_RECEIVE_CNG]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell38.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell38.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell38.Multiline = true;
@@ -2082,7 +2050,7 @@
             this.xrTableCell38.Summary = xrSummary2;
             this.xrTableCell38.Text = "xrTableCell17";
             this.xrTableCell38.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell38.TextFormatString = "{0:n2}";
+            this.xrTableCell38.TextFormatString = "{0:N0}";
             this.xrTableCell38.Weight = 0.48290767190168515D;
             // 
             // xrTableCell44
@@ -2091,7 +2059,8 @@
             this.xrTableCell44.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell44.BorderWidth = 1F;
             this.xrTableCell44.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([DayWiseCngStockAndConsAllCompanies].[TKL_CNG_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CNG_GENERATOR] > 0, [TKL_CNG_GENERATOR], 0)) / Sum(IIf([TKL_CNG_GENE" +
+                    "RATOR] > 0, 1, 0))")});
             this.xrTableCell44.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell44.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell44.Multiline = true;
@@ -2106,7 +2075,7 @@
             this.xrTableCell44.Summary = xrSummary3;
             this.xrTableCell44.Text = "xrTableCell18";
             this.xrTableCell44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell44.TextFormatString = "{0:n2}";
+            this.xrTableCell44.TextFormatString = "{0:N0}";
             this.xrTableCell44.Weight = 0.48290767190168538D;
             // 
             // xrTableCell45
@@ -2115,7 +2084,8 @@
             this.xrTableCell45.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell45.BorderWidth = 1F;
             this.xrTableCell45.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_CNG_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CNG_BOILER] > 0, [TKL_CNG_BOILER], 0)) / Sum(IIf([TKL_CNG_BOILER] > " +
+                    "0, 1, 0))")});
             this.xrTableCell45.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell45.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell45.Multiline = true;
@@ -2130,7 +2100,7 @@
             this.xrTableCell45.Summary = xrSummary4;
             this.xrTableCell45.Text = "xrTableCell20";
             this.xrTableCell45.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell45.TextFormatString = "{0:n2}";
+            this.xrTableCell45.TextFormatString = "{0:N0}";
             this.xrTableCell45.Weight = 0.48290767190168526D;
             // 
             // xrTableCell49
@@ -2139,7 +2109,8 @@
             this.xrTableCell49.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell49.BorderWidth = 1F;
             this.xrTableCell49.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_CNG_DFMA])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CNG_DFMA] > 0, [TKL_CNG_DFMA], 0)) / Sum(IIf([TKL_CNG_DFMA] > 0, 1, " +
+                    "0))")});
             this.xrTableCell49.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell49.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell49.Multiline = true;
@@ -2154,7 +2125,7 @@
             this.xrTableCell49.Summary = xrSummary5;
             this.xrTableCell49.Text = "xrTableCell21";
             this.xrTableCell49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell49.TextFormatString = "{0:n2}";
+            this.xrTableCell49.TextFormatString = "{0:N0}";
             this.xrTableCell49.Weight = 0.48290767190168521D;
             // 
             // xrTableCell72
@@ -2163,7 +2134,8 @@
             this.xrTableCell72.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell72.BorderWidth = 1F;
             this.xrTableCell72.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_CNG_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CNG_THERMAL_HEATER] > 0, [TKL_CNG_THERMAL_HEATER], 0)) / Sum(IIf([TK" +
+                    "L_CNG_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell72.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell72.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell72.Multiline = true;
@@ -2178,7 +2150,7 @@
             this.xrTableCell72.Summary = xrSummary6;
             this.xrTableCell72.Text = "xrTableCell7";
             this.xrTableCell72.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell72.TextFormatString = "{0:n2}";
+            this.xrTableCell72.TextFormatString = "{0:N0}";
             this.xrTableCell72.Weight = 0.48290767190168526D;
             // 
             // xrTableCell73
@@ -2187,7 +2159,8 @@
             this.xrTableCell73.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell73.BorderWidth = 1F;
             this.xrTableCell73.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_CNG_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CNG_TOTAL] > 0, [TKL_CNG_TOTAL], 0)) / Sum(IIf([TKL_CNG_TOTAL] > 0, " +
+                    "1, 0))")});
             this.xrTableCell73.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell73.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell73.Multiline = true;
@@ -2202,7 +2175,7 @@
             this.xrTableCell73.Summary = xrSummary7;
             this.xrTableCell73.Text = "xrTableCell15";
             this.xrTableCell73.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell73.TextFormatString = "{0:n2}";
+            this.xrTableCell73.TextFormatString = "{0:N0}";
             this.xrTableCell73.Weight = 0.46191168616682943D;
             // 
             // xrTableCell74
@@ -2211,7 +2184,7 @@
             this.xrTableCell74.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell74.BorderWidth = 1F;
             this.xrTableCell74.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_CS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CS_CNG] > 0, [TKL_CS_CNG], 0)) / Sum(IIf([TKL_CS_CNG] > 0, 1, 0))")});
             this.xrTableCell74.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell74.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell74.Multiline = true;
@@ -2226,7 +2199,7 @@
             this.xrTableCell74.Summary = xrSummary8;
             this.xrTableCell74.Text = "xrTableCell23";
             this.xrTableCell74.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell74.TextFormatString = "{0:n2}";
+            this.xrTableCell74.TextFormatString = "{0:N0}";
             this.xrTableCell74.Weight = 0.48290767190168526D;
             // 
             // xrTableCell83
@@ -2235,7 +2208,8 @@
             this.xrTableCell83.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell83.BorderWidth = 1F;
             this.xrTableCell83.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[TKL_TotalCost])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_TotalCost] > 0, [TKL_TotalCost], 0)) / Sum(IIf([TKL_TotalCost] > 0, " +
+                    "1, 0))")});
             this.xrTableCell83.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell83.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell83.Multiline = true;
@@ -2250,7 +2224,7 @@
             this.xrTableCell83.Summary = xrSummary9;
             this.xrTableCell83.Text = "xrTableCell51";
             this.xrTableCell83.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell83.TextFormatString = "{0:n2}";
+            this.xrTableCell83.TextFormatString = "{0:N0}";
             this.xrTableCell83.Weight = 0.48290767190168526D;
             // 
             // xrTableCell85
@@ -2259,7 +2233,8 @@
             this.xrTableCell85.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell85.BorderWidth = 1F;
             this.xrTableCell85.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_OS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_OS_CNG] > 0, [CLUB_OS_CNG], 0)) / Sum(IIf([CLUB_OS_CNG] > 0, 1, 0))" +
+                    "")});
             this.xrTableCell85.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell85.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell85.Multiline = true;
@@ -2274,7 +2249,7 @@
             this.xrTableCell85.Summary = xrSummary10;
             this.xrTableCell85.Text = "xrTableCell60";
             this.xrTableCell85.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell85.TextFormatString = "{0:n2}";
+            this.xrTableCell85.TextFormatString = "{0:N0}";
             this.xrTableCell85.Weight = 0.48290767190168526D;
             // 
             // xrTableCell86
@@ -2283,7 +2258,8 @@
             this.xrTableCell86.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell86.BorderWidth = 1F;
             this.xrTableCell86.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_RECEIVE_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_RECEIVE_CNG] > 0, [CLUB_RECEIVE_CNG], 0)) / Sum(IIf([CLUB_RECEIVE_C" +
+                    "NG] > 0, 1, 0))")});
             this.xrTableCell86.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell86.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell86.Multiline = true;
@@ -2298,7 +2274,7 @@
             this.xrTableCell86.Summary = xrSummary11;
             this.xrTableCell86.Text = "xrTableCell61";
             this.xrTableCell86.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell86.TextFormatString = "{0:n2}";
+            this.xrTableCell86.TextFormatString = "{0:N0}";
             this.xrTableCell86.Weight = 0.48290767190168515D;
             // 
             // xrTableCell99
@@ -2307,7 +2283,8 @@
             this.xrTableCell99.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell99.BorderWidth = 1F;
             this.xrTableCell99.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_GENERATOR]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CNG_GENERATOR] > 0, [CLUB_CNG_GENERATOR], 0)) / Sum(IIf([CLUB_CNG_G" +
+                    "ENERATOR] > 0, 1, 0))")});
             this.xrTableCell99.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell99.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell99.Multiline = true;
@@ -2326,13 +2303,16 @@
             // xrTableCell100
             // 
             this.xrTableCell100.BackColor = System.Drawing.Color.Transparent;
+            this.xrTableCell100.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell100.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CNG_BOILER] > 0, [CLUB_CNG_BOILER], 0)) / Sum(IIf([CLUB_CNG_BOILER]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell100.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell100.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell100.Multiline = true;
             this.xrTableCell100.Name = "xrTableCell100";
             this.xrTableCell100.StylePriority.UseBackColor = false;
+            this.xrTableCell100.StylePriority.UseBorders = false;
             this.xrTableCell100.StylePriority.UseFont = false;
             this.xrTableCell100.StylePriority.UseForeColor = false;
             this.xrTableCell100.StylePriority.UseTextAlignment = false;
@@ -2340,7 +2320,7 @@
             this.xrTableCell100.Summary = xrSummary12;
             this.xrTableCell100.Text = "xrTableCell64";
             this.xrTableCell100.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell100.TextFormatString = "{0:n2}";
+            this.xrTableCell100.TextFormatString = "{0:N0}";
             this.xrTableCell100.Weight = 0.46191168616682943D;
             // 
             // xrTableCell101
@@ -2349,7 +2329,8 @@
             this.xrTableCell101.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell101.BorderWidth = 1F;
             this.xrTableCell101.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_DFMA])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CNG_DFMA] > 0, [CLUB_CNG_DFMA], 0)) / Sum(IIf([CLUB_CNG_DFMA] > 0, " +
+                    "1, 0))")});
             this.xrTableCell101.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell101.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell101.Multiline = true;
@@ -2364,7 +2345,7 @@
             this.xrTableCell101.Summary = xrSummary13;
             this.xrTableCell101.Text = "xrTableCell22";
             this.xrTableCell101.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell101.TextFormatString = "{0:n2}";
+            this.xrTableCell101.TextFormatString = "{0:N0}";
             this.xrTableCell101.Weight = 0.48290767190168526D;
             // 
             // xrTableCell102
@@ -2373,7 +2354,8 @@
             this.xrTableCell102.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell102.BorderWidth = 1F;
             this.xrTableCell102.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CNG_THERMAL_HEATER] > 0, [CLUB_CNG_THERMAL_HEATER], 0)) / Sum(IIf([" +
+                    "CLUB_CNG_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell102.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell102.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell102.Multiline = true;
@@ -2388,7 +2370,7 @@
             this.xrTableCell102.Summary = xrSummary14;
             this.xrTableCell102.Text = "xrTableCell65";
             this.xrTableCell102.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell102.TextFormatString = "{0:n2}";
+            this.xrTableCell102.TextFormatString = "{0:N0}";
             this.xrTableCell102.Weight = 0.48290767190168532D;
             // 
             // xrTableCell103
@@ -2397,7 +2379,8 @@
             this.xrTableCell103.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell103.BorderWidth = 1F;
             this.xrTableCell103.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_CNG_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CNG_TOTAL] > 0, [CLUB_CNG_TOTAL], 0)) / Sum(IIf([CLUB_CNG_TOTAL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell103.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell103.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell103.Multiline = true;
@@ -2412,7 +2395,7 @@
             this.xrTableCell103.Summary = xrSummary15;
             this.xrTableCell103.Text = "xrTableCell66";
             this.xrTableCell103.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell103.TextFormatString = "{0:n2}";
+            this.xrTableCell103.TextFormatString = "{0:N0}";
             this.xrTableCell103.Weight = 0.48290767190168526D;
             // 
             // xrTableCell104
@@ -2421,7 +2404,8 @@
             this.xrTableCell104.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell104.BorderWidth = 1F;
             this.xrTableCell104.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_CS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CS_CNG] > 0, [CLUB_CS_CNG], 0)) / Sum(IIf([CLUB_CS_CNG] > 0, 1, 0))" +
+                    "")});
             this.xrTableCell104.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell104.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell104.Multiline = true;
@@ -2436,7 +2420,7 @@
             this.xrTableCell104.Summary = xrSummary16;
             this.xrTableCell104.Text = "xrTableCell67";
             this.xrTableCell104.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell104.TextFormatString = "{0:n2}";
+            this.xrTableCell104.TextFormatString = "{0:N0}";
             this.xrTableCell104.Weight = 0.46191014837490552D;
             // 
             // xrTableCell105
@@ -2445,7 +2429,7 @@
             this.xrTableCell105.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell105.BorderWidth = 1F;
             this.xrTableCell105.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUB_TotalCost])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUB_TotalCost]")});
             this.xrTableCell105.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell105.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell105.Multiline = true;
@@ -2460,7 +2444,7 @@
             this.xrTableCell105.Summary = xrSummary17;
             this.xrTableCell105.Text = "xrTableCell28";
             this.xrTableCell105.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell105.TextFormatString = "{0:n2}";
+            this.xrTableCell105.TextFormatString = "{0:N0}";
             this.xrTableCell105.Weight = 0.48290920969360929D;
             // 
             // xrTableCell106
@@ -2469,7 +2453,7 @@
             this.xrTableCell106.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell106.BorderWidth = 1F;
             this.xrTableCell106.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_OS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_OS_CNG]")});
             this.xrTableCell106.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell106.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell106.Multiline = true;
@@ -2484,7 +2468,7 @@
             this.xrTableCell106.Summary = xrSummary18;
             this.xrTableCell106.Text = "xrTableCell68";
             this.xrTableCell106.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell106.TextFormatString = "{0:n2}";
+            this.xrTableCell106.TextFormatString = "{0:N0}";
             this.xrTableCell106.Weight = 0.48290767190168538D;
             // 
             // xrTableCell107
@@ -2493,7 +2477,8 @@
             this.xrTableCell107.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell107.BorderWidth = 1F;
             this.xrTableCell107.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_RECEIVE_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_RECEIVE_CNG] > 0, [CLUBEXT_RECEIVE_CNG], 0)) / Sum(IIf([CLUBEXT_" +
+                    "RECEIVE_CNG] > 0, 1, 0))")});
             this.xrTableCell107.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell107.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell107.Multiline = true;
@@ -2508,7 +2493,7 @@
             this.xrTableCell107.Summary = xrSummary19;
             this.xrTableCell107.Text = "xrTableCell70";
             this.xrTableCell107.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell107.TextFormatString = "{0:n2}";
+            this.xrTableCell107.TextFormatString = "{0:N0}";
             this.xrTableCell107.Weight = 0.48290756535393387D;
             // 
             // xrTableCell108
@@ -2517,7 +2502,8 @@
             this.xrTableCell108.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell108.BorderWidth = 1F;
             this.xrTableCell108.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CNG_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_CNG_BOILER] > 0, [CLUBEXT_CNG_BOILER], 0)) / Sum(IIf([CLUBEXT_CN" +
+                    "G_BOILER] > 0, 1, 0))")});
             this.xrTableCell108.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell108.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell108.Multiline = true;
@@ -2532,7 +2518,7 @@
             this.xrTableCell108.Summary = xrSummary20;
             this.xrTableCell108.Text = "xrTableCell31";
             this.xrTableCell108.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell108.TextFormatString = "{0:n2}";
+            this.xrTableCell108.TextFormatString = "{0:N0}";
             this.xrTableCell108.Weight = 0.48290754235269873D;
             // 
             // xrTableCell109
@@ -2541,7 +2527,8 @@
             this.xrTableCell109.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell109.BorderWidth = 1F;
             this.xrTableCell109.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CNG_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_CNG_TOTAL] > 0, [CLUBEXT_CNG_TOTAL], 0)) / Sum(IIf([CLUBEXT_CNG_" +
+                    "TOTAL] > 0, 1, 0))")});
             this.xrTableCell109.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell109.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell109.Multiline = true;
@@ -2556,7 +2543,7 @@
             this.xrTableCell109.Summary = xrSummary21;
             this.xrTableCell109.Text = "xrTableCell77";
             this.xrTableCell109.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell109.TextFormatString = "{0:n2}";
+            this.xrTableCell109.TextFormatString = "{0:N0}";
             this.xrTableCell109.Weight = 0.482907543752382D;
             // 
             // xrTableCell110
@@ -2565,7 +2552,8 @@
             this.xrTableCell110.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell110.BorderWidth = 1F;
             this.xrTableCell110.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_CS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_CS_CNG] > 0, [CLUBEXT_CS_CNG], 0)) / Sum(IIf([CLUBEXT_CS_CNG] > " +
+                    "0, 1, 0))")});
             this.xrTableCell110.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell110.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell110.Multiline = true;
@@ -2580,7 +2568,7 @@
             this.xrTableCell110.Summary = xrSummary22;
             this.xrTableCell110.Text = "xrTableCell78";
             this.xrTableCell110.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell110.TextFormatString = "{0:n2}";
+            this.xrTableCell110.TextFormatString = "{0:N0}";
             this.xrTableCell110.Weight = 0.48290753985800916D;
             // 
             // xrTableCell111
@@ -2589,7 +2577,7 @@
             this.xrTableCell111.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell111.BorderWidth = 1F;
             this.xrTableCell111.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLUBEXT_TotalCost])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CLUBEXT_TotalCost]")});
             this.xrTableCell111.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell111.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell111.Multiline = true;
@@ -2604,7 +2592,7 @@
             this.xrTableCell111.Summary = xrSummary23;
             this.xrTableCell111.Text = "xrTableCell33";
             this.xrTableCell111.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell111.TextFormatString = "{0:n2}";
+            this.xrTableCell111.TextFormatString = "{0:N0}";
             this.xrTableCell111.Weight = 0.48290754764675525D;
             // 
             // xrTableCell112
@@ -2613,7 +2601,8 @@
             this.xrTableCell112.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell112.BorderWidth = 1F;
             this.xrTableCell112.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_OS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_OS_CNG] > 0, [CLOTHING_OS_CNG], 0)) / Sum(IIf([CLOTHING_OS_CNG]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell112.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell112.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell112.Multiline = true;
@@ -2628,7 +2617,7 @@
             this.xrTableCell112.Summary = xrSummary24;
             this.xrTableCell112.Text = "xrTableCell81";
             this.xrTableCell112.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell112.TextFormatString = "{0:n2}";
+            this.xrTableCell112.TextFormatString = "{0:N0}";
             this.xrTableCell112.Weight = 0.48290754375238221D;
             // 
             // xrTableCell113
@@ -2637,7 +2626,8 @@
             this.xrTableCell113.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell113.BorderWidth = 1F;
             this.xrTableCell113.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_RECEIVE_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_RECEIVE_CNG] > 0, [CLOTHING_RECEIVE_CNG], 0)) / Sum(IIf([CLOTHI" +
+                    "NG_RECEIVE_CNG] > 0, 1, 0))")});
             this.xrTableCell113.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell113.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell113.Multiline = true;
@@ -2652,7 +2642,7 @@
             this.xrTableCell113.Summary = xrSummary25;
             this.xrTableCell113.Text = "xrTableCell82";
             this.xrTableCell113.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell113.TextFormatString = "{0:n2}";
+            this.xrTableCell113.TextFormatString = "{0:N0}";
             this.xrTableCell113.Weight = 0.48290750127947235D;
             // 
             // xrTableCell114
@@ -2661,7 +2651,8 @@
             this.xrTableCell114.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell114.BorderWidth = 1F;
             this.xrTableCell114.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_CNG_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_CNG_BOILER] > 0, [CLOTHING_CNG_BOILER], 0)) / Sum(IIf([CLOTHING" +
+                    "_CNG_BOILER] > 0, 1, 0))")});
             this.xrTableCell114.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell114.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell114.Multiline = true;
@@ -2676,7 +2667,7 @@
             this.xrTableCell114.Summary = xrSummary26;
             this.xrTableCell114.Text = "xrTableCell84";
             this.xrTableCell114.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell114.TextFormatString = "{0:n2}";
+            this.xrTableCell114.TextFormatString = "{0:N0}";
             this.xrTableCell114.Weight = 0.48290759474480227D;
             // 
             // xrTableCell115
@@ -2685,7 +2676,8 @@
             this.xrTableCell115.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell115.BorderWidth = 1F;
             this.xrTableCell115.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_CNG_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_CNG_TOTAL] > 0, [CLOTHING_CNG_TOTAL], 0)) / Sum(IIf([CLOTHING_C" +
+                    "NG_TOTAL] > 0, 1, 0))")});
             this.xrTableCell115.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell115.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell115.Multiline = true;
@@ -2700,7 +2692,7 @@
             this.xrTableCell115.Summary = xrSummary27;
             this.xrTableCell115.Text = "xrTableCell87";
             this.xrTableCell115.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell115.TextFormatString = "{0:n0}";
+            this.xrTableCell115.TextFormatString = "{0:N0}";
             this.xrTableCell115.Weight = 0.48290767190187545D;
             // 
             // xrTableCell116
@@ -2709,7 +2701,8 @@
             this.xrTableCell116.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell116.BorderWidth = 1F;
             this.xrTableCell116.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_CS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_CS_CNG] > 0, [CLOTHING_CS_CNG], 0)) / Sum(IIf([CLOTHING_CS_CNG]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell116.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell116.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell116.Multiline = true;
@@ -2724,7 +2717,7 @@
             this.xrTableCell116.Summary = xrSummary28;
             this.xrTableCell116.Text = "xrTableCell88";
             this.xrTableCell116.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell116.TextFormatString = "{0:n2}";
+            this.xrTableCell116.TextFormatString = "{0:N0}";
             this.xrTableCell116.Weight = 0.48290767190187589D;
             // 
             // xrTableCell117
@@ -2733,7 +2726,8 @@
             this.xrTableCell117.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell117.BorderWidth = 1F;
             this.xrTableCell117.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[CLOTHING_TotalCost])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_TotalCost] > 0, [CLOTHING_TotalCost], 0)) / Sum(IIf([CLOTHING_T" +
+                    "otalCost] > 0, 1, 0))")});
             this.xrTableCell117.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell117.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell117.Multiline = true;
@@ -2748,7 +2742,7 @@
             this.xrTableCell117.Summary = xrSummary29;
             this.xrTableCell117.Text = "xrTableCell89";
             this.xrTableCell117.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell117.TextFormatString = "{0:n2}";
+            this.xrTableCell117.TextFormatString = "{0:N0}";
             this.xrTableCell117.Weight = 0.48290767190187545D;
             // 
             // xrTableCell118
@@ -2757,7 +2751,8 @@
             this.xrTableCell118.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell118.BorderWidth = 1F;
             this.xrTableCell118.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_OS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_OS_CNG] > 0, [NOOR_OS_CNG], 0)) / Sum(IIf([NOOR_OS_CNG] > 0, 1, 0))" +
+                    "")});
             this.xrTableCell118.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell118.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell118.Multiline = true;
@@ -2772,7 +2767,7 @@
             this.xrTableCell118.Summary = xrSummary30;
             this.xrTableCell118.Text = "xrTableCell90";
             this.xrTableCell118.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell118.TextFormatString = "{0:n2}";
+            this.xrTableCell118.TextFormatString = "{0:N0}";
             this.xrTableCell118.Weight = 0.48290767190187545D;
             // 
             // xrTableCell119
@@ -2781,7 +2776,8 @@
             this.xrTableCell119.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell119.BorderWidth = 1F;
             this.xrTableCell119.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_RECEIVE_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_RECEIVE_CNG] > 0, [NOOR_RECEIVE_CNG], 0)) / Sum(IIf([NOOR_RECEIVE_C" +
+                    "NG] > 0, 1, 0))")});
             this.xrTableCell119.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell119.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell119.Multiline = true;
@@ -2796,7 +2792,7 @@
             this.xrTableCell119.Summary = xrSummary31;
             this.xrTableCell119.Text = "xrTableCell91";
             this.xrTableCell119.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell119.TextFormatString = "{0:n2}";
+            this.xrTableCell119.TextFormatString = "{0:N0}";
             this.xrTableCell119.Weight = 0.48290767190187589D;
             // 
             // xrTableCell120
@@ -2805,7 +2801,8 @@
             this.xrTableCell120.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell120.BorderWidth = 1F;
             this.xrTableCell120.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CNG_GENERATOR] > 0, [NOOR_CNG_GENERATOR], 0)) / Sum(IIf([NOOR_CNG_G" +
+                    "ENERATOR] > 0, 1, 0))")});
             this.xrTableCell120.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell120.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell120.Multiline = true;
@@ -2820,7 +2817,7 @@
             this.xrTableCell120.Summary = xrSummary32;
             this.xrTableCell120.Text = "xrTableCell92";
             this.xrTableCell120.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell120.TextFormatString = "{0:n2}";
+            this.xrTableCell120.TextFormatString = "{0:N0}";
             this.xrTableCell120.Weight = 0.48290767190187545D;
             // 
             // xrTableCell121
@@ -2829,7 +2826,8 @@
             this.xrTableCell121.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell121.BorderWidth = 1F;
             this.xrTableCell121.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CNG_BOILER] > 0, [NOOR_CNG_BOILER], 0)) / Sum(IIf([NOOR_CNG_BOILER]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell121.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell121.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell121.Multiline = true;
@@ -2844,7 +2842,7 @@
             this.xrTableCell121.Summary = xrSummary33;
             this.xrTableCell121.Text = "xrTableCell93";
             this.xrTableCell121.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell121.TextFormatString = "{0:n2}";
+            this.xrTableCell121.TextFormatString = "{0:N0}";
             this.xrTableCell121.Weight = 0.48290767190187589D;
             // 
             // xrTableCell122
@@ -2853,7 +2851,8 @@
             this.xrTableCell122.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell122.BorderWidth = 1F;
             this.xrTableCell122.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_DFMA])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CNG_DFMA] > 0, [NOOR_CNG_DFMA], 0)) / Sum(IIf([NOOR_CNG_DFMA] > 0, " +
+                    "1, 0))")});
             this.xrTableCell122.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell122.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell122.Multiline = true;
@@ -2868,7 +2867,7 @@
             this.xrTableCell122.Summary = xrSummary34;
             this.xrTableCell122.Text = "xrTableCell94";
             this.xrTableCell122.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell122.TextFormatString = "{0:n2}";
+            this.xrTableCell122.TextFormatString = "{0:N0}";
             this.xrTableCell122.Weight = 0.48290767190187545D;
             // 
             // xrTableCell123
@@ -2877,7 +2876,8 @@
             this.xrTableCell123.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell123.BorderWidth = 1F;
             this.xrTableCell123.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CNG_THERMAL_HEATER] > 0, [NOOR_CNG_THERMAL_HEATER], 0)) / Sum(IIf([" +
+                    "NOOR_CNG_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell123.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell123.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell123.Multiline = true;
@@ -2892,7 +2892,7 @@
             this.xrTableCell123.Summary = xrSummary35;
             this.xrTableCell123.Text = "xrTableCell95";
             this.xrTableCell123.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell123.TextFormatString = "{0:n2}";
+            this.xrTableCell123.TextFormatString = "{0:N0}";
             this.xrTableCell123.Weight = 0.48290767190187545D;
             // 
             // xrTableCell124
@@ -2901,7 +2901,8 @@
             this.xrTableCell124.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell124.BorderWidth = 1F;
             this.xrTableCell124.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CNG_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CNG_TOTAL] > 0, [NOOR_CNG_TOTAL], 0)) / Sum(IIf([NOOR_CNG_TOTAL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell124.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell124.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell124.Multiline = true;
@@ -2916,7 +2917,7 @@
             this.xrTableCell124.Summary = xrSummary36;
             this.xrTableCell124.Text = "xrTableCell96";
             this.xrTableCell124.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell124.TextFormatString = "{0:n2}";
+            this.xrTableCell124.TextFormatString = "{0:N0}";
             this.xrTableCell124.Weight = 0.48290767190187545D;
             // 
             // xrTableCell125
@@ -2925,7 +2926,7 @@
             this.xrTableCell125.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell125.BorderWidth = 1F;
             this.xrTableCell125.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([DayWiseCngStockAndConsAllCompanies].[NOOR_CS_CNG])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[NOOR_CS_CNG]")});
             this.xrTableCell125.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell125.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell125.Multiline = true;
@@ -2940,7 +2941,7 @@
             this.xrTableCell125.Summary = xrSummary37;
             this.xrTableCell125.Text = "xrTableCell97";
             this.xrTableCell125.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell125.TextFormatString = "{0:n2}";
+            this.xrTableCell125.TextFormatString = "{0:N0}";
             this.xrTableCell125.Weight = 0.48290767190187545D;
             // 
             // xrTableCell126
@@ -2949,7 +2950,8 @@
             this.xrTableCell126.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell126.BorderWidth = 1F;
             this.xrTableCell126.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_TotalCost])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_TotalCost] > 0, [NOOR_TotalCost], 0)) / Sum(IIf([NOOR_TotalCost] > " +
+                    "0, 1, 0))")});
             this.xrTableCell126.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell126.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell126.Multiline = true;
@@ -2964,8 +2966,41 @@
             this.xrTableCell126.Summary = xrSummary38;
             this.xrTableCell126.Text = "xrTableCell98";
             this.xrTableCell126.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell126.TextFormatString = "{0:n2}";
+            this.xrTableCell126.TextFormatString = "{0:N0}";
             this.xrTableCell126.Weight = 0.48290715930466233D;
+            // 
+            // Month
+            // 
+            this.Month.Description = "Select Month";
+            this.Month.Name = "Month";
+            this.Month.Type = typeof(int);
+            this.Month.ValueInfo = "1";
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
+            this.Month.ValueSourceSettings = staticListLookUpSettings1;
+            // 
+            // Year
+            // 
+            this.Year.Description = "Select Year";
+            this.Year.Name = "Year";
+            this.Year.Type = typeof(int);
+            this.Year.ValueInfo = "2026";
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
+            this.Year.ValueSourceSettings = staticListLookUpSettings2;
             // 
             // rptAllCompaniesDayWiseCngStockAndConsumption
             // 
@@ -2983,7 +3018,7 @@
             this.DataSource = this.sqlDataSource1;
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
             this.ForeColor = System.Drawing.Color.Transparent;
-            this.Margins = new DevExpress.Drawing.DXMargins(15F, 15F, 20F, 18.41666F);
+            this.Margins = new DevExpress.Drawing.DXMargins(15F, 15F, 20F, 19.24998F);
             this.PageWidth = 4600;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {

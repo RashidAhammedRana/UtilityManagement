@@ -279,7 +279,7 @@
             // 
             // BottomMargin
             // 
-            this.BottomMargin.HeightF = 23F;
+            this.BottomMargin.HeightF = 24.66666F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // ReportHeader
@@ -2233,7 +2233,8 @@
             this.xrTableCell100.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell100.BorderWidth = 1F;
             this.xrTableCell100.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_OS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_OS_DIESEL] > 0, [TKL_OS_DIESEL], 0)) / Sum(IIf([TKL_OS_DIESEL] > 0, " +
+                    "1, 0))")});
             this.xrTableCell100.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell100.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell100.Multiline = true;
@@ -2248,7 +2249,7 @@
             this.xrTableCell100.Summary = xrSummary1;
             this.xrTableCell100.Text = "xrTableCell3";
             this.xrTableCell100.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell100.TextFormatString = "{0:n2}";
+            this.xrTableCell100.TextFormatString = "{0:N0}";
             this.xrTableCell100.Weight = 0.48290767190168538D;
             // 
             // xrTableCell101
@@ -2257,7 +2258,8 @@
             this.xrTableCell101.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell101.BorderWidth = 1F;
             this.xrTableCell101.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_RECEIVE_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_RECEIVE_DIESEL] > 0, [TKL_RECEIVE_DIESEL], 0)) / Sum(IIf([TKL_RECEIV" +
+                    "E_DIESEL] > 0, 1, 0))")});
             this.xrTableCell101.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell101.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell101.Multiline = true;
@@ -2272,7 +2274,7 @@
             this.xrTableCell101.Summary = xrSummary2;
             this.xrTableCell101.Text = "xrTableCell17";
             this.xrTableCell101.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell101.TextFormatString = "{0:n2}";
+            this.xrTableCell101.TextFormatString = "{0:N0}";
             this.xrTableCell101.Weight = 0.48290767190168515D;
             // 
             // xrTableCell102
@@ -2281,7 +2283,8 @@
             this.xrTableCell102.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell102.BorderWidth = 1F;
             this.xrTableCell102.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_DIESEL_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_DIESEL_GENERATOR] > 0, [TKL_DIESEL_GENERATOR], 0)) / Sum(IIf([TKL_DI" +
+                    "ESEL_GENERATOR] > 0, 1, 0))")});
             this.xrTableCell102.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell102.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell102.Multiline = true;
@@ -2296,7 +2299,7 @@
             this.xrTableCell102.Summary = xrSummary3;
             this.xrTableCell102.Text = "xrTableCell18";
             this.xrTableCell102.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell102.TextFormatString = "{0:n2}";
+            this.xrTableCell102.TextFormatString = "{0:N0}";
             this.xrTableCell102.Weight = 0.48290767190168538D;
             // 
             // xrTableCell103
@@ -2305,7 +2308,8 @@
             this.xrTableCell103.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell103.BorderWidth = 1F;
             this.xrTableCell103.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_DIESEL_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_DIESEL_BOILER] > 0, [TKL_DIESEL_BOILER], 0)) / Sum(IIf([TKL_DIESEL_B" +
+                    "OILER] > 0, 1, 0))")});
             this.xrTableCell103.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell103.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell103.Multiline = true;
@@ -2320,7 +2324,7 @@
             this.xrTableCell103.Summary = xrSummary4;
             this.xrTableCell103.Text = "xrTableCell20";
             this.xrTableCell103.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell103.TextFormatString = "{0:n2}";
+            this.xrTableCell103.TextFormatString = "{0:N0}";
             this.xrTableCell103.Weight = 0.48290767190168526D;
             // 
             // xrTableCell104
@@ -2329,7 +2333,8 @@
             this.xrTableCell104.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell104.BorderWidth = 1F;
             this.xrTableCell104.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_DIESEL_FL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_DIESEL_FL] > 0, [TKL_DIESEL_FL], 0)) / Sum(IIf([TKL_DIESEL_FL] > 0, " +
+                    "1, 0))")});
             this.xrTableCell104.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell104.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell104.Multiline = true;
@@ -2344,7 +2349,7 @@
             this.xrTableCell104.Summary = xrSummary5;
             this.xrTableCell104.Text = "xrTableCell21";
             this.xrTableCell104.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell104.TextFormatString = "{0:n2}";
+            this.xrTableCell104.TextFormatString = "{0:N0}";
             this.xrTableCell104.Weight = 0.48290767190168521D;
             // 
             // xrTableCell105
@@ -2353,7 +2358,8 @@
             this.xrTableCell105.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell105.BorderWidth = 1F;
             this.xrTableCell105.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_DIESEL_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_DIESEL_THERMAL_HEATER] > 0, [TKL_DIESEL_THERMAL_HEATER], 0)) / Sum(I" +
+                    "If([TKL_DIESEL_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell105.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell105.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell105.Multiline = true;
@@ -2368,7 +2374,7 @@
             this.xrTableCell105.Summary = xrSummary6;
             this.xrTableCell105.Text = "xrTableCell7";
             this.xrTableCell105.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell105.TextFormatString = "{0:n2}";
+            this.xrTableCell105.TextFormatString = "{0:N0}";
             this.xrTableCell105.Weight = 0.461910568754799D;
             // 
             // xrTableCell106
@@ -2377,7 +2383,8 @@
             this.xrTableCell106.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell106.BorderWidth = 1F;
             this.xrTableCell106.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_DIESEL_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_DIESEL_TOTAL] > 0, [TKL_DIESEL_TOTAL], 0)) / Sum(IIf([TKL_DIESEL_TOT" +
+                    "AL] > 0, 1, 0))")});
             this.xrTableCell106.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell106.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell106.Multiline = true;
@@ -2392,7 +2399,7 @@
             this.xrTableCell106.Summary = xrSummary7;
             this.xrTableCell106.Text = "xrTableCell15";
             this.xrTableCell106.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell106.TextFormatString = "{0:n2}";
+            this.xrTableCell106.TextFormatString = "{0:N0}";
             this.xrTableCell106.Weight = 0.48290878931371567D;
             // 
             // xrTableCell107
@@ -2401,7 +2408,8 @@
             this.xrTableCell107.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell107.BorderWidth = 1F;
             this.xrTableCell107.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_CS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_CS_DIESEL] > 0, [TKL_CS_DIESEL], 0)) / Sum(IIf([TKL_CS_DIESEL] > 0, " +
+                    "1, 0))")});
             this.xrTableCell107.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell107.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell107.Multiline = true;
@@ -2416,7 +2424,7 @@
             this.xrTableCell107.Summary = xrSummary8;
             this.xrTableCell107.Text = "xrTableCell23";
             this.xrTableCell107.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell107.TextFormatString = "{0:n2}";
+            this.xrTableCell107.TextFormatString = "{0:N0}";
             this.xrTableCell107.Weight = 0.48290767190168526D;
             // 
             // xrTableCell108
@@ -2425,7 +2433,8 @@
             this.xrTableCell108.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell108.BorderWidth = 1F;
             this.xrTableCell108.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_TOTAL_COST])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_TOTAL_COST] > 0, [TKL_TOTAL_COST], 0)) / Sum(IIf([TKL_TOTAL_COST] > " +
+                    "0, 1, 0))")});
             this.xrTableCell108.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell108.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell108.Multiline = true;
@@ -2440,7 +2449,7 @@
             this.xrTableCell108.Summary = xrSummary9;
             this.xrTableCell108.Text = "xrTableCell51";
             this.xrTableCell108.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell108.TextFormatString = "{0:n2}";
+            this.xrTableCell108.TextFormatString = "{0:N0}";
             this.xrTableCell108.Weight = 0.48290767190168526D;
             // 
             // xrTableCell109
@@ -2449,7 +2458,8 @@
             this.xrTableCell109.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell109.BorderWidth = 1F;
             this.xrTableCell109.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_OS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_OS_DIESEL] > 0, [CLUB_OS_DIESEL], 0)) / Sum(IIf([CLUB_OS_DIESEL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell109.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell109.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell109.Multiline = true;
@@ -2464,7 +2474,7 @@
             this.xrTableCell109.Summary = xrSummary10;
             this.xrTableCell109.Text = "xrTableCell60";
             this.xrTableCell109.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell109.TextFormatString = "{0:n2}";
+            this.xrTableCell109.TextFormatString = "{0:N0}";
             this.xrTableCell109.Weight = 0.48290767190168526D;
             // 
             // xrTableCell110
@@ -2473,7 +2483,8 @@
             this.xrTableCell110.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell110.BorderWidth = 1F;
             this.xrTableCell110.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_RECEIVE_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_RECEIVE_DIESEL] > 0, [CLUB_RECEIVE_DIESEL], 0)) / Sum(IIf([CLUB_REC" +
+                    "EIVE_DIESEL] > 0, 1, 0))")});
             this.xrTableCell110.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell110.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell110.Multiline = true;
@@ -2488,7 +2499,7 @@
             this.xrTableCell110.Summary = xrSummary11;
             this.xrTableCell110.Text = "xrTableCell61";
             this.xrTableCell110.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell110.TextFormatString = "{0:n2}";
+            this.xrTableCell110.TextFormatString = "{0:N0}";
             this.xrTableCell110.Weight = 0.48290767190168515D;
             // 
             // xrTableCell111
@@ -2497,7 +2508,8 @@
             this.xrTableCell111.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell111.BorderWidth = 1F;
             this.xrTableCell111.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_DIESEL_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_DIESEL_GENERATOR] > 0, [CLUB_DIESEL_GENERATOR], 0)) / Sum(IIf([CLUB" +
+                    "_DIESEL_GENERATOR] > 0, 1, 0))")});
             this.xrTableCell111.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell111.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell111.Multiline = true;
@@ -2512,7 +2524,7 @@
             this.xrTableCell111.Summary = xrSummary12;
             this.xrTableCell111.Text = "xrTableCell62";
             this.xrTableCell111.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell111.TextFormatString = "{0:n2}";
+            this.xrTableCell111.TextFormatString = "{0:N0}";
             this.xrTableCell111.Weight = 0.48290767190168532D;
             // 
             // xrTableCell112
@@ -2521,7 +2533,8 @@
             this.xrTableCell112.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell112.BorderWidth = 1F;
             this.xrTableCell112.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_DIESEL_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_DIESEL_BOILER] > 0, [CLUB_DIESEL_BOILER], 0)) / Sum(IIf([CLUB_DIESE" +
+                    "L_BOILER] > 0, 1, 0))")});
             this.xrTableCell112.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell112.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell112.Multiline = true;
@@ -2536,7 +2549,7 @@
             this.xrTableCell112.Summary = xrSummary13;
             this.xrTableCell112.Text = "xrTableCell64";
             this.xrTableCell112.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell112.TextFormatString = "{0:n2}";
+            this.xrTableCell112.TextFormatString = "{0:N0}";
             this.xrTableCell112.Weight = 0.46191168616682943D;
             // 
             // xrTableCell113
@@ -2545,7 +2558,8 @@
             this.xrTableCell113.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell113.BorderWidth = 1F;
             this.xrTableCell113.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_DIESEL_FL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_DIESEL_FL] > 0, [CLUB_DIESEL_FL], 0)) / Sum(IIf([CLUB_DIESEL_FL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell113.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell113.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell113.Multiline = true;
@@ -2560,7 +2574,7 @@
             this.xrTableCell113.Summary = xrSummary14;
             this.xrTableCell113.Text = "xrTableCell22";
             this.xrTableCell113.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell113.TextFormatString = "{0:n2}";
+            this.xrTableCell113.TextFormatString = "{0:N0}";
             this.xrTableCell113.Weight = 0.48290767190168526D;
             // 
             // xrTableCell114
@@ -2569,7 +2583,8 @@
             this.xrTableCell114.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell114.BorderWidth = 1F;
             this.xrTableCell114.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_DIESEL_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_DIESEL_THERMAL_HEATER] > 0, [CLUB_DIESEL_THERMAL_HEATER], 0)) / Sum" +
+                    "(IIf([CLUB_DIESEL_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell114.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell114.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell114.Multiline = true;
@@ -2584,7 +2599,7 @@
             this.xrTableCell114.Summary = xrSummary15;
             this.xrTableCell114.Text = "xrTableCell65";
             this.xrTableCell114.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell114.TextFormatString = "{0:n2}";
+            this.xrTableCell114.TextFormatString = "{0:N0}";
             this.xrTableCell114.Weight = 0.48290767190168532D;
             // 
             // xrTableCell115
@@ -2593,7 +2608,8 @@
             this.xrTableCell115.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell115.BorderWidth = 1F;
             this.xrTableCell115.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_DIESEL_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_DIESEL_TOTAL] > 0, [CLUB_DIESEL_TOTAL], 0)) / Sum(IIf([CLUB_DIESEL_" +
+                    "TOTAL] > 0, 1, 0))")});
             this.xrTableCell115.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell115.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell115.Multiline = true;
@@ -2608,7 +2624,7 @@
             this.xrTableCell115.Summary = xrSummary16;
             this.xrTableCell115.Text = "xrTableCell66";
             this.xrTableCell115.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell115.TextFormatString = "{0:n2}";
+            this.xrTableCell115.TextFormatString = "{0:N0}";
             this.xrTableCell115.Weight = 0.48290767190168526D;
             // 
             // xrTableCell116
@@ -2617,7 +2633,8 @@
             this.xrTableCell116.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell116.BorderWidth = 1F;
             this.xrTableCell116.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_CS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_CS_DIESEL] > 0, [CLUB_CS_DIESEL], 0)) / Sum(IIf([CLUB_CS_DIESEL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell116.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell116.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell116.Multiline = true;
@@ -2632,7 +2649,7 @@
             this.xrTableCell116.Summary = xrSummary17;
             this.xrTableCell116.Text = "xrTableCell67";
             this.xrTableCell116.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell116.TextFormatString = "{0:n2}";
+            this.xrTableCell116.TextFormatString = "{0:N0}";
             this.xrTableCell116.Weight = 0.46191014837490552D;
             // 
             // xrTableCell117
@@ -2641,7 +2658,8 @@
             this.xrTableCell117.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell117.BorderWidth = 1F;
             this.xrTableCell117.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUB_TOTAL_COST])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUB_TOTAL_COST] > 0, [CLUB_TOTAL_COST], 0)) / Sum(IIf([CLUB_TOTAL_COST]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell117.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell117.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell117.Multiline = true;
@@ -2656,7 +2674,7 @@
             this.xrTableCell117.Summary = xrSummary18;
             this.xrTableCell117.Text = "xrTableCell28";
             this.xrTableCell117.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell117.TextFormatString = "{0:n2}";
+            this.xrTableCell117.TextFormatString = "{0:N0}";
             this.xrTableCell117.Weight = 0.48290920969360929D;
             // 
             // xrTableCell118
@@ -2665,7 +2683,8 @@
             this.xrTableCell118.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell118.BorderWidth = 1F;
             this.xrTableCell118.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_OS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_OS_DIESEL] > 0, [CLUBEXT_OS_DIESEL], 0)) / Sum(IIf([CLUBEXT_OS_D" +
+                    "IESEL] > 0, 1, 0))")});
             this.xrTableCell118.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell118.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell118.Multiline = true;
@@ -2680,7 +2699,7 @@
             this.xrTableCell118.Summary = xrSummary19;
             this.xrTableCell118.Text = "xrTableCell68";
             this.xrTableCell118.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell118.TextFormatString = "{0:n2}";
+            this.xrTableCell118.TextFormatString = "{0:N0}";
             this.xrTableCell118.Weight = 0.48290767190168538D;
             // 
             // xrTableCell119
@@ -2689,7 +2708,8 @@
             this.xrTableCell119.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell119.BorderWidth = 1F;
             this.xrTableCell119.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_RECEIVE_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_RECEIVE_DIESEL] > 0, [CLUBEXT_RECEIVE_DIESEL], 0)) / Sum(IIf([CL" +
+                    "UBEXT_RECEIVE_DIESEL] > 0, 1, 0))")});
             this.xrTableCell119.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell119.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell119.Multiline = true;
@@ -2704,7 +2724,7 @@
             this.xrTableCell119.Summary = xrSummary20;
             this.xrTableCell119.Text = "xrTableCell70";
             this.xrTableCell119.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell119.TextFormatString = "{0:n2}";
+            this.xrTableCell119.TextFormatString = "{0:N0}";
             this.xrTableCell119.Weight = 0.4829066467070694D;
             // 
             // xrTableCell120
@@ -2713,7 +2733,8 @@
             this.xrTableCell120.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell120.BorderWidth = 1F;
             this.xrTableCell120.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_DIESEL_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_DIESEL_GENERATOR] > 0, [CLUBEXT_DIESEL_GENERATOR], 0)) / Sum(IIf" +
+                    "([CLUBEXT_DIESEL_GENERATOR] > 0, 1, 0))")});
             this.xrTableCell120.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell120.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell120.Multiline = true;
@@ -2728,7 +2749,7 @@
             this.xrTableCell120.Summary = xrSummary21;
             this.xrTableCell120.Text = "xrTableCell72";
             this.xrTableCell120.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell120.TextFormatString = "{0:n2}";
+            this.xrTableCell120.TextFormatString = "{0:N0}";
             this.xrTableCell120.Weight = 0.46191271136144535D;
             // 
             // xrTableCell121
@@ -2737,7 +2758,8 @@
             this.xrTableCell121.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell121.BorderWidth = 1F;
             this.xrTableCell121.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_DIESEL_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_DIESEL_BOILER] > 0, [CLUBEXT_DIESEL_BOILER], 0)) / Sum(IIf([CLUB" +
+                    "EXT_DIESEL_BOILER] > 0, 1, 0))")});
             this.xrTableCell121.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell121.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell121.Multiline = true;
@@ -2752,7 +2774,7 @@
             this.xrTableCell121.Summary = xrSummary22;
             this.xrTableCell121.Text = "xrTableCell31";
             this.xrTableCell121.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell121.TextFormatString = "{0:n2}";
+            this.xrTableCell121.TextFormatString = "{0:N0}";
             this.xrTableCell121.Weight = 0.48290664670706934D;
             // 
             // xrTableCell122
@@ -2761,7 +2783,8 @@
             this.xrTableCell122.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell122.BorderWidth = 1F;
             this.xrTableCell122.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_DIESEL_FL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_DIESEL_FL] > 0, [CLUBEXT_DIESEL_FL], 0)) / Sum(IIf([CLUBEXT_DIES" +
+                    "EL_FL] > 0, 1, 0))")});
             this.xrTableCell122.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell122.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell122.Multiline = true;
@@ -2776,7 +2799,7 @@
             this.xrTableCell122.Summary = xrSummary23;
             this.xrTableCell122.Text = "xrTableCell73";
             this.xrTableCell122.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell122.TextFormatString = "{0:n2}";
+            this.xrTableCell122.TextFormatString = "{0:N0}";
             this.xrTableCell122.Weight = 0.54589665430086909D;
             // 
             // xrTableCell123
@@ -2785,7 +2808,8 @@
             this.xrTableCell123.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell123.BorderWidth = 1F;
             this.xrTableCell123.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_DIESEL_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_DIESEL_THERMAL_HEATER] > 0, [CLUBEXT_DIESEL_THERMAL_HEATER], 0))" +
+                    " / Sum(IIf([CLUBEXT_DIESEL_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell123.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell123.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell123.Multiline = true;
@@ -2800,7 +2824,7 @@
             this.xrTableCell123.Summary = xrSummary24;
             this.xrTableCell123.Text = "xrTableCell74";
             this.xrTableCell123.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell123.TextFormatString = "{0:n2}";
+            this.xrTableCell123.TextFormatString = "{0:N0}";
             this.xrTableCell123.Weight = 0.48290767190168532D;
             // 
             // xrTableCell124
@@ -2809,7 +2833,8 @@
             this.xrTableCell124.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell124.BorderWidth = 1F;
             this.xrTableCell124.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_DIESEL_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_DIESEL_TOTAL] > 0, [CLUBEXT_DIESEL_TOTAL], 0)) / Sum(IIf([CLUBEX" +
+                    "T_DIESEL_TOTAL] > 0, 1, 0))")});
             this.xrTableCell124.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell124.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell124.Multiline = true;
@@ -2824,7 +2849,7 @@
             this.xrTableCell124.Summary = xrSummary25;
             this.xrTableCell124.Text = "xrTableCell77";
             this.xrTableCell124.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell124.TextFormatString = "{0:n2}";
+            this.xrTableCell124.TextFormatString = "{0:N0}";
             this.xrTableCell124.Weight = 0.48290767190168515D;
             // 
             // xrTableCell125
@@ -2833,7 +2858,8 @@
             this.xrTableCell125.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell125.BorderWidth = 1F;
             this.xrTableCell125.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_CS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_CS_DIESEL] > 0, [CLUBEXT_CS_DIESEL], 0)) / Sum(IIf([CLUBEXT_CS_D" +
+                    "IESEL] > 0, 1, 0))")});
             this.xrTableCell125.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell125.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell125.Multiline = true;
@@ -2848,7 +2874,7 @@
             this.xrTableCell125.Summary = xrSummary26;
             this.xrTableCell125.Text = "xrTableCell78";
             this.xrTableCell125.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell125.TextFormatString = "{0:n2}";
+            this.xrTableCell125.TextFormatString = "{0:N0}";
             this.xrTableCell125.Weight = 0.46191168616682959D;
             // 
             // xrTableCell126
@@ -2857,7 +2883,8 @@
             this.xrTableCell126.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell126.BorderWidth = 1F;
             this.xrTableCell126.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLUBEXT_TOTAL_COST])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLUBEXT_TOTAL_COST] > 0, [CLUBEXT_TOTAL_COST], 0)) / Sum(IIf([CLUBEXT_TO" +
+                    "TAL_COST] > 0, 1, 0))")});
             this.xrTableCell126.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell126.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell126.Multiline = true;
@@ -2872,7 +2899,7 @@
             this.xrTableCell126.Summary = xrSummary27;
             this.xrTableCell126.Text = "xrTableCell33";
             this.xrTableCell126.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell126.TextFormatString = "{0:n2}";
+            this.xrTableCell126.TextFormatString = "{0:N0}";
             this.xrTableCell126.Weight = 0.48290860487850673D;
             // 
             // xrTableCell127
@@ -2881,7 +2908,8 @@
             this.xrTableCell127.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell127.BorderWidth = 1F;
             this.xrTableCell127.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_OS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_OS_DIESEL] > 0, [CLOTHING_OS_DIESEL], 0)) / Sum(IIf([CLOTHING_O" +
+                    "S_DIESEL] > 0, 1, 0))")});
             this.xrTableCell127.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell127.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell127.Multiline = true;
@@ -2896,7 +2924,7 @@
             this.xrTableCell127.Summary = xrSummary28;
             this.xrTableCell127.Text = "xrTableCell81";
             this.xrTableCell127.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell127.TextFormatString = "{0:n2}";
+            this.xrTableCell127.TextFormatString = "{0:N0}";
             this.xrTableCell127.Weight = 0.48290450020643061D;
             // 
             // xrTableCell128
@@ -2905,7 +2933,8 @@
             this.xrTableCell128.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell128.BorderWidth = 1F;
             this.xrTableCell128.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_RECEIVE_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_RECEIVE_DIESEL] > 0, [CLOTHING_RECEIVE_DIESEL], 0)) / Sum(IIf([" +
+                    "TKL_EPISODS] > 0, 1, 0))")});
             this.xrTableCell128.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell128.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell128.Multiline = true;
@@ -2920,7 +2949,7 @@
             this.xrTableCell128.Summary = xrSummary29;
             this.xrTableCell128.Text = "xrTableCell82";
             this.xrTableCell128.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell128.TextFormatString = "{0:n2}";
+            this.xrTableCell128.TextFormatString = "{0:N0}";
             this.xrTableCell128.Weight = 0.482909910620119D;
             // 
             // xrTableCell129
@@ -2929,7 +2958,8 @@
             this.xrTableCell129.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell129.BorderWidth = 1F;
             this.xrTableCell129.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_DIESEL_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_DIESEL_GENERATOR] > 0, [CLOTHING_DIESEL_GENERATOR], 0)) / Sum(I" +
+                    "If([CLOTHING_DIESEL_GENERATOR] > 0, 1, 0))")});
             this.xrTableCell129.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell129.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell129.Multiline = true;
@@ -2944,7 +2974,7 @@
             this.xrTableCell129.Summary = xrSummary30;
             this.xrTableCell129.Text = "xrTableCell83";
             this.xrTableCell129.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell129.TextFormatString = "{0:n2}";
+            this.xrTableCell129.TextFormatString = "{0:N0}";
             this.xrTableCell129.Weight = 0.48290869709630135D;
             // 
             // xrTableCell130
@@ -2953,7 +2983,8 @@
             this.xrTableCell130.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell130.BorderWidth = 1F;
             this.xrTableCell130.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_DIESEL_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_DIESEL_BOILER] > 0, [CLOTHING_DIESEL_BOILER], 0)) / Sum(IIf([CL" +
+                    "OTHING_DIESEL_BOILER] > 0, 1, 0))")});
             this.xrTableCell130.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell130.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell130.Multiline = true;
@@ -2968,7 +2999,7 @@
             this.xrTableCell130.Summary = xrSummary31;
             this.xrTableCell130.Text = "xrTableCell84";
             this.xrTableCell130.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell130.TextFormatString = "{0:n2}";
+            this.xrTableCell130.TextFormatString = "{0:N0}";
             this.xrTableCell130.Weight = 0.48290869709630135D;
             // 
             // xrTableCell131
@@ -2977,7 +3008,8 @@
             this.xrTableCell131.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell131.BorderWidth = 1F;
             this.xrTableCell131.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_DIESEL_FL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_DIESEL_FL] > 0, [CLOTHING_DIESEL_FL], 0)) / Sum(IIf([CLOTHING_D" +
+                    "IESEL_FL] > 0, 1, 0))")});
             this.xrTableCell131.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell131.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell131.Multiline = true;
@@ -2992,7 +3024,7 @@
             this.xrTableCell131.Summary = xrSummary32;
             this.xrTableCell131.Text = "xrTableCell85";
             this.xrTableCell131.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell131.TextFormatString = "{0:n2}";
+            this.xrTableCell131.TextFormatString = "{0:N0}";
             this.xrTableCell131.Weight = 0.48290869709630135D;
             // 
             // xrTableCell132
@@ -3001,7 +3033,8 @@
             this.xrTableCell132.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell132.BorderWidth = 1F;
             this.xrTableCell132.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_DIESEL_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_DIESEL_THERMAL_HEATER] > 0, [CLOTHING_DIESEL_THERMAL_HEATER], 0" +
+                    ")) / Sum(IIf([CLOTHING_DIESEL_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell132.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell132.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell132.Multiline = true;
@@ -3016,7 +3049,7 @@
             this.xrTableCell132.Summary = xrSummary33;
             this.xrTableCell132.Text = "xrTableCell86";
             this.xrTableCell132.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell132.TextFormatString = "{0:n2}";
+            this.xrTableCell132.TextFormatString = "{0:N0}";
             this.xrTableCell132.Weight = 0.48290869709630135D;
             // 
             // xrTableCell133
@@ -3025,7 +3058,8 @@
             this.xrTableCell133.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell133.BorderWidth = 1F;
             this.xrTableCell133.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_DIESEL_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_DIESEL_TOTAL] > 0, [CLOTHING_DIESEL_TOTAL], 0)) / Sum(IIf([CLOT" +
+                    "HING_DIESEL_TOTAL] > 0, 1, 0))")});
             this.xrTableCell133.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell133.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell133.Multiline = true;
@@ -3040,7 +3074,7 @@
             this.xrTableCell133.Summary = xrSummary34;
             this.xrTableCell133.Text = "xrTableCell87";
             this.xrTableCell133.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell133.TextFormatString = "{0:n2}";
+            this.xrTableCell133.TextFormatString = "{0:N0}";
             this.xrTableCell133.Weight = 0.48290142462334329D;
             // 
             // xrTableCell134
@@ -3049,7 +3083,8 @@
             this.xrTableCell134.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell134.BorderWidth = 1F;
             this.xrTableCell134.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_CS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_CS_DIESEL] > 0, [CLOTHING_CS_DIESEL], 0)) / Sum(IIf([CLOTHING_C" +
+                    "S_DIESEL] > 0, 1, 0))")});
             this.xrTableCell134.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell134.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell134.Multiline = true;
@@ -3064,7 +3099,7 @@
             this.xrTableCell134.Summary = xrSummary35;
             this.xrTableCell134.Text = "xrTableCell88";
             this.xrTableCell134.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell134.TextFormatString = "{0:n2}";
+            this.xrTableCell134.TextFormatString = "{0:N0}";
             this.xrTableCell134.Weight = 0.48291596956925942D;
             // 
             // xrTableCell135
@@ -3073,7 +3108,8 @@
             this.xrTableCell135.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell135.BorderWidth = 1F;
             this.xrTableCell135.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CLOTHING_TOTAL_COST])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CLOTHING_TOTAL_COST] > 0, [CLOTHING_TOTAL_COST], 0)) / Sum(IIf([CLOTHING" +
+                    "_TOTAL_COST] > 0, 1, 0))")});
             this.xrTableCell135.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell135.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell135.Multiline = true;
@@ -3088,7 +3124,7 @@
             this.xrTableCell135.Summary = xrSummary36;
             this.xrTableCell135.Text = "xrTableCell89";
             this.xrTableCell135.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell135.TextFormatString = "{0:n2}";
+            this.xrTableCell135.TextFormatString = "{0:N0}";
             this.xrTableCell135.Weight = 0.4828993742344917D;
             // 
             // xrTableCell136
@@ -3097,7 +3133,8 @@
             this.xrTableCell136.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell136.BorderWidth = 1F;
             this.xrTableCell136.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_OS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_OS_DIESEL] > 0, [NOOR_OS_DIESEL], 0)) / Sum(IIf([NOOR_OS_DIESEL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell136.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell136.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell136.Multiline = true;
@@ -3112,7 +3149,7 @@
             this.xrTableCell136.Summary = xrSummary37;
             this.xrTableCell136.Text = "xrTableCell90";
             this.xrTableCell136.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell136.TextFormatString = "{0:n2}";
+            this.xrTableCell136.TextFormatString = "{0:N0}";
             this.xrTableCell136.Weight = 0.482918019958111D;
             // 
             // xrTableCell137
@@ -3121,7 +3158,8 @@
             this.xrTableCell137.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell137.BorderWidth = 1F;
             this.xrTableCell137.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_RECEIVE_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_RECEIVE_DIESEL] > 0, [NOOR_RECEIVE_DIESEL], 0)) / Sum(IIf([NOOR_REC" +
+                    "EIVE_DIESEL] > 0, 1, 0))")});
             this.xrTableCell137.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell137.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell137.Multiline = true;
@@ -3136,7 +3174,7 @@
             this.xrTableCell137.Summary = xrSummary38;
             this.xrTableCell137.Text = "xrTableCell91";
             this.xrTableCell137.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell137.TextFormatString = "{0:n2}";
+            this.xrTableCell137.TextFormatString = "{0:N0}";
             this.xrTableCell137.Weight = 0.4828973238456401D;
             // 
             // xrTableCell138
@@ -3145,7 +3183,8 @@
             this.xrTableCell138.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell138.BorderWidth = 1F;
             this.xrTableCell138.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_DIESEL_GENERATOR])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_DIESEL_GENERATOR] > 0, [NOOR_DIESEL_GENERATOR], 0)) / Sum(IIf([NOOR" +
+                    "_DIESEL_GENERATOR] > 0, 1, 0))")});
             this.xrTableCell138.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell138.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell138.Multiline = true;
@@ -3160,7 +3199,7 @@
             this.xrTableCell138.Summary = xrSummary39;
             this.xrTableCell138.Text = "xrTableCell92";
             this.xrTableCell138.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell138.TextFormatString = "{0:n2}";
+            this.xrTableCell138.TextFormatString = "{0:N0}";
             this.xrTableCell138.Weight = 0.48290757578989812D;
             // 
             // xrTableCell139
@@ -3169,7 +3208,8 @@
             this.xrTableCell139.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell139.BorderWidth = 1F;
             this.xrTableCell139.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_DIESEL_BOILER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_DIESEL_BOILER] > 0, [NOOR_DIESEL_BOILER], 0)) / Sum(IIf([NOOR_DIESE" +
+                    "L_BOILER] > 0, 1, 0))")});
             this.xrTableCell139.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell139.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell139.Multiline = true;
@@ -3184,7 +3224,7 @@
             this.xrTableCell139.Summary = xrSummary40;
             this.xrTableCell139.Text = "xrTableCell93";
             this.xrTableCell139.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell139.TextFormatString = "{0:n2}";
+            this.xrTableCell139.TextFormatString = "{0:N0}";
             this.xrTableCell139.Weight = 0.48290757578989812D;
             // 
             // xrTableCell140
@@ -3193,7 +3233,8 @@
             this.xrTableCell140.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell140.BorderWidth = 1F;
             this.xrTableCell140.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_DIESEL_FL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_DIESEL_FL] > 0, [NOOR_DIESEL_FL], 0)) / Sum(IIf([NOOR_DIESEL_FL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell140.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell140.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell140.Multiline = true;
@@ -3208,7 +3249,7 @@
             this.xrTableCell140.Summary = xrSummary41;
             this.xrTableCell140.Text = "xrTableCell94";
             this.xrTableCell140.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell140.TextFormatString = "{0:n2}";
+            this.xrTableCell140.TextFormatString = "{0:N0}";
             this.xrTableCell140.Weight = 0.48290962617874972D;
             // 
             // xrTableCell141
@@ -3217,7 +3258,8 @@
             this.xrTableCell141.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell141.BorderWidth = 1F;
             this.xrTableCell141.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_DIESEL_THERMAL_HEATER])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_DIESEL_THERMAL_HEATER] > 0, [NOOR_DIESEL_THERMAL_HEATERS], 0)) / Su" +
+                    "m(IIf([NOOR_DIESEL_THERMAL_HEATER] > 0, 1, 0))")});
             this.xrTableCell141.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell141.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell141.Multiline = true;
@@ -3232,7 +3274,7 @@
             this.xrTableCell141.Summary = xrSummary42;
             this.xrTableCell141.Text = "xrTableCell95";
             this.xrTableCell141.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell141.TextFormatString = "{0:n2}";
+            this.xrTableCell141.TextFormatString = "{0:N0}";
             this.xrTableCell141.Weight = 0.48290142462334329D;
             // 
             // xrTableCell142
@@ -3241,7 +3283,8 @@
             this.xrTableCell142.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell142.BorderWidth = 1F;
             this.xrTableCell142.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_DIESEL_TOTAL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_DIESEL_TOTAL] > 0, [NOOR_DIESEL_TOTAL], 0)) / Sum(IIf([NOOR_DIESEL_" +
+                    "TOTAL] > 0, 1, 0))")});
             this.xrTableCell142.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell142.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell142.Multiline = true;
@@ -3256,7 +3299,7 @@
             this.xrTableCell142.Summary = xrSummary43;
             this.xrTableCell142.Text = "xrTableCell96";
             this.xrTableCell142.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell142.TextFormatString = "{0:n2}";
+            this.xrTableCell142.TextFormatString = "{0:N0}";
             this.xrTableCell142.Weight = 0.48290962617874977D;
             // 
             // xrTableCell143
@@ -3265,7 +3308,8 @@
             this.xrTableCell143.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell143.BorderWidth = 1F;
             this.xrTableCell143.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NOOR_CS_DIESEL])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_CS_DIESEL] > 0, [NOOR_CS_DIESEL], 0)) / Sum(IIf([NOOR_CS_DIESEL] > " +
+                    "0, 1, 0))")});
             this.xrTableCell143.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell143.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell143.Multiline = true;
@@ -3280,7 +3324,7 @@
             this.xrTableCell143.Summary = xrSummary44;
             this.xrTableCell143.Text = "xrTableCell97";
             this.xrTableCell143.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell143.TextFormatString = "{0:n2}";
+            this.xrTableCell143.TextFormatString = "{0:N0}";
             this.xrTableCell143.Weight = 0.48290962617874972D;
             // 
             // xrTableCell144
@@ -3289,7 +3333,8 @@
             this.xrTableCell144.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell144.BorderWidth = 1F;
             this.xrTableCell144.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "sumSum([NOOR_TOTAL_COST])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NOOR_TOTAL_COST] > 0, [NOOR_TOTAL_COST], 0)) / Sum(IIf([NOOR_TOTAL_COST]" +
+                    " > 0, 1, 0))")});
             this.xrTableCell144.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell144.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell144.Multiline = true;
@@ -3304,7 +3349,7 @@
             this.xrTableCell144.Summary = xrSummary45;
             this.xrTableCell144.Text = "xrTableCell98";
             this.xrTableCell144.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell144.TextFormatString = "{0:n2}";
+            this.xrTableCell144.TextFormatString = "{0:N0}";
             this.xrTableCell144.Weight = 0.48290629429686588D;
             // 
             // Month
@@ -3356,7 +3401,7 @@
             this.DataSource = this.sqlDataSource1;
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
             this.ForeColor = System.Drawing.Color.Transparent;
-            this.Margins = new DevExpress.Drawing.DXMargins(16F, 14F, 20F, 23F);
+            this.Margins = new DevExpress.Drawing.DXMargins(16F, 14F, 20F, 24.66666F);
             this.PageWidth = 5295;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {

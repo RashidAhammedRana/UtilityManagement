@@ -33,8 +33,6 @@
             DevExpress.DataAccess.Sql.QueryParameter queryParameter1 = new DevExpress.DataAccess.Sql.QueryParameter();
             DevExpress.DataAccess.Sql.QueryParameter queryParameter2 = new DevExpress.DataAccess.Sql.QueryParameter();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(rptAllCompaniesDayWiseWaterGeneration));
-            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
-            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             DevExpress.XtraReports.UI.XRSummary xrSummary1 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary2 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary3 = new DevExpress.XtraReports.UI.XRSummary();
@@ -59,6 +57,8 @@
             DevExpress.XtraReports.UI.XRSummary xrSummary22 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary23 = new DevExpress.XtraReports.UI.XRSummary();
             DevExpress.XtraReports.UI.XRSummary xrSummary24 = new DevExpress.XtraReports.UI.XRSummary();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings1 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
+            DevExpress.XtraReports.Parameters.StaticListLookUpSettings staticListLookUpSettings2 = new DevExpress.XtraReports.Parameters.StaticListLookUpSettings();
             this.sqlDataSource1 = new DevExpress.DataAccess.Sql.SqlDataSource(this.components);
             this.TopMargin = new DevExpress.XtraReports.UI.TopMarginBand();
             this.BottomMargin = new DevExpress.XtraReports.UI.BottomMarginBand();
@@ -136,8 +136,6 @@
             this.PageInfo = new DevExpress.XtraReports.UI.XRControlStyle();
             this.PageHeader = new DevExpress.XtraReports.UI.PageHeaderBand();
             this.ReportFooter = new DevExpress.XtraReports.UI.ReportFooterBand();
-            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
-            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             this.xrTable3 = new DevExpress.XtraReports.UI.XRTable();
             this.xrTableRow4 = new DevExpress.XtraReports.UI.XRTableRow();
             this.xrTableCell29 = new DevExpress.XtraReports.UI.XRTableCell();
@@ -165,6 +163,8 @@
             this.xrTableCell79 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell80 = new DevExpress.XtraReports.UI.XRTableCell();
             this.xrTableCell81 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.Month = new DevExpress.XtraReports.Parameters.Parameter();
+            this.Year = new DevExpress.XtraReports.Parameters.Parameter();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -198,7 +198,7 @@
             // 
             this.BottomMargin.Controls.AddRange(new DevExpress.XtraReports.UI.XRControl[] {
             this.pageInfo2});
-            this.BottomMargin.HeightF = 23F;
+            this.BottomMargin.HeightF = 24.04169F;
             this.BottomMargin.Name = "BottomMargin";
             // 
             // pageInfo2
@@ -1349,39 +1349,6 @@
             this.ReportFooter.HeightF = 25F;
             this.ReportFooter.Name = "ReportFooter";
             // 
-            // Month
-            // 
-            this.Month.Description = "Select Month";
-            this.Month.Name = "Month";
-            this.Month.Type = typeof(int);
-            this.Month.ValueInfo = "1";
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
-            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
-            this.Month.ValueSourceSettings = staticListLookUpSettings1;
-            // 
-            // Year
-            // 
-            this.Year.Description = "Select Year";
-            this.Year.Name = "Year";
-            this.Year.Type = typeof(int);
-            this.Year.ValueInfo = "2026";
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
-            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
-            this.Year.ValueSourceSettings = staticListLookUpSettings2;
-            // 
             // xrTable3
             // 
             this.xrTable3.Borders = ((DevExpress.XtraPrinting.BorderSide)((((DevExpress.XtraPrinting.BorderSide.Left | DevExpress.XtraPrinting.BorderSide.Top) 
@@ -1456,7 +1423,8 @@
             this.xrTableCell41.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell41.BorderWidth = 1F;
             this.xrTableCell41.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_TOTAL_DRAWING])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_TOTAL_DRAWING] > 0, [TKL_TOTAL_DRAWING], 0)) / Sum(IIf([TKL_TOTAL_DR" +
+                    "AWING] > 0, 1, 0))\n\n")});
             this.xrTableCell41.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell41.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell41.Multiline = true;
@@ -1471,7 +1439,7 @@
             this.xrTableCell41.Summary = xrSummary1;
             this.xrTableCell41.Text = "xrTableCell3";
             this.xrTableCell41.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell41.TextFormatString = "{0:n2}";
+            this.xrTableCell41.TextFormatString = "{0:N0}";
             this.xrTableCell41.Weight = 0.67187231241135037D;
             // 
             // xrTableCell42
@@ -1480,7 +1448,8 @@
             this.xrTableCell42.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell42.BorderWidth = 1F;
             this.xrTableCell42.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_SOFTNER_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_SOFTNER_GENERATION] > 0, [TKL_SOFTNER_GENERATION], 0)) / Sum(IIf([TK" +
+                    "L_SOFTNER_GENERATION] > 0, 1, 0))\n\n")});
             this.xrTableCell42.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell42.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell42.Multiline = true;
@@ -1495,7 +1464,7 @@
             this.xrTableCell42.Summary = xrSummary2;
             this.xrTableCell42.Text = "xrTableCell17";
             this.xrTableCell42.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell42.TextFormatString = "{0:n2}";
+            this.xrTableCell42.TextFormatString = "{0:N0}";
             this.xrTableCell42.Weight = 0.671871543515388D;
             // 
             // xrTableCell43
@@ -1504,7 +1473,8 @@
             this.xrTableCell43.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell43.BorderWidth = 1F;
             this.xrTableCell43.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_RO_WATER_GEN])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_RO_WATER_GEN] > 0, [TKL_RO_WATER_GEN], 0)) / Sum(IIf([TKL_RO_WATER_G" +
+                    "EN] > 0, 1, 0))\n\n")});
             this.xrTableCell43.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell43.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell43.Multiline = true;
@@ -1519,7 +1489,7 @@
             this.xrTableCell43.Summary = xrSummary3;
             this.xrTableCell43.Text = "xrTableCell21";
             this.xrTableCell43.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell43.TextFormatString = "{0:n2}";
+            this.xrTableCell43.TextFormatString = "{0:N0}";
             this.xrTableCell43.Weight = 0.67187154351538814D;
             // 
             // xrTableCell44
@@ -1528,7 +1498,8 @@
             this.xrTableCell44.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell44.BorderWidth = 1F;
             this.xrTableCell44.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_ETP_WATER_INLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_ETP_WATER_INLET] > 0, [TKL_ETP_WATER_INLET], 0)) / Sum(IIf([TKL_ETP_" +
+                    "WATER_INLET] > 0, 1, 0))\n\n")});
             this.xrTableCell44.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell44.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell44.Multiline = true;
@@ -1543,7 +1514,7 @@
             this.xrTableCell44.Summary = xrSummary4;
             this.xrTableCell44.Text = "xrTableCell7";
             this.xrTableCell44.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell44.TextFormatString = "{0:n2}";
+            this.xrTableCell44.TextFormatString = "{0:N0}";
             this.xrTableCell44.Weight = 0.67187154351538825D;
             // 
             // xrTableCell46
@@ -1552,7 +1523,8 @@
             this.xrTableCell46.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell46.BorderWidth = 1F;
             this.xrTableCell46.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([TKL_ETP_WATER_OUTLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([TKL_ETP_WATER_OUTLET] > 0, [TKL_ETP_WATER_OUTLET], 0)) / Sum(IIf([TKL_ET" +
+                    "P_WATER_OUTLET] > 0, 1, 0))\n\n")});
             this.xrTableCell46.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell46.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell46.Multiline = true;
@@ -1567,7 +1539,7 @@
             this.xrTableCell46.Summary = xrSummary5;
             this.xrTableCell46.Text = "xrTableCell15";
             this.xrTableCell46.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell46.TextFormatString = "{0:n2}";
+            this.xrTableCell46.TextFormatString = "{0:N0}";
             this.xrTableCell46.Weight = 0.67187077461942635D;
             // 
             // xrTableCell47
@@ -1576,7 +1548,8 @@
             this.xrTableCell47.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell47.BorderWidth = 1F;
             this.xrTableCell47.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUB_TOTAL_DRAWING])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUB_TOTAL_DRAWING] > 0, [CCLUB_TOTAL_DRAWING], 0)) / Sum(IIf([CCLUB_TO" +
+                    "TAL_DRAWING] > 0, 1, 0))\n\n")});
             this.xrTableCell47.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell47.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell47.Multiline = true;
@@ -1591,7 +1564,7 @@
             this.xrTableCell47.Summary = xrSummary6;
             this.xrTableCell47.Text = "xrTableCell23";
             this.xrTableCell47.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell47.TextFormatString = "{0:n2}";
+            this.xrTableCell47.TextFormatString = "{0:N0}";
             this.xrTableCell47.Weight = 0.67187205611269607D;
             // 
             // xrTableCell48
@@ -1600,7 +1573,8 @@
             this.xrTableCell48.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell48.BorderWidth = 1F;
             this.xrTableCell48.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUB_SOFTNER_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUB_SOFTNER_GENERATION] > 0, [CCLUB_SOFTNER_GENERATION], 0)) / Sum(IIf" +
+                    "([CCLUB_SOFTNER_GENERATION] > 0, 1, 0))\n\n")});
             this.xrTableCell48.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell48.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell48.Multiline = true;
@@ -1615,7 +1589,7 @@
             this.xrTableCell48.Summary = xrSummary7;
             this.xrTableCell48.Text = "xrTableCell60";
             this.xrTableCell48.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell48.TextFormatString = "{0:n2}";
+            this.xrTableCell48.TextFormatString = "{0:N0}";
             this.xrTableCell48.Weight = 0.67187154351538814D;
             // 
             // xrTableCell49
@@ -1624,7 +1598,8 @@
             this.xrTableCell49.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell49.BorderWidth = 1F;
             this.xrTableCell49.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUB_RO_WATER_GEN])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUB_RO_WATER_GEN] > 0, [CCLUB_RO_WATER_GEN], 0)) / Sum(IIf([CCLUB_RO_W" +
+                    "ATER_GEN] > 0, 1, 0))\n\n")});
             this.xrTableCell49.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell49.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell49.Multiline = true;
@@ -1639,7 +1614,7 @@
             this.xrTableCell49.Summary = xrSummary8;
             this.xrTableCell49.Text = "xrTableCell61";
             this.xrTableCell49.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell49.TextFormatString = "{0:n2}";
+            this.xrTableCell49.TextFormatString = "{0:N0}";
             this.xrTableCell49.Weight = 0.67187154351538814D;
             // 
             // xrTableCell50
@@ -1648,7 +1623,8 @@
             this.xrTableCell50.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell50.BorderWidth = 1F;
             this.xrTableCell50.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUB_ETP_WATER_INLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUB_ETP_WATER_INLET] > 0, [CCLUB_ETP_WATER_INLET], 0)) / Sum(IIf([CCLU" +
+                    "B_ETP_WATER_INLET] > 0, 1, 0))\n\n")});
             this.xrTableCell50.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell50.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell50.Multiline = true;
@@ -1663,7 +1639,7 @@
             this.xrTableCell50.Summary = xrSummary9;
             this.xrTableCell50.Text = "xrTableCell62";
             this.xrTableCell50.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell50.TextFormatString = "{0:n2}";
+            this.xrTableCell50.TextFormatString = "{0:N0}";
             this.xrTableCell50.Weight = 0.67187154351538814D;
             // 
             // xrTableCell51
@@ -1672,7 +1648,8 @@
             this.xrTableCell51.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell51.BorderWidth = 1F;
             this.xrTableCell51.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUB_ETP_WATER_OUTLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUB_ETP_WATER_OUTLET] > 0, [CCLUB_ETP_WATER_OUTLET], 0)) / Sum(IIf([CC" +
+                    "LUB_ETP_WATER_OUTLET] > 0, 1, 0))\n\n")});
             this.xrTableCell51.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell51.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell51.Multiline = true;
@@ -1687,7 +1664,7 @@
             this.xrTableCell51.Summary = xrSummary10;
             this.xrTableCell51.Text = "xrTableCell22";
             this.xrTableCell51.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell51.TextFormatString = "{0:n2}";
+            this.xrTableCell51.TextFormatString = "{0:N0}";
             this.xrTableCell51.Weight = 0.6718710309180802D;
             // 
             // xrTableCell52
@@ -1696,7 +1673,8 @@
             this.xrTableCell52.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell52.BorderWidth = 1F;
             this.xrTableCell52.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUBEXT_TOTAL_DRAWING])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUBEXT_TOTAL_DRAWING] > 0, [CCLUBEXT_TOTAL_DRAWING], 0)) / Sum(IIf([CC" +
+                    "LUBEXT_TOTAL_DRAWING] > 0, 1, 0))")});
             this.xrTableCell52.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell52.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell52.Multiline = true;
@@ -1711,7 +1689,7 @@
             this.xrTableCell52.Summary = xrSummary11;
             this.xrTableCell52.Text = "xrTableCell65";
             this.xrTableCell52.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell52.TextFormatString = "{0:n2}";
+            this.xrTableCell52.TextFormatString = "{0:N0}";
             this.xrTableCell52.Weight = 0.67187154351538825D;
             // 
             // xrTableCell57
@@ -1720,7 +1698,8 @@
             this.xrTableCell57.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell57.BorderWidth = 1F;
             this.xrTableCell57.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUBEXT_SOFTNER_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUBEXT_SOFTNER_GENERATION] > 0, [CCLUBEXT_SOFTNER_GENERATION], 0)) / S" +
+                    "um(IIf([CCLUBEXT_SOFTNER_GENERATION] > 0, 1, 0))")});
             this.xrTableCell57.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell57.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell57.Multiline = true;
@@ -1735,7 +1714,7 @@
             this.xrTableCell57.Summary = xrSummary12;
             this.xrTableCell57.Text = "xrTableCell66";
             this.xrTableCell57.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell57.TextFormatString = "{0:n2}";
+            this.xrTableCell57.TextFormatString = "{0:N0}";
             this.xrTableCell57.Weight = 0.67187154351538814D;
             // 
             // xrTableCell59
@@ -1744,7 +1723,8 @@
             this.xrTableCell59.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell59.BorderWidth = 1F;
             this.xrTableCell59.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUBEXT_ETP_WATER_INLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUBEXT_ETP_WATER_INLET] > 0, [CCLUBEXT_ETP_WATER_INLET], 0)) / Sum(IIf" +
+                    "([CCLUBEXT_ETP_WATER_INLET] > 0, 1, 0))")});
             this.xrTableCell59.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell59.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell59.Multiline = true;
@@ -1759,7 +1739,7 @@
             this.xrTableCell59.Summary = xrSummary13;
             this.xrTableCell59.Text = "xrTableCell67";
             this.xrTableCell59.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell59.TextFormatString = "{0:n2}";
+            this.xrTableCell59.TextFormatString = "{0:N0}";
             this.xrTableCell59.Weight = 0.67187154351538836D;
             // 
             // xrTableCell63
@@ -1768,7 +1748,8 @@
             this.xrTableCell63.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell63.BorderWidth = 1F;
             this.xrTableCell63.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLUBEXT_ETP_WATER_OUTLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLUBEXT_ETP_WATER_OUTLET] > 0, [CCLUBEXT_ETP_WATER_OUTLET], 0)) / Sum(I" +
+                    "If([CCLUBEXT_ETP_WATER_OUTLET] > 0, 1, 0))")});
             this.xrTableCell63.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell63.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell63.Multiline = true;
@@ -1783,7 +1764,7 @@
             this.xrTableCell63.Summary = xrSummary14;
             this.xrTableCell63.Text = "xrTableCell28";
             this.xrTableCell63.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell63.TextFormatString = "{0:n2}";
+            this.xrTableCell63.TextFormatString = "{0:N0}";
             this.xrTableCell63.Weight = 0.67187256871000445D;
             // 
             // xrTableCell64
@@ -1792,7 +1773,8 @@
             this.xrTableCell64.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell64.BorderWidth = 1F;
             this.xrTableCell64.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLOTH_TOTAL_DRAWING])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLOTH_TOTAL_DRAWING] > 0, [CCLOTH_TOTAL_DRAWING], 0)) / Sum(IIf([CCLOTH" +
+                    "_TOTAL_DRAWING] > 0, 1, 0))")});
             this.xrTableCell64.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell64.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell64.Multiline = true;
@@ -1807,7 +1789,7 @@
             this.xrTableCell64.Summary = xrSummary15;
             this.xrTableCell64.Text = "xrTableCell68";
             this.xrTableCell64.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell64.TextFormatString = "{0:n2}";
+            this.xrTableCell64.TextFormatString = "{0:N0}";
             this.xrTableCell64.Weight = 0.671870518320772D;
             // 
             // xrTableCell69
@@ -1816,7 +1798,8 @@
             this.xrTableCell69.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell69.BorderWidth = 1F;
             this.xrTableCell69.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLOUT_SOFTNER_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLOUT_SOFTNER_GENERATION] > 0, [CCLOUT_SOFTNER_GENERATION], 0)) / Sum(I" +
+                    "If([CCLOUT_SOFTNER_GENERATION] > 0, 1, 0))")});
             this.xrTableCell69.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell69.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell69.Multiline = true;
@@ -1831,7 +1814,7 @@
             this.xrTableCell69.Summary = xrSummary16;
             this.xrTableCell69.Text = "xrTableCell31";
             this.xrTableCell69.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell69.TextFormatString = "{0:n2}";
+            this.xrTableCell69.TextFormatString = "{0:N0}";
             this.xrTableCell69.Weight = 0.67187154351538825D;
             // 
             // xrTableCell70
@@ -1840,7 +1823,8 @@
             this.xrTableCell70.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell70.BorderWidth = 1F;
             this.xrTableCell70.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLOTH_RO_WATER_GEN])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLOTH_RO_WATER_GEN] > 0, [CCLOTH_RO_WATER_GEN], 0)) / Sum(IIf([CCLOTH_R" +
+                    "O_WATER_GEN] > 0, 1, 0))")});
             this.xrTableCell70.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell70.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell70.Multiline = true;
@@ -1855,7 +1839,7 @@
             this.xrTableCell70.Summary = xrSummary17;
             this.xrTableCell70.Text = "xrTableCell73";
             this.xrTableCell70.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell70.TextFormatString = "{0:n2}";
+            this.xrTableCell70.TextFormatString = "{0:N0}";
             this.xrTableCell70.Weight = 0.67187154351538836D;
             // 
             // xrTableCell71
@@ -1864,7 +1848,8 @@
             this.xrTableCell71.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell71.BorderWidth = 1F;
             this.xrTableCell71.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLOTH_ETP_WATER_INLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLOTH_ETP_WATER_INLET] > 0, [CCLOTH_ETP_WATER_INLET], 0)) / Sum(IIf([CC" +
+                    "LOTH_ETP_WATER_INLET] > 0, 1, 0))")});
             this.xrTableCell71.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell71.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell71.Multiline = true;
@@ -1888,7 +1873,8 @@
             this.xrTableCell72.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell72.BorderWidth = 1F;
             this.xrTableCell72.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([CCLOTH_ETP_WATER_OUTLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([CCLOTH_ETP_WATER_OUTLET] > 0, [CCLOTH_ETP_WATER_OUTLET], 0)) / Sum(IIf([" +
+                    "CCLOTH_ETP_WATER_OUTLET] > 0, 1, 0))")});
             this.xrTableCell72.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell72.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell72.Multiline = true;
@@ -1903,7 +1889,7 @@
             this.xrTableCell72.Summary = xrSummary19;
             this.xrTableCell72.Text = "xrTableCell77";
             this.xrTableCell72.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell72.TextFormatString = "{0:n2}";
+            this.xrTableCell72.TextFormatString = "{0:N0}";
             this.xrTableCell72.Weight = 0.67187154351538814D;
             // 
             // xrTableCell75
@@ -1912,7 +1898,8 @@
             this.xrTableCell75.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell75.BorderWidth = 1F;
             this.xrTableCell75.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NCSL_TOTAL_DRAWING])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_TOTAL_DRAWING] > 0, [NCSL_TOTAL_DRAWING], 0)) / Sum(IIf([NCSL_TOTAL" +
+                    "_DRAWING] > 0, 1, 0))")});
             this.xrTableCell75.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell75.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell75.Multiline = true;
@@ -1927,7 +1914,7 @@
             this.xrTableCell75.Summary = xrSummary20;
             this.xrTableCell75.Text = "xrTableCell78";
             this.xrTableCell75.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell75.TextFormatString = "{0:n2}";
+            this.xrTableCell75.TextFormatString = "{0:N0}";
             this.xrTableCell75.Weight = 0.67187154351538836D;
             // 
             // xrTableCell76
@@ -1936,7 +1923,8 @@
             this.xrTableCell76.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell76.BorderWidth = 1F;
             this.xrTableCell76.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NCSL_SOFTNER_GENERATION])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_SOFTNER_GENERATION] > 0, [NCSL_SOFTNER_GENERATION], 0)) / Sum(IIf([" +
+                    "NCSL_SOFTNER_GENERATION] > 0, 1, 0))")});
             this.xrTableCell76.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell76.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell76.Multiline = true;
@@ -1951,7 +1939,7 @@
             this.xrTableCell76.Summary = xrSummary21;
             this.xrTableCell76.Text = "xrTableCell33";
             this.xrTableCell76.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell76.TextFormatString = "{0:n2}";
+            this.xrTableCell76.TextFormatString = "{0:N0}";
             this.xrTableCell76.Weight = 0.67187154351538847D;
             // 
             // xrTableCell79
@@ -1960,7 +1948,8 @@
             this.xrTableCell79.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell79.BorderWidth = 1F;
             this.xrTableCell79.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NCSL_RO_WATER_GEN])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_RO_WATER_GEN] > 0, [NCSL_RO_WATER_GEN], 0)) / Sum(IIf([NCSL_RO_WATE" +
+                    "R_GEN] > 0, 1, 0))")});
             this.xrTableCell79.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell79.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell79.Multiline = true;
@@ -1975,7 +1964,7 @@
             this.xrTableCell79.Summary = xrSummary22;
             this.xrTableCell79.Text = "xrTableCell18";
             this.xrTableCell79.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell79.TextFormatString = "{0:n2}";
+            this.xrTableCell79.TextFormatString = "{0:N0}";
             this.xrTableCell79.Weight = 0.67187154351538858D;
             // 
             // xrTableCell80
@@ -1984,7 +1973,8 @@
             this.xrTableCell80.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell80.BorderWidth = 1F;
             this.xrTableCell80.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NCSL_ETP_WATER_INLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_ETP_WATER_INLET] > 0, [NCSL_ETP_WATER_INLET], 0)) / Sum(IIf([NCSL_E" +
+                    "TP_WATER_INLET] > 0, 1, 0))")});
             this.xrTableCell80.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell80.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell80.Multiline = true;
@@ -1999,7 +1989,7 @@
             this.xrTableCell80.Summary = xrSummary23;
             this.xrTableCell80.Text = "xrTableCell14";
             this.xrTableCell80.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell80.TextFormatString = "{0:n2}";
+            this.xrTableCell80.TextFormatString = "{0:N0}";
             this.xrTableCell80.Weight = 0.67187154351538836D;
             // 
             // xrTableCell81
@@ -2008,7 +1998,8 @@
             this.xrTableCell81.Borders = DevExpress.XtraPrinting.BorderSide.Top;
             this.xrTableCell81.BorderWidth = 1F;
             this.xrTableCell81.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "SumDAvg([NCSL_ETP_WATER_OUTLET])")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "Sum(IIf([NCSL_ETP_WATER_OUTLET] > 0, [NCSL_ETP_WATER_OUTLET], 0)) / Sum(IIf([NCSL" +
+                    "_ETP_WATER_OUTLET] > 0, 1, 0))")});
             this.xrTableCell81.Font = new DevExpress.Drawing.DXFont("Calibri", 8F, DevExpress.Drawing.DXFontStyle.Bold);
             this.xrTableCell81.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell81.Multiline = true;
@@ -2023,8 +2014,41 @@
             this.xrTableCell81.Summary = xrSummary24;
             this.xrTableCell81.Text = "xrTableCell20";
             this.xrTableCell81.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell81.TextFormatString = "{0:n2}";
+            this.xrTableCell81.TextFormatString = "{0:N0}";
             this.xrTableCell81.Weight = 0.67187154351538858D;
+            // 
+            // Month
+            // 
+            this.Month.Description = "Select Month";
+            this.Month.Name = "Month";
+            this.Month.Type = typeof(int);
+            this.Month.ValueInfo = "1";
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(1, "January"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2, "February"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(3, "March"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(4, "April"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(5, "May"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(6, "June"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(7, "July"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(8, "August"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(9, "September"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(10, "October"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(11, "November"));
+            staticListLookUpSettings1.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(12, "December"));
+            this.Month.ValueSourceSettings = staticListLookUpSettings1;
+            // 
+            // Year
+            // 
+            this.Year.Description = "Select Year";
+            this.Year.Name = "Year";
+            this.Year.Type = typeof(int);
+            this.Year.ValueInfo = "2026";
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2026, "2026"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2027, "2027"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2028, "2028"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2029, "2029"));
+            staticListLookUpSettings2.LookUpValues.Add(new DevExpress.XtraReports.Parameters.LookUpValue(2030, "2030"));
+            this.Year.ValueSourceSettings = staticListLookUpSettings2;
             // 
             // rptAllCompaniesDayWiseWaterGeneration
             // 
@@ -2042,7 +2066,7 @@
             this.DataSource = this.sqlDataSource1;
             this.Font = new DevExpress.Drawing.DXFont("Arial", 9.75F);
             this.ForeColor = System.Drawing.Color.Transparent;
-            this.Margins = new DevExpress.Drawing.DXMargins(14F, 16F, 20F, 23F);
+            this.Margins = new DevExpress.Drawing.DXMargins(14F, 16F, 20F, 24.04169F);
             this.PageWidth = 3970;
             this.PaperKind = DevExpress.Drawing.Printing.DXPaperKind.Custom;
             this.Parameters.AddRange(new DevExpress.XtraReports.Parameters.Parameter[] {

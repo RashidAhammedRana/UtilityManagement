@@ -245,11 +245,9 @@ public class BiomassStockConsumptionController : Controller
         LoadCompanyList();
         LoadRate();
         LoadStock();
-        //var model = new TblDailyStockConsumption
-        //{
-        //    Trdate = DateOnly.FromDateTime(DateTime.Today)
-        //};
+
         var userId = _userManager.GetUserId(User);
+
         var currentLocation = _context.Users
             .Where(x => x.Id == userId)
             .Select(x => x.Company)
@@ -265,8 +263,19 @@ public class BiomassStockConsumptionController : Controller
         {
             Trdate = lastTrDate.HasValue
                 ? lastTrDate.Value.AddDays(1)
-                : DateOnly.FromDateTime(DateTime.Today)
+                : DateOnly.FromDateTime(DateTime.Today),
+
+            SewingJhutOpening = ViewBag.SewingJhutOpeningStock,
+
+            DenimJhutOpening = ViewBag.DenimJhutOpeningStock,
+
+            CharcoalOpening = ViewBag.CharcoalOpeningStock,
+
+            CartonOpening = ViewBag.CartonOpeningStock,
+
+            PpOpening = ViewBag.PpOpeningStock
         };
+
         return View(model);
     }
 
@@ -313,11 +322,18 @@ public class BiomassStockConsumptionController : Controller
         LoadCompanyList();
         LoadRate();
         LoadStock();
+
         var reading = await _context.TblBiomassStockConsumptions
             .FirstOrDefaultAsync(x => x.Trid == id);
+
         if (reading == null)
             return NotFound();
 
+        reading.SewingJhutOpening = ViewBag.SewingJhutOpeningStock;
+        reading.DenimJhutOpening = ViewBag.DenimJhutOpeningStock;
+        reading.CharcoalOpening = ViewBag.CharcoalOpeningStock;
+        reading.CartonOpening = ViewBag.CartonOpeningStock;
+        reading.PpOpening = ViewBag.PpOpeningStock;
         return View(reading);
     }
     [HttpPost]

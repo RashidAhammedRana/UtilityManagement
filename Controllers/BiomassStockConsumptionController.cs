@@ -268,6 +268,7 @@ public class BiomassStockConsumptionController : Controller
             SewingJhutOpening = ViewBag.SewingJhutOpeningStock,
 
             DenimJhutOpening = ViewBag.DenimJhutOpeningStock,
+            KnitJhutOpening = ViewBag.KnitJhutOpeningStock,
 
             CharcoalOpening = ViewBag.CharcoalOpeningStock,
 
@@ -330,6 +331,7 @@ public class BiomassStockConsumptionController : Controller
             return NotFound();
 
         reading.SewingJhutOpening = ViewBag.SewingJhutOpeningStock;
+        reading.KnitJhutOpening = ViewBag.KnitJhutOpeningStock;
         reading.DenimJhutOpening = ViewBag.DenimJhutOpeningStock;
         reading.CharcoalOpening = ViewBag.CharcoalOpeningStock;
         reading.CartonOpening = ViewBag.CartonOpeningStock;
@@ -366,6 +368,14 @@ public class BiomassStockConsumptionController : Controller
             existing.SewingJhutTotalCons = biomassStockConsumption.SewingJhutTotalCons;
             existing.SewingJhutTotalCost = biomassStockConsumption.SewingJhutTotalCost;
             existing.SewingJhutClosing = biomassStockConsumption.SewingJhutClosing;
+
+            existing.KnitJhutOpening = biomassStockConsumption.KnitJhutOpening;
+            existing.KnitJhutReceive = biomassStockConsumption.KnitJhutReceive;
+            existing.KnitJhutB1Cons = biomassStockConsumption.KnitJhutB1Cons;
+            existing.KnitJhutB2Cons = biomassStockConsumption.KnitJhutB2Cons;
+            existing.KnitJhutTotalCons = biomassStockConsumption.KnitJhutTotalCons;
+            existing.KnitJhutTotalCost = biomassStockConsumption.KnitJhutTotalCost;
+            existing.KnitJhutClosing = biomassStockConsumption.KnitJhutClosing;
 
             existing.DenimJhutOpening = biomassStockConsumption.DenimJhutOpening;
             existing.DenimJhutReceive = biomassStockConsumption.DenimJhutReceive;
@@ -507,12 +517,14 @@ public class BiomassStockConsumptionController : Controller
 
         var sewingJhutOpeningStock = latestStock?.SewingJhutClosing ?? 0;
         var denimJhutOpeningStock = latestStock?.DenimJhutClosing ?? 0;
+        var knitJhutOpeningStock = latestStock?.KnitJhutClosing ?? 0;
         var charCoalOpeningStock = latestStock?.CharcoalClosing ?? 0;
         var cartonOpeningStock = latestStock?.CartonClosing ?? 0;
         var ppOpeningStock = latestStock?.PpClosing ?? 0;
 
         ViewBag.SewingJhutOpeningStock = sewingJhutOpeningStock;
         ViewBag.DenimJhutOpeningStock = denimJhutOpeningStock;
+        ViewBag.KnitJhutOpeningStock = knitJhutOpeningStock;
         ViewBag.CharcoalOpeningStock = charCoalOpeningStock;
         ViewBag.CartonOpeningStock = cartonOpeningStock;
         ViewBag.PpOpeningStock = ppOpeningStock;

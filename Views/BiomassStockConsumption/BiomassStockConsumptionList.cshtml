@@ -73,6 +73,7 @@
                 <th rowspan="2" class="date-header">Company</th>
 
                 <th colspan="7" class="sewing-header">Sewing Biomass</th>
+                <th colspan="7" class="knit-header">Knit Biomass</th>
                 <th colspan="7" class="denim-header">Denim Biomass</th>
                 <th colspan="7" class="charcoal-header">Charcoal</th>
                 <th colspan="7" class="carton-header">Carton</th>
@@ -119,6 +120,15 @@
                     <td class="total-cell">@(item.SewingJhutTotalCons?.ToString("N2") ?? "0.00")</td>
                     <td class="closing-cell">@(item.SewingJhutClosing?.ToString("N2") ?? "0.00")</td>
                     <td class="cost-cell">@(item.SewingJhutTotalCost?.ToString("N2") ?? "0.00")</td>
+
+                    @* KNIT JHUT *@
+                    <td>@(item.KnitJhutOpening?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.KnitJhutReceive?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.KnitJhutB1Cons?.ToString("N2") ?? "0.00")</td>
+                    <td>@(item.KnitJhutB2Cons?.ToString("N2") ?? "0.00")</td>
+                    <td class="total-cell">@(item.KnitJhutTotalCons?.ToString("N2") ?? "0.00")</td>
+                    <td class="closing-cell">@(item.KnitJhutClosing?.ToString("N2") ?? "0.00")</td>
+                    <td class="cost-cell">@(item.KnitJhutTotalCost?.ToString("N2") ?? "0.00")</td>
 
                     @* DENIM JHUT *@
                     <td>@(item.DenimJhutOpening?.ToString("N2") ?? "0.00")</td>

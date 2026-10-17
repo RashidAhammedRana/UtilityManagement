@@ -81,6 +81,19 @@ public partial class TblBiomassStockConsumption
     public double? PpClosing { get; set; }
     [Required(ErrorMessage = "This field is required")]
     public double? PpTotalCost { get; set; }
+    public double? KnitJhutOpening { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutReceive { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutB1Cons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutB2Cons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutTotalCons { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutClosing { get; set; }
+    [Required(ErrorMessage = "This field is required")]
+    public double? KnitJhutTotalCost { get; set; }
 
     public string? CreatedBy { get; set; }
     public DateTime? CreatedAt { get; set; }

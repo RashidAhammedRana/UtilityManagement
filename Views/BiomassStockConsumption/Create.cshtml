@@ -161,21 +161,26 @@
 
                             <div class="step" data-step="2">
                                 <div class="step-circle">2</div>
-                                <div class="step-title">Denim Biomass</div>
+                                <div class="step-title">knit Biomass</div>
                             </div>
 
                             <div class="step" data-step="3">
                                 <div class="step-circle">3</div>
-                                <div class="step-title">Charcoal</div>
+                                <div class="step-title">Denim Biomass</div>
                             </div>
 
                             <div class="step" data-step="4">
                                 <div class="step-circle">4</div>
-                                <div class="step-title">Carton</div>
+                                <div class="step-title">Charcoal</div>
                             </div>
 
                             <div class="step" data-step="5">
                                 <div class="step-circle">5</div>
+                                <div class="step-title">Carton</div>
+                            </div>
+
+                            <div class="step" data-step="6">
+                                <div class="step-circle">6</div>
                                 <div class="step-title">Plastic Poly</div>
                             </div>
 
@@ -389,10 +394,130 @@
                         </div>
 
                         <!-- =========================================
-                             STEP 2 - DENIM JHUT
+                             STEP 2 - KNIT JHUT
                         ========================================== -->
 
                         <div class="step-content" id="step2">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Knit Biomass Stock & Consumption</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row g-3">
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutOpening" class="form-label">
+                                                Opening Stock
+                                            </label>
+                                            <input asp-for="KnitJhutOpening"
+                                                   id="KnitJhutOpening"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutOpening"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutReceive" class="form-label">
+                                                Receive
+                                            </label>
+                                            <input asp-for="KnitJhutReceive"
+                                                   id="KnitJhutReceive"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutReceive"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutB1Cons" class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutB1Cons"
+                                                   id="KnitJhutB1Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutB1Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutB2Cons" class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutB2Cons"
+                                                   id="KnitJhutB2Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutB2Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutTotalCons" class="form-label">
+                                                Total Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutTotalCons"
+                                                   id="KnitJhutTotalCons"
+                                                   type="number" step="0.01"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutTotalCons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutClosing" class="form-label">
+                                                Closing Stock
+                                            </label>
+                                            <input asp-for="KnitJhutClosing"
+                                                   id="KnitJhutClosing"
+                                                   type="number" step="0.01"
+                                                   class="form-control closing-stock" readonly />
+                                            <span asp-validation-for="KnitJhutClosing"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutTotalCost" class="form-label">
+                                                Total Cost
+                                            </label>
+                                            <input asp-for="KnitJhutTotalCost"
+                                                   id="KnitJhutTotalCost"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutTotalCost"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="1">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-primary next-btn"
+                                        data-next="3">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- =========================================
+                             STEP 3 - DENIM JHUT
+                        ========================================== -->
+
+                        <div class="step-content" id="step3">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -495,13 +620,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="1">
+                                        data-prev="2">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-primary next-btn"
-                                        data-next="3">
+                                        data-next="4">
                                     Next →
                                 </button>
 
@@ -510,10 +635,10 @@
 
 
                         <!-- =========================================
-                             STEP 3 - CHARCOAL
+                             STEP 4 - CHARCOAL
                         ========================================== -->
 
-                        <div class="step-content" id="step3">
+                        <div class="step-content" id="step4">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -616,13 +741,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="2">
+                                        data-prev="3">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-primary next-btn"
-                                        data-next="4">
+                                        data-next="5">
                                     Next →
                                 </button>
 
@@ -633,7 +758,7 @@
                              STEP 4 - CARTON
                         ================================================== -->
 
-                        <div class="step-content" id="step4">
+                        <div class="step-content" id="step5">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -797,13 +922,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="3">
+                                        data-prev="4">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-primary next-btn"
-                                        data-next="5">
+                                        data-next="6">
                                     Next →
                                 </button>
 
@@ -814,7 +939,7 @@
                              STEP 5 - PP
                         ================================================== -->
 
-                        <div class="step-content" id="step5">
+                        <div class="step-content" id="step6">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -978,7 +1103,7 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="4">
+                                        data-prev="5">
                                     ← Previous
                                 </button>
 
@@ -1011,329 +1136,386 @@
         await Html.RenderPartialAsync("_ValidationScriptsPartial");
     }
 
-                        <script>
-                            $(document).ready(function () {
+    <script>
+        $(document).ready(function () {
 
-                                // =========================================
-                                // BIOMASS RATES FROM CONTROLLER
-                                // =========================================
+            // =========================================
+            // BIOMASS RATES FROM CONTROLLER
+            // =========================================
 
-                                const biomassRates = {
-                                    SewingJhut: Number('@(ViewBag.SewingBiomassRate ?? 0)'),
-                                    DenimJhut: Number('@(ViewBag.DenimBiomassRate ?? 0)'),
-                                    Charcoal: Number('@(ViewBag.CharcoalRate ?? 0)'),
-                                    Carton: Number('@(ViewBag.CartonRate ?? 0)'),
-                                    Pp: Number('@(ViewBag.PpRate ?? 0)')
-                                };
+            const biomassRates = {
+                SewingJhut: Number('@(ViewBag.SewingBiomassRate ?? 0)'),
+                KnitJhut: Number('@(ViewBag.KnitBiomassRate ?? 0)'),
+                DenimJhut: Number('@(ViewBag.DenimBiomassRate ?? 0)'),
+                Charcoal: Number('@(ViewBag.CharcoalRate ?? 0)'),
+                Carton: Number('@(ViewBag.CartonRate ?? 0)'),
+                Pp: Number('@(ViewBag.PpRate ?? 0)')
+            };
 
 
-                                // =========================================
-                                // STEP NAVIGATION
-                                // =========================================
+            // =========================================
+            // STEP NAVIGATION
+            // =========================================
 
-                                function showStep(stepNumber) {
+            function showStep(stepNumber) {
 
-                                    $('.step-content').removeClass('active');
+                $('.step-content').removeClass('active');
 
-                                    $('#step' + stepNumber).addClass('active');
+                $('#step' + stepNumber).addClass('active');
 
-                                    $('.step').removeClass('active completed');
+                $('.step').removeClass('active completed');
 
-                                    $('.step').each(function () {
+                $('.step').each(function () {
 
-                                        var currentStep = parseInt($(this).data('step'));
+                    var currentStep = parseInt($(this).data('step'));
 
-                                        if (currentStep < stepNumber) {
-                                            $(this).addClass('completed');
-                                        }
-                                        else if (currentStep === stepNumber) {
-                                            $(this).addClass('active');
-                                        }
+                    if (currentStep < stepNumber) {
+                        $(this).addClass('completed');
+                    }
+                    else if (currentStep === stepNumber) {
+                        $(this).addClass('active');
+                    }
 
-                                    });
+                });
 
-                                    // Progress: 0%, 25%, 50%, 75%, 100%
-                                    var progress = ((stepNumber - 1) / 4) * 100;
+                // Progress bar: 0% to 100%
+                var totalSteps = $('.step').length;
 
-                                    $('#stepperProgress').css('width', progress + '%');
+                var progress = totalSteps > 1
+                    ? ((stepNumber - 1) / (totalSteps - 1)) * 100
+                    : 100;
 
-                                }
+                $('#stepperProgress').css('width', progress + '%');
+            }
 
 
-                                // =========================================
-                                // NEXT BUTTON
-                                // =========================================
+            // =========================================
+            // NEXT BUTTON
+            // =========================================
 
-                                $('.next-btn').on('click', function () {
+            $('.next-btn').on('click', function () {
 
-                                    var nextStep = parseInt($(this).data('next'));
+                var nextStep = parseInt($(this).data('next'));
 
-                                    var currentContent = $(this).closest('.step-content');
+                var currentContent = $(this).closest('.step-content');
 
-                                    var valid = true;
+                var valid = true;
 
-                                    currentContent.find(':input[required]:enabled').each(function () {
+                currentContent.find(':input[required]:enabled').each(function () {
 
-                                        if (!this.checkValidity()) {
+                    if (!this.checkValidity()) {
 
-                                            this.reportValidity();
+                        this.reportValidity();
 
-                                            valid = false;
+                        valid = false;
 
-                                            return false;
-                                        }
+                        return false;
+                    }
 
-                                    });
+                });
 
-                                    if (valid) {
-                                        showStep(nextStep);
-                                        window.scrollTo({ top: 0, behavior: 'smooth' });
-                                    }
+                if (valid) {
 
-                                });
+                    showStep(nextStep);
 
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+                }
 
-                                // =========================================
-                                // PREVIOUS BUTTON
-                                // =========================================
+            });
 
-                                $('.prev-btn').on('click', function () {
 
-                                    var previousStep = parseInt($(this).data('prev'));
+            // =========================================
+            // PREVIOUS BUTTON
+            // =========================================
 
-                                    showStep(previousStep);
+            $('.prev-btn').on('click', function () {
 
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                var previousStep = parseInt($(this).data('prev'));
 
-                                });
+                showStep(previousStep);
 
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
-                                // =========================================
-                                // STEP INDICATOR CLICK
-                                // =========================================
+            });
 
-                                $('.step').on('click', function () {
 
-                                    var targetStep = parseInt($(this).data('step'));
+            // =========================================
+            // STEP INDICATOR CLICK
+            // =========================================
 
-                                    var currentStep = parseInt(
-                                        $('.step-content.active').attr('id').replace('step', '')
-                                    );
+            $('.step').on('click', function () {
 
-                                    // Allow backward navigation
-                                    if (targetStep <= currentStep) {
-                                        showStep(targetStep);
-                                        return;
-                                    }
+                var targetStep = parseInt($(this).data('step'));
 
-                                    // Validate intermediate steps
-                                    for (var i = currentStep; i < targetStep; i++) {
+                var activeContent = $('.step-content.active');
 
-                                        var valid = true;
+                if (!activeContent.length) {
+                    return;
+                }
 
-                                        $('#step' + i)
-                                            .find(':input[required]:enabled')
-                                            .each(function () {
+                var currentStep = parseInt(
+                    activeContent.attr('id').replace('step', '')
+                );
 
-                                                if (!this.checkValidity()) {
+                // Allow backward navigation
+                if (targetStep <= currentStep) {
 
-                                                    showStep(i);
+                    showStep(targetStep);
 
-                                                    this.reportValidity();
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
 
-                                                    valid = false;
+                    return;
+                }
 
-                                                    return false;
-                                                }
+                // Validate intermediate steps
+                for (var i = currentStep; i < targetStep; i++) {
 
-                                            });
+                    var stepContent = $('#step' + i);
 
-                                        if (!valid) {
-                                            return;
-                                        }
+                    if (!stepContent.length) {
+                        continue;
+                    }
 
-                                    }
+                    var valid = true;
 
-                                    showStep(targetStep);
+                    stepContent.find(':input[required]:enabled').each(function () {
 
-                                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                        if (!this.checkValidity()) {
 
-                                });
+                            showStep(i);
 
+                            this.reportValidity();
 
-                                // =========================================
-                                // COMMON STOCK & COST CALCULATION
-                                //
-                                // Total Consumption = Boiler 1 + Boiler 2
-                                // Closing Stock = Opening + Receive - Consumption
-                                // Total Cost = Total Consumption * Rate
-                                // =========================================
+                            valid = false;
 
-                                function calculateStock(prefix) {
+                            return false;
+                        }
 
-                                    var opening = parseFloat(
-                                        $('#' + prefix + 'Opening').val()
-                                    ) || 0;
+                    });
 
-                                    var receive = parseFloat(
-                                        $('#' + prefix + 'Receive').val()
-                                    ) || 0;
+                    if (!valid) {
+                        return;
+                    }
 
-                                    var boiler1 = parseFloat(
-                                        $('#' + prefix + 'B1Cons').val()
-                                    ) || 0;
+                }
 
-                                    var boiler2 = parseFloat(
-                                        $('#' + prefix + 'B2Cons').val()
-                                    ) || 0;
+                showStep(targetStep);
 
-                                    // Total Consumption
-                                    var totalConsumption = boiler1 + boiler2;
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
-                                    // Closing Stock
-                                    var closingStock = opening + receive - totalConsumption;
+            });
 
-                                    // Rate loaded from Controller
-                                    var rate = biomassRates[prefix] || 0;
 
-                                    // Total Cost
-                                    var totalCost = totalConsumption * rate;
+            // =========================================
+            // COMMON STOCK & COST CALCULATION
+            //
+            // Total Consumption = Boiler 1 + Boiler 2
+            // Closing Stock = Opening + Receive - Consumption
+            // Total Cost = Total Consumption * Rate
+            // =========================================
 
-                                    // Update Total Consumption
-                                    $('#' + prefix + 'TotalCons').val(
-                                        totalConsumption.toFixed(2)
-                                    );
+            function calculateStock(prefix) {
 
-                                    // Update Closing Stock
-                                    $('#' + prefix + 'Closing').val(
-                                        closingStock.toFixed(2)
-                                    );
+                var opening = parseFloat(
+                    $('#' + prefix + 'Opening').val()
+                ) || 0;
 
-                                    // Update Total Cost
-                                    $('#' + prefix + 'TotalCost').val(
-                                        totalCost.toFixed(2)
-                                    );
+                var receive = parseFloat(
+                    $('#' + prefix + 'Receive').val()
+                ) || 0;
 
-                                }
+                var boiler1 = parseFloat(
+                    $('#' + prefix + 'B1Cons').val()
+                ) || 0;
 
+                var boiler2 = parseFloat(
+                    $('#' + prefix + 'B2Cons').val()
+                ) || 0;
 
-                                // =========================================
-                                // SEWING JHUT
-                                // =========================================
+                // Total Consumption
+                var totalConsumption = boiler1 + boiler2;
 
-                                $('#SewingJhutReceive, #SewingJhutB1Cons, #SewingJhutB2Cons')
-                                    .on('input change', function () {
-                                        calculateStock('SewingJhut');
-                                    });
+                // Closing Stock
+                var closingStock =
+                    opening + receive - totalConsumption;
 
+                // Biomass Rate
+                var rate = biomassRates[prefix] || 0;
 
-                                // =========================================
-                                // DENIM JHUT
-                                // =========================================
+                // Total Cost
+                var totalCost = totalConsumption * rate;
 
-                                $('#DenimJhutReceive, #DenimJhutB1Cons, #DenimJhutB2Cons')
-                                    .on('input change', function () {
-                                        calculateStock('DenimJhut');
-                                    });
+                // Update Total Consumption
+                $('#' + prefix + 'TotalCons').val(
+                    totalConsumption.toFixed(2)
+                );
 
+                // Update Closing Stock
+                $('#' + prefix + 'Closing').val(
+                    closingStock.toFixed(2)
+                );
 
-                                // =========================================
-                                // CHARCOAL
-                                // =========================================
+                // Update Total Cost
+                $('#' + prefix + 'TotalCost').val(
+                    totalCost.toFixed(2)
+                );
 
-                                $('#CharcoalReceive, #CharcoalB1Cons, #CharcoalB2Cons')
-                                    .on('input change', function () {
-                                        calculateStock('Charcoal');
-                                    });
+            }
 
 
-                                // =========================================
-                                // CARTON
-                                // =========================================
+            // =========================================
+            // SEWING JHUT
+            // =========================================
 
-                                $('#CartonReceive, #CartonB1Cons, #CartonB2Cons')
-                                    .on('input change', function () {
-                                        calculateStock('Carton');
-                                    });
+            $('#SewingJhutReceive, #SewingJhutB1Cons, #SewingJhutB2Cons')
+                .on('input change', function () {
 
+                    calculateStock('SewingJhut');
 
-                                // =========================================
-                                // PP
-                                // =========================================
+                });
 
-                                $('#PpReceive, #PpB1Cons, #PpB2Cons')
-                                    .on('input change', function () {
-                                        calculateStock('Pp');
-                                    });
 
+            // =========================================
+            // KNIT JHUT - NEW STEP
+            // =========================================
 
-                                // =========================================
-                                // INITIAL CALCULATION
-                                // =========================================
+            $('#KnitJhutReceive, #KnitJhutB1Cons, #KnitJhutB2Cons')
+                .on('input change', function () {
 
-                                calculateStock('SewingJhut');
+                    calculateStock('KnitJhut');
 
-                                calculateStock('DenimJhut');
+                });
 
-                                calculateStock('Charcoal');
 
-                                calculateStock('Carton');
+            // =========================================
+            // DENIM JHUT
+            // =========================================
 
-                                calculateStock('Pp');
+            $('#DenimJhutReceive, #DenimJhutB1Cons, #DenimJhutB2Cons')
+                .on('input change', function () {
 
+                    calculateStock('DenimJhut');
 
-                                // =========================================
-                                // FORM SUBMISSION VALIDATION
-                                // =========================================
+                });
 
-                                $('.create-form').on('submit', function (event) {
 
-                                    var form = this;
+            // =========================================
+            // CHARCOAL
+            // =========================================
 
-                                    if (!form.checkValidity()) {
+            $('#CharcoalReceive, #CharcoalB1Cons, #CharcoalB2Cons')
+                .on('input change', function () {
 
-                                        event.preventDefault();
+                    calculateStock('Charcoal');
 
-                                        var invalidField = form.querySelector(':invalid');
+                });
 
-                                        if (invalidField) {
 
-                                            var parentStep = $(invalidField)
-                                                .closest('.step-content');
+            // =========================================
+            // CARTON
+            // =========================================
 
-                                            if (parentStep.length) {
+            $('#CartonReceive, #CartonB1Cons, #CartonB2Cons')
+                .on('input change', function () {
 
-                                                var stepNumber = parseInt(
-                                                    parentStep.attr('id').replace('step', '')
-                                                );
+                    calculateStock('Carton');
 
-                                                showStep(stepNumber);
+                });
 
-                                                invalidField.reportValidity();
 
-                                            }
+            // =========================================
+            // PP
+            // =========================================
 
-                                        }
+            $('#PpReceive, #PpB1Cons, #PpB2Cons')
+                .on('input change', function () {
 
-                                        return false;
-                                    }
+                    calculateStock('Pp');
 
-                                    // Recalculate all values before submission
-                                    calculateStock('SewingJhut');
-                                    calculateStock('DenimJhut');
-                                    calculateStock('Charcoal');
-                                    calculateStock('Carton');
-                                    calculateStock('Pp');
+                });
 
-                                });
 
+            // =========================================
+            // INITIAL CALCULATION
+            // =========================================
 
-                                // =========================================
-                                // INITIAL STEP
-                                // =========================================
+            calculateStock('SewingJhut');
 
-                                showStep(1);
+            calculateStock('KnitJhut');
 
-                            });
-                        </script>
+            calculateStock('DenimJhut');
+
+            calculateStock('Charcoal');
+
+            calculateStock('Carton');
+
+            calculateStock('Pp');
+
+
+            // =========================================
+            // FORM SUBMISSION VALIDATION
+            // =========================================
+
+            $('.create-form').on('submit', function (event) {
+
+                var form = this;
+
+                // Recalculate all values before submission
+                calculateStock('SewingJhut');
+                calculateStock('KnitJhut');
+                calculateStock('DenimJhut');
+                calculateStock('Charcoal');
+                calculateStock('Carton');
+                calculateStock('Pp');
+
+                if (!form.checkValidity()) {
+
+                    event.preventDefault();
+
+                    var invalidField = form.querySelector(':invalid');
+
+                    if (invalidField) {
+
+                        var parentStep = $(invalidField)
+                            .closest('.step-content');
+
+                        if (parentStep.length) {
+
+                            var stepNumber = parseInt(
+                                parentStep.attr('id').replace('step', '')
+                            );
+
+                            showStep(stepNumber);
+
+                            invalidField.reportValidity();
+
+                        }
+                    }
+
+                    return false;
+                }
+
+            });
+
+
+            // =========================================
+            // INITIAL STEP
+            // =========================================
+
+            showStep(1);
+
+        });
+    </script>
 }

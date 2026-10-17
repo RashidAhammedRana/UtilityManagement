@@ -1295,6 +1295,13 @@ namespace UtilityManagement.Data
                 entity.Property(e => e.SewingJhutReceive).HasColumnName("SEWING_JHUT_RECEIVE");
                 entity.Property(e => e.SewingJhutTotalCons).HasColumnName("SEWING_JHUT_TOTAL_CONS");
                 entity.Property(e => e.SewingJhutTotalCost).HasColumnName("SEWING_JHUT_TOTAL_COST");
+                entity.Property(e => e.KnitJhutB1Cons).HasColumnName("KNIT_JHUT_B1_CONS");
+                entity.Property(e => e.KnitJhutB2Cons).HasColumnName("KNIT_JHUT_B2_CONS");
+                entity.Property(e => e.KnitJhutClosing).HasColumnName("KNIT_JHUT_CLOSING");
+                entity.Property(e => e.KnitJhutOpening).HasColumnName("KNIT_JHUT_OPENING");
+                entity.Property(e => e.KnitJhutReceive).HasColumnName("KNIT_JHUT_RECEIVE");
+                entity.Property(e => e.KnitJhutTotalCons).HasColumnName("KNIT_JHUT_TOTAL_CONS");
+                entity.Property(e => e.KnitJhutTotalCost).HasColumnName("KNIT_JHUT_TOTAL_COST");
                 entity.Property(e => e.Trdate).HasColumnName("TRDATE");
                 entity.Property(e => e.UpdatedAt).HasColumnType("datetime").HasColumnName("UPDATED_AT");
                 entity.Property(e => e.UpdatedBy).HasMaxLength(50).HasColumnName("UPDATED_BY");

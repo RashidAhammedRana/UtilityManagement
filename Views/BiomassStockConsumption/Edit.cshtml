@@ -158,21 +158,26 @@
 
                             <div class="step" data-step="2">
                                 <div class="step-circle">2</div>
-                                <div class="step-title">Denim Biomass</div>
+                                <div class="step-title">knit Biomass</div>
                             </div>
 
                             <div class="step" data-step="3">
                                 <div class="step-circle">3</div>
-                                <div class="step-title">Charcoal</div>
+                                <div class="step-title">Denim Biomass</div>
                             </div>
 
                             <div class="step" data-step="4">
                                 <div class="step-circle">4</div>
-                                <div class="step-title">Carton</div>
+                                <div class="step-title">Charcoal</div>
                             </div>
 
                             <div class="step" data-step="5">
                                 <div class="step-circle">5</div>
+                                <div class="step-title">Carton</div>
+                            </div>
+
+                            <div class="step" data-step="6">
+                                <div class="step-circle">6</div>
                                 <div class="step-title">Plastic Poly</div>
                             </div>
 
@@ -240,8 +245,7 @@
 
                                         <!-- Opening Stock -->
                                         <div class="col-md-6">
-                                            <label asp-for="SewingJhutOpening"
-                                                   class="form-label">
+                                            <label asp-for="SewingJhutOpening" class="form-label">
                                                 Opening Stock
                                             </label>
 
@@ -269,7 +273,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="SewingJhutReceive"
                                                   class="text-danger"></span>
@@ -287,7 +291,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="SewingJhutB1Cons"
                                                   class="text-danger"></span>
@@ -305,7 +309,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="SewingJhutB2Cons"
                                                   class="text-danger"></span>
@@ -322,7 +326,8 @@
                                                    id="SewingJhutTotalCons"
                                                    type="number"
                                                    step="0.01"
-                                                   class="form-control" readonly />
+                                                   class="form-control"
+                                                   readonly />
 
                                             <span asp-validation-for="SewingJhutTotalCons"
                                                   class="text-danger"></span>
@@ -358,8 +363,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"
-                                                   readonly />
+                                                   class="form-control" readonly />
 
                                             <span asp-validation-for="SewingJhutTotalCost"
                                                   class="text-danger"></span>
@@ -387,10 +391,130 @@
                         </div>
 
                         <!-- =========================================
-                             STEP 2 - DENIM JHUT
+                             STEP 2 - KNIT JHUT
                         ========================================== -->
 
                         <div class="step-content" id="step2">
+
+                            <div class="card border-0 shadow-sm mb-4">
+
+                                <div class="card-header bg-light">
+                                    <h6 class="mb-0">Knit Biomass Stock & Consumption</h6>
+                                </div>
+
+                                <div class="card-body">
+                                    <div class="row g-3">
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutOpening" class="form-label">
+                                                Opening Stock
+                                            </label>
+                                            <input asp-for="KnitJhutOpening"
+                                                   id="KnitJhutOpening"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutOpening"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutReceive" class="form-label">
+                                                Receive
+                                            </label>
+                                            <input asp-for="KnitJhutReceive"
+                                                   id="KnitJhutReceive"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutReceive"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutB1Cons" class="form-label">
+                                                Boiler 1 Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutB1Cons"
+                                                   id="KnitJhutB1Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutB1Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutB2Cons" class="form-label">
+                                                Boiler 2 Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutB2Cons"
+                                                   id="KnitJhutB2Cons"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" />
+                                            <span asp-validation-for="KnitJhutB2Cons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutTotalCons" class="form-label">
+                                                Total Consumption
+                                            </label>
+                                            <input asp-for="KnitJhutTotalCons"
+                                                   id="KnitJhutTotalCons"
+                                                   type="number" step="0.01"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutTotalCons"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutClosing" class="form-label">
+                                                Closing Stock
+                                            </label>
+                                            <input asp-for="KnitJhutClosing"
+                                                   id="KnitJhutClosing"
+                                                   type="number" step="0.01"
+                                                   class="form-control closing-stock" readonly />
+                                            <span asp-validation-for="KnitJhutClosing"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                        <div class="col-md-6">
+                                            <label asp-for="KnitJhutTotalCost" class="form-label">
+                                                Total Cost
+                                            </label>
+                                            <input asp-for="KnitJhutTotalCost"
+                                                   id="KnitJhutTotalCost"
+                                                   type="number" step="0.01" min="0"
+                                                   class="form-control" readonly />
+                                            <span asp-validation-for="KnitJhutTotalCost"
+                                                  class="text-danger"></span>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="d-flex justify-content-between mt-4">
+
+                                <button type="button"
+                                        class="btn btn-outline-secondary prev-btn"
+                                        data-prev="1">
+                                    ← Previous
+                                </button>
+
+                                <button type="button"
+                                        class="btn btn-success next-btn"
+                                        data-next="3">
+                                    Next →
+                                </button>
+
+                            </div>
+                        </div>
+
+                        <!-- =========================================
+                             STEP 3 - DENIM JHUT
+                        ========================================== -->
+
+                        <div class="step-content" id="step3">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -420,7 +544,7 @@
                                             <input asp-for="DenimJhutReceive"
                                                    id="DenimJhutReceive"
                                                    type="number" step="0.01" min="0"
-                                                   class="form-control" required />
+                                                   class="form-control" />
                                             <span asp-validation-for="DenimJhutReceive"
                                                   class="text-danger"></span>
                                         </div>
@@ -432,7 +556,7 @@
                                             <input asp-for="DenimJhutB1Cons"
                                                    id="DenimJhutB1Cons"
                                                    type="number" step="0.01" min="0"
-                                                   class="form-control" required />
+                                                   class="form-control" />
                                             <span asp-validation-for="DenimJhutB1Cons"
                                                   class="text-danger"></span>
                                         </div>
@@ -444,7 +568,7 @@
                                             <input asp-for="DenimJhutB2Cons"
                                                    id="DenimJhutB2Cons"
                                                    type="number" step="0.01" min="0"
-                                                   class="form-control" required />
+                                                   class="form-control" />
                                             <span asp-validation-for="DenimJhutB2Cons"
                                                   class="text-danger"></span>
                                         </div>
@@ -493,13 +617,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="1">
+                                        data-prev="2">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-success next-btn"
-                                        data-next="3">
+                                        data-next="4">
                                     Next →
                                 </button>
 
@@ -508,10 +632,10 @@
 
 
                         <!-- =========================================
-                             STEP 3 - CHARCOAL
+                             STEP 4 - CHARCOAL
                         ========================================== -->
 
-                        <div class="step-content" id="step3">
+                        <div class="step-content" id="step4">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -553,7 +677,7 @@
                                             <input asp-for="CharcoalB1Cons"
                                                    id="CharcoalB1Cons"
                                                    type="number" step="0.01" min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
                                             <span asp-validation-for="CharcoalB1Cons"
                                                   class="text-danger"></span>
                                         </div>
@@ -565,7 +689,7 @@
                                             <input asp-for="CharcoalB2Cons"
                                                    id="CharcoalB2Cons"
                                                    type="number" step="0.01" min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
                                             <span asp-validation-for="CharcoalB2Cons"
                                                   class="text-danger"></span>
                                         </div>
@@ -614,13 +738,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="2">
+                                        data-prev="3">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-success next-btn"
-                                        data-next="4">
+                                        data-next="5">
                                     Next →
                                 </button>
 
@@ -631,7 +755,7 @@
                              STEP 4 - CARTON
                         ================================================== -->
 
-                        <div class="step-content" id="step4">
+                        <div class="step-content" id="step5">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -658,8 +782,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"
-                                                   readonly />
+                                                   class="form-control" readonly />
 
                                             <span asp-validation-for="CartonOpening"
                                                   class="text-danger"></span>
@@ -679,7 +802,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="CartonReceive"
                                                   class="text-danger"></span>
@@ -699,7 +822,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="CartonB1Cons"
                                                   class="text-danger"></span>
@@ -719,7 +842,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="CartonB2Cons"
                                                   class="text-danger"></span>
@@ -796,13 +919,13 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="3">
+                                        data-prev="4">
                                     ← Previous
                                 </button>
 
                                 <button type="button"
                                         class="btn btn-success next-btn"
-                                        data-next="5">
+                                        data-next="6">
                                     Next →
                                 </button>
 
@@ -813,7 +936,7 @@
                              STEP 5 - PP
                         ================================================== -->
 
-                        <div class="step-content" id="step5">
+                        <div class="step-content" id="step6">
 
                             <div class="card border-0 shadow-sm mb-4">
 
@@ -840,8 +963,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"
-                                                   readonly />
+                                                   class="form-control" readonly />
 
                                             <span asp-validation-for="PpOpening"
                                                   class="text-danger"></span>
@@ -861,7 +983,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="PpReceive"
                                                   class="text-danger"></span>
@@ -881,7 +1003,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="PpB1Cons"
                                                   class="text-danger"></span>
@@ -901,7 +1023,7 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control"/>
+                                                   class="form-control" />
 
                                             <span asp-validation-for="PpB2Cons"
                                                   class="text-danger"></span>
@@ -960,7 +1082,8 @@
                                                    type="number"
                                                    step="0.01"
                                                    min="0"
-                                                   class="form-control" readonly />
+                                                   class="form-control"
+                                                   readonly />
 
                                             <span asp-validation-for="PpTotalCost"
                                                   class="text-danger"></span>
@@ -977,7 +1100,7 @@
 
                                 <button type="button"
                                         class="btn btn-outline-secondary prev-btn"
-                                        data-prev="4">
+                                        data-prev="5">
                                     ← Previous
                                 </button>
 
@@ -1019,6 +1142,7 @@
 
             const biomassRates = {
                 SewingJhut: Number('@(ViewBag.SewingBiomassRate ?? 0)'),
+                KnitJhut: Number('@(ViewBag.KnitBiomassRate ?? 0)'),
                 DenimJhut: Number('@(ViewBag.DenimBiomassRate ?? 0)'),
                 Charcoal: Number('@(ViewBag.CharcoalRate ?? 0)'),
                 Carton: Number('@(ViewBag.CartonRate ?? 0)'),
@@ -1051,11 +1175,14 @@
 
                 });
 
-                // Progress: 0%, 25%, 50%, 75%, 100%
-                var progress = ((stepNumber - 1) / 4) * 100;
+                // Progress bar: 0% to 100%
+                var totalSteps = $('.step').length;
+
+                var progress = totalSteps > 1
+                    ? ((stepNumber - 1) / (totalSteps - 1)) * 100
+                    : 100;
 
                 $('#stepperProgress').css('width', progress + '%');
-
             }
 
 
@@ -1085,8 +1212,13 @@
                 });
 
                 if (valid) {
+
                     showStep(nextStep);
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
                 }
 
             });
@@ -1102,7 +1234,10 @@
 
                 showStep(previousStep);
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
             });
 
@@ -1115,37 +1250,54 @@
 
                 var targetStep = parseInt($(this).data('step'));
 
+                var activeContent = $('.step-content.active');
+
+                if (!activeContent.length) {
+                    return;
+                }
+
                 var currentStep = parseInt(
-                    $('.step-content.active').attr('id').replace('step', '')
+                    activeContent.attr('id').replace('step', '')
                 );
 
                 // Allow backward navigation
                 if (targetStep <= currentStep) {
+
                     showStep(targetStep);
+
+                    window.scrollTo({
+                        top: 0,
+                        behavior: 'smooth'
+                    });
+
                     return;
                 }
 
                 // Validate intermediate steps
                 for (var i = currentStep; i < targetStep; i++) {
 
+                    var stepContent = $('#step' + i);
+
+                    if (!stepContent.length) {
+                        continue;
+                    }
+
                     var valid = true;
 
-                    $('#step' + i)
-                        .find(':input[required]:enabled')
-                        .each(function () {
+                    stepContent.find(':input[required]:enabled').each(function () {
 
-                            if (!this.checkValidity()) {
+                        if (!this.checkValidity()) {
 
-                                showStep(i);
+                            showStep(i);
 
-                                this.reportValidity();
+                            this.reportValidity();
 
-                                valid = false;
+                            valid = false;
 
-                                return false;
-                            }
+                            return false;
+                        }
 
-                        });
+                    });
 
                     if (!valid) {
                         return;
@@ -1155,7 +1307,10 @@
 
                 showStep(targetStep);
 
-                window.scrollTo({ top: 0, behavior: 'smooth' });
+                window.scrollTo({
+                    top: 0,
+                    behavior: 'smooth'
+                });
 
             });
 
@@ -1190,9 +1345,10 @@
                 var totalConsumption = boiler1 + boiler2;
 
                 // Closing Stock
-                var closingStock = opening + receive - totalConsumption;
+                var closingStock =
+                    opening + receive - totalConsumption;
 
-                // Rate loaded from Controller
+                // Biomass Rate
                 var rate = biomassRates[prefix] || 0;
 
                 // Total Cost
@@ -1222,7 +1378,21 @@
 
             $('#SewingJhutReceive, #SewingJhutB1Cons, #SewingJhutB2Cons')
                 .on('input change', function () {
+
                     calculateStock('SewingJhut');
+
+                });
+
+
+            // =========================================
+            // KNIT JHUT - NEW STEP
+            // =========================================
+
+            $('#KnitJhutReceive, #KnitJhutB1Cons, #KnitJhutB2Cons')
+                .on('input change', function () {
+
+                    calculateStock('KnitJhut');
+
                 });
 
 
@@ -1232,7 +1402,9 @@
 
             $('#DenimJhutReceive, #DenimJhutB1Cons, #DenimJhutB2Cons')
                 .on('input change', function () {
+
                     calculateStock('DenimJhut');
+
                 });
 
 
@@ -1242,7 +1414,9 @@
 
             $('#CharcoalReceive, #CharcoalB1Cons, #CharcoalB2Cons')
                 .on('input change', function () {
+
                     calculateStock('Charcoal');
+
                 });
 
 
@@ -1252,7 +1426,9 @@
 
             $('#CartonReceive, #CartonB1Cons, #CartonB2Cons')
                 .on('input change', function () {
+
                     calculateStock('Carton');
+
                 });
 
 
@@ -1262,7 +1438,9 @@
 
             $('#PpReceive, #PpB1Cons, #PpB2Cons')
                 .on('input change', function () {
+
                     calculateStock('Pp');
+
                 });
 
 
@@ -1271,6 +1449,8 @@
             // =========================================
 
             calculateStock('SewingJhut');
+
+            calculateStock('KnitJhut');
 
             calculateStock('DenimJhut');
 
@@ -1288,6 +1468,14 @@
             $('.create-form').on('submit', function (event) {
 
                 var form = this;
+
+                // Recalculate all values before submission
+                calculateStock('SewingJhut');
+                calculateStock('KnitJhut');
+                calculateStock('DenimJhut');
+                calculateStock('Charcoal');
+                calculateStock('Carton');
+                calculateStock('Pp');
 
                 if (!form.checkValidity()) {
 
@@ -1311,18 +1499,10 @@
                             invalidField.reportValidity();
 
                         }
-
                     }
 
                     return false;
                 }
-
-                // Recalculate all values before submission
-                calculateStock('SewingJhut');
-                calculateStock('DenimJhut');
-                calculateStock('Charcoal');
-                calculateStock('Carton');
-                calculateStock('Pp');
 
             });
 

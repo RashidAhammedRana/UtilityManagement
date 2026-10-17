@@ -483,6 +483,12 @@ public class BiomassStockConsumptionController : Controller
             .Select(x => x.Rate)
             .FirstOrDefault();
 
+        ViewBag.KnitBiomassRate = _context.TblFncItemRates
+            .Where(x => x.Fncid == 38)
+            .OrderByDescending(x => x.Date)
+            .Select(x => x.Rate)
+            .FirstOrDefault();
+
         ViewBag.CartonRate = _context.TblFncItemRates
             .Where(x => x.Fncid == 35)
             .OrderByDescending(x => x.Date)

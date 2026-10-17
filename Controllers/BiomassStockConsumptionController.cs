@@ -253,7 +253,7 @@ public class BiomassStockConsumptionController : Controller
             .Select(x => x.Company)
             .FirstOrDefault();
 
-        var lastTrDate = _context.TblDailyStockConsumptions
+        var lastTrDate = _context.TblBiomassStockConsumptions
             .Where(x => x.Company == currentLocation)
             .OrderByDescending(x => x.Trdate)
             .Select(x => x.Trdate)

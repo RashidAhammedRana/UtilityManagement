@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using DevExpress.Xpo.DB;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -259,6 +260,8 @@ public class DailyStockConsumptionController : Controller
             .Select(x => x.Trdate)
             .FirstOrDefault();
 
+        var currentDate = DateOnly.FromDateTime(DateTime.Now);
+
         var DieselOpeningStock = _context.TblDailyStockConsumptions
             .Where(x => x.Company == currentLocation)
             .OrderByDescending(x => x.Trdate)
@@ -276,17 +279,31 @@ public class DailyStockConsumptionController : Controller
             .Select(x => x.CsLpg)
             .FirstOrDefault();
 
+        var FuelConsumption = _context.TblDailyFuelConsumption
+            .Where(x => x.Company == currentLocation
+             && x.Trdate == currentDate)
+            .Select(x => new
+            {
+                DSL_CONS = x.DieselTotal,
+                NG_CONS = x.NgTotal,
+                CNG_CONS = x.CngTotal,
+                LPG_CONS = x.LpgTotal
+            })
+            .FirstOrDefault();
+
         var model = new TblDailyStockConsumption
         {
             Trdate = lastTrDate.HasValue
                 ? lastTrDate.Value.AddDays(1)
                 : DateOnly.FromDateTime(DateTime.Today),
-            OsDiesel= DieselOpeningStock,
-            OsCng= CngOpeningStock,
-            OsLps= LpgOpeningStock,
 
+            OsDiesel = DieselOpeningStock ?? 0,
+            OsCng = CngOpeningStock ?? 0,
+            OsLps = LpgOpeningStock ?? 0,
 
-
+            ConsDiesel = FuelConsumption?.DSL_CONS ?? 0,
+            ConsCng = FuelConsumption?.CNG_CONS ?? 0,
+            ConsLpg = FuelConsumption?.LPG_CONS ?? 0
         };
 
 

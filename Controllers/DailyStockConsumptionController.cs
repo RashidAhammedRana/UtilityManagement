@@ -281,7 +281,7 @@ public class DailyStockConsumptionController : Controller
 
         var FuelConsumption = _context.TblDailyFuelConsumption
             .Where(x => x.Company == currentLocation
-             && x.Trdate == currentDate)
+             && x.Trdate == lastTrDate)
             .Select(x => new
             {
                 DSL_CONS = x.DieselTotal,

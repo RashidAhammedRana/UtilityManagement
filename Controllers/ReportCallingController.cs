@@ -1075,7 +1075,6 @@ public class ReportCallingController : Controller
         try
         {
             var rptPath = $"UtilityManagement.Reports.{reportName}";
-
             var reportType = Type.GetType(rptPath);
 
             if (reportType == null)

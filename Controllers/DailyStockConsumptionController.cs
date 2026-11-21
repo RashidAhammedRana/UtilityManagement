@@ -279,31 +279,31 @@ public class DailyStockConsumptionController : Controller
             .Select(x => x.CsLpg)
             .FirstOrDefault();
 
-        var FuelConsumption = _context.TblDailyFuelConsumption
-            .Where(x => x.Company == currentLocation
-             && x.Trdate == lastTrDate)
-            .Select(x => new
-            {
-                DSL_CONS = x.DieselTotal,
-                NG_CONS = x.NgTotal,
-                CNG_CONS = x.CngTotal,
-                LPG_CONS = x.LpgTotal
-            })
-            .FirstOrDefault();
+        //var FuelConsumption = _context.TblDailyFuelConsumption
+        //    .Where(x => x.Company == currentLocation
+        //     && x.Trdate == lastTrDate)
+        //    .Select(x => new
+        //    {
+        //        DSL_CONS = x.DieselTotal,
+        //        NG_CONS = x.NgTotal,
+        //        CNG_CONS = x.CngTotal,
+        //        LPG_CONS = x.LpgTotal
+        //    })
+        //    .FirstOrDefault();
 
         var model = new TblDailyStockConsumption
         {
-            Trdate = lastTrDate.HasValue
-                ? lastTrDate.Value.AddDays(1)
-                : DateOnly.FromDateTime(DateTime.Today),
+            //Trdate = lastTrDate.HasValue
+            //    ? lastTrDate.Value.AddDays(1)
+            //    : DateOnly.FromDateTime(DateTime.Today),
 
             OsDiesel = DieselOpeningStock ?? 0,
             OsCng = CngOpeningStock ?? 0,
             OsLps = LpgOpeningStock ?? 0,
 
-            ConsDiesel = FuelConsumption?.DSL_CONS ?? 0,
-            ConsCng = FuelConsumption?.CNG_CONS ?? 0,
-            ConsLpg = FuelConsumption?.LPG_CONS ?? 0
+            //ConsDiesel = FuelConsumption?.DSL_CONS ?? 0,
+            //ConsCng = FuelConsumption?.CNG_CONS ?? 0,
+            //ConsLpg = FuelConsumption?.LPG_CONS ?? 0
         };
 
 
@@ -451,6 +451,35 @@ public class DailyStockConsumptionController : Controller
             .FirstOrDefault();
 
         ViewBag.CurrentCompany = currentCompany;
+    }
+
+    [HttpGet]
+    public IActionResult GetFuelConsumption(DateOnly trdate)
+    {
+        var userId = _userManager.GetUserId(User);
+
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
+        var fuelConsumption = _context.TblDailyFuelConsumption
+            .Where(x => x.Company == currentLocation
+                     && x.Trdate == trdate)
+            .Select(x => new
+            {
+                Diesel = x.DieselTotal,
+                Cng = x.CngTotal,
+                Lpg = x.LpgTotal
+            })
+            .FirstOrDefault();
+
+        return Json(new
+        {
+            diesel = fuelConsumption?.Diesel ?? 0,
+            cng = fuelConsumption?.Cng ?? 0,
+            lpg = fuelConsumption?.Lpg ?? 0
+        });
     }
 }
 

@@ -19,6 +19,27 @@
     string search = ViewBag.SearchString ?? "";
 }
 
+@if (TempData["Warning"] != null)
+{
+    <script>
+        document.addEventListener("DOMContentLoaded", function () {
+
+            Swal.fire({
+                icon: 'warning',
+                title: 'Access Restricted!',
+                text: '@Html.Raw(System.Text.Json.JsonSerializer.Serialize(TempData["Warning"]))',
+                confirmButtonText: 'Understood',
+                confirmButtonColor: '#3085d6',
+                allowOutsideClick: false,
+                customClass: {
+                    popup: 'custom-warning-popup'
+                }
+            });
+
+        });
+    </script>
+}
+
 <!-- =====================================================
      SEARCH & ACTION BUTTONS
 ====================================================== -->
@@ -451,12 +472,12 @@
 
         <a class="page-link"
            href="@Url.Action(
-                                "DailyStockConsumptionList",
-                                new
-                                {
-                                    page = currentPage - 1,
-                                    searchString = search
-                                })">
+                                                                 "DailyStockConsumptionList",
+                                                                 new
+                                                                 {
+                                                                     page = currentPage - 1,
+                                                                     searchString = search
+                                                                 })">
             Prev
         </a>
 
@@ -471,12 +492,12 @@
 
             <a class="page-link"
                href="@Url.Action(
-                                        "DailyStockConsumptionList",
-                                        new
-                                        {
-                                            page = i,
-                                            searchString = search
-                                        })">
+                                                                                     "DailyStockConsumptionList",
+                                                                                     new
+                                                                                     {
+                                                                                         page = i,
+                                                                                         searchString = search
+                                                                                     })">
 
             @i
 
@@ -493,12 +514,12 @@
 
         <a class="page-link"
            href="@Url.Action(
-                                "DailyStockConsumptionList",
-                                new
-                                {
-                                    page = currentPage + 1,
-                                    searchString = search
-                                })">
+                                                                 "DailyStockConsumptionList",
+                                                                 new
+                                                                 {
+                                                                     page = currentPage + 1,
+                                                                     searchString = search
+                                                                 })">
             Next
         </a>
 
@@ -515,8 +536,8 @@
 <style>
 
     /* =====================================================
-           TABLE MAIN
-        ====================================================== */
+                       TABLE MAIN
+                    ====================================================== */
 
     .stock-table {
         width: 100%;
@@ -528,8 +549,8 @@
 
 
         /* =====================================================
-           ALL TABLE CELLS
-        ====================================================== */
+                       ALL TABLE CELLS
+                    ====================================================== */
 
         .stock-table th,
         .stock-table td {
@@ -541,8 +562,8 @@
 
 
         /* =====================================================
-           ALL HEADER CENTER
-        ====================================================== */
+                       ALL HEADER CENTER
+                    ====================================================== */
 
         .stock-table thead th {
             text-align: center !important;
@@ -552,8 +573,8 @@
 
 
         /* =====================================================
-           SL HEADER
-        ====================================================== */
+                       SL HEADER
+                    ====================================================== */
 
         .stock-table .sl-header {
             background-color: #f1f3f5 !important;
@@ -567,8 +588,8 @@
 
 
         /* =====================================================
-           DATE HEADER
-        ====================================================== */
+                       DATE HEADER
+                    ====================================================== */
 
         .stock-table .date-header {
             background-color: #f1f3f5 !important;
@@ -581,8 +602,8 @@
 
 
         /* =====================================================
-           COMPANY HEADER
-        ====================================================== */
+                       COMPANY HEADER
+                    ====================================================== */
 
         .stock-table .company-header {
             background-color: #f1f3f5 !important;
@@ -595,8 +616,8 @@
 
 
         /* =====================================================
-           ACTION HEADER
-        ====================================================== */
+                       ACTION HEADER
+                    ====================================================== */
 
         .stock-table .actions-header {
             background-color: #f1f3f5 !important;
@@ -609,8 +630,8 @@
 
 
         /* =====================================================
-           NATURAL GAS MAIN HEADER
-        ====================================================== */
+                       NATURAL GAS MAIN HEADER
+                    ====================================================== */
 
         .stock-table .ng-header {
             background-color: #dbeafe !important;
@@ -622,8 +643,8 @@
 
 
         /* =====================================================
-           NG SUB HEADER
-        ====================================================== */
+                       NG SUB HEADER
+                    ====================================================== */
 
         .stock-table .ng-sub {
             background-color: #eff6ff !important;
@@ -635,8 +656,8 @@
 
 
             /* =====================================================
-           NG THERMAL HEADER - NORMAL
-        ====================================================== */
+                       NG THERMAL HEADER - NORMAL
+                    ====================================================== */
 
             .stock-table .ng-sub.thermal-sub {
                 background-color: #e0ecff !important;
@@ -646,8 +667,8 @@
 
 
         /* =====================================================
-           NG TOTAL HEADER - BOLD
-        ====================================================== */
+                       NG TOTAL HEADER - BOLD
+                    ====================================================== */
 
         .stock-table .ng-total-sub {
             background-color: #bfdbfe !important;
@@ -659,8 +680,8 @@
 
 
         /* =====================================================
-           DIESEL MAIN HEADER
-        ====================================================== */
+                       DIESEL MAIN HEADER
+                    ====================================================== */
 
         .stock-table .diesel-header {
             background-color: #fef3c7 !important;
@@ -672,8 +693,8 @@
 
 
         /* =====================================================
-           DIESEL SUB HEADER
-        ====================================================== */
+                       DIESEL SUB HEADER
+                    ====================================================== */
 
         .stock-table .diesel-sub {
             background-color: #fffbeb !important;
@@ -685,8 +706,8 @@
 
 
             /* =====================================================
-           DIESEL THERMAL HEADER - NORMAL
-        ====================================================== */
+                       DIESEL THERMAL HEADER - NORMAL
+                    ====================================================== */
 
             .stock-table .diesel-sub.thermal-sub {
                 background-color: #fff1c7 !important;
@@ -696,8 +717,8 @@
 
 
         /* =====================================================
-           DIESEL TOTAL HEADER - BOLD
-        ====================================================== */
+                       DIESEL TOTAL HEADER - BOLD
+                    ====================================================== */
 
         .stock-table .diesel-total-sub {
             background-color: #fde68a !important;
@@ -709,8 +730,8 @@
 
 
         /* =====================================================
-           CNG MAIN HEADER
-        ====================================================== */
+                       CNG MAIN HEADER
+                    ====================================================== */
 
         .stock-table .cng-header {
             background-color: #dcfce7 !important;
@@ -722,8 +743,8 @@
 
 
         /* =====================================================
-           CNG SUB HEADER
-        ====================================================== */
+                       CNG SUB HEADER
+                    ====================================================== */
 
         .stock-table .cng-sub {
             background-color: #f0fdf4 !important;
@@ -735,8 +756,8 @@
 
 
             /* =====================================================
-           CNG THERMAL HEADER - NORMAL
-        ====================================================== */
+                       CNG THERMAL HEADER - NORMAL
+                    ====================================================== */
 
             .stock-table .cng-sub.thermal-sub {
                 background-color: #dcfce7 !important;
@@ -746,8 +767,8 @@
 
 
         /* =====================================================
-           CNG TOTAL HEADER - BOLD
-        ====================================================== */
+                       CNG TOTAL HEADER - BOLD
+                    ====================================================== */
 
         .stock-table .cng-total-sub {
             background-color: #bbf7d0 !important;
@@ -759,8 +780,8 @@
 
 
         /* =====================================================
-           LPG MAIN HEADER
-        ====================================================== */
+                       LPG MAIN HEADER
+                    ====================================================== */
 
         .stock-table .lpg-header {
             background-color: #fce7f3 !important;
@@ -772,8 +793,8 @@
 
 
         /* =====================================================
-           LPG SUB HEADER
-        ====================================================== */
+                       LPG SUB HEADER
+                    ====================================================== */
 
         .stock-table .lpg-sub {
             background-color: #fdf2f8 !important;
@@ -785,8 +806,8 @@
 
 
             /* =====================================================
-           LPG THERMAL HEADER - NORMAL
-        ====================================================== */
+                       LPG THERMAL HEADER - NORMAL
+                    ====================================================== */
 
             .stock-table .lpg-sub.thermal-sub {
                 background-color: #fce7f3 !important;
@@ -796,8 +817,8 @@
 
 
         /* =====================================================
-           LPG TOTAL HEADER - BOLD
-        ====================================================== */
+                       LPG TOTAL HEADER - BOLD
+                    ====================================================== */
 
         .stock-table .lpg-total-sub {
             background-color: #fbcfe8 !important;
@@ -809,8 +830,8 @@
 
 
         /* =====================================================
-           BODY - ALL CENTER
-        ====================================================== */
+                       BODY - ALL CENTER
+                    ====================================================== */
 
         .stock-table tbody td {
             text-align: center !important;
@@ -819,8 +840,8 @@
 
 
             /* =====================================================
-           SL BODY
-        ====================================================== */
+                       SL BODY
+                    ====================================================== */
 
             .stock-table tbody td:first-child {
                 text-align: center !important;
@@ -833,8 +854,8 @@
 
 
         /* =====================================================
-           DATE BODY
-        ====================================================== */
+                       DATE BODY
+                    ====================================================== */
 
         .stock-table .date-cell {
             text-align: center !important;
@@ -845,8 +866,8 @@
 
 
         /* =====================================================
-           COMPANY BODY
-        ====================================================== */
+                       COMPANY BODY
+                    ====================================================== */
 
         .stock-table .company-cell {
             text-align: center !important;
@@ -857,8 +878,8 @@
 
 
         /* =====================================================
-           NG BODY
-        ====================================================== */
+                       NG BODY
+                    ====================================================== */
 
         .stock-table .ng-cell {
             background-color: #f8fbff !important;
@@ -870,8 +891,8 @@
 
 
             /* =====================================================
-           NG THERMAL BODY - NORMAL
-        ====================================================== */
+                       NG THERMAL BODY - NORMAL
+                    ====================================================== */
 
             .stock-table .ng-cell.thermal-cell {
                 background-color: #edf4ff !important;
@@ -883,8 +904,8 @@
 
 
         /* =====================================================
-           NG TOTAL BODY - BOLD
-        ====================================================== */
+                       NG TOTAL BODY - BOLD
+                    ====================================================== */
 
         .stock-table .ng-total {
             background-color: #e8f1ff !important;
@@ -896,8 +917,8 @@
 
 
         /* =====================================================
-           DIESEL BODY
-        ====================================================== */
+                       DIESEL BODY
+                    ====================================================== */
 
         .stock-table .diesel-cell {
             background-color: #fffdf5 !important;
@@ -909,8 +930,8 @@
 
 
             /* =====================================================
-           DIESEL THERMAL BODY - NORMAL
-        ====================================================== */
+                       DIESEL THERMAL BODY - NORMAL
+                    ====================================================== */
 
             .stock-table .diesel-cell.thermal-cell {
                 background-color: #fff8df !important;
@@ -922,8 +943,8 @@
 
 
         /* =====================================================
-           DIESEL TOTAL BODY - BOLD
-        ====================================================== */
+                       DIESEL TOTAL BODY - BOLD
+                    ====================================================== */
 
         .stock-table .diesel-total {
             background-color: #fff4cc !important;
@@ -935,8 +956,8 @@
 
 
         /* =====================================================
-           CNG BODY
-        ====================================================== */
+                       CNG BODY
+                    ====================================================== */
 
         .stock-table .cng-cell {
             background-color: #f7fff9 !important;
@@ -948,8 +969,8 @@
 
 
             /* =====================================================
-           CNG THERMAL BODY - NORMAL
-        ====================================================== */
+                       CNG THERMAL BODY - NORMAL
+                    ====================================================== */
 
             .stock-table .cng-cell.thermal-cell {
                 background-color: #eafaf0 !important;
@@ -961,8 +982,8 @@
 
 
         /* =====================================================
-           CNG TOTAL BODY - BOLD
-        ====================================================== */
+                       CNG TOTAL BODY - BOLD
+                    ====================================================== */
 
         .stock-table .cng-total {
             background-color: #e4f8ea !important;
@@ -974,8 +995,8 @@
 
 
         /* =====================================================
-           LPG BODY
-        ====================================================== */
+                       LPG BODY
+                    ====================================================== */
 
         .stock-table .lpg-cell {
             background-color: #fff8fc !important;
@@ -987,8 +1008,8 @@
 
 
             /* =====================================================
-           LPG THERMAL BODY - NORMAL
-        ====================================================== */
+                       LPG THERMAL BODY - NORMAL
+                    ====================================================== */
 
             .stock-table .lpg-cell.thermal-cell {
                 background-color: #fdf0f7 !important;
@@ -1000,8 +1021,8 @@
 
 
         /* =====================================================
-           LPG TOTAL BODY - BOLD
-        ====================================================== */
+                       LPG TOTAL BODY - BOLD
+                    ====================================================== */
 
         .stock-table .lpg-total {
             background-color: #fbe5f1 !important;
@@ -1013,8 +1034,8 @@
 
 
         /* =====================================================
-           TOTAL COLUMNS - COMPACT
-        ====================================================== */
+                       TOTAL COLUMNS - COMPACT
+                    ====================================================== */
 
         .stock-table .total-sub,
         .stock-table .total-cell {
@@ -1028,8 +1049,8 @@
 
 
         /* =====================================================
-           THERMAL COLUMNS - COMPACT + NORMAL
-        ====================================================== */
+                       THERMAL COLUMNS - COMPACT + NORMAL
+                    ====================================================== */
 
         .stock-table .thermal-sub,
         .stock-table .thermal-cell {
@@ -1042,8 +1063,8 @@
 
 
         /* =====================================================
-           ACTIONS BODY
-        ====================================================== */
+                       ACTIONS BODY
+                    ====================================================== */
 
         .stock-table tbody td:last-child {
             text-align: center !important;
@@ -1054,8 +1075,8 @@
 
 
             /* =====================================================
-           ACTION BUTTON WRAPPER
-        ====================================================== */
+                       ACTION BUTTON WRAPPER
+                    ====================================================== */
 
             .stock-table tbody td:last-child > div {
                 display: flex !important;
@@ -1068,8 +1089,8 @@
 
 
         /* =====================================================
-           ACTION BUTTONS
-        ====================================================== */
+                       ACTION BUTTONS
+                    ====================================================== */
 
         .stock-table .btn-sm {
             padding: 3px 8px !important;
@@ -1080,8 +1101,8 @@
 
 
         /* =====================================================
-           ROW HOVER
-        ====================================================== */
+                       ROW HOVER
+                    ====================================================== */
 
         .stock-table tbody tr:hover td {
             filter: brightness(0.97);
@@ -1089,8 +1110,8 @@
 
 
         /* =====================================================
-           KEEP HEADER COLORS ON HOVER
-        ====================================================== */
+                       KEEP HEADER COLORS ON HOVER
+                    ====================================================== */
 
         .stock-table thead tr:hover th {
             filter: none !important;
@@ -1098,55 +1119,72 @@
 
 
     /* =====================================================
-           RESPONSIVE
-        ====================================================== */
+                       RESPONSIVE
+                    ====================================================== */
 
     @@media (max-width: 768px) {
-        .stock-table
-
-    {
-        font-size: 12px;
-    }
+        .stock-table {
+            font-size: 12px;
+        }
 
 
-    .stock-table th,
-    .stock-table td {
-        padding: 4px 5px !important;
-    }
+            .stock-table th,
+            .stock-table td {
+                padding: 4px 5px !important;
+            }
 
 
-    .stock-table .total-sub,
-    .stock-table .total-cell {
-        min-width: 42px !important;
-        width: 42px !important;
-        padding-left: 2px !important;
-        padding-right: 2px !important;
-    }
+            .stock-table .total-sub,
+            .stock-table .total-cell {
+                min-width: 42px !important;
+                width: 42px !important;
+                padding-left: 2px !important;
+                padding-right: 2px !important;
+            }
 
 
-    .stock-table .thermal-sub,
-    .stock-table .thermal-cell {
-        padding-left: 3px !important;
-        padding-right: 3px !important;
-    }
+            .stock-table .thermal-sub,
+            .stock-table .thermal-cell {
+                padding-left: 3px !important;
+                padding-right: 3px !important;
+            }
 
 
-    .stock-table .company-header,
-    .stock-table .company-cell {
-        min-width: 130px;
-    }
+            .stock-table .company-header,
+            .stock-table .company-cell {
+                min-width: 130px;
+            }
 
 
-    .stock-table .date-header,
-    .stock-table .date-cell {
-        min-width: 85px;
-    }
+            .stock-table .date-header,
+            .stock-table .date-cell {
+                min-width: 85px;
+            }
 
 
-    .stock-table .actions-header,
-    .stock-table tbody td:last-child {
-        min-width: 100px;
-    }
+            .stock-table .actions-header,
+            .stock-table tbody td:last-child {
+                min-width: 100px;
+            }
 
+        .custom-warning-popup {
+            border-radius: 18px !important;
+            padding: 25px !important;
+        }
+
+        .swal2-title {
+            font-size: 23px !important;
+            font-weight: 700 !important;
+        }
+
+        .swal2-html-container {
+            font-size: 15px !important;
+            line-height: 1.6 !important;
+        }
+
+        .swal2-confirm {
+            border-radius: 8px !important;
+            padding: 10px 28px !important;
+        }
     }
 </style>

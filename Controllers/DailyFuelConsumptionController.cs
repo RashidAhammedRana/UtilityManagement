@@ -310,10 +310,24 @@ public class DailyFuelConsumptionController : Controller
     public async Task<IActionResult> Edit(int id)
     {
         LoadCompanyList();
+
         var reading = await _context.TblDailyFuelConsumption
             .FirstOrDefaultAsync(x => x.Trid == id);
+
         if (reading == null)
             return NotFound();
+
+        bool isUsed = await _context.TblDailyStockConsumptions
+            .AnyAsync(x => x.Company == reading.Company
+                        && x.Trdate == reading.Trdate);
+
+        if (isUsed)
+        {
+            TempData["Warning"] =
+                "Modification or deletion is not permitted because this record has already been referenced in Fuel Stock & Consumption.";
+
+            return RedirectToAction("DailyFuelConsumptionList");
+        }
 
         return View(reading);
     }
@@ -377,10 +391,23 @@ public class DailyFuelConsumptionController : Controller
     [HttpGet]
     public async Task<IActionResult> Delete(int id)
     {
-        var data = await _context.TblDailyFuelConsumption.FindAsync(id);
+        var data = await _context.TblDailyFuelConsumption
+            .FirstOrDefaultAsync(x => x.Trid == id);
 
         if (data == null)
             return NotFound();
+
+        bool isUsed = await _context.TblDailyStockConsumptions
+            .AnyAsync(x => x.Company == data.Company
+                        && x.Trdate == data.Trdate);
+
+        if (isUsed)
+        {
+            TempData["Warning"] =
+                "Modification or deletion is not permitted because this record has already been referenced in Fuel Stock & Consumption.";
+
+            return RedirectToAction("DailyFuelConsumptionList");
+        }
 
         return View(data);
     }
@@ -416,6 +443,19 @@ public class DailyFuelConsumptionController : Controller
             .FirstOrDefault();
 
         ViewBag.CurrentCompany = currentCompany;
+    }
+
+    private bool IsFuelDataAlreadyUsed(int id)
+    {
+        var fuelData = _context.TblDailyFuelConsumption
+            .FirstOrDefault(x => x.Trid == id);
+
+        if (fuelData == null)
+            return false;
+
+        return _context.TblDailyStockConsumptions
+            .Any(x => x.Company == fuelData.Company
+                   && x.Trdate == fuelData.Trdate);
     }
 }
 

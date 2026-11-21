@@ -5,6 +5,211 @@
 }
 
 <link href="~/css/edit-responsive.css" rel="stylesheet" />
+<style>
+
+    /* =====================================================
+                       STEPPER WRAPPER
+                    ====================================================== */
+
+    .stepper-wrapper {
+        position: relative;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        align-items: flex-start;
+        margin-bottom: 30px;
+        padding: 0;
+    }
+
+
+    /* =====================================================
+                       STEPPER BACKGROUND LINE
+
+                       Starts exactly from:
+                       Step 1 center
+
+                       Ends exactly at:
+                       Step 3 center
+                    ====================================================== */
+
+    .stepper-line {
+        position: absolute;
+        top: 20px;
+        left: 16.666667%;
+        right: 16.666667%;
+        height: 4px;
+        background-color: #dee2e6;
+        border-radius: 10px;
+        z-index: 0;
+        overflow: hidden;
+    }
+
+
+    /* =====================================================
+                       COLORED PROGRESS LINE
+                    ====================================================== */
+
+    .stepper-line-progress {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0%;
+        height: 100%;
+        background-color: #198754;
+        border-radius: 10px;
+        transition: width 0.4s ease;
+    }
+
+
+    /* =====================================================
+                       INDIVIDUAL STEP
+                    ====================================================== */
+
+    .step {
+        position: relative;
+        z-index: 1;
+        width: 33.333333%;
+        text-align: center;
+        cursor: pointer;
+    }
+
+
+    /* =====================================================
+                       STEP CIRCLE
+                    ====================================================== */
+
+    .step-circle {
+        width: 42px;
+        height: 42px;
+        line-height: 42px;
+        border-radius: 50%;
+        background-color: #dee2e6;
+        color: #495057;
+        margin: 0 auto 8px;
+        font-weight: 700;
+        position: relative;
+        z-index: 2;
+        transition: all 0.3s ease;
+    }
+
+
+    /* =====================================================
+                       STEP TITLE
+                    ====================================================== */
+
+    .step-title {
+        font-size: 14px;
+        font-weight: 600;
+        color: #6c757d;
+    }
+
+
+    /* =====================================================
+                       ACTIVE STEP
+                    ====================================================== */
+
+    .step.active .step-circle {
+        background-color: #198754;
+        color: #ffffff;
+        box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.12);
+    }
+
+
+    .step.active .step-title {
+        color: #198754;
+    }
+
+
+    /* =====================================================
+                       COMPLETED STEP
+                    ====================================================== */
+
+    .step.completed .step-circle {
+        background-color: #198754;
+        color: #ffffff;
+    }
+
+
+    .step.completed .step-title {
+        color: #198754;
+    }
+
+
+    /* =====================================================
+                       STEP CONTENT
+                    ====================================================== */
+
+    .step-content {
+        display: none;
+    }
+
+
+        .step-content.active {
+            display: block;
+            animation: fadeIn 0.3s ease-in-out;
+        }
+
+
+    /* =====================================================
+                       FADE ANIMATION
+                    ====================================================== */
+
+    @@keyframes fadeIn {
+        from {
+            opacity: 0;
+            transform: translateX(10px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateX(0);
+        }
+    }
+
+
+    /* =====================================================
+                       CLOSING STOCK
+                    ====================================================== */
+
+    .closing-stock {
+        background-color: #f1f3f5 !important;
+        color: #198754;
+        font-weight: 700;
+        font-size: 17px;
+    }
+
+
+    /* =====================================================
+                       MOBILE
+                    ====================================================== */
+
+    @@media (max-width: 576px) {
+        .stepper-wrapper {
+            width: 100%;
+            padding: 0;
+        }
+
+
+        .stepper-line {
+            top: 17px;
+            left: 16.666667%;
+            right: 16.666667%;
+            height: 3px;
+        }
+
+
+        .step-circle {
+            width: 35px;
+            height: 35px;
+            line-height: 35px;
+        }
+
+
+        .step-title {
+            font-size: 11px;
+        }
+    }
+</style>
 
 <div class="container edit-page">
 
@@ -985,220 +1190,27 @@
             showStep(1);
 
         });
+        // consumption will showStep automatically as selectedDate date
+        $("#Trdate").on("change", function () {
+            var selectedDate = $(this).val();
+            $.ajax({
+                url: '@Url.Action("GetFuelConsumption", "DailyStockConsumption")',
+                type: 'GET',
+                data: { trdate: selectedDate },
 
+                success: function (response) {
+
+                    $("#ConsDiesel").val(response.diesel);
+
+                    $("#ConsCng").val(response.cng);
+
+                    $("#ConsLpg").val(response.lpg);
+                },
+
+                error: function () {
+                    alert("Fuel consumption load failed!");
+                }
+            });
     </script>
-
-
-    <style>
-
-        /* =====================================================
-                   STEPPER WRAPPER
-                ====================================================== */
-
-        .stepper-wrapper {
-            position: relative;
-            width: 100%;
-            display: flex;
-            justify-content: space-between;
-            align-items: flex-start;
-            margin-bottom: 30px;
-            padding: 0;
-        }
-
-
-        /* =====================================================
-                   STEPPER BACKGROUND LINE
-
-                   Starts exactly from:
-                   Step 1 center
-
-                   Ends exactly at:
-                   Step 3 center
-                ====================================================== */
-
-        .stepper-line {
-            position: absolute;
-            top: 20px;
-            left: 16.666667%;
-            right: 16.666667%;
-            height: 4px;
-            background-color: #dee2e6;
-            border-radius: 10px;
-            z-index: 0;
-            overflow: hidden;
-        }
-
-
-        /* =====================================================
-                   COLORED PROGRESS LINE
-                ====================================================== */
-
-        .stepper-line-progress {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 0%;
-            height: 100%;
-            background-color: #198754;
-            border-radius: 10px;
-            transition: width 0.4s ease;
-        }
-
-
-        /* =====================================================
-                   INDIVIDUAL STEP
-                ====================================================== */
-
-        .step {
-            position: relative;
-            z-index: 1;
-            width: 33.333333%;
-            text-align: center;
-            cursor: pointer;
-        }
-
-
-        /* =====================================================
-                   STEP CIRCLE
-                ====================================================== */
-
-        .step-circle {
-            width: 42px;
-            height: 42px;
-            line-height: 42px;
-            border-radius: 50%;
-            background-color: #dee2e6;
-            color: #495057;
-            margin: 0 auto 8px;
-            font-weight: 700;
-            position: relative;
-            z-index: 2;
-            transition: all 0.3s ease;
-        }
-
-
-        /* =====================================================
-                   STEP TITLE
-                ====================================================== */
-
-        .step-title {
-            font-size: 14px;
-            font-weight: 600;
-            color: #6c757d;
-        }
-
-
-        /* =====================================================
-                   ACTIVE STEP
-                ====================================================== */
-
-        .step.active .step-circle {
-            background-color: #198754;
-            color: #ffffff;
-            box-shadow: 0 0 0 5px rgba(13, 110, 253, 0.12);
-        }
-
-
-        .step.active .step-title {
-            color: #198754;
-        }
-
-
-        /* =====================================================
-                   COMPLETED STEP
-                ====================================================== */
-
-        .step.completed .step-circle {
-            background-color: #198754;
-            color: #ffffff;
-        }
-
-
-        .step.completed .step-title {
-            color: #198754;
-        }
-
-
-        /* =====================================================
-                   STEP CONTENT
-                ====================================================== */
-
-        .step-content {
-            display: none;
-        }
-
-
-            .step-content.active {
-                display: block;
-                animation: fadeIn 0.3s ease-in-out;
-            }
-
-
-        /* =====================================================
-                   FADE ANIMATION
-                ====================================================== */
-
-        @@keyframes fadeIn {
-            from
-
-        {
-            opacity: 0;
-            transform: translateX(10px);
-        }
-
-        to {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        }
-
-
-        /* =====================================================
-                   CLOSING STOCK
-                ====================================================== */
-
-        .closing-stock {
-            background-color: #f1f3f5 !important;
-            color: #198754;
-            font-weight: 700;
-            font-size: 17px;
-        }
-
-
-        /* =====================================================
-                   MOBILE
-                ====================================================== */
-
-        @@media (max-width: 576px) {
-            .stepper-wrapper
-
-        {
-            width: 100%;
-            padding: 0;
-        }
-
-
-        .stepper-line {
-            top: 17px;
-            left: 16.666667%;
-            right: 16.666667%;
-            height: 3px;
-        }
-
-
-        .step-circle {
-            width: 35px;
-            height: 35px;
-            line-height: 35px;
-        }
-
-
-        .step-title {
-            font-size: 11px;
-        }
-
-        }
-    </style>
 
 }

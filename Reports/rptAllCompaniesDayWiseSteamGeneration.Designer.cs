@@ -182,6 +182,8 @@
             this.EXT_STEAM_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
             this.CLOTH_STEAM_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
             this.NCSL_STEAM_GEN_COST = new DevExpress.XtraReports.UI.CalculatedField();
+            this.xrTableCell91 = new DevExpress.XtraReports.UI.XRTableCell();
+            this.xrTableCell92 = new DevExpress.XtraReports.UI.XRTableCell();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable1)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.xrTable3)).BeginInit();
@@ -201,7 +203,7 @@
             storedProcQuery1.Parameters.AddRange(new DevExpress.DataAccess.Sql.QueryParameter[] {
             queryParameter1,
             queryParameter2});
-            storedProcQuery1.StoredProcName = "SP_GET_STEAM_GENERATION_DATA_ALL_COMPANIES";
+            storedProcQuery1.StoredProcName = "SP_GET_STEAM_GENERATION_DATA_ALL_COMPANIES_R";
             this.sqlDataSource1.Queries.AddRange(new DevExpress.DataAccess.Sql.SqlQuery[] {
             storedProcQuery1});
             this.sqlDataSource1.ResultSchemaSerializable = resources.GetString("sqlDataSource1.ResultSchemaSerializable");
@@ -369,6 +371,7 @@
             this.xrTableCell11,
             this.xrTableCell13,
             this.xrTableCell14,
+            this.xrTableCell91,
             this.xrTableCell16,
             this.xrTableCell24,
             this.xrTableCell8,
@@ -550,9 +553,9 @@
             this.xrTableCell14.StylePriority.UseFont = false;
             this.xrTableCell14.StylePriority.UseForeColor = false;
             this.xrTableCell14.StylePriority.UseTextAlignment = false;
-            this.xrTableCell14.Text = "Biomass Boiler Gen.(Kg)";
+            this.xrTableCell14.Text = "Biomass B-01";
             this.xrTableCell14.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell14.Weight = 0.61902088065656968D;
+            this.xrTableCell14.Weight = 0.44688329721664843D;
             // 
             // xrTableCell16
             // 
@@ -567,7 +570,7 @@
             this.xrTableCell16.StylePriority.UseTextAlignment = false;
             this.xrTableCell16.Text = "EGB Boiler Gen.(Kg)";
             this.xrTableCell16.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell16.Weight = 0.6190209049738824D;
+            this.xrTableCell16.Weight = 0.5180942433206448D;
             // 
             // xrTableCell24
             // 
@@ -582,7 +585,7 @@
             this.xrTableCell24.StylePriority.UseTextAlignment = false;
             this.xrTableCell24.Text = "Total Steam Gen. (Kg)";
             this.xrTableCell24.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell24.Weight = 0.619020904973882D;
+            this.xrTableCell24.Weight = 0.59098531963310053D;
             // 
             // xrTableCell8
             // 
@@ -597,7 +600,7 @@
             this.xrTableCell8.StylePriority.UseTextAlignment = false;
             this.xrTableCell8.Text = "Total Cost(Tk)";
             this.xrTableCell8.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
-            this.xrTableCell8.Weight = 0.5921069449369204D;
+            this.xrTableCell8.Weight = 0.44632347815421219D;
             // 
             // xrTableCell19
             // 
@@ -849,6 +852,7 @@
             this.xrTableCell23,
             this.xrTableCell51,
             this.xrTableCell60,
+            this.xrTableCell92,
             this.xrTableCell61,
             this.xrTableCell62,
             this.xrTableCell64,
@@ -1052,7 +1056,7 @@
             // 
             this.xrTableCell60.BackColor = System.Drawing.Color.Transparent;
             this.xrTableCell60.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
-            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CCLBD_Biomas_Boiler]")});
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CCLBD_Biomas_Boiler_1]")});
             this.xrTableCell60.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
             this.xrTableCell60.ForeColor = System.Drawing.Color.Black;
             this.xrTableCell60.Multiline = true;
@@ -1064,7 +1068,7 @@
             this.xrTableCell60.Text = "xrTableCell60";
             this.xrTableCell60.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell60.TextFormatString = "{0:N0}";
-            this.xrTableCell60.Weight = 0.48290767190168526D;
+            this.xrTableCell60.Weight = 0.34862050474096423D;
             // 
             // xrTableCell61
             // 
@@ -1082,7 +1086,7 @@
             this.xrTableCell61.Text = "xrTableCell61";
             this.xrTableCell61.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell61.TextFormatString = "{0:N0}";
-            this.xrTableCell61.Weight = 0.48290767190168515D;
+            this.xrTableCell61.Weight = 0.40417221279866755D;
             // 
             // xrTableCell62
             // 
@@ -1100,7 +1104,7 @@
             this.xrTableCell62.Text = "xrTableCell62";
             this.xrTableCell62.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell62.TextFormatString = "{0:N0}";
-            this.xrTableCell62.Weight = 0.48290767190168532D;
+            this.xrTableCell62.Weight = 0.46103770775672381D;
             // 
             // xrTableCell64
             // 
@@ -1118,7 +1122,7 @@
             this.xrTableCell64.Text = "xrTableCell64";
             this.xrTableCell64.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell64.TextFormatString = "{0:N0}";
-            this.xrTableCell64.Weight = 0.46191168616682943D;
+            this.xrTableCell64.Weight = 0.34818377183456539D;
             // 
             // xrTableCell22
             // 
@@ -1790,7 +1794,7 @@
             this.xrTableCell69.Text = "xrTableCell62";
             this.xrTableCell69.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell69.TextFormatString = "{0:N0}";
-            this.xrTableCell69.Weight = 0.48290767190168532D;
+            this.xrTableCell69.Weight = 0.59663558623394941D;
             // 
             // xrTableCell71
             // 
@@ -1811,7 +1815,7 @@
             this.xrTableCell71.Text = "xrTableCell64";
             this.xrTableCell71.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
             this.xrTableCell71.TextFormatString = "{0:N0}";
-            this.xrTableCell71.Weight = 0.46191168616682943D;
+            this.xrTableCell71.Weight = 0.34818377183456539D;
             // 
             // xrTableCell75
             // 
@@ -2174,6 +2178,38 @@
     "\n";
             this.NCSL_STEAM_GEN_COST.Name = "NCSL_STEAM_GEN_COST";
             // 
+            // xrTableCell91
+            // 
+            this.xrTableCell91.BackColor = System.Drawing.Color.WhiteSmoke;
+            this.xrTableCell91.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F, DevExpress.Drawing.DXFontStyle.Bold);
+            this.xrTableCell91.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell91.Multiline = true;
+            this.xrTableCell91.Name = "xrTableCell91";
+            this.xrTableCell91.StylePriority.UseBackColor = false;
+            this.xrTableCell91.StylePriority.UseFont = false;
+            this.xrTableCell91.StylePriority.UseForeColor = false;
+            this.xrTableCell91.StylePriority.UseTextAlignment = false;
+            this.xrTableCell91.Text = "Biomass B-02";
+            this.xrTableCell91.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell91.Weight = 0.44688329721664843D;
+            // 
+            // xrTableCell92
+            // 
+            this.xrTableCell92.BackColor = System.Drawing.Color.Transparent;
+            this.xrTableCell92.ExpressionBindings.AddRange(new DevExpress.XtraReports.UI.ExpressionBinding[] {
+            new DevExpress.XtraReports.UI.ExpressionBinding("BeforePrint", "Text", "[CCLBD_Biomas_Boiler_2]")});
+            this.xrTableCell92.Font = new DevExpress.Drawing.DXFont("Calibri Light", 8F);
+            this.xrTableCell92.ForeColor = System.Drawing.Color.Black;
+            this.xrTableCell92.Multiline = true;
+            this.xrTableCell92.Name = "xrTableCell92";
+            this.xrTableCell92.StylePriority.UseBackColor = false;
+            this.xrTableCell92.StylePriority.UseFont = false;
+            this.xrTableCell92.StylePriority.UseForeColor = false;
+            this.xrTableCell92.StylePriority.UseTextAlignment = false;
+            this.xrTableCell92.Text = "xrTableCell92";
+            this.xrTableCell92.TextAlignment = DevExpress.XtraPrinting.TextAlignment.MiddleCenter;
+            this.xrTableCell92.Weight = 0.34862050474096423D;
+            // 
             // rptAllCompaniesDayWiseSteamGeneration
             // 
             this.Bands.AddRange(new DevExpress.XtraReports.UI.Band[] {
@@ -2344,5 +2380,7 @@
         private DevExpress.XtraReports.UI.CalculatedField EXT_STEAM_GEN_COST;
         private DevExpress.XtraReports.UI.CalculatedField CLOTH_STEAM_GEN_COST;
         private DevExpress.XtraReports.UI.CalculatedField NCSL_STEAM_GEN_COST;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell91;
+        private DevExpress.XtraReports.UI.XRTableCell xrTableCell92;
     }
 }

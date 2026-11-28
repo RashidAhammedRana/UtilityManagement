@@ -250,15 +250,35 @@ public class NgGeneratorReadingInfoController : Controller
         .Select(r => r.Rate)
         .FirstOrDefault();
 
+        // MAP LOCATION -> LUBE OIL FNC ID
+        int? lubeOilFncId = currentLocation switch
+        {
+            "Tropical Knitex Limited" => 39,     // G.G Lube Oil-TKL
+            "Cotton Club BD Limited" => 40,     // G.G Lube Oil-CCL
+            "Noor Checks & Stripes Ltd." => 41,                 // "XYZ" => 41,  // G.G Lube Oil-... (if another location exists)
+            _ => null
+        };
+
+        if (lubeOilFncId == null)
+        {
+            // location unknown / not mapped → skip rate lookup
+            // log or handle as needed
+            return BadRequest($"No Lube Oil FNC mapping for location '{currentLocation}'.");
+        }
+
+        // -----------------------------------------
+        // GET LATEST LUBE OIL RATE FOR THAT LOCATION
+        // -----------------------------------------
+
         var lubOilRate = _context.TblFncItems
-        .Where(i => i.Fncid ==12)//Lube Oil
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
+            .Where(i => i.Fncid == lubeOilFncId.Value)   // location-based
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
 
         ViewBag.CngRate = cngRate;
         ViewBag.NgRate = ngRate;
@@ -320,6 +340,12 @@ public class NgGeneratorReadingInfoController : Controller
     [HttpGet]
     public async Task<IActionResult> Edit(int id)
     {
+        var userId = _userManager.GetUserId(User);
+        var currentLocation = _context.Users
+            .Where(x => x.Id == userId)
+            .Select(x => x.Company)
+            .FirstOrDefault();
+
         var reading = await _context.TblNgGeneratorReadingInfos
             .FirstOrDefaultAsync(x => x.Trid == id);
 
@@ -353,15 +379,47 @@ public class NgGeneratorReadingInfoController : Controller
         .Select(r => r.Rate)
         .FirstOrDefault();
 
+        // -----------------------------------------
+        // MAP LOCATION -> LUBE OIL FNC ID
+        // -----------------------------------------
+
+        int? lubeOilFncId = currentLocation switch
+        {
+            "Tropical Knitex Limited" => 39,     // G.G Lube Oil-TKL
+            "Cotton Club BD Limited" => 40,     // G.G Lube Oil-CCL
+            "Noor Checks & Stripes Ltd." => 41,                // "XYZ" => 41,  // G.G Lube Oil-... (if another location exists)
+            _ => null
+        };
+
+        if (lubeOilFncId == null)
+        {
+            // location unknown / not mapped → skip rate lookup
+            // log or handle as needed
+            return BadRequest($"No Lube Oil FNC mapping for location '{currentLocation}'.");
+        }
+
+        // -----------------------------------------
+        // GET LATEST LUBE OIL RATE FOR THAT LOCATION
+        // -----------------------------------------
+
         var lubOilRate = _context.TblFncItems
-        .Where(i => i.Fncid == 12)//Lube Oil
-        .Join(_context.TblFncItemRates,
-            item => item.Fncid,
-            rate => rate.Fncid,
-            (item, rate) => rate)
-        .OrderByDescending(r => r.Date)
-        .Select(r => r.Rate)
-        .FirstOrDefault();
+            .Where(i => i.Fncid == lubeOilFncId.Value)   // location-based
+            .Join(_context.TblFncItemRates,
+                item => item.Fncid,
+                rate => rate.Fncid,
+                (item, rate) => rate)
+            .OrderByDescending(r => r.Date)
+            .Select(r => r.Rate)
+            .FirstOrDefault();
+        //var lubOilRate = _context.TblFncItems
+        //.Where(i => i.Fncid == 39)//Lube Oil
+        //.Join(_context.TblFncItemRates,
+        //    item => item.Fncid,
+        //    rate => rate.Fncid,
+        //    (item, rate) => rate)
+        //.OrderByDescending(r => r.Date)
+        //.Select(r => r.Rate)
+        //.FirstOrDefault();
 
         ViewBag.CngRate = cngRate;
         ViewBag.NgRate = ngRate;
